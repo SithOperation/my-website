@@ -2,24 +2,25 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
-    background: url("../assets/bg.jpg") no-repeat center center fixed;
+    background: url("assets/bg.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
 /* DARK OVERLAY */
 .overlay {
-    background: rgba(0,0,0,0.65);
+    background: rgba(0,0,0,0.75);
+    min-height: 100vh;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 70px 20px;
 }
 
-.terminal {
-    font-size: 16px;
-    color: #00ffcc;
+h1 {
+    font-size: 42px;
+    letter-spacing: 2px;
 }
 
 /* NAV */
@@ -31,7 +32,6 @@ nav {
     background: rgba(0,0,0,0.8);
     position: sticky;
     top: 0;
-    z-index: 1000;
 }
 
 nav a {
@@ -44,13 +44,14 @@ nav a:hover {
     color: #00ffd5;
 }
 
-/* SECTIONS */
+/* CARDS */
 .card {
     max-width: 900px;
-    margin: 60px auto;
-    padding: 30px;
-    background: rgba(0,0,0,0.6);
+    margin: 50px auto;
+    padding: 25px;
+    background: rgba(255,255,255,0.05);
     border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* GRID */
@@ -60,19 +61,14 @@ nav a:hover {
     gap: 15px;
 }
 
-.project {
-    background: rgba(255,255,255,0.08);
+.box {
     padding: 15px;
+    background: rgba(0,255,200,0.08);
+    border: 1px solid rgba(0,255,200,0.2);
     border-radius: 8px;
 }
 
-/* BUTTON */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #00ffd5;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
+/* TERMINAL TEXT */
+.terminal {
+    color: #00ffcc;
 }
