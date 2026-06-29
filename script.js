@@ -40,11 +40,11 @@ function throwPhotos() {
     layer.innerHTML = "";
 
     const images = [
-        "my-website/assets/image1.jpg",
-        "my-website/assets/image2.jpg",
-        "my-website/assets/image3.jpg",
-        "my-website/assets/image4.jpg",
-        "my-website/assets/image5.jpg"
+        "/my-website/assets/image1.jpg",
+        "/my-website/assets/image2.jpg",
+        "/my-website/assets/image3.jpg",
+        "/my-website/assets/image4.jpg",
+        "/my-website/assets/image5.jpg"
     ];
 
     const positions = [
