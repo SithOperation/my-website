@@ -61,3 +61,39 @@ nav {
     border-color: #00ffd5;
     box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
+
+/* PHOTO THROW ANIMATION LAYER */
+#photo-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.throw-photo {
+    position: absolute;
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+    transform: scale(0.2);
+    opacity: 0;
+
+    animation: throwIn 0.8s ease-out forwards;
+}
+
+@keyframes throwIn {
+    0% {
+        transform: translateY(300px) scale(0.2) rotate(-30deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(var(--rot));
+        opacity: 1;
+    }
+}
