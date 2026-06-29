@@ -1,0 +1,1 @@
+const cmds=['Initializing...','Loading Threat Intelligence...','Loading Portfolio...','Done.'];let i=0,j=0;const el=document.getElementById('typing');function t(){if(i<cmds.length){if(j<cmds[i].length){el.textContent+=cmds[i][j++];setTimeout(t,40)}else{el.textContent+='\n';i++;j=0;setTimeout(t,300)}}}t();
