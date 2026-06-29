@@ -14,7 +14,11 @@ type();
 function throwPhotos() {
     const layer = document.getElementById("photo-layer");
 
-    layer.innerHTML = "";
+    // If photos already exist, remove them and exit
+    if (layer.children.length > 0) {
+        layer.innerHTML = "";
+        return;
+    }
 
     const images = [
         "assets/projects/image1.jpg",
@@ -25,27 +29,25 @@ function throwPhotos() {
     ];
 
     const positions = [
-    { left: "8%",  top: "18%", rot: "-14deg" },
-    { left: "33%", top: "8%",  rot: "8deg" },
-    { left: "60%", top: "16%", rot: "-7deg" },
-    { left: "18%", top: "48%", rot: "10deg" },
-    { left: "48%", top: "46%", rot: "-9deg" }
-];
+        { left: "8%", top: "18%", rot: "-14deg" },
+        { left: "33%", top: "8%", rot: "8deg" },
+        { left: "60%", top: "16%", rot: "-7deg" },
+        { left: "18%", top: "48%", rot: "10deg" },
+        { left: "48%", top: "46%", rot: "-9deg" }
+    ];
 
-images.forEach((src, index) => {
+    images.forEach((src, index) => {
+        const img = document.createElement("img");
 
-    const img = document.createElement("img");
+        img.src = src;
+        img.className = "throw-photo";
 
-    img.src = src;
-    img.className = "throw-photo";
+        const pos = positions[index];
 
-    const pos = positions[index];
+        img.style.left = pos.left;
+        img.style.top = pos.top;
+        img.style.setProperty("--rot", pos.rot);
 
-    img.style.left = pos.left;
-    img.style.top = pos.top;
-    img.style.setProperty("--rot", pos.rot);
-
-    layer.appendChild(img);
-
-});
+        layer.appendChild(img);
+    });
 }
