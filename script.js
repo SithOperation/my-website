@@ -1,9 +1,16 @@
+// --------------------
+// TYPEWRITER EFFECT
+// --------------------
 const text = "system online...";
 let i = 0;
 
 function type() {
+    const el = document.getElementById("typing");
+
+    if (!el) return;
+
     if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
+        el.innerHTML += text.charAt(i);
         i++;
         setTimeout(type, 80);
     }
@@ -11,14 +18,26 @@ function type() {
 
 type();
 
+
+// --------------------
+// PROJECT PHOTO TOGGLE
+// --------------------
+let photosVisible = false;
+
 function throwPhotos() {
     const layer = document.getElementById("photo-layer");
 
-    // If photos already exist, remove them and exit
-    if (layer.children.length > 0) {
+    if (!layer) return;
+
+    // If visible → remove and stop
+    if (photosVisible) {
         layer.innerHTML = "";
+        photosVisible = false;
         return;
     }
+
+    // Clear just in case
+    layer.innerHTML = "";
 
     const images = [
         "assets/projects/image1.jpg",
@@ -29,8 +48,8 @@ function throwPhotos() {
     ];
 
     const positions = [
-        { left: "8%", top: "18%", rot: "-14deg" },
-        { left: "33%", top: "8%", rot: "8deg" },
+        { left: "8%",  top: "18%", rot: "-14deg" },
+        { left: "33%", top: "8%",  rot: "8deg" },
         { left: "60%", top: "16%", rot: "-7deg" },
         { left: "18%", top: "48%", rot: "10deg" },
         { left: "48%", top: "46%", rot: "-9deg" }
@@ -50,4 +69,6 @@ function throwPhotos() {
 
         layer.appendChild(img);
     });
+
+    photosVisible = true;
 }
