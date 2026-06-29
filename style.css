@@ -6,19 +6,19 @@ body {
     background-size: cover;
 }
 
-/* keep overlay simple — DO NOT use flex here */
+/* DARK OVERLAY */
 .overlay {
     background: rgba(0,0,0,0.72);
     min-height: 100vh;
 }
 
-/* FIX HEADER ALIGNMENT */
+/* HEADER */
 .hero {
     text-align: center;
     padding: 60px 20px 20px 20px;
 }
 
-/* FIX NAV CENTERING */
+/* NAV CENTER */
 nav {
     display: flex;
     justify-content: center;
@@ -26,9 +26,9 @@ nav {
     padding: 15px;
 }
 
-/* YOUR ORIGINAL CARD STYLE (UNCHANGED FEEL) */
+/* 🔥 RESTORED GLASS CARD LOOK (your grey highlight) */
 .card {
-    background: rgba(20, 20, 20, 0.55);
+    background: rgba(20, 20, 20, 0.6);  /* <-- this is your grey panel */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
@@ -37,21 +37,27 @@ nav {
     margin: 50px auto;
 }
 
-/* PROJECT CARDS (MAKE CLICKABLE) */
+/* 🔥 RESTORED PROJECT GRID (NOT column) */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+/* PROJECT BOXES */
 .project {
     display: block;
     padding: 15px;
-    margin-bottom: 15px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
-    color: white;
     text-decoration: none;
+    color: white;
     transition: 0.25s;
 }
 
 .project:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     border-color: #00ffd5;
-    box-shadow: 0 0 18px rgba(0,255,213,0.2);
+    box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
