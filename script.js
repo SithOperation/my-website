@@ -24,19 +24,28 @@ function throwPhotos() {
         "projects/image5.jpg"
     ];
 
-    images.forEach((src) => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.className = "throw-photo";
+    const positions = [
+    { left: "8%",  top: "18%", rot: "-14deg" },
+    { left: "33%", top: "8%",  rot: "8deg" },
+    { left: "60%", top: "16%", rot: "-7deg" },
+    { left: "18%", top: "48%", rot: "10deg" },
+    { left: "48%", top: "46%", rot: "-9deg" }
+];
 
-        const x = Math.random() * window.innerWidth * 0.8;
-        const y = Math.random() * window.innerHeight * 0.7;
-        const rot = (Math.random() * 40 - 20) + "deg";
+images.forEach((src, index) => {
 
-        img.style.left = x + "px";
-        img.style.top = y + "px";
-        img.style.setProperty("--rot", rot);
+    const img = document.createElement("img");
 
-        layer.appendChild(img);
-    });
+    img.src = src;
+    img.className = "throw-photo";
+
+    const pos = positions[index];
+
+    img.style.left = pos.left;
+    img.style.top = pos.top;
+    img.style.setProperty("--rot", pos.rot);
+
+    layer.appendChild(img);
+
+});
 }
