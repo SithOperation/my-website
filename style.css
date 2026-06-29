@@ -2,25 +2,36 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
-    background: url("assets/bg.jpg") no-repeat center center fixed;
+    background: url("../assets/bg.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
-/* Dark overlay so text is readable */
+/* DARK OVERLAY */
 .overlay {
-    background: rgba(0,0,0,0.6);
-    min-height: 100vh;
+    background: rgba(0,0,0,0.65);
 }
 
-/* NAV BAR */
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.terminal {
+    font-size: 16px;
+    color: #00ffcc;
+}
+
+/* NAV */
 nav {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    padding: 20px;
-    background: rgba(0,0,0,0.7);
+    gap: 25px;
+    padding: 15px;
+    background: rgba(0,0,0,0.8);
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 
 nav a {
@@ -33,19 +44,35 @@ nav a:hover {
     color: #00ffd5;
 }
 
-/* PAGE CONTENT */
-.container {
+/* SECTIONS */
+.card {
     max-width: 900px;
-    margin: auto;
-    padding: 60px 20px;
-    text-align: center;
+    margin: 60px auto;
+    padding: 30px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
 }
 
-h1 {
-    font-size: 50px;
-    margin-bottom: 10px;
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
 }
 
-p {
-    font-size: 18px;
+.project {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00ffd5;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
 }
