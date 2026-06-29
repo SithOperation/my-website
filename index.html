@@ -1,83 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joseph Technologies</title>
 
-<link rel="stylesheet" href="css/style.css">
-<script defer src="js/main.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="overlay">
 
-<!-- INTRO -->
-<section class="hero">
-    <pre class="terminal">
-█████████████████████████████
-JOSEPH TECHNOLOGIES
-Cybersecurity • Threat Research • Network Defense
-root@joseph:~$ <span id="typing"></span>
-    </pre>
-</section>
+<header class="hero">
+    <h1>JOSEPH TECHNOLOGIES</h1>
+    <p>Cybersecurity • Threat Research • Defensive Engineering</p>
+    <p class="terminal">root@joseph:~$ <span id="typing"></span></p>
+</header>
 
-<!-- NAV -->
 <nav>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#resume">Resume</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<!-- ABOUT -->
 <section id="about" class="card">
-    <h2>ABOUT ME</h2>
-    <p>Cybersecurity student focused on threat research, malware analysis, OSINT, and network defense.</p>
+    <h2>About</h2>
+    <p>
+        Cybersecurity student focused on malware analysis, OSINT, network defense,
+        and building real-world security tooling.
+    </p>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects" class="card">
-    <h2>PROJECTS</h2>
+    <h2>Projects</h2>
 
     <div class="grid">
-        <div class="project">Reddit Threat Monitor</div>
-        <div class="project">Healthcare Ransomware Defense</div>
-        <div class="project">Firewalla Security Program</div>
-        <div class="project">Active Directory Lab</div>
-        <div class="project">Malware Analysis Lab</div>
-        <div class="project">Python Security Tools</div>
+        <div class="box">Threat Monitoring System</div>
+        <div class="box">Ransomware Defense Model</div>
+        <div class="box">Firewall Architecture Lab</div>
+        <div class="box">Active Directory Sandbox</div>
     </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills" class="card">
-    <h2>SKILLS</h2>
+    <h2>Skills</h2>
     <ul>
         <li>Python</li>
         <li>Linux</li>
-        <li>Networking</li>
         <li>Nmap</li>
         <li>Wireshark</li>
-        <li>GitHub Actions</li>
+        <li>Network Security</li>
     </ul>
 </section>
 
-<!-- RESUME -->
-<section id="resume" class="card">
-    <h2>RESUME</h2>
-    <a class="btn" href="assets/resume.pdf" target="_blank">Download Resume</a>
+<section id="contact" class="card">
+    <h2>Contact</h2>
+    <p>Email: your@email.com</p>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="card">
-    <h2>CONTACT</h2>
-    <p>Email: yourname@email.com</p>
-</section>
+<footer>
+    <p>© Joseph Technologies</p>
+</footer>
 
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
