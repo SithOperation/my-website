@@ -6,19 +6,17 @@ body {
     background-size: cover;
 }
 
-/* DARK OVERLAY (key improvement) */
+/* DARK OVERLAY */
 .overlay {
-    background: rgba(0,0,0,0.72);
+    background: rgba(0,0,0,0.75);
     min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* GLASS CARDS */
-.card {
-    background: rgba(20, 20, 20, 0.55);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 25px;
-    max-width: 900px;
-    margin: 50px auto;
-}
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 70px 20px
