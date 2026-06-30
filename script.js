@@ -6,13 +6,16 @@ let i = 0;
 
 function type() {
     const el = document.getElementById("typing");
-
     if (!el) return;
+
+    if (i === 0) el.innerHTML = "";
 
     if (i < text.length) {
         el.innerHTML += text.charAt(i);
         i++;
         setTimeout(type, 80);
+    } else {
+        el.innerHTML += '<span class="cursor">█</span>';
     }
 }
 
