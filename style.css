@@ -77,19 +77,22 @@ body {
 nav {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    padding: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 10px;
 }
 
 nav a {
+    position: relative; /* 🔥 REQUIRED FIX */
+    
     color: rgba(255,255,255,0.85);
     text-decoration: none;
-    padding: 8px 14px;
+    padding: 8px 12px;
     border-radius: 8px;
     transition: all 0.25s ease;
-    position: relative;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 nav a:hover {
@@ -99,6 +102,7 @@ nav a:hover {
     box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
 
+/* underline effect */
 nav a::after {
     content: "";
     position: absolute;
@@ -237,4 +241,45 @@ footer {
     padding: 20px;
     opacity: 0.7;
     font-size: 12px;
+}
+
+/* =========================
+   mobile responsive system
+========================= */
+
+@media (max-width: 768px) {
+
+    /* cards */
+    .card {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    /* grid collapses cleanly */
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* nav tighter spacing */
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    /* viewer becomes mobile friendly */
+    #viewer-content iframe {
+        height: 280px;
+    }
+
+    #viewer-content h2 {
+        font-size: 18px;
+    }
+
+    #viewer-content h3 {
+        font-size: 15px;
+    }
 }
