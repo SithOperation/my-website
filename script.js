@@ -55,61 +55,44 @@ const projects = {
 
 
 // =====================
-// PROJECT VIEWER
+// PROJECT VIEWER (FIXED)
 // =====================
 
 function loadProject(key) {
     const viewer = document.getElementById("viewer-content");
-    if (!viewer) return;
-
     const project = projects[key];
 
-    if (!project) {
-        viewer.innerHTML = "<p>Project not found.</p>";
-        return;
+    if (!viewer || !project) return;
+
+    let html = `<h2>${project.title}</h2>`;
+
+    // IMAGES
+    if (project.images && project.images.length > 0) {
+        html += `<h3>Evidence</h3>`;
+        project.images.forEach(img => {
+            html += `<img src="${img}">`;
+        });
     }
 
-    const imagesHTML = project.images?.length
-        ? `
-        <h3>Evidence</h3>
-        <div class="grid">
-            ${project.images.map(img => `
-                <img src="${img}" style="
-                    width:100%;
-                    border-radius:8px;
-                    border:1px solid rgba(255,255,255,0.1);
-                ">
-            `).join("")}
-        </div>
-        `
-        : "";
+    // PDF
+    if (project.pdf) {
+        html += `
+            <h3>Report</h3>
+            <iframe src="${project.pdf}"></iframe>
+            <a href="${project.pdf}" target="_blank" class="project">
+                Open Full PDF
+            </a>
+        `;
+    }
 
-    const pdfHTML = project.pdf
-        ? `
-        <h3 style="margin-top:20px;">Report</h3>
+    viewer.innerHTML = html;
 
-        <iframe
-            src="${project.pdf}"
-            style="width:100%; height:500px; border:none; border-radius:8px; background:white;">
-        </iframe>
-
-        <a href="${project.pdf}" target="_blank" class="project">
-            Open PDF
-        </a>
-        `
-        : "";
-
-    viewer.innerHTML = `
-        <h2>${project.title}</h2>
-        ${imagesHTML}
-        ${pdfHTML}
-    `;
-
-    viewer.scrollIntoView({ behavior: "smooth" });
+    viewer.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
+
 // =====================
-// BACKGROUND GIF SYSTEM (FIXED)
+// BACKGROUND GIF ROTATION (FIXED 4 GIFS)
 // =====================
 
 const gifs = [
@@ -119,31 +102,14 @@ const gifs = [
     "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 ];
 
-// preload (prevents flashing / broken transitions)
-gifs.forEach(src => {
-    const img = new Image();
-    img.src = src;
-});
-
 let current = 0;
 
-function setInitialBackgrounds() {
-    const bg1 = document.getElementById("bg1");
-    const bg2 = document.getElementById("bg2");
-    const bg3 = document.getElementById("bg3");
-
-    if (!bg1 || !bg2 || !bg3) return;
-
-    bg1.style.backgroundImage = `url('${gifs[0]}')`;
-    bg2.style.backgroundImage = `url('${gifs[1]}')`;
-    bg3.style.backgroundImage = `url('${gifs[2]}')`;
-
-    bg1.style.opacity = "1";
-    bg2.style.opacity = "0";
-    bg3.style.opacity = "0";
+function setBg(layer, url, opacity) {
+    layer.style.backgroundImage = `url('${url}')`;
+    layer.style.opacity = opacity;
 }
 
-function rotateBackground() {
+function rotateBg() {
     const layers = [
         document.getElementById("bg1"),
         document.getElementById("bg2"),
@@ -152,30 +118,26 @@ function rotateBackground() {
 
     if (!layers[0]) return;
 
-    // advance index
     current = (current + 1) % gifs.length;
 
-    const nextGif = gifs[current];
-
-    // shift layers forward
-    const oldTop = layers[0];
-
-    layers[0] = layers[1];
-    layers[1] = layers[2];
-    layers[2] = oldTop;
-
-    // update newest layer
-    layers[2].style.backgroundImage = `url('${nextGif}')`;
-
-    // fade in/out
-    layers[2].style.opacity = "0";
-    setTimeout(() => {
-        layers[2].style.opacity = "1";
-    }, 50);
-
-    layers[0].style.opacity = "0";
+    setBg(layers[0], gifs[current], "1");
+    setBg(layers[1], gifs[(current + 1) % gifs.length], "0");
+    setBg(layers[2], gifs[(current + 2) % gifs.length], "0");
 }
 
-// init
-setInitialBackgrounds();
-setInterval(rotateBackground, 6000);
+function initBg() {
+    const layers = [
+        document.getElementById("bg1"),
+        document.getElementById("bg2"),
+        document.getElementById("bg3")
+    ];
+
+    if (!layers[0]) return;
+
+    setBg(layers[0], gifs[0], "1");
+    setBg(layers[1], gifs[1], "0");
+    setBg(layers[2], gifs[2], "0");
+}
+
+initBg();
+setInterval(rotateBg, 6000);
