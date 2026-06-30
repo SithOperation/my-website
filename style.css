@@ -7,7 +7,10 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     overflow-x: hidden;
-    background: black; /* IMPORTANT: prevents background conflict */
+    background: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* =========================
@@ -26,6 +29,8 @@ body {
 
     transform: scale(1.05);
     animation: slowZoom 25s ease-in-out infinite alternate;
+
+    will-change: opacity, transform;
 }
 
 #bg1 {
@@ -37,7 +42,7 @@ body {
     to { transform: scale(1.12); }
 }
 
-/* dark cinematic veil over GIFs */
+/* dark cinematic overlay */
 .bg-layer::after {
     content: "";
     position: absolute;
@@ -71,7 +76,7 @@ body {
 }
 
 /* =========================
-   NAVIGATION (RESTORED CYBER FEEL)
+   NAVIGATION (FIXED MOBILE SAFE)
 ========================= */
 
 nav {
@@ -79,22 +84,27 @@ nav {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 15px 10px;
+    padding: 15px 12px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 nav a {
-    position: relative; /* 🔥 REQUIRED FIX */
-    
+    position: relative;
+
     color: rgba(255,255,255,0.85);
     text-decoration: none;
+
     padding: 8px 12px;
     border-radius: 8px;
+
     transition: all 0.25s ease;
     font-size: 13px;
     letter-spacing: 1px;
     white-space: nowrap;
 }
 
+/* hover effect */
 nav a:hover {
     color: #00ffd5;
     background: rgba(0,255,213,0.10);
@@ -102,7 +112,7 @@ nav a:hover {
     box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
 
-/* underline effect */
+/* underline */
 nav a::after {
     content: "";
     position: absolute;
@@ -131,7 +141,6 @@ nav a:hover::after {
     padding: 25px;
     max-width: 900px;
     margin: 50px auto;
-
     box-shadow: 0 0 25px rgba(0,255,213,0.08);
 }
 
@@ -163,7 +172,7 @@ nav a:hover::after {
 }
 
 /* =========================
-   PROJECT VIEWER (FIXED IDENTITY)
+   PROJECT VIEWER (FIXED MOBILE SAFE)
 ========================= */
 
 #project-viewer {
@@ -183,6 +192,11 @@ nav a:hover::after {
 }
 
 #viewer-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
     transition: transform 0.2s ease;
 }
 
@@ -190,8 +204,16 @@ nav a:hover::after {
     transform: scale(1.03);
 }
 
+#viewer-content iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+}
+
 /* =========================
-   SKILLS (RESTORED STRUCTURE)
+   SKILLS
 ========================= */
 
 .skill-group {
@@ -206,7 +228,6 @@ nav a:hover::after {
     margin: 0 0 8px 0;
     color: #00ffd5;
     font-size: 16px;
-    letter-spacing: 0.5px;
 }
 
 .skill-group p {
@@ -217,7 +238,7 @@ nav a:hover::after {
 }
 
 /* =========================
-   TYPEWRITER CURSOR (TERMINAL FEEL RESTORED)
+   TYPEWRITER CURSOR
 ========================= */
 
 .cursor {
@@ -244,38 +265,41 @@ footer {
 }
 
 /* =========================
-   mobile responsive system
+   MOBILE FIXES (CRITICAL)
 ========================= */
 
 @media (max-width: 768px) {
 
     nav {
-        justify-content: center;
-        gap: 6px;
-        padding: 10px 8px;
+        gap: 8px;
+        padding: 12px 10px;
     }
 
     nav a {
         font-size: 11px;
-        padding: 6px 8px;
-        letter-spacing: 0.5px;
+        padding: 6px 10px;
+    }
 
-        /* prevents edge clipping */
-        margin: 2px 0;
+    .card {
+        margin: 25px 12px;
+        padding: 18px;
+    }
+
+    #viewer-content iframe {
+        height: 300px;
     }
 }
 
 @media (max-width: 480px) {
 
     nav {
-        gap: 5px;
+        gap: 6px;
+        padding: 10px 8px;
     }
 
     nav a {
         font-size: 10px;
-        padding: 5px 7px;
-
-        /* allow wrapping cleanly */
+        padding: 6px 8px;
         flex: 1 1 auto;
         text-align: center;
     }
