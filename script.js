@@ -42,18 +42,13 @@ const projects = {
 
     ransomware: {
         title: "Healthcare Ransomware Defense",
-        images: [
-            "assets/projects/image4.jpg",
-            "assets/projects/image5.jpg"
-        ],
+        images: [],
         pdf: "assets/projects/project2.pdf"
     },
 
     nestle: {
         title: "Nestle CIA Threat Table",
-        images: [
-            "assets/projects/image1.jpg"
-        ],
+        images: [],
         pdf: "assets/projects/project1.pdf"
     }
 };
