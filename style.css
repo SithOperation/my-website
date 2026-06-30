@@ -8,9 +8,6 @@ body {
     color: white;
     overflow-x: hidden;
     background: black;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 /* =========================
@@ -26,23 +23,12 @@ body {
     z-index: -2;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-
     transform: scale(1.05);
-    animation: slowZoom 25s ease-in-out infinite alternate;
-
-    will-change: opacity, transform;
 }
 
-#bg1 {
-    opacity: 1;
-}
+#bg1 { opacity: 1; }
 
-@keyframes slowZoom {
-    from { transform: scale(1.05); }
-    to { transform: scale(1.12); }
-}
-
-/* dark cinematic overlay */
+/* dark overlay over GIFs */
 .bg-layer::after {
     content: "";
     position: absolute;
@@ -70,82 +56,52 @@ body {
     padding: 60px 20px 20px;
 }
 
-.hero h1 {
-    letter-spacing: 2px;
-    text-shadow: 0 0 15px rgba(0,255,213,0.3);
-}
-
 /* =========================
-   NAVIGATION (FIXED MOBILE SAFE)
+   NAV (FIXED MOBILE + NO CLIPPING)
 ========================= */
 
 nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 15px 12px;
-    max-width: 100%;
-    overflow-x: hidden;
+    gap: 8px;
+    padding: 15px 10px;
 }
 
 nav a {
     position: relative;
-
     color: rgba(255,255,255,0.85);
     text-decoration: none;
-
-    padding: 8px 12px;
+    padding: 7px 10px;
     border-radius: 8px;
-
-    transition: all 0.25s ease;
     font-size: 13px;
-    letter-spacing: 1px;
     white-space: nowrap;
+    transition: 0.25s;
 }
 
-/* hover effect */
 nav a:hover {
     color: #00ffd5;
-    background: rgba(0,255,213,0.10);
+    background: rgba(0,255,213,0.1);
     transform: translateY(-2px);
-    box-shadow: 0 0 18px rgba(0,255,213,0.25);
-}
-
-/* underline */
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 4px;
-    width: 0%;
-    height: 1px;
-    background: #00ffd5;
-    transition: 0.25s ease;
-    transform: translateX(-50%);
-}
-
-nav a:hover::after {
-    width: 60%;
+    box-shadow: 0 0 15px rgba(0,255,213,0.2);
 }
 
 /* =========================
-   CARDS (GLASS CYBER STYLE)
+   CARDS
 ========================= */
 
 .card {
-    background: rgba(20, 20, 20, 0.65);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(20,20,20,0.65);
     border-radius: 12px;
     padding: 25px;
-    max-width: 900px;
     margin: 50px auto;
-    box-shadow: 0 0 25px rgba(0,255,213,0.08);
+    max-width: 900px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 /* =========================
-   PROJECT GRID
+   PROJECTS GRID
 ========================= */
 
 .grid {
@@ -155,55 +111,35 @@ nav a:hover::after {
 }
 
 .project {
-    display: block;
     padding: 15px;
     background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    transition: all 0.25s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 .project:hover {
     transform: translateY(-5px);
     border-color: #00ffd5;
-    box-shadow: 0 0 18px rgba(0,255,213,0.25);
+    box-shadow: 0 0 18px rgba(0,255,213,0.2);
 }
 
 /* =========================
-   PROJECT VIEWER (FIXED MOBILE SAFE)
+   PROJECT VIEWER (FIXED MOBILE + PDF + IMAGES)
 ========================= */
 
 #project-viewer {
     border: 1px solid rgba(0,255,213,0.15);
-    box-shadow: 0 0 30px rgba(0,255,213,0.10);
-}
-
-#viewer-content h2 {
-    color: #00ffd5;
-    margin-bottom: 15px;
-}
-
-#viewer-content h3 {
-    color: #00ffd5;
-    margin-top: 20px;
-    margin-bottom: 10px;
 }
 
 #viewer-content img {
     width: 100%;
-    max-width: 100%;
-    height: auto;
     border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.2s ease;
+    margin-bottom: 10px;
 }
 
-#viewer-content img:hover {
-    transform: scale(1.03);
-}
-
+/* iframe PDF */
 #viewer-content iframe {
     width: 100%;
     height: 500px;
@@ -217,35 +153,18 @@ nav a:hover::after {
 ========================= */
 
 .skill-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 15px;
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
 }
 
-.skill-group h3 {
-    margin: 0 0 8px 0;
-    color: #00ffd5;
-    font-size: 16px;
-}
-
-.skill-group p {
-    margin: 0;
-    line-height: 1.5;
-    font-size: 14px;
-    opacity: 0.9;
-}
-
 /* =========================
-   TYPEWRITER CURSOR
+   TYPEWRITER
 ========================= */
 
 .cursor {
-    display: inline-block;
-    margin-left: 2px;
     animation: blink 1s infinite;
-    color: #00ffd5;
 }
 
 @keyframes blink {
@@ -254,53 +173,27 @@ nav a:hover::after {
 }
 
 /* =========================
-   FOOTER
-========================= */
-
-footer {
-    text-align: center;
-    padding: 20px;
-    opacity: 0.7;
-    font-size: 12px;
-}
-
-/* =========================
-   MOBILE FIXES (CRITICAL)
+   MOBILE FIXES (IMPORTANT)
 ========================= */
 
 @media (max-width: 768px) {
 
     nav {
-        gap: 8px;
-        padding: 12px 10px;
+        gap: 6px;
+        padding: 10px;
     }
 
     nav a {
         font-size: 11px;
-        padding: 6px 10px;
+        padding: 6px 8px;
     }
 
     .card {
-        margin: 25px 12px;
+        margin: 25px 10px;
         padding: 18px;
     }
 
     #viewer-content iframe {
         height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    nav {
-        gap: 6px;
-        padding: 10px 8px;
-    }
-
-    nav a {
-        font-size: 10px;
-        padding: 6px 8px;
-        flex: 1 1 auto;
-        text-align: center;
     }
 }
