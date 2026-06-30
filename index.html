@@ -62,36 +62,36 @@
      </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="card">
-        <h2>Projects</h2>
+   <section id="projects" class="card">
+    <h2>Projects</h2>
 
-        <div class="grid">
+    <div class="grid">
 
-            <div class="project" onclick="throwPhotos()">
-                <h3>Reddit Threat Monitor</h3>
-                <p>Python + GitHub Actions + Discord alerts</p>
-            </div>
-
-            <a class="project" href="assets/projects/project2.pdf" target="_blank">
-                <h3>Healthcare Ransomware Defense</h3>
-                <p>Enterprise security strategy</p>
-            </a>
-
-            <a class="project" href="assets/projects/project1.pdf" target="_blank">
-                <h3>Nestle CIA Threat Model</h3>
-                <p>Risk & defense analysis</p>
-            </a>
-
+        <div class="project" onclick="loadProject('reddit')">
+            <h3>Reddit Threat Monitor</h3>
+            <p>Python + GitHub Actions + Discord alerts</p>
         </div>
-    </section>
 
-    <!-- PROJECT VIEWER (optional expansion space) -->
-    <section id="project-viewer" class="card">
-        <h2>Project Viewer</h2>
-        <p>Select a project to view details.</p>
+        <div class="project" onclick="loadProject('ransomware')">
+            <h3>Healthcare Ransomware Defense</h3>
+            <p>Enterprise ransomware mitigation strategy</p>
+        </div>
 
-        <div id="viewer-content"></div>
-    </section>
+        <div class="project" onclick="loadProject('nestle')">
+            <h3>Nestle CIA Threat Table</h3>
+            <p>Evaluation Threat Kit</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- THIS is your new viewer -->
+<section id="project-viewer" class="card">
+    <h2>Project Viewer</h2>
+    <div id="viewer-content">
+        <p style="opacity:0.7;">Click a project to load details...</p>
+    </div>
+</section>
 
     <!-- SKILLS -->
     <section id="skills" class="card">
