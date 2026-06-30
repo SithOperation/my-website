@@ -1,5 +1,5 @@
 // =====================
-// TYPEWRITER EFFECT
+// TYPEWRITER
 // =====================
 
 const text = "system online...";
@@ -24,136 +24,91 @@ type();
 
 
 // =====================
-// PROJECT VIEWER (IMAGES + PDF)
+// PROJECT DATA
 // =====================
 
-function loadProject(project) {
+const projects = {
+    reddit: {
+        title: "Reddit Threat Monitor",
+        images: [
+            "assets/projects/reddit/image1.jpg",
+            "assets/projects/reddit/image2.jpg",
+            "assets/projects/reddit/image3.jpg",
+            "assets/projects/reddit/image4.jpg",
+            "assets/projects/reddit/image5.jpg"
+        ],
+        pdf: null
+    },
+
+    ransomware: {
+        title: "Healthcare Ransomware Defense",
+        images: [
+            "assets/projects/image4.jpg",
+            "assets/projects/image5.jpg"
+        ],
+        pdf: "assets/projects/project2.pdf"
+    },
+
+    nestle: {
+        title: "Nestle CIA Threat Table",
+        images: [
+            "assets/projects/image1.jpg"
+        ],
+        pdf: "assets/projects/project1.pdf"
+    }
+};
+
+
+// =====================
+// PROJECT VIEWER
+// =====================
+
+function loadProject(key) {
     const viewer = document.getElementById("viewer-content");
     if (!viewer) return;
 
-    let title = "";
-    let images = [];
-    let pdf = "";
+    const project = projects[key];
 
-    // ---------------------
-    // PROJECT DEFINITIONS
-    // ---------------------
-
-    if (project === "reddit") {
-        title = "Reddit Threat Monitor";
-
-        images = [
-            "assets/image1.jpg",
-            "assets/image2.jpg",
-            "assets/image3.jpg"
-        ];
-
-        pdf = ""; // no pdf yet
-    }
-
-    else if (project === "ransomware") {
-        title = "Healthcare Ransomware Defense";
-
-        images = [
-            "assets/image4.jpg",
-            "assets/image5.jpg"
-        ];
-
-        pdf = "assets/projects/project2.pdf";
-    }
-
-    else if (project === "nestle") {
-        title = "Nestle CIA Threat Table";
-
-        images = [
-            "assets/image1.jpg"
-        ];
-
-        pdf = "assets/projects/project1.pdf";
-    }
-
-    else {
-        viewer.innerHTML = "<p>No project found.</p>";
+    if (!project) {
+        viewer.innerHTML = "<p>Project not found.</p>";
         return;
     }
 
-    // ---------------------
-    // BUILD IMAGE SECTION
-    // ---------------------
-
-    let imageHTML = "";
-
-    if (images.length > 0) {
-        imageHTML = `
-            <h3>Evidence / Screenshots</h3>
-            <div style="
-                display:grid;
-                grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-                gap:10px;
-                margin-top:10px;
-            ">
-                ${images.map(img => `
-                    <img src="${img}" style="
-                        width:100%;
-                        border-radius:8px;
-                        border:1px solid rgba(255,255,255,0.1);
-                        cursor:pointer;
-                    ">
-                `).join("")}
-            </div>
-        `;
-    }
-
-    // ---------------------
-    // BUILD PDF SECTION
-    // ---------------------
-
-    let pdfHTML = "";
-
-    if (pdf) {
-        pdfHTML = `
-            <h3 style="margin-top:20px;">Full Report</h3>
-
-            <iframe
-                src="${pdf}"
-                style="
+    const imagesHTML = project.images?.length
+        ? `
+        <h3>Evidence</h3>
+        <div class="grid">
+            ${project.images.map(img => `
+                <img src="${img}" style="
                     width:100%;
-                    height:500px;
-                    border:none;
                     border-radius:8px;
-                    background:white;
+                    border:1px solid rgba(255,255,255,0.1);
                 ">
-            </iframe>
+            `).join("")}
+        </div>
+        `
+        : "";
 
-            <a href="${pdf}"
-               target="_blank"
-               style="
-                    display:inline-block;
-                    margin-top:10px;
-                    padding:10px 14px;
-                    background:#00ffd5;
-                    color:black;
-                    border-radius:8px;
-                    text-decoration:none;
-               ">
-               Open PDF in New Tab
-            </a>
-        `;
-    }
+    const pdfHTML = project.pdf
+        ? `
+        <h3 style="margin-top:20px;">Report</h3>
 
-    // ---------------------
-    // RENDER EVERYTHING
-    // ---------------------
+        <iframe
+            src="${project.pdf}"
+            style="width:100%; height:500px; border:none; border-radius:8px; background:white;">
+        </iframe>
+
+        <a href="${project.pdf}" target="_blank" class="project">
+            Open PDF
+        </a>
+        `
+        : "";
 
     viewer.innerHTML = `
-        <h2>${title}</h2>
-
-        ${imageHTML}
+        <h2>${project.title}</h2>
+        ${imagesHTML}
         ${pdfHTML}
     `;
 
-    viewer.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    viewer.scrollIntoView({ behavior: "smooth" });
 }
