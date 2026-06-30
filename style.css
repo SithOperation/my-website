@@ -1,24 +1,69 @@
+/* =========================
+   BASE
+========================= */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
-    background: url("assets/bg.jpg") no-repeat center center fixed;
-    background-size: cover;
+    overflow-x: hidden;
 }
 
-/* DARK OVERLAY */
+/* =========================
+   BACKGROUND SYSTEM
+========================= */
+
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* first frame safety */
+#bg1 {
+    opacity: 1;
+}
+
+/* optional cinematic slow zoom */
+.bg-layer {
+    transform: scale(1.05);
+    animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.1); }
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
 .overlay {
+    position: relative;
+    z-index: 1;
     background: rgba(0,0,0,0.72);
     min-height: 100vh;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
+
 .hero {
     text-align: center;
     padding: 60px 20px 20px 20px;
 }
 
-/* NAV CENTER */
+/* =========================
+   NAVIGATION
+========================= */
+
 nav {
     display: flex;
     justify-content: center;
@@ -26,25 +71,65 @@ nav {
     padding: 15px;
 }
 
-/* 🔥 RESTORED GLASS CARD LOOK (your grey highlight) */
+nav a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: #00ffd5;
+    background: rgba(0, 255, 213, 0.08);
+    box-shadow: 0 0 12px rgba(0, 255, 213, 0.25);
+    transform: translateY(-2px);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0%;
+    height: 1px;
+    background: #00ffd5;
+    transition: 0.25s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 60%;
+}
+
+/* =========================
+   CARDS
+========================= */
+
 .card {
-    background: rgba(20, 20, 20, 0.6);  /* <-- this is your grey panel */
+    background: rgba(20, 20, 20, 0.6);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     padding: 25px;
     max-width: 900px;
     margin: 50px auto;
+    box-shadow: 0 0 25px rgba(0, 255, 213, 0.08);
 }
 
-/* 🔥 RESTORED PROJECT GRID (NOT column) */
+/* =========================
+   PROJECTS GRID
+========================= */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
 }
 
-/* PROJECT BOXES */
 .project {
     display: block;
     padding: 15px;
@@ -62,7 +147,10 @@ nav {
     box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
 
-/* PHOTO THROW ANIMATION LAYER */
+/* =========================
+   PHOTO THROW SYSTEM
+========================= */
+
 #photo-layer {
     position: fixed;
     inset: 0;
@@ -72,48 +160,35 @@ nav {
 
 .throw-photo {
     position: absolute;
-
     width: 380px;
     max-width: 32vw;
     height: auto;
-
     object-fit: cover;
-
     border-radius: 8px;
-
     border: 8px solid white;
     background: white;
-
     box-shadow: 0 20px 50px rgba(0,0,0,.45);
-
     opacity: 0;
-
     animation: throwIn .8s cubic-bezier(.22,1,.36,1) forwards;
 }
 
 @keyframes throwIn {
-
     0% {
         opacity: 0;
-        transform:
-            translate(-250px,250px)
-            scale(.15)
-            rotate(0deg);
+        transform: translate(-250px,250px) scale(.15) rotate(0deg);
     }
-
     70% {
         opacity: 1;
     }
-
     100% {
         opacity: 1;
-        transform:
-            translate(0,0)
-            scale(1)
-            rotate(var(--rot));
+        transform: translate(0,0) scale(1) rotate(var(--rot));
     }
-
 }
+
+/* =========================
+   SKILLS
+========================= */
 
 .skill-group {
     margin-bottom: 20px;
@@ -135,6 +210,10 @@ nav {
     font-size: 14px;
     opacity: 0.9;
 }
+
+/* =========================
+   TYPEWRITER CURSOR
+========================= */
 
 .cursor {
     animation: blink 1s infinite;
