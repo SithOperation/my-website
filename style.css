@@ -1,25 +1,79 @@
+/* =========================
+   BASE
+========================= */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
     overflow-x: hidden;
-    background: url("assets/bg.jpg") no-repeat center center fixed;
-    background-size: cover;
+    background: black; /* IMPORTANT: prevents background conflict */
 }
 
-/* OVERLAY */
+/* =========================
+   BACKGROUND SYSTEM (GIF LAYERS)
+========================= */
+
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+
+    transform: scale(1.05);
+    animation: slowZoom 25s ease-in-out infinite alternate;
+}
+
+#bg1 {
+    opacity: 1;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.12); }
+}
+
+/* dark cinematic veil over GIFs */
+.bg-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
 .overlay {
+    position: relative;
+    z-index: 1;
     background: rgba(0,0,0,0.72);
     min-height: 100vh;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
+
 .hero {
     text-align: center;
     padding: 60px 20px 20px;
 }
 
-/* NAV */
+.hero h1 {
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0,255,213,0.3);
+}
+
+/* =========================
+   NAVIGATION (RESTORED CYBER FEEL)
+========================= */
+
 nav {
     display: flex;
     justify-content: center;
@@ -28,29 +82,59 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 8px;
-    transition: 0.25s;
+    transition: all 0.25s ease;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 nav a:hover {
     color: #00ffd5;
-    background: rgba(0,255,213,0.1);
+    background: rgba(0,255,213,0.10);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
 
-/* CARDS */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0%;
+    height: 1px;
+    background: #00ffd5;
+    transition: 0.25s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 60%;
+}
+
+/* =========================
+   CARDS (GLASS CYBER STYLE)
+========================= */
+
 .card {
-    background: rgba(20,20,20,0.6);
+    background: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     padding: 25px;
-    margin: 50px auto;
     max-width: 900px;
-    backdrop-filter: blur(10px);
+    margin: 50px auto;
+
+    box-shadow: 0 0 25px rgba(0,255,213,0.08);
 }
 
-/* PROJECTS */
+/* =========================
+   PROJECT GRID
+========================= */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -61,37 +145,96 @@ nav a:hover {
     display: block;
     padding: 15px;
     background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     text-decoration: none;
     color: white;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: 0.25s;
+    transition: all 0.25s ease;
 }
 
 .project:hover {
     transform: translateY(-5px);
     border-color: #00ffd5;
+    box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
 
-/* VIEWER */
+/* =========================
+   PROJECT VIEWER (FIXED IDENTITY)
+========================= */
+
 #project-viewer {
-    border: 1px solid rgba(0,255,213,0.2);
+    border: 1px solid rgba(0,255,213,0.15);
+    box-shadow: 0 0 30px rgba(0,255,213,0.10);
 }
 
-/* SKILLS */
-.skill-group {
+#viewer-content h2 {
+    color: #00ffd5;
     margin-bottom: 15px;
+}
+
+#viewer-content h3 {
+    color: #00ffd5;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#viewer-content img {
+    transition: transform 0.2s ease;
+}
+
+#viewer-content img:hover {
+    transform: scale(1.03);
+}
+
+/* =========================
+   SKILLS (RESTORED STRUCTURE)
+========================= */
+
+.skill-group {
+    margin-bottom: 20px;
     padding: 15px;
     background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
 }
 
-/* TYPEWRITER */
+.skill-group h3 {
+    margin: 0 0 8px 0;
+    color: #00ffd5;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.skill-group p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* =========================
+   TYPEWRITER CURSOR (TERMINAL FEEL RESTORED)
+========================= */
+
 .cursor {
+    display: inline-block;
+    margin-left: 2px;
     animation: blink 1s infinite;
+    color: #00ffd5;
 }
 
 @keyframes blink {
     0%, 50% { opacity: 1; }
     50%, 100% { opacity: 0; }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    opacity: 0.7;
+    font-size: 12px;
 }
