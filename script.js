@@ -114,10 +114,10 @@ function loadProject(key) {
 
 
 const gifs = [
-    "assets/gifs/i-made-some-gifs-v0-9yugvn57e5o81.gif",
-    "assets/gifs/i-made-some-gifs-v0-fphci857e5o81.gif",
-    "assets/gifs/i-made-some-gifs-v0-uhn1le67e5o81.gif",
-    "assets/gifs/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+    "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+    "assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+    "assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+    "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 ];
 
 let current = 0;
