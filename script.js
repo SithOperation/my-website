@@ -93,67 +93,87 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 function loadProject(project) {
     const viewer = document.getElementById("viewer-content");
-
     if (!viewer) return;
 
-    let content = "";
+    let title = "";
+    let text = "";
+    let images = [];
+    let pdf = "";
 
-    switch (project) {
+    if (project === "reddit") {
+        title = "Reddit Threat Monitor";
+        text = "Threat intelligence system that monitors Reddit for cybersecurity signals and suspicious activity patterns.";
 
-        case "reddit":
-            content = `
-                <h3>Reddit Threat Monitor</h3>
-                <p><strong>Type:</strong> Threat Intelligence Automation</p>
+        images = [
+            "assets/image1.jpg",
+            "assets/image2.jpg"
+        ];
 
-                <p>This project monitors Reddit for cybersecurity-related threat signals and suspicious activity patterns.</p>
-
-                <ul>
-                    <li>Python scraping + filtering logic</li>
-                    <li>GitHub Actions automation pipeline</li>
-                    <li>Discord webhook alert system</li>
-                    <li>Keyword-based threat detection rules</li>
-                </ul>
-            `;
-            break;
-
-        case "ransomware":
-            content = `
-                <h3>Healthcare Ransomware Defense</h3>
-                <p><strong>Type:</strong> Enterprise Security Architecture</p>
-
-                <p>Designed to mitigate ransomware threats in healthcare environments with high availability requirements.</p>
-
-                <ul>
-                    <li>Network segmentation strategy</li>
-                    <li>Backup and recovery planning</li>
-                    <li>Endpoint detection concepts</li>
-                    <li>NIST-aligned control mapping</li>
-                </ul>
-            `;
-            break;
-
-        case "nestle":
-            content = `
-                <h3>Nestle CIA Threat Table</h3>
-                <p><strong>Type:</strong> Risk Assessment Model</p>
-
-                <p>Security evaluation based on CIA triad principles applied to enterprise systems.</p>
-
-                <ul>
-                    <li>Confidentiality risk mapping</li>
-                    <li>Integrity validation scenarios</li>
-                    <li>Availability impact analysis</li>
-                    <li>Threat likelihood scoring</li>
-                </ul>
-            `;
-            break;
-
-        default:
-            content = "<p>Project not found.</p>";
+        pdf = "assets/projects/reddit-monitor.pdf";
     }
 
-    viewer.innerHTML = content;
+    else if (project === "ransomware") {
+        title = "Healthcare Ransomware Defense";
+        text = "Enterprise ransomware mitigation strategy designed for healthcare environments.";
 
-    // smooth scroll into view
+        images = [
+            "assets/image3.jpg",
+            "assets/image4.jpg"
+        ];
+
+        pdf = "assets/projects/project2.pdf";
+    }
+
+    else if (project === "nestle") {
+        title = "Nestle CIA Threat Table";
+        text = "Risk analysis model based on CIA triad principles.";
+
+        images = [
+            "assets/image5.jpg"
+        ];
+
+        pdf = "assets/projects/project1.pdf";
+    }
+
+    // build image HTML
+    let imageHTML = "";
+    if (images.length > 0) {
+        imageHTML = `
+            <h4>Evidence / Screenshots</h4>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+                ${images.map(img => `
+                    <img src="${img}" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);">
+                `).join("")}
+            </div>
+        `;
+    }
+
+    // build PDF embed (IMPORTANT FIX)
+    let pdfHTML = "";
+    if (pdf) {
+        pdfHTML = `
+            <h4 style="margin-top:15px;">Full Report</h4>
+            <iframe
+                src="${pdf}"
+                style="width:100%;height:500px;border:none;border-radius:8px;background:white;">
+            </iframe>
+
+            <br>
+
+            <a href="${pdf}" target="_blank"
+               style="display:inline-block;margin-top:10px;padding:10px 14px;background:#00ffd5;color:black;border-radius:8px;text-decoration:none;">
+                Open PDF in New Tab
+            </a>
+        `;
+    }
+
+    viewer.innerHTML = `
+        <h3>${title}</h3>
+        <p>${text}</p>
+
+        ${imageHTML}
+        ${pdfHTML}
+    `;
+
     viewer.scrollIntoView({ behavior: "smooth", block: "center" });
 }
