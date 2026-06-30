@@ -109,9 +109,8 @@ function loadProject(key) {
 }
 
 // =====================
-// Background images
+// BACKGROUND GIF SYSTEM (FIXED)
 // =====================
-
 
 const gifs = [
     "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
@@ -120,13 +119,19 @@ const gifs = [
     "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 ];
 
+// preload (prevents flashing / broken transitions)
+gifs.forEach(src => {
+    const img = new Image();
+    img.src = src;
+});
+
 let current = 0;
 
-const bg1 = document.getElementById("bg1");
-const bg2 = document.getElementById("bg2");
-const bg3 = document.getElementById("bg3");
-
 function setInitialBackgrounds() {
+    const bg1 = document.getElementById("bg1");
+    const bg2 = document.getElementById("bg2");
+    const bg3 = document.getElementById("bg3");
+
     if (!bg1 || !bg2 || !bg3) return;
 
     bg1.style.backgroundImage = `url('${gifs[0]}')`;
@@ -139,31 +144,36 @@ function setInitialBackgrounds() {
 }
 
 function rotateBackground() {
-    if (!bg1 || !bg2 || !bg3) return;
+    const layers = [
+        document.getElementById("bg1"),
+        document.getElementById("bg2"),
+        document.getElementById("bg3")
+    ];
 
+    if (!layers[0]) return;
+
+    // advance index
     current = (current + 1) % gifs.length;
 
     const nextGif = gifs[current];
 
-    // rotate layers manually (no array mutation)
-    if (bg1.style.opacity === "1") {
-        bg2.style.backgroundImage = `url('${nextGif}')`;
-        fade(bg1, bg2);
-    } else if (bg2.style.opacity === "1") {
-        bg3.style.backgroundImage = `url('${nextGif}')`;
-        fade(bg2, bg3);
-    } else {
-        bg1.style.backgroundImage = `url('${nextGif}')`;
-        fade(bg3, bg1);
-    }
-}
+    // shift layers forward
+    const oldTop = layers[0];
 
-function fade(from, to) {
-    from.style.transition = "opacity 1.5s ease-in-out";
-    to.style.transition = "opacity 1.5s ease-in-out";
+    layers[0] = layers[1];
+    layers[1] = layers[2];
+    layers[2] = oldTop;
 
-    to.style.opacity = "1";
-    from.style.opacity = "0";
+    // update newest layer
+    layers[2].style.backgroundImage = `url('${nextGif}')`;
+
+    // fade in/out
+    layers[2].style.opacity = "0";
+    setTimeout(() => {
+        layers[2].style.opacity = "1";
+    }, 50);
+
+    layers[0].style.opacity = "0";
 }
 
 // init
