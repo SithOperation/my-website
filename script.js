@@ -112,6 +112,7 @@ function loadProject(key) {
 // Background images
 // =====================
 
+
 const gifs = [
     "assets/gifs/i-made-some-gifs-v0-9yugvn57e5o81.gif",
     "assets/gifs/i-made-some-gifs-v0-fphci857e5o81.gif",
@@ -121,45 +122,50 @@ const gifs = [
 
 let current = 0;
 
-function setBackground() {
-    const layers = [
-        document.getElementById("bg1"),
-        document.getElementById("bg2"),
-        document.getElementById("bg3")
-    ];
+const bg1 = document.getElementById("bg1");
+const bg2 = document.getElementById("bg2");
+const bg3 = document.getElementById("bg3");
 
-    if (!layers[0]) return;
+function setInitialBackgrounds() {
+    if (!bg1 || !bg2 || !bg3) return;
 
-    layers.forEach((layer, i) => {
-        const gif = gifs[(current + i) % gifs.length];
-        layer.style.backgroundImage = `url('${gif}')`;
-        layer.style.opacity = i === 0 ? "1" : "0";
-    });
+    bg1.style.backgroundImage = `url('${gifs[0]}')`;
+    bg2.style.backgroundImage = `url('${gifs[1]}')`;
+    bg3.style.backgroundImage = `url('${gifs[2]}')`;
+
+    bg1.style.opacity = "1";
+    bg2.style.opacity = "0";
+    bg3.style.opacity = "0";
 }
 
 function rotateBackground() {
-    const layers = [
-        document.getElementById("bg1"),
-        document.getElementById("bg2"),
-        document.getElementById("bg3")
-    ];
+    if (!bg1 || !bg2 || !bg3) return;
 
     current = (current + 1) % gifs.length;
 
-    layers.forEach((layer, i) => {
-        const gif = gifs[(current + i) % gifs.length];
-        layer.style.backgroundImage = `url('${gif}')`;
-    });
+    const nextGif = gifs[current];
 
-    // crossfade effect
-    layers[1].style.opacity = "1";
-    layers[0].style.opacity = "0";
+    // rotate layers manually (no array mutation)
+    if (bg1.style.opacity === "1") {
+        bg2.style.backgroundImage = `url('${nextGif}')`;
+        fade(bg1, bg2);
+    } else if (bg2.style.opacity === "1") {
+        bg3.style.backgroundImage = `url('${nextGif}')`;
+        fade(bg2, bg3);
+    } else {
+        bg1.style.backgroundImage = `url('${nextGif}')`;
+        fade(bg3, bg1);
+    }
+}
 
-    setTimeout(() => {
-        layers.push(layers.shift());
-    }, 1500);
+function fade(from, to) {
+    from.style.transition = "opacity 1.5s ease-in-out";
+    to.style.transition = "opacity 1.5s ease-in-out";
+
+    to.style.opacity = "1";
+    from.style.opacity = "0";
 }
 
 // init
-setBackground();
+setInitialBackgrounds();
 setInterval(rotateBackground, 6000);
