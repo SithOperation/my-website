@@ -1,66 +1,25 @@
-/* =========================
-   BASE
-========================= */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
     overflow-x: hidden;
-}
-
-/* =========================
-   BACKGROUND SYSTEM
-========================= */
-
-.bg-layer {
-    position: fixed;
-    inset: 0;
+    background: url("assets/bg.jpg") no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -2;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-
-    /* cinematic feel */
-    transform: scale(1.05);
-    animation: slowZoom 22s ease-in-out infinite alternate;
 }
 
-#bg1 {
-    opacity: 1;
-}
-
-@keyframes slowZoom {
-    from { transform: scale(1.05); }
-    to { transform: scale(1.12); }
-}
-
-/* =========================
-   OVERLAY
-========================= */
-
+/* OVERLAY */
 .overlay {
-    position: relative;
-    z-index: 1;
     background: rgba(0,0,0,0.72);
     min-height: 100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
-
+/* HERO */
 .hero {
     text-align: center;
-    padding: 60px 20px 20px 20px;
+    padding: 60px 20px 20px;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
-
+/* NAV */
 nav {
     display: flex;
     justify-content: center;
@@ -69,58 +28,29 @@ nav {
 }
 
 nav a {
-    color: rgba(255, 255, 255, 0.85);
+    color: white;
     text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 1px;
     padding: 8px 14px;
     border-radius: 8px;
-    transition: all 0.25s ease;
-    position: relative;
+    transition: 0.25s;
 }
 
 nav a:hover {
     color: #00ffd5;
-    background: rgba(0, 255, 213, 0.10);
-    box-shadow: 0 0 18px rgba(0, 255, 213, 0.30);
-    transform: translateY(-2px) scale(1.03);
+    background: rgba(0,255,213,0.1);
 }
 
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 4px;
-    width: 0%;
-    height: 1px;
-    background: #00ffd5;
-    transition: 0.25s ease;
-    transform: translateX(-50%);
-}
-
-nav a:hover::after {
-    width: 60%;
-}
-
-/* =========================
-   CARDS
-========================= */
-
+/* CARDS */
 .card {
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(20,20,20,0.6);
     border-radius: 12px;
     padding: 25px;
-    max-width: 900px;
     margin: 50px auto;
-    box-shadow: 0 0 25px rgba(0, 255, 213, 0.08);
+    max-width: 900px;
+    backdrop-filter: blur(10px);
 }
 
-/* =========================
-   PROJECTS GRID
-========================= */
-
+/* PROJECTS */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -131,68 +61,32 @@ nav a:hover::after {
     display: block;
     padding: 15px;
     background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     text-decoration: none;
     color: white;
+    border: 1px solid rgba(255,255,255,0.1);
     transition: 0.25s;
 }
 
 .project:hover {
     transform: translateY(-5px);
     border-color: #00ffd5;
-    box-shadow: 0 0 18px rgba(0,255,213,0.25);
 }
 
+/* VIEWER */
 #project-viewer {
-    border: 1px solid rgba(0, 255, 213, 0.15);
-    box-shadow: 0 0 25px rgba(0, 255, 213, 0.08);
+    border: 1px solid rgba(0,255,213,0.2);
 }
 
-#viewer-content h3 {
-    color: #00ffd5;
-    margin-bottom: 10px;
-}
-
-#viewer-content ul {
-    margin-top: 10px;
-    padding-left: 20px;
-}
-
-#viewer-content li {
-    margin-bottom: 6px;
-    opacity: 0.9;
-}
-
-/* =========================
-   SKILLS
-========================= */
-
+/* SKILLS */
 .skill-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 15px;
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
 }
 
-.skill-group h3 {
-    margin: 0 0 8px 0;
-    color: #00ffd5;
-    font-size: 16px;
-}
-
-.skill-group p {
-    margin: 0;
-    line-height: 1.5;
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-/* =========================
-   TYPEWRITER CURSOR
-========================= */
-
+/* TYPEWRITER */
 .cursor {
     animation: blink 1s infinite;
 }
