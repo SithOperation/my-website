@@ -165,45 +165,6 @@ nav a:hover::after {
 }
 
 /* =========================
-   PHOTO THROW SYSTEM
-========================= */
-
-#photo-layer {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.throw-photo {
-    position: absolute;
-    width: 380px;
-    max-width: 32vw;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 8px solid white;
-    background: white;
-    box-shadow: 0 20px 50px rgba(0,0,0,.45);
-    opacity: 0;
-    animation: throwIn .8s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-@keyframes throwIn {
-    0% {
-        opacity: 0;
-        transform: translate(-250px,250px) scale(.15) rotate(0deg);
-    }
-    70% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0,0) scale(1) rotate(var(--rot));
-    }
-}
-
-/* =========================
    SKILLS
 ========================= */
 
