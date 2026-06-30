@@ -22,22 +22,19 @@ body {
     z-index: -2;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
+
+    /* cinematic feel */
+    transform: scale(1.05);
+    animation: slowZoom 22s ease-in-out infinite alternate;
 }
 
-/* first frame safety */
 #bg1 {
     opacity: 1;
 }
 
-/* optional cinematic slow zoom */
-.bg-layer {
-    transform: scale(1.05);
-    animation: slowZoom 20s ease-in-out infinite alternate;
-}
-
 @keyframes slowZoom {
     from { transform: scale(1.05); }
-    to { transform: scale(1.1); }
+    to { transform: scale(1.12); }
 }
 
 /* =========================
