@@ -92,7 +92,7 @@ function loadProject(key) {
 
 
 // =====================
-// BACKGROUND GIF ROTATION (FIXED 4 GIFS)
+// BACKGROUND GIF SYSTEM (STABLE VERSION)
 // =====================
 
 const gifs = [
@@ -102,42 +102,54 @@ const gifs = [
     "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 ];
 
-let current = 0;
+// preload
+gifs.forEach(src => {
+    const img = new Image();
+    img.src = src;
+});
 
-function setBg(layer, url, opacity) {
-    layer.style.backgroundImage = `url('${url}')`;
-    layer.style.opacity = opacity;
+let index = 0;
+
+const bg1 = document.getElementById("bg1");
+const bg2 = document.getElementById("bg2");
+const bg3 = document.getElementById("bg3");
+
+function initBackground() {
+    if (!bg1 || !bg2 || !bg3) return;
+
+    bg1.style.backgroundImage = `url('${gifs[0]}')`;
+    bg2.style.backgroundImage = `url('${gifs[1]}')`;
+    bg3.style.backgroundImage = `url('${gifs[2]}')`;
+
+    bg1.style.opacity = "1";
+    bg2.style.opacity = "0";
+    bg3.style.opacity = "0";
 }
 
-function rotateBg() {
-    const layers = [
-        document.getElementById("bg1"),
-        document.getElementById("bg2"),
-        document.getElementById("bg3")
-    ];
+function rotateBackground() {
+    if (!bg1 || !bg2 || !bg3) return;
 
-    if (!layers[0]) return;
+    index = (index + 1) % gifs.length;
 
-    current = (current + 1) % gifs.length;
+    const next = gifs[index];
 
-    setBg(layers[0], gifs[current], "1");
-    setBg(layers[1], gifs[(current + 1) % gifs.length], "0");
-    setBg(layers[2], gifs[(current + 2) % gifs.length], "0");
+    // shift visuals DOWN the pipeline (NOT array swapping)
+    bg1.style.backgroundImage = bg2.style.backgroundImage;
+    bg2.style.backgroundImage = bg3.style.backgroundImage;
+    bg3.style.backgroundImage = `url('${next}')`;
+
+    // fade control (stable)
+    bg3.style.opacity = "1";
+    bg2.style.opacity = "0.6";
+    bg1.style.opacity = "0.2";
+
+    setTimeout(() => {
+        bg1.style.backgroundImage = bg2.style.backgroundImage;
+        bg2.style.opacity = "0";
+        bg1.style.opacity = "1";
+    }, 1500);
 }
 
-function initBg() {
-    const layers = [
-        document.getElementById("bg1"),
-        document.getElementById("bg2"),
-        document.getElementById("bg3")
-    ];
-
-    if (!layers[0]) return;
-
-    setBg(layers[0], gifs[0], "1");
-    setBg(layers[1], gifs[1], "0");
-    setBg(layers[2], gifs[2], "0");
-}
-
-initBg();
-setInterval(rotateBg, 6000);
+// init
+initBackground();
+setInterval(rotateBackground, 6000);
