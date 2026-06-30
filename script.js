@@ -145,3 +145,75 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+// =====================
+// PROJECT VIEWER SYSTEM
+// =====================
+
+function loadProject(project) {
+    const viewer = document.getElementById("viewer-content");
+
+    if (!viewer) return;
+
+    let content = "";
+
+    switch (project) {
+
+        case "reddit":
+            content = `
+                <h3>Reddit Threat Monitor</h3>
+                <p><strong>Type:</strong> Threat Intelligence Automation</p>
+
+                <p>This project monitors Reddit for cybersecurity-related threat signals and suspicious activity patterns.</p>
+
+                <ul>
+                    <li>Python scraping + filtering logic</li>
+                    <li>GitHub Actions automation pipeline</li>
+                    <li>Discord webhook alert system</li>
+                    <li>Keyword-based threat detection rules</li>
+                </ul>
+            `;
+            break;
+
+        case "ransomware":
+            content = `
+                <h3>Healthcare Ransomware Defense</h3>
+                <p><strong>Type:</strong> Enterprise Security Architecture</p>
+
+                <p>Designed to mitigate ransomware threats in healthcare environments with high availability requirements.</p>
+
+                <ul>
+                    <li>Network segmentation strategy</li>
+                    <li>Backup and recovery planning</li>
+                    <li>Endpoint detection concepts</li>
+                    <li>NIST-aligned control mapping</li>
+                </ul>
+            `;
+            break;
+
+        case "nestle":
+            content = `
+                <h3>Nestle CIA Threat Table</h3>
+                <p><strong>Type:</strong> Risk Assessment Model</p>
+
+                <p>Security evaluation based on CIA triad principles applied to enterprise systems.</p>
+
+                <ul>
+                    <li>Confidentiality risk mapping</li>
+                    <li>Integrity validation scenarios</li>
+                    <li>Availability impact analysis</li>
+                    <li>Threat likelihood scoring</li>
+                </ul>
+            `;
+            break;
+
+        default:
+            content = "<p>Project not found.</p>";
+    }
+
+    viewer.innerHTML = content;
+
+    // smooth scroll into view
+    viewer.scrollIntoView({ behavior: "smooth", block: "center" });
+}
