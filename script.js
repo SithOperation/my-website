@@ -153,3 +153,44 @@ function rotateBackground() {
 // init
 initBackground();
 setInterval(rotateBackground, 6000);
+
+// =====================
+// INTELLIGENCE CENTER
+// =====================
+
+
+function updateIntelStatus(message){
+
+    const box =
+    document.getElementById(
+        "intel-update"
+    );
+
+
+    if(box){
+
+        box.innerHTML =
+        message;
+
+    }
+
+}
+
+
+
+function initializeIntel(){
+
+    updateIntelStatus(
+        "🟢 Intelligence Center Online - Awaiting data feeds"
+    );
+
+
+    console.log(
+        "Intelligence dashboard initialized"
+    );
+
+}
+
+
+
+initializeIntel();
