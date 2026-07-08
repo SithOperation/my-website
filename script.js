@@ -160,7 +160,7 @@ setInterval(rotateBackground, 6000);
 
 async function loadIntelligence(){
 
-    loadEarthquakes();
+    loadDisasterIntelligence();
     loadEWS();
     loadAINews();
 
