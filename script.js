@@ -171,13 +171,13 @@ async function loadIntelligence(){
 // DISASTER INTELLIGENCE
 // =============================
 
-async function loadEarthquakes(){
+async function loadDisasterIntelligence(){
 
     const feed = document.getElementById(
         "earthquake-feed"
     );
 
-    try{
+    try {
 
         const response = await fetch(
             "data/disaster_state.json"
@@ -186,48 +186,71 @@ async function loadEarthquakes(){
         const data = await response.json();
 
 
-        let events = data.events || data;
+        const events =
+            data.active_events ||
+            data.events ||
+            [];
 
 
         let html = `
+
         <div class="intel-status status-online">
-        ● DISASTER FEED ONLINE
+        ● DISASTER INTELLIGENCE ONLINE
         </div>
+
         `;
 
 
-        events.slice(0,5).forEach(event=>{
+        if(events.length === 0){
 
             html += `
 
             <div class="intel-item">
 
-            🌎 EARTHQUAKE ALERT
-
-            <br><br>
-
-            <b>Magnitude:</b>
-            ${event.magnitude || "Unknown"}
-
-            <br>
-
-            <b>Location:</b>
-            ${event.location || "Unknown"}
-
-            <br>
-
-            <b>Tsunami:</b>
-            ${event.tsunami || event.tsunami_flag || "0"}
-
-            <br><br>
-
-            <a href="${event.url}" target="_blank">
-            View USGS Report →
-            </a>
+            No active disaster events detected.
 
             </div>
 
             `;
+
+        }
+
+
+        events.slice(0,5).forEach(event=>{
+
+
+            html += `
+
+            <div class="intel-item">
+
+            <b>
+            ${event.title}
+            </b>
+
+            <br><br>
+
+            Type:
+            ${event.type}
+
+            <br>
+
+            Severity:
+            ${event.severity}
+
+            <br>
+
+            Location:
+            ${event.location}
+
+            <br><br>
+
+            Source:
+            ${event.source}
+
+            </div>
+
+            `;
+
 
         });
 
@@ -238,12 +261,6 @@ async function loadEarthquakes(){
     }
     catch(error){
 
-        feed.innerHTML = `
-        <div class="status-alert">
-        ● DISASTER FEED OFFLINE
-        </div>
-        `;
-
         console.log(
             "Disaster feed error:",
             error
@@ -252,7 +269,6 @@ async function loadEarthquakes(){
     }
 
 }
-
 
 
 
