@@ -205,146 +205,278 @@ nav a:hover {
 
 #intelligence {
 
+    margin-top:40px;
+
     border:
-    1px solid rgba(0,255,213,0.25);
-
-}
-
-
-.intel-card {
-
-    min-height:
-    220px;
-
-}
-
-
-.intel-card h3 {
-
-    color:
-    #00ffd5;
-
-}
-
-
-.intel-feed {
-
-    margin-top:
-    15px;
-
-}
-
-
-
-.intel-item {
+    1px solid rgba(0,255,255,0.25);
 
     background:
-    rgba(255,255,255,0.05);
-
-    padding:
-    12px;
-
-    margin-bottom:
-    10px;
-
-    border-radius:
-    8px;
-
-    border-left:
-    3px solid #00ffd5;
+    rgba(0,0,0,0.65);
 
 }
 
 
-.status-online {
 
-    color:
-    #00ffd5;
-
-}
-
-
-.status-warning {
-
-    color:
-    orange;
-
-}
-
-
-.status-alert {
-
-    color:
-    red;
-
-}
 
 /* =========================
-INTELLIGENCE CENTER STYLE
+   GLITCH TITLE
 ========================= */
-
-
-#intelligence {
-    margin-top: 40px;
-}
 
 
 .glitch-title {
 
-    position: relative;
+    position:relative;
 
-    font-family: monospace;
+    font-family:
+    monospace;
 
-    text-transform: uppercase;
+    text-transform:
+    uppercase;
 
-    letter-spacing: 4px;
+    letter-spacing:
+    5px;
 
-    font-size: 42px;
+    font-size:
+    42px;
 
-    animation: glitch 2.5s infinite;
+    color:
+    #00ffff;
+
+    text-shadow:
+    0 0 10px #00ffff;
+
+    animation:
+    titleFlicker 3s infinite;
 
 }
 
+
+
+.glitch-title::before,
+.glitch-title::after {
+
+    content:
+    attr(data-text);
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    opacity:.8;
+
+}
+
+
+.glitch-title::before {
+
+    color:
+    #ff004c;
+
+    animation:
+    glitchRed 1.5s infinite;
+
+}
+
+
+
+.glitch-title::after {
+
+    color:
+    #00ffff;
+
+    animation:
+    glitchBlue 1s infinite;
+
+}
+
+
+
+
+@keyframes titleFlicker {
+
+
+0%,90%,100%{
+
+opacity:1;
+
+}
+
+
+92%{
+
+opacity:.4;
+
+}
+
+
+94%{
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+
+@keyframes glitchRed {
+
+
+0%{
+
+clip-path:
+inset(0 0 90% 0);
+
+transform:
+translate(-3px);
+
+}
+
+
+50%{
+
+clip-path:
+inset(40% 0 30% 0);
+
+}
+
+
+100%{
+
+clip-path:
+inset(80% 0 5% 0);
+
+transform:
+translate(3px);
+
+}
+
+
+}
+
+
+
+
+
+@keyframes glitchBlue {
+
+
+0%{
+
+clip-path:
+inset(80% 0 5% 0);
+
+transform:
+translate(3px);
+
+}
+
+
+50%{
+
+clip-path:
+inset(10% 0 60% 0);
+
+}
+
+
+100%{
+
+clip-path:
+inset(0 0 90% 0);
+
+transform:
+translate(-3px);
+
+}
+
+
+}
+
+
+
+
+
+/* =========================
+   INTEL SUBTITLE
+========================= */
 
 
 .intel-subtitle {
 
-    color: #aaa;
+    font-family:
+    monospace;
 
-    font-family: monospace;
+    color:
+    rgba(255,255,255,.55);
 
-    margin-bottom: 30px;
+    letter-spacing:
+    2px;
+
+    border-bottom:
+    1px solid rgba(0,255,255,.15);
+
+    padding-bottom:
+    20px;
 
 }
 
 
 
 
+/* =========================
+   INTELLIGENCE PANELS
+========================= */
+
 
 .intel-panel {
 
+
     background:
 
-    rgba(0,0,0,0.55);
+    linear-gradient(
+    135deg,
+    rgba(0,255,255,.08),
+    rgba(0,0,0,.75)
+    );
 
 
     border:
 
-    1px solid rgba(0,255,255,0.25);
+    1px solid rgba(0,255,255,.25);
 
 
-    padding: 25px;
+    padding:
+
+    25px;
 
 
-    margin-bottom: 25px;
+    margin-bottom:
+
+    30px;
 
 
-    backdrop-filter: blur(12px);
+    border-radius:
+
+    12px;
+
+
+    backdrop-filter:
+
+    blur(15px);
 
 
     box-shadow:
 
-    0 0 20px rgba(0,255,255,0.08);
+    inset 0 0 25px rgba(0,255,255,.05),
+    0 0 20px rgba(0,255,255,.1);
+
 
 }
 
@@ -353,77 +485,163 @@ INTELLIGENCE CENTER STYLE
 
 .intel-panel h2 {
 
-    font-family: monospace;
 
-    color: #00ffff;
+    font-family:
+    monospace;
 
-    letter-spacing: 2px;
+
+    color:
+    #00ffff;
+
+
+    letter-spacing:
+    3px;
+
+
+}
+
+
+
+/* =========================
+   FEED ITEMS
+========================= */
+
+
+.intel-item {
+
+
+    background:
+
+    rgba(0,0,0,.55);
+
+
+    border-left:
+
+    3px solid #00ffff;
+
+
+    padding:
+
+    15px;
+
+
+    margin-bottom:
+
+    15px;
+
+
+    border-radius:
+
+    8px;
+
+
+    transition:
+
+    .3s;
+
 
 }
 
 
 
-.panel-description {
+.intel-item:hover {
 
-    font-size: 14px;
 
-    color:#888;
+    transform:
+
+    translateX(5px);
+
+
+    box-shadow:
+
+    0 0 20px rgba(0,255,255,.25);
+
 
 }
 
+
+
+
+.intel-status {
+
+
+    color:
+
+    #00ff99;
+
+
+    font-family:
+
+    monospace;
+
+
+    letter-spacing:
+
+    2px;
+
+
+}
+
+
+
+
+
+/* =========================
+   LIVE FEED EFFECT
+========================= */
 
 
 #ai-news-feed,
 #ews-feed,
 #earthquake-feed {
 
-    font-family: monospace;
 
-    line-height: 1.7;
+    font-family:
+
+    monospace;
+
+
+    line-height:
+
+    1.8;
+
 
 }
 
 
 
 
+#ai-news-feed::before,
+#ews-feed::before,
+#earthquake-feed::before {
 
 
-@keyframes glitch {
+    content:
+
+    "● LIVE FEED";
 
 
-0% {
-
-transform: translate(0);
-
-}
+    display:block;
 
 
-10% {
+    color:
 
-transform: translate(-2px,2px);
-
-}
+    #00ff99;
 
 
-20% {
+    font-size:
 
-transform: translate(2px,-2px);
-
-}
+    12px;
 
 
-30% {
+    letter-spacing:
 
-transform: translate(0);
-
-}
+    3px;
 
 
-100% {
+    margin-bottom:
 
-transform: translate(0);
-
-}
+    15px;
 
 
 }
