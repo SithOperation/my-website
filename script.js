@@ -177,7 +177,7 @@ async function loadEarthquakes(){
     try{
 
         const response = await fetch(
-            "data/earthquakes.json"
+            "data/disaster_state.json"
         );
 
         const data = await response.json();
