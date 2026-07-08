@@ -645,3 +645,39 @@ translate(-3px);
 
 
 }
+
+/* =========================
+   INTELLIGENCE SCAN EFFECT
+========================= */
+
+.intel-panel::after {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+    repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 2px,
+    transparent 4px
+    );
+
+    opacity:.15;
+
+}
+
+
+.intel-panel {
+
+    position:relative;
+
+    overflow:hidden;
+
+}
