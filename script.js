@@ -490,7 +490,3 @@ async function loadAINews(){
 
 
 loadIntelligence();
-
-
-
-loadIntelligence();
