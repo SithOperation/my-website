@@ -167,43 +167,222 @@ LIVE CYBERSECURITY • EARLY WARNING • DISASTER INTELLIGENCE NETWORK
 
 
 
-<!-- =========================
-AI CYBER INTELLIGENCE
-========================= -->
+// =============================
+// AI CYBER DIGEST
+// =============================
 
-<section class="intel-panel">
+async function loadAINews(){
 
-
-<h2>
-🔐 AI CYBER INTELLIGENCE
-</h2>
-
-
-<p class="panel-description">
-Top artificial intelligence, cybersecurity, and threat research developments.
-</p>
+    const feed = document.getElementById(
+        "ai-news-feed"
+    );
 
 
+    try {
 
-<div class="intel-status">
-STATUS: ONLINE
-</div>
-
-
-
-<div id="ai-news-feed" class="intel-feed">
-
-<div class="intel-item">
-
-Loading AI intelligence stream...
-
-</div>
+        const response = await fetch(
+            "output/latest_digest.md?cache=" + Date.now()
+        );
 
 
-</div>
+        if (!response.ok) {
+            throw new Error("Digest unavailable");
+        }
 
 
-</section>
+        const markdown = await response.text();
+
+
+        const reports = markdown
+            .split("\n## ")
+            .slice(1);
+
+
+
+        let html = `
+
+        <div class="intel-status status-online">
+        ● AI CYBER DIGEST ONLINE
+        </div>
+
+        `;
+
+
+
+        reports
+        .slice(0,5)
+        .forEach((report,index)=>{
+
+
+            const lines = report.split("\n");
+
+
+            const title =
+            lines.shift();
+
+
+
+            const content =
+            lines.join("\n");
+
+
+
+            const sourceMatch =
+            content.match(
+                /\*\*Source:\*\* (.*)/
+            );
+
+
+            const source =
+            sourceMatch
+            ?
+            sourceMatch[1]
+            :
+            "Unknown";
+
+
+
+            const summary =
+            content
+            .split("**Security Impact:**")[0]
+            .replace(
+                /\*\*Source:\*\*.*\n/,
+                ""
+            )
+            .trim();
+
+
+
+            const impactMatch =
+            content.match(
+                /\*\*Security Impact:\*\*\n([\s\S]*?)\n\nLink:/
+            );
+
+
+            const impact =
+            impactMatch
+            ?
+            impactMatch[1]
+            :
+            "No impact analysis available";
+
+
+
+            const linkMatch =
+            content.match(
+                /Link:\n(.*)/
+            );
+
+
+            const link =
+            linkMatch
+            ?
+            linkMatch[1]
+            :
+            "#";
+
+
+
+            html += `
+
+            <div class="intel-item">
+
+            🤖 INTEL REPORT #${index + 1}
+
+            <br><br>
+
+
+            <b>
+            ${title}
+            </b>
+
+
+            <br><br>
+
+
+            <b>Source:</b>
+
+            ${source}
+
+
+            <br><br>
+
+
+            <b>Analyst Summary:</b>
+
+            <br>
+
+            ${summary}
+
+
+            <br><br>
+
+
+            <b>Security Impact:</b>
+
+            <br>
+
+            ${impact.replace(/\n/g,"<br>")}
+
+
+            <br><br>
+
+
+            <a href="${link}"
+            target="_blank">
+
+            Read Full Report
+
+            </a>
+
+
+            </div>
+
+            `;
+
+
+        });
+
+
+
+        html += `
+
+        <p>
+        Last Updated:
+        ${new Date().toUTCString()}
+        </p>
+
+        `;
+
+
+        feed.innerHTML = html;
+
+
+
+    }
+
+    catch(error){
+
+
+        feed.innerHTML = `
+
+        <div class="status-alert">
+
+        ● AI INTELLIGENCE OFFLINE
+
+        </div>
+
+        `;
+
+
+        console.log(
+            "AI digest error:",
+            error
+        );
+
+    }
+
+}
 
 
 
