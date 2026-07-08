@@ -171,12 +171,23 @@ async function loadIntelligence(){
 // DISASTER INTELLIGENCE
 // =============================
 
+
 async function loadDisasterIntelligence(){
+
 
     const feed =
     document.getElementById(
         "disaster-feed"
     );
+
+
+
+    if(!feed){
+
+        return;
+
+    }
+
 
 
     try{
@@ -186,6 +197,7 @@ async function loadDisasterIntelligence(){
         await fetch(
             "data/disaster_state.json"
         );
+
 
 
         const data =
@@ -200,11 +212,13 @@ async function loadDisasterIntelligence(){
 
         let html = `
 
+
         <div class="intel-status status-online">
 
         ● DISASTER INTELLIGENCE ONLINE
 
         </div>
+
 
         `;
 
@@ -213,22 +227,22 @@ async function loadDisasterIntelligence(){
         const categories = [
 
             {
-                name:"🌎 EARTHQUAKES",
+                title:"🌎 EARTHQUAKES",
                 key:"earthquakes"
             },
 
             {
-                name:"🌋 VOLCANOES",
+                title:"🌋 VOLCANOES",
                 key:"volcanoes"
             },
 
             {
-                name:"☀️ SOLAR",
+                title:"☀️ SOLAR ACTIVITY",
                 key:"solar"
             },
 
             {
-                name:"⛈ WEATHER",
+                title:"⛈ WEATHER",
                 key:"weather"
             }
 
@@ -244,11 +258,13 @@ async function loadDisasterIntelligence(){
 
             <div class="intel-item">
 
-            <b>
-            ${category.name}
-            </b>
 
-            <br><br>
+            <h3>
+
+            ${category.title}
+
+            </h3>
+
 
             `;
 
@@ -259,16 +275,20 @@ async function loadDisasterIntelligence(){
 
 
 
+
             if(events.length === 0){
 
 
-                html +=
-                "No recent events";
+                html += `
+
+                No recent events detected.
+
+                `;
 
 
             }
 
-            else {
+            else{
 
 
                 events
@@ -278,28 +298,44 @@ async function loadDisasterIntelligence(){
 
                     html += `
 
+
                     <hr>
+
 
                     <b>
                     ${event.title}
                     </b>
 
-                    <br>
+
+                    <br><br>
+
 
                     Location:
+
                     ${event.location || "Unknown"}
 
+
                     <br>
+
 
                     Severity:
+
                     ${event.severity || "Unknown"}
+
 
                     <br>
 
-                    Time:
-                    ${event.time || "Unknown"}
+
+                    Source:
+
+                    ${event.source || "Unknown"}
+
+
+                    <br>
+
 
                     `;
+
 
 
                 });
@@ -308,11 +344,13 @@ async function loadDisasterIntelligence(){
             }
 
 
+
             html += `
 
             </div>
 
             `;
+
 
 
         });
@@ -328,12 +366,28 @@ async function loadDisasterIntelligence(){
 
     catch(error){
 
+
         console.log(
+
             "Disaster intelligence error:",
             error
+
         );
 
+
+        feed.innerHTML = `
+
+        <div class="status-alert">
+
+        ● DISASTER INTELLIGENCE OFFLINE
+
+        </div>
+
+        `;
+
+
     }
+
 
 }
 
