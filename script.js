@@ -521,15 +521,18 @@ async function loadAINews(){
         );
 
 
-        const markdown = await response.text();
-
-
         if (!response.ok) {
             throw new Error("Digest unavailable");
         }
 
 
-        const lines = markdown.split("\n");
+        const markdown = await response.text();
+
+
+        const reports = markdown
+            .split("\n## ")
+            .slice(1);
+
 
 
         let html = `
@@ -541,42 +544,137 @@ async function loadAINews(){
         `;
 
 
-        let count = 0;
+
+        reports
+        .slice(0,5)
+        .forEach((report,index)=>{
 
 
-        lines.forEach(line => {
+            const lines = report.split("\n");
 
 
-            if (
-                line.startsWith("## ")
-                &&
-                count < 5
-            ){
-
-                count++;
+            const title =
+            lines.shift();
 
 
-                html += `
 
-                <div class="intel-item">
+            const content =
+            lines.join("\n");
 
-                🤖 INTEL REPORT #${count}
 
-                <br><br>
 
-                <b>
-                ${line.replace("## ","")}
-                </b>
+            const sourceMatch =
+            content.match(
+                /\*\*Source:\*\* (.*)/
+            );
 
-                <br><br>
 
-                Loading analyst summary...
+            const source =
+            sourceMatch
+            ?
+            sourceMatch[1]
+            :
+            "Unknown";
 
-                </div>
 
-                `;
 
-            }
+            const summary =
+            content
+            .split("**Security Impact:**")[0]
+            .replace(
+                /\*\*Source:\*\*.*\n/,
+                ""
+            )
+            .trim();
+
+
+
+            const impactMatch =
+            content.match(
+                /\*\*Security Impact:\*\*\n([\s\S]*?)\n\nLink:/
+            );
+
+
+            const impact =
+            impactMatch
+            ?
+            impactMatch[1]
+            :
+            "No impact analysis available";
+
+
+
+            const linkMatch =
+            content.match(
+                /Link:\n(.*)/
+            );
+
+
+            const link =
+            linkMatch
+            ?
+            linkMatch[1]
+            :
+            "#";
+
+
+
+            html += `
+
+            <div class="intel-item">
+
+            🤖 INTEL REPORT #${index + 1}
+
+            <br><br>
+
+
+            <b>
+            ${title}
+            </b>
+
+
+            <br><br>
+
+
+            <b>Source:</b>
+
+            ${source}
+
+
+            <br><br>
+
+
+            <b>Analyst Summary:</b>
+
+            <br>
+
+            ${summary}
+
+
+            <br><br>
+
+
+            <b>Security Impact:</b>
+
+            <br>
+
+            ${impact.replace(/\n/g,"<br>")}
+
+
+            <br><br>
+
+
+            <a href="${link}"
+            target="_blank">
+
+            Read Full Report
+
+            </a>
+
+
+            </div>
+
+            `;
 
 
         });
@@ -621,7 +719,6 @@ async function loadAINews(){
     }
 
 }
-
 
 // =============================
 // GLOBAL DISASTER MAP
