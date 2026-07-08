@@ -506,3 +506,5 @@ async function loadAINews(){
 
 
 loadIntelligence();
+
+loadDisasterMap();
