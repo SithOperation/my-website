@@ -232,7 +232,7 @@ async function loadEWS(){
     try{
 
         const response = await fetch(
-            "data/ews.json"
+            "data/ews_state.json"
         );
 
         const data = await response.json();
