@@ -154,23 +154,66 @@ function rotateBackground() {
 initBackground();
 setInterval(rotateBackground, 6000);
 
-// =====================
+// =============================
 // INTELLIGENCE CENTER
-// =====================
+// =============================
+
+async function loadIntelligence(){
+
+    loadEarthquakes();
+    loadEWS();
+    loadAINews();
+
+}
 
 
-function updateIntelStatus(message){
 
-    const box =
-    document.getElementById(
-        "intel-update"
-    );
+// =============================
+// EARTHQUAKES
+// =============================
+
+async function loadEarthquakes(){
+
+    try{
+
+        const response = await fetch(
+            "data/earthquakes.json"
+        );
+
+        const data = await response.json();
 
 
-    if(box){
+        let html = "";
 
-        box.innerHTML =
-        message;
+        data.events.slice(0,5).forEach(event => {
+
+            html += `
+            <p>
+            🌎 M${event.magnitude}
+            <br>
+            ${event.location}
+            <br>
+            <a href="${event.url}" target="_blank">
+            Details
+            </a>
+            </p>
+            `;
+
+        });
+
+
+        document.getElementById(
+            "earthquake-feed"
+        ).innerHTML = html;
+
+
+    }
+    catch(error){
+
+        console.log(
+            "Earthquake feed error:",
+            error
+        );
 
     }
 
@@ -178,19 +221,126 @@ function updateIntelStatus(message){
 
 
 
-function initializeIntel(){
-
-    updateIntelStatus(
-        "🟢 Intelligence Center Online - Awaiting data feeds"
-    );
 
 
-    console.log(
-        "Intelligence dashboard initialized"
-    );
+// =============================
+// EWS
+// =============================
+
+async function loadEWS(){
+
+    try{
+
+        const response = await fetch(
+            "data/ews.json"
+        );
+
+        const data = await response.json();
+
+
+        document.getElementById(
+            "ews-feed"
+        ).innerHTML = `
+
+        <p>
+        Status:
+        ${data.status}
+        </p>
+
+        <p>
+        Threat Level:
+        ${data.level}/5
+        </p>
+
+        <p>
+        Aircraft:
+        ${data.aircraft}
+        </p>
+
+        <p>
+        Deviation:
+        ${data.deviation}σ
+        </p>
+
+        `;
+
+
+    }
+    catch(error){
+
+        console.log(
+            "EWS error:",
+            error
+        );
+
+    }
 
 }
 
 
 
-initializeIntel();
+
+
+// =============================
+// AI NEWS
+// =============================
+
+async function loadAINews(){
+
+    try{
+
+        const response = await fetch(
+            "data/ai-news.json"
+        );
+
+
+        const data = await response.json();
+
+
+        let html="";
+
+
+        data.articles.forEach(article=>{
+
+            html += `
+
+            <p>
+            🤖
+            <a href="${article.url}"
+            target="_blank">
+            ${article.title}
+            </a>
+
+            <br>
+
+            Source:
+            ${article.source}
+
+            </p>
+
+            `;
+
+        });
+
+
+
+        document.getElementById(
+            "ai-news-feed"
+        ).innerHTML = html;
+
+
+    }
+    catch(error){
+
+        console.log(
+            "AI news error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+loadIntelligence();
