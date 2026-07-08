@@ -503,7 +503,234 @@ async function loadAINews(){
 }
 
 
+// =============================
+// GLOBAL DISASTER MAP
+// =============================
 
+let disasterMap;
+
+
+
+async function loadDisasterMap(){
+
+
+    const mapElement =
+    document.getElementById(
+        "disaster-map"
+    );
+
+
+    if(!mapElement){
+
+        console.log(
+            "Disaster map element missing"
+        );
+
+        return;
+
+    }
+
+
+
+    disasterMap = L.map(
+        "disaster-map"
+    ).setView(
+
+        [20,0],
+
+        2
+
+    );
+
+
+
+    L.tileLayer(
+
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+
+            attribution:
+            "© OpenStreetMap"
+
+        }
+
+    ).addTo(
+        disasterMap
+    );
+
+
+
+    try{
+
+
+        const response =
+        await fetch(
+            "data/disaster_state.json"
+        );
+
+
+
+        const data =
+        await response.json();
+
+
+
+        const events =
+        data.events || [];
+
+
+
+
+        events.forEach(event=>{
+
+
+            if(
+                !event.coordinates
+            ){
+
+                return;
+
+            }
+
+
+
+            const lat =
+            event.coordinates.lat;
+
+
+
+            const lon =
+            event.coordinates.lon;
+
+
+
+            if(
+                lat === 0 ||
+                lon === 0
+            ){
+
+                return;
+
+            }
+
+
+
+            let iconColor =
+            "blue";
+
+
+
+            if(event.type === "earthquake"){
+
+                iconColor="red";
+
+            }
+
+
+            if(event.type === "volcano"){
+
+                iconColor="orange";
+
+            }
+
+
+            if(event.type === "weather"){
+
+                iconColor="purple";
+
+            }
+
+
+            if(event.type === "solar"){
+
+                iconColor="yellow";
+
+            }
+
+
+
+
+            L.circleMarker(
+
+                [
+                    lat,
+                    lon
+                ],
+
+                {
+
+                radius:10,
+
+                fillOpacity:.8
+
+                }
+
+            )
+
+            .addTo(
+                disasterMap
+            )
+
+
+            .bindPopup(`
+
+            <b>
+            ${event.title}
+            </b>
+
+            <br><br>
+
+
+            Type:
+            ${event.type}
+
+
+            <br>
+
+
+            Severity:
+            ${event.severity}
+
+
+            <br>
+
+
+            Location:
+            ${event.location}
+
+
+            <br><br>
+
+
+            Source:
+            ${event.source}
+
+            `);
+
+
+
+        });
+
+
+
+    }
+
+    catch(error){
+
+
+        console.log(
+
+            "Disaster map error:",
+            error
+
+        );
+
+
+    }
+
+
+}
 
 loadIntelligence();
 
