@@ -4,13 +4,13 @@
 Top 5 AI + Cybersecurity Intelligence Reports
 
 
-## 15-Year-Old GhostLock Flaw Enables Root and Container Escape on Most Linux Distros
+## China-Linked UAT-7810 Expands ORB Network With New LONGLEASH Malware
 
 **Source:** The Hacker News
 
-Researchers at&nbsp;Nebula Security&nbsp;have disclosed GhostLock (CVE-2026-43499), a 15-year-old Linux kernel flaw that lets any logged-in user take full&nbsp;root&nbsp;control of a machine that has not been patched.
+A Chinese threat actor tracked as UAT-7810 is actively refining its bespoke malware to expand its Operational Relay Box (ORB) network by breaking into internet-facing networking devices.
 
-The vulnerable code has shipped by default in essentially every mainstream distribution since 2011. The flaw needs no special permission, no unusual settings, and no network
+According to findings from Cisco Talos, UAT-7810 is an advanced persistent threat (APT) actor that's responsible for maintaining and proliferating LapDogs, an ORB network that first came to light in June 2025.
 
 **Security Impact:**
 
@@ -20,20 +20,17 @@ exposure,
 and mitigation requirements.
 
 Link:
-https://thehackernews.com/2026/07/15-year-old-ghostlock-flaw-enables-root.html
+https://thehackernews.com/2026/07/china-linked-uat-7810-expands-orb.html
 
 ---
 
-## CISA Adds 4 Actively Exploited Adobe, Joomla, and Langflow Flaws to KEV
+## Public GitHub Issue Could Trick GitHub Agentic Workflows Into Leaking Private Repo Data
 
 **Source:** The Hacker News
 
-The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added four security flaws to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
+A public issue can trick GitHub Agentic Workflows into leaking the contents of an organization's private repositories, researchers at Noma Security have shown.
 
-The vulnerabilities are listed below -
-
-
-  CVE-2026-48282 (CVSS score: 10.0) - A path traversal vulnerability in Adobe ColdFusion that could lead to arbitrary code execution in the context of the
+The attacker needs only to open a normal-looking issue on a public repository, with no stolen credentials and no access to the organization. If that organization has given the agent read access across its repositories, private ones
 
 **Security Impact:**
 
@@ -43,17 +40,19 @@ exposure,
 and mitigation requirements.
 
 Link:
-https://thehackernews.com/2026/07/cisa-adds-4-actively-exploited-adobe.html
+https://thehackernews.com/2026/07/public-github-issue-could-trick-github.html
 
 ---
 
-## RedWing MaaS Packages Android Bank Fraud as a Telegram Rental Service
+## Court Filing Reveals Windows Device ID Helped FBI Trace Alleged Scattered Spider Hacker
 
 **Source:** The Hacker News
 
-A new Android malware operation called RedWing is being rented out on Telegram as a ready-made bank-fraud service. It lets even low-skill criminals take over a victim's phone, steal their banking logins, and capture the one-time codes that protect their accounts.
+U.S. prosecutors linked an alleged Scattered Spider hacker to a break-in at a luxury jewelry retailer using a persistent Windows device ID, according to a newly unsealed federal complaint.
 
-Zimperium's zLabs, which found the operation, says it looks like a new variant of Oblivion, a $300-a-month rent-a-malware tool
+Microsoft records tied that ID first to the account the attackers used to keep access during the May 2025 intrusion, then to online accounts prosecutors say belong to 19-year-old Peter Stokes.
+
+Stokes is
 
 **Security Impact:**
 
@@ -63,19 +62,19 @@ exposure,
 and mitigation requirements.
 
 Link:
-https://thehackernews.com/2026/07/redwing-maas-packages-android-bank.html
+https://thehackernews.com/2026/07/court-filing-reveals-windows-device-id.html
 
 ---
 
-## Rogue Agent Flaw Could Have Let Attackers Hijack Google Dialogflow CX Chatbots
+## Writer AI Flaw Could Let Agent Previews Leak Session Tokens Across Tenants
 
 **Source:** The Hacker News
 
-A critical flaw in Google's Dialogflow CX could have let an attacker with edit rights on one Code Block-enabled agent compromise other Code Block-enabled agents in the same Google Cloud project.
+Cybersecurity researchers have disclosed details of a now-patched critical session isolation vulnerability in Writer, an enterprise generative artificial intelligence (AI) platform, that could result in cross-tenant compromise.
 
-From there, they could read live conversations, steal the data users shared, and make the bots send attacker-written messages, including requests to re-enter a password.
+The one-click vulnerability has been codenamed WriteOut by the Sand Security Research team.
 
-Security firm Varonis found it
+"An outsider could go from having no access to taking over any Writer AI
 
 **Security Impact:**
 
@@ -85,17 +84,19 @@ exposure,
 and mitigation requirements.
 
 Link:
-https://thehackernews.com/2026/07/rogue-agent-flaw-could-have-let.html
+https://thehackernews.com/2026/07/writer-ai-flaw-could-let-agent-previews.html
 
 ---
 
-## DEBULL Tooling Abuses Microsoft Device-Code Flow to Target M365 Accounts
+## What Changes When Your Software Supply Chain Includes AI Writing Your Code?
 
 **Source:** The Hacker News
 
-A Microsoft 365 device code phishing campaign has been observed leveraging collaboration-themed lures to take control of victim accounts between the last week of June 2026 and into early July, per findings from ZeroBEC.
+Software supply chain security was hard enough. Then AI joined the build pipeline.
 
-"The campaign did not depend on a fake Microsoft password page. It used a malicious collaboration-style lure to push users into the legitimate Microsoft device login experience,
+For five years, "software supply chain security" meant one question: what's in your code? Which open-source packages, which versions, which transitive dependencies three layers deep that nobody chose on purpose? 
+
+SolarWinds, Log4Shell, and XZ Utils all taught the same lesson: the risk lives less in the code a
 
 **Security Impact:**
 
@@ -105,6 +106,6 @@ exposure,
 and mitigation requirements.
 
 Link:
-https://thehackernews.com/2026/07/debull-tooling-abuses-microsoft-device.html
+https://thehackernews.com/2026/07/what-changes-when-your-software-supply.html
 
 ---
