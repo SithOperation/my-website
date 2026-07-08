@@ -1,173 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Joseph Technologies</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<!-- BACKGROUND LAYERS -->
+
+<!-- =========================
+BACKGROUND LAYERS
+========================= -->
+
 <div class="bg-layer" id="bg1"></div>
 <div class="bg-layer" id="bg2"></div>
 <div class="bg-layer" id="bg3"></div>
 
-<!-- OVERLAY -->
+
+
+<!-- =========================
+OVERLAY
+========================= -->
+
 <div class="overlay">
 
-    <!-- HERO -->
-    <header class="hero">
-        <h1>JOSEPH TECHNOLOGIES</h1>
-        <p>Cybersecurity • Threat Research • Network Defense</p>
-        <p class="terminal">
-            root@joseph:~$ <span id="typing"></span>
-        </p>
-    </header>
 
-    <!-- NAV -->
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#resume">Resume</a>
-        <a href="#contact">Contact</a>
-    </nav>
 
-    <!-- ABOUT -->
-    <section id="about" class="card">
-    <h2>About Me</h2>
+<!-- =========================
+HERO
+========================= -->
 
-    <p>
-        I’m a cybersecurity and IT professional in my thirties with a hands-on background in technical support,
-        logistics, and systems operations, now transitioning fully into cybersecurity and SOC-level work.
-    </p>
+<header class="hero">
 
-    <p>
-        I grew up in Michigan and experienced firsthand how quickly financial stability can change during the housing
-        market crash. That period shaped my understanding of resilience and long-term planning, especially while
-        navigating housing instability and supporting family responsibilities.
-    </p>
+<h1>
+JOSEPH TECHNOLOGIES
+</h1>
 
-    <p>
-        My early leadership experience began in JROTC, where I served as a platoon leader and developed discipline,
-        structure, and accountability—skills that later carried into both my civilian and technical roles.
-    </p>
 
-    <p>
-        My professional path has taken me through a wide range of environments, from industrial logistics and production
-        environments to technical and customer-facing roles. I’ve worked in high-demand operations including food
-        production environments, appliance delivery for Best Buy, and customer support roles handling sensitive systems
-        and information.
-    </p>
+<p>
+Cybersecurity • Threat Research • Network Defense
+</p>
 
-    <p>
-        A turning point in my career came after several physically demanding roles involving heavy lifting and
-        fast-paced operational work. I decided to shift toward a long-term technical career path, focusing on IT and
-        cybersecurity while continuing to support my family at home.
-    </p>
 
-    <p>
-        I am currently completing my Master’s degree in Cybersecurity at DeVry University, with only a few classes
-        remaining before graduation. Alongside my studies, I’ve built hands-on experience in Active Directory,
-        virtualization, network defense, and security monitoring through lab environments and personal projects.
-    </p>
+<p class="terminal">
+root@joseph:~$ 
+<span id="typing"></span>
+</p>
 
-    <p>
-        Today, my focus is on breaking into a SOC Analyst or cybersecurity operations role where I can apply my
-        real-world technical experience, problem-solving ability, and persistence in a meaningful security environment.
-    </p>
-    </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="card">
-        <h2>Projects</h2>
+</header>
 
-        <div class="grid">
 
-            <div class="project" onclick="loadProject('reddit')">
-                <h3>Reddit Threat Monitor</h3>
-                <p>Python + GitHub Actions + Discord alerts</p>
-            </div>
 
-            <div class="project" onclick="loadProject('ransomware')">
-                <h3>Healthcare Ransomware Defense</h3>
-                <p>Enterprise ransomware mitigation strategy</p>
-            </div>
 
-            <div class="project" onclick="loadProject('nestle')">
-                <h3>Nestle CIA Threat Table</h3>
-                <p>Evaluation Threat Kit</p>
-            </div>
 
-        </div>
-    </section>
+<!-- =========================
+NAVIGATION
+========================= -->
 
-    <!-- PROJECT VIEWER -->
-    <section id="project-viewer" class="card">
-        <h2>Project Viewer</h2>
-        <div id="viewer-content">
-            <p style="opacity:0.7;">Click a project to load details...</p>
-        </div>
-    </section>
+<nav>
 
-    <!-- SKILLS -->
-    <section id="skills" class="card">
-    <h2>Skills</h2>
+<a href="#about">
+About
+</a>
 
-    <div class="skills-grid">
+<a href="#projects">
+Projects
+</a>
 
-        <div class="skill-group">
-            <h3>Security Operations (SOC)</h3>
-            <p>Threat Detection • Incident Response • Log Analysis • SIEM Fundamentals • Vulnerability Assessment • Defense-in-Depth • CIA Triad • NIST Framework</p>
-        </div>
+<a href="#intelligence">
+Intelligence
+</a>
 
-        <div class="skill-group">
-            <h3>Networking & Infrastructure</h3>
-            <p>TCP/IP • LAN/WAN • DNS • DHCP • VPN Concepts • Subnetting • Firewalls • IDS/IPS • Network Troubleshooting • Windows Server Administration</p>
-        </div>
+<a href="#skills">
+Skills
+</a>
 
-        <div class="skill-group">
-            <h3>Security Tools</h3>
-            <p>Kali Linux • Metasploit • Nmap • Wireshark • Active Directory • Windows Event Viewer • VMware • VirtualBox • Docker</p>
-        </div>
+<a href="#resume">
+Resume
+</a>
 
-        <div class="skill-group">
-            <h3>Systems & Cloud</h3>
-            <p>Windows Server 2016/2022 • Linux • AWS Fundamentals • Azure Fundamentals • Virtualization • System Hardening • Identity & Access Concepts</p>
-        </div>
+<a href="#contact">
+Contact
+</a>
 
-        <div class="skill-group">
-            <h3>Programming & Automation</h3>
-            <p>Python • Bash • PowerShell • SQL (Basic) • C++ (Basic) • Java (Basic) • Security Scripting & Automation</p>
-        </div>
+</nav>
 
-        <div class="skill-group">
-            <h3>IT & Support Operations</h3>
-            <p>Help Desk Support • ITIL Workflow • Hardware Diagnostics • Software Deployment • Customer Support • Technical Documentation</p>
-        </div>
 
-    </div>
-    </section>
 
-    <!-- RESUME -->
-    <section id="resume" class="card">
-        <h2>Resume</h2>
-        <a href="assets/projects/resume2026.pdf" target="_blank" class="project">
-            Download Resume (PDF)
-        </a>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="card">
-        <h2>Contact</h2>
-        <p>Email: Joeytechnology20@gmail.com</p>
-    </section>
+
+
+
+<!-- =========================
+ABOUT
+========================= -->
+
+<section id="about" class="card">
+
+
+<h2>
+About Me
+</h2>
+
+
+<p>
+I’m a cybersecurity and IT professional with hands-on experience in technical support,
+systems operations, networking, and security-focused projects.
+</p>
+
+
+<p>
+My background includes leadership experience, technical troubleshooting, infrastructure,
+and real-world operational environments that shaped my approach to cybersecurity.
+</p>
+
+
+<p>
+I am currently completing my Master’s degree in Cybersecurity at DeVry University while
+building practical projects involving threat monitoring, automation, network defense,
+and security research.
+</p>
+
+
+<p>
+My goal is to continue developing toward cybersecurity operations and SOC-level work,
+combining technical skills with real-world problem solving.
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+PROJECTS
+========================= -->
+
+
+<section id="projects" class="card">
+
+
+<h2>
+Projects
+</h2>
+
+
+<div class="grid">
+
+
+
+<div class="project" onclick="loadProject('reddit')">
+
+<h3>
+Reddit Threat Monitor
+</h3>
+
+<p>
+Python + GitHub Actions + Discord alerts
+</p>
 
 </div>
 
+
+
+
+<div class="project" onclick="loadProject('ransomware')">
+
+<h3>
+Healthcare Ransomware Defense
+</h3>
+
+<p>
+Enterprise ransomware mitigation strategy
+</p>
+
+</div>
+
+
+
+
+<div class="project" onclick="loadProject('nestle')">
+
+<h3>
+Nestle CIA Threat Table
+</h3>
+
+<p>
+Threat evaluation project
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+    
+<!-- =========================
+INTELLIGENCE CENTER
+========================= -->
+
+<section id="intelligence" class="card">
+
+
+<h2>
+🌐 Intelligence Center
+</h2>
+
+
+<p>
+Live cybersecurity, disaster, and threat intelligence feeds.
+</p>
+
+
+
+<div class="grid">
+
+
+
+
+
+<!-- EARTHQUAKE MONITOR -->
+
+<div class="project intel-card">
+
+
+<h3>
+🌎 Earthquake Monitor
+</h3>
+
+
+<p>
+Global seismic activity monitoring
+</p>
+
+
+<div id="earthquake-feed">
+
+<p>
+Waiting for earthquake data...
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- EWS MONITOR -->
+
+<div class="project intel-card">
+
+
+<h3>
+✈️ EWS Threat Monitor
+</h3>
+
+
+<p>
+Aircraft activity anomaly monitoring
+</p>
+
+
+<div id="ews-feed">
+
+<p>
+Waiting for EWS status...
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- AI NEWS -->
+
+<div class="project intel-card">
+
+
+<h3>
+🤖 AI Cyber News
+</h3>
+
+
+<p>
+Latest artificial intelligence and cybersecurity developments
+</p>
+
+
+<div id="ai-news-feed">
+
+<p>
+Waiting for cyber news...
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+PROJECT VIEWER
+========================= -->
+
+
+<section id="project-viewer" class="card">
+
+
+<h2>
+Project Viewer
+</h2>
+
+
+
+<div id="viewer-content">
+
+<p style="opacity:0.7;">
+Click a project to load details...
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+SKILLS
+========================= -->
+
+
+<section id="skills" class="card">
+
+
+<h2>
+Skills
+</h2>
+
+
+
+
+<div class="skills-grid">
+
+
+
+
+
+
+<div class="skill-group">
+
+
+<h3>
+Security Operations (SOC)
+</h3>
+
+
+<p>
+Threat Detection • Incident Response • Log Analysis • SIEM Fundamentals • Vulnerability Assessment • Defense-in-Depth • CIA Triad • NIST Framework
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="skill-group">
+
+
+<h3>
+Networking & Infrastructure
+</h3>
+
+
+<p>
+TCP/IP • LAN/WAN • DNS • DHCP • VPN Concepts • Subnetting • Firewalls • IDS/IPS • Network Troubleshooting • Windows Server Administration
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="skill-group">
+
+
+<h3>
+Security Tools
+</h3>
+
+
+<p>
+Kali Linux • Metasploit • Nmap • Wireshark • Active Directory • Windows Event Viewer • VMware • VirtualBox • Docker
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="skill-group">
+
+
+<h3>
+Systems & Cloud
+</h3>
+
+
+<p>
+Windows Server • Linux • AWS Fundamentals • Azure Fundamentals • Virtualization • System Hardening • Identity & Access Concepts
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="skill-group">
+
+
+<h3>
+Programming & Automation
+</h3>
+
+
+<p>
+Python • Bash • PowerShell • SQL • C++ • Java • Security Automation
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="skill-group">
+
+
+<h3>
+IT & Support Operations
+</h3>
+
+
+<p>
+Help Desk Support • Hardware Diagnostics • Software Deployment • Technical Documentation • Customer Support
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+    <!-- =========================
+RESUME
+========================= -->
+
+<section id="resume" class="card">
+
+
+<h2>
+Resume
+</h2>
+
+
+
+<a href="assets/projects/resume2026.pdf"
+target="_blank"
+class="project">
+
+Download Resume (PDF)
+
+</a>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- =========================
+CONTACT
+========================= -->
+
+
+<section id="contact" class="card">
+
+
+<h2>
+Contact
+</h2>
+
+
+
+<p>
+Email: Joeytechnology20@gmail.com
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =========================
+JAVASCRIPT
+========================= -->
+
 <script src="script.js"></script>
+
+
+
 </body>
+
 </html>
