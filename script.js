@@ -290,7 +290,7 @@ async function loadAINews(){
     try{
 
         const response = await fetch(
-            "data/ai-news.json"
+            "data/ai_cyber_digest_state.json"
         );
 
 
