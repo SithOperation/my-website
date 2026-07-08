@@ -378,114 +378,83 @@ async function loadAINews(){
     );
 
 
-    try{
-
+    try {
 
         const response = await fetch(
-            "data/ai_cyber_digest_state.json"
+            "output/latest_digest.md?cache=" + Date.now()
         );
 
 
-        const data = await response.json();
+        const markdown = await response.text();
 
 
-
-        let articles =
-            data.articles ||
-            data.stories ||
-            data.items ||
-            [];
+        if (!response.ok) {
+            throw new Error("Digest unavailable");
+        }
 
 
+        const lines = markdown.split("\n");
 
 
         let html = `
 
-
         <div class="intel-status status-online">
-
         ● AI CYBER DIGEST ONLINE
-
         </div>
-
-
-        <p>
-
-        Updated:
-        ${data.date || data.updated || "Unknown"}
-
-        </p>
-
 
         `;
 
 
+        let count = 0;
 
 
-        articles
-        .slice(0,5)
-        .forEach((article,index)=>{
+        lines.forEach(line => {
 
 
-            html += `
+            if (
+                line.startsWith("## ")
+                &&
+                count < 5
+            ){
+
+                count++;
 
 
-            <div class="intel-item">
+                html += `
 
+                <div class="intel-item">
 
-            🤖 INTEL REPORT #${index+1}
+                🤖 INTEL REPORT #${count}
 
+                <br><br>
 
-            <br><br>
+                <b>
+                ${line.replace("## ","")}
+                </b>
 
+                <br><br>
 
-            <b>
+                Loading analyst summary...
 
-            ${article.title || article.name}
+                </div>
 
-            </b>
+                `;
 
-
-            <br><br>
-
-
-            Source:
-
-            ${article.source || "Unknown"}
-
-
-            <br>
-
-
-            ${
-                article.tags
-                ?
-                "Tags: " +
-                article.tags.join(" • ")
-                :
-                ""
             }
-
-
-            <br><br>
-
-
-            <a href="${article.url}" target="_blank">
-
-            Read Report →
-
-            </a>
-
-
-            </div>
-
-
-
-            `;
 
 
         });
 
+
+
+        html += `
+
+        <p>
+        Last Updated:
+        ${new Date().toUTCString()}
+        </p>
+
+        `;
 
 
         feed.innerHTML = html;
@@ -493,6 +462,7 @@ async function loadAINews(){
 
 
     }
+
     catch(error){
 
 
@@ -508,13 +478,11 @@ async function loadAINews(){
 
 
         console.log(
-            "AI news error:",
+            "AI digest error:",
             error
         );
 
-
     }
-
 
 }
 
