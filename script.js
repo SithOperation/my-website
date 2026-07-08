@@ -232,7 +232,7 @@ async function loadEWS(){
     try{
 
         const response = await fetch(
-            "data/ews_state.json"
+            "data/ews.json"
         );
 
         const data = await response.json();
@@ -243,24 +243,32 @@ async function loadEWS(){
         ).innerHTML = `
 
         <p>
-        Status:
-        ${data.status}
+        🚨 EWS level changed.
         </p>
 
         <p>
-        Threat Level:
+        Level:
         ${data.level}/5
         </p>
 
         <p>
-        Aircraft:
-        ${data.aircraft}
+        Airborne tracked aircraft:
+        ${data.concurrent_count}
         </p>
 
         <p>
         Deviation:
-        ${data.deviation}σ
+        ${data.z_score.toFixed(2)}σ
         </p>
+
+        <p>
+        As of:
+        ${data.as_of}
+        </p>
+
+        <a href="https://ews.kylemcdonald.net/" target="_blank">
+        https://ews.kylemcdonald.net/
+        </a>
 
         `;
 
@@ -290,35 +298,61 @@ async function loadAINews(){
     try{
 
         const response = await fetch(
-            "data/ai_cyber_digest_state.json"
+            "data/ai-news.json"
         );
-
 
         const data = await response.json();
 
 
-        let html="";
+        let html = `
+
+        <h3>
+        🔐 Top 5 Cybersecurity Stories
+        </h3>
+
+        <p>
+        ${data.date || ""}
+        </p>
+
+        `;
 
 
-        data.articles.forEach(article=>{
+        data.articles.slice(0,5).forEach((article,index)=>{
+
 
             html += `
 
-            <p>
-            🤖
-            <a href="${article.url}"
-            target="_blank">
+            <div class="news-item">
+
+            <h4>
+            ${index + 1}.
             ${article.title}
-            </a>
+            </h4>
 
-            <br>
 
+            <p>
             Source:
             ${article.source}
-
             </p>
 
+
+            <p>
+            Tags:
+            ${article.tags ? article.tags.join(" • ") : "N/A"}
+            </p>
+
+
+            <a href="${article.url}" target="_blank">
+            Read More →
+            </a>
+
+
+            </div>
+
+            <hr>
+
             `;
+
 
         });
 
