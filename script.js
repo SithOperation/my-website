@@ -174,7 +174,7 @@ async function loadIntelligence(){
 async function loadDisasterIntelligence(){
 
     const feed = document.getElementById(
-        "earthquake-feed"
+        "disaster-feed"
     );
 
     try {
