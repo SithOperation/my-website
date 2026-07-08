@@ -167,12 +167,15 @@ async function loadIntelligence(){
 }
 
 
-
 // =============================
-// EARTHQUAKES
+// DISASTER INTELLIGENCE
 // =============================
 
 async function loadEarthquakes(){
+
+    const feed = document.getElementById(
+        "earthquake-feed"
+    );
 
     try{
 
@@ -183,35 +186,66 @@ async function loadEarthquakes(){
         const data = await response.json();
 
 
-        let html = "";
+        let events = data.events || data;
 
-        data.events.slice(0,5).forEach(event => {
+
+        let html = `
+        <div class="intel-status status-online">
+        ● DISASTER FEED ONLINE
+        </div>
+        `;
+
+
+        events.slice(0,5).forEach(event=>{
 
             html += `
-            <p>
-            🌎 M${event.magnitude}
+
+            <div class="intel-item">
+
+            🌎 EARTHQUAKE ALERT
+
+            <br><br>
+
+            <b>Magnitude:</b>
+            ${event.magnitude || "Unknown"}
+
             <br>
-            ${event.location}
+
+            <b>Location:</b>
+            ${event.location || "Unknown"}
+
             <br>
+
+            <b>Tsunami:</b>
+            ${event.tsunami || event.tsunami_flag || "0"}
+
+            <br><br>
+
             <a href="${event.url}" target="_blank">
-            Details
+            View USGS Report →
             </a>
-            </p>
+
+            </div>
+
             `;
 
         });
 
 
-        document.getElementById(
-            "earthquake-feed"
-        ).innerHTML = html;
+        feed.innerHTML = html;
 
 
     }
     catch(error){
 
+        feed.innerHTML = `
+        <div class="status-alert">
+        ● DISASTER FEED OFFLINE
+        </div>
+        `;
+
         console.log(
-            "Earthquake feed error:",
+            "Disaster feed error:",
             error
         );
 
@@ -224,63 +258,105 @@ async function loadEarthquakes(){
 
 
 // =============================
-// EWS
+// EWS INTELLIGENCE
 // =============================
 
 async function loadEWS(){
 
+    const feed = document.getElementById(
+        "ews-feed"
+    );
+
+
     try{
 
         const response = await fetch(
-            "data/ews.json"
+            "data/ews_state.json"
         );
+
 
         const data = await response.json();
 
 
-        document.getElementById(
-            "ews-feed"
-        ).innerHTML = `
 
-        <p>
-        🚨 EWS level changed.
-        </p>
+        feed.innerHTML = `
 
-        <p>
-        Level:
-        ${data.level}/5
-        </p>
 
-        <p>
-        Airborne tracked aircraft:
-        ${data.concurrent_count}
-        </p>
+        <div class="intel-status status-online">
+        ● EWS MONITOR ONLINE
+        </div>
 
-        <p>
-        Deviation:
-        ${data.z_score.toFixed(2)}σ
-        </p>
 
-        <p>
-        As of:
-        ${data.as_of}
-        </p>
+        <div class="intel-item">
 
-        <a href="https://ews.kylemcdonald.net/" target="_blank">
-        https://ews.kylemcdonald.net/
-        </a>
+        ✈️ EARLY WARNING SYSTEM
+
+
+        <br><br>
+
+
+        <b>Status Level:</b>
+
+        ${data.level ?? "N/A"}/5
+
+
+        <br>
+
+
+        <b>Tracked Aircraft:</b>
+
+        ${data.concurrent_count ?? "N/A"}
+
+
+        <br>
+
+
+        <b>Anomaly Score:</b>
+
+        ${
+            data.z_score
+            ?
+            data.z_score.toFixed(2)
+            :
+            "N/A"
+        }σ
+
+
+        <br>
+
+
+        <b>Updated:</b>
+
+        ${data.as_of ?? "Unknown"}
+
+
+        </div>
+
 
         `;
 
 
     }
     catch(error){
+
+
+        feed.innerHTML = `
+
+        <div class="status-alert">
+
+        ● EWS FEED OFFLINE
+
+        </div>
+
+        `;
+
 
         console.log(
             "EWS error:",
             error
         );
 
+
     }
 
 }
@@ -289,67 +365,121 @@ async function loadEWS(){
 
 
 
+
+
 // =============================
-// AI NEWS
+// AI CYBER DIGEST
 // =============================
 
 async function loadAINews(){
 
+    const feed = document.getElementById(
+        "ai-news-feed"
+    );
+
+
     try{
 
+
         const response = await fetch(
-            "data/ai-news.json"
+            "data/ai_cyber_digest_state.json"
         );
+
 
         const data = await response.json();
 
 
+
+        let articles =
+            data.articles ||
+            data.stories ||
+            data.items ||
+            [];
+
+
+
+
         let html = `
 
-        <h3>
-        🔐 Top 5 Cybersecurity Stories
-        </h3>
+
+        <div class="intel-status status-online">
+
+        ● AI CYBER DIGEST ONLINE
+
+        </div>
+
 
         <p>
-        ${data.date || ""}
+
+        Updated:
+        ${data.date || data.updated || "Unknown"}
+
         </p>
+
 
         `;
 
 
-        data.articles.slice(0,5).forEach((article,index)=>{
+
+
+        articles
+        .slice(0,5)
+        .forEach((article,index)=>{
 
 
             html += `
 
-            <div class="news-item">
 
-            <h4>
-            ${index + 1}.
-            ${article.title}
-            </h4>
+            <div class="intel-item">
 
 
-            <p>
+            🤖 INTEL REPORT #${index+1}
+
+
+            <br><br>
+
+
+            <b>
+
+            ${article.title || article.name}
+
+            </b>
+
+
+            <br><br>
+
+
             Source:
-            ${article.source}
-            </p>
+
+            ${article.source || "Unknown"}
 
 
-            <p>
-            Tags:
-            ${article.tags ? article.tags.join(" • ") : "N/A"}
-            </p>
+            <br>
+
+
+            ${
+                article.tags
+                ?
+                "Tags: " +
+                article.tags.join(" • ")
+                :
+                ""
+            }
+
+
+            <br><br>
 
 
             <a href="${article.url}" target="_blank">
-            Read More →
+
+            Read Report →
+
             </a>
 
 
             </div>
 
-            <hr>
+
 
             `;
 
@@ -358,22 +488,40 @@ async function loadAINews(){
 
 
 
-        document.getElementById(
-            "ai-news-feed"
-        ).innerHTML = html;
+        feed.innerHTML = html;
+
 
 
     }
     catch(error){
+
+
+        feed.innerHTML = `
+
+        <div class="status-alert">
+
+        ● AI INTELLIGENCE OFFLINE
+
+        </div>
+
+        `;
+
 
         console.log(
             "AI news error:",
             error
         );
 
+
     }
 
+
 }
+
+
+
+
+loadIntelligence();
 
 
 
