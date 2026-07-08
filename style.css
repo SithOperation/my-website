@@ -278,3 +278,152 @@ nav a:hover {
     red;
 
 }
+
+/* =========================
+INTELLIGENCE CENTER STYLE
+========================= */
+
+
+#intelligence {
+    margin-top: 40px;
+}
+
+
+.glitch-title {
+
+    position: relative;
+
+    font-family: monospace;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 42px;
+
+    animation: glitch 2.5s infinite;
+
+}
+
+
+
+.intel-subtitle {
+
+    color: #aaa;
+
+    font-family: monospace;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+
+
+.intel-panel {
+
+    background:
+
+    rgba(0,0,0,0.55);
+
+
+    border:
+
+    1px solid rgba(0,255,255,0.25);
+
+
+    padding: 25px;
+
+
+    margin-bottom: 25px;
+
+
+    backdrop-filter: blur(12px);
+
+
+    box-shadow:
+
+    0 0 20px rgba(0,255,255,0.08);
+
+}
+
+
+
+
+.intel-panel h2 {
+
+    font-family: monospace;
+
+    color: #00ffff;
+
+    letter-spacing: 2px;
+
+}
+
+
+
+.panel-description {
+
+    font-size: 14px;
+
+    color:#888;
+
+}
+
+
+
+#ai-news-feed,
+#ews-feed,
+#earthquake-feed {
+
+    font-family: monospace;
+
+    line-height: 1.7;
+
+}
+
+
+
+
+
+
+@keyframes glitch {
+
+
+0% {
+
+transform: translate(0);
+
+}
+
+
+10% {
+
+transform: translate(-2px,2px);
+
+}
+
+
+20% {
+
+transform: translate(2px,-2px);
+
+}
+
+
+30% {
+
+transform: translate(0);
+
+}
+
+
+100% {
+
+transform: translate(0);
+
+}
+
+
+}
