@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-08T08:44:38.554599+00:00",
+  "last_updated": "2026-07-08T08:51:34.421760+00:00",
   "system_status": {
     "earthquakes": "online",
     "volcanoes": "online",
@@ -7,6 +7,23 @@
     "weather": "online"
   },
   "events": [
+    {
+      "id": "usgs-us6000tavx",
+      "type": "earthquake",
+      "severity": "moderate",
+      "title": "M4.8 Earthquake",
+      "geometry": "point",
+      "location": "64 km W of Tobelo, Indonesia",
+      "coordinates": {
+        "lat": 1.8113,
+        "lon": 127.4396
+      },
+      "details": {
+        "magnitude": 4.8,
+        "time": 1783499766960
+      },
+      "source": "USGS"
+    },
     {
       "id": "usgs-us6000tavs",
       "type": "earthquake",
@@ -261,47 +278,1154 @@
         "time": 1783434082044
       },
       "source": "USGS"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.fc3f6e49fde8d745de220c862eefb775d6a7216b.001.1",
+      "type": "weather",
+      "severity": "moderate",
+      "title": "Special Weather Statement",
+      "geometry": "polygon",
+      "location": "Vilas; Oneida; Lincoln; Langlade",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -89.76,
+              46.27
+            ],
+            [
+              -89.41,
+              46.2
+            ],
+            [
+              -89.17,
+              45.43
+            ],
+            [
+              -90.05,
+              45.34
+            ],
+            [
+              -90.05,
+              45.98
+            ],
+            [
+              -89.93,
+              45.98
+            ],
+            [
+              -89.93,
+              46.28
+            ],
+            [
+              -89.76,
+              46.27
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "At 346 AM CDT, Doppler radar was tracking strong thunderstorms along\na line extending from 7 miles northwest of Mercer to 6 miles south of\nTurtle Flambeau Flowage to near Willow Lake to near New Wood Wildlife\nArea. Movement was east at 40 mph.\n\nHAZARD...Wind gusts up to 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nStrong thunderstorms will be near...\nTripoli ",
+        "expires": "2026-07-08T04:45:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.bd9611f4b3c851cbb4892fce4566342cb6276f19.002.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Severe Thunderstorm Warning",
+      "geometry": "polygon",
+      "location": "Price, WI",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -90.68,
+              45.54
+            ],
+            [
+              -90.68,
+              45.8
+            ],
+            [
+              -90.43,
+              45.88
+            ],
+            [
+              -90.05,
+              45.82
+            ],
+            [
+              -90.31,
+              45.52
+            ],
+            [
+              -90.68,
+              45.54
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "At 338 AM CDT, severe thunderstorms were located along a line\nextending from near Catawba to 11 miles northwest of Prentice to near\nPhillips, moving east at 40 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nPhillips, Fifield, Prentice, Catawba, Kennan, Cranberry Lake, Wilson\nLake Near Phillips, and Musser Lake.",
+        "expires": "2026-07-08T04:00:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.96f4b9013c4690be0cc34ef58950bd75a0015086.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Day, SD",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -97.98,
+              45.53
+            ],
+            [
+              -97.67,
+              45.53
+            ],
+            [
+              -97.3,
+              45.3
+            ],
+            [
+              -97.68,
+              45.16
+            ],
+            [
+              -97.85,
+              45.2
+            ],
+            [
+              -97.98,
+              45.27
+            ],
+            [
+              -97.98,
+              45.53
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Southwestern Day County in northeastern South Dakota...\n\n* WHEN...Until 800 AM CDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 316 AM CDT, Doppler radar indicated slow moving thunderstorms\nwith very heavy rainfall across the warned area. Between 2.5 and\n5 inches of rain have fallen.\n- Flooding impacts will continue, but ",
+        "expires": "2026-07-08T08:00:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.02fd0923beaeee20982f73c10eb543857ab3dca2.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Brown, SD; Day, SD; Marshall, SD",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -97.98,
+              45.52
+            ],
+            [
+              -98.15,
+              45.51
+            ],
+            [
+              -98.38,
+              45.65
+            ],
+            [
+              -98.37,
+              45.82
+            ],
+            [
+              -98.2,
+              45.83
+            ],
+            [
+              -98.16,
+              45.83
+            ],
+            [
+              -97.56,
+              45.79
+            ],
+            [
+              -97.67,
+              45.53
+            ],
+            [
+              -97.98,
+              45.52
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Northeastern Brown County in northeastern South Dakota...\nNorthwestern Day County in northeastern South Dakota...\nSouthwestern Marshall County in northeastern South Dakota...\n\n* WHEN...Until 800 AM CDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 314 AM CDT, emergency management reported multiple locations\nof flooding in ",
+        "expires": "2026-07-08T08:00:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.ebd4a223df7d87e84ec8dbecfcca480f5dd0f7dd.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flash Flood Warning",
+      "geometry": "polygon",
+      "location": "Brown, SD",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -98.57,
+              45.52
+            ],
+            [
+              -98.57,
+              45.42
+            ],
+            [
+              -98.29,
+              45.42
+            ],
+            [
+              -98.29,
+              45.52
+            ],
+            [
+              -98.57,
+              45.52
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "At 313 AM CDT, trained weather spotters reported thunderstorms\nproducing heavy rain across the warned area. Between 2 and 4 inches\nof rain have fallen. Flooding impacts will continue, but no\nadditional rainfall is expected. Flash flooding is already occurring.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Trained spotters reported. City of Aberdeen employee reports\nvehicles stalled due to water and multiple streets\ncompletely underwater, at least a foot deep.\n\nIMPACT...Flash floodi",
+        "expires": "2026-07-08T08:00:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.e0b784496f8ba6c5dd020a9e5dc2d25bfdef5f98.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Clark, SD; Codington, SD; Day, SD; Deuel, SD; Grant, SD; Roberts, SD",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -97.75,
+              45.15
+            ],
+            [
+              -97.77,
+              45.16
+            ],
+            [
+              -97.33,
+              45.31
+            ],
+            [
+              -97.09,
+              45.35
+            ],
+            [
+              -96.45,
+              45.29
+            ],
+            [
+              -96.45,
+              44.96
+            ],
+            [
+              -97.11,
+              44.85
+            ],
+            [
+              -97.75,
+              45.15
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northeastern Clark County in northeastern South Dakota...\nCodington County in northeastern South Dakota...\nSoutheastern Day County in northeastern South Dakota...\nNorthern Deuel County in northeastern South Dakota...\nGrant County in northeastern South Dakota...\nSouthwestern Roberts County in northeastern South Dakota...\n\n* WHEN...Until 830 AM CDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood",
+        "expires": "2026-07-08T08:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.257d2286cc3ceb654d7d10e4655b9824d8c8ebb3.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Brown, SD",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -98.47,
+              45.47
+            ],
+            [
+              -98.46,
+              45.5
+            ],
+            [
+              -98.44,
+              45.52
+            ],
+            [
+              -98.38,
+              45.52
+            ],
+            [
+              -98.43,
+              45.47
+            ],
+            [
+              -98.47,
+              45.47
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The National Weather Service in Aberdeen has issued a Flood\nWarning for the following rivers in South Dakota...\n\nMoccasin Creek At Aberdeen affecting Brown County.\n\n.For sites with a river forecast, the forecast includes precipitation\nthrough the next 24 hours. Any future precipitation could affect the\nforecasts.\n\n* WHAT...Minor flooding is occurring.\n\n* WHERE...Moccasin Creek at Aberdeen.\n\n* WHEN...From early this morning until further notice.\n\n* IMPACTS...At 6.0 feet, The right bank overflo",
+        "expires": "2026-07-09T10:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.e2213f65dd8b738736a1d037e632fe5769d40912.001.1",
+      "type": "weather",
+      "severity": "low",
+      "title": "Flood Advisory",
+      "geometry": "polygon",
+      "location": "Essex, VA; Lancaster, VA; Middlesex, VA; Richmond, VA",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -76.59,
+              37.85
+            ],
+            [
+              -76.63,
+              37.74
+            ],
+            [
+              -76.73,
+              37.78
+            ],
+            [
+              -76.86,
+              37.89
+            ],
+            [
+              -76.87,
+              37.96
+            ],
+            [
+              -76.7,
+              37.98
+            ],
+            [
+              -76.59,
+              37.85
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of east central and eastern Virginia, including\nthe following counties, in east central Virginia, Essex and\nRichmond. In eastern Virginia, Lancaster and Middlesex.\n\n* WHEN...Until 515 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 317 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the a",
+        "expires": "2026-07-08T05:15:00-04:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.2592414dc508467fe7f2bcb6ff5a136fa11d51d0.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flash Flood Warning",
+      "geometry": "polygon",
+      "location": "Essex, VA; Richmond, VA; Westmoreland, VA",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -76.72,
+              38.16
+            ],
+            [
+              -76.61,
+              38.15
+            ],
+            [
+              -76.6,
+              38.11
+            ],
+            [
+              -76.58,
+              38.1
+            ],
+            [
+              -76.56,
+              38.09
+            ],
+            [
+              -76.55,
+              38.03
+            ],
+            [
+              -76.57,
+              38.03
+            ],
+            [
+              -76.57,
+              38.02
+            ],
+            [
+              -76.74,
+              37.97
+            ],
+            [
+              -76.88,
+              37.96
+            ],
+            [
+              -76.96,
+              37.98
+            ],
+            [
+              -76.95,
+              38.01
+            ],
+            [
+              -76.98,
+              38.03
+            ],
+            [
+              -77.05,
+              38.03
+            ],
+            [
+              -76.95,
+              38.07
+            ],
+            [
+              -76.84,
+              38.08
+            ],
+            [
+              -76.72,
+              38.16
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "FFWAKQ\n\nThe National Weather Service in Wakefield has issued a\n\n* Flash Flood Warning for...\nNorthwestern Essex County in east central Virginia...\nNorthwestern Richmond County in east central Virginia...\nSoutheastern Westmoreland County in east central Virginia...\n\n* Until 515 AM EDT.\n\n* At 219 AM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Up to 3 inches of rain have\nfallen. Additional rainfall amounts of 1 to 2 inches are possible\nin the warned area.",
+        "expires": "2026-07-08T05:15:00-04:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.b5e2a16dc2c1299abb43f3a43256eb9c60e4a4b6.001.1",
+      "type": "weather",
+      "severity": "low",
+      "title": "Flood Advisory",
+      "geometry": "polygon",
+      "location": "Muskogee, OK",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -95.2,
+              35.83
+            ],
+            [
+              -95.07,
+              35.52
+            ],
+            [
+              -95.15,
+              35.47
+            ],
+            [
+              -95.32,
+              35.59
+            ],
+            [
+              -95.37,
+              35.83
+            ],
+            [
+              -95.2,
+              35.83
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Advisory continues for the following rivers in\nOklahoma...\n\nArkansas River near Muskogee affecting Muskogee County.\n\n* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Arkansas River near Muskogee.\n\n* WHEN...Until Thursday morning.\n\n* IMPACTS...At 27.0 feet, no flooding occurs but low lying\nagricultural areas may be threatened. Continue to monitor later\nforecasts.\n\n* ADDITIONAL DETAILS...\n- At 11:00 PM CDT Tuesday the stage was 27.3 feet.\n- Forecast...The river is ",
+        "expires": "2026-07-08T11:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.6abf362d61bf897a4b57e3533f5cb49acff3364e.004.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Cass, IL; Fulton, IL; Mason, IL",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -89.88,
+              40.53
+            ],
+            [
+              -89.8,
+              40.47
+            ],
+            [
+              -90.02,
+              40.34
+            ],
+            [
+              -90.17,
+              40.12
+            ],
+            [
+              -90.23,
+              40.18
+            ],
+            [
+              -90.1,
+              40.39
+            ],
+            [
+              -89.88,
+              40.53
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River at Henry affecting Putnam and Marshall Counties.\n\nIllinois River at Peoria affecting Tazewell, Peoria and Woodford\nCounties.\n\nIllinois River at Beardstown affecting Schuyler, Brown, Morgan\nand Cass Counties.\n\nIllinois River near Havana affecting Mason, Fulton and Cass\nCounties.\n\n.The following forecasts are based on observed precipitation, soil\nmoisture conditions, and forecast precipitation.\n\n* WHAT...Moderat",
+        "expires": "2026-07-08T13:45:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.6abf362d61bf897a4b57e3533f5cb49acff3364e.002.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Peoria, IL; Tazewell, IL; Woodford, IL",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -89.52,
+              40.93
+            ],
+            [
+              -89.41,
+              40.93
+            ],
+            [
+              -89.57,
+              40.62
+            ],
+            [
+              -89.8,
+              40.47
+            ],
+            [
+              -89.88,
+              40.53
+            ],
+            [
+              -89.65,
+              40.68
+            ],
+            [
+              -89.52,
+              40.93
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River at Henry affecting Putnam and Marshall Counties.\n\nIllinois River at Peoria affecting Tazewell, Peoria and Woodford\nCounties.\n\nIllinois River at Beardstown affecting Schuyler, Brown, Morgan\nand Cass Counties.\n\nIllinois River near Havana affecting Mason, Fulton and Cass\nCounties.\n\n.The following forecasts are based on observed precipitation, soil\nmoisture conditions, and forecast precipitation.\n\n* WHAT...Minor f",
+        "expires": "2026-07-08T13:45:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.6abf362d61bf897a4b57e3533f5cb49acff3364e.003.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Brown, IL; Cass, IL; Morgan, IL; Schuyler, IL",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -90.23,
+              40.18
+            ],
+            [
+              -90.17,
+              40.12
+            ],
+            [
+              -90.37,
+              40.08
+            ],
+            [
+              -90.46,
+              39.99
+            ],
+            [
+              -90.58,
+              39.99
+            ],
+            [
+              -90.43,
+              40.15
+            ],
+            [
+              -90.23,
+              40.18
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River at Henry affecting Putnam and Marshall Counties.\n\nIllinois River at Peoria affecting Tazewell, Peoria and Woodford\nCounties.\n\nIllinois River at Beardstown affecting Schuyler, Brown, Morgan\nand Cass Counties.\n\nIllinois River near Havana affecting Mason, Fulton and Cass\nCounties.\n\n.The following forecasts are based on observed precipitation, soil\nmoisture conditions, and forecast precipitation.\n\n* WHAT...Minor f",
+        "expires": "2026-07-08T13:45:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.6abf362d61bf897a4b57e3533f5cb49acff3364e.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Marshall, IL; Putnam, IL",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -89.39,
+              41.31
+            ],
+            [
+              -89.29,
+              41.35
+            ],
+            [
+              -89.29,
+              41.13
+            ],
+            [
+              -89.41,
+              40.93
+            ],
+            [
+              -89.52,
+              40.93
+            ],
+            [
+              -89.39,
+              41.15
+            ],
+            [
+              -89.39,
+              41.31
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River at Henry affecting Putnam and Marshall Counties.\n\nIllinois River at Peoria affecting Tazewell, Peoria and Woodford\nCounties.\n\nIllinois River at Beardstown affecting Schuyler, Brown, Morgan\nand Cass Counties.\n\nIllinois River near Havana affecting Mason, Fulton and Cass\nCounties.\n\n.The following forecasts are based on observed precipitation, soil\nmoisture conditions, and forecast precipitation.\n\n* WHAT...Minor f",
+        "expires": "2026-07-08T13:45:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.acb2d24d58b3058e15887abffed33c2c6069f5a3.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Bureau, IL; La Salle, IL; Putnam, IL",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -89.4,
+              41.31
+            ],
+            [
+              -89.33,
+              41.35
+            ],
+            [
+              -88.98,
+              41.37
+            ],
+            [
+              -88.99,
+              41.28
+            ],
+            [
+              -89.29,
+              41.28
+            ],
+            [
+              -89.4,
+              41.31
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River at La Salle affecting Putnam, Bureau and La Salle\nCounties.\n\nFor the Illinois River (Upper)...including La Salle...Minor flooding\nis forecast.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Illinois River from Starved Rock Lock and Dam downstream\nto confluence with Big Bureau Creek, including the La Salle gauge.\n\n* WHEN...Until early Thursday morning.\n\n* IMPACTS...At 22.0 feet",
+        "expires": "2026-07-08T15:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.aada233ee118b1633cbd01f9e2e58eeab1016c15.002.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Benton, IA; Iowa, IA",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -92.3,
+              41.92
+            ],
+            [
+              -92.24,
+              41.87
+            ],
+            [
+              -92.16,
+              41.85
+            ],
+            [
+              -92.06,
+              41.82
+            ],
+            [
+              -91.93,
+              41.81
+            ],
+            [
+              -91.83,
+              41.82
+            ],
+            [
+              -91.83,
+              41.76
+            ],
+            [
+              -91.91,
+              41.76
+            ],
+            [
+              -92.1,
+              41.78
+            ],
+            [
+              -92.3,
+              41.81
+            ],
+            [
+              -92.3,
+              41.92
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in Iowa...\n\nWapsipinicon River near De Witt 4S affecting Scott and Clinton\nCounties.\n\nIowa River at Marengo affecting Benton and Iowa Counties.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Iowa River at Marengo.\n\n* WHEN...From Wednesday afternoon to Friday morning.\n\n* IMPACTS...At 16.0 feet, Water affects agricultural land along the\nriver. Water is several feet deep in places.\n\n* ADDITIONAL DETAILS...\n- At 9:00 PM CDT Tuesday the stage ",
+        "expires": "2026-07-08T21:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.aada233ee118b1633cbd01f9e2e58eeab1016c15.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Clinton, IA; Scott, IA",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -90.9,
+              42
+            ],
+            [
+              -90.71,
+              41.84
+            ],
+            [
+              -90.33,
+              41.77
+            ],
+            [
+              -90.35,
+              41.69
+            ],
+            [
+              -90.8,
+              41.71
+            ],
+            [
+              -90.9,
+              41.85
+            ],
+            [
+              -90.9,
+              42
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in Iowa...\n\nWapsipinicon River near De Witt 4S affecting Scott and Clinton\nCounties.\n\nIowa River at Marengo affecting Benton and Iowa Counties.\n\n* WHAT...Moderate flooding is occurring and major flooding is\nforecast.\n\n* WHERE...Wapsipinicon River near De Witt 4S.\n\n* WHEN...Until Saturday afternoon.\n\n* IMPACTS...At 12.5 feet, Water affects old U.S. Highway 61 near the\nriver.\n\n* ADDITIONAL DETAILS...\n- At 8:30 PM CDT Tuesday the stage was 11.",
+        "expires": "2026-07-08T21:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.570d6aefd37fffe43dd536a5d1e8510d80ab43ff.001.1",
+      "type": "weather",
+      "severity": "low",
+      "title": "Flood Advisory",
+      "geometry": "polygon",
+      "location": "Concordia, LA; Adams, MS; Wilkinson, MS",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -91.7,
+              31.01
+            ],
+            [
+              -91.67,
+              31.3
+            ],
+            [
+              -91.29,
+              31.93
+            ],
+            [
+              -91.14,
+              31.87
+            ],
+            [
+              -91.47,
+              31.3
+            ],
+            [
+              -91.54,
+              31
+            ],
+            [
+              -91.7,
+              31.01
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Advisory is extended for the following rivers in\nLouisiana...Mississippi...\n\nMississippi River At Natchez affecting Wilkinson, Adams and\nConcordia Counties.\n\n* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Mississippi River at Natchez.\n\n* WHEN...Until Monday evening.\n\n* IMPACTS...At 38 feet, Lowlands along the river in areas not\nprotected by levees begin to flood. On both side of the river,\nthere are areas that contain oil and gas wells; however, these are\nnot a",
+        "expires": "2026-07-08T11:00:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.19d2c2660a501e1444514dfa896d8a0e23730119.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Gibson, IN",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -87.7,
+              38.42
+            ],
+            [
+              -87.47,
+              38.43
+            ],
+            [
+              -87.41,
+              38.39
+            ],
+            [
+              -87.41,
+              38.36
+            ],
+            [
+              -87.47,
+              38.37
+            ],
+            [
+              -87.71,
+              38.39
+            ],
+            [
+              -87.7,
+              38.42
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning continues for the following rivers in Indiana...\n\nPatoka River near Princeton affecting Gibson County.\n\nFor the Patoka River...including Princeton...Moderate flooding is\nforecast.\n\n* WHAT...Moderate flooding is occurring and moderate flooding is\nforecast. This approaches the flood of record.\n\n* WHERE...Patoka River near Princeton.\n\n* WHEN...Until Wednesday, July 15.\n\n* IMPACTS...At 22.0 feet, Flooding affects mainly farmland. Seasonal\ncamping trailers closest to the river be",
+        "expires": "2026-07-08T02:30:00-05:00"
+      },
+      "source": "NOAA Weather"
+    },
+    {
+      "id": "weather-urn:oid:2.49.0.1.840.0.91ea28b78b11ce473d3dee775878c5220d32fc48.001.1",
+      "type": "weather",
+      "severity": "high",
+      "title": "Flood Warning",
+      "geometry": "polygon",
+      "location": "Pike, IL; Scott, IL",
+      "coordinates": {
+        "polygon": [
+          [
+            [
+              -90.67,
+              39.77
+            ],
+            [
+              -90.53,
+              39.77
+            ],
+            [
+              -90.56,
+              39.69
+            ],
+            [
+              -90.52,
+              39.62
+            ],
+            [
+              -90.51,
+              39.52
+            ],
+            [
+              -90.59,
+              39.52
+            ],
+            [
+              -90.62,
+              39.64
+            ],
+            [
+              -90.66,
+              39.65
+            ],
+            [
+              -90.65,
+              39.67
+            ],
+            [
+              -90.67,
+              39.77
+            ]
+          ]
+        ]
+      },
+      "details": {
+        "description": "...The Flood Warning is extended for the following river in\nIllinois...\n\nIllinois River at Valley City.\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Illinois River at Valley City.\n\n* WHEN...Until Thursday morning.\n\n* ADDITIONAL DETAILS...\n- At 9:30 AM CDT Tuesday the stage was 14.2 feet.\n- Forecast...The river is expected to fall back below flood stage\ntonigh",
+        "expires": "2026-07-08T22:00:00-05:00"
+      },
+      "source": "NOAA Weather"
     }
   ],
   "history": {
     "earthquakes": [
       {
-        "id": "usgs-us6000tar3",
-        "type": "earthquake",
-        "severity": "moderate",
-        "title": "M4.9 Earthquake",
-        "geometry": "point",
-        "location": "298 km SSE of Ushuaia, Argentina",
-        "coordinates": {
-          "lat": -57.3541,
-          "lon": -66.8183
-        },
-        "details": {
-          "magnitude": 4.9,
-          "time": 1783445996121
-        },
-        "source": "USGS"
-      },
-      {
-        "id": "usgs-us6000tara",
+        "id": "usgs-us6000tant",
         "type": "earthquake",
         "severity": "moderate",
         "title": "M4.5 Earthquake",
         "geometry": "point",
-        "location": "81 km NNE of Adak, Alaska",
+        "location": "172 km NNW of Tobelo, Indonesia",
         "coordinates": {
-          "lat": 52.5711,
-          "lon": -176.2826
+          "lat": 3.1116,
+          "lon": 127.2906
         },
         "details": {
           "magnitude": 4.5,
-          "time": 1783447661091
+          "time": 1783434082044
+        },
+        "source": "USGS"
+      },
+      {
+        "id": "usgs-us6000tarc",
+        "type": "earthquake",
+        "severity": "moderate",
+        "title": "M5.3 Earthquake",
+        "geometry": "point",
+        "location": "10 km WSW of Orotina, Costa Rica",
+        "coordinates": {
+          "lat": 9.8644,
+          "lon": -84.6042
+        },
+        "details": {
+          "magnitude": 5.3,
+          "time": 1783447892787
         },
         "source": "USGS"
       }
     ],
     "volcanoes": [],
     "solar": [],
-    "weather": []
+    "weather": [
+      {
+        "id": "weather-urn:oid:2.49.0.1.840.0.91ea28b78b11ce473d3dee775878c5220d32fc48.001.1",
+        "type": "weather",
+        "severity": "high",
+        "title": "Flood Warning",
+        "geometry": "polygon",
+        "location": "Pike, IL; Scott, IL",
+        "coordinates": {
+          "polygon": [
+            [
+              [
+                -90.67,
+                39.77
+              ],
+              [
+                -90.53,
+                39.77
+              ],
+              [
+                -90.56,
+                39.69
+              ],
+              [
+                -90.52,
+                39.62
+              ],
+              [
+                -90.51,
+                39.52
+              ],
+              [
+                -90.59,
+                39.52
+              ],
+              [
+                -90.62,
+                39.64
+              ],
+              [
+                -90.66,
+                39.65
+              ],
+              [
+                -90.65,
+                39.67
+              ],
+              [
+                -90.67,
+                39.77
+              ]
+            ]
+          ]
+        },
+        "details": {
+          "description": "...The Flood Warning is extended for the following river in\nIllinois...\n\nIllinois River at Valley City.\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Illinois River at Valley City.\n\n* WHEN...Until Thursday morning.\n\n* ADDITIONAL DETAILS...\n- At 9:30 AM CDT Tuesday the stage was 14.2 feet.\n- Forecast...The river is expected to fall back below flood stage\ntonigh",
+          "expires": "2026-07-08T22:00:00-05:00"
+        },
+        "source": "NOAA Weather"
+      },
+      {
+        "id": "weather-urn:oid:2.49.0.1.840.0.19d2c2660a501e1444514dfa896d8a0e23730119.001.1",
+        "type": "weather",
+        "severity": "high",
+        "title": "Flood Warning",
+        "geometry": "polygon",
+        "location": "Gibson, IN",
+        "coordinates": {
+          "polygon": [
+            [
+              [
+                -87.7,
+                38.42
+              ],
+              [
+                -87.47,
+                38.43
+              ],
+              [
+                -87.41,
+                38.39
+              ],
+              [
+                -87.41,
+                38.36
+              ],
+              [
+                -87.47,
+                38.37
+              ],
+              [
+                -87.71,
+                38.39
+              ],
+              [
+                -87.7,
+                38.42
+              ]
+            ]
+          ]
+        },
+        "details": {
+          "description": "...The Flood Warning continues for the following rivers in Indiana...\n\nPatoka River near Princeton affecting Gibson County.\n\nFor the Patoka River...including Princeton...Moderate flooding is\nforecast.\n\n* WHAT...Moderate flooding is occurring and moderate flooding is\nforecast. This approaches the flood of record.\n\n* WHERE...Patoka River near Princeton.\n\n* WHEN...Until Wednesday, July 15.\n\n* IMPACTS...At 22.0 feet, Flooding affects mainly farmland. Seasonal\ncamping trailers closest to the river be",
+          "expires": "2026-07-08T02:30:00-05:00"
+        },
+        "source": "NOAA Weather"
+      }
+    ]
   }
 }
