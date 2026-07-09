@@ -70,7 +70,18 @@ jobs:
           path: external/ai
 
 
+      - name: Debug repository files
+        run: |
+          echo "EWS files:"
+          find external/ews -maxdepth 3 -type f
 
+          echo "Disaster files:"
+          find external/disaster -maxdepth 3 -type f
+
+          echo "AI files:"
+          find external/ai -maxdepth 3 -type f
+
+        
 
       - name: Copy JSON states
 
