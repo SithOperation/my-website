@@ -1235,19 +1235,25 @@ async function loadDisasterMap() {
 
                     "circle-radius": 6,
 
-                    "circle-color": ["get", "type", ["literal", {
+                    "circle-color": [
+    
+                       "match",
+                       ["get", "type"],
+                       
+                       "earthquake",
+                       "#ff4444",
 
-                        "earthquake": "#ff4444",
+                       "volcano",
+                       "#ff9900",
 
-                        "volcano": "#ff9900",
-
-                        "weather": "#9933ff",
-
-                        "solar": "#ffff00",
-
-                        "default": "#00ffff",
-
-                    }]],
+                       "weather",
+                       "#9933ff",
+                       
+                       "solar",
+                       "#ffff00",
+                       
+                       "#00ffff"
+                    ],
 
                     "circle-opacity": 0.8,
 
