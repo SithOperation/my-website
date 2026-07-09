@@ -1279,44 +1279,48 @@ async function loadDisasterMap(){
 
 
     /*
-        OpenStreetMap Tiles
-    */
+    Dark Cyber Map Tiles (CARTO)
+   */
 
 
-    L.tileLayer(
+   L.tileLayer(
+      
+      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
 
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
 
-        {
+         subdomains:[
+            "a",
+            "b",
+            "c",
+            "d"
+        ],
 
-            maxZoom:19,
+         maxZoom:19,
 
-            noWrap:true,
+         noWrap:true,
 
 
-            attribution:
-            "&copy; OpenStreetMap contributors"
+      
+         attribution:
+            "&copy; OpenStreetMap contributors &copy; CARTO"
 
-        }
+      }
+   )
 
-    )
+      .on(
 
-    .on(
+         "tileerror",
 
-        "tileerror",
-
-        error=>{
-
+         error=>{
             console.error(
-                "Tile error:",
-                error
+               "Tile error:",
+               error
             );
 
-        }
-
-    )
-
-    .addTo(disasterMap);
+         }
+      )
+      .addTo(disasterMap);
 
 
 
