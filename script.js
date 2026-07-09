@@ -1021,10 +1021,12 @@ function getEventColor(type) {
 
 async function loadDisasterMap() {
 
+
     const mapElement =
         document.getElementById(
             "disaster-map"
         );
+
 
     if (!mapElement) {
 
@@ -1036,6 +1038,8 @@ async function loadDisasterMap() {
 
     }
 
+
+
     if (typeof maplibregl === "undefined") {
 
         console.error(
@@ -1046,7 +1050,8 @@ async function loadDisasterMap() {
 
     }
 
-    /* Remove old map safely */
+
+
     if (disasterMap) {
 
         disasterMap.remove();
@@ -1055,385 +1060,478 @@ async function loadDisasterMap() {
 
     }
 
-    /* Create MapLibre map */
+
+
+
     disasterMap = new maplibregl.Map({
 
         container: "disaster-map",
 
         style: {
+
             version: 8,
+
+
             sources: {
-                "osm": {
+
+                osm: {
+
                     type: "raster",
-                    tiles: ["https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
-                    tileSize: 256,
-                    attribution: "&copy; OpenStreetMap contributors"
+
+                    tiles: [
+
+                        "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+                    ],
+
+                    tileSize: 256
+
                 }
+
             },
+
+
             layers: [
+
                 {
+
                     id: "osm",
+
                     type: "raster",
-                    source: "osm",
-                    minzoom: 0,
-                    maxzoom: 18
+
+                    source: "osm"
+
                 }
+
             ]
+
         },
 
-        center: [0, 20],
 
-        zoom: 2,
+        center: [
 
-        minZoom: 1,
+            0,
 
-        maxZoom: 18,
+            20
 
-    });
+        ],
 
-   disasterMap.addControl(
-      new maplibregl.NavigationControl(),
-      "top-right"
-   );
 
-   
-    console.log("MapLibre map initialized");
-
-    disasterMap.on("error", (error) => {
-
-        console.error("Map error:", error);
+        zoom: 2
 
     });
 
-    /* Ensure map is visible after slight delay */
-    disasterMap.once("load", () => {
 
-        console.log("Map load event fired");
 
-        disasterMap.resize();
+    disasterMap.addControl(
+        new maplibregl.NavigationControl()
+    );
 
-    });
 
-    disasterMap.on("data", () => {
 
-        console.log("Map data loaded");
+    disasterMap.on(
+        "load",
+        async () => {
 
-    });
 
-    /* Handle map load event */
-    disasterMap.on("load", async () => {
+            console.log(
+                "MapLibre loaded"
+            );
 
-        try {
 
-            const data =
-                await fetchJSON(
-                    "data/disaster_state.json"
-                );
 
-            const history =
-                data.history || {};
+            try {
 
-            let events = [];
 
-            Object.values(history)
+                const files = [
 
-                .forEach(category => {
+                    "data/earthquakes.json",
 
-                    if (Array.isArray(category)) {
+                    "data/weather.json",
 
-                        events =
-                            events.concat(category);
+                    "data/volcanoes.json"
+
+                ];
+
+
+
+                let events = [];
+
+
+
+                for (
+                    const file of files
+                ) {
+
+
+                    try {
+
+
+                        const response =
+                            await fetch(
+                                `${file}?cache=${Date.now()}`
+                            );
+
+
+
+                        if (!response.ok) {
+
+                            console.warn(
+                                `${file} unavailable`
+                            );
+
+                            continue;
+
+                        }
+
+
+
+                        const data =
+                            await response.json();
+
+
+
+                        if (
+                            Array.isArray(data)
+                        ) {
+
+                            events =
+                                events.concat(data);
+
+                        }
+
+
+
+                    }
+                    catch(error) {
+
+
+                        console.error(
+                            "Data load error:",
+                            file,
+                            error
+                        );
+
 
                     }
 
-                });
 
-            /* Build GeoJSON from events */
-            const geojson = {
+                }
 
-                type: "FeatureCollection",
 
-                features: events.map(event => ({
 
-                    type: "Feature",
 
-                    properties: {
+                const geojson = {
 
-                        title: safe(event.title),
 
-                        location: safe(event.location),
+                    type:
+                    "FeatureCollection",
 
-                        severity: safe(event.severity),
 
-                        type: event.type || "default",
+                    features:
 
-                    },
+                    events.map(event => {
 
-                    geometry: (() => {
 
                         if (
                             event.coordinates &&
                             event.coordinates.lat !== undefined &&
-                            (event.coordinates.lon !== undefined ||
-                            event.coordinates.lng !== undefined)
+                            event.coordinates.lon !== undefined
                         ) {
+
 
                             return {
 
-                                type: "Point",
 
-                                coordinates: [
+                                type:
+                                "Feature",
 
-                                    event.coordinates.lon ?? event.coordinates.lng,
 
-                                    event.coordinates.lat,
+                                properties: {
 
-                                ],
+
+                                    title:
+                                    event.title,
+
+
+                                    location:
+                                    event.location,
+
+
+                                    severity:
+                                    event.severity,
+
+
+                                    type:
+                                    event.type
+
+                                },
+
+
+                                geometry: {
+
+
+                                    type:
+                                    "Point",
+
+
+                                    coordinates:
+
+                                    [
+
+                                        event.coordinates.lon,
+
+                                        event.coordinates.lat
+
+                                    ]
+
+                                }
+
 
                             };
 
-                        }
-
-                        if (
-                            event.coordinates &&
-                            Array.isArray(event.coordinates.polygon)
-                        ) {
-
-                            return {
-
-                                type: "Polygon",
-
-                                coordinates: [event.coordinates.polygon],
-
-                            };
 
                         }
+
 
                         return null;
 
-                    })(),
 
-                })).filter(f => f.geometry !== null),
+                    })
 
-            };
+                    .filter(Boolean)
 
-            /* Add source */
-            disasterMap.addSource("disasters", {
 
-                type: "geojson",
+                };
 
-                data: geojson,
 
-            });
 
-            /* Add point layer */
-            disasterMap.addLayer({
-
-                id: "disaster-points",
-
-                type: "circle",
-
-                source: "disasters",
-
-                filter: ["==", ["geometry-type"], "Point"],
-
-                paint: {
-
-                    "circle-radius": 6,
-
-                    "circle-color": [
-    
-                       "match",
-                       ["get", "type"],
-                       
-                       "earthquake",
-                       "#ff4444",
-
-                       "volcano",
-                       "#ff9900",
-
-                       "weather",
-                       "#9933ff",
-                       
-                       "solar",
-                       "#ffff00",
-                       
-                       "#00ffff"
-                    ],
-
-                    "circle-opacity": 0.8,
-
-                    "circle-stroke-width": 2,
-
-                    "circle-stroke-color": "#fff",
-
-                },
-
-            });
-
-            /* Add polygon layer */
-            disasterMap.addLayer({
-
-                id: "disaster-polygons",
-
-                type: "fill",
-
-                source: "disasters",
-
-                filter: ["==", ["geometry-type"], "Polygon"],
-
-                paint: {
-
-                    "fill-color": getEventColor("weather"),
-
-                    "fill-opacity": 0.25,
-
-                },
-
-            });
-
-            /* Add polygon outlines */
-            disasterMap.addLayer({
-
-                id: "disaster-polygon-outlines",
-
-                type: "line",
-
-                source: "disasters",
-
-                filter: ["==", ["geometry-type"], "Polygon"],
-
-                paint: {
-
-                    "line-color": getEventColor("weather"),
-
-                    "line-width": 2,
-
-                },
-
-            });
-
-            /* Handle clicks for popups */
-            disasterMap.on("click", "disaster-points", (e) => {
-
-                const props = e.features[0].properties;
-
-                const popup = new maplibregl.Popup()
-
-                   .setLngLat(e.lngLat)
-                   
-                   .setHTML(`
-                   <strong>${safe(props.title)}</strong><br>
-                   Location: ${safe(props.location)}<br>
-                   Severity: ${safe(props.severity)}<br>
-                   Type: ${safe(props.type)}
-                   
-                   `)
-
-                    .addTo(disasterMap);
-
-            });
-
-            disasterMap.on("click", "disaster-polygons", (e) => {
-
-                const props = e.features[0].properties;
-
-                const popup = new maplibregl.Popup()
-
-                    .setLngLat(e.lngLat)
-
-                    .setHTML(`
-                    
-                    <strong>${safe(props.title)}</strong><br>
-                    ${safe(props.location)}
-                    
-                    `)
-
-                    .addTo(disasterMap);
-
-            });
-
-            /* Change cursor on hover */
-            disasterMap.on("mouseenter", "disaster-points", () => {
-
-                disasterMap.getCanvas().style.cursor = "pointer";
-
-            });
-
-            disasterMap.on("mouseleave", "disaster-points", () => {
-
-                disasterMap.getCanvas().style.cursor = "";
-
-            });
-
-        }
-        catch (error) {
-
-            console.error(
-                "Map data error:",
-                error
-            );
-
-        }
-
-    });
-
-}
-
-
-
-function initUFOButton() {
-
-
-    const ufoButton =
-        document.getElementById(
-            "ufo-top"
-        );
-
-
-
-    if (!ufoButton) {
-
-        return;
-
-    }
-
-
-
-
-    ufoButton.addEventListener(
-
-        "click",
-
-        () => {
-
-
-            ufoButton.classList.add(
-                "launch"
-            );
-
-
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-
-
-
-            setTimeout(() => {
-
-
-                ufoButton.classList.remove(
-                    "launch"
+                console.log(
+                    "Map events:",
+                    geojson.features.length
                 );
 
 
-            }, 1000);
+
+                disasterMap.addSource(
+
+                    "disaster-events",
+
+                    {
+
+                        type:
+                        "geojson",
+
+                        data:
+                        geojson
+
+                    }
+
+                );
+
+
+
+
+
+                disasterMap.addLayer({
+
+                    id:
+                    "disaster-points",
+
+
+                    type:
+                    "circle",
+
+
+                    source:
+                    "disaster-events",
+
+
+                    paint:
+
+
+                    {
+
+
+                        "circle-radius":
+
+                        7,
+
+
+                        "circle-color":
+
+                        [
+
+                            "match",
+
+                            [
+
+                                "get",
+
+                                "type"
+
+                            ],
+
+
+                            "earthquake",
+
+                            "#ff4444",
+
+
+                            "volcano",
+
+                            "#ff9900",
+
+
+                            "weather",
+
+                            "#9933ff",
+
+
+                            "#00ffff"
+
+                        ],
+
+
+
+                        "circle-opacity":
+
+                        .85,
+
+
+                        "circle-stroke-width":
+
+                        2,
+
+
+                        "circle-stroke-color":
+
+                        "#ffffff"
+
+
+                    }
+
+
+                });
+
+
+
+
+
+                disasterMap.on(
+
+                    "click",
+
+                    "disaster-points",
+
+                    (event) => {
+
+
+                        const props =
+                            event.features[0].properties;
+
+
+
+                        new maplibregl.Popup()
+
+
+                            .setLngLat(
+                                event.lngLat
+                            )
+
+
+                            .setHTML(`
+
+                                <strong>
+                                ${props.title}
+                                </strong>
+
+                                <br>
+
+                                Location:
+                                ${props.location}
+
+                                <br>
+
+                                Severity:
+                                ${props.severity}
+
+                                <br>
+
+                                Type:
+                                ${props.type}
+
+                            `)
+
+
+                            .addTo(
+                                disasterMap
+                            );
+
+
+                    }
+
+                );
+
+
+
+
+
+                disasterMap.on(
+
+                    "mouseenter",
+
+                    "disaster-points",
+
+                    () => {
+
+
+                        disasterMap.getCanvas()
+                        .style.cursor =
+                        "pointer";
+
+
+                    }
+
+                );
+
+
+
+                disasterMap.on(
+
+                    "mouseleave",
+
+                    "disaster-points",
+
+                    () => {
+
+
+                        disasterMap.getCanvas()
+                        .style.cursor =
+                        "";
+
+
+                    }
+
+                );
+
+
+
+            }
+            catch(error) {
+
+
+                console.error(
+                    "Map build error:",
+                    error
+                );
+
+
+            }
+
+
+
+            disasterMap.resize();
 
 
 
