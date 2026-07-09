@@ -2,54 +2,119 @@ name: Sync Monitor States
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "0 */6 * * *"
 
+
+permissions:
+  contents: write
+
+
 jobs:
+
   sync:
+
     runs-on: ubuntu-latest
 
+
     steps:
+
+
       - name: Checkout website
+
         uses: actions/checkout@v4
+
+
 
       - name: Checkout EWS Discord Monitor
+
         uses: actions/checkout@v4
+
         with:
+
           repository: SithOperation/EWS-discord-monitor
+
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
           path: external/ews
 
+
+
+
       - name: Checkout Disaster Monitor
+
         uses: actions/checkout@v4
+
         with:
+
           repository: SithOperation/earthquake-volcano-discord-monitor
+
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
           path: external/disaster
 
+
+
+
       - name: Checkout AI Cyber Digest
+
         uses: actions/checkout@v4
+
         with:
+
           repository: SithOperation/ai-cyber-daily-digest
 
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
           path: external/ai
 
+
+
+
       - name: Copy JSON states
+
         run: |
+
           mkdir -p data
 
-          cp external/ews/state.json data/ews_state.json
-          cp external/disaster/disaster_state.json data/disaster_state.json
-          cp external/ai/ai_cyber_digest_state.json data/ai_cyber_digest_state.json
+
+          cp external/ews/state.json \
+          data/ews_state.json
+
+
+          cp external/disaster/disaster_state.json \
+          data/disaster_state.json
+
+
+          cp external/ai/ai_cyber_digest_state.json \
+          data/ai_cyber_digest_state.json
+
+
+
 
       - name: Commit updated states
+
         run: |
+
           git config user.name "github-actions"
+
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
 
           git add data/
 
-          git commit -m "Update monitor states" || exit 0
+
+          if git diff --cached --quiet; then
+
+            echo "No state changes detected"
+
+            exit 0
+
+          fi
+
+
+          git commit -m "Update monitor states"
+
 
           git push
