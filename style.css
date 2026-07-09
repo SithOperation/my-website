@@ -1091,18 +1091,3 @@ nav a:hover {
     }
 
 }
-
-/* =========================
-   LEAFLET RENDER FIX
-========================= */
-
-#disaster-map .leaflet-container {
-    width:100%;
-    height:100%;
-    background:#000;
-}
-
-#disaster-map .leaflet-tile {
-    max-width:none !important;
-    max-height:none !important;
-}
