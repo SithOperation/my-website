@@ -1,33 +1,49 @@
 name: Sync Monitor States
 
+
 on:
+
   workflow_dispatch:
 
   schedule:
+
     - cron: "0 */6 * * *"
 
 
+
 permissions:
+
   contents: write
+
+
 
 
 jobs:
 
+
   sync:
 
+
     runs-on: ubuntu-latest
+
 
 
     steps:
 
 
-      - name: Checkout website
+      - name: Checkout Website Repository
 
         uses: actions/checkout@v4
 
+        with:
+
+          fetch-depth: 0
 
 
-      - name: Checkout EWS Discord Monitor
+
+
+
+      - name: Checkout EWS Monitor
 
         uses: actions/checkout@v4
 
@@ -38,6 +54,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
           path: external/ews
+
 
 
 
@@ -57,6 +74,7 @@ jobs:
 
 
 
+
       - name: Checkout AI Cyber Digest
 
         uses: actions/checkout@v4
@@ -70,32 +88,54 @@ jobs:
           path: external/ai
 
 
-      - name: Debug repository files
-        run: |
-          echo "EWS files:"
-          find external/ews -maxdepth 3 -type f
 
-          echo "Disaster files:"
-          find external/disaster -maxdepth 3 -type f
 
-          echo "AI files:"
-          find external/ai -maxdepth 3 -type f
 
-        
-
-      - name: Copy JSON states
+      - name: Verify Source JSON Files
 
         run: |
+
+
+          echo "Checking source files..."
+
+
+
+          test -f external/ews/state.json || exit 1
+
+
+          test -f external/disaster/disaster_state.json || exit 1
+
+
+          test -f external/ai/ai_cyber_digest_state.json || exit 1
+
+
+
+          echo "All source files found."
+
+
+
+
+
+
+
+      - name: Update Website JSON Data
+
+
+        run: |
+
 
           mkdir -p data
+
 
 
           cp external/ews/state.json \
           data/ews_state.json
 
 
+
           cp external/disaster/disaster_state.json \
           data/disaster_state.json
+
 
 
           cp external/ai/ai_cyber_digest_state.json \
@@ -103,29 +143,88 @@ jobs:
 
 
 
+          echo "JSON states updated."
 
-      - name: Commit updated states
+
+
+
+
+
+
+      - name: Validate JSON
+
 
         run: |
 
+
+          python3 <<EOF
+
+          import json
+
+
+          files = [
+
+              "data/ews_state.json",
+
+              "data/disaster_state.json",
+
+              "data/ai_cyber_digest_state.json"
+
+          ]
+
+
+          for file in files:
+
+              with open(file) as f:
+
+                  json.load(f)
+
+              print(file, "OK")
+
+          EOF
+
+
+
+
+
+
+
+      - name: Commit Changes
+
+
+        run: |
+
+
           git config user.name "github-actions"
 
+
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
 
 
           git add data/
 
 
+
           if git diff --cached --quiet; then
 
-            echo "No state changes detected"
 
-            exit 0
+              echo "No JSON updates detected."
+
+
+              exit 0
+
 
           fi
 
 
-          git commit -m "Update monitor states"
+
+          git commit -m "Update intelligence state feeds"
+
 
 
           git push
+
+
+
+
