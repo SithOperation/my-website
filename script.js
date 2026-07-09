@@ -1,1521 +1,1123 @@
-let disasterMap = null;
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
 
 
-const text = "system online...";
-let typeIndex = 0;
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #000;
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    overflow-x: hidden;
+}
+
 
 
 /* =========================
-   TYPEWRITER
+   BACKGROUND SYSTEM
 ========================= */
 
-function startTypewriter(){
 
-    const element = document.getElementById("typing");
+.bg-layer {
 
-    if(!element){
-        return;
-    }
+    position: fixed;
 
+    inset: 0;
 
-    element.innerHTML = "";
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    typeIndex = 0;
+    z-index: -3;
 
+    opacity: 0;
 
-    function type(){
+    transform: scale(1.05);
 
-        if(typeIndex < text.length){
-
-            element.innerHTML += text.charAt(typeIndex);
-
-            typeIndex++;
-
-            setTimeout(type,80);
-
-        }
-        else{
-
-            element.innerHTML += 
-            '<span class="cursor">█</span>';
-
-        }
-
-    }
+    transition:
+        opacity 1.5s ease-in-out;
+}
 
 
-    type();
+
+.bg-layer::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.45);
+
+}
+
+
+
+.overlay {
+
+    min-height: 100vh;
+
+    background:
+        rgba(0,0,0,.72);
+
+    position: relative;
+
+    z-index: 1;
 
 }
 
 
 
 /* =========================
-   PROJECT MODULES
+   HERO
 ========================= */
 
 
-const projects = {
+.hero {
 
-    reddit: {
+    text-align: center;
 
-        title:"Reddit Threat Monitor",
-
-        images:[
-
-            "assets/projects/reddit/image1.jpg",
-            "assets/projects/reddit/image2.jpg",
-            "assets/projects/reddit/image3.jpg",
-            "assets/projects/reddit/image4.jpg",
-            "assets/projects/reddit/image5.jpg"
-
-        ],
-
-        pdf:null
-
-    },
-
-
-    ransomware: {
-
-        title:"Healthcare Ransomware Defense",
-
-        images:[],
-
-        pdf:"assets/projects/project2.pdf"
-
-    },
-
-
-    nestle: {
-
-        title:"Nestle CIA Threat Table",
-
-        images:[],
-
-        pdf:"assets/projects/project1.pdf"
-
-    }
-
-};
-
-
-
-
-function loadProject(key){
-
-    const viewer =
-    document.getElementById(
-        "viewer-content"
-    );
-
-
-    const project =
-    projects[key];
-
-
-    if(!viewer || !project){
-
-        console.log(
-            "Project unavailable:",
-            key
-        );
-
-        return;
-
-    }
-
-
-
-    let html = `
-
-    <h2>
-    ${safe(project.title)}
-    </h2>
-
-    `;
-
-
-
-    if(project.images.length){
-
-        html += `
-
-        <h3>
-        Evidence
-        </h3>
-
-        `;
-
-
-        project.images.forEach(image=>{
-
-
-            html += `
-
-            <img
-            src="${image}"
-            alt="Project Evidence">
-
-            `;
-
-
-        });
-
-
-    }
-
-
-
-
-    if(project.pdf){
-
-        html += `
-
-
-        <h3>
-        Report
-        </h3>
-
-
-        <iframe
-        src="${project.pdf}">
-        </iframe>
-
-
-
-        <a
-        href="${project.pdf}"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="project-link">
-
-        Open Full PDF
-
-        </a>
-
-
-        `;
-
-    }
-
-
-
-    viewer.innerHTML = html;
-
-
-
-    viewer.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"center"
-
-    });
-
+    padding:
+        70px 20px 30px;
 
 }
 
 
 
+.main-title {
 
-window.loadProject = loadProject;
+    position: relative;
+
+    font-family: monospace;
+
+    font-size:
+        clamp(38px, 6vw, 72px);
+
+    letter-spacing: 8px;
+
+    color: #00ffff;
+
+    text-transform: uppercase;
+
+    text-shadow:
+
+        0 0 10px #00ffff,
+        0 0 25px rgba(0,255,255,.6);
+
+}
+
+
+
+.main-title::before,
+.main-title::after {
+
+    content: attr(data-text);
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .7;
+
+}
+
+
+
+.main-title::before {
+
+    color: #ff004c;
+
+    animation:
+        glitchRed 2s infinite;
+
+}
+
+
+
+.main-title::after {
+
+    color: #00ffff;
+
+    animation:
+        glitchBlue 1.5s infinite;
+
+}
+
+
+
+.hero-subtitle {
+
+    font-family: monospace;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.65);
+
+}
+
+
+
+.terminal {
+
+    color: #00ff99;
+
+    font-family: monospace;
+
+}
+
+
+
+.cursor {
+
+    animation:
+        blink 1s infinite;
+
+}
 
 
 
 
 
 /* =========================
-   BACKGROUND ROTATION
+   NAVIGATION
 ========================= */
 
 
-const gifs = [
+nav {
 
-    "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+    display: flex;
 
-    "assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+    justify-content: center;
 
-    "assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+    flex-wrap: wrap;
 
-    "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+    gap: 10px;
 
-];
-
-
-
-gifs.forEach(src=>{
-
-    const image = new Image();
-
-    image.src = src;
-
-});
-
-
-
-let backgroundIndex = 0;
-
-
-const bg1 =
-document.getElementById("bg1");
-
-const bg2 =
-document.getElementById("bg2");
-
-const bg3 =
-document.getElementById("bg3");
-
-
-
-
-
-function initBackground(){
-
-
-    if(!bg1 || !bg2 || !bg3){
-
-        return;
-
-    }
-
-
-
-    bg1.style.backgroundImage =
-    `url("${gifs[0]}")`;
-
-
-    bg2.style.backgroundImage =
-    `url("${gifs[1]}")`;
-
-
-    bg3.style.backgroundImage =
-    `url("${gifs[2]}")`;
-
-
-    bg1.style.opacity="1";
-
-    bg2.style.opacity="0";
-
-    bg3.style.opacity="0";
-
+    padding: 15px;
 
 }
 
 
 
+nav a {
 
+    color: white;
 
+    text-decoration: none;
 
-function rotateBackground(){
+    font-family: monospace;
 
+    padding:
+        8px 12px;
 
-    if(!bg1 || !bg2 || !bg3){
+    border-radius: 8px;
 
-        return;
-
-    }
-
-
-
-    backgroundIndex =
-    (backgroundIndex + 1)
-    %
-    gifs.length;
-
-
-
-    bg3.style.backgroundImage =
-    `url("${gifs[backgroundIndex]}")`;
-
-
-
-    bg3.style.opacity="1";
-
-
-
-    setTimeout(()=>{
-
-
-        bg1.style.backgroundImage =
-        bg3.style.backgroundImage;
-
-
-        bg1.style.opacity="1";
-
-
-        bg3.style.opacity="0";
-
-
-    },1500);
-
+    transition: .3s;
 
 }
 
 
 
+nav a:hover {
 
-initBackground();
+    color: #00ffff;
 
+    background:
+        rgba(0,255,255,.1);
 
+    box-shadow:
+        0 0 15px rgba(0,255,255,.25);
 
-setInterval(
-
-    rotateBackground,
-
-    6000
-
-);
-
-
+}
 
 
 
 
 
 /* =========================
-   HELPERS
+   CARDS
 ========================= */
 
 
-async function fetchJSON(path){
+.card {
+
+    max-width: 900px;
+
+    margin:
+        50px auto;
+
+    padding: 25px;
+
+    position: relative;
+
+    overflow: visible;
+
+    border-radius: 12px;
 
 
-    const response =
-    await fetch(
-        `${path}?cache=${Date.now()}`
-    );
+    background:
 
-
-
-    if(!response.ok){
-
-        throw new Error(
-            `${path} unavailable`
+        linear-gradient(
+            135deg,
+            rgba(0,255,255,.06),
+            rgba(0,0,0,.75)
         );
 
-    }
+
+    border:
+
+        1px solid rgba(0,255,255,.18);
 
 
+    box-shadow:
 
-    return await response.json();
-
-}
-
-
-
-
-
-function safe(value){
-
-
-    if(
-        value === null ||
-        value === undefined ||
-        value === ""
-    ){
-
-        return "Unknown";
-
-    }
-
-
-
-    return String(value)
-
-    .replace(
-        /</g,
-        "&lt;"
-    )
-
-    .replace(
-        />/g,
-        "&gt;"
-    );
+        inset 0 0 25px rgba(0,255,255,.05),
+        0 0 25px rgba(0,255,255,.08);
 
 }
 
 
 
+.card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
 
 
-function formatDate(value){
+    background:
 
-
-    if(!value){
-
-        return "Unknown";
-
-    }
-
-
-    const date =
-    new Date(value);
-
-
-    if(
-        Number.isNaN(
-            date.getTime()
-        )
-    ){
-
-        return safe(value);
-
-    }
-
-
-    return date.toLocaleString();
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.015),
+            rgba(255,255,255,.015) 1px,
+            transparent 2px,
+            transparent 4px
+        );
 
 }
 
- 
-/* =========================
-   PROJECT CLICK HANDLERS
-========================= */
 
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+.card h2,
+.card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: monospace;
+
+    color: #00ffff;
+
+    letter-spacing: 2px;
+
+}
 
 
-    document
-    .querySelectorAll("[data-project]")
-    .forEach(card=>{
 
+.card p {
 
-        card.addEventListener(
-        "click",
-        ()=>{
+    position: relative;
 
+    z-index: 2;
 
-            loadProject(
-                card.dataset.project
-            );
+    line-height: 1.7;
 
-
-        });
-
-
-    });
-
-
-});
+}
 
 
 
 
 
 /* =========================
-   INTELLIGENCE LOADER
+   GLITCH TITLES
 ========================= */
 
 
-function loadIntelligence(){
+.glitch-title {
 
-    loadDisasterIntelligence();
+    position: relative;
 
-    loadEWS();
+    font-family: monospace;
 
-    loadAINews();
+    color: #00ffff;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    font-size: 42px;
 
 }
 
+
+
+.glitch-title::before,
+.glitch-title::after {
+
+    content: attr(data-text);
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+
+
+.glitch-title::before {
+
+    color: #ff004c;
+
+    animation:
+        glitchRed 1.5s infinite;
+
+}
+
+
+
+.glitch-title::after {
+
+    color: #00ffff;
+
+    animation:
+        glitchBlue 1s infinite;
+
+}
 
 
 
 
 
 /* =========================
-   DISASTER FEED
+   PROJECTS
 ========================= */
 
 
-async function loadDisasterIntelligence(){
+.grid {
 
+    display: grid;
 
-    const feed =
-    document.getElementById(
-        "disaster-feed"
-    );
-
-
-
-    if(!feed){
-
-        return;
-
-    }
-
-
-
-    try{
-
-
-        const data =
-        await fetchJSON(
-            "data/disaster_state.json"
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
         );
 
-
-
-        const history =
-        data.history || {};
-
-
-
-        let html = `
-
-
-        <div class="intel-status">
-
-        ● DISASTER INTELLIGENCE ONLINE
-
-        </div>
-
-
-        `;
-
-
-
-        Object.entries(history)
-
-        .forEach(
-        ([category,events])=>{
-
-
-            if(!Array.isArray(events)){
-
-                return;
-
-            }
-
-
-
-            html += `
-
-
-            <div class="intel-item">
-
-
-            <h3>
-
-            ${safe(category.toUpperCase())}
-
-            </h3>
-
-
-            `;
-
-
-
-            events
-            .slice(0,3)
-            .forEach(event=>{
-
-
-                html += `
-
-
-                <hr>
-
-
-                <b>
-                ${safe(event.title)}
-                </b>
-
-
-                <br><br>
-
-
-                Location:
-
-                ${safe(event.location)}
-
-
-                <br>
-
-
-                Severity:
-
-                ${safe(event.severity)}
-
-
-                <br>
-
-
-                Source:
-
-                ${safe(event.source)}
-
-
-                <br>
-
-
-                Geometry:
-
-                ${safe(event.geometry)}
-
-
-                `;
-
-
-
-            });
-
-
-
-            html += `
-
-
-            </div>
-
-
-            `;
-
-
-
-        });
-
-
-
-        feed.innerHTML = html;
-
-
-
-    }
-    catch(error){
-
-
-        console.error(
-            "Disaster feed error:",
-            error
-        );
-
-
-
-        feed.innerHTML = `
-
-
-        <div class="status-alert">
-
-        ● DISASTER INTELLIGENCE OFFLINE
-
-        </div>
-
-
-        `;
-
-
-    }
-
+    gap: 15px;
 
 }
 
 
 
+.project {
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    border-radius: 10px;
+
+
+    background:
+        rgba(0,0,0,.65);
+
+
+    border:
+
+        1px solid rgba(0,255,255,.2);
+
+
+    transition: .3s;
+
+}
+
+
+
+.project:hover {
+
+    transform:
+        translateY(-5px);
+
+
+    border-color: #00ffff;
+
+
+    box-shadow:
+
+        0 0 25px rgba(0,255,255,.3);
+
+}
 
 
 
 
 
 /* =========================
-   EWS MONITOR
+   PROJECT VIEWER
 ========================= */
 
 
-async function loadEWS(){
+#viewer-content img {
 
+    width: 100%;
 
-    const feed =
-    document.getElementById(
-        "ews-feed"
-    );
+    border-radius: 8px;
 
-
-
-    if(!feed){
-
-        return;
-
-    }
-
-
-
-    try{
-
-
-        const data =
-        await fetchJSON(
-            "data/ews_state.json"
-        );
-
-
-
-        feed.innerHTML = `
-
-
-        <div class="intel-status">
-
-        ● EWS MONITOR ONLINE
-
-        </div>
-
-
-        <div class="intel-item">
-
-
-        <b>
-        Status Level:
-        </b>
-
-        ${safe(data.level)}/5
-
-
-        <br><br>
-
-
-        <b>
-        Tracked Aircraft:
-        </b>
-
-        ${safe(data.concurrent_count)}
-
-
-        <br><br>
-
-
-        <b>
-        Anomaly Score:
-        </b>
-
-        ${safe(data.z_score)}σ
-
-
-        <br><br>
-
-
-        <b>
-        Last Checked:
-        </b>
-
-        ${formatDate(data.last_checked)}
-
-
-        <br><br>
-
-
-        <b>
-        Updated:
-        </b>
-
-        ${formatDate(data.as_of)}
-
-
-        </div>
-
-
-        `;
-
-
-
-    }
-    catch(error){
-
-
-        console.error(
-            "EWS error:",
-            error
-        );
-
-
-
-        feed.innerHTML = `
-
-
-        <div class="status-alert">
-
-        ● EWS FEED OFFLINE
-
-        </div>
-
-
-        `;
-
-
-    }
-
+    margin-bottom: 15px;
 
 }
 
 
 
+#viewer-content iframe {
+
+    width: 100%;
+
+    height: 500px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: white;
+
+}
+
+
+
+.project-link {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding:
+        12px 20px;
+
+
+    color: #00ffff;
+
+    font-family: monospace;
+
+    text-decoration: none;
+
+
+    border:
+
+        1px solid rgba(0,255,255,.25);
+
+
+    border-radius: 8px;
+
+}
+
+
+
+.project-link:hover {
+
+    background:
+        rgba(0,255,255,.1);
+
+}
 
 
 
 
 
 /* =========================
-   AI CYBER DIGEST
+   INTELLIGENCE PANELS
 ========================= */
 
 
-async function loadAINews(){
+.intel-subtitle {
 
+    font-family: monospace;
 
-    const feed =
-    document.getElementById(
-        "ai-news-feed"
-    );
+    color:
+        rgba(255,255,255,.55);
 
-
-    if(!feed){
-
-        return;
-
-    }
-
-
-
-    try{
-
-
-        const data =
-        await fetchJSON(
-            "data/ai_cyber_digest.json"
-        );
-
-
-
-        let html = `
-
-
-        <div class="intel-status">
-
-        ● AI CYBER DIGEST ONLINE
-
-        </div>
-
-
-        `;
-
-
-
-        if(
-
-            Array.isArray(data.stories)
-
-            &&
-
-            data.stories.length
-
-        ){
-
-
-
-            data.stories
-
-            .slice(0,5)
-
-            .forEach((story,index)=>{
-
-
-                html += `
-
-
-                <div class="intel-item">
-
-
-                <h3>
-
-                ${index + 1}. ${safe(story.title)}
-
-                </h3>
-
-
-
-                <b>
-
-                Source:
-
-                </b>
-
-                ${safe(story.source)}
-
-
-                <br><br>
-
-
-
-                <b>
-
-                Category:
-
-                </b>
-
-                ${safe(story.category)}
-
-
-                <br><br>
-
-
-
-                ${safe(story.summary)}
-
-
-
-                <br><br>
-
-
-
-                <b>
-
-                Intelligence Score:
-
-                </b>
-
-                ${safe(story.score)}
-
-
-
-                <br><br>
-
-
-
-                <a
-
-                href="${safe(story.link)}"
-
-                target="_blank"
-
-                rel="noopener noreferrer"
-
-                class="project-link"
-
-                >
-
-                Read Full Report →
-
-                </a>
-
-
-
-                </div>
-
-
-                `;
-
-
-            });
-
-
-
-        }
-
-        else{
-
-
-            html += `
-
-
-            <div class="intel-item">
-
-
-            No intelligence reports available.
-
-
-            </div>
-
-
-            `;
-
-
-        }
-
-
-
-        feed.innerHTML = html;
-
-
-
-    }
-
-
-    catch(error){
-
-
-        console.error(
-
-            "AI digest error:",
-
-            error
-
-        );
-
-
-
-        feed.innerHTML = `
-
-
-        <div class="status-alert">
-
-
-        ● AI INTELLIGENCE OFFLINE
-
-
-        </div>
-
-
-        `;
-
-
-    }
-
-
-}
-
-
-//=====================
-// DISASTER MAP HELPERS
-//=====================
-
-
-function getEventColor(type){
-
-    switch(type){
-
-        case "earthquake":
-            return "red";
-
-        case "volcano":
-            return "orange";
-
-        case "weather":
-            return "purple";
-
-        case "solar":
-            return "yellow";
-
-        default:
-            return "#00ffff";
-
-    }
-
-}
-
-function addPointEvent(event){
-
-    if(
-        !event.coordinates ||
-        event.coordinates.lat === undefined ||
-        event.coordinates.lon === undefined
-    ){
-        return;
-    }
-
-    const color = getEventColor(event.type);
-
-    L.circleMarker(
-        [
-            event.coordinates.lat,
-            event.coordinates.lon
-        ],
-        {
-            radius:6,
-            color:color,
-            fillColor:color,
-            fillOpacity:0.85,
-            weight:2
-        }
-    )
-    .bindPopup(`
-        <strong>${safe(event.title)}</strong><br>
-        ${safe(event.location)}<br>
-        Severity: ${safe(event.severity)}
-    `)
-    .addTo(disasterMap);
-
-}
-
-function addPolygonEvent(event){
-
-    if(
-        !event.coordinates ||
-        !Array.isArray(event.coordinates.polygon)
-    ){
-        return;
-    }
-
-    const color = getEventColor(event.type);
-
-    L.polygon(
-        event.coordinates.polygon,
-        {
-            color:color,
-            weight:2,
-            fillOpacity:0.25
-        }
-    )
-    .bindPopup(`
-        <strong>${safe(event.title)}</strong><br>
-        ${safe(event.location)}
-    `)
-    .addTo(disasterMap);
-
-}
-
-// =========================
-// DISASTER MAP
-// =========================
-
-async function loadDisasterMap(){
-
-
-    const map =
-    document.getElementById(
-        "disaster-map"
-    );
-
-
-    if(!map){
-
-        console.error(
-            "Disaster map element missing"
-        );
-
-        return;
-
-    }
-
-
-
-    if(typeof L === "undefined"){
-
-        console.error(
-            "Leaflet library missing"
-        );
-
-        return;
-
-    }
-
-
-
-
-    /*
-        Destroy previous instance
-    */
-
-    if(disasterMap){
-
-        disasterMap.off();
-
-        disasterMap.remove();
-
-        disasterMap = null;
-
-    }
-
-
-
-
-
-    /*
-        Create map
-    */
-
-    disasterMap = L.map(
-       "disaster-map",
-       {
-           zoomControl:true,
-           worldCopyJump:false,
-           maxBounds:[
-              [-90,-180],
-              [90,180]
-           ]
-       }
-    )
-       
-    .setView(
-       [
-          20,
-          0
-       ],
-       2,
-       {
-   
-          animate:false
-       }
-    );
-
-
-
-   /*
-   Correct tile loading
-   */
-
-   L.tileLayer(
-
-      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-
-      {
-
-         maxZoom:19,
-         
-         minZoom:2,
-
-         noWrap:true,
-
-         crossOrigin:true,
-
-         attribution:
-            "&copy; OpenStreetMap contributors"
-         
-      }
-      
-
-   )
-
-      .on(
-         "tileerror",
-         function(error){
-            
-            console.error(
-               "Leaflet tile error:",
-               error
-      
-            );
-   
-         }
-
-      )
-
-      .addTo(disasterMap);
-
-
-
-   disasterMap.whenReady(()=>{
-
-      setTimeout(()=>{
-      
-         disasterMap.invalidateSize(true);
-
-      },500);
-
-   });
-
-
-
-
-    /*
-    Force Leaflet to calculate size
-   */
-
-   setTimeout(()=>{
-
-      disasterMap.invalidateSize();
-
-   },1000);
-
-
-   setTimeout(()=>{
-
-      disasterMap.invalidateSize();
-
-   },2500);
-
-
-
-
-
-    try{
-
-
-        const data =
-        await fetchJSON(
-            "data/disaster_state.json"
-        );
-
-
-
-        const history =
-        data.history || {};
-
-
-
-        let events=[];
-
-
-
-        Object.values(history)
-
-        .forEach(category=>{
-
-
-            if(Array.isArray(category)){
-
-
-                events =
-                events.concat(category);
-
-
-            }
-
-
-        });
-
-
-
-
-
-        events.forEach(event=>{
-
-
-            if(!event){
-
-                return;
-
-            }
-
-
-
-            if(
-
-                event.coordinates &&
-
-                event.coordinates.lat !== undefined &&
-
-                event.coordinates.lon !== undefined
-
-            ){
-
-                addPointEvent(event);
-
-            }
-
-
-
-            else if(
-
-                event.coordinates &&
-
-                Array.isArray(
-                    event.coordinates.polygon
-                )
-
-            ){
-
-                addPolygonEvent(event);
-
-            }
-
-
-        });
-
-
-
-    }
-
-
-    catch(error){
-
-
-        console.error(
-
-            "Map loading error:",
-
-            error
-
-        );
-
-
-    }
-
-
+    letter-spacing: 2px;
 
 }
 
 
 
+.intel-panel {
+
+    margin-bottom: 30px;
+
+    padding: 25px;
+
+    border-radius: 12px;
 
 
-// =========================
-// UFO BACK TO TOP
-// =========================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const ufoButton = document.getElementById("ufo-top");
+    background:
+        rgba(0,0,0,.65);
 
 
-    if (!ufoButton) {
-        console.log("UFO button not found");
-        return;
-    }
+    border:
+
+        1px solid rgba(0,255,255,.25);
 
 
-    ufoButton.addEventListener("click", () => {
+    position: relative;
+
+}
 
 
-        // UFO launch animation
-        ufoButton.classList.add("launch");
+
+.intel-feed {
+
+    position: relative;
+
+}
 
 
-        // Force page scroll to top
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+
+.intel-item {
+
+    background:
+        rgba(0,0,0,.65);
 
 
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-        });
+    border-left:
+
+        3px solid #00ffff;
 
 
-        setTimeout(() => {
+    padding: 15px;
 
-            ufoButton.classList.remove("launch");
+    margin-bottom: 15px;
 
-        }, 1000);
+    border-radius: 8px;
 
+    line-height: 1.8;
 
-    });
-
-
-});
+}
 
 
+
+.intel-status {
+
+    color: #00ff99;
+
+    font-family: monospace;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.status-alert {
+
+    color: #ff004c;
+
+    font-family: monospace;
+
+}
 
 
 
 
 
 /* =========================
-   START APPLICATION
+   LEAFLET DISASTER MAP
 ========================= */
 
 
-document.addEventListener(
+#disaster-map {
 
-"DOMContentLoaded",
+    width: 100%;
 
-()=>{
+    height: 600px;
 
-
-    startTypewriter();
-
-
-    loadIntelligence();
+    min-height: 600px;
 
 
+    position: relative;
 
-    setTimeout(()=>{
-
-       loadDisasterMap();
-
-   },1000);
+    z-index: 5;
 
 
+    border-radius: 12px;
 
-});
+    overflow: hidden;
+
+
+    border:
+
+        1px solid rgba(0,255,255,.25);
+
+
+    background: #000;
+
+}
+
+
+
+#disaster-map .leaflet-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #000;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+
+#disaster-map .leaflet-tile {
+
+    max-width: none !important;
+
+    max-height: none !important;
+
+}
+
+
+
+#disaster-map img {
+
+    max-width: none !important;
+
+}
+
+
+
+#disaster-map .leaflet-pane {
+
+    position: absolute;
+
+}
+
+
+
+#disaster-map .leaflet-control-container {
+
+    z-index: 1000;
+
+}
+
+
+
+#disaster-map .leaflet-control-zoom a {
+
+    background: #000 !important;
+
+    color: #00ffff !important;
+
+    border-color:
+
+        rgba(0,255,255,.3) !important;
+
+}
+
+
+
+#disaster-map .leaflet-control-attribution {
+
+    background:
+
+        rgba(0,0,0,.7) !important;
+
+
+    color: white !important;
+
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+
+.skills-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px,1fr)
+        );
+
+    gap: 15px;
+
+}
+
+
+
+.skill-group {
+
+    padding: 18px;
+
+
+    background:
+
+        rgba(0,0,0,.55);
+
+
+    border-left:
+
+        3px solid #00ffff;
+
+
+    border-radius: 8px;
+
+}
+
+
+
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+
+@keyframes blink {
+
+    0%,50% {
+
+        opacity: 1;
+
+    }
+
+
+    51%,100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+
+@keyframes glitchRed {
+
+    0%,90%,100% {
+
+        clip-path:
+            inset(0 0 100% 0);
+
+    }
+
+
+    92% {
+
+        clip-path:
+            inset(20% 0 40% 0);
+
+
+        transform:
+            translateX(-4px);
+
+    }
+
+}
+
+
+
+@keyframes glitchBlue {
+
+    0%,85%,100% {
+
+        clip-path:
+            inset(100% 0 0 0);
+
+    }
+
+
+    88% {
+
+        clip-path:
+            inset(40% 0 20% 0);
+
+
+        transform:
+            translateX(4px);
+
+    }
+
+}
+
+
+
+
+
+/* =========================
+   UFO BACK TO TOP BUTTON
+========================= */
+
+
+#ufo-top {
+
+    position: fixed;
+
+
+    right: 30px;
+
+    bottom: 30px;
+
+
+    width: 65px;
+
+    height: 65px;
+
+
+    border-radius: 50%;
+
+
+    border:
+
+        1px solid rgba(0,255,255,.5);
+
+
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(0,255,255,.25),
+            rgba(0,0,0,.85)
+        );
+
+
+    color: #00ffff;
+
+
+    font-size: 32px;
+
+
+    cursor: pointer;
+
+
+    z-index: 9999;
+
+
+    box-shadow:
+
+        0 0 15px #00ffff,
+
+        0 0 35px rgba(0,255,255,.5);
+
+
+
+    animation:
+
+        ufoHover 3s infinite ease-in-out;
+
+
+
+    transition: .4s;
+
+}
+
+
+
+#ufo-top:hover {
+
+
+    transform:
+
+        scale(1.2)
+        rotate(-10deg);
+
+
+
+    box-shadow:
+
+        0 0 25px #00ffff,
+
+        0 0 60px rgba(0,255,255,.8);
+
+}
+
+
+
+#ufo-top.launch {
+
+
+    animation:
+
+        ufoLaunch 1s forwards;
+
+}
+
+
+
+
+
+@keyframes ufoHover {
+
+
+    0%,100% {
+
+        transform:
+
+            translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:
+
+            translateY(-10px);
+
+    }
+
+}
+
+
+
+
+
+@keyframes ufoLaunch {
+
+
+    0% {
+
+        transform:
+
+            translateY(0)
+            scale(1);
+
+
+        opacity: 1;
+
+    }
+
+
+
+    100% {
+
+        transform:
+
+            translateY(-900px)
+            scale(.2);
+
+
+        opacity: 0;
+
+    }
+
+}
+
+
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+
+@media(max-width:768px) {
+
+
+    .card {
+
+        margin:
+
+            25px 10px;
+
+
+        padding: 18px;
+
+    }
+
+
+
+    .glitch-title {
+
+        font-size: 30px;
+
+    }
+
+
+
+    #disaster-map {
+
+        height: 350px;
+
+        min-height: 350px;
+
+    }
+
+
+
+}
+
+
+
+
+
+@media(max-width:480px) {
+
+
+    .main-title {
+
+        letter-spacing: 4px;
+
+    }
+
+
+
+    .hero-subtitle {
+
+        font-size: 12px;
+
+    }
+
+
+
+    .intel-item {
+
+        font-size: 14px;
+
+    }
+
+
+
+    #ufo-top {
+
+        width: 55px;
+
+        height: 55px;
+
+        right: 20px;
+
+        bottom: 20px;
+
+    }
+
+
+}
