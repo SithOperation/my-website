@@ -1,55 +1,55 @@
-// =====================
-// TYPEWRITER
-// =====================
-
 const text = "system online...";
-let i = 0;
-
-function type() {
-
-    const el = document.getElementById("typing");
-
-    if (!el) return;
+let typeIndex = 0;
 
 
-    if (i === 0) {
-        el.innerHTML = "";
+function startTypewriter(){
+
+    const element = document.getElementById("typing");
+
+    if(!element){
+        return;
     }
 
 
-    if (i < text.length) {
+    element.innerHTML = "";
 
-        el.innerHTML += text.charAt(i);
 
-        i++;
+    function type(){
 
-        setTimeout(type, 80);
+        if(typeIndex < text.length){
 
-    } else {
+            element.innerHTML += text.charAt(typeIndex);
 
-        el.innerHTML += '<span class="cursor">█</span>';
+            typeIndex++;
+
+            setTimeout(type,80);
+
+        }
+        else{
+
+            element.innerHTML += 
+            '<span class="cursor">█</span>';
+
+        }
 
     }
+
+
+    type();
 
 }
 
 
-type();
 
 
-
-
-// =====================
-// PROJECT DATA
-// =====================
 
 const projects = {
 
     reddit: {
 
-        title: "Reddit Threat Monitor",
+        title:"Reddit Threat Monitor",
 
-        images: [
+        images:[
 
             "assets/projects/reddit/image1.jpg",
             "assets/projects/reddit/image2.jpg",
@@ -59,29 +59,29 @@ const projects = {
 
         ],
 
-        pdf: null
+        pdf:null
 
     },
 
 
     ransomware: {
 
-        title: "Healthcare Ransomware Defense",
+        title:"Healthcare Ransomware Defense",
 
-        images: [],
+        images:[],
 
-        pdf: "assets/projects/project2.pdf"
+        pdf:"assets/projects/project2.pdf"
 
     },
 
 
     nestle: {
 
-        title: "Nestle CIA Threat Table",
+        title:"Nestle CIA Threat Table",
 
-        images: [],
+        images:[],
 
-        pdf: "assets/projects/project1.pdf"
+        pdf:"assets/projects/project1.pdf"
 
     }
 
@@ -91,14 +91,7 @@ const projects = {
 
 
 
-// =====================
-// PROJECT VIEWER
-// FIXED CLICK SYSTEM
-// =====================
-
-
-function loadProject(key) {
-
+function loadProject(key){
 
     const viewer =
     document.getElementById(
@@ -113,7 +106,7 @@ function loadProject(key) {
     if(!viewer || !project){
 
         console.log(
-            "Project missing:",
+            "Project not found:",
             key
         );
 
@@ -133,10 +126,7 @@ function loadProject(key) {
 
 
 
-    // IMAGES
-
-    if(project.images && project.images.length > 0){
-
+    if(project.images.length){
 
         html += `
 
@@ -147,34 +137,26 @@ function loadProject(key) {
         `;
 
 
-
-        project.images.forEach(img => {
-
+        project.images.forEach(image=>{
 
             html += `
 
-            <img 
-            src="${img}"
+            <img
+            src="${image}"
             alt="Project Evidence">
 
             `;
 
-
         });
-
 
     }
 
 
 
 
-    // PDF
-
     if(project.pdf){
 
-
         html += `
-
 
         <h3>
         Report
@@ -186,48 +168,16 @@ function loadProject(key) {
         </iframe>
 
 
-        <br><br>
+        <a
+        href="${project.pdf}"
+        target="_blank"
+        class="project-link">
 
+        Open Full PDF
 
-        // PDF
-
-if(project.pdf){
-
-
-    html += `
-
-
-    <h3>
-    Report
-    </h3>
-
-
-    <iframe
-    src="${project.pdf}">
-    </iframe>
-
-
-    <br><br>
-
-
-    <a 
-    href="${project.pdf}"
-    target="_blank"
-    class="project-link">
-
-    Open Full PDF
-
-    </a>
-
-
-    `;
-
-
-}
-
+        </a>
 
         `;
-
 
     }
 
@@ -245,27 +195,57 @@ if(project.pdf){
 
     });
 
-
 }
 
 
 
 
 
-// =====================
-// BACKGROUND GIF SYSTEM
-// =====================
+window.loadProject = loadProject;
 
+
+
+
+
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+    document
+    .querySelectorAll("[data-project]")
+    .forEach(card=>{
+
+
+        card.addEventListener(
+        "click",
+        ()=>{
+
+
+            loadProject(
+                card.dataset.project
+            );
+
+
+        });
+
+
+    });
+
+
+});
 
 const gifs = [
 
-"assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+    "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
 
-"assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+    "assets/i-made-some-gifs-v0-fphci857e5o81.gif",
 
-"assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+    "assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
 
-"assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+    "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 
 ];
 
@@ -273,30 +253,21 @@ const gifs = [
 
 gifs.forEach(src=>{
 
-    const img =
-    new Image();
+    const image = new Image();
 
-    img.src = src;
+    image.src = src;
 
 });
 
 
 
-let index = 0;
+let backgroundIndex = 0;
 
 
 
-const bg1 =
-document.getElementById("bg1");
-
-
-const bg2 =
-document.getElementById("bg2");
-
-
-const bg3 =
-document.getElementById("bg3");
-
+const bg1 = document.getElementById("bg1");
+const bg2 = document.getElementById("bg2");
+const bg3 = document.getElementById("bg3");
 
 
 
@@ -313,16 +284,15 @@ function initBackground(){
 
 
     bg1.style.backgroundImage =
-    `url('${gifs[0]}')`;
+    `url("${gifs[0]}")`;
 
 
     bg2.style.backgroundImage =
-    `url('${gifs[1]}')`;
+    `url("${gifs[1]}")`;
 
 
     bg3.style.backgroundImage =
-    `url('${gifs[2]}')`;
-
+    `url("${gifs[2]}")`;
 
 
     bg1.style.opacity="1";
@@ -333,7 +303,6 @@ function initBackground(){
 
 
 }
-
 
 
 
@@ -349,20 +318,25 @@ function rotateBackground(){
 
 
 
-    index =
-    (index + 1)
+    backgroundIndex =
+    (backgroundIndex + 1)
     %
     gifs.length;
 
 
 
     const next =
-    gifs[index];
+    gifs[backgroundIndex];
+
+
+
+    const current =
+    bg2.style.backgroundImage;
 
 
 
     bg1.style.backgroundImage =
-    bg2.style.backgroundImage;
+    current;
 
 
 
@@ -372,7 +346,7 @@ function rotateBackground(){
 
 
     bg3.style.backgroundImage =
-    `url('${next}')`;
+    `url("${next}")`;
 
 
 
@@ -380,7 +354,7 @@ function rotateBackground(){
 
     bg2.style.opacity=".6";
 
-    bg1.style.opacity=".2";
+    bg1.style.opacity=".25";
 
 
 
@@ -388,13 +362,12 @@ function rotateBackground(){
 
 
         bg1.style.backgroundImage =
-        bg2.style.backgroundImage;
-
-
-        bg2.style.opacity="0";
+        bg3.style.backgroundImage;
 
 
         bg1.style.opacity="1";
+
+        bg2.style.opacity="0";
 
 
     },1500);
@@ -404,7 +377,10 @@ function rotateBackground(){
 
 
 
+
+
 initBackground();
+
 
 
 setInterval(
@@ -412,11 +388,69 @@ rotateBackground,
 6000
 );
 
-// =============================
-// INTELLIGENCE CENTER
-// =============================
+
+
+
+
+
+
+async function fetchJSON(path){
+
+
+    const response =
+    await fetch(
+        `${path}?cache=${Date.now()}`
+    );
+
+
+
+    if(!response.ok){
+
+        throw new Error(
+            `${path} unavailable`
+        );
+
+    }
+
+
+
+    return await response.json();
+
+}
+
+
+
+
+
+function safe(value){
+
+    if(!value){
+
+        return "Unknown";
+
+    }
+
+
+    return String(value)
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    );
+
+}
+
+
+
+
+
+
 
 async function loadIntelligence(){
+
 
     loadDisasterIntelligence();
 
@@ -424,13 +458,14 @@ async function loadIntelligence(){
 
     loadAINews();
 
+
 }
 
 
 
-// =============================
-// DISASTER INTELLIGENCE
-// =============================
+
+
+
 
 
 async function loadDisasterIntelligence(){
@@ -454,15 +489,10 @@ async function loadDisasterIntelligence(){
     try{
 
 
-        const response =
-        await fetch(
-            "data/disaster_state.json?cache=" + Date.now()
-        );
-
-
-
         const data =
-        await response.json();
+        await fetchJSON(
+            "data/disaster_state.json"
+        );
 
 
 
@@ -471,49 +501,41 @@ async function loadDisasterIntelligence(){
 
 
 
+        const categories = [
+
+            {
+                name:"🌎 EARTHQUAKES",
+                key:"earthquakes"
+            },
+
+            {
+                name:"🌋 VOLCANOES",
+                key:"volcanoes"
+            },
+
+            {
+                name:"☀️ SOLAR ACTIVITY",
+                key:"solar"
+            },
+
+            {
+                name:"⛈ WEATHER",
+                key:"weather"
+            }
+
+        ];
+
+
+
         let html = `
 
-
-        <div class="intel-status status-online">
+        <div class="intel-status">
 
         ● DISASTER INTELLIGENCE ONLINE
 
         </div>
 
-
         `;
-
-
-
-        const categories = [
-
-
-            {
-                title:"🌎 EARTHQUAKES",
-                key:"earthquakes"
-            },
-
-
-            {
-                title:"🌋 VOLCANOES",
-                key:"volcanoes"
-            },
-
-
-            {
-                title:"☀️ SOLAR ACTIVITY",
-                key:"solar"
-            },
-
-
-            {
-                title:"⛈ WEATHER",
-                key:"weather"
-            }
-
-
-        ];
-
 
 
 
@@ -522,16 +544,11 @@ async function loadDisasterIntelligence(){
 
             html += `
 
-
             <div class="intel-item">
 
-
             <h3>
-
-            ${category.title}
-
+            ${category.name}
             </h3>
-
 
             `;
 
@@ -542,19 +559,13 @@ async function loadDisasterIntelligence(){
 
 
 
-
-            if(events.length === 0){
-
+            if(!events.length){
 
                 html += `
-
                 No recent events detected.
-
                 `;
 
-
             }
-
             else{
 
 
@@ -565,41 +576,26 @@ async function loadDisasterIntelligence(){
 
                     html += `
 
-
                     <hr>
 
-
                     <b>
-                    ${event.title || "Unknown Event"}
+                    ${safe(event.title)}
                     </b>
-
 
                     <br><br>
 
-
                     Location:
-
-                    ${event.location || "Unknown"}
-
+                    ${safe(event.location)}
 
                     <br>
-
 
                     Severity:
-
-                    ${event.severity || "Unknown"}
-
+                    ${safe(event.severity)}
 
                     <br>
-
 
                     Source:
-
-                    ${event.source || "Unknown"}
-
-
-                    <br>
-
+                    ${safe(event.source)}
 
                     `;
 
@@ -622,32 +618,26 @@ async function loadDisasterIntelligence(){
 
 
 
-        feed.innerHTML =
-        html;
-
+        feed.innerHTML = html;
 
 
     }
-
     catch(error){
 
 
         console.log(
-            "Disaster intelligence error:",
+            "Disaster feed error:",
             error
         );
 
 
-
         feed.innerHTML = `
-
 
         <div class="status-alert">
 
         ● DISASTER INTELLIGENCE OFFLINE
 
         </div>
-
 
         `;
 
@@ -656,17 +646,6 @@ async function loadDisasterIntelligence(){
 
 
 }
-
-
-
-
-
-
-
-// =============================
-// EARLY WARNING SYSTEM
-// =============================
-
 
 async function loadEWS(){
 
@@ -689,29 +668,20 @@ async function loadEWS(){
     try{
 
 
-        const response =
-        await fetch(
-            "data/ews_state.json?cache=" + Date.now()
-        );
-
-
-
         const data =
-        await response.json();
-
+        await fetchJSON(
+            "data/ews_state.json"
+        );
 
 
 
         feed.innerHTML = `
 
-
-        <div class="intel-status status-online">
+        <div class="intel-status">
 
         ● EWS MONITOR ONLINE
 
         </div>
-
-
 
 
         <div class="intel-item">
@@ -723,31 +693,23 @@ async function loadEWS(){
         <br><br>
 
 
+        <b>Status Level:</b>
 
-        <b>
-        Status Level:
-        </b>
-
-        ${data.level ?? "N/A"}/5
+        ${safe(data.level)}/5
 
 
         <br>
 
 
-        <b>
-        Tracked Aircraft:
-        </b>
+        <b>Tracked Aircraft:</b>
 
-        ${data.concurrent_count ?? "N/A"}
+        ${safe(data.concurrent_count)}
 
 
         <br>
 
 
-        <b>
-        Anomaly Score:
-        </b>
-
+        <b>Anomaly Score:</b>
 
         ${
             data.z_score !== undefined
@@ -761,24 +723,17 @@ async function loadEWS(){
         <br>
 
 
-        <b>
-        Updated:
-        </b>
+        <b>Updated:</b>
 
-
-        ${data.as_of ?? "Unknown"}
-
+        ${safe(data.as_of)}
 
 
         </div>
 
-
         `;
 
 
-
     }
-
     catch(error){
 
 
@@ -788,9 +743,7 @@ async function loadEWS(){
         );
 
 
-
         feed.innerHTML = `
-
 
         <div class="status-alert">
 
@@ -798,9 +751,7 @@ async function loadEWS(){
 
         </div>
 
-
         `;
-
 
     }
 
@@ -811,12 +762,6 @@ async function loadEWS(){
 
 
 
-
-
-
-// =============================
-// AI CYBER DIGEST
-// =============================
 
 
 async function loadAINews(){
@@ -842,7 +787,8 @@ async function loadAINews(){
 
         const response =
         await fetch(
-            "output/latest_digest.md?cache=" + Date.now()
+            "output/latest_digest.md?cache=" +
+            Date.now()
         );
 
 
@@ -869,19 +815,15 @@ async function loadAINews(){
 
 
 
-
         let html = `
 
-
-        <div class="intel-status status-online">
+        <div class="intel-status">
 
         ● AI CYBER DIGEST ONLINE
 
         </div>
 
-
         `;
-
 
 
 
@@ -906,19 +848,24 @@ async function loadAINews(){
 
 
 
-            const sourceMatch =
+            const source =
             content.match(
-                /\*\*Source:\*\* (.*)/
+                /\*\*Source:\*\*\s*(.*)/
             );
 
 
 
-            const source =
-            sourceMatch
-            ?
-            sourceMatch[1]
-            :
-            "Unknown";
+            const impact =
+            content.match(
+                /\*\*Security Impact:\*\*\s*([\s\S]*?)\n\nLink/
+            );
+
+
+
+            const link =
+            content.match(
+                /Link:\s*(.*)/
+            );
 
 
 
@@ -935,41 +882,7 @@ async function loadAINews(){
 
 
 
-            const impactMatch =
-            content.match(
-                /\*\*Security Impact:\*\*\n([\s\S]*?)\n\nLink:/
-            );
-
-
-
-            const impact =
-            impactMatch
-            ?
-            impactMatch[1]
-            :
-            "No impact analysis available";
-
-
-
-            const linkMatch =
-            content.match(
-                /Link:\n(.*)/
-            );
-
-
-
-            const link =
-            linkMatch
-            ?
-            linkMatch[1]
-            :
-            "#";
-
-
-
-
             html += `
-
 
             <div class="intel-item">
 
@@ -980,28 +893,26 @@ async function loadAINews(){
             <br><br>
 
 
-
             <b>
-            ${title}
+            ${safe(title)}
             </b>
-
 
 
             <br><br>
 
 
+            <b>Source:</b>
 
-            <b>
-            Source:
-            </b>
-
-
-            ${source}
-
+            ${
+                source
+                ?
+                safe(source[1])
+                :
+                "Unknown"
+            }
 
 
             <br><br>
-
 
 
             <b>
@@ -1011,13 +922,10 @@ async function loadAINews(){
 
             <br>
 
-
-            ${summary}
-
+            ${safe(summary)}
 
 
             <br><br>
-
 
 
             <b>
@@ -1027,16 +935,26 @@ async function loadAINews(){
 
             <br>
 
-
-            ${impact.replace(/\n/g,"<br>")}
-
+            ${
+                impact
+                ?
+                safe(impact[1])
+                :
+                "No impact analysis available"
+            }
 
 
             <br><br>
 
 
-
-            <a href="${link}"
+            <a
+            href="${
+                link
+                ?
+                link[1]
+                :
+                "#"
+            }"
             target="_blank">
 
             Read Full Report
@@ -1044,41 +962,19 @@ async function loadAINews(){
             </a>
 
 
-
             </div>
 
-
             `;
-
 
 
         });
 
 
 
-        html += `
-
-
-        <p>
-
-        Last Updated:
-
-        ${new Date().toUTCString()}
-
-        </p>
-
-
-        `;
-
-
-
-        feed.innerHTML =
-        html;
-
+        feed.innerHTML = html;
 
 
     }
-
     catch(error){
 
 
@@ -1088,16 +984,13 @@ async function loadAINews(){
         );
 
 
-
         feed.innerHTML = `
-
 
         <div class="status-alert">
 
         ● AI INTELLIGENCE OFFLINE
 
         </div>
-
 
         `;
 
@@ -1107,28 +1000,40 @@ async function loadAINews(){
 
 }
 
-// =============================
-// GLOBAL DISASTER MAP
-// =============================
+
+
+
+
+
+
 
 let disasterMap = null;
+
 
 
 
 async function loadDisasterMap(){
 
 
-    const mapElement =
+    const map =
     document.getElementById(
         "disaster-map"
     );
 
 
 
-    if(!mapElement){
+    if(!map){
+
+        return;
+
+    }
+
+
+
+    if(typeof L === "undefined"){
 
         console.log(
-            "Disaster map element missing"
+            "Leaflet unavailable"
         );
 
         return;
@@ -1137,26 +1042,21 @@ async function loadDisasterMap(){
 
 
 
-    // Prevent Leaflet duplicate initialization
-
     if(disasterMap){
 
         disasterMap.remove();
-
-        disasterMap = null;
 
     }
 
 
 
-    disasterMap = L.map(
+    disasterMap =
+    L.map(
         "disaster-map"
-    ).setView(
-
+    )
+    .setView(
         [20,0],
-
         2
-
     );
 
 
@@ -1172,25 +1072,20 @@ async function loadDisasterMap(){
 
         }
 
-    ).addTo(
+    )
+    .addTo(
         disasterMap
     );
-
 
 
 
     try{
 
 
-        const response =
-        await fetch(
-            "data/disaster_state.json?cache=" + Date.now()
-        );
-
-
-
         const data =
-        await response.json();
+        await fetchJSON(
+            "data/disaster_state.json"
+        );
 
 
 
@@ -1199,13 +1094,10 @@ async function loadDisasterMap(){
 
 
 
-
         events.forEach(event=>{
 
 
-            if(
-                !event.coordinates
-            ){
+            if(!event.coordinates){
 
                 return;
 
@@ -1238,52 +1130,25 @@ async function loadDisasterMap(){
 
 
 
-
             let color =
             "#00ffff";
 
 
 
-            switch(event.type){
+            if(event.type==="earthquake")
+                color="red";
 
 
-                case "earthquake":
-
-                    color =
-                    "red";
-
-                    break;
+            if(event.type==="volcano")
+                color="orange";
 
 
-
-                case "volcano":
-
-                    color =
-                    "orange";
-
-                    break;
+            if(event.type==="weather")
+                color="purple";
 
 
-
-                case "weather":
-
-                    color =
-                    "purple";
-
-                    break;
-
-
-
-                case "solar":
-
-                    color =
-                    "yellow";
-
-                    break;
-
-
-            }
-
+            if(event.type==="solar")
+                color="yellow";
 
 
 
@@ -1307,60 +1172,34 @@ async function loadDisasterMap(){
 
                 }
 
-
             )
 
             .addTo(
                 disasterMap
             )
 
-
             .bindPopup(`
 
-
             <b>
-            ${event.title || "Unknown Event"}
+            ${safe(event.title)}
             </b>
 
-
             <br><br>
-
 
             Type:
-
-            ${event.type || "Unknown"}
-
-
+            ${safe(event.type)}
 
             <br>
-
 
             Severity:
-
-            ${event.severity || "Unknown"}
-
-
+            ${safe(event.severity)}
 
             <br>
 
-
             Location:
-
-            ${event.location || "Unknown"}
-
-
-
-            <br><br>
-
-
-            Source:
-
-            ${event.source || "Unknown"}
-
-
+            ${safe(event.location)}
 
             `);
-
 
 
         });
@@ -1368,15 +1207,12 @@ async function loadDisasterMap(){
 
 
     }
-
     catch(error){
 
 
         console.log(
-
-            "Disaster map error:",
+            "Map error:",
             error
-
         );
 
 
@@ -1388,25 +1224,16 @@ async function loadDisasterMap(){
 
 
 
-// =====================
-// PROJECT CLICK SUPPORT
-// =====================
-
-// Supports existing HTML:
-// onclick="loadProject('reddit')"
-
-window.loadProject = loadProject;
 
 
-
-// =============================
-// START SYSTEM
-// =============================
 
 
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
+
+
+    startTypewriter();
 
 
     loadIntelligence();
