@@ -576,11 +576,13 @@ nav a:hover {
 
 #disaster-map .leaflet-container {
 
-    width: 100%;
+    width: 100% !important;
 
-    height: 100%;
+    height: 100% !important;
 
     background: #000;
+
+    position: relative;
 
 }
 
@@ -589,20 +591,32 @@ nav a:hover {
 #disaster-map .leaflet-map-pane,
 #disaster-map .leaflet-tile-pane,
 #disaster-map .leaflet-overlay-pane,
+#disaster-map .leaflet-shadow-pane,
 #disaster-map .leaflet-marker-pane,
+#disaster-map .leaflet-tooltip-pane,
 #disaster-map .leaflet-popup-pane {
 
     position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 100%;
 
 }
 
 
 
-#disaster-map img {
+#disaster-map .leaflet-tile-pane {
 
-    max-width: none !important;
-
-    max-height: none !important;
+    z-index: 2;
 
 }
 
@@ -610,9 +624,23 @@ nav a:hover {
 
 #disaster-map .leaflet-tile {
 
-    max-width: none !important;
+    border: none;
 
-    max-height: none !important;
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+#disaster-map img {
+
+    border: none;
+
+    clip-path: none;
+
+    clip: auto;
 
 }
 

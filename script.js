@@ -1279,33 +1279,25 @@ async function loadDisasterMap() {
 
 
     /*
-    Dark Cyber Map Tiles (CARTO)
+    Dark Cyber Map Tiles (CartoDB Voyager)
    */
-
-
-    /*
-     OpenStreetMap Tiles
-    */
 
     L.tileLayer(
 
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
 
         {
 
-            subdomains: [
-                "a",
-                "b",
-                "c"
-            ],
-
-            maxZoom: 19,
-
-            noWrap: true,
-
-
             attribution:
-                "&copy; OpenStreetMap contributors"
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+
+            subdomains: "abcd",
+
+            maxZoom: 20,
+
+            minZoom: 1,
+
+            crossOrigin: true
 
         }
 
@@ -1315,12 +1307,9 @@ async function loadDisasterMap() {
 
             "tileerror",
 
-            error => {
+            () => {
 
-                console.error(
-                    "Tile error:",
-                    error
-                );
+                console.warn("Tile load issue - retrying with fallback");
 
             }
 
