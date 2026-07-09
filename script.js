@@ -6,21 +6,37 @@ const text = "system online...";
 let i = 0;
 
 function type() {
+
     const el = document.getElementById("typing");
+
     if (!el) return;
 
-    if (i === 0) el.innerHTML = "";
+
+    if (i === 0) {
+        el.innerHTML = "";
+    }
+
 
     if (i < text.length) {
+
         el.innerHTML += text.charAt(i);
+
         i++;
+
         setTimeout(type, 80);
+
     } else {
+
         el.innerHTML += '<span class="cursor">█</span>';
+
     }
+
 }
 
+
 type();
+
+
 
 
 // =====================
@@ -28,161 +44,78 @@ type();
 // =====================
 
 const projects = {
+
     reddit: {
+
         title: "Reddit Threat Monitor",
+
         images: [
+
             "assets/projects/reddit/image1.jpg",
             "assets/projects/reddit/image2.jpg",
             "assets/projects/reddit/image3.jpg",
             "assets/projects/reddit/image4.jpg",
             "assets/projects/reddit/image5.jpg"
+
         ],
+
         pdf: null
+
     },
+
 
     ransomware: {
+
         title: "Healthcare Ransomware Defense",
+
         images: [],
+
         pdf: "assets/projects/project2.pdf"
+
     },
 
+
     nestle: {
+
         title: "Nestle CIA Threat Table",
+
         images: [],
+
         pdf: "assets/projects/project1.pdf"
+
     }
+
 };
 
 
+
+
+
 // =====================
-// PROJECT VIEWER (FIXED)
+// PROJECT VIEWER
+// FIXED CLICK SYSTEM
 // =====================
+
 
 function loadProject(key) {
-    const viewer = document.getElementById("viewer-content");
-    const project = projects[key];
-
-    if (!viewer || !project) return;
-
-    let html = `<h2>${project.title}</h2>`;
-
-    // IMAGES
-    if (project.images && project.images.length > 0) {
-        html += `<h3>Evidence</h3>`;
-        project.images.forEach(img => {
-            html += `<img src="${img}">`;
-        });
-    }
-
-    // PDF
-    if (project.pdf) {
-        html += `
-            <h3>Report</h3>
-            <iframe src="${project.pdf}"></iframe>
-            <a href="${project.pdf}" target="_blank" class="project">
-                Open Full PDF
-            </a>
-        `;
-    }
-
-    viewer.innerHTML = html;
-
-    viewer.scrollIntoView({ behavior: "smooth", block: "center" });
-}
 
 
-// =====================
-// BACKGROUND GIF SYSTEM (STABLE VERSION)
-// =====================
-
-const gifs = [
-    "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
-    "assets/i-made-some-gifs-v0-fphci857e5o81.gif",
-    "assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
-    "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
-];
-
-// preload
-gifs.forEach(src => {
-    const img = new Image();
-    img.src = src;
-});
-
-let index = 0;
-
-const bg1 = document.getElementById("bg1");
-const bg2 = document.getElementById("bg2");
-const bg3 = document.getElementById("bg3");
-
-function initBackground() {
-    if (!bg1 || !bg2 || !bg3) return;
-
-    bg1.style.backgroundImage = `url('${gifs[0]}')`;
-    bg2.style.backgroundImage = `url('${gifs[1]}')`;
-    bg3.style.backgroundImage = `url('${gifs[2]}')`;
-
-    bg1.style.opacity = "1";
-    bg2.style.opacity = "0";
-    bg3.style.opacity = "0";
-}
-
-function rotateBackground() {
-    if (!bg1 || !bg2 || !bg3) return;
-
-    index = (index + 1) % gifs.length;
-
-    const next = gifs[index];
-
-    // shift visuals DOWN the pipeline (NOT array swapping)
-    bg1.style.backgroundImage = bg2.style.backgroundImage;
-    bg2.style.backgroundImage = bg3.style.backgroundImage;
-    bg3.style.backgroundImage = `url('${next}')`;
-
-    // fade control (stable)
-    bg3.style.opacity = "1";
-    bg2.style.opacity = "0.6";
-    bg1.style.opacity = "0.2";
-
-    setTimeout(() => {
-        bg1.style.backgroundImage = bg2.style.backgroundImage;
-        bg2.style.opacity = "0";
-        bg1.style.opacity = "1";
-    }, 1500);
-}
-
-// init
-initBackground();
-setInterval(rotateBackground, 6000);
-
-// =============================
-// INTELLIGENCE CENTER
-// =============================
-
-async function loadIntelligence(){
-
-    loadDisasterIntelligence();
-    loadEWS();
-    loadAINews();
-
-}
-
-
-// =============================
-// DISASTER INTELLIGENCE
-// =============================
-
-
-async function loadDisasterIntelligence(){
-
-
-    const feed =
+    const viewer =
     document.getElementById(
-        "disaster-feed"
+        "viewer-content"
     );
 
 
+    const project =
+    projects[key];
 
-    if(!feed){
+
+    if(!viewer || !project){
+
+        console.log(
+            "Project missing:",
+            key
+        );
 
         return;
 
@@ -190,310 +123,101 @@ async function loadDisasterIntelligence(){
 
 
 
-    try{
+    let html = `
 
+    <h2>
+    ${project.title}
+    </h2>
 
-        const response =
-        await fetch(
-            "data/disaster_state.json"
-        );
-
-
-
-        const data =
-        await response.json();
+    `;
 
 
 
-        const history =
-        data.history || {};
+    // IMAGES
+
+    if(project.images && project.images.length > 0){
 
 
+        html += `
 
-        let html = `
-
-
-        <div class="intel-status status-online">
-
-        ● DISASTER INTELLIGENCE ONLINE
-
-        </div>
-
+        <h3>
+        Evidence
+        </h3>
 
         `;
 
 
 
-        const categories = [
-
-            {
-                title:"🌎 EARTHQUAKES",
-                key:"earthquakes"
-            },
-
-            {
-                title:"🌋 VOLCANOES",
-                key:"volcanoes"
-            },
-
-            {
-                title:"☀️ SOLAR ACTIVITY",
-                key:"solar"
-            },
-
-            {
-                title:"⛈ WEATHER",
-                key:"weather"
-            }
-
-        ];
-
-
-
-
-        categories.forEach(category=>{
+        project.images.forEach(img => {
 
 
             html += `
 
-            <div class="intel-item">
-
-
-            <h3>
-
-            ${category.title}
-
-            </h3>
-
+            <img 
+            src="${img}"
+            alt="Project Evidence">
 
             `;
-
-
-
-            const events =
-            history[category.key] || [];
-
-
-
-
-            if(events.length === 0){
-
-
-                html += `
-
-                No recent events detected.
-
-                `;
-
-
-            }
-
-            else{
-
-
-                events
-                .slice(0,2)
-                .forEach(event=>{
-
-
-                    html += `
-
-
-                    <hr>
-
-
-                    <b>
-                    ${event.title}
-                    </b>
-
-
-                    <br><br>
-
-
-                    Location:
-
-                    ${event.location || "Unknown"}
-
-
-                    <br>
-
-
-                    Severity:
-
-                    ${event.severity || "Unknown"}
-
-
-                    <br>
-
-
-                    Source:
-
-                    ${event.source || "Unknown"}
-
-
-                    <br>
-
-
-                    `;
-
-
-
-                });
-
-
-            }
-
-
-
-            html += `
-
-            </div>
-
-            `;
-
 
 
         });
 
 
-
-        feed.innerHTML =
-        html;
-
-
-
-    }
-
-    catch(error){
-
-
-        console.log(
-
-            "Disaster intelligence error:",
-            error
-
-        );
-
-
-        feed.innerHTML = `
-
-        <div class="status-alert">
-
-        ● DISASTER INTELLIGENCE OFFLINE
-
-        </div>
-
-        `;
-
-
     }
 
 
-}
 
 
+    // PDF
 
-// =============================
-// EWS INTELLIGENCE
-// =============================
-
-async function loadEWS(){
-
-    const feed = document.getElementById(
-        "ews-feed"
-    );
+    if(project.pdf){
 
 
-    try{
-
-        const response = await fetch(
-            "data/ews_state.json"
-        );
+        html += `
 
 
-        const data = await response.json();
+        <h3>
+        Report
+        </h3>
 
 
-
-        feed.innerHTML = `
-
-
-        <div class="intel-status status-online">
-        ● EWS MONITOR ONLINE
-        </div>
-
-
-        <div class="intel-item">
-
-        ✈️ EARLY WARNING SYSTEM
+        <iframe
+        src="${project.pdf}">
+        </iframe>
 
 
         <br><br>
 
 
-        <b>Status Level:</b>
+        <a 
+        href="${project.pdf}"
+        target="_blank"
+        class="project">
 
-        ${data.level ?? "N/A"}/5
+        Open Full PDF
 
-
-        <br>
-
-
-        <b>Tracked Aircraft:</b>
-
-        ${data.concurrent_count ?? "N/A"}
-
-
-        <br>
-
-
-        <b>Anomaly Score:</b>
-
-        ${
-            data.z_score
-            ?
-            data.z_score.toFixed(2)
-            :
-            "N/A"
-        }σ
-
-
-        <br>
-
-
-        <b>Updated:</b>
-
-        ${data.as_of ?? "Unknown"}
-
-
-        </div>
+        </a>
 
 
         `;
 
 
     }
-    catch(error){
 
 
-        feed.innerHTML = `
 
-        <div class="status-alert">
-
-        ● EWS FEED OFFLINE
-
-        </div>
-
-        `;
+    viewer.innerHTML = html;
 
 
-        console.log(
-            "EWS error:",
-            error
-        );
 
+    viewer.scrollIntoView({
 
-    }
+        behavior:"smooth",
+
+        block:"center"
+
+    });
+
 
 }
 
@@ -502,246 +226,106 @@ async function loadEWS(){
 
 
 
+// =====================
+// PROJECT CLICK SUPPORT
+// SUPPORTS:
+// onclick="loadProject()"
+// data-project=""
+// =====================
 
-// =============================
-// AI CYBER DIGEST
-// =============================
 
-async function loadAINews(){
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
-    const feed = document.getElementById(
-        "ai-news-feed"
-    );
 
+    document
+    .querySelectorAll(".project")
+    .forEach(card=>{
 
-    try {
 
-        const response = await fetch(
-            "output/latest_digest.md?cache=" + Date.now()
-        );
+        card.addEventListener(
+        "click",
+        ()=>{
 
 
-        if (!response.ok) {
-            throw new Error("Digest unavailable");
-        }
+            const project =
+            card.dataset.project;
 
 
-        const markdown = await response.text();
+            if(project){
 
+                loadProject(project);
 
-        const reports = markdown
-            .split("\n## ")
-            .slice(1);
-
-
-
-        let html = `
-
-        <div class="intel-status status-online">
-        ● AI CYBER DIGEST ONLINE
-        </div>
-
-        `;
-
-
-
-        reports
-        .slice(0,5)
-        .forEach((report,index)=>{
-
-
-            const lines = report.split("\n");
-
-
-            const title =
-            lines.shift();
-
-
-
-            const content =
-            lines.join("\n");
-
-
-
-            const sourceMatch =
-            content.match(
-                /\*\*Source:\*\* (.*)/
-            );
-
-
-            const source =
-            sourceMatch
-            ?
-            sourceMatch[1]
-            :
-            "Unknown";
-
-
-
-            const summary =
-            content
-            .split("**Security Impact:**")[0]
-            .replace(
-                /\*\*Source:\*\*.*\n/,
-                ""
-            )
-            .trim();
-
-
-
-            const impactMatch =
-            content.match(
-                /\*\*Security Impact:\*\*\n([\s\S]*?)\n\nLink:/
-            );
-
-
-            const impact =
-            impactMatch
-            ?
-            impactMatch[1]
-            :
-            "No impact analysis available";
-
-
-
-            const linkMatch =
-            content.match(
-                /Link:\n(.*)/
-            );
-
-
-            const link =
-            linkMatch
-            ?
-            linkMatch[1]
-            :
-            "#";
-
-
-
-            html += `
-
-            <div class="intel-item">
-
-            🤖 INTEL REPORT #${index + 1}
-
-            <br><br>
-
-
-            <b>
-            ${title}
-            </b>
-
-
-            <br><br>
-
-
-            <b>Source:</b>
-
-            ${source}
-
-
-            <br><br>
-
-
-            <b>Analyst Summary:</b>
-
-            <br>
-
-            ${summary}
-
-
-            <br><br>
-
-
-            <b>Security Impact:</b>
-
-            <br>
-
-            ${impact.replace(/\n/g,"<br>")}
-
-
-            <br><br>
-
-
-            <a href="${link}"
-            target="_blank">
-
-            Read Full Report
-
-            </a>
-
-
-            </div>
-
-            `;
+            }
 
 
         });
 
 
-
-        html += `
-
-        <p>
-        Last Updated:
-        ${new Date().toUTCString()}
-        </p>
-
-        `;
+    });
 
 
-        feed.innerHTML = html;
+});
 
 
 
-    }
-
-    catch(error){
-
-
-        feed.innerHTML = `
-
-        <div class="status-alert">
-
-        ● AI INTELLIGENCE OFFLINE
-
-        </div>
-
-        `;
-
-
-        console.log(
-            "AI digest error:",
-            error
-        );
-
-    }
-
-}
-
-// =============================
-// GLOBAL DISASTER MAP
-// =============================
-
-let disasterMap;
 
 
 
-async function loadDisasterMap(){
+// =====================
+// BACKGROUND GIF SYSTEM
+// =====================
 
 
-    const mapElement =
-    document.getElementById(
-        "disaster-map"
-    );
+const gifs = [
+
+"assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+
+"assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+
+"assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+
+"assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+
+];
 
 
-    if(!mapElement){
 
-        console.log(
-            "Disaster map element missing"
-        );
+gifs.forEach(src=>{
+
+    const img =
+    new Image();
+
+    img.src = src;
+
+});
+
+
+
+let index = 0;
+
+
+
+const bg1 =
+document.getElementById("bg1");
+
+
+const bg2 =
+document.getElementById("bg2");
+
+
+const bg3 =
+document.getElementById("bg3");
+
+
+
+
+
+function initBackground(){
+
+
+    if(!bg1 || !bg2 || !bg3){
 
         return;
 
@@ -749,206 +333,102 @@ async function loadDisasterMap(){
 
 
 
-    disasterMap = L.map(
-        "disaster-map"
-    ).setView(
+    bg1.style.backgroundImage =
+    `url('${gifs[0]}')`;
 
-        [20,0],
 
-        2
+    bg2.style.backgroundImage =
+    `url('${gifs[1]}')`;
 
-    );
 
+    bg3.style.backgroundImage =
+    `url('${gifs[2]}')`;
 
 
-    L.tileLayer(
 
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    bg1.style.opacity="1";
 
-        {
+    bg2.style.opacity="0";
 
-            attribution:
-            "© OpenStreetMap"
-
-        }
-
-    ).addTo(
-        disasterMap
-    );
-
-
-
-    try{
-
-
-        const response =
-        await fetch(
-            "data/disaster_state.json"
-        );
-
-
-
-        const data =
-        await response.json();
-
-
-
-        const events =
-        data.events || [];
-
-
-
-
-        events.forEach(event=>{
-
-
-            if(
-                !event.coordinates
-            ){
-
-                return;
-
-            }
-
-
-
-            const lat =
-            event.coordinates.lat;
-
-
-
-            const lon =
-            event.coordinates.lon;
-
-
-
-            if(
-                lat === 0 ||
-                lon === 0
-            ){
-
-                return;
-
-            }
-
-
-
-            let iconColor =
-            "blue";
-
-
-
-            if(event.type === "earthquake"){
-
-                iconColor="red";
-
-            }
-
-
-            if(event.type === "volcano"){
-
-                iconColor="orange";
-
-            }
-
-
-            if(event.type === "weather"){
-
-                iconColor="purple";
-
-            }
-
-
-            if(event.type === "solar"){
-
-                iconColor="yellow";
-
-            }
-
-
-
-
-            L.circleMarker(
-
-                [
-                    lat,
-                    lon
-                ],
-
-                {
-
-                radius:10,
-
-                fillOpacity:.8
-
-                }
-
-            )
-
-            .addTo(
-                disasterMap
-            )
-
-
-            .bindPopup(`
-
-            <b>
-            ${event.title}
-            </b>
-
-            <br><br>
-
-
-            Type:
-            ${event.type}
-
-
-            <br>
-
-
-            Severity:
-            ${event.severity}
-
-
-            <br>
-
-
-            Location:
-            ${event.location}
-
-
-            <br><br>
-
-
-            Source:
-            ${event.source}
-
-            `);
-
-
-
-        });
-
-
-
-    }
-
-    catch(error){
-
-
-        console.log(
-
-            "Disaster map error:",
-            error
-
-        );
-
-
-    }
+    bg3.style.opacity="0";
 
 
 }
 
-loadIntelligence();
 
-loadDisasterMap();
+
+
+
+function rotateBackground(){
+
+
+    if(!bg1 || !bg2 || !bg3){
+
+        return;
+
+    }
+
+
+
+    index =
+    (index + 1)
+    %
+    gifs.length;
+
+
+
+    const next =
+    gifs[index];
+
+
+
+    bg1.style.backgroundImage =
+    bg2.style.backgroundImage;
+
+
+
+    bg2.style.backgroundImage =
+    bg3.style.backgroundImage;
+
+
+
+    bg3.style.backgroundImage =
+    `url('${next}')`;
+
+
+
+    bg3.style.opacity="1";
+
+    bg2.style.opacity=".6";
+
+    bg1.style.opacity=".2";
+
+
+
+    setTimeout(()=>{
+
+
+        bg1.style.backgroundImage =
+        bg2.style.backgroundImage;
+
+
+        bg2.style.opacity="0";
+
+
+        bg1.style.opacity="1";
+
+
+    },1500);
+
+
+}
+
+
+
+initBackground();
+
+
+setInterval(
+rotateBackground,
+6000
+);
