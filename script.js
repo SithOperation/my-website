@@ -1676,6 +1676,43 @@ async function loadDisasterMap(){
 
 
 
+// =========================
+// UFO BACK TO TOP
+// =========================
+
+const ufoButton = document.getElementById("ufo-top");
+
+
+if (ufoButton) {
+
+    ufoButton.addEventListener("click", () => {
+
+
+        ufoButton.classList.add("launch");
+
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+
+        setTimeout(() => {
+
+            ufoButton.classList.remove("launch");
+
+        },1000);
+
+
+    });
+
+}
+
+
+
 
 
 
