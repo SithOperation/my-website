@@ -1279,10 +1279,18 @@ async function loadDisasterMap(){
 
     )
 
-    .addTo(
-        disasterMap
-    );
+   .addTo(disasterMap);
 
+
+   disasterMap.whenReady(()=>{
+
+      setTimeout(()=>{
+
+         disasterMap.invalidateSize(true);
+
+      },500);
+
+   });
 
 
 
@@ -1294,16 +1302,16 @@ async function loadDisasterMap(){
 
    setTimeout(()=>{
 
-       disasterMap.invalidateSize(true);
+      disasterMap.invalidateSize();
 
-   },500);
+   },1000);
 
 
    setTimeout(()=>{
 
-       disasterMap.invalidateSize(true);
+      disasterMap.invalidateSize();
 
-   },1500);
+   },2500);
 
 
 
@@ -1491,11 +1499,11 @@ document.addEventListener(
 
 
 
-    requestAnimationFrame(()=>{
+    setTimeout(()=>{
 
        loadDisasterMap();
 
-   });
+   },1000);
 
 
 
