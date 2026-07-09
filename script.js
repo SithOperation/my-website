@@ -2091,6 +2091,55 @@ function initProjectCards() {
 }
 
 
+/* =====================================================
+   UFO BACK TO TOP
+===================================================== */
+
+function initUFOButton() {
+
+    const button =
+        document.getElementById("ufo-top");
+
+
+    if (!button) {
+
+        return;
+
+    }
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+
+            button.classList.add(
+                "launch"
+            );
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+
+            setTimeout(() => {
+
+                button.classList.remove(
+                    "launch"
+                );
+
+            }, 1000);
+
+
+        }
+    );
+
+}
 
 
 
