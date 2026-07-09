@@ -16,6 +16,16 @@ rel="stylesheet"
 href="https://unpkg.com/leaflet/dist/leaflet.css"
 />
 
+<meta http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+script-src 'self' https://unpkg.com;
+style-src 'self' 'unsafe-inline' https://unpkg.com;
+img-src 'self' data: https:;
+font-src 'self' data:;
+connect-src 'self';
+">
+    
 </head>
 
 
