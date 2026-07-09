@@ -985,201 +985,46 @@ async function loadAINews() {
 
 
 /* =====================================================
-   LEAFLET MAP HELPERS
+   MAPLIBRE MAP HELPERS
 ===================================================== */
 
 
 function getEventColor(type) {
 
-
     switch (type) {
 
-
         case "earthquake":
-            return "red";
-
+            return "#ff4444";
 
         case "volcano":
-            return "orange";
-
+            return "#ff9900";
 
         case "weather":
-            return "purple";
-
+            return "#9933ff";
 
         case "solar":
-            return "yellow";
-
+            return "#ffff00";
 
         default:
             return "#00ffff";
 
     }
 
-
 }
 
 
-
-
-
-
-function addPointEvent(event) {
-
-
-    if (!event.coordinates) {
-
-        return;
-
-    }
-
-
-    const lat =
-        event.coordinates.lat;
-
-
-    const lon =
-        event.coordinates.lon ??
-        event.coordinates.lng;
-
-
-
-    if (
-        lat === undefined ||
-        lon === undefined
-    ) {
-
-        return;
-
-    }
-
-
-
-    L.circleMarker(
-
-        [
-            lat,
-            lon
-        ],
-
-        {
-
-            radius: 6,
-
-            color:
-                getEventColor(event.type),
-
-            fillColor:
-                getEventColor(event.type),
-
-            fillOpacity: .8,
-
-            weight: 2
-
-        }
-
-    )
-
-        .bindPopup(`
-
-    <strong>
-    ${safe(event.title)}
-    </strong>
-
-    <br><br>
-
-
-    Location:
-    ${safe(event.location)}
-
-
-    <br>
-
-
-    Severity:
-    ${safe(event.severity)}
-
-
-    <br>
-
-
-    Type:
-    ${safe(event.type)}
-
-    `)
-
-        .addTo(disasterMap);
-
-
-}
-
-
-
-
-
-
-function addPolygonEvent(event) {
-
-
-    if (
-        !event.coordinates ||
-        !Array.isArray(
-            event.coordinates.polygon
-        )
-    ) {
-
-        return;
-
-    }
-
-
-
-    L.polygon(
-
-        event.coordinates.polygon,
-
-        {
-
-            color:
-                getEventColor(event.type),
-
-            fillOpacity: .25
-
-        }
-
-    )
-
-        .bindPopup(`
-
-    <strong>
-    ${safe(event.title)}
-    </strong>
-
-    <br>
-
-    ${safe(event.location)}
-
-    `)
-
-        .addTo(disasterMap);
-
-
-}
 
 /* =====================================================
-   DISASTER MAP
+   DISASTER MAP (MapLibre)
 ===================================================== */
 
 
 async function loadDisasterMap() {
 
-
     const mapElement =
         document.getElementById(
             "disaster-map"
         );
-
-
 
     if (!mapElement) {
 
@@ -1191,296 +1036,297 @@ async function loadDisasterMap() {
 
     }
 
-
-
-    if (typeof L === "undefined") {
+    if (typeof maplibregl === "undefined") {
 
         console.error(
-            "Leaflet not loaded"
+            "MapLibre not loaded"
         );
 
         return;
 
     }
 
-
-
-
-
-    /*
-        Remove old map safely
-    */
-
-
+    /* Remove old map safely */
     if (disasterMap) {
-
 
         disasterMap.remove();
 
-
         disasterMap = null;
-
 
     }
 
+    /* Create MapLibre map */
+    disasterMap = new maplibregl.Map({
 
+        container: "disaster-map",
 
+        style: "https://demotiles.maplibre.org/style.json",
 
+        center: [0, 20],
 
-    /*
-        Create Leaflet map
-    */
+        zoom: 2,
 
+        minZoom: 1,
 
-    disasterMap = L.map(
+        maxZoom: 18,
 
-        "disaster-map",
+    });
 
-        {
+    /* Handle map load event */
+    disasterMap.on("load", async () => {
 
-            zoomControl: true,
+        try {
 
-            worldCopyJump: false,
+            const data =
+                await fetchJSON(
+                    "data/disaster_state.json"
+                );
 
-            minZoom: 2,
+            const history =
+                data.history || {};
 
-            maxZoom: 18,
+            let events = [];
 
-            preferCanvas: true
+            Object.values(history)
 
-        }
+                .forEach(category => {
 
-    );
+                    if (Array.isArray(category)) {
 
+                        events =
+                            events.concat(category);
 
+                    }
 
+                });
 
+            /* Build GeoJSON from events */
+            const geojson = {
 
-    disasterMap.setView(
+                type: "FeatureCollection",
 
-        [
-            20,
-            0
-        ],
+                features: events.map(event => ({
 
-        2,
+                    type: "Feature",
 
-        {
+                    properties: {
 
-            animate: false
+                        title: safe(event.title),
 
-        }
+                        location: safe(event.location),
 
-    );
+                        severity: safe(event.severity),
 
+                        type: event.type || "default",
 
+                    },
 
+                    geometry: (() => {
 
+                        if (
+                            event.coordinates &&
+                            event.coordinates.lat !== undefined &&
+                            (event.coordinates.lon !== undefined ||
+                            event.coordinates.lng !== undefined)
+                        ) {
 
+                            return {
 
-    /*
-    Dark Cyber Map Tiles (CartoDB Voyager)
-   */
+                                type: "Point",
 
-    L.tileLayer(
+                                coordinates: [
 
-        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                                    event.coordinates.lon ?? event.coordinates.lng,
 
-        {
+                                    event.coordinates.lat,
 
-            attribution:
-                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                                ],
 
-            subdomains: "abcd",
+                            };
 
-            maxZoom: 20,
+                        }
 
-            minZoom: 1,
+                        if (
+                            event.coordinates &&
+                            Array.isArray(event.coordinates.polygon)
+                        ) {
 
-            crossOrigin: true
+                            return {
 
-        }
+                                type: "Polygon",
 
-    )
+                                coordinates: [event.coordinates.polygon],
 
-        .on(
+                            };
 
-            "tileerror",
+                        }
 
-            () => {
+                        return null;
 
-                console.warn("Tile load issue - retrying with fallback");
+                    })(),
 
-            }
+                })).filter(f => f.geometry !== null),
 
-        )
+            };
 
-        .addTo(disasterMap);
+            /* Add source */
+            disasterMap.addSource("disasters", {
 
+                type: "geojson",
 
-
-
-
-
-    /*
-        Wix layout correction
-    */
-
-
-    const resizeObserver =
-        new ResizeObserver(() => {
-
-            if (disasterMap) {
-
-                disasterMap.invalidateSize();
-
-            }
-
-        });
-
-
-
-    resizeObserver.observe(
-        mapElement
-    );
-
-
-
-
-
-
-    /*
-        Load disaster data
-    */
-
-
-    try {
-
-
-        const data =
-            await fetchJSON(
-                "data/disaster_state.json"
-            );
-
-
-
-        const history =
-            data.history || {};
-
-
-
-        let events = [];
-
-
-
-        Object.values(history)
-
-            .forEach(category => {
-
-
-                if (Array.isArray(category)) {
-
-
-                    events =
-                        events.concat(category);
-
-
-                }
-
+                data: geojson,
 
             });
 
+            /* Add point layer */
+            disasterMap.addLayer({
 
+                id: "disaster-points",
 
+                type: "circle",
 
+                source: "disasters",
 
-        events.forEach(event => {
+                filter: ["==", ["geometry-type"], "Point"],
 
+                paint: {
 
-            if (!event) {
+                    "circle-radius": 6,
 
-                return;
+                    "circle-color": ["get", "type", ["literal", {
 
-            }
+                        "earthquake": "#ff4444",
 
+                        "volcano": "#ff9900",
 
+                        "weather": "#9933ff",
 
+                        "solar": "#ffff00",
 
-            if (
+                        "default": "#00ffff",
 
-                event.coordinates &&
+                    }]],
 
-                event.coordinates.lat !== undefined &&
+                    "circle-opacity": 0.8,
 
-                (
-                    event.coordinates.lon !== undefined ||
-                    event.coordinates.lng !== undefined
-                )
-            ) {
+                    "circle-stroke-width": 2,
 
-                addPointEvent(event);
+                    "circle-stroke-color": "#fff",
 
-            }
+                },
 
+            });
 
+            /* Add polygon layer */
+            disasterMap.addLayer({
 
-            else if (
+                id: "disaster-polygons",
 
-                event.coordinates &&
+                type: "fill",
 
-                Array.isArray(
-                    event.coordinates.polygon
-                )
+                source: "disasters",
 
-            ) {
+                filter: ["==", ["geometry-type"], "Polygon"],
 
+                paint: {
 
-                addPolygonEvent(event);
+                    "fill-color": getEventColor("weather"),
 
+                    "fill-opacity": 0.25,
 
-            }
+                },
 
+            });
 
+            /* Add polygon outlines */
+            disasterMap.addLayer({
 
-        });
+                id: "disaster-polygon-outlines",
 
+                type: "line",
 
+                source: "disasters",
 
+                filter: ["==", ["geometry-type"], "Polygon"],
 
-    }
+                paint: {
 
-    catch (error) {
+                    "line-color": getEventColor("weather"),
 
+                    "line-width": 2,
 
-        console.error(
+                },
 
-            "Map data error:",
+            });
 
-            error
+            /* Handle clicks for popups */
+            disasterMap.on("click", "disaster-points", (e) => {
 
-        );
+                const props = e.features[0].properties;
 
+                const popup = new maplibregl.Popup()
 
-    }
+                    .setLngLat(e.lngLat)
 
+                    .setHTML(`
 
+                        <strong>${props.title}</strong><br>
+                        Location: ${props.location}<br>
+                        Severity: ${props.severity}<br>
+                        Type: ${props.type}
 
+                    `)
 
+                    .addTo(disasterMap);
+
+            });
+
+            disasterMap.on("click", "disaster-polygons", (e) => {
+
+                const props = e.features[0].properties;
+
+                const popup = new maplibregl.Popup()
+
+                    .setLngLat(e.lngLat)
+
+                    .setHTML(`
+
+                        <strong>${props.title}</strong><br>
+                        ${props.location}
+
+                    `)
+
+                    .addTo(disasterMap);
+
+            });
+
+            /* Change cursor on hover */
+            disasterMap.on("mouseenter", "disaster-points", () => {
+
+                disasterMap.getCanvas().style.cursor = "pointer";
+
+            });
+
+            disasterMap.on("mouseleave", "disaster-points", () => {
+
+                disasterMap.getCanvas().style.cursor = "";
+
+            });
+
+        }
+        catch (error) {
+
+            console.error(
+                "Map data error:",
+                error
+            );
+
+        }
+
+    });
 
 }
 
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   UFO BUTTON
-===================================================== */
 
 
 function initUFOButton() {
@@ -1647,20 +1493,19 @@ document.addEventListener(
 
 
         /*
-           Wait for Wix rendering
+           Wait for MapLibre rendering
         */
 
         setTimeout(() => {
 
-
             loadDisasterMap();
 
-
+            /* Trigger map resize after load */
             setTimeout(() => {
 
                 if (disasterMap) {
 
-                    disasterMap.invalidateSize(true);
+                    disasterMap.resize();
 
                 }
 

@@ -558,133 +558,88 @@ nav a:hover {
 
     height: 600px;
 
-    min-height: 600px;
-
-    position: relative;
-
-    overflow: hidden;
-
     border-radius: 12px;
 
     border: 1px solid rgba(0, 255, 255, .35);
 
-    background: #000;
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, .5),
+        0 0 20px rgba(0, 255, 255, .15);
 
 }
 
 
+#disaster-map .maplibregl-popup-content {
 
-#disaster-map .leaflet-container {
+    background: rgba(0, 0, 0, .95);
 
-    width: 100% !important;
+    color: #00ffff;
 
-    height: 100% !important;
+    border: 1px solid rgba(0, 255, 255, .35);
 
-    background: #000;
+    border-radius: 8px;
 
-    position: relative;
+    padding: 12px;
 
-}
-
-
-
-#disaster-map .leaflet-map-pane,
-#disaster-map .leaflet-tile-pane,
-#disaster-map .leaflet-overlay-pane,
-#disaster-map .leaflet-shadow-pane,
-#disaster-map .leaflet-marker-pane,
-#disaster-map .leaflet-tooltip-pane,
-#disaster-map .leaflet-popup-pane {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    right: 0;
-
-    bottom: 0;
-
-    width: 100%;
-
-    height: 100%;
+    font-family: monospace;
 
 }
 
 
+#disaster-map .maplibregl-popup-tip {
 
-#disaster-map .leaflet-tile-pane {
-
-    z-index: 2;
-
-}
-
-
-
-#disaster-map .leaflet-tile {
-
-    border: none;
-
-    margin: 0;
-
-    padding: 0;
+    border-top-color: rgba(0, 0, 0, .95);
 
 }
 
 
+#disaster-map .maplibregl-ctrl-group {
 
-#disaster-map img {
+    box-shadow: 0 0 15px rgba(0, 255, 255, .2);
 
-    border: none;
+    background: rgba(0, 0, 0, .75);
 
-    clip-path: none;
-
-    clip: auto;
-
-}
-
-
-
-#disaster-map .leaflet-control-container {
-
-    z-index: 1000;
+    border-radius: 4px;
 
 }
 
 
+#disaster-map .maplibregl-ctrl-group button {
 
-#disaster-map .leaflet-control-zoom a {
+    background: rgba(0, 0, 0, .85);
 
-    background: #000 !important;
+    color: #00ffff;
 
-    color: #00ffff !important;
-
-}
-
-
-
-#disaster-map .leaflet-control-attribution {
-
-    background:
-        rgba(0, 0, 0, .75) !important;
-
-    color: white !important;
+    border-right: 1px solid rgba(0, 255, 255, .2);
 
 }
 
 
+#disaster-map .maplibregl-ctrl-group button:hover {
 
+    background: rgba(0, 255, 255, .1);
+
+}
+
+
+#disaster-map .maplibregl-ctrl-attrib {
+
+    background: rgba(0, 0, 0, .75);
+
+    color: rgba(255, 255, 255, .6);
+
+    font-size: 11px;
+
+}
 
 
 @media(max-width:768px) {
 
-
     #disaster-map {
 
         height: 400px;
-
-        min-height: 400px;
 
     }
 

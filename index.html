@@ -11,7 +11,7 @@
     <title>Joseph Technologies</title>
 
 
-    <link rel="stylesheet" href="assets/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css">
 
     <link rel="stylesheet" href="style.css">
 
@@ -19,17 +19,15 @@
 
     <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
-script-src 'self';
-style-src 'self' 'unsafe-inline';
+script-src 'self' https://unpkg.com;
+style-src 'self' 'unsafe-inline' https://unpkg.com;
 img-src 'self' data: blob:
-https://tile.openstreetmap.org
-https://*.tile.openstreetmap.org
-https://*.basemaps.cartocdn.com;
-font-src 'self';
+https://*.maptiler.com
+https://*.maptiler.app;
+font-src 'self' https://unpkg.com;
 connect-src 'self'
-https://tile.openstreetmap.org
-https://*.tile.openstreetmap.org
-https://*.basemaps.cartocdn.com;
+https://*.maptiler.com
+https://*.maptiler.app;
 frame-src 'self';
 ">
 
@@ -698,7 +696,7 @@ frame-src 'self';
         🛸
     </button>
 
-    <script src="assets/leaflet.js"></script>
+    <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
 
     <script src="script.js"></script>
 
