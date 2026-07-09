@@ -4,7 +4,7 @@ Top cybersecurity and AI intelligence reports
 
 
 
-## 1. Suspected China-Aligned Hackers Exploit Roundcube Flaws Against Universities
+## 1. Threat Actors Probe Gitea Docker Flaw CVE-2026-20896 13 Days After Disclosure
 
 
 **Source:** The Hacker News
@@ -13,14 +13,14 @@ Top cybersecurity and AI intelligence reports
 **Category:** Cybersecurity
 
 
-A suspected China-aligned threat activity cluster has been observed exploiting Roundcube webmail software belonging to physics and engineering departments of U.S. and Canadian universities as part of a new campaign.
+Threat actors have been observed attempting to exploit a recently patched critical security flaw in Gitea Docker images, according to Sysdig.
 
-The activity involves the exploitation of now-patched, critical security flaws in the open-source email solution, such as CVE-2024-42009 (CVSS score: 9.3), to siphon credentials,
+The vulnerability in question is CVE-2026-20896 (CVSS score: 9.8), a vulnerability that stems from the DevOps platform trusting the "X-WEBAUTH-USER" header from any source IP address, effectively allowing an unauthenticated internet client to get elevated
 
 
 Read More:
 
-https://thehackernews.com/2026/07/suspected-china-aligned-hackers-exploit.html
+https://thehackernews.com/2026/07/threat-actors-probe-gitea-docker-flaw.html
 
 
 ---
