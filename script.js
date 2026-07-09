@@ -1289,24 +1289,21 @@ async function loadDisasterMap(){
 
 
     /*
-        Force Leaflet to calculate size
-    */
+    Force Leaflet to calculate size
+   */
 
-    setTimeout(()=>{
+   setTimeout(()=>{
 
+       disasterMap.invalidateSize(true);
 
-          setTimeout(()=>{
-
-             disasterMap.invalidateSize(true);
-
-         },500);
+   },500);
 
 
-          setTimeout(()=>{
+   setTimeout(()=>{
 
-             disasterMap.invalidateSize(true);
+       disasterMap.invalidateSize(true);
 
-         },1500);
+   },1500);
 
 
 
