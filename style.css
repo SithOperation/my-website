@@ -1100,3 +1100,33 @@ nav a:hover {
     }
 
 }
+
+/* =========================
+   MOBILE SAFARI TOUCH FIX
+========================= */
+
+
+html,
+body {
+
+    touch-action: manipulation;
+
+}
+
+
+
+.bg-layer {
+
+    pointer-events: none;
+
+}
+
+
+
+#ufo-top,
+nav a,
+.project {
+
+    pointer-events: auto;
+
+}
