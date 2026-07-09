@@ -1,22 +1,3 @@
-disasterMap.getCenter()
-Object { lat: -13.838079936422462, lng: -69.78515625000001 }
-
-disasterMap.getPixelOrigin()
-Object { x: 229, y: 804 }
-
-disasterMap.setView([20,0],2,{animate:false});
-Object { options: {…}, _handlers: (7) […], _layers: {…}, _zoomBoundLayers: {…}, _sizeChanged: false, _container: div#disaster-map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom, _leaflet_id: 2, _containerId: 3, _fadeAnimated: true, _panes: {…}, … }
-
-disasterMap.getContainer().getBoundingClientRect()
-DOMRect { x: 370.66668701171875, y: -234.03334045410156, width: 797.3333129882812, height: 600, top: -234.03334045410156, right: 1168, bottom: 365.96665954589844, left: 370.66668701171875 }
-
-document.getElementById("disaster-map").getBoundingClientRect()
-DOMRect { x: 370.66668701171875, y: -234.03334045410156, width: 797.3333129882812, height: 600, top: -234.03334045410156, right: 1168, bottom: 365.96665954589844, left: 370.66668701171875 }
-
-disasterMap.dragging.disable();
-disasterMap.touchZoom.disable();
-disasterMap.scrollWheelZoom.disable();
-Object { options: {}, _map: {…}, _initHooksCalled: true, _enabled: false, _leaflet_id: 21, _delta: 0, _lastMousePos: {…}, _startTime: null, _timer: 33 }
 /* =========================
    BASE
 ========================= */
@@ -33,17 +14,17 @@ html {
 
 body {
 
-    margin:0;
+    margin: 0;
 
-    padding:0;
+    padding: 0;
 
-    background:#000;
+    background: #000;
 
-    color:white;
+    color: white;
 
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
 
-    overflow-x:hidden;
+    overflow-x: hidden;
 
 }
 
@@ -51,24 +32,24 @@ body {
 
 .bg-layer {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    background-size:cover;
+    background-size: cover;
 
-    background-position:center;
+    background-position: center;
 
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
 
-    z-index:-3;
+    z-index: -3;
 
-    opacity:0;
+    opacity: 0;
 
-    transform:scale(1.05);
+    transform: scale(1.05);
 
     transition:
-    opacity 1.5s ease-in-out;
+        opacity 1.5s ease-in-out;
 
 }
 
@@ -76,14 +57,14 @@ body {
 
 .bg-layer::after {
 
-    content:"";
+    content: "";
 
-    position:absolute;
+    position: absolute;
 
-    inset:0;
+    inset: 0;
 
     background:
-    rgba(0,0,0,.45);
+        rgba(0, 0, 0, .45);
 
 }
 
@@ -92,14 +73,14 @@ body {
 
 .overlay {
 
-    min-height:100vh;
+    min-height: 100vh;
 
     background:
-    rgba(0,0,0,.72);
+        rgba(0, 0, 0, .72);
 
-    position:relative;
+    position: relative;
 
-    z-index:1;
+    z-index: 1;
 
 }
 
@@ -112,10 +93,10 @@ body {
 
 .hero {
 
-    text-align:center;
+    text-align: center;
 
     padding:
-    70px 20px 30px;
+        70px 20px 30px;
 
 }
 
@@ -123,22 +104,22 @@ body {
 
 .main-title {
 
-    position:relative;
+    position: relative;
 
-    font-family:monospace;
+    font-family: monospace;
 
     font-size:
-    clamp(38px,6vw,72px);
+        clamp(38px, 6vw, 72px);
 
-    letter-spacing:8px;
+    letter-spacing: 8px;
 
-    color:#00ffff;
+    color: #00ffff;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 
     text-shadow:
-    0 0 10px #00ffff,
-    0 0 25px rgba(0,255,255,.6);
+        0 0 10px #00ffff,
+        0 0 25px rgba(0, 255, 255, .6);
 
 }
 
@@ -148,13 +129,13 @@ body {
 .main-title::after {
 
 
-    content:attr(data-text);
+    content: attr(data-text);
 
-    position:absolute;
+    position: absolute;
 
-    inset:0;
+    inset: 0;
 
-    opacity:.7;
+    opacity: .7;
 
 }
 
@@ -162,10 +143,10 @@ body {
 
 .main-title::before {
 
-    color:#ff004c;
+    color: #ff004c;
 
     animation:
-    glitchRed 2s infinite;
+        glitchRed 2s infinite;
 
 }
 
@@ -173,10 +154,10 @@ body {
 
 .main-title::after {
 
-    color:#00ffff;
+    color: #00ffff;
 
     animation:
-    glitchBlue 1.5s infinite;
+        glitchBlue 1.5s infinite;
 
 }
 
@@ -184,12 +165,12 @@ body {
 
 .hero-subtitle {
 
-    font-family:monospace;
+    font-family: monospace;
 
-    letter-spacing:5px;
+    letter-spacing: 5px;
 
     color:
-    rgba(255,255,255,.65);
+        rgba(255, 255, 255, .65);
 
 }
 
@@ -197,9 +178,9 @@ body {
 
 .terminal {
 
-    color:#00ff99;
+    color: #00ff99;
 
-    font-family:monospace;
+    font-family: monospace;
 
 }
 
@@ -208,7 +189,7 @@ body {
 .cursor {
 
     animation:
-    blink 1s infinite;
+        blink 1s infinite;
 
 }
 
@@ -223,15 +204,15 @@ body {
 
 nav {
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 
-    gap:10px;
+    gap: 10px;
 
-    padding:15px;
+    padding: 15px;
 
 }
 
@@ -239,18 +220,18 @@ nav {
 
 nav a {
 
-    color:white;
+    color: white;
 
-    text-decoration:none;
+    text-decoration: none;
 
-    font-family:monospace;
+    font-family: monospace;
 
     padding:
-    8px 12px;
+        8px 12px;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    transition:.3s;
+    transition: .3s;
 
 }
 
@@ -258,13 +239,13 @@ nav a {
 
 nav a:hover {
 
-    color:#00ffff;
+    color: #00ffff;
 
     background:
-    rgba(0,255,255,.1);
+        rgba(0, 255, 255, .1);
 
     box-shadow:
-    0 0 15px rgba(0,255,255,.25);
+        0 0 15px rgba(0, 255, 255, .25);
 
 }
 
@@ -280,39 +261,37 @@ nav a:hover {
 .card {
 
 
-    max-width:900px;
+    max-width: 900px;
 
     margin:
-    50px auto;
+        50px auto;
 
-    padding:25px;
+    padding: 25px;
 
-    position:relative;
+    position: relative;
 
-    overflow:visible;
+    overflow: visible;
 
-    border-radius:12px;
+    border-radius: 12px;
 
 
     background:
-    linear-gradient(
-        135deg,
-        rgba(0,255,255,.06),
-        rgba(0,0,0,.75)
-    );
+        linear-gradient(135deg,
+            rgba(0, 255, 255, .06),
+            rgba(0, 0, 0, .75));
 
 
     border:
-    1px solid rgba(0,255,255,.18);
+        1px solid rgba(0, 255, 255, .18);
 
 
-    backdrop-filter:none;
+    backdrop-filter: none;
 
 
     box-shadow:
 
-    inset 0 0 25px rgba(0,255,255,.05),
-    0 0 25px rgba(0,255,255,.08);
+        inset 0 0 25px rgba(0, 255, 255, .05),
+        0 0 25px rgba(0, 255, 255, .08);
 
 
 }
@@ -323,15 +302,15 @@ nav a:hover {
 .card h3 {
 
 
-    position:relative;
+    position: relative;
 
-    z-index:2;
+    z-index: 2;
 
-    font-family:monospace;
+    font-family: monospace;
 
-    color:#00ffff;
+    color: #00ffff;
 
-    letter-spacing:2px;
+    letter-spacing: 2px;
 
 }
 
@@ -339,11 +318,11 @@ nav a:hover {
 
 .card p {
 
-    position:relative;
+    position: relative;
 
-    z-index:2;
+    z-index: 2;
 
-    line-height:1.7;
+    line-height: 1.7;
 
 }
 
@@ -358,17 +337,17 @@ nav a:hover {
 
 .glitch-title {
 
-    position:relative;
+    position: relative;
 
-    font-family:monospace;
+    font-family: monospace;
 
-    color:#00ffff;
+    color: #00ffff;
 
-    letter-spacing:5px;
+    letter-spacing: 5px;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 
-    font-size:42px;
+    font-size: 42px;
 
 }
 
@@ -377,11 +356,11 @@ nav a:hover {
 .glitch-title::before,
 .glitch-title::after {
 
-    content:attr(data-text);
+    content: attr(data-text);
 
-    position:absolute;
+    position: absolute;
 
-    inset:0;
+    inset: 0;
 
 }
 
@@ -389,10 +368,10 @@ nav a:hover {
 
 .glitch-title::before {
 
-    color:#ff004c;
+    color: #ff004c;
 
     animation:
-    glitchRed 1.5s infinite;
+        glitchRed 1.5s infinite;
 
 }
 
@@ -400,10 +379,10 @@ nav a:hover {
 
 .glitch-title::after {
 
-    color:#00ffff;
+    color: #00ffff;
 
     animation:
-    glitchBlue 1s infinite;
+        glitchBlue 1s infinite;
 
 }
 
@@ -418,16 +397,14 @@ nav a:hover {
 .grid {
 
 
-    display:grid;
+    display: grid;
 
     grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(220px,1fr)
-    );
+        repeat(auto-fit,
+            minmax(220px, 1fr));
 
 
-    gap:15px;
+    gap: 15px;
 
 
 }
@@ -437,22 +414,22 @@ nav a:hover {
 .project {
 
 
-    padding:20px;
+    padding: 20px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    border-radius:10px;
+    border-radius: 10px;
 
 
     background:
-    rgba(0,0,0,.65);
+        rgba(0, 0, 0, .65);
 
 
     border:
-    1px solid rgba(0,255,255,.2);
+        1px solid rgba(0, 255, 255, .2);
 
 
-    transition:.3s;
+    transition: .3s;
 
 
 }
@@ -463,14 +440,14 @@ nav a:hover {
 
 
     transform:
-    translateY(-5px);
+        translateY(-5px);
 
 
-    border-color:#00ffff;
+    border-color: #00ffff;
 
 
     box-shadow:
-    0 0 25px rgba(0,255,255,.3);
+        0 0 25px rgba(0, 255, 255, .3);
 
 
 }
@@ -487,11 +464,11 @@ nav a:hover {
 #viewer-content img {
 
 
-    width:100%;
+    width: 100%;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    margin-bottom:15px;
+    margin-bottom: 15px;
 
 
 }
@@ -501,15 +478,15 @@ nav a:hover {
 #viewer-content iframe {
 
 
-    width:100%;
+    width: 100%;
 
-    height:500px;
+    height: 500px;
 
-    border:0;
+    border: 0;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    background:white;
+    background: white;
 
 
 }
@@ -521,26 +498,26 @@ nav a:hover {
 .project-link {
 
 
-    display:inline-block;
+    display: inline-block;
 
-    margin-top:15px;
+    margin-top: 15px;
 
     padding:
-    12px 20px;
+        12px 20px;
 
 
-    color:#00ffff;
+    color: #00ffff;
 
-    font-family:monospace;
+    font-family: monospace;
 
-    text-decoration:none;
+    text-decoration: none;
 
 
     border:
-    1px solid rgba(0,255,255,.25);
+        1px solid rgba(0, 255, 255, .25);
 
 
-    border-radius:8px;
+    border-radius: 8px;
 
 
 }
@@ -551,7 +528,7 @@ nav a:hover {
 
 
     background:
-    rgba(0,255,255,.1);
+        rgba(0, 255, 255, .1);
 
 
 }
@@ -564,21 +541,21 @@ nav a:hover {
 
 #disaster-map {
 
-    width:100%;
+    width: 100%;
 
-    height:600px;
+    height: 600px;
 
-    min-height:600px;
+    min-height: 600px;
 
-    position:relative;
+    position: relative;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    border-radius:12px;
+    border-radius: 12px;
 
-    border:1px solid rgba(0,255,255,.35);
+    border: 1px solid rgba(0, 255, 255, .35);
 
-    background:#000;
+    background: #000;
 
 }
 
@@ -586,11 +563,11 @@ nav a:hover {
 
 #disaster-map .leaflet-container {
 
-    width:100%;
+    width: 100%;
 
-    height:100%;
+    height: 100%;
 
-    background:#000;
+    background: #000;
 
 }
 
@@ -602,7 +579,7 @@ nav a:hover {
 #disaster-map .leaflet-marker-pane,
 #disaster-map .leaflet-popup-pane {
 
-    position:absolute;
+    position: absolute;
 
 }
 
@@ -610,9 +587,9 @@ nav a:hover {
 
 #disaster-map img {
 
-    max-width:none !important;
+    max-width: none !important;
 
-    max-height:none !important;
+    max-height: none !important;
 
 }
 
@@ -620,9 +597,9 @@ nav a:hover {
 
 #disaster-map .leaflet-tile {
 
-    max-width:none !important;
+    max-width: none !important;
 
-    max-height:none !important;
+    max-height: none !important;
 
 }
 
@@ -630,7 +607,7 @@ nav a:hover {
 
 #disaster-map .leaflet-control-container {
 
-    z-index:1000;
+    z-index: 1000;
 
 }
 
@@ -638,9 +615,9 @@ nav a:hover {
 
 #disaster-map .leaflet-control-zoom a {
 
-    background:#000 !important;
+    background: #000 !important;
 
-    color:#00ffff !important;
+    color: #00ffff !important;
 
 }
 
@@ -649,9 +626,9 @@ nav a:hover {
 #disaster-map .leaflet-control-attribution {
 
     background:
-    rgba(0,0,0,.75) !important;
+        rgba(0, 0, 0, .75) !important;
 
-    color:white !important;
+    color: white !important;
 
 }
 
@@ -659,14 +636,14 @@ nav a:hover {
 
 
 
-@media(max-width:768px){
+@media(max-width:768px) {
 
 
     #disaster-map {
 
-        height:400px;
+        height: 400px;
 
-        min-height:400px;
+        min-height: 400px;
 
     }
 
@@ -680,12 +657,12 @@ nav a:hover {
 
 .intel-subtitle {
 
-    font-family:monospace;
+    font-family: monospace;
 
     color:
-    rgba(255,255,255,.55);
+        rgba(255, 255, 255, .55);
 
-    letter-spacing:2px;
+    letter-spacing: 2px;
 
 }
 
@@ -693,19 +670,19 @@ nav a:hover {
 
 .intel-panel {
 
-    margin-bottom:30px;
+    margin-bottom: 30px;
 
-    padding:25px;
+    padding: 25px;
 
-    border-radius:12px;
+    border-radius: 12px;
 
 
     background:
-    rgba(0,0,0,.65);
+        rgba(0, 0, 0, .65);
 
 
     border:
-    1px solid rgba(0,255,255,.25);
+        1px solid rgba(0, 255, 255, .25);
 
 
     /*
@@ -714,7 +691,7 @@ nav a:hover {
        rendered inside blurred GPU layers.
     */
 
-    position:relative;
+    position: relative;
 
 }
 
@@ -722,7 +699,7 @@ nav a:hover {
 
 .intel-feed {
 
-    position:relative;
+    position: relative;
 
 }
 
@@ -732,21 +709,21 @@ nav a:hover {
 
 
     background:
-    rgba(0,0,0,.65);
+        rgba(0, 0, 0, .65);
 
 
     border-left:
-    3px solid #00ffff;
+        3px solid #00ffff;
 
 
-    padding:15px;
+    padding: 15px;
 
-    margin-bottom:15px;
+    margin-bottom: 15px;
 
-    border-radius:8px;
+    border-radius: 8px;
 
 
-    line-height:1.8;
+    line-height: 1.8;
 
 
 }
@@ -756,11 +733,11 @@ nav a:hover {
 .intel-status {
 
 
-    color:#00ff99;
+    color: #00ff99;
 
-    font-family:monospace;
+    font-family: monospace;
 
-    margin-bottom:15px;
+    margin-bottom: 15px;
 
 
 }
@@ -770,9 +747,9 @@ nav a:hover {
 .status-alert {
 
 
-    color:#ff004c;
+    color: #ff004c;
 
-    font-family:monospace;
+    font-family: monospace;
 
 
 }
@@ -788,16 +765,14 @@ nav a:hover {
 .skills-grid {
 
 
-    display:grid;
+    display: grid;
 
     grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(240px,1fr)
-    );
+        repeat(auto-fit,
+            minmax(240px, 1fr));
 
 
-    gap:15px;
+    gap: 15px;
 
 
 }
@@ -807,18 +782,18 @@ nav a:hover {
 .skill-group {
 
 
-    padding:18px;
+    padding: 18px;
 
 
     background:
-    rgba(0,0,0,.55);
+        rgba(0, 0, 0, .55);
 
 
     border-left:
-    3px solid #00ffff;
+        3px solid #00ffff;
 
 
-    border-radius:8px;
+    border-radius: 8px;
 
 
 }
@@ -833,12 +808,14 @@ nav a:hover {
 
 @keyframes blink {
 
-    0%,50% {
-        opacity:1;
+    0%,
+    50% {
+        opacity: 1;
     }
 
-    51%,100% {
-        opacity:0;
+    51%,
+    100% {
+        opacity: 0;
     }
 
 }
@@ -848,10 +825,12 @@ nav a:hover {
 @keyframes glitchRed {
 
 
-    0%,90%,100% {
+    0%,
+    90%,
+    100% {
 
         clip-path:
-        inset(0 0 100% 0);
+            inset(0 0 100% 0);
 
     }
 
@@ -859,10 +838,10 @@ nav a:hover {
     92% {
 
         clip-path:
-        inset(20% 0 40% 0);
+            inset(20% 0 40% 0);
 
         transform:
-        translateX(-4px);
+            translateX(-4px);
 
     }
 
@@ -873,10 +852,12 @@ nav a:hover {
 @keyframes glitchBlue {
 
 
-    0%,85%,100% {
+    0%,
+    85%,
+    100% {
 
         clip-path:
-        inset(100% 0 0 0);
+            inset(100% 0 0 0);
 
     }
 
@@ -884,10 +865,10 @@ nav a:hover {
     88% {
 
         clip-path:
-        inset(40% 0 20% 0);
+            inset(40% 0 20% 0);
 
         transform:
-        translateX(4px);
+            translateX(4px);
 
     }
 
@@ -902,61 +883,61 @@ nav a:hover {
 ========================= */
 
 
-@media(max-width:768px){
+@media(max-width:768px) {
 
 
-.card {
+    .card {
 
-    margin:
-    25px 10px;
+        margin:
+            25px 10px;
 
-    padding:18px;
+        padding: 18px;
+
+    }
+
+
+    .glitch-title {
+
+        font-size: 30px;
+
+    }
+
+
+    #disaster-map {
+
+        height: 350px;
+
+        min-height: 350px;
+
+    }
+
 
 }
 
 
-.glitch-title {
 
-    font-size:30px;
-
-}
+@media(max-width:480px) {
 
 
-#disaster-map {
+    .main-title {
 
-    height:350px;
+        letter-spacing: 4px;
 
-    min-height:350px;
-
-}
+    }
 
 
-}
+    .hero-subtitle {
+
+        font-size: 12px;
+
+    }
 
 
+    .intel-item {
 
-@media(max-width:480px){
+        font-size: 14px;
 
-
-.main-title {
-
-    letter-spacing:4px;
-
-}
-
-
-.hero-subtitle {
-
-    font-size:12px;
-
-}
-
-
-.intel-item {
-
-    font-size:14px;
-
-}
+    }
 
 
 }
@@ -968,54 +949,52 @@ nav a:hover {
 
 #ufo-top {
 
-    position:fixed;
+    position: fixed;
 
-    right:30px;
+    right: 30px;
 
-    bottom:30px;
-
-
-    width:65px;
-
-    height:65px;
+    bottom: 30px;
 
 
-    border-radius:50%;
+    width: 65px;
+
+    height: 65px;
 
 
-    border:1px solid rgba(0,255,255,.5);
+    border-radius: 50%;
+
+
+    border: 1px solid rgba(0, 255, 255, .5);
 
 
     background:
-    radial-gradient(
-        circle,
-        rgba(0,255,255,.25),
-        rgba(0,0,0,.85)
-    );
+        radial-gradient(circle,
+            rgba(0, 255, 255, .25),
+            rgba(0, 0, 0, .85));
 
 
-    color:#00ffff;
+    color: #00ffff;
 
 
-    font-size:32px;
+    font-size: 32px;
 
 
-    cursor:pointer;
+    cursor: pointer;
 
 
-    z-index:9999;
+    z-index: 9999;
 
 
     box-shadow:
 
-    0 0 15px #00ffff,
-    0 0 35px rgba(0,255,255,.5);
+        0 0 15px #00ffff,
+        0 0 35px rgba(0, 255, 255, .5);
 
 
-    transition:.4s;
+    transition: .4s;
 
 
-    animation:ufoHover 3s infinite ease-in-out;
+    animation: ufoHover 3s infinite ease-in-out;
 
 
 }
@@ -1026,14 +1005,13 @@ nav a:hover {
 
 
     transform:
-    scale(1.2)
-    rotate(-10deg);
+        scale(1.2) rotate(-10deg);
 
 
     box-shadow:
 
-    0 0 25px #00ffff,
-    0 0 60px rgba(0,255,255,.8);
+        0 0 25px #00ffff,
+        0 0 60px rgba(0, 255, 255, .8);
 
 
 }
@@ -1045,7 +1023,7 @@ nav a:hover {
 
     animation:
 
-    ufoLaunch 1s forwards;
+        ufoLaunch 1s forwards;
 
 
 }
@@ -1055,10 +1033,11 @@ nav a:hover {
 @keyframes ufoHover {
 
 
-    0%,100% {
+    0%,
+    100% {
 
         transform:
-        translateY(0);
+            translateY(0);
 
     }
 
@@ -1066,7 +1045,7 @@ nav a:hover {
     50% {
 
         transform:
-        translateY(-10px);
+            translateY(-10px);
 
     }
 
@@ -1080,10 +1059,9 @@ nav a:hover {
     0% {
 
         transform:
-        translateY(0)
-        scale(1);
+            translateY(0) scale(1);
 
-        opacity:1;
+        opacity: 1;
 
     }
 
@@ -1091,10 +1069,9 @@ nav a:hover {
     100% {
 
         transform:
-        translateY(-900px)
-        scale(.2);
+            translateY(-900px) scale(.2);
 
-        opacity:0;
+        opacity: 0;
 
     }
 

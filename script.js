@@ -16,12 +16,12 @@ const typeText = "system online...";
 let typeIndex = 0;
 
 
-function startTypewriter(){
+function startTypewriter() {
 
     const element = document.getElementById("typing");
 
 
-    if(!element){
+    if (!element) {
         return;
     }
 
@@ -31,9 +31,9 @@ function startTypewriter(){
     typeIndex = 0;
 
 
-    function type(){
+    function type() {
 
-        if(typeIndex < typeText.length){
+        if (typeIndex < typeText.length) {
 
             element.innerHTML +=
                 typeText.charAt(typeIndex);
@@ -48,7 +48,7 @@ function startTypewriter(){
             );
 
         }
-        else{
+        else {
 
             element.innerHTML +=
                 '<span class="cursor">█</span>';
@@ -77,10 +77,10 @@ const projects = {
     reddit: {
 
         title:
-        "Reddit Threat Monitor",
+            "Reddit Threat Monitor",
 
 
-        images:[
+        images: [
 
             "assets/projects/reddit/image1.jpg",
             "assets/projects/reddit/image2.jpg",
@@ -91,7 +91,7 @@ const projects = {
         ],
 
 
-        pdf:null
+        pdf: null
 
     },
 
@@ -100,14 +100,14 @@ const projects = {
     ransomware: {
 
         title:
-        "Healthcare Ransomware Defense",
+            "Healthcare Ransomware Defense",
 
 
-        images:[],
+        images: [],
 
 
         pdf:
-        "assets/projects/project2.pdf"
+            "assets/projects/project2.pdf"
 
     },
 
@@ -116,14 +116,14 @@ const projects = {
     nestle: {
 
         title:
-        "Nestle CIA Threat Table",
+            "Nestle CIA Threat Table",
 
 
-        images:[],
+        images: [],
 
 
         pdf:
-        "assets/projects/project1.pdf"
+            "assets/projects/project1.pdf"
 
     }
 
@@ -134,21 +134,21 @@ const projects = {
 
 
 
-function loadProject(key){
+function loadProject(key) {
 
 
     const viewer =
-    document.getElementById(
-        "viewer-content"
-    );
+        document.getElementById(
+            "viewer-content"
+        );
 
 
     const project =
-    projects[key];
+        projects[key];
 
 
 
-    if(!viewer || !project){
+    if (!viewer || !project) {
 
         console.error(
             "Project missing:",
@@ -171,7 +171,7 @@ function loadProject(key){
 
 
 
-    if(project.images.length){
+    if (project.images.length) {
 
 
         html += `
@@ -184,7 +184,7 @@ function loadProject(key){
 
 
 
-        project.images.forEach(image=>{
+        project.images.forEach(image => {
 
 
             html += `
@@ -204,7 +204,7 @@ function loadProject(key){
 
 
 
-    if(project.pdf){
+    if (project.pdf) {
 
 
         html += `
@@ -243,9 +243,9 @@ function loadProject(key){
 
     viewer.scrollIntoView({
 
-        behavior:"smooth",
+        behavior: "smooth",
 
-        block:"center"
+        block: "center"
 
     });
 
@@ -270,13 +270,13 @@ window.loadProject = loadProject;
 const backgrounds = [
 
 
-"assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+    "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
 
-"assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+    "assets/i-made-some-gifs-v0-fphci857e5o81.gif",
 
-"assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+    "assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
 
-"assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+    "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 
 
 ];
@@ -287,13 +287,13 @@ let backgroundIndex = 0;
 
 
 
-function preloadBackgrounds(){
+function preloadBackgrounds() {
 
 
-    backgrounds.forEach(src=>{
+    backgrounds.forEach(src => {
 
         const img =
-        new Image();
+            new Image();
 
         img.src = src;
 
@@ -305,23 +305,23 @@ function preloadBackgrounds(){
 
 
 
-function initBackground(){
+function initBackground() {
 
 
     const bg1 =
-    document.getElementById("bg1");
+        document.getElementById("bg1");
 
 
     const bg2 =
-    document.getElementById("bg2");
+        document.getElementById("bg2");
 
 
     const bg3 =
-    document.getElementById("bg3");
+        document.getElementById("bg3");
 
 
 
-    if(!bg1 || !bg2 || !bg3){
+    if (!bg1 || !bg2 || !bg3) {
 
         return;
 
@@ -330,24 +330,24 @@ function initBackground(){
 
 
     bg1.style.backgroundImage =
-    `url("${backgrounds[0]}")`;
+        `url("${backgrounds[0]}")`;
 
 
     bg2.style.backgroundImage =
-    `url("${backgrounds[1]}")`;
+        `url("${backgrounds[1]}")`;
 
 
     bg3.style.backgroundImage =
-    `url("${backgrounds[2]}")`;
+        `url("${backgrounds[2]}")`;
 
 
-    bg1.style.opacity="1";
+    bg1.style.opacity = "1";
 
 
-    bg2.style.opacity="0";
+    bg2.style.opacity = "0";
 
 
-    bg3.style.opacity="0";
+    bg3.style.opacity = "0";
 
 
 }
@@ -356,19 +356,19 @@ function initBackground(){
 
 
 
-function rotateBackground(){
+function rotateBackground() {
 
 
     const bg1 =
-    document.getElementById("bg1");
+        document.getElementById("bg1");
 
 
     const bg3 =
-    document.getElementById("bg3");
+        document.getElementById("bg3");
 
 
 
-    if(!bg1 || !bg3){
+    if (!bg1 || !bg3) {
 
         return;
 
@@ -377,38 +377,38 @@ function rotateBackground(){
 
 
     backgroundIndex =
-    (
-        backgroundIndex + 1
-    )
-    %
-    backgrounds.length;
+        (
+            backgroundIndex + 1
+        )
+        %
+        backgrounds.length;
 
 
 
     bg3.style.backgroundImage =
 
-    `url("${backgrounds[backgroundIndex]}")`;
+        `url("${backgrounds[backgroundIndex]}")`;
 
 
 
-    bg3.style.opacity="1";
+    bg3.style.opacity = "1";
 
 
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
 
         bg1.style.backgroundImage =
-        bg3.style.backgroundImage;
+            bg3.style.backgroundImage;
 
 
-        bg1.style.opacity="1";
+        bg1.style.opacity = "1";
 
 
-        bg3.style.opacity="0";
+        bg3.style.opacity = "0";
 
 
-    },1500);
+    }, 1500);
 
 
 }
@@ -418,15 +418,15 @@ function rotateBackground(){
 ===================================================== */
 
 
-async function fetchJSON(path){
+async function fetchJSON(path) {
 
     const response =
-    await fetch(
-        `${path}?cache=${Date.now()}`
-    );
+        await fetch(
+            `${path}?cache=${Date.now()}`
+        );
 
 
-    if(!response.ok){
+    if (!response.ok) {
 
         throw new Error(
             `${path} unavailable`
@@ -443,13 +443,13 @@ async function fetchJSON(path){
 
 
 
-function safe(value){
+function safe(value) {
 
-    if(
+    if (
         value === null ||
         value === undefined ||
         value === ""
-    ){
+    ) {
 
         return "Unknown";
 
@@ -458,15 +458,15 @@ function safe(value){
 
     return String(value)
 
-    .replace(
-        /</g,
-        "&lt;"
-    )
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-    .replace(
-        />/g,
-        "&gt;"
-    );
+        .replace(
+            />/g,
+            "&gt;"
+        );
 
 }
 
@@ -474,9 +474,9 @@ function safe(value){
 
 
 
-function formatDate(value){
+function formatDate(value) {
 
-    if(!value){
+    if (!value) {
 
         return "Unknown";
 
@@ -484,15 +484,15 @@ function formatDate(value){
 
 
     const date =
-    new Date(value);
+        new Date(value);
 
 
 
-    if(
+    if (
         Number.isNaN(
             date.getTime()
         )
-    ){
+    ) {
 
         return safe(value);
 
@@ -514,7 +514,7 @@ function formatDate(value){
 ===================================================== */
 
 
-function loadIntelligence(){
+function loadIntelligence() {
 
     loadDisasterIntelligence();
 
@@ -533,16 +533,16 @@ function loadIntelligence(){
 ===================================================== */
 
 
-async function loadDisasterIntelligence(){
+async function loadDisasterIntelligence() {
 
 
     const feed =
-    document.getElementById(
-        "disaster-feed"
-    );
+        document.getElementById(
+            "disaster-feed"
+        );
 
 
-    if(!feed){
+    if (!feed) {
 
         return;
 
@@ -550,18 +550,18 @@ async function loadDisasterIntelligence(){
 
 
 
-    try{
+    try {
 
 
         const data =
-        await fetchJSON(
-            "data/disaster_state.json"
-        );
+            await fetchJSON(
+                "data/disaster_state.json"
+            );
 
 
 
         const history =
-        data.history || {};
+            data.history || {};
 
 
 
@@ -579,19 +579,19 @@ async function loadDisasterIntelligence(){
 
         Object.entries(history)
 
-        .forEach(
-        ([category,events])=>{
+            .forEach(
+                ([category, events]) => {
 
 
-            if(!Array.isArray(events)){
+                    if (!Array.isArray(events)) {
 
-                return;
+                        return;
 
-            }
+                    }
 
 
 
-            html += `
+                    html += `
 
             <div class="intel-item">
 
@@ -603,12 +603,12 @@ async function loadDisasterIntelligence(){
 
 
 
-            events
-            .slice(0,3)
-            .forEach(event=>{
+                    events
+                        .slice(0, 3)
+                        .forEach(event => {
 
 
-                html += `
+                            html += `
 
                 <hr>
 
@@ -637,18 +637,18 @@ async function loadDisasterIntelligence(){
                 `;
 
 
-            });
+                        });
 
 
 
-            html += `
+                    html += `
 
             </div>
 
             `;
 
 
-        });
+                });
 
 
 
@@ -657,7 +657,7 @@ async function loadDisasterIntelligence(){
 
 
     }
-    catch(error){
+    catch (error) {
 
 
         console.error(
@@ -691,16 +691,16 @@ async function loadDisasterIntelligence(){
 ===================================================== */
 
 
-async function loadEWS(){
+async function loadEWS() {
 
 
     const feed =
-    document.getElementById(
-        "ews-feed"
-    );
+        document.getElementById(
+            "ews-feed"
+        );
 
 
-    if(!feed){
+    if (!feed) {
 
         return;
 
@@ -708,13 +708,13 @@ async function loadEWS(){
 
 
 
-    try{
+    try {
 
 
         const data =
-        await fetchJSON(
-            "data/ews_state.json"
-        );
+            await fetchJSON(
+                "data/ews_state.json"
+            );
 
 
 
@@ -777,7 +777,7 @@ async function loadEWS(){
 
 
     }
-    catch(error){
+    catch (error) {
 
 
         console.error(
@@ -812,16 +812,16 @@ async function loadEWS(){
 ===================================================== */
 
 
-async function loadAINews(){
+async function loadAINews() {
 
 
     const feed =
-    document.getElementById(
-        "ai-news-feed"
-    );
+        document.getElementById(
+            "ai-news-feed"
+        );
 
 
-    if(!feed){
+    if (!feed) {
 
         return;
 
@@ -829,13 +829,13 @@ async function loadAINews(){
 
 
 
-    try{
+    try {
 
 
         const data =
-        await fetchJSON(
-            "data/ai_cyber_digest.json"
-        );
+            await fetchJSON(
+                "data/ai_cyber_digest.json"
+            );
 
 
 
@@ -851,19 +851,19 @@ async function loadAINews(){
 
 
 
-        if(
+        if (
             Array.isArray(data.stories)
             &&
             data.stories.length
-        ){
+        ) {
 
 
             data.stories
-            .slice(0,5)
-            .forEach((story,index)=>{
+                .slice(0, 5)
+                .forEach((story, index) => {
 
 
-                html += `
+                    html += `
 
 
                 <div class="intel-item">
@@ -871,7 +871,7 @@ async function loadAINews(){
 
                 <h3>
 
-                ${index+1}.
+                ${index + 1}.
                 ${safe(story.title)}
 
                 </h3>
@@ -927,11 +927,11 @@ async function loadAINews(){
                 `;
 
 
-            });
+                });
 
 
         }
-        else{
+        else {
 
 
             html += `
@@ -953,7 +953,7 @@ async function loadAINews(){
 
 
     }
-    catch(error){
+    catch (error) {
 
 
         console.error(
@@ -989,10 +989,10 @@ async function loadAINews(){
 ===================================================== */
 
 
-function getEventColor(type){
+function getEventColor(type) {
 
 
-    switch(type){
+    switch (type) {
 
 
         case "earthquake":
@@ -1024,10 +1024,10 @@ function getEventColor(type){
 
 
 
-function addPointEvent(event){
+function addPointEvent(event) {
 
 
-    if(!event.coordinates){
+    if (!event.coordinates) {
 
         return;
 
@@ -1035,19 +1035,19 @@ function addPointEvent(event){
 
 
     const lat =
-    event.coordinates.lat;
+        event.coordinates.lat;
 
 
     const lon =
-    event.coordinates.lon ??
-    event.coordinates.lng;
+        event.coordinates.lon ??
+        event.coordinates.lng;
 
 
 
-    if(
+    if (
         lat === undefined ||
         lon === undefined
-    ){
+    ) {
 
         return;
 
@@ -1064,23 +1064,23 @@ function addPointEvent(event){
 
         {
 
-            radius:6,
+            radius: 6,
 
             color:
-            getEventColor(event.type),
+                getEventColor(event.type),
 
             fillColor:
-            getEventColor(event.type),
+                getEventColor(event.type),
 
-            fillOpacity:.8,
+            fillOpacity: .8,
 
-            weight:2
+            weight: 2
 
         }
 
     )
 
-    .bindPopup(`
+        .bindPopup(`
 
     <strong>
     ${safe(event.title)}
@@ -1108,7 +1108,7 @@ function addPointEvent(event){
 
     `)
 
-    .addTo(disasterMap);
+        .addTo(disasterMap);
 
 
 }
@@ -1118,15 +1118,15 @@ function addPointEvent(event){
 
 
 
-function addPolygonEvent(event){
+function addPolygonEvent(event) {
 
 
-    if(
+    if (
         !event.coordinates ||
         !Array.isArray(
             event.coordinates.polygon
         )
-    ){
+    ) {
 
         return;
 
@@ -1141,15 +1141,15 @@ function addPolygonEvent(event){
         {
 
             color:
-            getEventColor(event.type),
+                getEventColor(event.type),
 
-            fillOpacity:.25
+            fillOpacity: .25
 
         }
 
     )
 
-    .bindPopup(`
+        .bindPopup(`
 
     <strong>
     ${safe(event.title)}
@@ -1161,7 +1161,7 @@ function addPolygonEvent(event){
 
     `)
 
-    .addTo(disasterMap);
+        .addTo(disasterMap);
 
 
 }
@@ -1171,17 +1171,17 @@ function addPolygonEvent(event){
 ===================================================== */
 
 
-async function loadDisasterMap(){
+async function loadDisasterMap() {
 
 
     const mapElement =
-    document.getElementById(
-        "disaster-map"
-    );
+        document.getElementById(
+            "disaster-map"
+        );
 
 
 
-    if(!mapElement){
+    if (!mapElement) {
 
         console.error(
             "Map container missing"
@@ -1193,7 +1193,7 @@ async function loadDisasterMap(){
 
 
 
-    if(typeof L === "undefined"){
+    if (typeof L === "undefined") {
 
         console.error(
             "Leaflet not loaded"
@@ -1212,7 +1212,7 @@ async function loadDisasterMap(){
     */
 
 
-    if(disasterMap){
+    if (disasterMap) {
 
 
         disasterMap.remove();
@@ -1233,22 +1233,22 @@ async function loadDisasterMap(){
 
 
     disasterMap = L.map(
-   
-       "disaster-map",
 
-       {
+        "disaster-map",
 
-          zoomControl:true,
+        {
 
-          worldCopyJump:false,
+            zoomControl: true,
 
-          minZoom:2,
+            worldCopyJump: false,
 
-          maxZoom:18,
+            minZoom: 2,
 
-          preferCanvas:true
+            maxZoom: 18,
 
-       }
+            preferCanvas: true
+
+        }
 
     );
 
@@ -1267,7 +1267,7 @@ async function loadDisasterMap(){
 
         {
 
-            animate:false
+            animate: false
 
         }
 
@@ -1283,50 +1283,50 @@ async function loadDisasterMap(){
    */
 
 
-   /*
-    OpenStreetMap Tiles
-   */
+    /*
+     OpenStreetMap Tiles
+    */
 
-      L.tileLayer(
-      
-       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      
-       {
-      
-           subdomains:[
-               "a",
-               "b",
-               "c"
-           ],
-      
-           maxZoom:19,
-      
-           noWrap:true,
-      
-      
-           attribution:
-           "&copy; OpenStreetMap contributors"
-      
-       }
-      
-      )
-      
-      .on(
-      
-       "tileerror",
-      
-       error=>{
-      
-           console.error(
-               "Tile error:",
-               error
-           );
-      
-       }
-      
-      )
-      
-      .addTo(disasterMap);
+    L.tileLayer(
+
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+
+            subdomains: [
+                "a",
+                "b",
+                "c"
+            ],
+
+            maxZoom: 19,
+
+            noWrap: true,
+
+
+            attribution:
+                "&copy; OpenStreetMap contributors"
+
+        }
+
+    )
+
+        .on(
+
+            "tileerror",
+
+            error => {
+
+                console.error(
+                    "Tile error:",
+                    error
+                );
+
+            }
+
+        )
+
+        .addTo(disasterMap);
 
 
 
@@ -1339,15 +1339,15 @@ async function loadDisasterMap(){
 
 
     const resizeObserver =
-    new ResizeObserver(()=>{
+        new ResizeObserver(() => {
 
-        if(disasterMap){
+            if (disasterMap) {
 
-            disasterMap.invalidateSize();
+                disasterMap.invalidateSize();
 
-        }
+            }
 
-    });
+        });
 
 
 
@@ -1365,18 +1365,18 @@ async function loadDisasterMap(){
     */
 
 
-    try{
+    try {
 
 
         const data =
-        await fetchJSON(
-            "data/disaster_state.json"
-        );
+            await fetchJSON(
+                "data/disaster_state.json"
+            );
 
 
 
         const history =
-        data.history || {};
+            data.history || {};
 
 
 
@@ -1386,29 +1386,29 @@ async function loadDisasterMap(){
 
         Object.values(history)
 
-        .forEach(category=>{
+            .forEach(category => {
 
 
-            if(Array.isArray(category)){
+                if (Array.isArray(category)) {
 
 
-                events =
-                events.concat(category);
+                    events =
+                        events.concat(category);
 
 
-            }
+                }
 
 
-        });
+            });
 
 
 
 
 
-        events.forEach(event=>{
+        events.forEach(event => {
 
 
-            if(!event){
+            if (!event) {
 
                 return;
 
@@ -1417,25 +1417,25 @@ async function loadDisasterMap(){
 
 
 
-            if(
+            if (
 
-               event.coordinates &&
+                event.coordinates &&
 
-               event.coordinates.lat !== undefined &&
+                event.coordinates.lat !== undefined &&
 
-               (
-                  event.coordinates.lon !== undefined ||
-                  event.coordinates.lng !== undefined
-               )
-            ){
+                (
+                    event.coordinates.lon !== undefined ||
+                    event.coordinates.lng !== undefined
+                )
+            ) {
 
-               addPointEvent(event);
+                addPointEvent(event);
 
             }
 
 
 
-            else if(
+            else if (
 
                 event.coordinates &&
 
@@ -1443,7 +1443,7 @@ async function loadDisasterMap(){
                     event.coordinates.polygon
                 )
 
-            ){
+            ) {
 
 
                 addPolygonEvent(event);
@@ -1460,7 +1460,7 @@ async function loadDisasterMap(){
 
     }
 
-    catch(error){
+    catch (error) {
 
 
         console.error(
@@ -1494,17 +1494,17 @@ async function loadDisasterMap(){
 ===================================================== */
 
 
-function initUFOButton(){
+function initUFOButton() {
 
 
     const ufoButton =
-    document.getElementById(
-        "ufo-top"
-    );
+        document.getElementById(
+            "ufo-top"
+        );
 
 
 
-    if(!ufoButton){
+    if (!ufoButton) {
 
         return;
 
@@ -1517,7 +1517,7 @@ function initUFOButton(){
 
         "click",
 
-        ()=>{
+        () => {
 
 
             ufoButton.classList.add(
@@ -1528,16 +1528,16 @@ function initUFOButton(){
 
             window.scrollTo({
 
-                top:0,
+                top: 0,
 
-                behavior:"smooth"
+                behavior: "smooth"
 
             });
 
 
 
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
 
                 ufoButton.classList.remove(
@@ -1545,7 +1545,7 @@ function initUFOButton(){
                 );
 
 
-            },1000);
+            }, 1000);
 
 
 
@@ -1569,36 +1569,36 @@ function initUFOButton(){
 ===================================================== */
 
 
-function initProjectCards(){
+function initProjectCards() {
 
 
     document
 
-    .querySelectorAll(
-        "[data-project]"
-    )
+        .querySelectorAll(
+            "[data-project]"
+        )
 
-    .forEach(card=>{
-
-
-        card.addEventListener(
-
-            "click",
-
-            ()=>{
+        .forEach(card => {
 
 
-                loadProject(
-                    card.dataset.project
-                );
+            card.addEventListener(
+
+                "click",
+
+                () => {
 
 
-            }
+                    loadProject(
+                        card.dataset.project
+                    );
 
-        );
+
+                }
+
+            );
 
 
-    });
+        });
 
 
 }
@@ -1618,67 +1618,67 @@ function initProjectCards(){
 
 document.addEventListener(
 
-"DOMContentLoaded",
+    "DOMContentLoaded",
 
-()=>{
-
-
-    startTypewriter();
+    () => {
 
 
-
-    preloadBackgrounds();
-
-
-    initBackground();
+        startTypewriter();
 
 
 
-    setInterval(
+        preloadBackgrounds();
 
-        rotateBackground,
 
-        6000
-
-    );
+        initBackground();
 
 
 
-    loadIntelligence();
+        setInterval(
+
+            rotateBackground,
+
+            6000
+
+        );
 
 
 
-    initProjectCards();
+        loadIntelligence();
 
 
 
-    initUFOButton();
+        initProjectCards();
+
+
+
+        initUFOButton();
 
 
 
 
-    /*
-       Wait for Wix rendering
-    */
+        /*
+           Wait for Wix rendering
+        */
 
-    setTimeout(()=>{
-
-
-       loadDisasterMap();
+        setTimeout(() => {
 
 
-       setTimeout(()=>{
-
-          if(disasterMap){
-
-             disasterMap.invalidateSize(true);
-
-          }
-
-       },1000);
-
-    },1500);
+            loadDisasterMap();
 
 
+            setTimeout(() => {
 
-});
+                if (disasterMap) {
+
+                    disasterMap.invalidateSize(true);
+
+                }
+
+            }, 1000);
+
+        }, 1500);
+
+
+
+    });
