@@ -1072,370 +1072,10 @@ async function loadAINews(){
 }
 
 
-/* =========================
-   DISASTER MAP
-========================= */
 
-
-let disasterMap = null;
-
-
-
-
-
-function getEventColor(type){
-
-
-    switch(type){
-
-
-        case "earthquake":
-
-            return "red";
-
-
-        case "volcano":
-
-            return "orange";
-
-
-        case "weather":
-
-            return "purple";
-
-
-        case "solar":
-
-            return "yellow";
-
-
-        default:
-
-            return "#00ffff";
-
-
-    }
-
-
-}
-
-
-
-
-
-
-function addPointEvent(event){
-
-
-    if(!event.coordinates){
-
-        return;
-
-    }
-
-
-
-    const lat =
-    Number(
-        event.coordinates.lat
-    );
-
-
-    const lon =
-    Number(
-        event.coordinates.lon
-    );
-
-
-
-    if(
-
-        Number.isNaN(lat) ||
-
-        Number.isNaN(lon)
-
-    ){
-
-        return;
-
-    }
-
-
-
-    const color =
-    getEventColor(
-        event.type
-    );
-
-
-
-    L.circleMarker(
-
-        [
-            lat,
-            lon
-        ],
-
-        {
-
-            radius:8,
-
-            color:color,
-
-            fillColor:color,
-
-            fillOpacity:.75
-
-        }
-
-    )
-
-    .addTo(
-        disasterMap
-    )
-
-    .bindPopup(`
-
-
-        <b>
-        ${safe(event.title)}
-        </b>
-
-
-        <br><br>
-
-
-        Type:
-
-        ${safe(event.type)}
-
-
-        <br>
-
-
-        Severity:
-
-        ${safe(event.severity)}
-
-
-        <br>
-
-
-        Location:
-
-        ${safe(event.location)}
-
-
-
-    `);
-
-
-}
-
-
-
-
-
-
-
-
-
-function addPolygonEvent(event){
-
-
-    if(
-
-        !event.coordinates ||
-
-        !Array.isArray(
-            event.coordinates.polygon
-        )
-
-    ){
-
-        return;
-
-    }
-
-
-
-
-    const color =
-    getEventColor(
-        event.type
-    );
-
-
-
-
-
-    event.coordinates.polygon
-
-    .forEach(
-    ring=>{
-
-
-        if(
-            !Array.isArray(ring)
-        ){
-
-            return;
-
-        }
-
-
-
-
-        const leafletPoints =
-
-        ring
-
-        .map(point=>{
-
-
-            if(
-
-                !Array.isArray(point) ||
-
-                point.length < 2
-
-            ){
-
-                return null;
-
-            }
-
-
-
-            const longitude =
-            Number(
-                point[0]
-            );
-
-
-            const latitude =
-            Number(
-                point[1]
-            );
-
-
-
-            if(
-
-                Number.isNaN(latitude) ||
-
-                Number.isNaN(longitude)
-
-            ){
-
-                return null;
-
-            }
-
-
-
-            return [
-
-                latitude,
-
-                longitude
-
-            ];
-
-
-
-        })
-
-        .filter(Boolean);
-
-
-
-
-
-        if(
-            leafletPoints.length < 3
-        ){
-
-            return;
-
-        }
-
-
-
-
-
-        L.polygon(
-
-            leafletPoints,
-
-            {
-
-                color:color,
-
-                fillColor:color,
-
-                fillOpacity:.25,
-
-                weight:2
-
-            }
-
-        )
-
-        .addTo(
-            disasterMap
-        )
-
-        .bindPopup(`
-
-
-            <b>
-            ${safe(event.title)}
-            </b>
-
-
-            <br><br>
-
-
-            Type:
-
-            ${safe(event.type)}
-
-
-            <br>
-
-
-            Severity:
-
-            ${safe(event.severity)}
-
-
-            <br>
-
-
-            Location:
-
-            ${safe(event.location)}
-
-
-
-        `);
-
-
-
-    });
-
-
-}
-
-
-
-
-
-
-
-
-
+// =========================
+// DISASTER MAP
+// =========================
 
 async function loadDisasterMap(){
 
@@ -1446,8 +1086,11 @@ async function loadDisasterMap(){
     );
 
 
-
     if(!map){
+
+        console.error(
+            "Disaster map element missing"
+        );
 
         return;
 
@@ -1458,7 +1101,7 @@ async function loadDisasterMap(){
     if(typeof L === "undefined"){
 
         console.error(
-            "Leaflet not loaded"
+            "Leaflet library missing"
         );
 
         return;
@@ -1468,10 +1111,17 @@ async function loadDisasterMap(){
 
 
 
+    /*
+        Destroy previous instance
+    */
 
     if(disasterMap){
 
+        disasterMap.off();
+
         disasterMap.remove();
+
+        disasterMap = null;
 
     }
 
@@ -1479,46 +1129,87 @@ async function loadDisasterMap(){
 
 
 
+    /*
+        Create map
+    */
 
-    disasterMap =
+    disasterMap = L.map(
+        "disaster-map",
+        {
 
-    L.map(
-        "disaster-map"
+            zoomControl:true,
+
+            worldCopyJump:true
+
+        }
+
     )
-
     .setView(
-
         [
             20,
             0
         ],
-
         2
-
     );
 
 
 
 
 
+    /*
+        Correct tile loading
+    */
 
     L.tileLayer(
 
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 
         {
 
+            maxZoom:19,
+
             attribution:
-            "© OpenStreetMap contributors"
+            "&copy; OpenStreetMap contributors"
 
         }
 
+    )
+
+    .on(
+        "tileerror",
+        function(error){
+
+            console.error(
+                "Leaflet tile error:",
+                error
+            );
+
+        }
 
     )
 
     .addTo(
         disasterMap
     );
+
+
+
+
+
+
+    /*
+        Force Leaflet to calculate size
+    */
+
+    setTimeout(()=>{
+
+
+        disasterMap.invalidateSize(
+            true
+        );
+
+
+    },500);
 
 
 
@@ -1530,25 +1221,18 @@ async function loadDisasterMap(){
 
 
         const data =
-
         await fetchJSON(
-
             "data/disaster_state.json"
-
         );
 
 
 
-
         const history =
-
         data.history || {};
 
 
 
-
-        let events = [];
-
+        let events=[];
 
 
 
@@ -1557,18 +1241,17 @@ async function loadDisasterMap(){
         .forEach(category=>{
 
 
-            if(
-                Array.isArray(category)
-            ){
+            if(Array.isArray(category)){
+
 
                 events =
                 events.concat(category);
+
 
             }
 
 
         });
-
 
 
 
@@ -1585,15 +1268,6 @@ async function loadDisasterMap(){
 
 
 
-            /*
-                Point events:
-
-                USGS
-                NOAA point alerts
-
-            */
-
-
             if(
 
                 event.coordinates &&
@@ -1604,27 +1278,13 @@ async function loadDisasterMap(){
 
             ){
 
-
                 addPointEvent(event);
-
-
-                return;
-
 
             }
 
 
 
-
-            /*
-                Polygon events:
-
-                NOAA weather alerts
-
-            */
-
-
-            if(
+            else if(
 
                 event.coordinates &&
 
@@ -1634,26 +1294,18 @@ async function loadDisasterMap(){
 
             ){
 
-
                 addPolygonEvent(event);
-
-
-                return;
-
 
             }
 
-
-
-
-            // Empty coordinates ignored
 
         });
 
 
 
-
     }
+
+
     catch(error){
 
 
