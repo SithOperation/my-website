@@ -1,3 +1,6 @@
+let disasterMap = null;
+
+
 const text = "system online...";
 let typeIndex = 0;
 
