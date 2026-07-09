@@ -14,7 +14,11 @@ function startTypewriter(){
         return;
     }
 
+
     element.innerHTML = "";
+
+    typeIndex = 0;
+
 
     function type(){
 
@@ -29,15 +33,18 @@ function startTypewriter(){
         }
         else{
 
-            element.innerHTML += '<span class="cursor">█</span>';
+            element.innerHTML += 
+            '<span class="cursor">█</span>';
 
         }
 
     }
 
+
     type();
 
 }
+
 
 
 /* =========================
@@ -52,11 +59,13 @@ const projects = {
         title:"Reddit Threat Monitor",
 
         images:[
+
             "assets/projects/reddit/image1.jpg",
             "assets/projects/reddit/image2.jpg",
             "assets/projects/reddit/image3.jpg",
             "assets/projects/reddit/image4.jpg",
             "assets/projects/reddit/image5.jpg"
+
         ],
 
         pdf:null
@@ -89,10 +98,13 @@ const projects = {
 
 
 
+
 function loadProject(key){
 
     const viewer =
-    document.getElementById("viewer-content");
+    document.getElementById(
+        "viewer-content"
+    );
 
 
     const project =
@@ -101,29 +113,55 @@ function loadProject(key){
 
     if(!viewer || !project){
 
+        console.log(
+            "Project unavailable:",
+            key
+        );
+
         return;
 
     }
 
 
+
     let html = `
-    <h2>${project.title}</h2>
+
+    <h2>
+    ${safe(project.title)}
+    </h2>
+
     `;
+
 
 
     if(project.images.length){
 
-        html += `<h3>Evidence</h3>`;
+        html += `
+
+        <h3>
+        Evidence
+        </h3>
+
+        `;
+
 
         project.images.forEach(image=>{
 
+
             html += `
-            <img src="${image}" alt="Project Evidence">
+
+            <img
+            src="${image}"
+            alt="Project Evidence">
+
             `;
+
 
         });
 
+
     }
+
 
 
 
@@ -131,25 +169,37 @@ function loadProject(key){
 
         html += `
 
-        <h3>Report</h3>
 
-        <iframe src="${project.pdf}"></iframe>
+        <h3>
+        Report
+        </h3>
 
-        <a 
+
+        <iframe
+        src="${project.pdf}">
+        </iframe>
+
+
+
+        <a
         href="${project.pdf}"
         target="_blank"
+        rel="noopener noreferrer"
         class="project-link">
 
         Open Full PDF
 
         </a>
 
+
         `;
 
     }
 
 
+
     viewer.innerHTML = html;
+
 
 
     viewer.scrollIntoView({
@@ -160,34 +210,16 @@ function loadProject(key){
 
     });
 
+
 }
+
+
 
 
 window.loadProject = loadProject;
 
 
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-    document
-    .querySelectorAll("[data-project]")
-    .forEach(card=>{
-
-        card.addEventListener(
-        "click",
-        ()=>{
-
-            loadProject(
-                card.dataset.project
-            );
-
-        });
-
-    });
-
-});
 
 
 /* =========================
@@ -197,12 +229,16 @@ document.addEventListener(
 
 const gifs = [
 
-"assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
-"assets/i-made-some-gifs-v0-fphci857e5o81.gif",
-"assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
-"assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+    "assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+
+    "assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+
+    "assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+
+    "assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
 
 ];
+
 
 
 gifs.forEach(src=>{
@@ -214,71 +250,123 @@ gifs.forEach(src=>{
 });
 
 
+
 let backgroundIndex = 0;
 
 
-const bg1=document.getElementById("bg1");
-const bg2=document.getElementById("bg2");
-const bg3=document.getElementById("bg3");
+const bg1 =
+document.getElementById("bg1");
+
+const bg2 =
+document.getElementById("bg2");
+
+const bg3 =
+document.getElementById("bg3");
+
+
 
 
 
 function initBackground(){
 
+
     if(!bg1 || !bg2 || !bg3){
+
         return;
+
     }
 
 
-    bg1.style.backgroundImage=`url("${gifs[0]}")`;
 
-    bg2.style.backgroundImage=`url("${gifs[1]}")`;
+    bg1.style.backgroundImage =
+    `url("${gifs[0]}")`;
 
-    bg3.style.backgroundImage=`url("${gifs[2]}")`;
+
+    bg2.style.backgroundImage =
+    `url("${gifs[1]}")`;
+
+
+    bg3.style.backgroundImage =
+    `url("${gifs[2]}")`;
+
+
+    bg1.style.opacity="1";
+
+    bg2.style.opacity="0";
+
+    bg3.style.opacity="0";
+
 
 }
 
 
 
+
+
+
 function rotateBackground(){
 
+
     if(!bg1 || !bg2 || !bg3){
+
         return;
+
     }
 
 
+
     backgroundIndex =
-    (backgroundIndex + 1) % gifs.length;
+    (backgroundIndex + 1)
+    %
+    gifs.length;
+
 
 
     bg3.style.backgroundImage =
     `url("${gifs[backgroundIndex]}")`;
 
 
+
     bg3.style.opacity="1";
+
 
 
     setTimeout(()=>{
 
+
         bg1.style.backgroundImage =
         bg3.style.backgroundImage;
 
+
         bg1.style.opacity="1";
+
 
         bg3.style.opacity="0";
 
 
     },1500);
 
+
 }
+
+
 
 
 initBackground();
 
+
+
 setInterval(
-rotateBackground,
-6000
+
+    rotateBackground,
+
+    6000
+
 );
+
+
+
+
 
 
 
@@ -289,17 +377,22 @@ rotateBackground,
 
 async function fetchJSON(path){
 
+
     const response =
     await fetch(
         `${path}?cache=${Date.now()}`
     );
 
 
+
     if(!response.ok){
 
-        throw new Error(path);
+        throw new Error(
+            `${path} unavailable`
+        );
 
     }
+
 
 
     return await response.json();
@@ -308,20 +401,105 @@ async function fetchJSON(path){
 
 
 
+
+
 function safe(value){
 
-    if(value === null || value === undefined){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ""
+    ){
 
         return "Unknown";
 
     }
 
 
+
     return String(value)
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;");
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    );
 
 }
+
+
+
+
+
+function formatDate(value){
+
+
+    if(!value){
+
+        return "Unknown";
+
+    }
+
+
+    const date =
+    new Date(value);
+
+
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return safe(value);
+
+    }
+
+
+    return date.toLocaleString();
+
+}
+
+ 
+/* =========================
+   PROJECT CLICK HANDLERS
+========================= */
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+    document
+    .querySelectorAll("[data-project]")
+    .forEach(card=>{
+
+
+        card.addEventListener(
+        "click",
+        ()=>{
+
+
+            loadProject(
+                card.dataset.project
+            );
+
+
+        });
+
+
+    });
+
+
+});
+
+
 
 
 
@@ -343,6 +521,8 @@ function loadIntelligence(){
 
 
 
+
+
 /* =========================
    DISASTER FEED
 ========================= */
@@ -350,335 +530,560 @@ function loadIntelligence(){
 
 async function loadDisasterIntelligence(){
 
-const feed =
-document.getElementById("disaster-feed");
+
+    const feed =
+    document.getElementById(
+        "disaster-feed"
+    );
 
 
-if(!feed){
-    return;
+
+    if(!feed){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        const data =
+        await fetchJSON(
+            "data/disaster_state.json"
+        );
+
+
+
+        const history =
+        data.history || {};
+
+
+
+        let html = `
+
+
+        <div class="intel-status">
+
+        ● DISASTER INTELLIGENCE ONLINE
+
+        </div>
+
+
+        `;
+
+
+
+        Object.entries(history)
+
+        .forEach(
+        ([category,events])=>{
+
+
+            if(!Array.isArray(events)){
+
+                return;
+
+            }
+
+
+
+            html += `
+
+
+            <div class="intel-item">
+
+
+            <h3>
+
+            ${safe(category.toUpperCase())}
+
+            </h3>
+
+
+            `;
+
+
+
+            events
+            .slice(0,3)
+            .forEach(event=>{
+
+
+                html += `
+
+
+                <hr>
+
+
+                <b>
+                ${safe(event.title)}
+                </b>
+
+
+                <br><br>
+
+
+                Location:
+
+                ${safe(event.location)}
+
+
+                <br>
+
+
+                Severity:
+
+                ${safe(event.severity)}
+
+
+                <br>
+
+
+                Source:
+
+                ${safe(event.source)}
+
+
+                <br>
+
+
+                Geometry:
+
+                ${safe(event.geometry)}
+
+
+                `;
+
+
+
+            });
+
+
+
+            html += `
+
+
+            </div>
+
+
+            `;
+
+
+
+        });
+
+
+
+        feed.innerHTML = html;
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "Disaster feed error:",
+            error
+        );
+
+
+
+        feed.innerHTML = `
+
+
+        <div class="status-alert">
+
+        ● DISASTER INTELLIGENCE OFFLINE
+
+        </div>
+
+
+        `;
+
+
+    }
+
+
 }
 
 
-try{
-
-
-const data =
-await fetchJSON(
-"data/disaster_state.json"
-);
 
 
 
-const history =
-data.history || {};
-
-
-
-let html = `
-
-<div class="intel-status">
-
-● DISASTER INTELLIGENCE ONLINE
-
-</div>
-
-`;
-
-
-
-Object.entries(history)
-.forEach(([type,events])=>{
-
-
-html += `
-
-<div class="intel-item">
-
-<h3>
-${type.toUpperCase()}
-</h3>
-
-`;
-
-
-
-events
-.slice(0,2)
-.forEach(event=>{
-
-
-html += `
-
-<hr>
-
-<b>
-${safe(event.title)}
-</b>
-
-<br>
-
-Location:
-${safe(event.location)}
-
-<br>
-
-Severity:
-${safe(event.severity)}
-
-<br>
-
-Source:
-${safe(event.source)}
-
-`;
-
-});
-
-
-html += `</div>`;
-
-
-});
-
-
-
-feed.innerHTML = html;
-
-
-
-}
-catch(error){
-
-console.log(error);
-
-
-feed.innerHTML=
-
-`
-<div class="status-alert">
-● DISASTER INTELLIGENCE OFFLINE
-</div>
-`;
-
-}
-
-
-
-}
 
 
 
 /* =========================
-   EWS
+   EWS MONITOR
 ========================= */
 
 
 async function loadEWS(){
 
-const feed =
-document.getElementById("ews-feed");
+
+    const feed =
+    document.getElementById(
+        "ews-feed"
+    );
 
 
-if(!feed){
-return;
+
+    if(!feed){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        const data =
+        await fetchJSON(
+            "data/ews_state.json"
+        );
+
+
+
+        feed.innerHTML = `
+
+
+        <div class="intel-status">
+
+        ● EWS MONITOR ONLINE
+
+        </div>
+
+
+        <div class="intel-item">
+
+
+        <b>
+        Status Level:
+        </b>
+
+        ${safe(data.level)}/5
+
+
+        <br><br>
+
+
+        <b>
+        Tracked Aircraft:
+        </b>
+
+        ${safe(data.concurrent_count)}
+
+
+        <br><br>
+
+
+        <b>
+        Anomaly Score:
+        </b>
+
+        ${safe(data.z_score)}σ
+
+
+        <br><br>
+
+
+        <b>
+        Last Checked:
+        </b>
+
+        ${formatDate(data.last_checked)}
+
+
+        <br><br>
+
+
+        <b>
+        Updated:
+        </b>
+
+        ${formatDate(data.as_of)}
+
+
+        </div>
+
+
+        `;
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "EWS error:",
+            error
+        );
+
+
+
+        feed.innerHTML = `
+
+
+        <div class="status-alert">
+
+        ● EWS FEED OFFLINE
+
+        </div>
+
+
+        `;
+
+
+    }
+
+
 }
 
 
-try{
-
-
-const data =
-await fetchJSON(
-"data/ews_state.json"
-);
 
 
 
-feed.innerHTML=`
-
-<div class="intel-status">
-● EWS MONITOR ONLINE
-</div>
-
-
-<div class="intel-item">
-
-<b>Status Level:</b>
-${safe(data.level)}/5
-
-<br>
-
-<b>Tracked Aircraft:</b>
-${safe(data.concurrent_count)}
-
-<br>
-
-<b>Anomaly Score:</b>
-${safe(data.z_score)}σ
-
-<br>
-
-<b>Updated:</b>
-${safe(data.as_of)}
-
-</div>
-
-`;
-
-
-
-}
-catch(error){
-
-
-feed.innerHTML=
-
-`
-<div class="status-alert">
-● EWS FEED OFFLINE
-</div>
-`;
-
-}
-
-
-}
 
 
 
 /* =========================
-   AI DIGEST
+   AI CYBER DIGEST
 ========================= */
 
 
 async function loadAINews(){
 
-const feed =
-document.getElementById("ai-news-feed");
+
+    const feed =
+    document.getElementById(
+        "ai-news-feed"
+    );
 
 
-if(!feed){
-return;
+
+    if(!feed){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        const data =
+        await fetchJSON(
+            "data/ai_cyber_digest_state.json"
+        );
+
+
+
+        let html = `
+
+
+        <div class="intel-status">
+
+        ● AI CYBER DIGEST ONLINE
+
+        </div>
+
+
+        `;
+
+
+
+        /*
+            Current JSON:
+
+            {
+              seen_links:[],
+              last_digest:"date"
+            }
+
+            Future compatible:
+
+            {
+              reports:[]
+            }
+
+        */
+
+
+
+        if(
+            Array.isArray(data.reports) &&
+            data.reports.length
+        ){
+
+
+            data.reports
+            .slice(0,5)
+            .forEach(report=>{
+
+
+                html += `
+
+
+                <div class="intel-item">
+
+
+                <b>
+                ${safe(report.title)}
+                </b>
+
+
+                <br><br>
+
+
+                Source:
+
+                ${safe(report.source)}
+
+
+                <br><br>
+
+
+                ${safe(report.summary)}
+
+
+                <br><br>
+
+
+                Security Impact:
+
+
+                <br>
+
+
+                ${safe(report.impact)}
+
+
+                <br><br>
+
+
+                ${
+                    report.link
+                    ?
+                    `
+                    <a href="${safe(report.link)}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    Read Full Report
+
+                    </a>
+                    `
+                    :
+                    ""
+
+                }
+
+
+                </div>
+
+
+                `;
+
+
+            });
+
+
+        }
+        else{
+
+
+            html += `
+
+
+            <div class="intel-item">
+
+
+            <b>
+            Last Digest:
+            </b>
+
+
+            <br>
+
+
+            ${safe(data.last_digest)}
+
+
+            <br><br>
+
+
+            Reports tracked:
+
+            ${
+
+                Array.isArray(data.seen_links)
+
+                ?
+
+                data.seen_links.length
+
+                :
+
+                0
+
+            }
+
+
+            <br><br>
+
+
+            Awaiting next intelligence cycle.
+
+
+            </div>
+
+
+            `;
+
+
+        }
+
+
+
+        feed.innerHTML = html;
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "AI digest error:",
+            error
+        );
+
+
+
+        feed.innerHTML = `
+
+
+        <div class="status-alert">
+
+        ● AI INTELLIGENCE OFFLINE
+
+        </div>
+
+
+        `;
+
+
+    }
+
+
 }
-
-
-
-try{
-
-
-const data =
-await fetchJSON(
-"data/ai_cyber_digest_state.json"
-);
-
-
-
-let html = `
-
-<div class="intel-status">
-● AI CYBER DIGEST ONLINE
-</div>
-
-`;
-
-
-
-if(data.reports && data.reports.length){
-
-
-data.reports
-.slice(0,5)
-.forEach(report=>{
-
-
-html += `
-
-<div class="intel-item">
-
-<b>
-${safe(report.title)}
-</b>
-
-<br><br>
-
-Source:
-${safe(report.source)}
-
-<br><br>
-
-${safe(report.summary)}
-
-<br><br>
-
-Security Impact:
-
-<br>
-
-${safe(report.impact)}
-
-<br><br>
-
-<a href="${safe(report.link)}"
-target="_blank">
-
-Read Full Report
-
-</a>
-
-
-</div>
-
-`;
-
-
-});
-
-
-}
-else{
-
-
-html += `
-
-<div class="intel-item">
-
-Last Digest:
-${safe(data.last_digest)}
-
-<br><br>
-
-No report entries available.
-
-</div>
-
-`;
-
-}
-
-
-
-feed.innerHTML = html;
-
-
-
-}
-catch(error){
-
-
-feed.innerHTML=
-
-`
-<div class="status-alert">
-● AI INTELLIGENCE OFFLINE
-</div>
-`;
-
-}
-
-
-
-}
-
 
 
 /* =========================
@@ -686,105 +1091,361 @@ feed.innerHTML=
 ========================= */
 
 
-let disasterMap=null;
+let disasterMap = null;
 
 
 
-function addMapPoint(event){
 
 
-if(!event.coordinates){
-return;
-}
+function getEventColor(type){
 
 
-
-const lat =
-Number(event.coordinates.lat);
+    switch(type){
 
 
-const lon =
-Number(event.coordinates.lon);
+        case "earthquake":
+
+            return "red";
 
 
+        case "volcano":
 
-if(
-Number.isNaN(lat) ||
-Number.isNaN(lon)
-){
-
-return;
-
-}
+            return "orange";
 
 
+        case "weather":
 
-L.circleMarker(
-[lat,lon],
-{
+            return "purple";
 
-radius:8,
 
-color:"#00ffff",
+        case "solar":
 
-fillOpacity:.7
+            return "yellow";
 
-}
 
-)
+        default:
 
-.addTo(disasterMap)
+            return "#00ffff";
 
-.bindPopup(`
 
-<b>
-${safe(event.title)}
-</b>
+    }
 
-<br>
-
-${safe(event.location)}
-
-`);
 
 }
 
 
 
-function addPolygon(event){
 
 
-if(
-!event.coordinates ||
-!event.coordinates.polygon
-){
 
-return;
+function addPointEvent(event){
+
+
+    if(!event.coordinates){
+
+        return;
+
+    }
+
+
+
+    const lat =
+    Number(
+        event.coordinates.lat
+    );
+
+
+    const lon =
+    Number(
+        event.coordinates.lon
+    );
+
+
+
+    if(
+
+        Number.isNaN(lat) ||
+
+        Number.isNaN(lon)
+
+    ){
+
+        return;
+
+    }
+
+
+
+    const color =
+    getEventColor(
+        event.type
+    );
+
+
+
+    L.circleMarker(
+
+        [
+            lat,
+            lon
+        ],
+
+        {
+
+            radius:8,
+
+            color:color,
+
+            fillColor:color,
+
+            fillOpacity:.75
+
+        }
+
+    )
+
+    .addTo(
+        disasterMap
+    )
+
+    .bindPopup(`
+
+
+        <b>
+        ${safe(event.title)}
+        </b>
+
+
+        <br><br>
+
+
+        Type:
+
+        ${safe(event.type)}
+
+
+        <br>
+
+
+        Severity:
+
+        ${safe(event.severity)}
+
+
+        <br>
+
+
+        Location:
+
+        ${safe(event.location)}
+
+
+
+    `);
+
 
 }
 
 
 
-L.polygon(
-event.coordinates.polygon.map(
-ring=>
 
-ring.map(point=>[
-point[1],
-point[0]
-])
 
-)
 
-)
 
-.addTo(disasterMap)
 
-.bindPopup(
-safe(event.title)
-);
+
+function addPolygonEvent(event){
+
+
+    if(
+
+        !event.coordinates ||
+
+        !Array.isArray(
+            event.coordinates.polygon
+        )
+
+    ){
+
+        return;
+
+    }
+
+
+
+
+    const color =
+    getEventColor(
+        event.type
+    );
+
+
+
+
+
+    event.coordinates.polygon
+
+    .forEach(
+    ring=>{
+
+
+        if(
+            !Array.isArray(ring)
+        ){
+
+            return;
+
+        }
+
+
+
+
+        const leafletPoints =
+
+        ring
+
+        .map(point=>{
+
+
+            if(
+
+                !Array.isArray(point) ||
+
+                point.length < 2
+
+            ){
+
+                return null;
+
+            }
+
+
+
+            const longitude =
+            Number(
+                point[0]
+            );
+
+
+            const latitude =
+            Number(
+                point[1]
+            );
+
+
+
+            if(
+
+                Number.isNaN(latitude) ||
+
+                Number.isNaN(longitude)
+
+            ){
+
+                return null;
+
+            }
+
+
+
+            return [
+
+                latitude,
+
+                longitude
+
+            ];
+
+
+
+        })
+
+        .filter(Boolean);
+
+
+
+
+
+        if(
+            leafletPoints.length < 3
+        ){
+
+            return;
+
+        }
+
+
+
+
+
+        L.polygon(
+
+            leafletPoints,
+
+            {
+
+                color:color,
+
+                fillColor:color,
+
+                fillOpacity:.25,
+
+                weight:2
+
+            }
+
+        )
+
+        .addTo(
+            disasterMap
+        )
+
+        .bindPopup(`
+
+
+            <b>
+            ${safe(event.title)}
+            </b>
+
+
+            <br><br>
+
+
+            Type:
+
+            ${safe(event.type)}
+
+
+            <br>
+
+
+            Severity:
+
+            ${safe(event.severity)}
+
+
+            <br>
+
+
+            Location:
+
+            ${safe(event.location)}
+
+
+
+        `);
+
+
+
+    });
+
 
 }
+
+
+
+
+
 
 
 
@@ -793,112 +1454,268 @@ safe(event.title)
 async function loadDisasterMap(){
 
 
-const map =
-document.getElementById(
-"disaster-map"
-);
+    const map =
+    document.getElementById(
+        "disaster-map"
+    );
 
 
 
-if(!map || typeof L==="undefined"){
+    if(!map){
 
-return;
+        return;
+
+    }
+
+
+
+    if(typeof L === "undefined"){
+
+        console.error(
+            "Leaflet not loaded"
+        );
+
+        return;
+
+    }
+
+
+
+
+
+    if(disasterMap){
+
+        disasterMap.remove();
+
+    }
+
+
+
+
+
+
+    disasterMap =
+
+    L.map(
+        "disaster-map"
+    )
+
+    .setView(
+
+        [
+            20,
+            0
+        ],
+
+        2
+
+    );
+
+
+
+
+
+
+    L.tileLayer(
+
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+
+            attribution:
+            "© OpenStreetMap contributors"
+
+        }
+
+
+    )
+
+    .addTo(
+        disasterMap
+    );
+
+
+
+
+
+
+
+    try{
+
+
+        const data =
+
+        await fetchJSON(
+
+            "data/disaster_state.json"
+
+        );
+
+
+
+
+        const history =
+
+        data.history || {};
+
+
+
+
+        let events = [];
+
+
+
+
+        Object.values(history)
+
+        .forEach(category=>{
+
+
+            if(
+                Array.isArray(category)
+            ){
+
+                events =
+                events.concat(category);
+
+            }
+
+
+        });
+
+
+
+
+
+
+        events.forEach(event=>{
+
+
+            if(!event){
+
+                return;
+
+            }
+
+
+
+            /*
+                Point events:
+
+                USGS
+                NOAA point alerts
+
+            */
+
+
+            if(
+
+                event.coordinates &&
+
+                event.coordinates.lat !== undefined &&
+
+                event.coordinates.lon !== undefined
+
+            ){
+
+
+                addPointEvent(event);
+
+
+                return;
+
+
+            }
+
+
+
+
+            /*
+                Polygon events:
+
+                NOAA weather alerts
+
+            */
+
+
+            if(
+
+                event.coordinates &&
+
+                Array.isArray(
+                    event.coordinates.polygon
+                )
+
+            ){
+
+
+                addPolygonEvent(event);
+
+
+                return;
+
+
+            }
+
+
+
+
+            // Empty coordinates ignored
+
+        });
+
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+
+            "Map loading error:",
+
+            error
+
+        );
+
+
+    }
+
+
 
 }
 
 
 
-disasterMap =
-L.map("disaster-map")
-.setView(
-[20,0],
-2
-);
 
 
 
-L.tileLayer(
-
-"https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-
-{
-
-attribution:
-"© OpenStreetMap contributors"
-
-}
-
-)
-
-.addTo(disasterMap);
-
-
-
-try{
-
-
-const data =
-await fetchJSON(
-"data/disaster_state.json"
-);
-
-
-
-const history =
-data.history || {};
-
-
-
-Object.values(history)
-.flat()
-.forEach(event=>{
-
-
-if(event.geometry==="point"){
-
-addMapPoint(event);
-
-}
-
-
-if(event.geometry==="Polygon"){
-
-addPolygon(event);
-
-}
-
-
-});
-
-
-}
-catch(error){
-
-console.log(
-"Map error",
-error
-);
-
-}
-
-
-}
 
 
 
 /* =========================
-   START
+   START APPLICATION
 ========================= */
 
 
 document.addEventListener(
+
 "DOMContentLoaded",
+
 ()=>{
 
-startTypewriter();
 
-loadIntelligence();
+    startTypewriter();
 
-loadDisasterMap();
 
-});
+    loadIntelligence();
+
+
+    loadDisasterMap();
+
+
+
+}
+
+);
