@@ -31,7 +31,6 @@ jobs:
     steps:
 
 
-
       - name: Checkout Website
 
         uses: actions/checkout@v4
@@ -49,19 +48,23 @@ jobs:
         with:
 
           repository: SithOperation/EWS-discord-monitor
+
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
           path: external/ews
 
 
 
-      - name: Checkout Disaster Monitor
+      - name: Checkout Disaster
 
         uses: actions/checkout@v4
 
         with:
 
           repository: SithOperation/earthquake-volcano-discord-monitor
+
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
           path: external/disaster
 
 
@@ -73,24 +76,26 @@ jobs:
         with:
 
           repository: SithOperation/ai-cyber-daily-digest
+
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
           path: external/ai
 
 
 
-      - name: Verify files
+      - name: Verify source files
 
         run: |
 
           test -f external/ews/state.json
 
-          test -f external/disaster/disaster_state.json
+          test -f external/disaster/data/disaster_state.json
 
           test -f external/ai/data/ai_cyber_digest.json
 
 
 
-      - name: Copy data
+      - name: Copy dashboard data
 
         run: |
 
@@ -101,7 +106,7 @@ jobs:
           data/ews_state.json
 
 
-          cp external/disaster/disaster_state.json \
+          cp external/disaster/data/disaster_state.json \
           data/disaster_state.json
 
 
@@ -114,32 +119,39 @@ jobs:
 
         run: |
 
+          echo "EWS"
+
           cat data/ews_state.json
 
 
 
-      - name: Commit updates
+      - name: Commit dashboard updates
 
         run: |
+
 
           git config user.name "github-actions"
 
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 
+
           git add data/
+
 
 
           if git diff --cached --quiet; then
 
-            echo "No updates"
+              echo "No updates"
 
-            exit 0
+              exit 0
 
           fi
 
 
+
           git commit -m "Update intelligence feeds"
+
 
 
           git push
