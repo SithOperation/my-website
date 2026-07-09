@@ -1,192 +1,354 @@
-/* =========================
-   BASE
-========================= */
-
-* {
-    box-sizing: border-box;
-}
+/* =====================================================
+   SITH OPERATION WEBSITE SCRIPT
+   CLEAN REBUILD
+===================================================== */
 
 
-html {
-    scroll-behavior: smooth;
-}
+let disasterMap = null;
 
 
-body {
-    margin: 0;
-    padding: 0;
-
-    background: #000;
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    overflow-x: hidden;
-}
+/* =====================================================
+   TYPEWRITER
+===================================================== */
 
 
-
-/* =========================
-   BACKGROUND SYSTEM
-========================= */
+const typeText = "system online...";
+let typeIndex = 0;
 
 
-.bg-layer {
+function startTypewriter(){
 
-    position: fixed;
-
-    inset: 0;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    z-index: -3;
-
-    opacity: 0;
-
-    transform: scale(1.05);
-
-    transition:
-        opacity 1.5s ease-in-out;
-}
+    const element = document.getElementById("typing");
 
 
+    if(!element){
+        return;
+    }
 
-.bg-layer::after {
 
-    content: "";
+    element.innerHTML = "";
 
-    position: absolute;
+    typeIndex = 0;
 
-    inset: 0;
 
-    background:
-        rgba(0,0,0,.45);
+    function type(){
+
+        if(typeIndex < typeText.length){
+
+            element.innerHTML +=
+                typeText.charAt(typeIndex);
+
+
+            typeIndex++;
+
+
+            setTimeout(
+                type,
+                80
+            );
+
+        }
+        else{
+
+            element.innerHTML +=
+                '<span class="cursor">█</span>';
+
+        }
+
+    }
+
+
+    type();
 
 }
 
 
 
-.overlay {
 
-    min-height: 100vh;
 
-    background:
-        rgba(0,0,0,.72);
+/* =====================================================
+   PROJECT SYSTEM
+===================================================== */
 
-    position: relative;
 
-    z-index: 1;
+const projects = {
+
+
+    reddit: {
+
+        title:
+        "Reddit Threat Monitor",
+
+
+        images:[
+
+            "assets/projects/reddit/image1.jpg",
+            "assets/projects/reddit/image2.jpg",
+            "assets/projects/reddit/image3.jpg",
+            "assets/projects/reddit/image4.jpg",
+            "assets/projects/reddit/image5.jpg"
+
+        ],
+
+
+        pdf:null
+
+    },
+
+
+
+    ransomware: {
+
+        title:
+        "Healthcare Ransomware Defense",
+
+
+        images:[],
+
+
+        pdf:
+        "assets/projects/project2.pdf"
+
+    },
+
+
+
+    nestle: {
+
+        title:
+        "Nestle CIA Threat Table",
+
+
+        images:[],
+
+
+        pdf:
+        "assets/projects/project1.pdf"
+
+    }
+
+
+};
+
+
+
+
+
+function loadProject(key){
+
+
+    const viewer =
+    document.getElementById(
+        "viewer-content"
+    );
+
+
+    const project =
+    projects[key];
+
+
+
+    if(!viewer || !project){
+
+        console.error(
+            "Project missing:",
+            key
+        );
+
+        return;
+
+    }
+
+
+
+    let html = `
+
+    <h2>
+        ${safe(project.title)}
+    </h2>
+
+    `;
+
+
+
+    if(project.images.length){
+
+
+        html += `
+
+        <h3>
+            Evidence
+        </h3>
+
+        `;
+
+
+
+        project.images.forEach(image=>{
+
+
+            html += `
+
+            <img
+            src="${image}"
+            alt="Project Evidence">
+
+            `;
+
+
+        });
+
+
+    }
+
+
+
+
+    if(project.pdf){
+
+
+        html += `
+
+        <h3>
+            Report
+        </h3>
+
+
+        <iframe
+        src="${project.pdf}">
+        </iframe>
+
+
+
+        <a
+        href="${project.pdf}"
+        target="_blank"
+        class="project-link">
+
+        Open Full PDF →
+
+        </a>
+
+
+        `;
+
+
+    }
+
+
+
+    viewer.innerHTML = html;
+
+
+
+    viewer.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"center"
+
+    });
+
 
 }
 
 
 
-/* =========================
-   HERO
-========================= */
+
+window.loadProject = loadProject;
 
 
-.hero {
 
-    text-align: center;
 
-    padding:
-        70px 20px 30px;
+
+
+/* =====================================================
+   BACKGROUND ROTATION
+===================================================== */
+
+
+const backgrounds = [
+
+
+"assets/i-made-some-gifs-v0-9yugvn57e5o81.gif",
+
+"assets/i-made-some-gifs-v0-fphci857e5o81.gif",
+
+"assets/i-made-some-gifs-v0-uhn1le67e5o81.gif",
+
+"assets/i-made-some-gifs-v0-vv91pq57e5o81.gif"
+
+
+];
+
+
+
+let backgroundIndex = 0;
+
+
+
+function preloadBackgrounds(){
+
+
+    backgrounds.forEach(src=>{
+
+        const img =
+        new Image();
+
+        img.src = src;
+
+    });
+
 
 }
 
 
 
-.main-title {
 
-    position: relative;
+function initBackground(){
 
-    font-family: monospace;
 
-    font-size:
-        clamp(38px, 6vw, 72px);
+    const bg1 =
+    document.getElementById("bg1");
 
-    letter-spacing: 8px;
 
-    color: #00ffff;
+    const bg2 =
+    document.getElementById("bg2");
 
-    text-transform: uppercase;
 
-    text-shadow:
-
-        0 0 10px #00ffff,
-        0 0 25px rgba(0,255,255,.6);
-
-}
+    const bg3 =
+    document.getElementById("bg3");
 
 
 
-.main-title::before,
-.main-title::after {
+    if(!bg1 || !bg2 || !bg3){
 
-    content: attr(data-text);
+        return;
 
-    position: absolute;
-
-    inset: 0;
-
-    opacity: .7;
-
-}
+    }
 
 
 
-.main-title::before {
-
-    color: #ff004c;
-
-    animation:
-        glitchRed 2s infinite;
-
-}
+    bg1.style.backgroundImage =
+    `url("${backgrounds[0]}")`;
 
 
-
-.main-title::after {
-
-    color: #00ffff;
-
-    animation:
-        glitchBlue 1.5s infinite;
-
-}
+    bg2.style.backgroundImage =
+    `url("${backgrounds[1]}")`;
 
 
-
-.hero-subtitle {
-
-    font-family: monospace;
-
-    letter-spacing: 5px;
-
-    color:
-        rgba(255,255,255,.65);
-
-}
+    bg3.style.backgroundImage =
+    `url("${backgrounds[2]}")`;
 
 
-
-.terminal {
-
-    color: #00ff99;
-
-    font-family: monospace;
-
-}
+    bg1.style.opacity="1";
 
 
+    bg2.style.opacity="0";
 
-.cursor {
 
-    animation:
-        blink 1s infinite;
+    bg3.style.opacity="0";
+
 
 }
 
@@ -194,55 +356,117 @@ body {
 
 
 
-/* =========================
-   NAVIGATION
-========================= */
+function rotateBackground(){
 
 
-nav {
+    const bg1 =
+    document.getElementById("bg1");
 
-    display: flex;
 
-    justify-content: center;
+    const bg3 =
+    document.getElementById("bg3");
 
-    flex-wrap: wrap;
 
-    gap: 10px;
 
-    padding: 15px;
+    if(!bg1 || !bg3){
+
+        return;
+
+    }
+
+
+
+    backgroundIndex =
+    (
+        backgroundIndex + 1
+    )
+    %
+    backgrounds.length;
+
+
+
+    bg3.style.backgroundImage =
+
+    `url("${backgrounds[backgroundIndex]}")`;
+
+
+
+    bg3.style.opacity="1";
+
+
+
+    setTimeout(()=>{
+
+
+        bg1.style.backgroundImage =
+        bg3.style.backgroundImage;
+
+
+        bg1.style.opacity="1";
+
+
+        bg3.style.opacity="0";
+
+
+    },1500);
+
+
+}
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+
+async function fetchJSON(path){
+
+    const response =
+    await fetch(
+        `${path}?cache=${Date.now()}`
+    );
+
+
+    if(!response.ok){
+
+        throw new Error(
+            `${path} unavailable`
+        );
+
+    }
+
+
+    return await response.json();
 
 }
 
 
 
-nav a {
-
-    color: white;
-
-    text-decoration: none;
-
-    font-family: monospace;
-
-    padding:
-        8px 12px;
-
-    border-radius: 8px;
-
-    transition: .3s;
-
-}
 
 
+function safe(value){
 
-nav a:hover {
+    if(
+        value === null ||
+        value === undefined ||
+        value === ""
+    ){
 
-    color: #00ffff;
+        return "Unknown";
 
-    background:
-        rgba(0,255,255,.1);
+    }
 
-    box-shadow:
-        0 0 15px rgba(0,255,255,.25);
+
+    return String(value)
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    );
 
 }
 
@@ -250,747 +474,207 @@ nav a:hover {
 
 
 
-/* =========================
-   CARDS
-========================= */
+function formatDate(value){
+
+    if(!value){
+
+        return "Unknown";
+
+    }
 
 
-.card {
-
-    max-width: 900px;
-
-    margin:
-        50px auto;
-
-    padding: 25px;
-
-    position: relative;
-
-    overflow: visible;
-
-    border-radius: 12px;
+    const date =
+    new Date(value);
 
 
-    background:
 
-        linear-gradient(
-            135deg,
-            rgba(0,255,255,.06),
-            rgba(0,0,0,.75)
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return safe(value);
+
+    }
+
+
+    return date.toLocaleString();
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   INTELLIGENCE LOADER
+===================================================== */
+
+
+function loadIntelligence(){
+
+    loadDisasterIntelligence();
+
+    loadEWS();
+
+    loadAINews();
+
+}
+
+
+
+
+
+/* =====================================================
+   DISASTER FEED
+===================================================== */
+
+
+async function loadDisasterIntelligence(){
+
+
+    const feed =
+    document.getElementById(
+        "disaster-feed"
+    );
+
+
+    if(!feed){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        const data =
+        await fetchJSON(
+            "data/disaster_state.json"
         );
 
 
-    border:
 
-        1px solid rgba(0,255,255,.18);
+        const history =
+        data.history || {};
 
 
-    box-shadow:
 
-        inset 0 0 25px rgba(0,255,255,.05),
-        0 0 25px rgba(0,255,255,.08);
+        let html = `
 
-}
+        <div class="intel-status">
 
+        ● DISASTER INTELLIGENCE ONLINE
 
+        </div>
 
-.card::after {
+        `;
 
-    content: "";
 
-    position: absolute;
 
-    inset: 0;
+        Object.entries(history)
 
-    pointer-events: none;
+        .forEach(
+        ([category,events])=>{
 
 
-    background:
+            if(!Array.isArray(events)){
 
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,.015),
-            rgba(255,255,255,.015) 1px,
-            transparent 2px,
-            transparent 4px
-        );
+                return;
 
-}
+            }
 
 
 
-.card h2,
-.card h3 {
+            html += `
 
-    position: relative;
+            <div class="intel-item">
 
-    z-index: 2;
+            <h3>
+            ${safe(category.toUpperCase())}
+            </h3>
 
-    font-family: monospace;
+            `;
 
-    color: #00ffff;
 
-    letter-spacing: 2px;
 
-}
+            events
+            .slice(0,3)
+            .forEach(event=>{
 
 
+                html += `
 
-.card p {
+                <hr>
 
-    position: relative;
+                <b>
+                ${safe(event.title)}
+                </b>
 
-    z-index: 2;
+                <br><br>
 
-    line-height: 1.7;
 
-}
+                Location:
+                ${safe(event.location)}
 
+                <br>
 
 
+                Severity:
+                ${safe(event.severity)}
 
+                <br>
 
-/* =========================
-   GLITCH TITLES
-========================= */
 
+                Source:
+                ${safe(event.source)}
 
-.glitch-title {
+                `;
 
-    position: relative;
 
-    font-family: monospace;
+            });
 
-    color: #00ffff;
 
-    letter-spacing: 5px;
 
-    text-transform: uppercase;
+            html += `
 
-    font-size: 42px;
+            </div>
 
-}
+            `;
 
 
+        });
 
-.glitch-title::before,
-.glitch-title::after {
 
-    content: attr(data-text);
 
-    position: absolute;
+        feed.innerHTML = html;
 
-    inset: 0;
 
-}
-
-
-
-.glitch-title::before {
-
-    color: #ff004c;
-
-    animation:
-        glitchRed 1.5s infinite;
-
-}
-
-
-
-.glitch-title::after {
-
-    color: #00ffff;
-
-    animation:
-        glitchBlue 1s infinite;
-
-}
-
-
-
-
-
-/* =========================
-   PROJECTS
-========================= */
-
-
-.grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px,1fr)
-        );
-
-    gap: 15px;
-
-}
-
-
-
-.project {
-
-    padding: 20px;
-
-    cursor: pointer;
-
-    border-radius: 10px;
-
-
-    background:
-        rgba(0,0,0,.65);
-
-
-    border:
-
-        1px solid rgba(0,255,255,.2);
-
-
-    transition: .3s;
-
-}
-
-
-
-.project:hover {
-
-    transform:
-        translateY(-5px);
-
-
-    border-color: #00ffff;
-
-
-    box-shadow:
-
-        0 0 25px rgba(0,255,255,.3);
-
-}
-
-
-
-
-
-/* =========================
-   PROJECT VIEWER
-========================= */
-
-
-#viewer-content img {
-
-    width: 100%;
-
-    border-radius: 8px;
-
-    margin-bottom: 15px;
-
-}
-
-
-
-#viewer-content iframe {
-
-    width: 100%;
-
-    height: 500px;
-
-    border: 0;
-
-    border-radius: 8px;
-
-    background: white;
-
-}
-
-
-
-.project-link {
-
-    display: inline-block;
-
-    margin-top: 15px;
-
-    padding:
-        12px 20px;
-
-
-    color: #00ffff;
-
-    font-family: monospace;
-
-    text-decoration: none;
-
-
-    border:
-
-        1px solid rgba(0,255,255,.25);
-
-
-    border-radius: 8px;
-
-}
-
-
-
-.project-link:hover {
-
-    background:
-        rgba(0,255,255,.1);
-
-}
-
-
-
-
-
-/* =========================
-   INTELLIGENCE PANELS
-========================= */
-
-
-.intel-subtitle {
-
-    font-family: monospace;
-
-    color:
-        rgba(255,255,255,.55);
-
-    letter-spacing: 2px;
-
-}
-
-
-
-.intel-panel {
-
-    margin-bottom: 30px;
-
-    padding: 25px;
-
-    border-radius: 12px;
-
-
-    background:
-        rgba(0,0,0,.65);
-
-
-    border:
-
-        1px solid rgba(0,255,255,.25);
-
-
-    position: relative;
-
-}
-
-
-
-.intel-feed {
-
-    position: relative;
-
-}
-
-
-
-.intel-item {
-
-    background:
-        rgba(0,0,0,.65);
-
-
-    border-left:
-
-        3px solid #00ffff;
-
-
-    padding: 15px;
-
-    margin-bottom: 15px;
-
-    border-radius: 8px;
-
-    line-height: 1.8;
-
-}
-
-
-
-.intel-status {
-
-    color: #00ff99;
-
-    font-family: monospace;
-
-    margin-bottom: 15px;
-
-}
-
-
-
-.status-alert {
-
-    color: #ff004c;
-
-    font-family: monospace;
-
-}
-
-
-
-
-
-/* =========================
-   LEAFLET DISASTER MAP
-========================= */
-
-
-#disaster-map {
-
-    width: 100%;
-
-    height: 600px;
-
-    min-height: 600px;
-
-
-    position: relative;
-
-    z-index: 5;
-
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-
-    border:
-
-        1px solid rgba(0,255,255,.25);
-
-
-    background: #000;
-
-}
-
-
-
-#disaster-map .leaflet-container {
-
-    width: 100%;
-
-    height: 100%;
-
-    background: #000;
-
-    font-family: Arial, sans-serif;
-
-}
-
-
-
-#disaster-map .leaflet-tile {
-
-    max-width: none !important;
-
-    max-height: none !important;
-
-}
-
-
-
-#disaster-map img {
-
-    max-width: none !important;
-
-}
-
-
-
-#disaster-map .leaflet-pane {
-
-    position: absolute;
-
-}
-
-
-
-#disaster-map .leaflet-control-container {
-
-    z-index: 1000;
-
-}
-
-
-
-#disaster-map .leaflet-control-zoom a {
-
-    background: #000 !important;
-
-    color: #00ffff !important;
-
-    border-color:
-
-        rgba(0,255,255,.3) !important;
-
-}
-
-
-
-#disaster-map .leaflet-control-attribution {
-
-    background:
-
-        rgba(0,0,0,.7) !important;
-
-
-    color: white !important;
-
-}
-
-/* =========================
-   SKILLS
-========================= */
-
-
-.skills-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(240px,1fr)
-        );
-
-    gap: 15px;
-
-}
-
-
-
-.skill-group {
-
-    padding: 18px;
-
-
-    background:
-
-        rgba(0,0,0,.55);
-
-
-    border-left:
-
-        3px solid #00ffff;
-
-
-    border-radius: 8px;
-
-}
-
-
-
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-
-@keyframes blink {
-
-    0%,50% {
-
-        opacity: 1;
 
     }
+    catch(error){
 
 
-    51%,100% {
-
-        opacity: 0;
-
-    }
-
-}
-
-
-
-@keyframes glitchRed {
-
-    0%,90%,100% {
-
-        clip-path:
-            inset(0 0 100% 0);
-
-    }
-
-
-    92% {
-
-        clip-path:
-            inset(20% 0 40% 0);
-
-
-        transform:
-            translateX(-4px);
-
-    }
-
-}
-
-
-
-@keyframes glitchBlue {
-
-    0%,85%,100% {
-
-        clip-path:
-            inset(100% 0 0 0);
-
-    }
-
-
-    88% {
-
-        clip-path:
-            inset(40% 0 20% 0);
-
-
-        transform:
-            translateX(4px);
-
-    }
-
-}
-
-
-
-
-
-/* =========================
-   UFO BACK TO TOP BUTTON
-========================= */
-
-
-#ufo-top {
-
-    position: fixed;
-
-
-    right: 30px;
-
-    bottom: 30px;
-
-
-    width: 65px;
-
-    height: 65px;
-
-
-    border-radius: 50%;
-
-
-    border:
-
-        1px solid rgba(0,255,255,.5);
-
-
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(0,255,255,.25),
-            rgba(0,0,0,.85)
+        console.error(
+            "Disaster feed:",
+            error
         );
 
 
-    color: #00ffff;
+        feed.innerHTML = `
 
+        <div class="status-alert">
 
-    font-size: 32px;
+        ● DISASTER INTELLIGENCE OFFLINE
 
+        </div>
 
-    cursor: pointer;
-
-
-    z-index: 9999;
-
-
-    box-shadow:
-
-        0 0 15px #00ffff,
-
-        0 0 35px rgba(0,255,255,.5);
-
-
-
-    animation:
-
-        ufoHover 3s infinite ease-in-out;
-
-
-
-    transition: .4s;
-
-}
-
-
-
-#ufo-top:hover {
-
-
-    transform:
-
-        scale(1.2)
-        rotate(-10deg);
-
-
-
-    box-shadow:
-
-        0 0 25px #00ffff,
-
-        0 0 60px rgba(0,255,255,.8);
-
-}
-
-
-
-#ufo-top.launch {
-
-
-    animation:
-
-        ufoLaunch 1s forwards;
-
-}
-
-
-
-
-
-@keyframes ufoHover {
-
-
-    0%,100% {
-
-        transform:
-
-            translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:
-
-            translateY(-10px);
+        `;
 
     }
 
@@ -1000,32 +684,117 @@ nav a:hover {
 
 
 
-@keyframes ufoLaunch {
 
 
-    0% {
-
-        transform:
-
-            translateY(0)
-            scale(1);
+/* =====================================================
+   EARLY WARNING SYSTEM
+===================================================== */
 
 
-        opacity: 1;
+async function loadEWS(){
+
+
+    const feed =
+    document.getElementById(
+        "ews-feed"
+    );
+
+
+    if(!feed){
+
+        return;
 
     }
 
 
 
-    100% {
-
-        transform:
-
-            translateY(-900px)
-            scale(.2);
+    try{
 
 
-        opacity: 0;
+        const data =
+        await fetchJSON(
+            "data/ews_state.json"
+        );
+
+
+
+        feed.innerHTML = `
+
+
+        <div class="intel-status">
+
+        ● EWS MONITOR ONLINE
+
+        </div>
+
+
+
+        <div class="intel-item">
+
+
+        <b>
+        Status Level:
+        </b>
+
+        ${safe(data.level)}/5
+
+
+        <br><br>
+
+
+        <b>
+        Tracked Aircraft:
+        </b>
+
+        ${safe(data.concurrent_count)}
+
+
+        <br><br>
+
+
+        <b>
+        Anomaly Score:
+        </b>
+
+        ${safe(data.z_score)}σ
+
+
+        <br><br>
+
+
+        <b>
+        Last Checked:
+        </b>
+
+        ${formatDate(data.last_checked)}
+
+
+        </div>
+
+
+        `;
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "EWS:",
+            error
+        );
+
+
+        feed.innerHTML = `
+
+        <div class="status-alert">
+
+        ● EWS FEED OFFLINE
+
+        </div>
+
+        `;
 
     }
 
@@ -1035,42 +804,637 @@ nav a:hover {
 
 
 
-/* =========================
-   MOBILE
-========================= */
-
-
-@media(max-width:768px) {
-
-
-    .card {
-
-        margin:
-
-            25px 10px;
-
-
-        padding: 18px;
-
-    }
 
 
 
-    .glitch-title {
+/* =====================================================
+   AI CYBER DIGEST
+===================================================== */
 
-        font-size: 30px;
+
+async function loadAINews(){
+
+
+    const feed =
+    document.getElementById(
+        "ai-news-feed"
+    );
+
+
+    if(!feed){
+
+        return;
 
     }
 
 
 
-    #disaster-map {
+    try{
 
-        height: 350px;
 
-        min-height: 350px;
+        const data =
+        await fetchJSON(
+            "data/ai_cyber_digest.json"
+        );
+
+
+
+        let html = `
+
+        <div class="intel-status">
+
+        ● AI CYBER DIGEST ONLINE
+
+        </div>
+
+        `;
+
+
+
+        if(
+            Array.isArray(data.stories)
+            &&
+            data.stories.length
+        ){
+
+
+            data.stories
+            .slice(0,5)
+            .forEach((story,index)=>{
+
+
+                html += `
+
+
+                <div class="intel-item">
+
+
+                <h3>
+
+                ${index+1}.
+                ${safe(story.title)}
+
+                </h3>
+
+
+
+                <b>
+                Source:
+                </b>
+
+                ${safe(story.source)}
+
+
+                <br><br>
+
+
+                ${safe(story.summary)}
+
+
+                <br><br>
+
+
+                <b>
+                Score:
+                </b>
+
+                ${safe(story.score)}
+
+
+
+                <br><br>
+
+
+                <a
+
+                href="${safe(story.link)}"
+
+                target="_blank"
+
+                rel="noopener noreferrer"
+
+                class="project-link">
+
+                Read Report →
+
+                </a>
+
+
+
+                </div>
+
+
+                `;
+
+
+            });
+
+
+        }
+        else{
+
+
+            html += `
+
+            <div class="intel-item">
+
+            No reports available.
+
+            </div>
+
+            `;
+
+        }
+
+
+
+        feed.innerHTML = html;
+
+
 
     }
+    catch(error){
+
+
+        console.error(
+            "AI Digest:",
+            error
+        );
+
+
+        feed.innerHTML = `
+
+        <div class="status-alert">
+
+        ● AI INTELLIGENCE OFFLINE
+
+        </div>
+
+        `;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   LEAFLET MAP HELPERS
+===================================================== */
+
+
+function getEventColor(type){
+
+
+    switch(type){
+
+
+        case "earthquake":
+            return "red";
+
+
+        case "volcano":
+            return "orange";
+
+
+        case "weather":
+            return "purple";
+
+
+        case "solar":
+            return "yellow";
+
+
+        default:
+            return "#00ffff";
+
+    }
+
+
+}
+
+
+
+
+
+
+function addPointEvent(event){
+
+
+    if(
+        !event.coordinates ||
+        event.coordinates.lat === undefined ||
+        event.coordinates.lon === undefined
+    ){
+
+        return;
+
+    }
+
+
+
+    L.circleMarker(
+
+        [
+            event.coordinates.lat,
+            event.coordinates.lon
+        ],
+
+        {
+
+            radius:6,
+
+            color:
+            getEventColor(event.type),
+
+            fillOpacity:.8
+
+        }
+
+    )
+
+    .bindPopup(`
+
+    <strong>
+    ${safe(event.title)}
+    </strong>
+
+    <br>
+
+    ${safe(event.location)}
+
+    <br>
+
+    Severity:
+    ${safe(event.severity)}
+
+    `)
+
+    .addTo(disasterMap);
+
+
+}
+
+
+
+
+
+
+function addPolygonEvent(event){
+
+
+    if(
+        !event.coordinates ||
+        !Array.isArray(
+            event.coordinates.polygon
+        )
+    ){
+
+        return;
+
+    }
+
+
+
+    L.polygon(
+
+        event.coordinates.polygon,
+
+        {
+
+            color:
+            getEventColor(event.type),
+
+            fillOpacity:.25
+
+        }
+
+    )
+
+    .bindPopup(`
+
+    <strong>
+    ${safe(event.title)}
+    </strong>
+
+    <br>
+
+    ${safe(event.location)}
+
+    `)
+
+    .addTo(disasterMap);
+
+
+}
+
+/* =====================================================
+   DISASTER MAP
+===================================================== */
+
+
+async function loadDisasterMap(){
+
+
+    const mapElement =
+    document.getElementById(
+        "disaster-map"
+    );
+
+
+
+    if(!mapElement){
+
+        console.error(
+            "Map container missing"
+        );
+
+        return;
+
+    }
+
+
+
+    if(typeof L === "undefined"){
+
+        console.error(
+            "Leaflet not loaded"
+        );
+
+        return;
+
+    }
+
+
+
+
+
+    /*
+        Remove old map safely
+    */
+
+
+    if(disasterMap){
+
+
+        disasterMap.remove();
+
+
+        disasterMap = null;
+
+
+    }
+
+
+
+
+
+    /*
+        Create Leaflet map
+    */
+
+
+    disasterMap = L.map(
+
+        "disaster-map",
+
+        {
+
+            zoomControl:true,
+
+            worldCopyJump:false,
+
+            minZoom:2,
+
+            maxBounds:[
+                [-90,-180],
+                [90,180]
+            ]
+
+        }
+
+    );
+
+
+
+
+
+    disasterMap.setView(
+
+        [
+            20,
+            0
+        ],
+
+        2,
+
+        {
+
+            animate:false
+
+        }
+
+    );
+
+
+
+
+
+
+    /*
+        OpenStreetMap Tiles
+    */
+
+
+    L.tileLayer(
+
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+
+            maxZoom:19,
+
+            noWrap:true,
+
+
+            attribution:
+            "&copy; OpenStreetMap contributors"
+
+        }
+
+    )
+
+    .on(
+
+        "tileerror",
+
+        error=>{
+
+            console.error(
+                "Tile error:",
+                error
+            );
+
+        }
+
+    )
+
+    .addTo(disasterMap);
+
+
+
+
+
+
+
+    /*
+        Wix layout correction
+    */
+
+
+    const resizeObserver =
+    new ResizeObserver(()=>{
+
+        if(disasterMap){
+
+            disasterMap.invalidateSize();
+
+        }
+
+    });
+
+
+
+    resizeObserver.observe(
+        mapElement
+    );
+
+
+
+
+
+
+    /*
+        Load disaster data
+    */
+
+
+    try{
+
+
+        const data =
+        await fetchJSON(
+            "data/disaster_state.json"
+        );
+
+
+
+        const history =
+        data.history || {};
+
+
+
+        let events = [];
+
+
+
+        Object.values(history)
+
+        .forEach(category=>{
+
+
+            if(Array.isArray(category)){
+
+
+                events =
+                events.concat(category);
+
+
+            }
+
+
+        });
+
+
+
+
+
+        events.forEach(event=>{
+
+
+            if(!event){
+
+                return;
+
+            }
+
+
+
+
+            if(
+
+                event.coordinates &&
+
+                event.coordinates.lat !== undefined &&
+
+                event.coordinates.lon !== undefined
+
+            ){
+
+
+                addPointEvent(event);
+
+
+            }
+
+
+
+            else if(
+
+                event.coordinates &&
+
+                Array.isArray(
+                    event.coordinates.polygon
+                )
+
+            ){
+
+
+                addPolygonEvent(event);
+
+
+            }
+
+
+
+        });
+
+
+
+
+    }
+
+    catch(error){
+
+
+        console.error(
+
+            "Map data error:",
+
+            error
+
+        );
+
+
+    }
+
+
 
 
 
@@ -1080,44 +1444,192 @@ nav a:hover {
 
 
 
-@media(max-width:480px) {
-
-
-    .main-title {
-
-        letter-spacing: 4px;
-
-    }
 
 
 
-    .hero-subtitle {
-
-        font-size: 12px;
-
-    }
 
 
-
-    .intel-item {
-
-        font-size: 14px;
-
-    }
+/* =====================================================
+   UFO BUTTON
+===================================================== */
 
 
+function initUFOButton(){
 
-    #ufo-top {
 
-        width: 55px;
+    const ufoButton =
+    document.getElementById(
+        "ufo-top"
+    );
 
-        height: 55px;
 
-        right: 20px;
 
-        bottom: 20px;
+    if(!ufoButton){
+
+        return;
 
     }
+
+
+
+
+    ufoButton.addEventListener(
+
+        "click",
+
+        ()=>{
+
+
+            ufoButton.classList.add(
+                "launch"
+            );
+
+
+
+            window.scrollTo({
+
+                top:0,
+
+                behavior:"smooth"
+
+            });
+
+
+
+
+            setTimeout(()=>{
+
+
+                ufoButton.classList.remove(
+                    "launch"
+                );
+
+
+            },1000);
+
+
+
+        }
+
+    );
 
 
 }
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   PROJECT CLICK HANDLERS
+===================================================== */
+
+
+function initProjectCards(){
+
+
+    document
+
+    .querySelectorAll(
+        "[data-project]"
+    )
+
+    .forEach(card=>{
+
+
+        card.addEventListener(
+
+            "click",
+
+            ()=>{
+
+
+                loadProject(
+                    card.dataset.project
+                );
+
+
+            }
+
+        );
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   APPLICATION START
+===================================================== */
+
+
+document.addEventListener(
+
+"DOMContentLoaded",
+
+()=>{
+
+
+    startTypewriter();
+
+
+
+    preloadBackgrounds();
+
+
+    initBackground();
+
+
+
+    setInterval(
+
+        rotateBackground,
+
+        6000
+
+    );
+
+
+
+    loadIntelligence();
+
+
+
+    initProjectCards();
+
+
+
+    initUFOButton();
+
+
+
+
+    /*
+       Wait for Wix rendering
+    */
+
+    setTimeout(()=>{
+
+
+        loadDisasterMap();
+
+
+
+    },1500);
+
+
+
+});
