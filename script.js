@@ -1295,14 +1295,18 @@ async function loadDisasterMap(){
     setTimeout(()=>{
 
 
-        disasterMap.invalidateSize(
-            true
-        );
+          setTimeout(()=>{
+
+             disasterMap.invalidateSize(true);
+
+         },500);
 
 
-    },500);
+          setTimeout(()=>{
 
+             disasterMap.invalidateSize(true);
 
+         },1500);
 
 
 
