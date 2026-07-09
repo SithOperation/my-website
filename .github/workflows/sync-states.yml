@@ -106,7 +106,7 @@ jobs:
           test -f external/disaster/disaster_state.json || exit 1
 
 
-          test -f external/ai/ai_cyber_digest_state.json || exit 1
+          test -f external/ai/data/ai_cyber_digest.json || exit 1
 
 
 
@@ -138,8 +138,8 @@ jobs:
 
 
 
-          cp external/ai/ai_cyber_digest_state.json \
-          data/ai_cyber_digest_state.json
+          cp external/ai/data/ai_cyber_digest.json \
+          data/ai_cyber_digest.json
 
 
 
@@ -168,7 +168,7 @@ jobs:
 
               "data/disaster_state.json",
 
-              "data/ai_cyber_digest_state.json"
+              "data/ai_cyber_digest.json"
 
           ]
 
@@ -224,7 +224,3 @@ jobs:
 
 
           git push
-
-
-
-
