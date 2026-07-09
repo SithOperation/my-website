@@ -1201,23 +1201,22 @@ async function loadDisasterMap(){
 
 
     disasterMap = L.map(
+   
+       "disaster-map",
 
-        "disaster-map",
+       {
 
-        {
+          zoomControl:true,
 
-            zoomControl:true,
+          worldCopyJump:false,
 
-            worldCopyJump:false,
+          minZoom:2,
 
-            minZoom:2,
+          maxZoom:18,
 
-            maxBounds:[
-                [-90,-180],
-                [90,180]
-            ]
+          preferCanvas:true
 
-        }
+       }
 
     );
 
