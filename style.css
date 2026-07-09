@@ -1,3 +1,22 @@
+disasterMap.getCenter()
+Object { lat: -13.838079936422462, lng: -69.78515625000001 }
+
+disasterMap.getPixelOrigin()
+Object { x: 229, y: 804 }
+
+disasterMap.setView([20,0],2,{animate:false});
+Object { options: {…}, _handlers: (7) […], _layers: {…}, _zoomBoundLayers: {…}, _sizeChanged: false, _container: div#disaster-map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom, _leaflet_id: 2, _containerId: 3, _fadeAnimated: true, _panes: {…}, … }
+
+disasterMap.getContainer().getBoundingClientRect()
+DOMRect { x: 370.66668701171875, y: -234.03334045410156, width: 797.3333129882812, height: 600, top: -234.03334045410156, right: 1168, bottom: 365.96665954589844, left: 370.66668701171875 }
+
+document.getElementById("disaster-map").getBoundingClientRect()
+DOMRect { x: 370.66668701171875, y: -234.03334045410156, width: 797.3333129882812, height: 600, top: -234.03334045410156, right: 1168, bottom: 365.96665954589844, left: 370.66668701171875 }
+
+disasterMap.dragging.disable();
+disasterMap.touchZoom.disable();
+disasterMap.scrollWheelZoom.disable();
+Object { options: {}, _map: {…}, _initHooksCalled: true, _enabled: false, _leaflet_id: 21, _delta: 0, _lastMousePos: {…}, _startTime: null, _timer: 33 }
 /* =========================
    BASE
 ========================= */
@@ -656,31 +675,19 @@ nav a:hover {
 
 #disaster-map {
 
+    position:relative;
 
     width:100%;
 
     height:600px;
 
-    min-height:600px;
-
-
-    position:relative;
-
-    z-index:5;
-
+    overflow:hidden;
 
     border-radius:12px;
 
-
-    overflow:hidden;
-
-
-    border:
-    1px solid rgba(0,255,255,.25);
-
+    border:1px solid rgba(0,255,255,.25);
 
     background:#000;
-
 
 }
 
@@ -688,17 +695,38 @@ nav a:hover {
 
 #disaster-map .leaflet-container {
 
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
 
     width:100%;
 
     height:100%;
 
-
     background:#000;
 
+}
 
-    font-family:Arial, sans-serif;
 
+
+#disaster-map .leaflet-map-pane,
+#disaster-map .leaflet-tile-pane,
+#disaster-map .leaflet-overlay-pane,
+#disaster-map .leaflet-marker-pane,
+#disaster-map .leaflet-shadow-pane,
+#disaster-map .leaflet-popup-pane {
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
 
 }
 
@@ -706,12 +734,9 @@ nav a:hover {
 
 #disaster-map .leaflet-tile {
 
-
     max-width:none !important;
 
     max-height:none !important;
-
-    filter:none !important;
 
 }
 
@@ -719,24 +744,15 @@ nav a:hover {
 
 #disaster-map img {
 
-
     max-width:none !important;
 
-}
-
-
-
-.leaflet-container {
-
-
-    background:#000;
+    max-height:none !important;
 
 }
 
 
 
 .leaflet-control-container {
-
 
     z-index:1000;
 
@@ -746,15 +762,9 @@ nav a:hover {
 
 .leaflet-control-zoom a {
 
-
     background:#000 !important;
 
     color:#00ffff !important;
-
-
-    border-color:
-    rgba(0,255,255,.3) !important;
-
 
 }
 
@@ -762,13 +772,9 @@ nav a:hover {
 
 .leaflet-control-attribution {
 
-
-    background:
-    rgba(0,0,0,.7) !important;
-
+    background:rgba(0,0,0,.7) !important;
 
     color:white !important;
-
 
 }
 
