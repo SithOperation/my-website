@@ -1283,45 +1283,50 @@ async function loadDisasterMap(){
    */
 
 
-   L.tileLayer(
+   /*
+    OpenStreetMap Tiles
+   */
+
+      L.tileLayer(
       
-      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-
-      {
-
-         subdomains:[
-            "a",
-            "b",
-            "c",
-            "d"
-        ],
-
-         maxZoom:19,
-
-         noWrap:true,
-
-
+       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       
-         attribution:
-            "&copy; OpenStreetMap contributors &copy; CARTO"
-
-      }
-   )
-
+       {
+      
+           subdomains:[
+               "a",
+               "b",
+               "c"
+           ],
+      
+           maxZoom:19,
+      
+           noWrap:true,
+      
+      
+           attribution:
+           "&copy; OpenStreetMap contributors"
+      
+       }
+      
+      )
+      
       .on(
-
-         "tileerror",
-
-         error=>{
-            console.error(
+      
+       "tileerror",
+      
+       error=>{
+      
+           console.error(
                "Tile error:",
                error
-            );
-
-         }
+           );
+      
+       }
+      
       )
+      
       .addTo(disasterMap);
-
 
 
 
