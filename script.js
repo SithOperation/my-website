@@ -866,7 +866,6 @@ async function loadAINews(){
     );
 
 
-
     if(!feed){
 
         return;
@@ -880,7 +879,7 @@ async function loadAINews(){
 
         const data =
         await fetchJSON(
-            "data/ai_cyber_digest_state.json"
+            "data/ai_cyber_digest.json"
         );
 
 
@@ -899,33 +898,23 @@ async function loadAINews(){
 
 
 
-        /*
-            Current JSON:
-
-            {
-              seen_links:[],
-              last_digest:"date"
-            }
-
-            Future compatible:
-
-            {
-              reports:[]
-            }
-
-        */
-
-
-
         if(
-            Array.isArray(data.reports) &&
-            data.reports.length
+
+            Array.isArray(data.stories)
+
+            &&
+
+            data.stories.length
+
         ){
 
 
-            data.reports
+
+            data.stories
+
             .slice(0,5)
-            .forEach(report=>{
+
+            .forEach((story,index)=>{
 
 
                 html += `
@@ -934,56 +923,78 @@ async function loadAINews(){
                 <div class="intel-item">
 
 
+                <h3>
+
+                ${index + 1}. ${safe(story.title)}
+
+                </h3>
+
+
+
                 <b>
-                ${safe(report.title)}
-                </b>
-
-
-                <br><br>
-
 
                 Source:
 
-                ${safe(report.source)}
+                </b>
+
+                ${safe(story.source)}
 
 
                 <br><br>
 
 
-                ${safe(report.summary)}
+
+                <b>
+
+                Category:
+
+                </b>
+
+                ${safe(story.category)}
 
 
                 <br><br>
 
 
-                Security Impact:
 
+                ${safe(story.summary)}
 
-                <br>
-
-
-                ${safe(report.impact)}
 
 
                 <br><br>
 
 
-                ${
-                    report.link
-                    ?
-                    `
-                    <a href="${safe(report.link)}"
-                    target="_blank"
-                    rel="noopener noreferrer">
 
-                    Read Full Report
+                <b>
 
-                    </a>
-                    `
-                    :
-                    ""
+                Intelligence Score:
 
-                }
+                </b>
+
+                ${safe(story.score)}
+
+
+
+                <br><br>
+
+
+
+                <a
+
+                href="${safe(story.link)}"
+
+                target="_blank"
+
+                rel="noopener noreferrer"
+
+                class="project-link"
+
+                >
+
+                Read Full Report →
+
+                </a>
+
 
 
                 </div>
@@ -995,7 +1006,9 @@ async function loadAINews(){
             });
 
 
+
         }
+
         else{
 
 
@@ -1005,41 +1018,7 @@ async function loadAINews(){
             <div class="intel-item">
 
 
-            <b>
-            Last Digest:
-            </b>
-
-
-            <br>
-
-
-            ${safe(data.last_digest)}
-
-
-            <br><br>
-
-
-            Reports tracked:
-
-            ${
-
-                Array.isArray(data.seen_links)
-
-                ?
-
-                data.seen_links.length
-
-                :
-
-                0
-
-            }
-
-
-            <br><br>
-
-
-            Awaiting next intelligence cycle.
+            No intelligence reports available.
 
 
             </div>
@@ -1057,12 +1036,17 @@ async function loadAINews(){
 
 
     }
+
+
     catch(error){
 
 
         console.error(
+
             "AI digest error:",
+
             error
+
         );
 
 
@@ -1072,7 +1056,9 @@ async function loadAINews(){
 
         <div class="status-alert">
 
+
         ● AI INTELLIGENCE OFFLINE
+
 
         </div>
 
