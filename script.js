@@ -2159,74 +2159,121 @@ document.addEventListener(
     () => {
 
 
-        startTypewriter();
+        try {
+
+            startTypewriter();
+
+        }
+
+        catch(error) {
+
+            console.error(
+                "Typewriter failed:",
+                error
+            );
+
+        }
 
 
 
-        preloadBackgrounds();
+        try {
 
+            preloadBackgrounds();
 
-        initBackground();
+            initBackground();
 
+            setInterval(
+                rotateBackground,
+                6000
+            );
 
+        }
 
-        setInterval(
+        catch(error) {
 
-            rotateBackground,
+            console.error(
+                "Background failed:",
+                error
+            );
 
-            6000
-
-        );
-
-
-
-        loadIntelligence();
-
-
-
-        initProjectCards();
-
-
-
-        initUFOButton();
+        }
 
 
 
+        try {
 
-        /*
-           Wait for MapLibre rendering
-        */
+            loadIntelligence();
+
+        }
+
+        catch(error) {
+
+            console.error(
+                "Intelligence failed:",
+                error
+            );
+
+        }
+
+
+
+        try {
+
+            initProjectCards();
+
+        }
+
+        catch(error) {
+
+            console.error(
+                "Projects failed:",
+                error
+            );
+
+        }
+
+
+
+        try {
+
+            initUFOButton();
+
+        }
+
+        catch(error) {
+
+            console.error(
+                "UFO failed:",
+                error
+            );
+
+        }
+
+
 
         setTimeout(() => {
 
-            loadDisasterMap();
 
-            /* Trigger map resize after load */
-            setTimeout(() => {
+            try {
 
-                if (disasterMap) {
+                loadDisasterMap();
 
-                    disasterMap.resize();
+            }
 
-                }
+            catch(error) {
 
-            }, 1000);
+                console.error(
+                    "Map failed:",
+                    error
+                );
 
-        }, 1500);
+            }
 
 
-       // Mobile browser redraw fix
+        },1500);
 
-       window.addEventListener("resize", () => {
 
-          if (disasterMap) {
 
-             setTimeout(() => {
+    }
 
-                disasterMap.resize();
-     
-             }, 300);
-             
-          }
-
-       });
+);
