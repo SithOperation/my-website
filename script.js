@@ -787,7 +787,7 @@ async function loadAINews(){
 
         const response =
         await fetch(
-            "output/latest_digest.md?cache=" +
+            "data/ai_cyber_digest_state.json?cache=" +
             Date.now()
         );
 
