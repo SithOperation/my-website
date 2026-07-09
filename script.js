@@ -1487,12 +1487,11 @@ document.addEventListener(
 
 
 
-    setTimeout(()=>{
+    requestAnimationFrame(()=>{
 
-        loadDisasterMap();
+       loadDisasterMap();
 
-
-    },1500);
+   });
 
 
 
