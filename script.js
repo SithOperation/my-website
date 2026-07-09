@@ -189,14 +189,41 @@ function loadProject(key) {
         <br><br>
 
 
-        <a 
-        href="${project.pdf}"
-        target="_blank"
-        class="project">
+        // PDF
 
-        Open Full PDF
+if(project.pdf){
 
-        </a>
+
+    html += `
+
+
+    <h3>
+    Report
+    </h3>
+
+
+    <iframe
+    src="${project.pdf}">
+    </iframe>
+
+
+    <br><br>
+
+
+    <a 
+    href="${project.pdf}"
+    target="_blank"
+    class="project-link">
+
+    Open Full PDF
+
+    </a>
+
+
+    `;
+
+
+}
 
 
         `;
@@ -1358,6 +1385,17 @@ async function loadDisasterMap(){
 
 }
 
+
+
+
+// =====================
+// PROJECT CLICK SUPPORT
+// =====================
+
+// Supports existing HTML:
+// onclick="loadProject('reddit')"
+
+window.loadProject = loadProject;
 
 
 
