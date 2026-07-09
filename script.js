@@ -1410,17 +1410,17 @@ async function loadDisasterMap(){
 
             if(
 
-                event.coordinates &&
+               event.coordinates &&
 
-                event.coordinates.lat !== undefined &&
+               event.coordinates.lat !== undefined &&
 
-                event.coordinates.lon !== undefined
-
+               (
+                  event.coordinates.lon !== undefined ||
+                  event.coordinates.lng !== undefined
+               )
             ){
 
-
-                addPointEvent(event);
-
+               addPointEvent(event);
 
             }
 
