@@ -1072,6 +1072,94 @@ async function loadAINews(){
 }
 
 
+//=====================
+// DISASTER MAP HELPERS
+//=====================
+
+
+function getEventColor(type){
+
+    switch(type){
+
+        case "earthquake":
+            return "red";
+
+        case "volcano":
+            return "orange";
+
+        case "weather":
+            return "purple";
+
+        case "solar":
+            return "yellow";
+
+        default:
+            return "#00ffff";
+
+    }
+
+}
+
+function addPointEvent(event){
+
+    if(
+        !event.coordinates ||
+        event.coordinates.lat === undefined ||
+        event.coordinates.lon === undefined
+    ){
+        return;
+    }
+
+    const color = getEventColor(event.type);
+
+    L.circleMarker(
+        [
+            event.coordinates.lat,
+            event.coordinates.lon
+        ],
+        {
+            radius:6,
+            color:color,
+            fillColor:color,
+            fillOpacity:0.85,
+            weight:2
+        }
+    )
+    .bindPopup(`
+        <strong>${safe(event.title)}</strong><br>
+        ${safe(event.location)}<br>
+        Severity: ${safe(event.severity)}
+    `)
+    .addTo(disasterMap);
+
+}
+
+function addPolygonEvent(event){
+
+    if(
+        !event.coordinates ||
+        !Array.isArray(event.coordinates.polygon)
+    ){
+        return;
+    }
+
+    const color = getEventColor(event.type);
+
+    L.polygon(
+        event.coordinates.polygon,
+        {
+            color:color,
+            weight:2,
+            fillOpacity:0.25
+        }
+    )
+    .bindPopup(`
+        <strong>${safe(event.title)}</strong><br>
+        ${safe(event.location)}
+    `)
+    .addTo(disasterMap);
+
+}
 
 // =========================
 // DISASTER MAP
