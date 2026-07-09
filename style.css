@@ -1,18 +1,12 @@
-/* =========================
-   BASE
-========================= */
-
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
     color: white;
-    overflow-x: hidden;
     background: black;
+    overflow-x: hidden;
 }
 
-/* =========================
-   BACKGROUND SYSTEM (GIF LAYERS)
-========================= */
 
 .bg-layer {
     position: fixed;
@@ -20,887 +14,41 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -2;
+    z-index: -3;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out;
     transform: scale(1.05);
+    transition: opacity 1.5s ease-in-out;
 }
 
-#bg1 { opacity: 1; }
 
-/* dark overlay over GIFs */
 .bg-layer::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.45);
 }
 
-/* =========================
-   OVERLAY
-========================= */
+
+#bg1 {
+    opacity: 1;
+}
+
 
 .overlay {
     position: relative;
-    z-index: 1;
-    background: rgba(0,0,0,0.72);
     min-height: 100vh;
+    background: rgba(0,0,0,0.72);
+    z-index: 1;
 }
 
-/* =========================
-   HERO
-========================= */
+
+/* HERO */
 
 .hero {
     text-align: center;
-    padding: 60px 20px 20px;
+    padding: 70px 20px 30px;
 }
 
-/* =========================
-   NAV (FIXED MOBILE + NO CLIPPING)
-========================= */
-
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 15px 10px;
-}
-
-nav a {
-    position: relative;
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    padding: 7px 10px;
-    border-radius: 8px;
-    font-size: 13px;
-    white-space: nowrap;
-    transition: 0.25s;
-}
-
-nav a:hover {
-    color: #00ffd5;
-    background: rgba(0,255,213,0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(0,255,213,0.2);
-}
-
-/* =========================
-   CARDS (CYBER TERMINAL STYLE)
-========================= */
-
-.card {
-
-    background:
-
-    linear-gradient(
-    135deg,
-    rgba(0,255,255,.06),
-    rgba(0,0,0,.75)
-    );
-
-
-    border:
-
-    1px solid rgba(0,255,255,.18);
-
-
-    border-radius:
-
-    12px;
-
-
-    padding:
-
-    25px;
-
-
-    margin:
-
-    50px auto;
-
-
-    max-width:
-
-    900px;
-
-
-    backdrop-filter:
-
-    blur(15px);
-
-
-    box-shadow:
-
-    inset 0 0 25px rgba(0,255,255,.04),
-    0 0 20px rgba(0,255,255,.08);
-
-
-    position:
-
-    relative;
-
-
-    overflow:
-
-    hidden;
-
-}
-
-
-/* scanline effect */
-
-.card::after {
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-
-    background:
-
-    repeating-linear-gradient(
-    0deg,
-    rgba(255,255,255,0.015),
-    rgba(255,255,255,0.015) 1px,
-    transparent 2px,
-    transparent 4px
-    );
-
-
-    opacity:.15;
-
-}
-
-/* =========================
-   PROJECT MODULES
-========================= */
-
-.grid {
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:
-
-    15px;
-
-}
-
-
-
-.project {
-
-    padding:
-
-    20px;
-
-
-    background:
-
-    linear-gradient(
-    135deg,
-    rgba(0,255,255,.08),
-    rgba(0,0,0,.65)
-    );
-
-
-    border:
-
-    1px solid rgba(0,255,255,.20);
-
-
-    border-radius:
-
-    10px;
-
-
-    cursor:pointer;
-
-
-    transition:.3s;
-
-
-    backdrop-filter:
-
-    blur(10px);
-
-}
-
-
-
-.project:hover {
-
-    transform:
-
-    translateY(-5px);
-
-
-    border-color:
-
-    #00ffff;
-
-
-    box-shadow:
-
-    0 0 25px rgba(0,255,255,.25);
-
-}
-/* =========================
-   PROJECT VIEWER (FIXED MOBILE + PDF + IMAGES)
-========================= */
-
-#project-viewer {
-    border: 1px solid rgba(0,255,213,0.15);
-}
-
-#viewer-content img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-/* iframe PDF */
-#viewer-content iframe {
-    width: 100%;
-    height: 500px;
-    border: none;
-    border-radius: 8px;
-    background: white;
-}
-
-/* =========================
-   SKILL DATABASE
-========================= */
-
-.skill-group {
-
-    margin-bottom:
-
-    15px;
-
-
-    padding:
-
-    18px;
-
-
-    background:
-
-    rgba(0,0,0,.55);
-
-
-    border-left:
-
-    3px solid #00ffff;
-
-
-    border-radius:
-
-    8px;
-
-
-    transition:.3s;
-
-}
-
-
-
-.skill-group:hover {
-
-    transform:
-
-    translateX(5px);
-
-
-    box-shadow:
-
-    0 0 20px rgba(0,255,255,.2);
-
-}
-/* =========================
-   TYPEWRITER
-========================= */
-
-.cursor {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-}
-
-/* =========================
-   MOBILE FIXES (IMPORTANT)
-========================= */
-
-@media (max-width: 768px) {
-
-    nav {
-        gap: 6px;
-        padding: 10px;
-    }
-
-    nav a {
-        font-size: 11px;
-        padding: 6px 8px;
-    }
-
-    .card {
-        margin: 25px 10px;
-        padding: 18px;
-    }
-
-    #viewer-content iframe {
-        height: 300px;
-    }
-}
-
-/* =========================
-   GLOBAL TERMINAL HEADINGS
-========================= */
-
-.card h2,
-.card h3 {
-
-    font-family:
-
-    monospace;
-
-
-    color:
-
-    #00ffff;
-
-
-    letter-spacing:
-
-    2px;
-
-
-    text-shadow:
-
-    0 0 10px rgba(0,255,255,.5);
-
-}
-
-/* =========================
-   INTELLIGENCE CENTER
-========================= */
-
-
-#intelligence {
-
-    margin-top:40px;
-
-    border:
-    1px solid rgba(0,255,255,0.25);
-
-    background:
-    rgba(0,0,0,0.65);
-
-}
-
-
-
-
-/* =========================
-   GLITCH TITLE
-========================= */
-
-
-.glitch-title {
-
-    position:relative;
-
-    font-family:
-    monospace;
-
-    text-transform:
-    uppercase;
-
-    letter-spacing:
-    5px;
-
-    font-size:
-    42px;
-
-    color:
-    #00ffff;
-
-    text-shadow:
-    0 0 10px #00ffff;
-
-    animation:
-    titleFlicker 3s infinite;
-
-}
-
-
-
-.glitch-title::before,
-.glitch-title::after {
-
-    content:
-    attr(data-text);
-
-    position:absolute;
-
-    left:0;
-
-    top:0;
-
-    width:100%;
-
-    opacity:.8;
-
-}
-
-
-.glitch-title::before {
-
-    color:
-    #ff004c;
-
-    animation:
-    glitchRed 1.5s infinite;
-
-}
-
-
-
-.glitch-title::after {
-
-    color:
-    #00ffff;
-
-    animation:
-    glitchBlue 1s infinite;
-
-}
-
-
-
-
-@keyframes titleFlicker {
-
-
-0%,90%,100%{
-
-opacity:1;
-
-}
-
-
-92%{
-
-opacity:.4;
-
-}
-
-
-94%{
-
-opacity:1;
-
-}
-
-
-}
-
-
-
-
-@keyframes glitchRed {
-
-
-0%{
-
-clip-path:
-inset(0 0 90% 0);
-
-transform:
-translate(-3px);
-
-}
-
-
-50%{
-
-clip-path:
-inset(40% 0 30% 0);
-
-}
-
-
-100%{
-
-clip-path:
-inset(80% 0 5% 0);
-
-transform:
-translate(3px);
-
-}
-
-
-}
-
-
-
-
-
-@keyframes glitchBlue {
-
-
-0%{
-
-clip-path:
-inset(80% 0 5% 0);
-
-transform:
-translate(3px);
-
-}
-
-
-50%{
-
-clip-path:
-inset(10% 0 60% 0);
-
-}
-
-
-100%{
-
-clip-path:
-inset(0 0 90% 0);
-
-transform:
-translate(-3px);
-
-}
-
-
-}
-
-
-
-
-
-/* =========================
-   INTEL SUBTITLE
-========================= */
-
-
-.intel-subtitle {
-
-    font-family:
-    monospace;
-
-    color:
-    rgba(255,255,255,.55);
-
-    letter-spacing:
-    2px;
-
-    border-bottom:
-    1px solid rgba(0,255,255,.15);
-
-    padding-bottom:
-    20px;
-
-}
-
-
-
-
-/* =========================
-   INTELLIGENCE PANELS
-========================= */
-
-
-.intel-panel {
-
-
-    background:
-
-    linear-gradient(
-    135deg,
-    rgba(0,255,255,.08),
-    rgba(0,0,0,.75)
-    );
-
-
-    border:
-
-    1px solid rgba(0,255,255,.25);
-
-
-    padding:
-
-    25px;
-
-
-    margin-bottom:
-
-    30px;
-
-
-    border-radius:
-
-    12px;
-
-
-    backdrop-filter:
-
-    blur(15px);
-
-
-    box-shadow:
-
-    inset 0 0 25px rgba(0,255,255,.05),
-    0 0 20px rgba(0,255,255,.1);
-
-
-}
-
-
-
-
-.intel-panel h2 {
-
-
-    font-family:
-    monospace;
-
-
-    color:
-    #00ffff;
-
-
-    letter-spacing:
-    3px;
-
-
-}
-
-
-
-/* =========================
-   FEED ITEMS
-========================= */
-
-
-.intel-item {
-
-
-    background:
-
-    rgba(0,0,0,.55);
-
-
-    border-left:
-
-    3px solid #00ffff;
-
-
-    padding:
-
-    15px;
-
-
-    margin-bottom:
-
-    15px;
-
-
-    border-radius:
-
-    8px;
-
-
-    transition:
-
-    .3s;
-
-
-}
-
-
-
-.intel-item:hover {
-
-
-    transform:
-
-    translateX(5px);
-
-
-    box-shadow:
-
-    0 0 20px rgba(0,255,255,.25);
-
-
-}
-
-
-
-
-.intel-status {
-
-
-    color:
-
-    #00ff99;
-
-
-    font-family:
-
-    monospace;
-
-
-    letter-spacing:
-
-    2px;
-
-
-}
-
-
-
-
-
-/* =========================
-   LIVE FEED EFFECT
-========================= */
-
-
-#ai-news-feed,
-#ews-feed,
-#earthquake-feed {
-
-
-    font-family:
-
-    monospace;
-
-
-    line-height:
-
-    1.8;
-
-
-}
-
-
-
-
-#ai-news-feed::before,
-#ews-feed::before,
-#earthquake-feed::before {
-
-
-    content:
-
-    "● LIVE FEED";
-
-
-    display:block;
-
-
-    color:
-
-    #00ff99;
-
-
-    font-size:
-
-    12px;
-
-
-    letter-spacing:
-
-    3px;
-
-
-    margin-bottom:
-
-    15px;
-
-
-}
-
-/* =========================
-   INTELLIGENCE SCAN EFFECT
-========================= */
-
-.intel-panel::after {
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    background:
-    repeating-linear-gradient(
-    0deg,
-    rgba(255,255,255,0.02),
-    rgba(255,255,255,0.02) 1px,
-    transparent 2px,
-    transparent 4px
-    );
-
-    opacity:.15;
-
-}
-
-
-.intel-panel {
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-/* =========================
-GLOBAL DISASTER MAP
-========================= */
-
-
-#disaster-map {
-
-    width:100%;
-
-    height:600px;
-
-    border-radius:12px;
-
-    border:
-    1px solid rgba(0,255,255,.25);
-
-    overflow:hidden;
-
-    box-shadow:
-    0 0 25px rgba(0,255,255,.15);
-
-}
-
-/* =========================
-   MAIN TITLE
-========================= */
 
 .main-title {
 
@@ -917,22 +65,245 @@ GLOBAL DISASTER MAP
     color: #00ffff;
 
     text-shadow:
-    0 0 10px #00ffff,
-    0 0 25px rgba(0,255,255,.6);
+        0 0 10px #00ffff,
+        0 0 25px rgba(0,255,255,.6);
 
-    animation:
-    titlePulse 3s infinite;
-
+    animation: titlePulse 3s infinite;
 }
 
-
-/* glitch layers */
 
 .main-title::before,
 .main-title::after {
 
-    content:
-    attr(data-text);
+    content: attr(data-text);
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+
+    opacity: .7;
+}
+
+
+.main-title::before {
+
+    color: #ff004c;
+
+    animation: glitchRed 2s infinite;
+}
+
+
+.main-title::after {
+
+    color: #00ffff;
+
+    animation: glitchBlue 1.5s infinite;
+}
+
+
+.hero-subtitle {
+
+    font-family: monospace;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.65);
+
+    margin-top: 15px;
+
+}
+
+
+.terminal {
+
+    font-family: monospace;
+
+    color: #00ff99;
+
+    font-size: 16px;
+
+}
+
+
+.cursor {
+
+    animation: blink 1s infinite;
+
+}
+
+
+/* NAVIGATION */
+
+nav {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 15px;
+
+}
+
+
+nav a {
+
+    color: rgba(255,255,255,.85);
+
+    text-decoration: none;
+
+    font-family: monospace;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    transition: .3s;
+
+}
+
+
+nav a:hover {
+
+    color: #00ffff;
+
+    background: rgba(0,255,255,.1);
+
+    box-shadow:
+        0 0 15px rgba(0,255,255,.25);
+
+}
+
+
+
+/* MAIN CARDS */
+
+
+.card {
+
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 50px auto;
+
+    padding: 25px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,255,.06),
+            rgba(0,0,0,.75)
+        );
+
+    border:
+        1px solid rgba(0,255,255,.18);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+
+        inset 0 0 25px rgba(0,255,255,.05),
+        0 0 25px rgba(0,255,255,.08);
+
+}
+
+
+.card::after {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.015),
+            rgba(255,255,255,.015) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+
+    opacity:.2;
+
+}
+
+
+.card h2,
+.card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: monospace;
+
+    color:#00ffff;
+
+    letter-spacing:2px;
+
+    text-shadow:
+
+        0 0 10px rgba(0,255,255,.5);
+
+}
+
+
+.card p {
+
+    position:relative;
+
+    z-index:2;
+
+    line-height:1.7;
+
+}
+
+
+
+/* GLITCH TITLES */
+
+
+.glitch-title {
+
+    position:relative;
+
+    font-family:monospace;
+
+    text-transform:uppercase;
+
+    letter-spacing:5px;
+
+    font-size:42px;
+
+    color:#00ffff;
+
+    text-shadow:
+
+        0 0 10px #00ffff;
+
+}
+
+
+.glitch-title::before,
+.glitch-title::after {
+
+    content:attr(data-text);
 
     position:absolute;
 
@@ -942,53 +313,518 @@ GLOBAL DISASTER MAP
 
     width:100%;
 
-    opacity:.7;
-
 }
 
 
-.main-title::before {
+.glitch-title::before {
 
     color:#ff004c;
 
-    animation:
-    mainGlitchRed 2s infinite;
+    animation:glitchRed 1.5s infinite;
 
 }
 
 
-.main-title::after {
+.glitch-title::after {
 
     color:#00ffff;
 
-    animation:
-    mainGlitchBlue 1.5s infinite;
+    animation:glitchBlue 1s infinite;
+
+}
+
+.project {
+
+    position:relative;
+
+    z-index:2;
+
+    padding:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,255,.08),
+            rgba(0,0,0,.65)
+        );
+
+    border:
+
+        1px solid rgba(0,255,255,.2);
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+.project:hover {
+
+    transform:translateY(-5px);
+
+    border-color:#00ffff;
+
+    box-shadow:
+
+        0 0 25px rgba(0,255,255,.3);
 
 }
 
 
 
-.hero-subtitle {
+/* PROJECT GRID */
 
-    font-family: monospace;
+.grid {
 
-    letter-spacing: 5px;
+    position:relative;
 
-    color:
-    rgba(255,255,255,.65);
+    z-index:2;
 
-    font-size: 16px;
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
+
+    gap:15px;
+
+}
+
+
+
+/* PROJECT VIEWER */
+
+#project-viewer {
+
+    border-color:
+
+        rgba(0,255,213,.25);
+
+}
+
+
+#viewer-content {
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+#viewer-content img {
+
+    width:100%;
+
+    max-width:100%;
+
+    border-radius:8px;
+
+    margin-bottom:15px;
+
+}
+
+
+#viewer-content iframe {
+
+    width:100%;
+
+    height:500px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:white;
+
+}
+
+
+
+/* PDF BUTTON */
+
+.project-link {
+
+    display:inline-block;
+
+    padding:12px 20px;
 
     margin-top:15px;
 
-    text-shadow:
-    0 0 10px rgba(0,255,255,.4);
+    color:#00ffff;
+
+    text-decoration:none;
+
+    font-family:monospace;
+
+    border:
+
+        1px solid rgba(0,255,255,.25);
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+
+.project-link:hover {
+
+    background:
+
+        rgba(0,255,255,.1);
+
+    box-shadow:
+
+        0 0 20px rgba(0,255,255,.25);
 
 }
 
 
 
-/* animations */
+/* INTELLIGENCE CENTER */
+
+
+#intelligence {
+
+    border:
+
+        1px solid rgba(0,255,255,.25);
+
+}
+
+
+.intel-subtitle {
+
+    font-family:monospace;
+
+    color:
+
+        rgba(255,255,255,.55);
+
+    letter-spacing:2px;
+
+    padding-bottom:20px;
+
+    border-bottom:
+
+        1px solid rgba(0,255,255,.15);
+
+}
+
+
+
+/* INTEL PANELS */
+
+
+.intel-panel {
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:25px;
+
+    margin-bottom:30px;
+
+    border-radius:12px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(0,255,255,.08),
+            rgba(0,0,0,.75)
+        );
+
+    border:
+
+        1px solid rgba(0,255,255,.25);
+
+    backdrop-filter:
+
+        blur(15px);
+
+    box-shadow:
+
+        inset 0 0 25px rgba(0,255,255,.05),
+        0 0 20px rgba(0,255,255,.1);
+
+}
+
+
+.intel-panel::after {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.02),
+            rgba(255,255,255,.02) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+
+    opacity:.15;
+
+}
+
+
+.intel-panel h2 {
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:monospace;
+
+    color:#00ffff;
+
+    letter-spacing:3px;
+
+}
+
+
+
+/* INTEL FEED ITEMS */
+
+
+.intel-feed {
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.intel-item {
+
+    background:
+
+        rgba(0,0,0,.55);
+
+    border-left:
+
+        3px solid #00ffff;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+    line-height:1.8;
+
+}
+
+
+.intel-item:hover {
+
+    transform:
+
+        translateX(5px);
+
+    box-shadow:
+
+        0 0 20px rgba(0,255,255,.25);
+
+}
+
+
+.intel-status {
+
+    position:relative;
+
+    z-index:2;
+
+    color:#00ff99;
+
+    font-family:monospace;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+}
+
+
+.status-alert {
+
+    color:#ff004c;
+
+    font-family:monospace;
+
+}
+
+
+
+/* LIVE FEED LABEL */
+
+
+#ai-news-feed::before,
+#ews-feed::before,
+#disaster-feed::before {
+
+    content:"● LIVE FEED";
+
+    display:block;
+
+    color:#00ff99;
+
+    font-family:monospace;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+/* DISASTER MAP */
+
+
+#disaster-map {
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    height:600px;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    border:
+
+        1px solid rgba(0,255,255,.25);
+
+    box-shadow:
+
+        0 0 25px rgba(0,255,255,.15);
+
+}
+
+
+.leaflet-container {
+
+    background:#000;
+
+}
+
+.skills-grid {
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(240px,1fr)
+        );
+
+    gap:15px;
+
+}
+
+
+.skill-group {
+
+    position:relative;
+
+    z-index:2;
+
+    padding:18px;
+
+    background:
+
+        rgba(0,0,0,.55);
+
+    border-left:
+
+        3px solid #00ffff;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+
+.skill-group:hover {
+
+    transform:
+
+        translateX(5px);
+
+    box-shadow:
+
+        0 0 20px rgba(0,255,255,.2);
+
+}
+
+
+.skill-group h3 {
+
+    margin-top:0;
+
+}
+
+
+
+/* ANIMATIONS */
+
+
+.cursor {
+
+    animation:
+
+        blink 1s infinite;
+
+}
+
+
+@keyframes blink {
+
+    0%,50% {
+
+        opacity:1;
+
+    }
+
+    51%,100% {
+
+        opacity:0;
+
+    }
+
+}
+
+
 
 @keyframes titlePulse {
 
@@ -1007,81 +843,273 @@ GLOBAL DISASTER MAP
 }
 
 
-@keyframes mainGlitchRed {
+
+@keyframes glitchRed {
+
 
     0%,90%,100% {
 
         clip-path:
-        inset(0 0 100% 0);
+
+            inset(
+                0 0 100% 0
+            );
 
         transform:
-        translate(0);
+
+            translate(0);
 
     }
+
 
     92% {
 
         clip-path:
-        inset(20% 0 40% 0);
+
+            inset(
+                20% 0 40% 0
+            );
 
         transform:
-        translate(-4px);
+
+            translate(-4px);
 
     }
+
 
 }
 
 
-@keyframes mainGlitchBlue {
+
+@keyframes glitchBlue {
+
 
     0%,85%,100% {
 
         clip-path:
-        inset(100% 0 0 0);
+
+            inset(
+                100% 0 0 0
+            );
 
         transform:
-        translate(0);
+
+            translate(0);
 
     }
+
 
     88% {
 
         clip-path:
-        inset(40% 0 20% 0);
+
+            inset(
+                40% 0 20% 0
+            );
 
         transform:
-        translate(4px);
+
+            translate(4px);
 
     }
 
+
 }
 
-.project-link {
+
+
+
+/* RESUME BUTTON */
+
+
+#resume .project {
 
     display:inline-block;
 
-    padding:15px 20px;
+}
 
-    margin-top:15px;
 
-    color:#00ffff;
 
-    text-decoration:none;
+/* CONTACT */
 
-    border:1px solid rgba(0,255,255,.25);
 
-    border-radius:8px;
+#contact p {
 
-    transition:.3s;
+    font-family:
+
+        monospace;
 
 }
 
 
-.project-link:hover {
 
-    background:rgba(0,255,255,.1);
+/* MOBILE OPTIMIZATION */
 
-    box-shadow:
-    0 0 20px rgba(0,255,255,.25);
+
+@media(max-width:768px){
+
+
+    .hero {
+
+        padding:
+
+            40px 15px 20px;
+
+    }
+
+
+
+    .main-title {
+
+        letter-spacing:
+
+            4px;
+
+    }
+
+
+
+    .glitch-title {
+
+        font-size:
+
+            30px;
+
+        letter-spacing:
+
+            3px;
+
+    }
+
+
+
+    nav {
+
+        gap:6px;
+
+        padding:10px;
+
+    }
+
+
+
+    nav a {
+
+        font-size:
+
+            12px;
+
+        padding:
+
+            6px 8px;
+
+    }
+
+
+
+    .card {
+
+        margin:
+
+            25px 10px;
+
+        padding:
+
+            18px;
+
+    }
+
+
+
+    .intel-panel {
+
+        padding:
+
+            18px;
+
+    }
+
+
+
+    #viewer-content iframe {
+
+        height:
+
+            300px;
+
+    }
+
+
+
+    #disaster-map {
+
+        height:
+
+            350px;
+
+    }
+
+
+
+    .grid {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+    .hero-subtitle {
+
+        font-size:
+
+            12px;
+
+        letter-spacing:
+
+            3px;
+
+    }
+
+
+
+    .terminal {
+
+        font-size:
+
+            13px;
+
+    }
+
+
+
+    .card h2 {
+
+        font-size:
+
+            20px;
+
+    }
+
+
+
+    .intel-item {
+
+        font-size:
+
+            14px;
+
+    }
+
+
 
 }
