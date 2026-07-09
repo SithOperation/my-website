@@ -225,54 +225,6 @@ function loadProject(key) {
 
 
 
-
-// =====================
-// PROJECT CLICK SUPPORT
-// SUPPORTS:
-// onclick="loadProject()"
-// data-project=""
-// =====================
-
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-
-    document
-    .querySelectorAll(".project")
-    .forEach(card=>{
-
-
-        card.addEventListener(
-        "click",
-        ()=>{
-
-
-            const project =
-            card.dataset.project;
-
-
-            if(project){
-
-                loadProject(project);
-
-            }
-
-
-        });
-
-
-    });
-
-
-});
-
-
-
-
-
-
 // =====================
 // BACKGROUND GIF SYSTEM
 // =====================
