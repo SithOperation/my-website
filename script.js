@@ -1091,6 +1091,12 @@ async function loadDisasterMap() {
 
     });
 
+   disasterMap.addControl(
+      new maplibregl.NavigationControl(),
+      "top-right"
+   );
+
+   
     console.log("MapLibre map initialized");
 
     disasterMap.on("error", (error) => {
@@ -1314,16 +1320,15 @@ async function loadDisasterMap() {
 
                 const popup = new maplibregl.Popup()
 
-                    .setLngLat(e.lngLat)
-
-                    .setHTML(`
-
-                        <strong>${props.title}</strong><br>
-                        Location: ${props.location}<br>
-                        Severity: ${props.severity}<br>
-                        Type: ${props.type}
-
-                    `)
+                   .setLngLat(e.lngLat)
+                   
+                   .setHTML(`
+                   <strong>${safe(props.title)}</strong><br>
+                   Location: ${safe(props.location)}<br>
+                   Severity: ${safe(props.severity)}<br>
+                   Type: ${safe(props.type)}
+                   
+                   `)
 
                     .addTo(disasterMap);
 
@@ -1338,10 +1343,10 @@ async function loadDisasterMap() {
                     .setLngLat(e.lngLat)
 
                     .setHTML(`
-
-                        <strong>${props.title}</strong><br>
-                        ${props.location}
-
+                    
+                    <strong>${safe(props.title)}</strong><br>
+                    ${safe(props.location)}
+                    
                     `)
 
                     .addTo(disasterMap);
