@@ -1225,73 +1225,84 @@ async function loadDisasterMap(){
     */
 
     disasterMap = L.map(
-        "disaster-map",
-        {
-
-            zoomControl:true,
-
-            worldCopyJump:true
-
-        }
-
+       "disaster-map",
+       {
+           zoomControl:true,
+           worldCopyJump:false,
+           maxBounds:[
+              [-90,-180],
+              [90,180]
+           ]
+       }
     )
+       
     .setView(
-        [
-            20,
-            0
-        ],
-        2
+       [
+          20,
+          0
+       ],
+       2,
+       {
+   
+          animate:false
+       }
     );
 
 
 
+   /*
+   Correct tile loading
+   */
 
+   L.tileLayer(
 
-    /*
-        Correct tile loading
-    */
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 
-    L.tileLayer(
+      {
 
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+         maxZoom:19,
+         
+         minZoom:2,
 
-        {
+         noWrap:true,
 
-            maxZoom:19,
+         crossOrigin:true,
 
-            attribution:
+         attribution:
             "&copy; OpenStreetMap contributors"
+         
+      }
+      
 
-        }
+   )
 
-    )
-
-    .on(
-        "tileerror",
-        function(error){
-
+      .on(
+         "tileerror",
+         function(error){
+            
             console.error(
-                "Leaflet tile error:",
-                error
+               "Leaflet tile error:",
+               error
+      
             );
+   
+         }
 
-        }
+      )
 
-    )
+      .addTo(disasterMap);
 
-   .addTo(disasterMap);
 
 
    disasterMap.whenReady(()=>{
 
       setTimeout(()=>{
-
+      
          disasterMap.invalidateSize(true);
 
       },500);
 
    });
-
 
 
 
