@@ -1285,7 +1285,7 @@ async function loadDisasterMap(){
 
     L.tileLayer(
 
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
 
         {
 
