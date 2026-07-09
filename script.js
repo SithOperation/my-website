@@ -1398,10 +1398,14 @@ document.addEventListener(
     loadIntelligence();
 
 
-    loadDisasterMap();
+
+    setTimeout(()=>{
+
+        loadDisasterMap();
+
+
+    },1500);
 
 
 
-}
-
-);
+});
