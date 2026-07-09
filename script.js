@@ -1027,10 +1027,26 @@ function getEventColor(type){
 function addPointEvent(event){
 
 
+    if(!event.coordinates){
+
+        return;
+
+    }
+
+
+    const lat =
+    event.coordinates.lat;
+
+
+    const lon =
+    event.coordinates.lon ??
+    event.coordinates.lng;
+
+
+
     if(
-        !event.coordinates ||
-        event.coordinates.lat === undefined ||
-        event.coordinates.lon === undefined
+        lat === undefined ||
+        lon === undefined
     ){
 
         return;
@@ -1042,8 +1058,8 @@ function addPointEvent(event){
     L.circleMarker(
 
         [
-            event.coordinates.lat,
-            event.coordinates.lon
+            lat,
+            lon
         ],
 
         {
@@ -1053,7 +1069,12 @@ function addPointEvent(event){
             color:
             getEventColor(event.type),
 
-            fillOpacity:.8
+            fillColor:
+            getEventColor(event.type),
+
+            fillOpacity:.8,
+
+            weight:2
 
         }
 
@@ -1065,14 +1086,25 @@ function addPointEvent(event){
     ${safe(event.title)}
     </strong>
 
-    <br>
+    <br><br>
 
+
+    Location:
     ${safe(event.location)}
 
+
     <br>
+
 
     Severity:
     ${safe(event.severity)}
+
+
+    <br>
+
+
+    Type:
+    ${safe(event.type)}
 
     `)
 
