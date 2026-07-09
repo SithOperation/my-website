@@ -19,19 +19,26 @@
 
     <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
-script-src 'self' https://unpkg.com blob:;
+
+script-src 'self' https://unpkg.com;
+
 worker-src 'self' blob:;
+
 style-src 'self' 'unsafe-inline' https://unpkg.com;
+
 img-src 'self' data: blob:
 https://*.maptiler.com
 https://*.maptiler.app
 https://*.openstreetmap.org
 https://tile.openstreetmap.org;
+
 font-src 'self' https://unpkg.com;
+
 connect-src 'self'
 https://*.maptiler.com
 https://*.maptiler.app
 https://*.openstreetmap.org;
+
 frame-src 'self';
 ">
 
