@@ -19,7 +19,8 @@
 
     <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
-script-src 'self' https://unpkg.com;
+script-src 'self' https://unpkg.com blob:;
+worker-src 'self' blob:;
 style-src 'self' 'unsafe-inline' https://unpkg.com;
 img-src 'self' data: blob:
 https://*.maptiler.com
