@@ -87,11 +87,39 @@ jobs:
 
         run: |
 
+
+          echo "Checking EWS..."
+
           test -f external/ews/state.json
+
+
+
+          echo "Checking Disaster State..."
 
           test -f external/disaster/data/disaster_state.json
 
+
+
+          echo "Checking Disaster Map Files..."
+
+          test -f external/disaster/data/earthquakes.json
+
+          test -f external/disaster/data/volcanoes.json
+
+          test -f external/disaster/data/weather.json
+
+          test -f external/disaster/data/solar.json
+
+
+
+          echo "Checking AI Digest..."
+
           test -f external/ai/data/ai_cyber_digest.json
+
+
+
+          echo "All source files found"
+
 
 
 
@@ -99,19 +127,52 @@ jobs:
 
         run: |
 
+
           mkdir -p data
 
+
+
+          # EWS
 
           cp external/ews/state.json \
           data/ews_state.json
 
 
+
+          # Disaster dashboard feed
+
           cp external/disaster/data/disaster_state.json \
           data/disaster_state.json
 
 
+
+          # MapLibre feeds
+
+          cp external/disaster/data/earthquakes.json \
+          data/earthquakes.json
+
+
+
+          cp external/disaster/data/volcanoes.json \
+          data/volcanoes.json
+
+
+
+          cp external/disaster/data/weather.json \
+          data/weather.json
+
+
+
+          cp external/disaster/data/solar.json \
+          data/solar.json
+
+
+
+          # AI digest
+
           cp external/ai/data/ai_cyber_digest.json \
           data/ai_cyber_digest.json
+
 
 
 
@@ -119,9 +180,24 @@ jobs:
 
         run: |
 
-          echo "EWS"
 
-          cat data/ews_state.json
+          echo "Dashboard data:"
+
+
+          ls -lh data/
+
+
+
+          echo "Earthquakes sample:"
+
+          head -30 data/earthquakes.json
+
+
+
+          echo "Weather sample:"
+
+          head -30 data/weather.json
+
 
 
 
