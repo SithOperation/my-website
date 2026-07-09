@@ -1119,3 +1119,40 @@ nav a:hover {
     }
 
 }
+
+/* =========================
+   LEAFLET TILE RENDER FIX
+========================= */
+
+
+#disaster-map {
+
+    position:relative;
+
+}
+
+
+#disaster-map .leaflet-container {
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+#disaster-map .leaflet-map-pane,
+#disaster-map .leaflet-tile-pane {
+
+    transform:none;
+
+}
+
+
+#disaster-map .leaflet-tile {
+
+    max-width:none !important;
+
+    max-height:none !important;
+
+}
