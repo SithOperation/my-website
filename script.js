@@ -1060,7 +1060,26 @@ async function loadDisasterMap() {
 
         container: "disaster-map",
 
-        style: "https://demotiles.maplibre.org/style.json",
+        style: {
+            version: 8,
+            sources: {
+                "osm": {
+                    type: "raster",
+                    tiles: ["https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                    tileSize: 256,
+                    attribution: "&copy; OpenStreetMap contributors"
+                }
+            },
+            layers: [
+                {
+                    id: "osm",
+                    type: "raster",
+                    source: "osm",
+                    minzoom: 0,
+                    maxzoom: 18
+                }
+            ]
+        },
 
         center: [0, 20],
 
@@ -1069,6 +1088,29 @@ async function loadDisasterMap() {
         minZoom: 1,
 
         maxZoom: 18,
+
+    });
+
+    console.log("MapLibre map initialized");
+
+    disasterMap.on("error", (error) => {
+
+        console.error("Map error:", error);
+
+    });
+
+    /* Ensure map is visible after slight delay */
+    disasterMap.once("load", () => {
+
+        console.log("Map load event fired");
+
+        disasterMap.resize();
+
+    });
+
+    disasterMap.on("data", () => {
+
+        console.log("Map data loaded");
 
     });
 

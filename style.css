@@ -549,6 +549,8 @@ nav a:hover {
 
     position: relative;
 
+    z-index: 1;
+
 }
 
 
@@ -558,15 +560,41 @@ nav a:hover {
 
     height: 600px;
 
+    min-height: 600px;
+
+    position: relative;
+
     border-radius: 12px;
 
     border: 1px solid rgba(0, 255, 255, .35);
 
     overflow: hidden;
 
+    background: #000;
+
     box-shadow:
         inset 0 0 20px rgba(0, 0, 0, .5),
         0 0 20px rgba(0, 255, 255, .15);
+
+}
+
+
+#disaster-map canvas {
+
+    display: block;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+}
+
+
+#disaster-map .maplibregl-canvas {
+
+    width: 100% !important;
+
+    height: 100% !important;
 
 }
 
