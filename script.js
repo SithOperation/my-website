@@ -1680,23 +1680,33 @@ async function loadDisasterMap(){
 // UFO BACK TO TOP
 // =========================
 
-const ufoButton = document.getElementById("ufo-top");
+document.addEventListener("DOMContentLoaded", () => {
+
+    const ufoButton = document.getElementById("ufo-top");
 
 
-if (ufoButton) {
+    if (!ufoButton) {
+        console.log("UFO button not found");
+        return;
+    }
+
 
     ufoButton.addEventListener("click", () => {
 
 
+        // UFO launch animation
         ufoButton.classList.add("launch");
 
 
+        // Force page scroll to top
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
+
         window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
+            top: 0,
+            left: 0,
+            behavior: "smooth"
         });
 
 
@@ -1704,12 +1714,13 @@ if (ufoButton) {
 
             ufoButton.classList.remove("launch");
 
-        },1000);
+        }, 1000);
 
 
     });
 
-}
+
+});
 
 
 
