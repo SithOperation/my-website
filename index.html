@@ -4,23 +4,22 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Joseph Technologies</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link rel="stylesheet" href="assets/leaflet.css">
 
 <meta http-equiv="Content-Security-Policy"
 content="
 default-src 'self';
 script-src 'self';
-style-src 'self';
+style-src 'self' 'unsafe-inline';
 img-src 'self' data:;
 font-src 'self';
 connect-src 'self';
+frame-src 'self';
 ">
 
 </head>
@@ -29,23 +28,13 @@ connect-src 'self';
 <body>
 
 
-<!-- =========================
-BACKGROUND LAYERS
-========================= -->
-
 <div class="bg-layer" id="bg1"></div>
 <div class="bg-layer" id="bg2"></div>
 <div class="bg-layer" id="bg3"></div>
 
 
-
 <div class="overlay">
 
-
-
-<!-- =========================
-HERO
-========================= -->
 
 <header class="hero">
 
@@ -53,45 +42,30 @@ HERO
 JOSEPH TECHNOLOGIES
 </h1>
 
-
 <p class="hero-subtitle">
 CYBER INTELLIGENCE PLATFORM
 </p>
 
-
 <p>
 Cybersecurity • Threat Research • Network Defense
 </p>
-
 
 <p class="terminal">
 root@joseph:~$
 <span id="typing"></span>
 </p>
 
-
 </header>
 
 
 
-
-
-<!-- =========================
-NAVIGATION
-========================= -->
-
 <nav>
 
 <a href="#about">About</a>
-
 <a href="#projects">Modules</a>
-
 <a href="#intelligence">Intelligence</a>
-
 <a href="#skills">Skills</a>
-
 <a href="#resume">Resume</a>
-
 <a href="#contact">Contact</a>
 
 </nav>
@@ -100,17 +74,11 @@ NAVIGATION
 
 
 
-<!-- =========================
-ABOUT
-========================= -->
-
 <section id="about" class="card">
-
 
 <h1 class="glitch-title" data-text="ABOUT PROFILE">
 ABOUT PROFILE
 </h1>
-
 
 <p class="intel-subtitle">
 CYBERSECURITY • SYSTEMS • AUTOMATION • DEFENSIVE ENGINEERING
@@ -119,35 +87,27 @@ CYBERSECURITY • SYSTEMS • AUTOMATION • DEFENSIVE ENGINEERING
 
 <div class="intel-panel">
 
-
 <p>
 I’m a cybersecurity and IT professional with hands-on experience in technical support, systems operations, networking, and security-focused projects.
 </p>
 
-
 <p>
-My background includes technical troubleshooting, infrastructure, automation, and real-world operational environments that shaped my approach to cybersecurity.
+My background includes technical troubleshooting, infrastructure, automation, and operational environments that shaped my approach to cybersecurity.
 </p>
-
 
 <p>
 I am currently completing my Master’s degree in Cybersecurity at DeVry University while developing practical security systems focused on threat intelligence, automation, network defense, and security research.
 </p>
 
-
 <p>
 The intelligence platforms and security modules presented throughout this portfolio are repositories that I personally designed, developed, and maintain.
-These projects demonstrate hands-on application of cybersecurity concepts through data collection, threat monitoring, automation workflows, and defensive security engineering.
 </p>
-
 
 <p>
-My goal is to continue developing toward cybersecurity operations and SOC-level work by building practical tools that combine security analysis, automation, and real-world problem solving.
+My goal is to continue developing toward cybersecurity operations and SOC-level work by building practical tools that combine security analysis, automation, and defensive engineering.
 </p>
 
-
 </div>
-
 
 </section>
 
@@ -155,15 +115,12 @@ My goal is to continue developing toward cybersecurity operations and SOC-level 
 
 
 
-<!-- =========================
-INTELLIGENCE CENTER
-========================= -->
 
 <section id="intelligence" class="card">
 
 
-<h1 class="glitch-title" data-text="🌐 INTELLIGENCE CENTER">
-🌐 INTELLIGENCE CENTER
+<h1 class="glitch-title" data-text="INTELLIGENCE CENTER">
+INTELLIGENCE CENTER
 </h1>
 
 
@@ -173,21 +130,16 @@ LIVE CYBERSECURITY • EARLY WARNING • DISASTER INTELLIGENCE NETWORK
 
 
 
-<section class="intel-panel">
+<div class="intel-panel">
 
 <h2>
-🔐 AI CYBER INTELLIGENCE
+AI CYBER INTELLIGENCE
 </h2>
 
 
 <p class="panel-description">
-Top artificial intelligence, cybersecurity, and threat research developments.
+Artificial intelligence, cybersecurity, and threat research developments.
 </p>
-
-
-<div class="intel-status">
-STATUS: ONLINE
-</div>
 
 
 <div id="ai-news-feed" class="intel-feed">
@@ -198,28 +150,23 @@ Loading AI intelligence stream...
 
 </div>
 
-
-</section>
-
+</div>
 
 
 
 
-<section class="intel-panel">
+
+
+<div class="intel-panel">
 
 <h2>
-✈️ EARLY WARNING SYSTEM
+EARLY WARNING SYSTEM
 </h2>
 
 
 <p class="panel-description">
 Aircraft activity anomaly detection and monitoring.
 </p>
-
-
-<div class="intel-status">
-STATUS: MONITORING
-</div>
 
 
 <div id="ews-feed" class="intel-feed">
@@ -230,28 +177,23 @@ Loading EWS telemetry...
 
 </div>
 
-
-</section>
-
+</div>
 
 
 
 
-<section class="intel-panel">
+
+
+<div class="intel-panel">
 
 <h2>
-🌎 DISASTER INTELLIGENCE
+DISASTER INTELLIGENCE
 </h2>
 
 
 <p class="panel-description">
 Global earthquake, volcano, weather, fire, and space event monitoring.
 </p>
-
-
-<div class="intel-status">
-STATUS: ACTIVE
-</div>
 
 
 <div id="disaster-feed" class="intel-feed">
@@ -262,42 +204,32 @@ Loading disaster telemetry...
 
 </div>
 
-
-</section>
-
+</div>
 
 
 
 
-<section class="intel-panel">
+
+
+<div class="intel-panel">
 
 <h2>
-🗺️ GLOBAL DISASTER MAP
+GLOBAL DISASTER MAP
 </h2>
-
-
-<p class="panel-description">
-Live disaster intelligence visualization.
-</p>
 
 
 <div id="disaster-map"></div>
 
+</div>
+
 
 </section>
 
 
-</section>
 
 
 
 
-
-
-
-<!-- =========================
-PROJECT MODULES
-========================= -->
 
 <section id="projects" class="card">
 
@@ -312,41 +244,35 @@ Personal cybersecurity repositories, automation systems, and defensive research 
 </p>
 
 
+
 <div class="grid">
 
 
 
 <div class="project" data-project="reddit">
 
-
 <h3>
 Threat Intelligence Monitoring Platform
 </h3>
 
-
 <p>
 Automated collection, analysis, and alerting pipeline using Python, GitHub Actions, and Discord integrations.
 </p>
-
 
 </div>
 
 
 
 
-
 <div class="project" data-project="ransomware">
-
 
 <h3>
 Healthcare Ransomware Defense Framework
 </h3>
 
-
 <p>
-Security architecture research focused on ransomware mitigation, risk reduction, and defensive controls.
+Security architecture research focused on ransomware mitigation and defensive controls.
 </p>
-
 
 </div>
 
@@ -356,19 +282,15 @@ Security architecture research focused on ransomware mitigation, risk reduction,
 
 <div class="project" data-project="nestle">
 
-
 <h3>
 Enterprise Threat Analysis Module
 </h3>
-
 
 <p>
 CIA Triad-based threat evaluation and security impact assessment framework.
 </p>
 
-
 </div>
-
 
 
 </div>
@@ -382,11 +304,6 @@ CIA Triad-based threat evaluation and security impact assessment framework.
 
 
 
-<!-- =========================
-MODULE VIEWER
-========================= -->
-
-
 <section id="project-viewer" class="card">
 
 
@@ -397,7 +314,7 @@ Module Analysis Console
 
 <div id="viewer-content">
 
-<p style="opacity:0.7;">
+<p>
 Select a module to load analysis...
 </p>
 
@@ -413,10 +330,6 @@ Select a module to load analysis...
 
 
 
-<!-- =========================
-SKILLS
-========================= -->
-
 <section id="skills" class="card">
 
 
@@ -431,11 +344,11 @@ Skills
 <div class="skill-group">
 
 <h3>
-Security Operations (SOC)
+Security Operations
 </h3>
 
 <p>
-Threat Detection • Incident Response • Log Analysis • SIEM Fundamentals • Vulnerability Assessment • Defense-in-Depth • CIA Triad • NIST Framework
+Threat Detection • Incident Response • Log Analysis • SIEM Fundamentals • Vulnerability Assessment • NIST Framework
 </p>
 
 </div>
@@ -449,7 +362,7 @@ Networking & Infrastructure
 </h3>
 
 <p>
-TCP/IP • LAN/WAN • DNS • DHCP • VPN Concepts • Subnetting • Firewalls • IDS/IPS • Network Troubleshooting • Windows Server Administration
+TCP/IP • DNS • DHCP • VPN Concepts • Firewalls • IDS/IPS • Windows Server Administration
 </p>
 
 </div>
@@ -463,21 +376,7 @@ Security Tools
 </h3>
 
 <p>
-Kali Linux • Metasploit • Nmap • Wireshark • Active Directory • Windows Event Viewer • VMware • VirtualBox • Docker
-</p>
-
-</div>
-
-
-
-<div class="skill-group">
-
-<h3>
-Systems & Cloud
-</h3>
-
-<p>
-Windows Server • Linux • AWS Fundamentals • Azure Fundamentals • Virtualization • System Hardening • Identity & Access Concepts
+Kali Linux • Metasploit • Nmap • Wireshark • Active Directory • VMware • VirtualBox
 </p>
 
 </div>
@@ -497,20 +396,6 @@ Python • Bash • PowerShell • SQL • C++ • Java • Security Automation
 </div>
 
 
-
-<div class="skill-group">
-
-<h3>
-IT & Support Operations
-</h3>
-
-<p>
-Help Desk Support • Hardware Diagnostics • Software Deployment • Technical Documentation • Customer Support
-</p>
-
-</div>
-
-
 </div>
 
 
@@ -522,11 +407,6 @@ Help Desk Support • Hardware Diagnostics • Software Deployment • Technical
 
 
 
-<!-- =========================
-RESUME
-========================= -->
-
-
 <section id="resume" class="card">
 
 <h2>
@@ -536,7 +416,7 @@ Resume
 
 <a href="assets/projects/resume2026.pdf"
 target="_blank"
-class="project">
+class="project-link">
 
 Download Resume (PDF)
 
@@ -551,12 +431,8 @@ Download Resume (PDF)
 
 
 
-<!-- =========================
-CONTACT
-========================= -->
-
-
 <section id="contact" class="card">
+
 
 <h2>
 Contact
@@ -572,23 +448,11 @@ Email: Joeytechnology20@gmail.com
 
 
 
-
-
-
 </div>
 
 
 
-
-
-
-
-<!-- =========================
-SCRIPTS
-========================= -->
-
 <script src="assets/leaflet.js"></script>
-
 <script src="script.js"></script>
 
 
