@@ -980,3 +980,142 @@ nav a:hover {
 
 
 }
+
+/* =========================
+   UFO BACK TO TOP BUTTON
+========================= */
+
+
+#ufo-top {
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+
+    width:65px;
+
+    height:65px;
+
+
+    border-radius:50%;
+
+
+    border:1px solid rgba(0,255,255,.5);
+
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,255,255,.25),
+        rgba(0,0,0,.85)
+    );
+
+
+    color:#00ffff;
+
+
+    font-size:32px;
+
+
+    cursor:pointer;
+
+
+    z-index:9999;
+
+
+    box-shadow:
+
+    0 0 15px #00ffff,
+    0 0 35px rgba(0,255,255,.5);
+
+
+    transition:.4s;
+
+
+    animation:ufoHover 3s infinite ease-in-out;
+
+
+}
+
+
+
+#ufo-top:hover {
+
+
+    transform:
+    scale(1.2)
+    rotate(-10deg);
+
+
+    box-shadow:
+
+    0 0 25px #00ffff,
+    0 0 60px rgba(0,255,255,.8);
+
+
+}
+
+
+
+#ufo-top.launch {
+
+
+    animation:
+
+    ufoLaunch 1s forwards;
+
+
+}
+
+
+
+@keyframes ufoHover {
+
+
+    0%,100% {
+
+        transform:
+        translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:
+        translateY(-10px);
+
+    }
+
+}
+
+
+
+@keyframes ufoLaunch {
+
+
+    0% {
+
+        transform:
+        translateY(0)
+        scale(1);
+
+        opacity:1;
+
+    }
+
+
+    100% {
+
+        transform:
+        translateY(-900px)
+        scale(.2);
+
+        opacity:0;
+
+    }
+
+}
