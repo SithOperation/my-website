@@ -300,33 +300,6 @@ nav a:hover {
 
 
 
-.card::after {
-
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-
-    background:
-
-    repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,.015),
-        rgba(255,255,255,.015) 1px,
-        transparent 2px,
-        transparent 4px
-    );
-
-
-}
-
-
-
 .card h2,
 .card h3 {
 
