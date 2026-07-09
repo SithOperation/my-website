@@ -1123,14 +1123,21 @@ async function loadDisasterMap() {
 
 
 
+
     disasterMap.addControl(
+
         new maplibregl.NavigationControl()
+
     );
 
 
 
+
+
     disasterMap.on(
+
         "load",
+
         async () => {
 
 
@@ -1145,11 +1152,15 @@ async function loadDisasterMap() {
 
                 const files = [
 
+
                     "data/earthquakes.json",
 
-                    "data/weather.json",
 
-                    "data/volcanoes.json"
+                    "data/volcanoes.json",
+
+
+                    "data/weather.json"
+
 
                 ];
 
@@ -1159,8 +1170,11 @@ async function loadDisasterMap() {
 
 
 
+
                 for (
+
                     const file of files
+
                 ) {
 
 
@@ -1176,9 +1190,11 @@ async function loadDisasterMap() {
 
                         if (!response.ok) {
 
+
                             console.warn(
                                 `${file} unavailable`
                             );
+
 
                             continue;
 
@@ -1192,8 +1208,11 @@ async function loadDisasterMap() {
 
 
                         if (
+
                             Array.isArray(data)
+
                         ) {
+
 
                             events =
                                 events.concat(data);
@@ -1201,15 +1220,20 @@ async function loadDisasterMap() {
                         }
 
 
-
                     }
+
+
                     catch(error) {
 
 
                         console.error(
-                            "Data load error:",
+
+                            "Failed loading",
+
                             file,
+
                             error
+
                         );
 
 
@@ -1221,11 +1245,14 @@ async function loadDisasterMap() {
 
 
 
+
                 const geojson = {
 
 
                     type:
+
                     "FeatureCollection",
+
 
 
                     features:
@@ -1233,55 +1260,90 @@ async function loadDisasterMap() {
                     events.map(event => {
 
 
+
+                        /*
+                            POINT EVENTS
+
+                            Earthquake
+                            Volcano
+
+                        */
+
+
                         if (
+
+
                             event.coordinates &&
+
+
                             event.coordinates.lat !== undefined &&
+
+
                             event.coordinates.lon !== undefined
+
+
                         ) {
+
 
 
                             return {
 
 
                                 type:
+
                                 "Feature",
+
 
 
                                 properties: {
 
 
                                     title:
+
                                     event.title,
 
 
+
                                     location:
+
                                     event.location,
 
 
+
                                     severity:
+
                                     event.severity,
 
 
+
                                     type:
+
                                     event.type
 
+
                                 },
+
 
 
                                 geometry: {
 
 
                                     type:
+
                                     "Point",
+
 
 
                                     coordinates:
 
                                     [
 
+
                                         event.coordinates.lon,
 
+
                                         event.coordinates.lat
+
 
                                     ]
 
@@ -1294,10 +1356,99 @@ async function loadDisasterMap() {
                         }
 
 
+
+
+
+                        /*
+                            WEATHER POLYGONS
+
+                        */
+
+
+                        if (
+
+
+                            event.coordinates &&
+
+
+                            event.coordinates.polygon
+
+
+                        ) {
+
+
+
+                            return {
+
+
+                                type:
+
+                                "Feature",
+
+
+
+                                properties: {
+
+
+                                    title:
+
+                                    event.title,
+
+
+
+                                    location:
+
+                                    event.location,
+
+
+
+                                    severity:
+
+                                    event.severity,
+
+
+
+                                    type:
+
+                                    event.type
+
+
+                                },
+
+
+
+                                geometry: {
+
+
+                                    type:
+
+                                    "Polygon",
+
+
+
+                                    coordinates:
+
+                                    event.coordinates.polygon
+
+
+                                }
+
+
+                            };
+
+
+                        }
+
+
+
+
+
                         return null;
 
 
+
                     })
+
 
                     .filter(Boolean)
 
@@ -1306,10 +1457,17 @@ async function loadDisasterMap() {
 
 
 
+
+
                 console.log(
-                    "Map events:",
+
+                    "Map features loaded:",
+
                     geojson.features.length
+
                 );
+
+
 
 
 
@@ -1319,11 +1477,16 @@ async function loadDisasterMap() {
 
                     {
 
+
                         type:
+
                         "geojson",
 
+
                         data:
+
                         geojson
+
 
                     }
 
@@ -1333,18 +1496,52 @@ async function loadDisasterMap() {
 
 
 
+
+
+                /*
+                    POINT MARKERS
+
+                */
+
+
                 disasterMap.addLayer({
 
+
                     id:
+
                     "disaster-points",
 
 
+
                     type:
+
                     "circle",
 
 
+
                     source:
+
                     "disaster-events",
+
+
+
+                    filter:
+
+
+                    [
+
+                        "==",
+
+                        [
+
+                            "geometry-type"
+
+                        ],
+
+                        "Point"
+
+                    ],
+
 
 
                     paint:
@@ -1358,11 +1555,14 @@ async function loadDisasterMap() {
                         7,
 
 
+
                         "circle-color":
+
 
                         [
 
                             "match",
+
 
                             [
 
@@ -1373,9 +1573,11 @@ async function loadDisasterMap() {
                             ],
 
 
+
                             "earthquake",
 
                             "#ff4444",
+
 
 
                             "volcano",
@@ -1383,12 +1585,9 @@ async function loadDisasterMap() {
                             "#ff9900",
 
 
-                            "weather",
-
-                            "#9933ff",
-
 
                             "#00ffff"
+
 
                         ],
 
@@ -1396,12 +1595,14 @@ async function loadDisasterMap() {
 
                         "circle-opacity":
 
-                        .85,
+                        0.85,
+
 
 
                         "circle-stroke-width":
 
                         2,
+
 
 
                         "circle-stroke-color":
@@ -1416,6 +1617,156 @@ async function loadDisasterMap() {
 
 
 
+
+
+
+
+                /*
+                    WEATHER WARNING AREAS
+
+                */
+
+
+                disasterMap.addLayer({
+
+
+                    id:
+
+                    "weather-polygons",
+
+
+
+                    type:
+
+                    "fill",
+
+
+
+                    source:
+
+                    "disaster-events",
+
+
+
+                    filter:
+
+
+                    [
+
+                        "==",
+
+                        [
+
+                            "geometry-type"
+
+                        ],
+
+                        "Polygon"
+
+                    ],
+
+
+
+                    paint:
+
+
+                    {
+
+
+                        "fill-color":
+
+                        "#9933ff",
+
+
+
+                        "fill-opacity":
+
+                        0.25
+
+
+                    }
+
+
+                });
+
+
+
+
+
+
+
+                disasterMap.addLayer({
+
+
+                    id:
+
+                    "weather-outline",
+
+
+
+                    type:
+
+                    "line",
+
+
+
+                    source:
+
+                    "disaster-events",
+
+
+
+                    filter:
+
+
+                    [
+
+                        "==",
+
+                        [
+
+                            "geometry-type"
+
+                        ],
+
+                        "Polygon"
+
+                    ],
+
+
+
+                    paint:
+
+
+                    {
+
+
+                        "line-color":
+
+                        "#cc66ff",
+
+
+
+                        "line-width":
+
+                        2
+
+
+                    }
+
+
+                });
+
+
+
+
+
+
+
+                /*
+                    POINT POPUPS
+
+                */
 
 
                 disasterMap.on(
@@ -1442,24 +1793,37 @@ async function loadDisasterMap() {
 
                             .setHTML(`
 
+
                                 <strong>
+
                                 ${props.title}
+
                                 </strong>
 
+
                                 <br>
+
 
                                 Location:
+
                                 ${props.location}
 
+
                                 <br>
+
 
                                 Severity:
+
                                 ${props.severity}
+
 
                                 <br>
 
+
                                 Type:
+
                                 ${props.type}
+
 
                             `)
 
@@ -1477,11 +1841,113 @@ async function loadDisasterMap() {
 
 
 
+
+
+                /*
+                    WEATHER POPUPS
+
+                */
+
+
+                disasterMap.on(
+
+                    "click",
+
+                    "weather-polygons",
+
+                    (event) => {
+
+
+                        const props =
+                            event.features[0].properties;
+
+
+
+                        new maplibregl.Popup()
+
+
+                            .setLngLat(
+
+                                event.lngLat
+
+                            )
+
+
+                            .setHTML(`
+
+
+                                <strong>
+
+                                ${props.title}
+
+                                </strong>
+
+
+                                <br>
+
+
+                                Location:
+
+                                ${props.location}
+
+
+                                <br>
+
+
+                                Severity:
+
+                                ${props.severity}
+
+
+                            `)
+
+
+                            .addTo(
+                                disasterMap
+                            );
+
+
+                    }
+
+                );
+
+
+
+
+
+
+
+                /*
+                    CURSOR
+
+                */
+
+
                 disasterMap.on(
 
                     "mouseenter",
 
                     "disaster-points",
+
+                    () => {
+
+
+                        disasterMap.getCanvas()
+                        .style.cursor =
+                        "pointer";
+
+
+                    }
+
+                );
+
+
+
+                disasterMap.on(
+
+                    "mouseenter",
+
+                    "weather-polygons",
 
                     () => {
 
@@ -1517,17 +1983,43 @@ async function loadDisasterMap() {
 
 
 
+                disasterMap.on(
+
+                    "mouseleave",
+
+                    "weather-polygons",
+
+                    () => {
+
+
+                        disasterMap.getCanvas()
+                        .style.cursor =
+                        "";
+
+
+                    }
+
+                );
+
+
+
             }
+
+
             catch(error) {
 
 
                 console.error(
+
                     "Map build error:",
+
                     error
+
                 );
 
 
             }
+
 
 
 
