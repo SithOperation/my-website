@@ -1624,9 +1624,18 @@ document.addEventListener(
     setTimeout(()=>{
 
 
-        loadDisasterMap();
+       loadDisasterMap();
 
 
+       setTimeout(()=>{
+
+          if(disasterMap){
+
+             disasterMap.invalidateSize(true);
+
+          }
+
+       },1000);
 
     },1500);
 
