@@ -2215,5 +2215,18 @@ document.addEventListener(
         }, 1500);
 
 
+       // Mobile browser redraw fix
 
-    });
+       window.addEventListener("resize", () => {
+
+          if (disasterMap) {
+
+             setTimeout(() => {
+
+                disasterMap.resize();
+     
+             }, 300);
+             
+          }
+
+       });
