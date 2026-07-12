@@ -1,6 +1,47 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-43496",
+    "id": "weather-urn:oid:2.49.0.1.840.0.6831e1c316623498025e7cbbee285e6781f47fd6.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Pottawatomie; Seminole",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -96.89,
+            35.05
+          ],
+          [
+            -96.82,
+            35.14
+          ],
+          [
+            -96.61,
+            35.08
+          ],
+          [
+            -96.75,
+            34.93
+          ],
+          [
+            -96.89,
+            35.05
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 119 AM CDT, Doppler radar was tracking a strong thunderstorm 4\nmiles southeast of St. Louis, moving southeast at 10 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nKonawa, Maud, and St. Louis.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+      "expires": "2026-07-12T01:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-38664",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -10,759 +51,196 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-12T03:55:33+00:00"
+      "expires": "2026-07-12T06:25:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f243fa53c5b2a7a42b1355858f9cd22f9643a08a.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.4c76e7ecd76ea85b355190bca7a20a51e0dcacb9.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Canadian, OK; Cleveland, OK; Grady, OK; Logan, OK; McClain, OK; Oklahoma, OK; Pottawatomie, OK",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -97.52,
+            35.81
+          ],
+          [
+            -97.14,
+            35.73
+          ],
+          [
+            -97.13,
+            35.15
+          ],
+          [
+            -97.45,
+            35.15
+          ],
+          [
+            -97.8,
+            35.32
+          ],
+          [
+            -97.83,
+            35.47
+          ],
+          [
+            -97.52,
+            35.81
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of central Oklahoma, including the following\ncounties, Canadian, Cleveland, Grady, Logan, McClain, Oklahoma and\nPottawatomie.\n\n* WHEN...Until 515 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nPonding of water in urban or other areas is occurring or is\nimminent.\n\n* ADDITIONAL DETAILS...\n- At 115 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2 inches of rain have\nfallen.\n- Additional rainfall amounts up to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nOklahoma City, Norman, Edmond, Moore, Midwest City, Del City,\nGuthrie, Newcastle, Yukon, Bethany, Mustang, Choctaw, Warr\nAcres, The Village, Noble, Tuttle, Piedmont, Harrah, Spencer\nand Nichols Hills.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-12T05:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b69debf86c3954889370c215cba592455b05b427.001.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Chicot; Bolivar; Washington",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -90.77,
-            33.68
-          ],
-          [
-            -91.21,
-            33.25
-          ],
-          [
-            -91.38,
-            33.56
-          ],
-          [
-            -91.35,
-            33.56
-          ],
-          [
-            -91.35,
-            33.52
-          ],
-          [
-            -91.33,
-            33.53
-          ],
-          [
-            -91.25,
-            33.52
-          ],
-          [
-            -91.24,
-            33.56
-          ],
-          [
-            -91.13,
-            33.6
-          ],
-          [
-            -91.16,
-            33.64
-          ],
-          [
-            -91.22,
-            33.66
-          ],
-          [
-            -91.22,
-            33.7
-          ],
-          [
-            -91.16,
-            33.71
-          ],
-          [
-            -91.09,
-            33.66
-          ],
-          [
-            -91.03,
-            33.68
-          ],
-          [
-            -91.04,
-            33.7
-          ],
-          [
-            -91.11,
-            33.7
-          ],
-          [
-            -91.15,
-            33.74
-          ],
-          [
-            -91.14,
-            33.74
-          ],
-          [
-            -90.77,
-            33.68
-          ]
-        ]
-      ]
-    },
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Washington; Wilkinson; Johnson; Emanuel; Laurens; Treutlen; Wheeler; Montgomery; Toombs",
+    "coordinates": {},
     "details": {
-      "description": "At 1035 PM CDT, Doppler radar was tracking a strong thunderstorm near\nArkansas City, or 7 miles south of Rohwer, moving southeast at 20\nmph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nThis strong thunderstorm will be near...\nScott around 1050 PM CDT.\nLamont around 1055 PM CDT.\nWinterville around 1100 PM CDT.\nGreenville around 1105 PM CDT.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-11T23:30:00-05:00"
+      "description": "* WHAT...Heat index values up to 106 expected.\n\n* WHERE...Laurens, Montgomery, Wheeler, Wilkinson, Emanuel, Johnson,\nTreutlen, Washington, and Toombs Counties.\n\n* WHEN...From noon today to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-12T20:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.7cab3b5c7b04ea4294581b9f07acc12a303df85b.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Cullman, AL",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -87.04,
-            34.15
-          ],
-          [
-            -87.08,
-            34.31
-          ],
-          [
-            -86.56,
-            34.29
-          ],
-          [
-            -86.63,
-            34.13
-          ],
-          [
-            -87.04,
-            34.15
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "FFWHUN\n\nThe National Weather Service in Huntsville has issued a\n\n* Flash Flood Warning for...\nNorthern Cullman County in north central Alabama...\n\n* Until 145 AM CDT.\n\n* At 1034 PM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 4 inches of rain\nhave fallen. Additional rainfall amounts of 1 to 2 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nCullman, Good Hope, Holly Pond, Baldwin, Vinemont, Baileyton, West\nPoint, Battleground and Jones Chapel.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-      "expires": "2026-07-12T01:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.032f33e6180f4900b3fb0e8570587b7cb3c10c6b.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.6f3c85a0820ab937d8ab2f56a815062e4dfb19d4.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Severe Thunderstorm Warning",
     "geometry": "Polygon",
-    "location": "Pima, AZ",
+    "location": "Seminole, OK",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -111.81,
-            32.2
+            -96.54,
+            35.06
           ],
           [
-            -111.81,
-            31.81
+            -96.78,
+            35.13
           ],
           [
-            -112.32,
-            31.89
+            -96.77,
+            35.32
           ],
           [
-            -112.25,
-            32.26
+            -96.49,
+            35.25
           ],
           [
-            -111.81,
-            32.2
+            -96.54,
+            35.06
           ]
         ]
       ]
     },
     "details": {
-      "description": "SVRTWC\n\nThe National Weather Service in Tucson has issued a\n\n* Severe Thunderstorm Warning for...\nCentral Pima County in southeastern Arizona...\n\n* Until 915 PM MST.\n\n* At 831 PM MST, a severe thunderstorm was located 12 miles northwest\nof Sells, moving west at 15 mph.\n\nHAZARD...60 mph wind gusts and small hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nSells, Topawa, Covered Wells, Gu Oidak, No:ligk, Cababi, San Luis -\nSells District, Mountain Village, Artesia, Rincon, Sikul Himathk\nand Kupk.\n\nThis includes Route 86 between mile markers 83 and 118.",
-      "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds.",
-      "expires": "2026-07-11T21:15:00-07:00"
+      "description": "SVROUN\n\nThe National Weather Service in Norman has issued a\n\n* Severe Thunderstorm Warning for...\nCentral Seminole County in east central Oklahoma...\n\n* Until 130 AM CDT.\n\n* At 1258 AM CDT, a severe thunderstorm was located near Seminole,\nmoving southeast at 20 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nSeminole, Maud, Bowlegs, and Lima.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
+      "expires": "2026-07-12T01:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0e55e2fb2816aa69e32f4ad17fa270afd34a36b4.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Watch",
-    "geometry": "unknown",
-    "location": "Fleming; Montgomery; Bath; Rowan; Estill; Powell; Menifee; Rockcastle; Jackson; Pulaski; Laurel; Wayne; McCreary; Whitley; Knox; Bell; Harlan; Elliott; Morgan; Johnson; Wolfe; Magoffin; Floyd; Lee; Breathitt; Knott; Owsley; Perry; Clay; Leslie; Letcher; Martin; Pike",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of east central, northeast, south central, and\nsoutheast Kentucky, including the following counties, in east\ncentral Kentucky, Bath, Elliott, Estill, Fleming, Menifee,\nMontgomery, Powell and Rowan. In northeast Kentucky, Johnson and\nMartin. In south central Kentucky, Laurel, McCreary, Pulaski,\nRockcastle, Wayne and Whitley. In southeast Kentucky, Bell,\nBreathitt, Clay, Floyd, Harlan, Jackson, Knott, Knox, Lee, Leslie,\nLetcher, Magoffin, Morgan, Owsley, Perry, Pike and Wolfe.\n\n* WHEN...Through late Sunday night.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Repeated rounds of showers and thunderstorms producing\nlocally heavy rainfall are expected through the rest of the\nweekend. Already wet soils in some areas will make these\nlocations more susceptible to flooding.\n- http://www.weather.gov/safety/flood",
-      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
-      "expires": "2026-07-12T08:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d544ed671de5f0663958ed0daece9306c47693ef.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Jackson, KY; Rockcastle, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -84.46,
-            37.45
-          ],
-          [
-            -84.45,
-            37.49
-          ],
-          [
-            -84.37,
-            37.47
-          ],
-          [
-            -84.35,
-            37.5
-          ],
-          [
-            -84.36,
-            37.51
-          ],
-          [
-            -84.35,
-            37.54
-          ],
-          [
-            -84.32,
-            37.54
-          ],
-          [
-            -84.31,
-            37.53
-          ],
-          [
-            -84.3,
-            37.54
-          ],
-          [
-            -84.3,
-            37.52
-          ],
-          [
-            -84.27,
-            37.52
-          ],
-          [
-            -84.25,
-            37.52
-          ],
-          [
-            -84.2,
-            37.52
-          ],
-          [
-            -84.17,
-            37.56
-          ],
-          [
-            -84.14,
-            37.56
-          ],
-          [
-            -84.11,
-            37.57
-          ],
-          [
-            -83.92,
-            37.51
-          ],
-          [
-            -83.98,
-            37.43
-          ],
-          [
-            -84.32,
-            37.42
-          ],
-          [
-            -84.46,
-            37.45
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of south central and southeast Kentucky,\nincluding the following counties, in south central Kentucky,\nRockcastle. In southeast Kentucky, Jackson.\n\n* WHEN...Until 215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1120 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.5 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nMcKee, Boone, Clover Bottom, Threelinks, Morrill, Eglon,\nGoochland, Climax, Kerby Knob, Shirley, Sandgap, Disputanta,\nCollingsworth, Bummer, Rockford, Hisel, Waneta, Brazil,\nWildie and Roundstone.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T02:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.65d8839f8b8f16686c901e9da77d1340b330c955.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Breathitt, KY; Jackson, KY; Owsley, KY; Perry, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -83.83,
-            37.49
-          ],
-          [
-            -83.82,
-            37.49
-          ],
-          [
-            -83.81,
-            37.49
-          ],
-          [
-            -83.8,
-            37.49
-          ],
-          [
-            -83.62,
-            37.47
-          ],
-          [
-            -83.4,
-            37.41
-          ],
-          [
-            -83.46,
-            37.35
-          ],
-          [
-            -83.82,
-            37.38
-          ],
-          [
-            -84,
-            37.43
-          ],
-          [
-            -83.94,
-            37.5
-          ],
-          [
-            -83.84,
-            37.49
-          ],
-          [
-            -83.83,
-            37.49
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southeast Kentucky, including the following\ncounties, Breathitt, Jackson, Owsley and Perry.\n\n* WHEN...Until 215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1105 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.5 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nMcKee, Booneville, Buckhorn, Major, Scoville, Turin,\nConkling, Southfork, Endee, Blake, Levi, Chestnut Gap,\nEversole, Sturgeon, Vincent, Travellers Rest, Gobbard,\nRicetown, Cowcreek and Green Hall.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T02:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.21b41064d95657820c9c77787266d853037d89fa.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Rip Current Statement",
-    "geometry": "unknown",
-    "location": "Escambia Coastal; Santa Rosa Coastal; Okaloosa Coastal",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dangerous rip currents expected.\n\n* WHERE...Escambia Coastal, Santa Rosa Coastal and Okaloosa\nCoastal Counties.\n\n* WHEN...From Monday morning through Wednesday morning.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
-      "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
-      "expires": "2026-07-12T05:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.3d198e3705ebf7545e61eb083d91e4efd3053d9d.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Waters from Point Arena to Point Reyes 10-60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 15 to 25 kt with gusts up to 30 kt.\n\n* WHERE...Waters from Point Arena to Point Reyes 10-60 NM.\n\n* WHEN...Until 3 PM PDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-12T04:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.3d198e3705ebf7545e61eb083d91e4efd3053d9d.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Waters from Point Reyes to Pigeon Point 10-60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 10 to 20 kt.\n\n* WHERE...Waters from Point Reyes to Pigeon Point 10-60 NM.\n\n* WHEN...Until 9 AM PDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-12T04:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ac21ee48b152350ba291c83a88c8e58391cd37eb.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Dust Storm Warning",
-    "geometry": "Polygon",
-    "location": "Pima, AZ",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -112.09,
-            32.48
-          ],
-          [
-            -112.07,
-            32.23
-          ],
-          [
-            -111.95,
-            31.72
-          ],
-          [
-            -112.87,
-            31.95
-          ],
-          [
-            -112.95,
-            32.3
-          ],
-          [
-            -112.92,
-            32.49
-          ],
-          [
-            -112.09,
-            32.48
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "The National Weather Service in Tucson has issued a\n\n* Dust Storm Warning for...\nNorthwestern Pima County in southeastern Arizona...\n\n* Until 1000 PM MST.\n\n* At 800 PM MST, a wall of dust was located along a line from 15\nmiles northwest of Santa Rosa to 10 miles southwest of Sells,\nmoving west at 25 mph.\n\nHAZARD...Less than a quarter mile visibility.\n\nSOURCE...Detected by National Weather Service meteorologists.\n\nIMPACT...Dangerous life-threatening travel.\n\n* Locations impacted include...\nAjo, Pisinemo, GuVo, Hickiwan, Organ Pipe Cactus National Monument,\nCovered Wells, Gu Oidak, San Simon, Why, Cowlic, Gunsight, Charco\n27, Ventana, Pia Oik, Vaya Chin, Santa Cruz, Mountain Village, San\nSimon West, KuKatch and Kupk.\n\nThis includes the following highways...\nRoute 85 between mile markers 34 and 76. Route 86 between mile\nmarkers 53 and 101.",
-      "instruction": "Motorists should not drive into a dust storm. PULL ASIDE STAY ALIVE!",
-      "expires": "2026-07-11T22:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.57e9a3c7df27f48d76fe45e7d43a40959a569280.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Pima, AZ; Pinal, AZ",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -112.2,
-            32.63
-          ],
-          [
-            -111.8,
-            32.64
-          ],
-          [
-            -111.66,
-            32.56
-          ],
-          [
-            -111.55,
-            32.34
-          ],
-          [
-            -111.27,
-            32.23
-          ],
-          [
-            -111.35,
-            32.06
-          ],
-          [
-            -111.67,
-            32
-          ],
-          [
-            -112.16,
-            32.32
-          ],
-          [
-            -112.2,
-            32.59
-          ],
-          [
-            -112.2,
-            32.63
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Small stream flooding caused by excessive rainfall is\nexpected.\n\n* WHERE...North Central Pima County in southeastern Arizona...\nSouthwestern Pinal County in southeastern Arizona...\n\n* WHEN...Until 1000 PM MST.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 753 PM MST, Doppler radar indicated a broad area of heavy rain\nbetween 0.50 and 1.25 inch due to thunderstorms. This will cause\nsmall stream flooding, especially along the washes that feed into\nAguirre, Sil Nakya and Santa Rosa Washes.\n- Some locations that will experience flooding include...\nSanta Rosa, Anegam, North Komelik, Kohatk, Palo Verde Stand, San\nPedro, Ak Chin, Queens Well, Sil Nakya, Santa Rosa Ranch, Jack\nRabbit and San Luis.\n- This includes Route 86 between mile markers 129 and 148.\n\nThis includes the following Flash Flood Prone Locations...\nSil Nakya Wash at Route 34.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-11T22:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.755da6b3f0af781a02a243ad50d772c767db81f6.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "S of Cape Hatteras NC to Ocracoke Inlet NC out to 20 NM; S of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM; Waters from Cape Hatteras to Ocracoke Inlet NC from 20 to 60 NM; Waters from Ocracoke Inlet to Cape Lookout NC from 20 to 60 NM",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -76,
-            34.8
-          ],
-          [
-            -75.91,
-            35.04
-          ],
-          [
-            -75.06,
-            34.84
-          ],
-          [
-            -75.18,
-            34.49
-          ],
-          [
-            -76,
-            34.8
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SMWMHX\n\nThe National Weather Service in Newport has issued a\n\n* Special Marine Warning for...\nS of Cape Hatteras NC to Ocracoke Inlet NC out to 20 NM...\nS of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM...\nWaters from Cape Hatteras to Ocracoke Inlet NC from 20 to 60 NM...\nWaters from Ocracoke Inlet to Cape Lookout NC from 20 to 60 NM...\n\n* Until midnight EDT.\n\n* At 1057 PM EDT, a strong thunderstorm was located 10 nm southeast\nof Ar250, or 18 nm southeast of Ocracoke Inlet, moving east at 30\nknots.\n\nHAZARD...Wind gusts to nearly 50 knots.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nAr250.",
-      "instruction": "Frequent lightning is occurring with this storm. If caught on the\nopen water stay below deck if possible, keep away from ungrounded\nmetal objects.\n\nReport severe weather to the Coast Guard or the National Weather\nService.",
-      "expires": "2026-07-12T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c16f7ee91243413f400845bc6980ed355fa91eab.001.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.03a1004e2cb284fa2003f8064f4c8431437f5bb7.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Western Magic Valley; Southern Twin  Falls County",
+    "location": "San Juan and Vicinity; Northeast; Southeast; Eastern Interior; North Central; Ponce and Vicinity; Northwest; Mayaguez and Vicinity; Southwest; Culebra; Vieques; St.Thomas...St. John.. and Adjacent Islands; St Croix",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Temperatures in the upper 90s to 103 expected.\n\n* WHERE...Southern Twin Falls County and Western Magic Valley.\n\n* WHEN....\n\n* IMPACTS...Hot temperatures may cause heat illnesses, especially\nfor the young, elderly, and animals.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-12T06:00:00-06:00"
+      "description": "* WHAT...This level of heat affects most individuals sensitive to\nheat, especially those without effective cooling and/or adequate\nhydration. expected.\n\n* WHERE...Coastal and urban areas of Puerto Rico and Virgin Islands.\n\n* WHEN...From 10 AM this morning to 5 PM AST this afternoon.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T12:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2104a90862e0d344551d8d8bf3d0c85ee8d07917.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.dce6b9b560c3f164d7286476b08473e2a9519b8a.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Etowah, AL",
+    "location": "Pottawatomie, OK; Seminole, OK",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -85.93,
-            33.92
+            -96.82,
+            35.4
           ],
           [
-            -85.97,
-            33.91
+            -96.71,
+            35.46
           ],
           [
-            -85.97,
-            33.9
+            -96.62,
+            35.46
           ],
           [
-            -85.99,
-            33.89
+            -96.62,
+            35.4
           ],
           [
-            -86.04,
-            33.85
+            -96.61,
+            35.4
           ],
           [
-            -86.05,
-            33.85
+            -96.6,
+            35.4
           ],
           [
-            -86.05,
-            33.84
+            -96.6,
+            35.39
           ],
           [
-            -86.06,
-            33.86
+            -96.61,
+            35.39
           ],
           [
-            -86.09,
-            33.86
+            -96.78,
+            35.28
           ],
           [
-            -86.1,
-            33.87
-          ],
-          [
-            -86.11,
-            33.89
-          ],
-          [
-            -86.11,
-            33.9
-          ],
-          [
-            -86.13,
-            33.9
-          ],
-          [
-            -86.16,
-            33.92
-          ],
-          [
-            -86.17,
-            33.96
-          ],
-          [
-            -86.19,
-            33.97
-          ],
-          [
-            -86.2,
-            33.99
-          ],
-          [
-            -86.1,
-            34.05
-          ],
-          [
-            -85.99,
-            34.05
-          ],
-          [
-            -85.91,
-            34
-          ],
-          [
-            -85.93,
-            33.92
+            -96.82,
+            35.4
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of central Alabama, including the following\ncounty, Etowah.\n\n* WHEN...Until midnight CDT tonight.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 955 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nGadsden, Rainbow City, Attalla, Glencoe, Steele, Reece City,\nGadsden Mall, Noccalula Falls, Neely Henry Lake, Southside,\nGadsden Municipal Airport, Big Wills Creek, Gadsden Steam\nPlant, Gadsden Water Works, Northside and Ramsey.",
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of central and east central Oklahoma, including\nthe following counties, in central Oklahoma, Pottawatomie. In east\ncentral Oklahoma, Seminole.\n\n* WHEN...Until 345 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1241 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain\nhave fallen.\n- Additional rainfall amounts up to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nCenterview.\n- http://www.weather.gov/safety/flood",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-      "expires": "2026-07-12T00:00:00-05:00"
+      "expires": "2026-07-12T03:45:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.005e24d1aba282e5198de12bba35908cda96dc18.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Redwood; Brown; Nicollet",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 101 expected.\n\n* WHERE...Brown, Nicollet, and Redwood Counties.\n\n* WHEN...From 10 AM Sunday to midnight CDT Monday Night.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-12T10:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.005e24d1aba282e5198de12bba35908cda96dc18.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Douglas; Todd; Morrison; Mille Lacs; Kanabec; Stevens; Pope; Stearns; Benton; Sherburne; Isanti; Chisago; Lac Qui Parle; Swift; Chippewa; Kandiyohi; Meeker; Wright; Hennepin; Anoka; Ramsey; Washington; Yellow Medicine; Renville; McLeod; Sibley; Carver; Scott; Dakota; Polk; Barron; Rusk; St. Croix; Pierce; Dunn; Pepin; Chippewa; Eau Claire",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 100 expected.\n\n* WHERE...Portions of central, east central, and west central\nMinnesota and northwest and west central Wisconsin.\n\n* WHEN...From 10 AM Sunday to midnight CDT Monday Night.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-12T10:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.96f66c36a4b115c2d4e72a2594c58968c909ef42.001.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.812f01af074f3e1cdb15c9f1cdab348aa6d2cc66.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Red Flag Warning",
-    "geometry": "unknown",
-    "location": "Lemhi and Lost River Range/Challis NF",
-    "coordinates": {},
-    "details": {
-      "description": "...RED FLAG WARNING IN EFFECT FROM 1 PM TO 9 PM MDT SUNDAY FOR\nGUSTY WINDS AND LOW RELATIVE HUMIDITY FOR FIRE WEATHER ZONES 410,\n411 AND 476...\n\n...RED FLAG WARNING REMAINS IN EFFECT FROM 1 PM TO 9 PM MDT\nSUNDAY FOR GUSTY WINDS AND LOW RELATIVE HUMIDITY FOR FIRE WEATHER\nZONE 476...\n\nThe National Weather Service in Pocatello has cancelled the Red\nFlag Warning.\n\n* AFFECTED AREA...Fire Weather Zone 476 Lemhi and Lost River\nRange/Challis NF.\n\n* WINDS...South 15 to 25 mph with gusts up to 40 mph.\n\n* RELATIVE HUMIDITY...As low as 10 percent.\n\n* IMPACTS...High wind gusts could cause any fire starts to grow\nrapidly.",
-      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly based on these criteria\nfor Southeastern Idaho:\n\n- Relative humidity at or below 15 percent and wind gusts of at\nleast 25 mph in the mountains, or 30 mph in the Snake Plain.\n\n- Thunderstorm coverage of 25 percent, without specific rainfall\ncriteria.\n\n- Other high impact events deemed critical by the National\nWeather Service and area fire management agencies.",
-      "expires": "2026-07-12T06:00:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.96f66c36a4b115c2d4e72a2594c58968c909ef42.003.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Red Flag Warning",
-    "geometry": "unknown",
-    "location": "Upper Snake River Valley/Idaho Falls BLM; Centennial Mountains and Snake River Range/Targhee NF",
-    "coordinates": {},
-    "details": {
-      "description": "...RED FLAG WARNING IN EFFECT FROM 1 PM TO 9 PM MDT SUNDAY FOR\nGUSTY WINDS AND LOW RELATIVE HUMIDITY FOR FIRE WEATHER ZONES 410,\n411 AND 476...\n\n* AFFECTED AREA...Fire Weather Zone 410 Upper Snake River\nValley/Idaho Falls BLM and Fire Weather Zone 411 Centennial\nMountains and Snake River Range/Targhee NF.\n\n* WINDS...Southwest 10 to 20 mph with gusts up to 35 mph.\n\n* RELATIVE HUMIDITY...As low as 10 percent.\n\n* IMPACTS...High wind gusts could cause any existing fires or\nnew fire starts to grow rapidly.",
-      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly based on these criteria\nfor Southeastern Idaho:\n\n- Relative humidity at or below 15 percent and wind gusts of at\nleast 25 mph in the mountains, or 30 mph in the Snake Plain.\n\n- Thunderstorm coverage of 25 percent, without specific rainfall\ncriteria.\n\n- Other high impact events deemed critical by the National\nWeather Service and area fire management agencies.",
-      "expires": "2026-07-12T06:00:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.83d6a6f56281839fcf3e6bc480475496a9cbcb23.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
+    "title": "Flood Warning",
     "geometry": "Polygon",
     "location": "Creek, OK; Rogers, OK; Tulsa, OK; Wagoner, OK",
     "coordinates": {
@@ -805,370 +283,172 @@
       ]
     },
     "details": {
-      "description": "FFWTSA\n\nThe National Weather Service in Tulsa has issued a\n\n* Flash Flood Warning for...\nNortheastern Creek County in northeastern Oklahoma...\nWest Central Rogers County in northeastern Oklahoma...\nSouthern Tulsa County in northeastern Oklahoma...\nNorthwestern Wagoner County in northeastern Oklahoma...\n\n* Until 1245 AM CDT.\n\n* At 942 PM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1 and 2.5 inches of\nrain have fallen. Additional rainfall amounts of 0.5 to 2 inches\nare possible in the warned area. Flash flooding is ongoing or\nexpected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nTulsa...                           Broken Arrow...\nSand Springs...                    Owasso...\nBixby...                           Jenks...\nGlenpool...                        Coweta...\nCatoosa...                         Jenks Riverside Airport...\nTulsa International Airport...     Turley...",
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of northeast Oklahoma, including the following\ncounties, Creek, Rogers, Tulsa and Wagoner.\n\n* WHEN...Until 330 AM CDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 1238 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Flooding is ongoing or expected to begin\nshortly in the warned area. Between 2 and 3 inches of rain\nhave fallen.\n- Additional rainfall amounts up to 0.5 inches are possible in\nthe warned area.\n- Some locations that will experience flooding include...\nTulsa...                           Broken Arrow...\nSand Springs...                    Owasso...\nBixby...                           Jenks...\nGlenpool...                        Coweta...\nCatoosa...                         Jenks Riverside Airport...\nTulsa International Airport...     Turley...\n- http://www.weather.gov/safety/flood",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T00:45:00-05:00"
+      "expires": "2026-07-12T03:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.7288329abd183dc454326a74ef112435cdc2874d.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.1f88a06612b06f82ae8fe01049f4dff95dddadff.001.1",
     "type": "weather",
-    "severity": "severe",
-    "title": "Dust Storm Warning",
+    "severity": "minor",
+    "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Pinal, AZ",
+    "location": "Kinney, TX; Maverick, TX; Zavala, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -111.44,
-            32.91
+            -100.54,
+            29.23
           ],
           [
-            -111.33,
-            32.91
+            -100.19,
+            29.23
           ],
           [
-            -111.46,
-            32.51
+            -100.01,
+            28.87
           ],
           [
-            -112.2,
-            32.51
+            -100.28,
+            28.86
           ],
           [
-            -112.2,
-            32.68
+            -100.44,
+            29.09
           ],
           [
-            -112.15,
-            32.68
-          ],
-          [
-            -112.15,
-            32.72
-          ],
-          [
-            -112.05,
-            32.72
-          ],
-          [
-            -112.05,
-            32.77
-          ],
-          [
-            -111.88,
-            32.77
-          ],
-          [
-            -111.88,
-            32.79
-          ],
-          [
-            -111.77,
-            32.79
-          ],
-          [
-            -111.78,
-            32.76
-          ],
-          [
-            -111.74,
-            32.76
-          ],
-          [
-            -111.74,
-            32.73
-          ],
-          [
-            -111.67,
-            32.74
-          ],
-          [
-            -111.61,
-            32.76
-          ],
-          [
-            -111.44,
-            32.91
+            -100.54,
+            29.23
           ]
         ]
       ]
     },
     "details": {
-      "description": "The National Weather Service in Tucson has issued a\n\n* Dust Storm Warning for...\nSouthwestern Pinal County in southeastern Arizona...\n\n* Until 900 PM MST.\n\n* At 733 PM MST, an area of blowing dust was located near Eloy\nextending west across the southwest portions of Pinal county. This\nincludes the northern portions of the Tohono O'odham Nation. This\nwill impact travel along Interstate 10.\n\nHAZARD...Less than a quarter mile visibility with strong winds in\nexcess of 50 mph.\n\nSOURCE...Detected by National Weather Service meteorologists.\n\nIMPACT...Dangerous life-threatening travel.\n\n* Locations impacted include...\nEloy, Picacho, Chui-Chu, Picacho Peak State Park, Cockleburr, North\nKomelik, Kohatk, Jack Rabbit, Shopishk and East Chui-Chu.\n\nThis includes the following highways...\nRoute 87 between mile markers 116 and 124. Interstate 10 between mile\nmarkers 205 and 218.",
-      "instruction": "Motorists should not drive into a dust storm. PULL ASIDE STAY ALIVE!",
-      "expires": "2026-07-11T21:00:00-07:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of south central Texas, including the following\ncounties, Kinney, Maverick and Zavala.\n\n* WHEN...Until 345 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1235 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2 inches of rain have\nfallen.\n- Additional rainfall amounts up to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nSpofford, Anacacho and Farm to Market Road 481.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nRemain alert for flooding even in locations not receiving rain.\nArroyos, streams, and rivers can become raging killer currents in a\nmatter of minutes, even from distant rainfall.",
+      "expires": "2026-07-12T03:45:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.57e115a6fcab5e84cbee0bbf64d70111fe38d3b7.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.69f2292246261629b907f3551064c88792b8b991.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Warning",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Crawford, MO; Washington, MO",
+    "location": "McCurtain, OK",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -91.22,
-            38.01
+            -94.56,
+            34.2
           ],
           [
-            -91.26,
-            38.07
+            -94.82,
+            34.42
           ],
           [
-            -91.16,
-            38.16
+            -94.94,
+            34.37
           ],
           [
-            -91.1,
-            38.28
+            -95,
+            34.16
           ],
           [
-            -90.97,
-            38.32
+            -94.88,
+            34.12
           ],
           [
-            -90.91,
-            38.39
+            -94.67,
+            34.06
           ],
           [
-            -90.82,
-            38.39
+            -94.55,
+            34.13
           ],
           [
-            -90.92,
-            38.25
-          ],
-          [
-            -91.05,
-            38.23
-          ],
-          [
-            -91.11,
-            38.08
-          ],
-          [
-            -91.22,
-            38.01
+            -94.56,
+            34.2
           ]
         ]
       ]
     },
     "details": {
-      "description": "...The Flood Warning continues for the following rivers in\nMissouri...\n\nMeramec River near Sullivan.\n\nMeramec River at Pacific.\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Meramec River near Sullivan.\n\n* WHEN...Until Monday afternoon.\n\n* IMPACTS...At 18.5 feet, Near this height, Missouri Route N will be\nclosed in both directions.\n\n* ADDITIONAL DETAILS...\n- At 8:29 PM CDT Saturday the stage was 19.4 feet.\n- Recent Activity...The maximum river stage in the 24 hours ending\nat 8:29 PM CDT Saturday was 23.6 feet.\n- Forecast...The river is expected to fall below flood stage late\ntomorrow morning and continue falling to 4.4 feet Friday evening.\n- Flood stage is 11.0 feet.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product, along with additional weather and stream information,\nis available at https://water.noaa.gov/wfo/lsx",
-      "expires": "2026-07-13T09:45:00-05:00"
+      "description": "FFWSHV\n\nThe National Weather Service in Shreveport has issued a\n\n* Flash Flood Warning for...\nNortheastern McCurtain County in southeastern Oklahoma...\n\n* Until 330 AM CDT.\n\n* At 1234 AM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1 and 2 inches of rain\nhave fallen. The expected rainfall rate is 1 to 2 inches in 1 hour.\nAdditional rainfall amounts of 1 to 2 inches are possible in the\nwarned area. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nMount Herman, Sherwood, Hochatown and Bethel.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+      "expires": "2026-07-12T03:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.57e115a6fcab5e84cbee0bbf64d70111fe38d3b7.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.39a2d0faf7c2703d55603f8a5b4add0fb993faab.001.1",
     "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Franklin, MO; Jefferson, MO",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -90.82,
-            38.39
-          ],
-          [
-            -90.91,
-            38.39
-          ],
-          [
-            -90.81,
-            38.49
-          ],
-          [
-            -90.66,
-            38.5
-          ],
-          [
-            -90.64,
-            38.44
-          ],
-          [
-            -90.77,
-            38.43
-          ],
-          [
-            -90.82,
-            38.39
-          ]
-        ]
-      ]
-    },
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Inland Broward County; Metro Broward County; Inland Miami-Dade County; Metropolitan Miami Dade; Coastal Broward County; Coastal Miami Dade County; Far South Miami-Dade County",
+    "coordinates": {},
     "details": {
-      "description": "...The Flood Warning continues for the following rivers in\nMissouri...\n\nMeramec River near Sullivan.\n\nMeramec River at Pacific.\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Meramec River at Pacific.\n\n* WHEN...From Sunday evening to late Tuesday night.\n\n* IMPACTS...At 16.0 feet, Route N begins to flood.\n\n* ADDITIONAL DETAILS...\n- At 9:00 PM CDT Saturday the stage was 6.8 feet.\n- Forecast...The river is expected to rise above flood stage\ntomorrow evening to a crest of 15.8 feet early Monday morning. It\nwill then fall below flood stage Monday evening.\n- Flood stage is 15.0 feet.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product, along with additional weather and stream information,\nis available at https://water.noaa.gov/wfo/lsx",
-      "expires": "2026-07-13T09:45:00-05:00"
+      "description": "* WHAT...Heat index values between 105-108 possible.\n\n* WHERE...Coastal Broward County, Coastal Miami Dade County, Far\nSouth Miami-Dade County, Inland Broward County, Inland Miami-Dade\nCounty, Metro Broward County, and Metropolitan Miami Dade Counties.\n\n* WHEN...From 11 AM this morning to 7 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-12T09:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d19bb5b196fe632362197234186a866a346e9133.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.bae4eb3c0de5ffc9cd2e9380f3c7b8ab6dc7b194.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "unknown",
+    "location": "Corson; Dewey",
+    "coordinates": {},
+    "details": {
+      "description": "The combination of humidity dropping below 20%, wind gusts of 20-\n35 mph, and drying fuels may lead to elevated fire danger concerns\nover the western portions of Corson and Dewey Counties this\nafternoon. Any fires that ignite may spread rapidly and become\ndifficult to suppress.",
+      "instruction": null,
+      "expires": "2026-07-12T21:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.f007fdbfe4b89a167342a55eb09314572cea2e90.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Extreme Heat Warning",
     "geometry": "unknown",
-    "location": "Divide; Burke; Renville; Bottineau; Rolette; Williams; Mountrail; McHenry; Pierce; McKenzie; Dunn; Mercer; Oliver; Sheridan; Wells; Foster; Golden Valley; Billings; Stark; Burleigh; Kidder; Stutsman; Slope; Hettinger; Grant; Bowman; Adams; Emmons; Logan; La Moure; McIntosh; Dickey; Northwest Ward; Central and Southern Ward/Minot Area; Western McLean; Eastern McLean; Western Morton; Eastern Morton; Western Sioux; Eastern Sioux",
+    "location": "Central and Southeast Phillips; Central and Southern Valley; Daniels; Sheridan; Western Roosevelt; Petroleum; Garfield; McCone; Richland; Dawson; Prairie; Wibaux; Northern Phillips; Southwest Phillips; Northern Valley; Eastern Roosevelt",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Dangerously hot conditions with heat index values around 100\nto 110. High temperatures will range from around 100 to near 110 on\nSunday and 95 to 105 on Monday.\n\n* WHERE...All of western and central North Dakota including the James\nRiver Valley.\n\n* WHEN...Until 1 AM CDT /midnight MDT/ Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Low temperatures will only fall into the upper\n60s and 70s tonight and Sunday night, providing little relief from\nthe heat.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-12T05:30:00-05:00"
+      "description": "* WHAT...Dangerously hot conditions with heat index values up to 105.\n\n* WHERE...A portion of northeast Montana.\n\n* WHEN...Until 6 AM MDT Monday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T14:00:00-06:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.84f759ec9df4591e294f116dcdf72b545dcb6f88.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.c991d22b550e3aaf2589dd70d27b0d0209997705.001.2",
     "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Spencer, IN; Vanderburgh, IN; Warrick, IN; Daviess, KY; Henderson, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -87.61,
-            37.84
-          ],
-          [
-            -87.63,
-            37.84
-          ],
-          [
-            -87.63,
-            37.95
-          ],
-          [
-            -87.03,
-            37.97
-          ],
-          [
-            -87.09,
-            37.82
-          ],
-          [
-            -87.61,
-            37.84
-          ]
-        ]
-      ]
-    },
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis",
+    "coordinates": {},
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Southwestern Spencer County in southwestern Indiana...\nSoutheastern Vanderburgh County in southwestern Indiana...\nSouthwestern Warrick County in southwestern Indiana...\nNorthwestern Daviess County in northwestern Kentucky...\nNortheastern Henderson County in northwestern Kentucky...\n\n* WHEN...Until 1145 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 922 PM CDT, local law enforcement reported heavy rain in\nDowntown Newburgh due to thunderstorms. Minor flooding is already\noccurring. Between 1 and 2 inches of rain have fallen.\n- Downtown Newburgh is the most likely place to experience minor\nflooding. Additional rainfall amounts up to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nHenderson, Newburgh and Eureka.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-11T23:45:00-05:00"
+      "description": "...FIRE WEATHER WATCH REMAINS IN EFFECT FROM MONDAY MORNING\nTHROUGH MONDAY EVENING FOR VERY HOT TEMPERATURES COMBINING WITH\nGUSTY SOUTHWEST WINDS AND LOW RELATIVE HUMIDITY OVER PARTS OF\nNORTHEAST MINNESOTA...\n\nThe National Weather Service in Duluth has issued a Red Flag\nWarning covering Sunday afternoon and evening for very hot\ntemperatures combining with gusty southwest winds and low relative\nhumidity all in an area with ongoing minimal rainfall over the\nlast few weeks. This Red Flag Warning is in effect noon to 9 PM\nCDT Sunday. The Fire Weather Watch for Monday afternoon and\nevening remains in effect.\n\n* AFFECTED AREA...In Minnesota, Koochiching, North St. Louis,\nNorthern Cook, Northern Lake, North Itasca and Central St.\nLouis.\n\n* WINDS...Southwest 10 to 15 mph with gusts up to 25 mph.\n\n* RELATIVE HUMIDITY...As low as 30 percent Sunday and as low as 23\npercent Monday.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
+      "instruction": "A Red Flag Warning covering Sunday afternoon and evening means\nthat critical fire weather conditions are either occurring now, or\nwill shortly. A combination of strong winds, low relative\nhumidity, and hot temperatures can contribute to extreme fire\nbehavior.\n\nA Fire Weather Watch covering Monday afternoon and evening means\nthat critical fire weather conditions are forecast to occur.\nListen for later forecasts and possible Red Flag Warnings.",
+      "expires": "2026-07-12T16:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.18882d1a4b7cf348a34c044f822ade806c8ad21b.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Kay, OK",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -97.08,
-            36.75
-          ],
-          [
-            -97.07,
-            36.85
-          ],
-          [
-            -97.01,
-            36.9
-          ],
-          [
-            -96.75,
-            36.88
-          ],
-          [
-            -96.75,
-            36.78
-          ],
-          [
-            -96.79,
-            36.78
-          ],
-          [
-            -96.79,
-            36.77
-          ],
-          [
-            -96.82,
-            36.77
-          ],
-          [
-            -96.82,
-            36.76
-          ],
-          [
-            -96.82,
-            36.75
-          ],
-          [
-            -96.83,
-            36.75
-          ],
-          [
-            -96.83,
-            36.74
-          ],
-          [
-            -96.87,
-            36.75
-          ],
-          [
-            -96.89,
-            36.75
-          ],
-          [
-            -96.91,
-            36.73
-          ],
-          [
-            -97.01,
-            36.73
-          ],
-          [
-            -97.08,
-            36.75
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of northern Oklahoma, including the following\ncounty, Kay.\n\n* WHEN...Until 1230 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 921 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2 inches of rain have\nfallen.\n- Some locations that will experience flooding include...\nPonca City, Kaw City, Kildare and Kaw Lake.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T00:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae32bc769c52ed252a3929adfc36128e72bfa689.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.c991d22b550e3aaf2589dd70d27b0d0209997705.001.3",
     "type": "weather",
     "severity": "severe",
     "title": "Fire Weather Watch",
@@ -1176,29 +456,14 @@
     "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis",
     "coordinates": {},
     "details": {
-      "description": "* AFFECTED AREA...In Minnesota, Koochiching, North St. Louis,\nNorthern Cook and Lake, North Itasca and Central St. Louis.\n\n* WINDS...Southwest 10 to 15 mph with gusts up to 30 mph.\n\n* RELATIVE HUMIDITY...As low as 25 percent.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
-      "instruction": "A Fire Weather Watch means that critical fire weather conditions\nare forecast to occur. Listen for later forecasts and possible\nRed Flag Warnings.",
-      "expires": "2026-07-12T09:15:00-05:00"
+      "description": "...FIRE WEATHER WATCH REMAINS IN EFFECT FROM MONDAY MORNING\nTHROUGH MONDAY EVENING FOR VERY HOT TEMPERATURES COMBINING WITH\nGUSTY SOUTHWEST WINDS AND LOW RELATIVE HUMIDITY OVER PARTS OF\nNORTHEAST MINNESOTA...\n\nThe National Weather Service in Duluth has issued a Red Flag\nWarning covering Sunday afternoon and evening for very hot\ntemperatures combining with gusty southwest winds and low relative\nhumidity all in an area with ongoing minimal rainfall over the\nlast few weeks. This Red Flag Warning is in effect noon to 9 PM\nCDT Sunday. The Fire Weather Watch for Monday afternoon and\nevening remains in effect.\n\n* AFFECTED AREA...In Minnesota, Koochiching, North St. Louis,\nNorthern Cook, Northern Lake, North Itasca and Central St.\nLouis.\n\n* WINDS...Southwest 10 to 15 mph with gusts up to 25 mph.\n\n* RELATIVE HUMIDITY...As low as 30 percent Sunday and as low as 23\npercent Monday.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
+      "instruction": "A Red Flag Warning covering Sunday afternoon and evening means\nthat critical fire weather conditions are either occurring now, or\nwill shortly. A combination of strong winds, low relative\nhumidity, and hot temperatures can contribute to extreme fire\nbehavior.\n\nA Fire Weather Watch covering Monday afternoon and evening means\nthat critical fire weather conditions are forecast to occur.\nListen for later forecasts and possible Red Flag Warnings.",
+      "expires": "2026-07-12T16:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae32bc769c52ed252a3929adfc36128e72bfa689.001.2",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Fire Weather Watch",
-    "geometry": "unknown",
-    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis",
-    "coordinates": {},
-    "details": {
-      "description": "* AFFECTED AREA...In Minnesota, Koochiching, North St. Louis,\nNorthern Cook and Lake, North Itasca and Central St. Louis.\n\n* WINDS...Southwest 10 to 15 mph with gusts up to 30 mph.\n\n* RELATIVE HUMIDITY...As low as 25 percent.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
-      "instruction": "A Fire Weather Watch means that critical fire weather conditions\nare forecast to occur. Listen for later forecasts and possible\nRed Flag Warnings.",
-      "expires": "2026-07-12T09:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae32bc769c52ed252a3929adfc36128e72bfa689.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.c991d22b550e3aaf2589dd70d27b0d0209997705.002.1",
     "type": "weather",
     "severity": "severe",
     "title": "Fire Weather Watch",
@@ -1206,71 +471,502 @@
     "location": "Southern Lake/North Shore; Southern Cook/North Shore; North Cass; South Itasca; Carlton/South St. Louis",
     "coordinates": {},
     "details": {
-      "description": "* AFFECTED AREA...In Minnesota, Southern Lake, Southern Cook,\nNorth Cass, South Itasca and Carlton and South St. Louis.\n\n* WINDS...Southwest 10 to 15 mph with gusts up to 25 mph.\n\n* RELATIVE HUMIDITY...As low as 30 percent.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
+      "description": "* AFFECTED AREA...In Minnesota, Southern Lake, Southern Cook,\nNorth Cass, South Itasca, Carlton and South St. Louis.\n\n* WINDS...Southwest 10 to 15 mph with gusts up to 25 mph.\n\n* RELATIVE HUMIDITY...As low as 30 percent.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
       "instruction": "A Fire Weather Watch means that critical fire weather conditions\nare forecast to occur. Listen for later forecasts and possible\nRed Flag Warnings.",
-      "expires": "2026-07-12T09:15:00-05:00"
+      "expires": "2026-07-12T16:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.25b8323495b5a49c1dbfd4f8f6ef92abe458b580.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb15d87aa7b2d5b5684e12d17f0e3c5fe277a5c8.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flash Flood Warning",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Corson; Campbell; Walworth; Dewey; Potter",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with heat index values up to 105\neach afternoon.\n\n* WHERE...Campbell, Corson, Dewey, Potter, and Walworth Counties.\n\n* WHEN...Until 7 PM CDT /6 PM MDT/ Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T13:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb15d87aa7b2d5b5684e12d17f0e3c5fe277a5c8.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Stanley; Sully; Hughes; Hyde; Hand; Jones; Lyman; Buffalo",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 102 each afternoon.\n\n* WHERE...Buffalo, Hand, Hughes, Hyde, Jones, Lyman, Stanley, and\nSully Counties.\n\n* WHEN...Until 7 PM CDT /6 PM MDT/ Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T13:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb15d87aa7b2d5b5684e12d17f0e3c5fe277a5c8.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Traverse; Big Stone; McPherson; Brown; Marshall; Roberts; Edmunds; Day; Faulk; Spink; Grant",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 101 each afternoon.\n\n* WHERE...Portions of west central Minnesota and north central and\nnortheast South Dakota.\n\n* WHEN...Until 7 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T13:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.358c43a6c3100a7187d0eb3e8bb8ee3393e64033.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Chesapeake Bay from New Point Comfort to Little Creek VA; Chesapeake Bay from Little Creek VA to Cape Henry VA including the Chesapeake Bay Bridge Tunnel",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds 15 to 20 kt with gusts up to 25 kt and waves\n2 to 4 ft expected.\n\n* WHERE...Chesapeake Bay from New Point Comfort to Little Creek\nVA and Chesapeake Bay from Little Creek VA to Cape Henry VA\nincluding the Chesapeake Bay Bridge Tunnel.\n\n* WHEN...From 4 PM this afternoon to 7 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-12T09:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.358c43a6c3100a7187d0eb3e8bb8ee3393e64033.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "James River from JRB to HRBT, Including the Elizabeth River",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds 15 to 20 kt with gusts up to 25 kt and waves\n2 to 4 ft expected.\n\n* WHERE...James River from JRB to HRBT, Including the Elizabeth\nRiver.\n\n* WHEN...From 4 PM this afternoon to 7 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-12T09:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.358c43a6c3100a7187d0eb3e8bb8ee3393e64033.006.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal waters from Parramore Island to Cape Charles Light VA out 20 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds 15 to 20 kt with gusts up to 25 kt and seas\n3 to 5 ft expected.\n\n* WHERE...Coastal waters from Parramore Island to Cape Charles\nLight VA out 20 NM.\n\n* WHEN...From 10 PM this evening to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-12T09:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.358c43a6c3100a7187d0eb3e8bb8ee3393e64033.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Chesapeake Bay from Smith Point to Windmill Point VA; Chesapeake Bay from Windmill Point to New Point Comfort VA",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds 15 to 20 kt with gusts up to 25 kt and waves\n1 to 2 ft expected.\n\n* WHERE...Chesapeake Bay from Smith Point to Windmill Point VA\nand Chesapeake Bay from Windmill Point to New Point Comfort VA.\n\n* WHEN...From 4 PM this afternoon to 4 AM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-12T09:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.358c43a6c3100a7187d0eb3e8bb8ee3393e64033.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "York River",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds 15 to 20 kt with gusts up to 25 kt and waves\n1 to 2 ft expected.\n\n* WHERE...York River.\n\n* WHEN...From 7 PM this evening to 4 AM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-12T09:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.358c43a6c3100a7187d0eb3e8bb8ee3393e64033.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal Waters from Cape Charles Light to Virginia-North Carolina border out 20 NM; Coastal waters from NC VA border to Currituck Beach Light NC out 20 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds 15 to 20 kt with gusts up to 25 kt and seas\n3 to 5 ft expected.\n\n* WHERE...Coastal Waters from Cape Charles Light to Virginia-\nNorth Carolina border out 20 NM and Coastal waters from NC VA\nborder to Currituck Beach Light NC out 20 NM.\n\n* WHEN...From 10 PM this evening to midnight EDT Monday night.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-12T09:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7e1ca617447d8208545f2a383b6bf5c03969b43f.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Rogers, OK",
+    "location": "Cocke, TN; Greene, TN; Hamblen, TN; Jefferson, TN",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -95.67,
-            36.16
+            -83.24,
+            36.13
           ],
           [
-            -95.69,
-            36.16
+            -83.2,
+            36.15
           ],
           [
-            -95.76,
-            36.16
+            -82.68,
+            36.05
           ],
           [
-            -95.79,
-            36.16
+            -82.78,
+            36
           ],
           [
-            -95.8,
-            36.16
+            -82.79,
+            35.99
           ],
           [
-            -95.78,
-            36.24
+            -82.78,
+            35.97
           ],
           [
-            -95.73,
-            36.24
+            -82.81,
+            35.93
           ],
           [
-            -95.66,
-            36.16
+            -82.82,
+            35.92
           ],
           [
-            -95.67,
-            36.16
+            -82.85,
+            35.95
+          ],
+          [
+            -82.87,
+            35.95
+          ],
+          [
+            -82.9,
+            35.94
+          ],
+          [
+            -82.9,
+            35.93
+          ],
+          [
+            -82.92,
+            35.93
+          ],
+          [
+            -82.9,
+            35.88
+          ],
+          [
+            -82.92,
+            35.87
+          ],
+          [
+            -82.92,
+            35.84
+          ],
+          [
+            -82.94,
+            35.82
+          ],
+          [
+            -82.96,
+            35.79
+          ],
+          [
+            -83,
+            35.77
+          ],
+          [
+            -83.31,
+            35.89
+          ],
+          [
+            -83.24,
+            36.13
           ]
         ]
       ]
     },
     "details": {
-      "description": "FFWTSA\n\nThe National Weather Service in Tulsa has issued a\n\n* Flash Flood Warning for...\nSouthwestern Rogers County in northeastern Oklahoma...\n\n* Until 1215 AM CDT.\n\n* At 905 PM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 4 inches of rain\nhave fallen. Additional rainfall amounts of 0.5 to 2 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nTulsa...                           Catoosa...",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T00:15:00-05:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Cocke County in east Tennessee...\nSouthern Greene County in east Tennessee...\nSouth Central Hamblen County in east Tennessee...\nSoutheastern Jefferson County in east Tennessee...\n\n* WHEN...Until 400 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 107 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nNewport, Parrottsville, Del Rio, Caney Branch, Bybee, Cedar Creek\nand Round Mountain.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-12T04:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1004f56f5e87e584c5a4b032f75562791fb5843d.003.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.1f5d58ab15d8f4c20387f6d153886df7da1e51f0.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Breathitt, KY; Lee, KY; Owsley, KY",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -83.79,
+            37.64
+          ],
+          [
+            -83.33,
+            37.52
+          ],
+          [
+            -83.45,
+            37.42
+          ],
+          [
+            -83.83,
+            37.48
+          ],
+          [
+            -83.86,
+            37.52
+          ],
+          [
+            -83.79,
+            37.64
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southeast Kentucky, including the following\ncounties, Breathitt, Lee and Owsley.\n\n* WHEN...Until 415 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 106 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.5 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nJackson, Beattyville, Booneville, Lone, Grass, Stay, Lerose,\nTallega, Athol, Enoch, Monica, St. Helens, Lower Buffalo,\nCanyon Falls, Chestnut Gap, Jetts Creek, Maloney, Turin,\nCopebranch and Corgleton.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-12T04:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.31adc6913351af0e6e3148806f0bd306ba55ff15.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "McIntosh, OK; Muskogee, OK; Okmulgee, OK",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -95.88,
+            35.46
+          ],
+          [
+            -95.83,
+            35.47
+          ],
+          [
+            -95.82,
+            35.55
+          ],
+          [
+            -95.76,
+            35.7
+          ],
+          [
+            -95.58,
+            35.69
+          ],
+          [
+            -95.6,
+            35.44
+          ],
+          [
+            -95.88,
+            35.41
+          ],
+          [
+            -95.88,
+            35.46
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of east central, northeast, and southeast\nOklahoma, including the following counties, in east central\nOklahoma, Muskogee. In northeast Oklahoma, Okmulgee. In southeast\nOklahoma, McIntosh.\n\n* WHEN...Until 315 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1203 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain\nhave fallen.\n- Some locations that will experience flooding include...\nBoynton...                         Council Hill...\nHitchita...                        Eram...\nPierce...\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-12T03:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.df96d93e4cfa72252ce438c1cbfd871a9d76afe5.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "The Lower Missouri River Breaks including the Charles M Russell National Wildlife Refuge; Southern Petroleum and Southern Garfield Counties",
+    "coordinates": {},
+    "details": {
+      "description": "The National Weather Service in Glasgow has issued a Red Flag\nWarning, which is in effect from noon to 9 PM MDT Sunday.\n\n* AFFECTED AREA... Fire weather zones 136 and 137.\n\n* WIND... South at 10 to 20 gust up to 30 mph.\n\n* HUMIDITY... As low as 8 percent.\n\n* THUNDERSTORMS... dry lightning and erratic gusty downdraft\nwinds from any thunderstorm or rain shower.\n\n* IMPACTS...any fires that develop will likely spread rapidly.\nOutdoor burning is not recommended.",
+      "instruction": "Please advise the appropriate officials or fire crews in these\nareas of this Red Flag Warning.",
+      "expires": "2026-07-12T21:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.c0983a5b769fe9232c06ec8f3db96299094b32ca.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Hardin, KY; Nelson, KY",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -85.76,
+            37.65
+          ],
+          [
+            -86.01,
+            37.68
+          ],
+          [
+            -85.99,
+            37.79
+          ],
+          [
+            -85.89,
+            37.83
+          ],
+          [
+            -85.69,
+            37.76
+          ],
+          [
+            -85.76,
+            37.65
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "FFWLMK\n\nThe National Weather Service in Louisville has issued a\n\n* Flash Flood Warning for...\nEast Central Hardin County in central Kentucky...\nWest Central Nelson County in central Kentucky...\n\n* Until 400 AM EDT.\n\n* At 1256 AM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Flash flooding is ongoing or\nexpected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nElizabethtown, Radcliff, Vine Grove, Crest, Tunnel Hills, Long\nView, Addington Field Airport, Colesburg, Rineyville and Kraft.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-12T04:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.91fb92fbf56a1a72e3db6dfd19caa954d929b110.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Port Wing to Sand Island WI; Sand Island to Bayfield WI; Outer Apostle Islands Beyond 5 NM from Mainland",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 20 kt with gusts up to 25 kt and\nwaves 1 to 3 ft expected. Highest winds in western Apostle\nIslands and near Sand Island.\n\n* WHERE...Port Wing to Sand Island WI to Bayfield and Outer\nApostle Islands Beyond 5 NM from Mainland.\n\n* WHEN...From 10 AM to 10 PM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-12T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.91fb92fbf56a1a72e3db6dfd19caa954d929b110.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Grand Portage to Grand Marais MN",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nwaves 3 to 5 ft expected.\n\n* WHERE...Grand Portage to Grand Marais MN.\n\n* WHEN...From 10 AM to 10 PM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-12T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.8d07e808489de804e559f67aae49b77149e3a42d.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Lower Yampa River Basin; Central Yampa River Basin; Grand Valley; Debeque to Silt Corridor; Eastern Uinta Basin; Arches/Grand Flat",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with afternoon temperatures as\nhigh as 100 to 106 expected.\n\n* WHERE...In Colorado, Central Yampa River Basin, Lower Yampa River\nBasin, Debeque to Silt Corridor, and Grand Valley. In Utah,\nArches/Grand Flat and Eastern Uinta Basin.\n\n* WHEN...Until midnight MDT Monday Night.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events.\n\n* ADDITIONAL DETAILS...Near record temperatures are possible\nespecially Sunday into Monday during the peak of this event.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nStay cool, stay hydrated, stay informed.",
+      "expires": "2026-07-12T17:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.8d07e808489de804e559f67aae49b77149e3a42d.004.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Paradox Valley/Lower Dolores River; Four Corners/Upper Dolores River",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with afternoon temperatures as\nhigh as 97 to 102 expected.\n\n* WHERE...Four Corners/Upper Dolores River and Paradox Valley/Lower\nDolores River.\n\n* WHEN...Until midnight MDT Sunday Night.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events.\n\n* ADDITIONAL DETAILS...Near record high temperatures are possible\nduring this event especially on Sunday during the peak of the\nevent.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-12T17:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.8d07e808489de804e559f67aae49b77149e3a42d.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Central Gunnison and Uncompahgre River Basin",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with afternoon temperatures as\nhigh as 98 to 103 expected.\n\n* WHERE...Central Colorado River Basin and Central Gunnison and\nUncompahgre River Basin.\n\n* WHEN...Until midnight MDT Sunday Night.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events.\n\n* ADDITIONAL DETAILS...Near record temperatures will be possible\nduring the event especially on Sunday.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T17:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.8d07e808489de804e559f67aae49b77149e3a42d.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Southeast Utah; Canyonlands/Natural Bridges",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with afternoon temperatures as\nhigh as 100 to 106 expected.\n\n* WHERE...Canyonlands/Natural Bridges and Southeast Utah.\n\n* WHEN...Until midnight MDT Sunday Night.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events.\n\n* ADDITIONAL DETAILS...Near record temperatures are possible\nespecially on Sunday at the peak of this heat event.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nStay cool, stay hydrated, stay informed.",
+      "expires": "2026-07-12T17:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.717c8147881a097eee2255e32723cb799f9abe17.002.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Heat Advisory",
@@ -1278,774 +974,376 @@
     "location": "Price",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values up to 94 expected.\n\n* WHERE...Price County.\n\n* WHEN...From 11 AM to 9 PM CDT Sunday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "description": "* WHAT...Heat index values up to 98 expected.\n\n* WHERE...Price County.\n\n* WHEN...From 11 AM Sunday to 1 AM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.\n\n* ADDITIONAL DETAILS...Little to no relief from the heat is possible\nSunday night as continued very warm heat indices around 70 are\nforecast Sunday night.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-12T09:15:00-05:00"
+      "expires": "2026-07-12T16:15:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1004f56f5e87e584c5a4b032f75562791fb5843d.001.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.717c8147881a097eee2255e32723cb799f9abe17.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Extreme Heat Warning",
     "geometry": "unknown",
-    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis; North Cass; South Itasca; South Cass; Crow Wing; Northern Aitkin; South Aitkin; Carlton/South St. Louis; Pine; Douglas; Bayfield; Burnett; Washburn",
+    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis; Southern Lake/North Shore; Southern Cook/North Shore; North Cass; South Itasca; South Cass; Crow Wing; Northern Aitkin; South Aitkin; Carlton/South St. Louis; Pine; Douglas; Bayfield; Ashland; Iron; Burnett; Washburn; Sawyer",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Dangerously hot conditions with heat index values up to 100\nexpected.\n\n* WHERE...In Minnesota, Crow Wing, Aitkin, Pine, Koochiching, Cass,\nItasca, Carlton, St. Louis, and Northern Cook and Lake Counties.\nIn Wisconsin, Bayfield, Burnett, Douglas, and Washburn Counties.\nThis includes the Tribal Lands of the Red Cliff Band, the St.\nCroix Band in Burnett County, the Fond du Lac Band, the Mille Lacs\nBand, Hinckley, Lena Lake, East Lake and, Big Sandy Lake areas and\nthe Bois Forte Band, Deer Creek, Nett Lake and, Lake Vermilion\nareas. Other locations including the Apostle Islands National\nLakeshore and Voyageurs National Park. The entire Boundary Waters\nis also included.\n\n* WHEN...From 11 AM Sunday to 1 AM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
+      "description": "* WHAT...Dangerously hot conditions with heat index values up to 103\nexpected.\n\n* WHERE...In Minnesota, Crow Wing, Aitkin, Pine, Koochiching, Cass,\nItasca, Carlton, St. Louis, Cook and Lake Counties. In Wisconsin,\nAshland, Bayfield, Burnett, Douglas, Iron, Sawyer, and Washburn\nCounties. This includes the Tribal Lands of the Fond du Lac Band,\nthe northwestern area of the Lac du Flambeau Band, the Lac Courte\nOreilles Reservation, the Bad River Reservation, the Grand Portage\nReservation, the Red Cliff Band, the St. Croix Band in Burnett\nCounty, the Mille Lacs Band, Big Sandy Lake, East Lake, Hinckley\nand, Lena Lake areas and the Bois Forte Band, Nett Lake, Deer\nCreek and, Lake Vermilion areas. Other locations including\nMadeline Island, Voyageurs National Park and the Apostle Islands\nNational Lakeshore. The entire Boundary Waters is also included.\n\n* WHEN...From 11 AM Sunday to 1 AM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Heat index values up to 108 expected in\nnorthern Ashland and Bayfield Counties along the South Shore.\nLittle to no relief from the heat is possible Sunday night as\ncontinued very warm heat indices in the 70s are forecast Sunday\nnight.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-12T09:15:00-05:00"
+      "expires": "2026-07-12T16:15:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1004f56f5e87e584c5a4b032f75562791fb5843d.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Extreme Heat Warning",
-    "geometry": "unknown",
-    "location": "Southern Lake/North Shore; Southern Cook/North Shore; Ashland; Iron; Sawyer",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dangerously hot conditions with heat index values up to 99\nexpected.\n\n* WHERE...In Minnesota, Southern Cook and Southern Lake Counties. In\nWisconsin, Ashland, Iron, and Sawyer Counties. This includes the\nTribal Lands of the Lac Courte Oreilles Reservation, the Grand\nPortage Reservation, the Bad River Reservation and the\nnorthwestern area of the Lac du Flambeau Band. Other locations\nincluding Madeline Island.\n\n* WHEN...From 11 AM Sunday to 1 AM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-12T09:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f12c99e3399a067fdf91ff6c2126892759d176ce.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Coastal Flood Statement",
-    "geometry": "unknown",
-    "location": "Dorchester; Wicomico; Somerset",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Up to one half foot of inundation above ground\nlevel in low-lying areas near shorelines and tidal\nwaterways.\n\n* WHERE...Dorchester, Wicomico and Somerset Counties.\n\n* WHEN...Until 2 AM EDT Sunday.\n\n* IMPACTS...Shallow flooding is possible in the most vulnerable\nlocations near the waterfront and shoreline.",
-      "instruction": "Do not drive through flooded roadways.",
-      "expires": "2026-07-12T02:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.20d9fc6d1df87a7022b341336585634a767e19fa.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.2bb8517a9080c28f0fe9aaef718166dfc4178927.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Crawford, AR; Sebastian, AR; Le Flore, OK",
+    "location": "Howard, AR; Sevier, AR; McCurtain, OK",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -94.57,
-            35.27
-          ],
-          [
-            -94.54,
-            35.3
-          ],
-          [
-            -94.52,
-            35.31
-          ],
-          [
-            -94.5,
-            35.3
-          ],
-          [
-            -94.48,
-            35.31
-          ],
-          [
-            -94.48,
-            35.32
-          ],
-          [
-            -94.5,
-            35.33
-          ],
-          [
-            -94.49,
-            35.34
-          ],
-          [
-            -94.48,
-            35.35
-          ],
-          [
-            -94.49,
-            35.36
+            -94.99,
+            34.35
           ],
           [
             -94.47,
-            35.38
+            34.26
           ],
           [
-            -94.45,
-            35.37
+            -94.47,
+            34.19
           ],
           [
-            -94.43,
-            35.38
+            -94.3,
+            34.19
           ],
           [
-            -94.43,
-            35.42
+            -93.89,
+            34
           ],
           [
-            -94.13,
-            35.44
+            -94.05,
+            33.87
           ],
           [
-            -94.08,
-            35.37
+            -95.01,
+            34.14
           ],
           [
-            -94.52,
-            35.2
-          ],
-          [
-            -94.57,
-            35.27
+            -94.99,
+            34.35
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of Arkansas, including the following counties,\nCrawford and Sebastian and southeast Oklahoma, including the\nfollowing county, Le Flore.\n\n* WHEN...Until 1215 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 902 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1.5 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nFort Smith...                      Van Buren...\nBarling...                         Pocola...\nLavaca...                          Arkoma...\nBonanza...                         Fort Smith Regional\nAirport...\nKibler...                          Central City...\nRye Hill...                        Mill Creek...\nBraden...\n- http://www.weather.gov/safety/flood",
+      "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Central Howard County in southwestern Arkansas...\nSevier County in southwestern Arkansas...\nCentral McCurtain County in southeastern Oklahoma...\n\n* WHEN...Until 145 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1149 PM CDT, Doppler radar indicated heavy rain due to slow\nmoving thunderstorms. This will cause urban and small stream\nflooding.\n- Some locations that will experience flooding include...\nDe Queen, Lockesburg, Gillham, West Line, Eagletown, Hochatown,\nGeneva, Bellview, Mount Herman, Provo and Silver Ridge.\n- http://www.weather.gov/safety/flood",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T00:15:00-05:00"
+      "expires": "2026-07-12T01:45:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.00fd749cb51509a075cece19e33e70c8c385eaa2.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.bec92baf20ab96f1a29d362136df3c70c7bcc83b.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flash Flood Warning",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Orange; Washington; Scott; Jefferson; Dubois; Crawford; Perry; Harrison; Floyd; Clark; Hancock; Breckinridge; Meade; Ohio; Bullitt; Jefferson; Oldham; Trimble; Henry; Shelby; Spencer",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of Indiana, including the following areas, Clark\nIN, Crawford, Dubois, Floyd, Harrison IN, Jefferson IN, Orange,\nPerry, Scott IN and Washington IN and Kentucky, including the\nfollowing areas, Breckinridge, Bullitt, Hancock, Henry, Jefferson,\nMeade, Ohio, Oldham, Shelby, Spencer and Trimble.\n\n* WHEN...Until 8 AM EDT /7 AM CDT/ this morning.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nCreeks and streams may rise out of their banks.\n\n* ADDITIONAL DETAILS...\n- Repeated rounds of showers and thunderstorms capable of heavy\nrain are expected overnight until Sunday morning. Already wet\nsoils in some areas will make flooding more susceptible,\nespecially with each additional round of rainfall. Localized\nsignificant flooding may develop for areas that see several\ninches of rainfall.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-12T08:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bec92baf20ab96f1a29d362136df3c70c7bcc83b.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Grayson; Hardin; Franklin; Scott; Harrison; Anderson; Woodford; Fayette; Bourbon; Nicholas; Nelson; Washington; Mercer; Jessamine; Clark; Larue; Marion; Boyle; Garrard; Madison; Butler; Edmonson; Hart; Green; Taylor; Casey; Lincoln; Logan; Warren; Simpson; Allen; Barren; Monroe; Metcalfe; Adair; Russell; Cumberland; Clinton",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of east central, north central, and south central\nKentucky, including the following areas, in east central Kentucky,\nAnderson, Bourbon, Boyle, Clark KY, Fayette, Franklin, Garrard,\nHarrison KY, Jessamine, Madison, Mercer, Nicholas, Scott KY and\nWoodford. In north central Kentucky, Hardin, Larue, Nelson and\nWashington KY. In south central Kentucky, Adair, Allen, Barren,\nButler, Casey, Clinton, Cumberland, Edmonson, Grayson, Green,\nHart, Lincoln, Logan, Marion, Metcalfe, Monroe, Russell, Simpson,\nTaylor and Warren.\n\n* WHEN...Through Sunday afternoon.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Repeated rounds of showers and thunderstorms capable of heavy\nrain are expected through the day Sunday. Already wet soils\nin some areas will make flooding more susceptible, especially\nwith each additional round of rainfall. Localized significant\nflooding may develop for areas that see several inches of\nrainfall.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-12T19:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1dfe43434ae4cae8dd1fbd30d23bb191ccfcbf6e.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Mayes, OK; Rogers, OK",
+    "location": "Perry, IN; Boyle, KY; Breckinridge, KY; Bullitt, KY; Hancock, KY; Hardin, KY; Larue, KY; Marion, KY; Meade, KY; Mercer, KY; Nelson, KY; Ohio, KY; Washington, KY",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -95.54,
-            36.35
+            -86.87,
+            37.71
           ],
           [
-            -95.49,
-            36.38
+            -86.82,
+            37.74
           ],
           [
-            -95.38,
-            36.42
+            -86.82,
+            37.79
           ],
           [
-            -95.31,
-            36.35
+            -86.85,
+            37.84
           ],
           [
-            -95.49,
-            36.29
+            -86.78,
+            38.01
           ],
           [
-            -95.54,
-            36.35
+            -86.13,
+            37.88
+          ],
+          [
+            -85.75,
+            37.89
+          ],
+          [
+            -85.42,
+            37.82
+          ],
+          [
+            -85.01,
+            37.77
+          ],
+          [
+            -85.05,
+            37.53
+          ],
+          [
+            -85.49,
+            37.62
+          ],
+          [
+            -86.11,
+            37.66
+          ],
+          [
+            -86.54,
+            37.71
+          ],
+          [
+            -86.85,
+            37.69
+          ],
+          [
+            -86.87,
+            37.71
           ]
         ]
       ]
     },
     "details": {
-      "description": "FFWTSA\n\nThe National Weather Service in Tulsa has issued a\n\n* Flash Flood Warning for...\nWest Central Mayes County in northeastern Oklahoma...\nEast Central Rogers County in northeastern Oklahoma...\n\n* Until midnight CDT tonight.\n\n* At 855 PM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 4 inches of rain\nhave fallen. Additional rainfall amounts of 0.5 to 1.5 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nmainly rural areas of West Central Mayes and East Central Rogers\nCounties",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T00:00:00-05:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of south central Indiana, including the following\ncounty, Perry and central Kentucky, including the following\ncounties, Boyle, Breckinridge, Bullitt, Hancock, Hardin, Larue,\nMarion, Meade, Mercer, Nelson, Ohio and Washington.\n\n* WHEN...Until 245 AM CDT /345 AM EDT/.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nDangerous flows over low-water crossings. Water over roadways.\nOverflowing poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1136 PM CDT /1236 AM EDT/, Doppler radar indicated heavy\nrain due to thunderstorms. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area.\n- Some locations that will experience flooding include...\nElizabethtown, Bardstown, Tell City, Lebanon, Springfield,\nHardinsburg, Hawesville, Radcliff, Webster and Vine Grove.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-12T02:45:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9bfe27b347cf2c391411073dbeb302372ee95fe4.001.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.7e4377b341fa5e0369563303ac9a4d007dffeaa4.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Eastern Toole and Liberty; Hill County; Northern Blaine County; Southern High Plains; Eastern Pondera and Eastern Teton; Western and Central Chouteau County; Bears Paw Mountains and Southern Blaine; Cascade County below 5000ft; Judith Basin County and Judith Gap; Fergus County below 4500ft; Gates of the Mountains; Helena Valley; Canyon Ferry Area; Missouri Headwaters; Madison River Valley; Gallatin Valley",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hot daytime temperatures of 95 to 105 degrees, with\novernight temperatures of 60 to 70 degrees expected.\n\n* WHERE...Portions of central, north central, and southwest Montana.\n\n* WHEN...Until 9 PM MDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-12T17:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.3d4573e2cc57e26fbbaf24ffe1f0b777977a3804.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Creek, OK",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -96.62,
+            35.65
+          ],
+          [
+            -96.56,
+            36.16
+          ],
+          [
+            -96.14,
+            36.02
+          ],
+          [
+            -96.39,
+            35.65
+          ],
+          [
+            -96.62,
+            35.65
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of northeast Oklahoma, including the following\ncounty, Creek.\n\n* WHEN...Until 230 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1120 PM CDT, Doppler radar and automated rain gauges\nindicated heavy rain due to thunderstorms. Minor flooding is\nongoing or expected to begin shortly in the advisory area.\nTwo to three inches of rainfall has fallen across portions of\nthe area.\n- Additional rainfall of 0.5 and 1 inch is expected. This\nadditional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nBristow...                         Kellyville...\nDepew...                           Shamrock...\nMilfay...                          Silver City...\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-12T02:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2ec29fad0f60cc83dc9fc4181af4cde454ad18bd.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Cherokee; Clay; Scott; Campbell; Claiborne; Hancock; Hawkins; Sullivan; Johnson; Morgan; Anderson; Union; Grainger; Hamblen; Northwest Cocke; Cocke Smoky Mountains; Northwest Greene; Southeast Greene; Washington; Unicoi; Northwest Carter; Southeast Carter; Roane; Loudon; Knox; Jefferson; NW Blount; Blount Smoky Mountains; North Sevier; Sevier Smoky Mountains; Sequatchie; Bledsoe; Rhea; Meigs; McMinn; Northwest Monroe; Southeast Monroe; Marion; Hamilton; Bradley; West Polk; East Polk; Lee; Wise; Scott; Russell; Washington",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of southwest North Carolina, including the\nfollowing areas, Cherokee and Clay, East Tennessee, including the\nfollowing areas, Anderson, Bledsoe, Blount Smoky Mountains,\nBradley, Campbell, Claiborne, Cocke Smoky Mountains, East Polk,\nGrainger, Hamblen, Hamilton, Hancock, Hawkins, Jefferson, Johnson,\nKnox, Loudon, Marion, McMinn, Meigs, Morgan, North Sevier,\nNorthwest Blount, Northwest Carter, Northwest Cocke, Northwest\nGreene, Northwest Monroe, Rhea, Roane, Scott TN, Sequatchie, Sevier\nSmoky Mountains, Southeast Carter, Southeast Greene, Southeast\nMonroe, Sullivan, Unicoi, Union, Washington TN and West Polk, and\nsouthwest Virginia, including the following areas, Lee, Russell,\nScott VA, Washington VA and Wise.\n\n* WHEN...Through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas.\n\n* ADDITIONAL DETAILS...\n- Periods of showers and thunderstorms are expected today and into\ntonight. Locations that receive multiple rounds of locally heavy\nrainfall could experience instances of flash flooding. While\nflooding could occur at any time, the flooding potential is now\nexpected to be greatest this morning through tonight. Locations\nthat have already seen flooding need less rainfall to have\nadditional flooding and should take new storms seriously.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-12T16:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb479f04bb013f52d7907f87b4ed17ed4526af02.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Inland Nassau; Inland Flagler; Coastal Nassau; Coastal Duval; Eastern Clay; Eastern Putnam; Coastal Flagler; Trout River; Western Clay; Northeast Coastal St. Johns; Western Putnam; South Central Duval; Southeast Coastal St. Johns; Western Duval; Northern Inland St. Johns; Southern Inland St. Johns; Western St. Johns; Inland Glynn; Coastal Glynn; Inland Camden; Coastal Camden",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 110 expected.\n\n* WHERE...Portions of northeast Florida and southeast Georgia.\n\n* WHEN...From 11 AM this morning to 7 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-12T19:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb479f04bb013f52d7907f87b4ed17ed4526af02.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Baker; Union; Bradford; Wayne; Pierce; Brantley; Northeastern Charlton; Southern Ware; Western Charlton",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 110 expected.\n\n* WHERE...In Florida, Baker, Bradford, and Union Counties. In\nGeorgia, Brantley, Northeastern Charlton, Pierce, Southern Ware,\nWayne, and Western Charlton Counties.\n\n* WHEN...From 11 AM this morning to 7 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-12T19:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.3112d62fb1e2cb4719f508e177eae2e1a8a8c917.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Harding; Northern Perkins; Butte; Northern Meade Co Plains; Ziebach; Northern Foothills; Rapid City; Southern Foothills; Custer Co Plains; Pennington Co Plains; Haakon; Western Fall River; Northern Oglala Lakota; Northern Jackson; Bennett; Mellette; Todd; Tripp; Sturgis/Piedmont Foothills; Southern Meade Co Plains; Hermosa Foothills; Eastern Fall River; Southern Oglala Lakota; Southern Jackson; Southern Perkins; Northern Campbell; Southern Campbell; Western Crook; Weston County Plains; Newcastle; Northeastern Crook",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values between 95 and 105 expected.\n\n* WHERE...Portions of northwestern, south central, and southwestern\nSouth Dakota and northeast Wyoming.\n\n* WHEN...Until 8 PM MDT /9 PM CDT/ Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-12T13:15:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6873925d26185c6f5252fa6526776e54d8a9ef07.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Anderson, TN; Grainger, TN; Hamblen, TN; Jefferson, TN; Knox, TN; Union, TN",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.08,
+            36.02
+          ],
+          [
+            -84.31,
+            36.01
+          ],
+          [
+            -84.38,
+            36.12
+          ],
+          [
+            -83.97,
+            36.25
+          ],
+          [
+            -83.19,
+            36.26
+          ],
+          [
+            -83.28,
+            36.05
+          ],
+          [
+            -83.67,
+            36.04
+          ],
+          [
+            -83.67,
+            36.03
+          ],
+          [
+            -84.08,
+            36.02
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "FFWMRX\n\nThe National Weather Service in Morristown has issued a\n\n* Flash Flood Warning for...\nAnderson County in east Tennessee...\nSouthwestern Grainger County in east Tennessee...\nCentral Hamblen County in east Tennessee...\nNorthern Jefferson County in east Tennessee...\nNortheastern Knox County in east Tennessee...\nSouthern Union County in east Tennessee...\n\n* Until 300 AM EDT.\n\n* At midnight EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Additional rainfall amounts of 1\nto 3 inches are possible in the warned area. Flash flooding is\nongoing or expected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nKnoxville, Oak Ridge, Morristown, Clinton, Jefferson City,\nDandridge, Maynardville, Oliver Springs, White Pine and Plainview.\n\nThis includes the following highways...\nInterstate 75 in Tennessee between mile markers 111 and 125.\nInterstate 81 in Tennessee between mile markers 1 and 10. Interstate\n40 in Tennessee between mile markers 419 and 423.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+      "expires": "2026-07-12T03:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.9ef8442b0a028418376c5397845f1da87d76f62f.002.1",
     "type": "weather",
     "severity": "severe",
     "title": "Extreme Heat Warning",
     "geometry": "unknown",
-    "location": "West Polk; Norman; Clay; Kittson; Roseau; Lake Of The Woods; West Marshall; East Marshall; North Beltrami; Pennington; Red Lake; East Polk; North Clearwater; South Beltrami; Mahnomen; South Clearwater; Hubbard; West Becker; East Becker; Wilkin; West Otter Tail; East Otter Tail; Wadena; Grant; Towner; Cavalier; Pembina; Benson; Ramsey; Eastern Walsh County; Eddy; Nelson; Grand Forks; Griggs; Steele; Traill; Barnes; Cass; Ransom; Sargent; Richland; Western Walsh County",
+    "location": "Western Millard and Juab Counties; Southwest Utah; South Central Utah; Capitol Reef National Park and Vicinity; Western Canyonlands; Glen Canyon Recreation Area/Lake Powell",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Dangerously hot conditions with heat index values up to 110\nexpected.\n\n* WHERE...Portions of central, north central, northwest, and west\ncentral Minnesota and northeast and southeast North Dakota.\n\n* WHEN...From 8 AM Sunday to 1 AM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Overnight relief Sunday night into Monday\nmorning will be minimal, with overnight low temperatures remaining.\nin the mid 70s along with high humidity.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nStay cool, stay hydrated, stay informed.\n\nIf you do not have air conditioning in your home or lack shelter,\nyou can call 211 for assistance locating appropriate shelter from\nthe heat.",
-      "expires": "2026-07-12T05:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.71fee1c501bb79c3dbd740aa9697900665729140.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Cass, IL; Fulton, IL; Mason, IL",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -89.88,
-            40.53
-          ],
-          [
-            -89.8,
-            40.47
-          ],
-          [
-            -90.02,
-            40.34
-          ],
-          [
-            -90.17,
-            40.12
-          ],
-          [
-            -90.23,
-            40.18
-          ],
-          [
-            -90.1,
-            40.39
-          ],
-          [
-            -89.88,
-            40.53
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River near Havana affecting Cass, Mason and Fulton\nCounties.\n\nIllinois River at Beardstown affecting Cass, Brown, Schuyler and\nMorgan Counties.\n\n.The following forecasts are based on observed precipitation, soil\nmoisture conditions, and forecast precipitation.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Illinois River near Havana.\n\n* WHEN...Until Friday evening.\n\n* ADDITIONAL DETAILS...\n- At 7:45 PM CDT Saturday the stage was 16.9 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 7:45 PM CDT Saturday was 17.1 feet.\n- Forecast...The river is expected to fall below flood stage\nearly Friday afternoon and continue falling to 13.1 feet\nSaturday, July 18.\n- Flood stage is 14.0 feet.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Persons with interests along this river need to remain aware of the\nlatest forecasts and associated flood risk for their area. Stay\ntuned for further updates on this flooding situation.\n\nAdditional information is available at www.weather.gov.",
-      "expires": "2026-07-12T12:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.71fee1c501bb79c3dbd740aa9697900665729140.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Brown, IL; Cass, IL; Morgan, IL; Schuyler, IL",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -90.23,
-            40.18
-          ],
-          [
-            -90.17,
-            40.12
-          ],
-          [
-            -90.37,
-            40.08
-          ],
-          [
-            -90.46,
-            39.99
-          ],
-          [
-            -90.58,
-            39.99
-          ],
-          [
-            -90.43,
-            40.15
-          ],
-          [
-            -90.23,
-            40.18
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning continues for the following rivers in\nIllinois...\n\nIllinois River near Havana affecting Cass, Mason and Fulton\nCounties.\n\nIllinois River at Beardstown affecting Cass, Brown, Schuyler and\nMorgan Counties.\n\n.The following forecasts are based on observed precipitation, soil\nmoisture conditions, and forecast precipitation.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Illinois River at Beardstown.\n\n* WHEN...Until further notice.\n\n* IMPACTS...At 18.0 feet, Seepage problems begin in the Lost Creek\nDrainage and Levee District.\n\n* ADDITIONAL DETAILS...\n- At 7:45 PM CDT Saturday the stage was 17.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 7:45 PM CDT Saturday was 17.2 feet.\n- Forecast...The river is expected to fall to 14.2 feet\nSaturday, July 18.\n- Flood stage is 14.0 feet.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Persons with interests along this river need to remain aware of the\nlatest forecasts and associated flood risk for their area. Stay\ntuned for further updates on this flooding situation.\n\nAdditional information is available at www.weather.gov.",
-      "expires": "2026-07-12T12:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.878b3a478c3d985ccd90aa397598c43ffa45cae4.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Cumberland, KY; Metcalfe, KY; Monroe, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -85.4,
-            36.93
-          ],
-          [
-            -85.26,
-            36.8
-          ],
-          [
-            -85.49,
-            36.69
-          ],
-          [
-            -85.61,
-            36.85
-          ],
-          [
-            -85.4,
-            36.93
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of south central Kentucky, including the\nfollowing counties, Cumberland, Metcalfe and Monroe.\n\n* WHEN...Until 1145 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 842 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nBurkesville, Leslie, Waterview, Grider, Ellington, Arat,\nCloyds Landing, Bow, Bakerton and Dubre.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-11T23:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c5b782189677856c0d0f0b64d3704cdf89e059ca.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Brookings, SD",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -96.85,
-            44.5
-          ],
-          [
-            -96.85,
-            44.48
-          ],
-          [
-            -96.86,
-            44.46
-          ],
-          [
-            -96.88,
-            44.44
-          ],
-          [
-            -96.89,
-            44.41
-          ],
-          [
-            -96.89,
-            44.39
-          ],
-          [
-            -96.86,
-            44.33
-          ],
-          [
-            -96.91,
-            44.33
-          ],
-          [
-            -96.92,
-            44.36
-          ],
-          [
-            -96.92,
-            44.38
-          ],
-          [
-            -96.94,
-            44.4
-          ],
-          [
-            -96.94,
-            44.43
-          ],
-          [
-            -96.92,
-            44.46
-          ],
-          [
-            -96.9,
-            44.48
-          ],
-          [
-            -96.89,
-            44.5
-          ],
-          [
-            -96.85,
-            44.5
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning continues for the following rivers in South\nDakota...\n\nBig Sioux River near Bruce affecting Brookings County.\n\n* WHAT...Minor flooding is occurring.\n\n* WHERE...Big Sioux River near Bruce.\n\n* WHEN...Until further notice.\n\n* IMPACTS...At 8.0 feet, The lower banks on the left side of the\nriver overflow.\n\n* ADDITIONAL DETAILS...\n- At 7:45 PM CDT Saturday the stage was 8.2 feet.\n- Recent Activity...The maximum river stage in the 24 hours ending\nat 7:45 PM CDT Saturday was 8.4 feet.\n- Forecast...No forecast is available for this location.\n- Flood stage is 8.0 feet.\n- Stay up to date with the latest river observations and forecasts\nat: water.noaa.gov",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued by Sunday evening.",
-      "expires": "2026-07-12T22:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efdf3d0388777c0af8d716170b6fb21ef843c037.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Osage, OK; Washington, OK",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -96.02,
-            36.86
-          ],
-          [
-            -96,
-            36.84
-          ],
-          [
-            -95.81,
-            36.57
-          ],
-          [
-            -95.81,
-            36.56
-          ],
-          [
-            -95.81,
-            36.55
-          ],
-          [
-            -95.81,
-            36.54
-          ],
-          [
-            -96.19,
-            36.49
-          ],
-          [
-            -96.36,
-            36.79
-          ],
-          [
-            -96.37,
-            36.8
-          ],
-          [
-            -96.02,
-            36.86
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of northeast Oklahoma, including the following\ncounties, Osage and Washington OK.\n\n* WHEN...Until 1145 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 838 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nBartlesville...                    Barnsdall...\nRamona...                          Ochelata...\nOkesa...                           Osage Hills State Park...\nBartlesville Municipal Airport...  Sunset Lake...\nTallant...                         Wolco...\nNelagoney...\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-11T23:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.aad0fa9132c1885caff0218f3f3538427ac21d6c.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Pinal, AZ",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -110.89,
-            32.51
-          ],
-          [
-            -110.88,
-            32.66
-          ],
-          [
-            -110.82,
-            32.77
-          ],
-          [
-            -110.71,
-            32.71
-          ],
-          [
-            -110.57,
-            32.64
-          ],
-          [
-            -110.55,
-            32.59
-          ],
-          [
-            -110.74,
-            32.52
-          ],
-          [
-            -110.87,
-            32.51
-          ],
-          [
-            -110.89,
-            32.51
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "FFWTWC\n\nThe National Weather Service in Tucson has issued a\n\n* Flash Flood Warning for...\nSoutheastern Pinal County in southeastern Arizona...\n\n* Until 930 PM MST.\n\n* At 638 PM MST, Doppler radar indicated thunderstorms producing\nbetween 0.75 and 1.50 inches of heavy rain has fallen on the\nnorthern portions of the Catalina Mountains in Pinal county. An\nautomated rain gage at Oracle Ranger Station near Oracle reported\n1.54 inches from this storm. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar and automated gauges.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nOracle, Saddlebrooke, San Manuel, Campo Bonito and Biosphere 2.\n\nThis includes Route 77 between mile markers 96 and 111.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-11T21:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.717b2f1c574e9355430df6792723311b8a54dbdd.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Wayne, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -84.94,
-            36.61
-          ],
-          [
-            -84.99,
-            36.62
-          ],
-          [
-            -85,
-            36.63
-          ],
-          [
-            -85,
-            36.65
-          ],
-          [
-            -85,
-            36.66
-          ],
-          [
-            -85.01,
-            36.67
-          ],
-          [
-            -85,
-            36.68
-          ],
-          [
-            -85.01,
-            36.69
-          ],
-          [
-            -85.02,
-            36.69
-          ],
-          [
-            -85.02,
-            36.7
-          ],
-          [
-            -85.01,
-            36.71
-          ],
-          [
-            -85.02,
-            36.72
-          ],
-          [
-            -85,
-            36.75
-          ],
-          [
-            -85.03,
-            36.81
-          ],
-          [
-            -85.06,
-            36.83
-          ],
-          [
-            -85.06,
-            36.86
-          ],
-          [
-            -84.96,
-            36.91
-          ],
-          [
-            -84.96,
-            36.93
-          ],
-          [
-            -84.81,
-            36.91
-          ],
-          [
-            -84.79,
-            36.6
-          ],
-          [
-            -84.94,
-            36.61
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of south central Kentucky, including the\nfollowing county, Wayne.\n\n* WHEN...Until 1245 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 935 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.5 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nMonticello, Cooper, Hidalgo, Susie, Slickford, Zula,\nPowersburg, Parnell, Cabell, Sunnybrook and Mount Pisgah.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T00:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4c2326cd6650853f9b9cbed929a517d78edb1dbf.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Beach Hazards Statement",
-    "geometry": "unknown",
-    "location": "Coastal Hancock; Coastal Washington",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT....The warm air temperatures in the 70s to low 80s may\ncause people to underestimate the dangers of the cold water\ntemperatures which are currently from the upper 40s to mid 50s.\n\n* WHERE...Coastal Hancock and Coastal Washington Counties.\n\n* WHEN...From 8 AM EDT Sunday through Sunday evening.\n\n* IMPACTS...The cold water temperatures can quickly cause\nhypothermia to anyone immersed in the waters. Anyone on boats or\npaddlecraft should use extreme caution to avoid this threat.",
-      "instruction": "A Beach Hazards Statement is issued on days when a significant\nnumber of boats and paddlecraft are expected to be out on the\nwater and when warm air temperatures may cause people to\nunderestimate the danger of the cold water. Paddle smart from the\nstart. Always wear your life jacket. Be aware of wind conditions,\ntides, and localized currents.",
-      "expires": "2026-07-12T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.49036b1f50bb1a93113f1fe77361b5525d091387.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Chesapeake Bay from Drum Point MD to Smith Point VA; Tidal Potomac from Cobb Island MD to Smith Point VA; Tangier Sound and the inland waters surrounding Bloodsworth Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...East winds 10 to 15 kt with gusts up to 20 kt expected.\n\n* WHERE...Chesapeake Bay from Drum Point MD to Smith Point VA,\nTidal Potomac from Cobb Island MD to Smith Point VA and\nTangier Sound and the inland waters surrounding Bloodsworth\nIsland.\n\n* WHEN...From 5 PM Sunday to 4 AM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-12T05:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1a787f4c2cb0d624babd11d2c1610a57620e3fe9.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Barren, KY; Cumberland, KY; Metcalfe, KY; Monroe, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -85.8,
-            36.93
-          ],
-          [
-            -85.6,
-            36.84
-          ],
-          [
-            -85.49,
-            36.68
-          ],
-          [
-            -85.82,
-            36.63
-          ],
-          [
-            -86.02,
-            36.85
-          ],
-          [
-            -85.8,
-            36.93
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of south central Kentucky, including the\nfollowing counties, Barren, Cumberland, Metcalfe and Monroe.\n\n* WHEN...Until 1115 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nOverflowing poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 810 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nTompkinsville, Gamaliel, Mud Lick, Sulphur Lick, Forkton,\nMount Hermon, Rockbridge, Emberton, Gum Tree and Jeffrey.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-11T23:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.587a8bd990d2adfd6f050fab65a5a9556ea7b401.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Coastal Flood Statement",
-    "geometry": "unknown",
-    "location": "Southern Queens; Southern Nassau",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Up to one half foot of inundation above ground level\nexpected in vulnerable areas near the waterfront and shoreline.\n\n* WHERE...Southern Queens and Southern Nassau Counties.\n\n* WHEN...From Sunday afternoon through Sunday evening.\n\n* IMPACTS...Brief minor flooding of the more vulnerable locations\nnear the waterfront and shoreline.\n\n* ADDITIONAL DETAILS...Brief minor flooding may also occur with\nthe Monday evening high tide.",
-      "instruction": "Do not drive through flooded roadways.",
-      "expires": "2026-07-12T05:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.587a8bd990d2adfd6f050fab65a5a9556ea7b401.001.2",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Coastal Flood Statement",
-    "geometry": "unknown",
-    "location": "Southern Fairfield",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Up to one half foot of inundation above ground level in\nvulnerable areas near the waterfront and shoreline.\n\n* WHERE...Southern Fairfield County.\n\n* WHEN...Until 11 PM EDT this evening and again Sunday evening.\n\n* IMPACTS...Brief minor flooding of the more vulnerable locations\nnear the waterfront and shoreline.",
-      "instruction": "Do not drive through flooded roadways.",
-      "expires": "2026-07-12T05:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.587a8bd990d2adfd6f050fab65a5a9556ea7b401.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Coastal Flood Statement",
-    "geometry": "unknown",
-    "location": "Hudson; Eastern Bergen; Eastern Essex; Eastern Union; Richmond (Staten Is.)",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Up to one half foot of inundation above ground level\nexpected in vulnerable areas near the waterfront and shoreline.\n\n* WHERE...In New Jersey, Hudson, Eastern Bergen, Eastern Essex\nand Eastern Union Counties. In New York, Richmond (Staten\nIsland) County.\n\n* WHEN...Sunday evening.\n\n* IMPACTS...Brief minor flooding of the more vulnerable locations\nnear the waterfront and shoreline.",
-      "instruction": "Do not drive through flooded roadways.",
-      "expires": "2026-07-12T05:15:00-04:00"
+      "description": "* WHAT...Dangerously hot conditions expected, with highs around 100\npossible for most central and southern Utah valleys and up to 110\nfor Lower Washington County, Zion Canyon, and the Glen Canyon\nRecreation Area.\n\n* WHERE...Western Millard and Juab Counties, Capitol Reef National\nPark and Vicinity, Glen Canyon Recreation Area/Lake Powell, South\nCentral Utah, Western Canyonlands, and Southwest Utah.\n\n* WHEN...Until 6 AM MDT Monday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events.\n\n* ADDITIONAL DETAILS...There is high confidence that temperatures\nwill warm to values challenging daily and monthly high temperature\nrecords Saturday and Sunday. Overnight lows in the lower to mid\n70s for many valley locations, except low 80s for lower Washington\nCounty, will provide little in the way of overnight relief.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T13:00:00-06:00"
     },
     "source": "NOAA Weather"
   }
