@@ -1,59 +1,104 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2b49bceabc387e7495af9f8b7b9b2244f74171db.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.235bc20c335361045d765c945cb499f6eec0ab73.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
+    "severity": "severe",
+    "title": "Special Marine Warning",
     "geometry": "Polygon",
-    "location": "Pulaski, KY",
+    "location": "Lake Superior from Saxon Harbor WI to Upper Entrance to Portage Canal MI 5NM off shore to the US/Canadian border including Isle Royale National Park; Lake Superior from Upper Entrance to Portage Canal to Manitou Island MI 5NM off shore to the US/Canadian Border",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -84.8,
-            36.99
+            -88.27,
+            48.02
           ],
           [
-            -84.86,
-            37.01
+            -88.5,
+            47.8
           ],
           [
-            -84.88,
-            37.02
+            -89.05,
+            48.09
           ],
           [
-            -84.91,
-            37.09
+            -88.76,
+            48.21
           ],
           [
-            -84.9,
-            37.11
-          ],
-          [
-            -84.43,
-            37.1
-          ],
-          [
-            -84.44,
-            36.97
-          ],
-          [
-            -84.8,
-            36.99
+            -88.27,
+            48.02
           ]
         ]
       ]
     },
     "details": {
-      "description": "The Flood Advisory will expire at 730 AM EDT this morning for a\nportion of south central Kentucky, including the following area,\nPulaski.\n\nThe heavy rain has ended. Urban and small stream flooding is no\nlonger expected to pose a threat. Please continue to heed remaining\nroad closures.",
+      "description": "The affected areas were...\nLake Superior from Saxon Harbor WI to Upper Entrance to Portage Canal\nMI 5NM off shore to the US/Canadian border including Isle Royale\nNational Park...\nLake Superior from Upper Entrance to Portage Canal to Manitou Island\nMI 5NM off shore to the US/Canadian Border...\n\nThe thunderstorm has weakened and no longer poses a significant\nthreat to boaters.",
       "instruction": null,
-      "expires": "2026-07-12T07:30:00-04:00"
+      "expires": "2026-07-12T08:20:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-12018",
+    "id": "weather-urn:oid:2.49.0.1.840.0.b6e6e999e2277dfd054864bf964427302e27c872.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Knox, KY; Whitley, KY",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.16,
+            36.93
+          ],
+          [
+            -83.98,
+            36.98
+          ],
+          [
+            -83.97,
+            36.98
+          ],
+          [
+            -83.96,
+            36.98
+          ],
+          [
+            -83.95,
+            36.98
+          ],
+          [
+            -83.86,
+            37.01
+          ],
+          [
+            -83.86,
+            36.94
+          ],
+          [
+            -84.16,
+            36.89
+          ],
+          [
+            -84.16,
+            36.93
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "The Flood Advisory will expire at 815 AM EDT this morning for\nportions of south central and southeast Kentucky, including the\nfollowing areas, in south central Kentucky, Whitley. In southeast\nKentucky, Knox.\n\nThe heavy rain has ended. Urban and small stream flooding is no\nlonger expected to pose a threat. Please continue to heed remaining\nroad closures.",
+      "instruction": null,
+      "expires": "2026-07-12T08:16:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-34931",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -63,7 +108,489 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-12T11:25:33+00:00"
+      "expires": "2026-07-12T12:15:33+00:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e9d535df44b436e03d51886a082076d76bab3913.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Custer",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -99.01,
+            35.81
+          ],
+          [
+            -98.82,
+            35.81
+          ],
+          [
+            -98.82,
+            35.63
+          ],
+          [
+            -99.01,
+            35.63
+          ],
+          [
+            -99.01,
+            35.81
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 700 AM CDT, Doppler radar was tracking a strong thunderstorm near\nCuster City. This storm was nearly stationary.\n\nHAZARD...Wind gusts of 40 mph and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nCuster City.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+      "expires": "2026-07-12T07:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.5e78329564d469c4921bd3bd08bd94711a38da31.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Ohio, KY",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -86.65,
+            37.37
+          ],
+          [
+            -86.76,
+            37.3
+          ],
+          [
+            -86.78,
+            37.33
+          ],
+          [
+            -86.82,
+            37.33
+          ],
+          [
+            -86.82,
+            37.32
+          ],
+          [
+            -86.81,
+            37.29
+          ],
+          [
+            -86.83,
+            37.29
+          ],
+          [
+            -86.85,
+            37.25
+          ],
+          [
+            -86.87,
+            37.25
+          ],
+          [
+            -86.9,
+            37.21
+          ],
+          [
+            -86.92,
+            37.23
+          ],
+          [
+            -86.91,
+            37.24
+          ],
+          [
+            -86.94,
+            37.24
+          ],
+          [
+            -86.96,
+            37.26
+          ],
+          [
+            -86.97,
+            37.26
+          ],
+          [
+            -86.98,
+            37.27
+          ],
+          [
+            -86.99,
+            37.32
+          ],
+          [
+            -87.01,
+            37.35
+          ],
+          [
+            -86.88,
+            37.41
+          ],
+          [
+            -86.67,
+            37.42
+          ],
+          [
+            -86.65,
+            37.37
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of central Kentucky, including the following\ncounty, Ohio.\n\n* WHEN...Until 1000 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 654 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1.5 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nBeaver Dam, Mchenry, Rockport, Rochester, Prentiss,\nShultztown, Cromwell, Cool Springs, Rob Roy and Wysox.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-12T10:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.649c005da66c42c62dcfce68971358bd9a757cdb.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Special Marine Warning",
+    "geometry": "Polygon",
+    "location": "Lake Superior from Saxon Harbor WI to Upper Entrance to Portage Canal MI 5NM off shore to the US/Canadian border including Isle Royale National Park; Lake Superior from Upper Entrance to Portage Canal to Manitou Island MI 5NM off shore to the US/Canadian Border",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -89.06,
+            47.87
+          ],
+          [
+            -88.94,
+            48.03
+          ],
+          [
+            -88.42,
+            47.76
+          ],
+          [
+            -88.68,
+            47.54
+          ],
+          [
+            -89.06,
+            47.87
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SMWMQT\n\nThe National Weather Service in Marquette has issued a\n\n* Special Marine Warning for...\nLake Superior from Saxon Harbor WI to Upper Entrance to Portage\nCanal MI 5NM off shore to the US/Canadian border including Isle\nRoyale National Park...\nLake Superior from Upper Entrance to Portage Canal to Manitou\nIsland MI 5NM off shore to the US/Canadian Border...\n\n* Until 845 AM EDT.\n\n* At 744 AM EDT, a severe thunderstorm was located 16 nm east of Rock\nof Ages Light, or 20 nm southwest of Mott Island Park Headquarters,\nmoving southeast at 20 knots.\n\nHAZARD...Wind gusts 34 knots or greater and large hail.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves. Large hail could result in\nstructural damage.\n\n* The severe thunderstorm will remain over mainly open waters.",
+      "instruction": "Frequent lightning is occurring with this storm. If caught on the\nopen water stay below deck if possible, keep away from ungrounded\nmetal objects.",
+      "expires": "2026-07-12T08:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.766e1651728b80ac5a2fac8038cb984202791d86.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Divide; Burke; Renville; Bottineau; Rolette; Williams; Mountrail; McHenry; Pierce; McKenzie; Dunn; Mercer; Oliver; Sheridan; Wells; Foster; Golden Valley; Billings; Stark; Burleigh; Kidder; Stutsman; Slope; Hettinger; Grant; Bowman; Adams; Emmons; Logan; La Moure; McIntosh; Dickey; Northwest Ward; Central and Southern Ward/Minot Area; Western McLean; Eastern McLean; Western Morton; Eastern Morton; Western Sioux; Eastern Sioux",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with heat index values around 100\nto 110. High temperatures will range from around 100 to near 110\ntoday and 95 to 105 on Monday.\n\n* WHERE...All of western and central North Dakota including the James\nRiver Valley.\n\n* WHEN...Until 1 AM CDT /midnight MDT/ Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Low temperatures will only fall into the 70s\ntonight, providing little relief from the heat.",
+      "instruction": "Do not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-12T14:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.98945426c34704e997963b652ba737afefba45a2.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
+    "geometry": "Polygon",
+    "location": "Keweenaw, MI",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -88.49,
+            48.04
+          ],
+          [
+            -88.66,
+            47.93
+          ],
+          [
+            -88.69,
+            47.89
+          ],
+          [
+            -88.74,
+            47.87
+          ],
+          [
+            -89.04,
+            48.07
+          ],
+          [
+            -88.77,
+            48.18
+          ],
+          [
+            -88.49,
+            48.04
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SVRMQT\n\nThe National Weather Service in Marquette has issued a\n\n* Severe Thunderstorm Warning for...\nKeweenaw County in western Upper Michigan...\n\n* Until 815 AM EDT.\n\n* At 734 AM EDT, a severe thunderstorm was located 10 miles northwest\nof Siskiwit Lake, moving southeast at 25 mph.\n\nHAZARD...Quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Damage to vehicles is expected.\n\n* Locations impacted include...\nSiskiwit Lake.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nPersons in campgrounds should seek sturdy shelter until this storm\npasses.",
+      "expires": "2026-07-12T08:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.f60e03604a62aea0513e0838c0cadcfe55b7e263.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Chesterfield, VA; Henrico, VA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -77.37,
+            37.52
+          ],
+          [
+            -77.35,
+            37.53
+          ],
+          [
+            -77.29,
+            37.54
+          ],
+          [
+            -77.24,
+            37.52
+          ],
+          [
+            -77.21,
+            37.46
+          ],
+          [
+            -77.23,
+            37.38
+          ],
+          [
+            -77.25,
+            37.39
+          ],
+          [
+            -77.25,
+            37.38
+          ],
+          [
+            -77.24,
+            37.37
+          ],
+          [
+            -77.25,
+            37.36
+          ],
+          [
+            -77.27,
+            37.35
+          ],
+          [
+            -77.38,
+            37.35
+          ],
+          [
+            -77.4,
+            37.48
+          ],
+          [
+            -77.37,
+            37.52
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of central Virginia, including the following\ncounties, Chesterfield and Henrico.\n\n* WHEN...Until 930 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 733 AM EDT, Doppler radar indicated heavy rain due to\nshowers. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nHighland Springs, Varina, Richmond International,\nMeadowville, Glendale, Sandston, Fair Oaks, Richmond Heights\nand Montrose.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-12T09:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.340ea94c8efb932cd0ec0101e91a0ed4806d2969.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Hart, KY; Larue, KY",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -85.72,
+            37.55
+          ],
+          [
+            -85.59,
+            37.53
+          ],
+          [
+            -85.59,
+            37.47
+          ],
+          [
+            -85.6,
+            37.47
+          ],
+          [
+            -85.61,
+            37.46
+          ],
+          [
+            -85.63,
+            37.47
+          ],
+          [
+            -85.64,
+            37.45
+          ],
+          [
+            -85.65,
+            37.45
+          ],
+          [
+            -85.66,
+            37.44
+          ],
+          [
+            -85.66,
+            37.42
+          ],
+          [
+            -85.66,
+            37.41
+          ],
+          [
+            -85.67,
+            37.41
+          ],
+          [
+            -85.78,
+            37.39
+          ],
+          [
+            -85.9,
+            37.42
+          ],
+          [
+            -85.88,
+            37.54
+          ],
+          [
+            -85.72,
+            37.55
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of central Kentucky, including the following\ncounties, Hart and Larue.\n\n* WHEN...Until 930 AM CDT /1030 AM EDT/.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 629 AM CDT /729 AM EDT/, Doppler radar indicated heavy\nrain due to thunderstorms. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area. Between 1 and\n2 inches of rain have fallen.\n- Additional rainfall amounts up to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nHodgenville, Upton, Sonora, Magnolia, Maxine, Tanner,\nBoundary Oak, Mathers Mill, Hammonville and Mount Sherman.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-12T09:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.24051d16e531e7d5b69ac732a42ac8b49fe12762.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Lancaster, VA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -76.32,
+            37.69
+          ],
+          [
+            -76.31,
+            37.69
+          ],
+          [
+            -76.3,
+            37.66
+          ],
+          [
+            -76.28,
+            37.65
+          ],
+          [
+            -76.27,
+            37.64
+          ],
+          [
+            -76.26,
+            37.61
+          ],
+          [
+            -76.27,
+            37.6
+          ],
+          [
+            -76.31,
+            37.6
+          ],
+          [
+            -76.36,
+            37.59
+          ],
+          [
+            -76.4,
+            37.61
+          ],
+          [
+            -76.38,
+            37.65
+          ],
+          [
+            -76.32,
+            37.69
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "FFWAKQ\n\nThe National Weather Service in Wakefield has issued a\n\n* Flash Flood Warning for...\nSoutheastern Lancaster County in eastern Virginia...\n\n* Until 1030 AM EDT.\n\n* At 722 AM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1.5 and 3 inches of\nrain have fallen. The expected rainfall rate is 1.5 to 3 inches in\n1 hour. Additional rainfall amounts of 1 to 2.5 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by showers.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nWhite Stone and Foxwells.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nPlease report flooding by calling 757-899-2415, posting to the NWS\nWakefield Facebook page, or using X @NWSWAKEFIELDVA.",
+      "expires": "2026-07-12T10:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
@@ -177,59 +704,6 @@
       "description": "* WHAT...Dangerously hot conditions with heat index values near 100\nto as high as 110 expected.  Actual high temperatures mid 90s to\nlow 100s.\n\n* WHERE...Portions of central, north central, northwest, and west\ncentral Minnesota and northeast and southeast North Dakota.\n\n* WHEN...Until 1 AM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Overnight relief Sunday night into Monday\nmorning will be minimal, with overnight low temperatures remaining\nin the mid 70s along with high humidity.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
       "expires": "2026-07-12T14:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9df95449e0af06c0e72ea0483f6ba78699791d1d.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Keweenaw",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -88.32,
-            48.19
-          ],
-          [
-            -88.73,
-            47.87
-          ],
-          [
-            -89.07,
-            47.76
-          ],
-          [
-            -89.22,
-            47.79
-          ],
-          [
-            -89.35,
-            47.83
-          ],
-          [
-            -89.34,
-            47.92
-          ],
-          [
-            -88.71,
-            48.19
-          ],
-          [
-            -88.32,
-            48.19
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 704 AM EDT, Doppler radar was tracking a strong thunderstorm 16\nmiles southeast of Thunder Bay Ontario, or 19 miles northwest of\nSiskiwit Lake, moving southeast at 30 mph.\n\nHAZARD...Winds in excess of 30 mph and half inch hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nThis strong thunderstorm will be near...\nMott Island Park Headquarters around 740 AM EDT.\nRock Harbor around 750 AM EDT.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nPersons in campgrounds should consider seeking sturdy shelter until\nthis storm passes.",
-      "expires": "2026-07-12T08:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
@@ -509,21 +983,6 @@
       "description": "* WHAT...Temperatures up to 99.\n\n* WHERE...Southern Twin Falls County and Western Magic Valley.\n\n* WHEN...Until 9 PM MDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses, especially\nfor the young, elderly, and animals.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
       "expires": "2026-07-13T21:00:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.24e0b7391b00b215a1db07a334ac066b7b104025.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Extreme Heat Warning",
-    "geometry": "unknown",
-    "location": "Divide; Burke; Renville; Bottineau; Rolette; Williams; Mountrail; McHenry; Pierce; McKenzie; Dunn; Mercer; Oliver; Sheridan; Wells; Foster; Golden Valley; Billings; Stark; Burleigh; Kidder; Stutsman; Slope; Hettinger; Grant; Bowman; Adams; Emmons; Logan; La Moure; McIntosh; Dickey; Northwest Ward; Central and Southern Ward/Minot Area; Western McLean; Eastern McLean; Western Morton; Eastern Morton; Western Sioux; Eastern Sioux",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dangerously hot conditions with heat index values around 100\nto 110. High temperatures will range from around 100 to near 110\ntoday and 95 to 105 on Monday.\n\n* WHERE...All of western and central North Dakota including the James\nRiver Valley.\n\n* WHEN...Until 1 AM CDT /midnight MDT/ Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Low temperatures will only fall into the 70s\ntonight, providing little relief from the heat.",
-      "instruction": "Do not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-12T13:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
@@ -921,63 +1380,6 @@
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9bd86b11f47ce12f8a47ab646bbeaba55601485a.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Knox, KY; Whitley, KY",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -84.16,
-            36.93
-          ],
-          [
-            -83.98,
-            36.98
-          ],
-          [
-            -83.97,
-            36.98
-          ],
-          [
-            -83.96,
-            36.98
-          ],
-          [
-            -83.95,
-            36.98
-          ],
-          [
-            -83.86,
-            37.01
-          ],
-          [
-            -83.86,
-            36.94
-          ],
-          [
-            -84.16,
-            36.89
-          ],
-          [
-            -84.16,
-            36.93
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Urban and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Portions of south central and southeast Kentucky,\nincluding the following counties, in south central Kentucky,\nWhitley. In southeast Kentucky, Knox.\n\n* WHEN...Until 815 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 512 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. This will cause urban and small stream\nflooding. Up to 2 inches of rain have fallen.\n- Additional rainfall amounts up to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nGray, Bertha Station, Rossland, Arkle, Garrich, Moore Hill,\nWoodbine, Jarvis, Cranes Nest, Barton, Fletcher and Corbin.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-12T08:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
     "id": "weather-urn:oid:2.49.0.1.840.0.c2621fd1cec3d5ddce9ca0374da6d554408cb350.002.1",
     "type": "weather",
     "severity": "severe",
@@ -1094,96 +1496,6 @@
       "description": "* WHAT...Temperatures up to 98.\n\n* WHERE...Northern Ventura County Mountains.\n\n* WHEN...Until 10 AM PDT Tuesday.\n\n* IMPACTS...There is a high risk for heat illness for sensitive\npopulations including the very young, the very old, those without\nair conditioning, and those active outdoors.\n\n* ADDITIONAL DETAILS...Monsoonal moisture will add to the discomfort\nlevel from the heat starting on Sunday.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
       "expires": "2026-07-12T22:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.57f4e361b32fe1f46d2f573f0a356aa75c0c8379.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Cuyama Valley; Southern Salinas Valley; San Luis Obispo County Interior Valleys; San Luis Obispo County Mountains; Santa Barbara County Interior Mountains; Southern Ventura County Mountains; Interstate 5 Corridor; Western San Gabriel Mountains and Highway 14 Corridor; Eastern San Gabriel Mountains",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the Heat Advisory, temperatures of 85 to 98. For the\nExtreme Heat Watch, dangerously hot conditions with temperatures\nup to 105 possible.\n\n* WHERE...Cuyama Valley, Eastern San Gabriel Mountains, Interstate 5\nCorridor, San Luis Obispo County Interior Valleys, San Luis Obispo\nCounty Mountains, Santa Barbara County Interior Mountains,\nSouthern Salinas Valley, Southern Ventura County Mountains, and\nWestern San Gabriel Mountains and Highway 14 Corridor.\n\n* WHEN...For the Heat Advisory, until 10 AM PDT Tuesday. For the\nExtreme Heat Watch, from Tuesday morning through Thursday evening.\n\n* IMPACTS...There is a high risk for dangerous heat illness for\nanyone, especially for the very young, the very old, those without\nair conditioning, and those active outdoors. There is a high risk\nfor heat illness for sensitive populations including the very\nyoung, the very old, those without air conditioning, and those\nactive outdoors.\n\n* ADDITIONAL DETAILS...Monsoonal moisture will add to the discomfort\nlevel from the heat starting on Sunday. continuing through the\nweek.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nMonitor the latest forecasts and warnings for updates.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-12T22:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2c20a000951e8d9d7c3cb0df2a2df14fae5974b2.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...North winds 15 to 25 kt with gusts up to 30 kt and\nsteep seas 7 to 10 ft.\n\n* WHERE...All areas.\n\n* WHEN...From 5 PM this afternoon to 11 AM PDT Monday.\n\n* IMPACTS...Gusty winds and/or steep seas could capsize or\ndamage smaller vessels.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
-      "instruction": "Inexperienced mariners and those operating smaller vessels should\nremain in port and avoid the area of hazardous conditions.",
-      "expires": "2026-07-12T17:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2c20a000951e8d9d7c3cb0df2a2df14fae5974b2.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Florence to Cape Blanco OR out 10 nm; Waters from Florence to Cape Blanco OR from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...North winds 15 to 20 kt with gusts up to 25 kt and\nsteep seas 5 to 8 ft.\n\n* WHERE...All areas.\n\n* WHEN...From 11 AM Sunday to 11 AM PDT Monday.\n\n* IMPACTS...Gusty winds and/or steep seas could capsize or\ndamage smaller vessels.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
-      "instruction": "Inexperienced mariners and those operating smaller vessels should\nremain in port and avoid the area of hazardous conditions.",
-      "expires": "2026-07-12T17:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.abe35e26d1b98d02694cdf425b19f421366e53e8.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Central U.S. Waters Strait Of Juan De Fuca; East Entrance U.S. Waters Strait Of Juan De Fuca",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 20 to 30 kt.\n\n* WHERE...Central U. S. Waters Strait Of Juan De Fuca and East\nEntrance U. S. Waters Strait Of Juan De Fuca.\n\n* WHEN...Until 5 AM PDT early this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "A Small Craft Advisory means that wind speeds of 21 to 33 knots\nand/or seas 10 feet or higher are expected to produce hazardous\nwave conditions to small craft. Inexperienced mariners,\nespecially those operating smaller vessels should avoid\nnavigating in these conditions.",
-      "expires": "2026-07-12T05:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.805110ea1c098fe1645cc9971ac0a5dec5159807.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Shoalwater WA to Cape Falcon OR out 10 nm; Waters from Cape Shoalwater WA to Cape Falcon OR from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Seas 4 to 7 ft at 9 seconds and north winds 5 to 15 kt\nexpected.\n\n* WHERE...Coastal waters from Cape Shoalwater WA to Cape Falcon\nOR out 10 NM and Waters from Cape Shoalwater WA to Cape Falcon\nOR from 10 to 60 NM.\n\n* WHEN...From 11 AM this morning to 2 AM PDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...There will be a break in conditions before\nthey potentially ramp up once again later Monday.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-12T14:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.805110ea1c098fe1645cc9971ac0a5dec5159807.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Falcon to Cape Foulweather OR out 10 nm; Coastal waters from Cape Foulweather to Florence OR out 10 nm; Waters from Cape Falcon to Cape Foulweather OR from 10 to 60 nm; Waters from Cape Foulweather to Florence OR from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Seas 4 to 7 ft at 9 seconds and north winds 10 to 20 kt\nwith gusts up to 25 kt expected.\n\n* WHERE...Coastal waters from Cape Falcon to Cape Foulweather OR\nout 10 NM, Coastal waters from Cape Foulweather to Florence OR\nout 10 NM, Waters from Cape Falcon to Cape Foulweather OR from\n10 to 60 NM and Waters from Cape Foulweather to Florence OR\nfrom 10 to 60 NM.\n\n* WHEN...From 11 AM this morning to 11 AM PDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...Conditions will initially increase within\nthe inner waters then spread west and north through the early\nafternoon.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-12T14:00:00-07:00"
     },
     "source": "NOAA Weather"
   }
