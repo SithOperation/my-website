@@ -1013,6 +1013,231 @@ function getEventColor(type) {
 }
 
 
+function shouldUseMobileFallback() {
+
+    const userAgent = navigator.userAgent || "";
+
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(userAgent);
+
+    const isSafari = /Safari/.test(userAgent) && !/Chrome|CriOS|FxiOS|EdgiOS|OPiOS/.test(userAgent);
+
+    return isMobile && window.innerWidth <= 768 || isSafari && window.innerWidth <= 768;
+
+}
+
+
+async function loadLeafletFallbackMap(mapElement) {
+
+    if (!window.L) {
+
+        console.error("Leaflet not loaded");
+
+        return;
+
+    }
+
+
+    mapElement.innerHTML = "";
+
+
+    const map = window.L.map(mapElement, {
+
+        zoomControl: true,
+
+        scrollWheelZoom: false,
+
+        tap: true
+
+    }).setView([20, 0], 2);
+
+
+    window.L.tileLayer(
+
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+
+            attribution: "&copy; OpenStreetMap contributors",
+
+            maxZoom: 18
+
+        }
+
+    ).addTo(map);
+
+
+    const files = [
+
+        "data/earthquakes.json",
+
+        "data/volcanoes.json",
+
+        "data/weather.json"
+
+    ];
+
+
+    let events = [];
+
+
+    for (const file of files) {
+
+        try {
+
+            const response = await fetch(`${file}?cache=${Date.now()}`);
+
+            if (!response.ok) {
+
+                continue;
+
+            }
+
+            const data = await response.json();
+
+            if (Array.isArray(data)) {
+
+                events = events.concat(data);
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error("Failed loading", file, error);
+
+        }
+
+    }
+
+
+    const geojson = {
+
+        type: "FeatureCollection",
+
+        features: events
+            .map(event => {
+
+                if (event.coordinates && event.coordinates.lat !== undefined && event.coordinates.lon !== undefined) {
+
+                    return {
+
+                        type: "Feature",
+
+                        properties: {
+
+                            title: event.title,
+
+                            location: event.location,
+
+                            severity: event.severity,
+
+                            type: event.type
+
+                        },
+
+                        geometry: {
+
+                            type: "Point",
+
+                            coordinates: [event.coordinates.lon, event.coordinates.lat]
+
+                        }
+
+                    };
+
+                }
+
+
+                if (event.coordinates && event.coordinates.polygon) {
+
+                    return {
+
+                        type: "Feature",
+
+                        properties: {
+
+                            title: event.title,
+
+                            location: event.location,
+
+                            severity: event.severity,
+
+                            type: event.type
+
+                        },
+
+                        geometry: {
+
+                            type: "Polygon",
+
+                            coordinates: event.coordinates.polygon
+
+                        }
+
+                    };
+
+                }
+
+                return null;
+
+            })
+            .filter(Boolean)
+
+    };
+
+
+    window.L.geoJSON(geojson, {
+
+        pointToLayer: (feature, latlng) => {
+
+            return window.L.circleMarker(latlng, {
+
+                radius: 6,
+
+                color: "#ffffff",
+
+                weight: 1,
+
+                fillColor: getEventColor(feature.properties.type),
+
+                fillOpacity: 0.95
+
+            });
+
+        },
+
+        onEachFeature: (feature, layer) => {
+
+            const props = feature.properties;
+
+            const html = `
+
+                <strong>${props.title}</strong><br>
+                Location: ${props.location}<br>
+                Severity: ${props.severity}<br>
+                Type: ${props.type}
+
+            `;
+
+            layer.bindPopup(html);
+
+        }
+
+    }).addTo(map);
+
+
+    setTimeout(() => {
+
+        map.invalidateSize();
+
+    }, 150);
+
+
+    disasterMap = map;
+
+}
+
 
 /* =====================================================
    DISASTER MAP (MapLibre)
@@ -1060,6 +1285,14 @@ async function loadDisasterMap() {
 
     }
 
+
+    if (shouldUseMobileFallback()) {
+
+        await loadLeafletFallbackMap(mapElement);
+
+        return;
+
+    }
 
 
 
