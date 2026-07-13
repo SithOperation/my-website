@@ -1288,6 +1288,8 @@ async function loadDisasterMap() {
 
     if (shouldUseMobileFallback()) {
 
+        console.log("USING LEAFLET MOBILE FALLBACK");
+
         await loadLeafletFallbackMap(mapElement);
 
         return;
