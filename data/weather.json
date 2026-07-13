@@ -1,6 +1,103 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-21370",
+    "id": "weather-urn:oid:2.49.0.1.840.0.b41335afb537377f7d43ccc3a37e9bd162545cdf.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Osceola",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.96,
+            28.2
+          ],
+          [
+            -81.08,
+            27.98
+          ],
+          [
+            -81.42,
+            28.01
+          ],
+          [
+            -81.46,
+            28.04
+          ],
+          [
+            -81.46,
+            28.05
+          ],
+          [
+            -81.44,
+            28.06
+          ],
+          [
+            -81.43,
+            28.04
+          ],
+          [
+            -81.39,
+            28.03
+          ],
+          [
+            -81.38,
+            28.02
+          ],
+          [
+            -81.36,
+            28.04
+          ],
+          [
+            -81.37,
+            28.07
+          ],
+          [
+            -81.35,
+            28.07
+          ],
+          [
+            -81.35,
+            28.08
+          ],
+          [
+            -81.45,
+            28.09
+          ],
+          [
+            -81.46,
+            28.14
+          ],
+          [
+            -81.52,
+            28.14
+          ],
+          [
+            -81.52,
+            28.2
+          ],
+          [
+            -81.56,
+            28.26
+          ],
+          [
+            -80.96,
+            28.2
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 506 PM EDT, Doppler radar was tracking a strong thunderstorm near\nPoinciana, or near West Lake Toho, moving east at 20 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nHolopaw, West Lake Toho, Poinciana, Harmony, and Alligator Lake.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-13T17:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-7137",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -10,308 +107,435 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-13T20:15:33+00:00"
+      "expires": "2026-07-13T21:15:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.926aa3146a11966ea449671e5a393483c6732293.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Effingham",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -81.4,
-            32.26
-          ],
-          [
-            -81.45,
-            32.3
-          ],
-          [
-            -81.47,
-            32.31
-          ],
-          [
-            -81.47,
-            32.33
-          ],
-          [
-            -81.49,
-            32.33
-          ],
-          [
-            -81.49,
-            32.35
-          ],
-          [
-            -81.51,
-            32.36
-          ],
-          [
-            -81.51,
-            32.37
-          ],
-          [
-            -81.52,
-            32.38
-          ],
-          [
-            -81.52,
-            32.39
-          ],
-          [
-            -81.53,
-            32.39
-          ],
-          [
-            -81.53,
-            32.41
-          ],
-          [
-            -81.54,
-            32.42
-          ],
-          [
-            -81.53,
-            32.45
-          ],
-          [
-            -81.53,
-            32.47
-          ],
-          [
-            -81.54,
-            32.47
-          ],
-          [
-            -81.46,
-            32.55
-          ],
-          [
-            -81.39,
-            32.59
-          ],
-          [
-            -81.18,
-            32.4
-          ],
-          [
-            -81.4,
-            32.26
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 405 PM EDT, Doppler radar was tracking a strong thunderstorm near\nGuyton, moving northeast at 10 mph.\n\nHAZARD...Wind gusts of 50 to 55 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nSpringfield, Guyton, Shawnee, Egypt, Kildare, Pineora, Stillwell,\nMarlow, Tusculum and Griffin Lake.",
-      "instruction": "Stay tuned to NOAA Weather Radio All Hazards, TV or your local news\nsource for the latest information from the National Weather Service.",
-      "expires": "2026-07-13T16:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.98a0d981eb5909b8ebbed2d629b907ec5cc1b23d.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.880e3f9d7c57a447f4dee14d0526a9934524bc2e.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Runnels, TX",
+    "location": "McCulloch, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -100.24,
-            31.76
+            -99.6,
+            31.11
           ],
           [
-            -100.05,
-            31.88
+            -99.36,
+            31.04
           ],
           [
-            -99.92,
-            31.94
+            -99.36,
+            30.94
           ],
           [
-            -99.85,
-            31.92
+            -99.6,
+            30.94
           ],
           [
-            -99.8,
-            31.92
-          ],
-          [
-            -99.72,
-            31.88
-          ],
-          [
-            -99.72,
-            31.67
-          ],
-          [
-            -100.05,
-            31.58
-          ],
-          [
-            -100.23,
-            31.58
-          ],
-          [
-            -100.24,
-            31.76
+            -99.6,
+            31.11
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southern Runnels County in west central Texas...\n\n* WHEN...Until 600 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nRises in small streams and normally dry arroyos. Dangerous flows\nover low-water crossings.\n\n* ADDITIONAL DETAILS...\n- At 304 PM CDT, Doppler radar indicated heavy rain of up to 2\ninches has fallen in the advisory area due to thunderstorms.\nMinor flooding is ongoing or expected to begin shortly in the\nadvisory area.\n- Some locations that will experience flooding include...\nBallinger, Miles, Hatchel, Rowena, Benoit and Ballinger Lake.\n- This includes the following Low Water Crossings...\nFM 1692 crossing The Draw, County Road 156 crossing Eagle Branch,\nCounty Road 351 crossing Bluff Creek, County Road 334 crossing\nLittle Coyote Creek, crossings along County Road 334, County Road\n337 crossing Coyote Creek, County Road 334 crossing Big Coyote\nCreek, County Road 351 crossing Elm Creek, County Road 330\ncrossing Elm Creek and CR 348 crossing Coyote Creek.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southwestern McCulloch County in west central Texas...\n\n* WHEN...Until 600 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 404 PM CDT, Doppler radar indicated heavy rain of up to 2\ninches due to thunderstorms. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area.\n- Some locations that will experience flooding include...\nCalf Creek, The Intersection Of Us-190 And Ranch Road 1311 and\nUs-190 Near The Menard-Mcculloch County Line.\n- This includes the following Low Water Crossings...\nCounty Road 126 crossing Saddle Creek.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.",
       "expires": "2026-07-13T18:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6ed037395f54c4e6d56446c75a44638f8e8fd082.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.642feacbdcf67c5d0eb543a354cf75d623143f0e.001.1",
     "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "North St. Louis; Northern Cook/Northern Lake; Central St. Louis; Southern Lake/North Shore; Southern Cook/North Shore",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...The Minnesota Pollution Control Agency has issued an Air\nQuality Alert for fine particles pollution. The Air Quality Index\n(AQI) is expected to reach the Purple or Very Unhealthy category.\n\n* WHERE...Northeast Minnesota.\n\n* WHEN...From 7 AM CDT Tuesday to 11 AM CDT Thursday.\n\n* IMPACTS...The risk of health effects is increased for everyone.\n\n* ADDITIONAL DETAILS...Heavy smoke from several large wildfires\nacross northeast Minnesota and Canada will move south behind a\nfrontal boundary across much of northeast Minnesota beginning on\nTuesday. High temperatures will be in the 90s across the alert\narea Tuesday, and the combination of wildfire smoke and extreme\nheat amplifies health risks. Heavy smoke may move further south\ninto Minnesota Tuesday night into Wednesday morning, so the air\nquality alert may need to be expanded. Additional rounds of heavy\nsmoke are possible across the region through at least Thursday\nmorning.",
-      "instruction": "Sensitive groups, such as people with lung disease (including\nasthma), heart disease, and children and older adults, should\navoid all physical activities outdoors. The general public should\navoid prolonged or heavy exertion. Reduce or eliminate activities\nthat contribute to air pollution, such as outdoor burning, and\nuse of residential wood burning devices. Reduce vehicle trips and\nvehicle idling as much as possible. Keep windows closed overnight\nto prevent smoke from getting indoors.",
-      "expires": "2026-07-16T11:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.972204dc50ecead9af9c7fb600e99e6bbc5e0ab2.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Small Craft Advisory, north winds 15 to 20\nkt with gusts up to 25 kt and steep seas 5 to 7 ft. For the\nsecond Small Craft Advisory, north winds 15 to 20 kt with gusts\nup to 30 kt and steep seas 4 to 7 ft.\n\n* WHERE...All of the area through Monday evening, then all of\nthe area except for beyond 30 nm from shore north of Gold\nBeach and near shore south of Brookings from Tuesday afternoon\nthrough Tuesday night.\n\n* WHEN...For the Small Craft Advisory, until 11 PM PDT this\nevening. For the Small Craft Advisory, from 5 AM Tuesday to 2\nAM PDT Wednesday.\n\n* IMPACTS...Gusty winds and/or steep seas could capsize or\ndamage smaller vessels.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
-      "instruction": "Inexperienced mariners and those operating smaller vessels should\nremain in port and avoid the area of hazardous conditions.",
-      "expires": "2026-07-14T06:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.972204dc50ecead9af9c7fb600e99e6bbc5e0ab2.001.2",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Small Craft Advisory, north winds 15 to 20\nkt with gusts up to 25 kt and steep seas 5 to 7 ft. For the\nsecond Small Craft Advisory, north winds 15 to 20 kt with gusts\nup to 30 kt and steep seas 4 to 7 ft.\n\n* WHERE...All of the area through Monday evening, then all of\nthe area except for beyond 30 nm from shore north of Gold\nBeach and near shore south of Brookings from Tuesday afternoon\nthrough Tuesday night.\n\n* WHEN...For the Small Craft Advisory, until 11 PM PDT this\nevening. For the Small Craft Advisory, from 5 AM Tuesday to 2\nAM PDT Wednesday.\n\n* IMPACTS...Gusty winds and/or steep seas could capsize or\ndamage smaller vessels.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
-      "instruction": "Inexperienced mariners and those operating smaller vessels should\nremain in port and avoid the area of hazardous conditions.",
-      "expires": "2026-07-14T06:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c1c12d21d92569064f2962d4ae38a8278d5e10e0.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
     "geometry": "Polygon",
-    "location": "Apalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee River Fl out to 20 Nm; Coastal Waters From  Ochlockonee River to Apalachicola FL out to 20 Nm; Coastal waters from  Suwannee River to Keaton Beach out 20 NM; Waters from Suwannee River to Apalachicola FL from 20 to 60 NM",
+    "location": "Bowie; Morris; Cass",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -83.13,
-            29.39
+            -94.65,
+            33.11
           ],
           [
-            -83.24,
-            29.27
+            -94.72,
+            33.12
           ],
           [
-            -83.54,
-            29.16
+            -94.61,
+            33.36
           ],
           [
-            -84.05,
-            28.85
+            -94.44,
+            33.25
           ],
           [
-            -84.12,
-            28.94
+            -94.52,
+            33.08
           ],
           [
-            -84.16,
-            28.89
-          ],
-          [
-            -84.17,
-            28.89
-          ],
-          [
-            -84.51,
-            28.69
-          ],
-          [
-            -84.97,
-            28.59
-          ],
-          [
-            -84.98,
-            28.97
-          ],
-          [
-            -83.95,
-            30.11
-          ],
-          [
-            -83.54,
-            29.82
-          ],
-          [
-            -83.53,
-            29.78
-          ],
-          [
-            -83.36,
-            29.69
-          ],
-          [
-            -83.34,
-            29.53
-          ],
-          [
-            -83.16,
-            29.44
-          ],
-          [
-            -83.13,
-            29.39
+            -94.65,
+            33.11
           ]
         ]
       ]
     },
     "details": {
-      "description": "SMWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Special Marine Warning for...\nApalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee\nRiver Fl out to 20 Nm...\nCoastal Waters From  Ochlockonee River to Apalachicola FL out to 20\nNm...\nCoastal waters from  Suwannee River to Keaton Beach out 20 NM...\nWaters from Suwannee River to Apalachicola FL from 20 to 60 NM...\n\n* Until 700 PM EDT.\n\n* At 403 PM EDT, strong thunderstorms were located along a line\nextending from 8 nm north of Marker 24 Barge to 26 nm southwest of\nS Tower, moving east at 35 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect wind gusts in excess of 34 knots...suddenly higher\nwaves...frequent lightning...and heavy downpours. Make\nsure all on board are wearing life jackets.\n\n* Locations impacted include...\nS Tower, V Tower, Buckeye Reef, Horseshoe Beach, and Marker 24\nBarge.",
-      "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-13T19:00:00-04:00"
+      "description": "At 403 PM CDT, Doppler radar was tracking a strong thunderstorm 9\nmiles east of Naples, or 20 miles south of New Boston, moving\nnorthwest at 10 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nNaples, Rocky Branch, Marietta and Bryans Mill.",
+      "instruction": "Monitor the weather situation closely and be alert for threatening\nweather conditions.\n\nTorrential rainfall is also occurring with this storm and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+      "expires": "2026-07-13T16:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.fb13ee638dc5b9e23c4cade30f62f7cd1aa9cc3a.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.9409d999c4d8aa656ecca926e55b298bb820f699.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Brazos, TX; Burleson, TX; Grimes, TX; Montgomery, TX; Walker, TX; Washington, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -96.11,
+            30.61
+          ],
+          [
+            -95.63,
+            30.68
+          ],
+          [
+            -95.55,
+            30.58
+          ],
+          [
+            -95.73,
+            30.59
+          ],
+          [
+            -95.9,
+            30.45
+          ],
+          [
+            -95.89,
+            30.37
+          ],
+          [
+            -95.9,
+            30.27
+          ],
+          [
+            -96.18,
+            30.24
+          ],
+          [
+            -96.51,
+            30.27
+          ],
+          [
+            -96.47,
+            30.47
+          ],
+          [
+            -96.11,
+            30.61
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...A portion of southeast Texas, including the following\ncounties, Brazos, Burleson, Grimes, Montgomery, Walker and\nWashington.\n\n* WHEN...Until 545 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nPonding of water in urban or other areas is occurring or is\nimminent.\n\n* ADDITIONAL DETAILS...\n- At 403 PM CDT, Doppler radar and automated rain gauges\nindicated heavy rain due to thunderstorms. Minor flooding is\nongoing or expected to begin shortly in the advisory area.\nBetween 1 and 3 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+      "expires": "2026-07-13T17:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d69ffb2aeae6ecd61016d55784e78d8d6804f56c.001.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Trumbull; Mahoning",
+    "coordinates": {},
+    "details": {
+      "description": "An Air Quality Advisory for ozone has been issued by The Eastgate\nRegional Council of Governments in partnership with the Ohio\nEnvironmental Protection Agency for Mahoning and Trumbull counties.\n\nThe advisory is from midnight tonight to midnight Tuesday night.\n\nAir quality levels will be unhealthy for sensitive groups\nduring this period. If you are in the sensitive groups category\nof children, the elderly and those with breathing difficulties,\nplease monitor your outdoor activity and check air quality readings\nat airnow.gov. Additionally, sign-up at enviroflash.info for text\nalerts regarding air quality.\n\nTo help our region reduce air pollution:\n\n* Drive less: bike, walk, use transit, work from home, combine trips\n* Don't idle - Turn off your engine\n* Refill your tank after sunset\n* Wait to mow the lawn",
+      "instruction": null,
+      "expires": "2026-07-15T00:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ad1eaea0362724991f49c97e15878dff81bcad95.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Randolph, GA; Terrell, GA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.45,
+            31.93
+          ],
+          [
+            -84.44,
+            31.96
+          ],
+          [
+            -84.34,
+            31.87
+          ],
+          [
+            -84.3,
+            31.87
+          ],
+          [
+            -84.31,
+            31.81
+          ],
+          [
+            -84.71,
+            31.74
+          ],
+          [
+            -84.8,
+            31.92
+          ],
+          [
+            -84.45,
+            31.92
+          ],
+          [
+            -84.45,
+            31.93
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "FFWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Flash Flood Warning for...\nNortheastern Randolph County in southwestern Georgia...\nNorthern Terrell County in southwestern Georgia...\n\n* Until 800 PM EDT.\n\n* At 459 PM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Flash flooding is ongoing or\nexpected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nDawson, Shellman, Bronwood, Parrott, Chambliss, Yeomans, Oakville,\nBrooksville, Pachitla, Benevolence, Wades and Olivers Mill.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-13T20:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.818f4dac2de829b327ea8137ca0054676ac98646.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Cochise, AZ",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -109.78,
+            32.27
+          ],
+          [
+            -109.77,
+            32.32
+          ],
+          [
+            -109.84,
+            32.38
+          ],
+          [
+            -109.9,
+            32.38
+          ],
+          [
+            -109.94,
+            32.34
+          ],
+          [
+            -109.89,
+            32.27
+          ],
+          [
+            -109.82,
+            32.26
+          ],
+          [
+            -109.81,
+            32.26
+          ],
+          [
+            -109.78,
+            32.27
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northern Cochise County in southeastern Arizona...\n\n* WHEN...Until 400 PM MST.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nOverflowing poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 155 PM MST, Doppler radar indicated heavy rain due to\nthunderstorms just north of Willcox. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area. Between 1 and 2\ninches of rain have fallen.\n- Some locations that will experience flooding include...\nWillcox.\n- This includes the following highways...\nInterstate 10 between mile markers 341 and 346. Route 186 near\nmile marker 327.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-13T16:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.644c2fc6f5f8d74570808b9782409e974ed96c0b.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
+    "geometry": "Polygon",
+    "location": "Brevard, FL; Orange, FL; Seminole, FL; Volusia, FL",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.66,
+            28.4
+          ],
+          [
+            -81.29,
+            28.45
+          ],
+          [
+            -81.26,
+            28.69
+          ],
+          [
+            -80.97,
+            28.74
+          ],
+          [
+            -80.64,
+            28.73
+          ],
+          [
+            -80.62,
+            28.7
+          ],
+          [
+            -80.66,
+            28.4
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SVRMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Severe Thunderstorm Warning for...\nSoutheastern Seminole County in east central Florida...\nNorthwestern Brevard County in east central Florida...\nSoutheastern Orange County in east central Florida...\nSoutheastern Volusia County in east central Florida...\n\n* Until 530 PM EDT.\n\n* At 455 PM EDT, a severe thunderstorm was located near Christmas,\nmoving east at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nOrlando, Titusville, Oviedo, Winter Springs, and Wedgefield.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nFrequent cloud to ground lightning is also occurring with this storm.\nMove indoors immediately. Remember, lightning can strike beyond 10\nmiles away from a thunderstorm.",
+      "expires": "2026-07-13T17:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7a3737dfb6fffddffa38fb91fc685ad6aaf79eab.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Special Marine Warning",
+    "geometry": "Polygon",
+    "location": "Waters from Okaloosa-Walton County Line to Pensacola FL from 20 to 60 NM",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -86.66,
+            29.44
+          ],
+          [
+            -86.66,
+            29.72
+          ],
+          [
+            -86.82,
+            29.93
+          ],
+          [
+            -86.46,
+            30.05
+          ],
+          [
+            -86.4,
+            30.04
+          ],
+          [
+            -86.4,
+            29.5
+          ],
+          [
+            -86.66,
+            29.44
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SMWMOB\n\nThe National Weather Service in Mobile has issued a\n\n* Special Marine Warning for...\nWaters from Okaloosa-Walton County Line to Pensacola FL from 20 to\n60 NM...\n\n* Until 415 PM CDT.\n\n* At 352 PM CDT, strong thunderstorms were located along a line\nextending from near Okaloosa Deep Water Reef to 32 nm south of Fort\nWalton Liberty Ship Reef to 40 nm southeast of Oriskany Reef,\nmoving east at 40 knots.\n\nHAZARD...Wind gusts to 40 knots.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nOkaloosa Deep Water Reef.",
+      "instruction": "Move to safe harbor immediately as gusty winds and high waves are\nexpected.",
+      "expires": "2026-07-13T16:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.dab6af910a6015269f05ee85e20ffefbe0c04beb.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Teller County/Rampart Range above 7500fT/Pike's Peak Between 7500 And 11000 Ft",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -105.33,
+            39.08
+          ],
+          [
+            -105.24,
+            39.12
+          ],
+          [
+            -105.15,
+            39.11
+          ],
+          [
+            -105.05,
+            38.92
+          ],
+          [
+            -105.31,
+            38.87
+          ],
+          [
+            -105.33,
+            39.08
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 252 PM MDT, Doppler radar was tracking a strong thunderstorm near\nFlorissant, or 25 miles northwest of Colorado Springs, moving south\nat 20 mph.\n\nHAZARD...Wind gusts up to 40 mph, pea size hail and brief heavy\nrainfall.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nFlorissant and Divide.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-13T15:30:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6b09d5e1695a4caa421a4b30f280ebdc21e4efb2.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Severe Thunderstorm Warning",
@@ -322,37 +546,118 @@
       "polygon": [
         [
           [
-            -81.34,
-            28.52
+            -81.24,
+            28.47
           ],
           [
-            -81.33,
-            28.3
+            -80.88,
+            28.49
           ],
           [
-            -81.66,
-            28.3
+            -80.88,
+            28.47
           ],
           [
-            -81.66,
-            28.5
+            -80.9,
+            28.47
           ],
           [
-            -81.34,
-            28.52
+            -80.9,
+            28.45
+          ],
+          [
+            -80.89,
+            28.45
+          ],
+          [
+            -80.9,
+            28.43
+          ],
+          [
+            -80.9,
+            28.42
+          ],
+          [
+            -80.89,
+            28.42
+          ],
+          [
+            -80.91,
+            28.17
+          ],
+          [
+            -81.41,
+            28.24
+          ],
+          [
+            -81.24,
+            28.47
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 401 PM EDT, a severe thunderstorm was located over Bay Lake,\nmoving east at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nOrlando, Kissimmee, Winter Garden, Windermere, and Bay Lake.",
+      "description": "At 452 PM EDT, a severe thunderstorm was located near Narcoossee,\nmoving east at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nOrlando, Kissimmee, Saint Cloud, Wedgefield, and East Lake Toho.",
       "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-      "expires": "2026-07-13T16:15:00-04:00"
+      "expires": "2026-07-13T17:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.373fd5b799503a8ad0ee539a7d33188d4d799878.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.2f954fd641a172addaffcff42d0f0d5b64721807.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Whitley, KY",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.23,
+            36.59
+          ],
+          [
+            -84.23,
+            36.6
+          ],
+          [
+            -84.24,
+            36.61
+          ],
+          [
+            -84.27,
+            36.63
+          ],
+          [
+            -84.29,
+            36.66
+          ],
+          [
+            -84.09,
+            36.65
+          ],
+          [
+            -84.09,
+            36.59
+          ],
+          [
+            -84.23,
+            36.59
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of south central Kentucky, including the\nfollowing county, Whitley.\n\n* WHEN...Until 645 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 451 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nAyers, Red Ash, Zion Hill and Saxton.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-13T18:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.304fe6b00f22a244be8adac6adde00a977a1fd8e.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Special Weather Statement",
@@ -363,1425 +668,1296 @@
       "polygon": [
         [
           [
-            -80.9,
-            29.09
+            -80.56,
+            28.4
           ],
           [
-            -80.75,
-            28.88
+            -80.59,
+            28.41
           ],
           [
-            -80.84,
-            28.58
+            -80.63,
+            28.41
           ],
           [
-            -81.37,
-            28.58
+            -81.28,
+            28.45
           ],
           [
-            -81.43,
-            28.77
-          ],
-          [
-            -81.37,
-            28.87
-          ],
-          [
-            -81.36,
-            28.89
-          ],
-          [
-            -81.35,
-            28.89
-          ],
-          [
-            -81.36,
-            28.9
-          ],
-          [
-            -81.19,
-            29.21
+            -81.44,
+            28.56
           ],
           [
             -80.97,
-            29.23
+            28.99
           ],
           [
-            -80.9,
-            29.09
+            -80.82,
+            28.99
+          ],
+          [
+            -80.54,
+            28.6
+          ],
+          [
+            -80.49,
+            28.46
+          ],
+          [
+            -80.56,
+            28.4
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 400 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from Daytona Beach Airport to near University Of\nCentral Florida. Movement was east at 25 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nDeltona, Daytona Beach, Port Orange, Sanford, and Titusville.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-13T16:45:00-04:00"
+      "description": "At 451 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Apollo Beach to near Titusville to Avalon\nPark. Movement was east at 40 mph.\n\nHAZARD...Wind gusts of 50 to 55 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nOrlando, Titusville, Oviedo, Winter Springs, and Winter Park.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with these storms.\nSeek safe shelter inside a sturdy building or hard-topped vehicle.\nRemember, lightning can strike beyond 10 miles away from a\nthunderstorm. When thunder roars, go indoors!\n\nThese storms may intensify, so be certain to monitor local radio\nstations and available television stations for additional information\nand possible warnings from the National Weather Service.",
+      "expires": "2026-07-13T17:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.11d96de5a985773ccacf0ff06035ccf4e4987f42.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Flagler Beach to Volusia-Brevard County Line 0-20 nm; Volusia-Brevard County Line to Sebastian Inlet 0-20 nm; Flagler Beach to Volusia-Brevard County Line 20-60 nm",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -79.98,
-            29.47
-          ],
-          [
-            -79.94,
-            29.41
-          ],
-          [
-            -80.22,
-            28.88
-          ],
-          [
-            -80.37,
-            28.85
-          ],
-          [
-            -80.27,
-            28.71
-          ],
-          [
-            -80.39,
-            28.21
-          ],
-          [
-            -80.71,
-            28.23
-          ],
-          [
-            -80.89,
-            28.8
-          ],
-          [
-            -80.85,
-            28.84
-          ],
-          [
-            -81.07,
-            29.27
-          ],
-          [
-            -81.06,
-            29.34
-          ],
-          [
-            -80.4,
-            29.48
-          ],
-          [
-            -79.98,
-            29.47
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nFlagler Beach to Volusia-Brevard County Line 0-20 nm...\nFlagler Beach to Volusia-Brevard County Line 20-60 nm...\nVolusia-Brevard County Line to Sebastian Inlet 0-20 nm...\n\n* Until 600 PM EDT.\n\n* At 358 PM EDT, strong thunderstorms were located along a line\nextending from 9 nm east of Ormond Beach to 10 nm west of Maytown\nto 41 nm west of Canaveral Groves, moving east at 20 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Expect wind gusts in excess of 34 knots, suddenly higher\nwaves, lightning and heavy downpours. Make sure all on\nboard are wearing life jackets. Return to safe harbor if\npossible.\n\n* Locations impacted include...\nTurtle Mound, Bethune Beach, Lagrange, Mims, and New Smyrna Beach.",
-      "instruction": null,
-      "expires": "2026-07-13T18:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.92cc43165f110098ae79200353a174598a8eef1f.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.8d6ccab1b0245246069efc9efb91860c384037a6.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Callahan, TX",
+    "location": "Orange, FL",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -99.48,
-            32.08
+            -81.65,
+            28.58
           ],
           [
-            -99.53,
-            32.45
+            -81.29,
+            28.59
           ],
           [
-            -99.12,
-            32.45
+            -81.28,
+            28.49
           ],
           [
-            -99.13,
-            32.08
+            -81.62,
+            28.49
           ],
           [
-            -99.48,
-            32.08
+            -81.65,
+            28.58
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Callahan County in west central Texas...\n\n* WHEN...Until 600 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nRises in small streams and normally dry arroyos. Some low-water\ncrossings may become impassable.\n\n* ADDITIONAL DETAILS...\n- At 256 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain have\nfallen.\n- Additional rainfall amounts of 0.5 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nClyde, Baird, Cross Plains, Putnam, Rowden, Atwell, Admiral and\nUs-283 Near The Coleman-Callahan County Line.\n- This includes Interstate 20 between Mile Markers 299 and 322.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
-      "expires": "2026-07-13T18:00:00-05:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of east central Florida, including the following\ncounty, Orange.\n\n* WHEN...Until 645 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 449 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2 inches of rain have\nfallen.\n- Additional rainfall amounts up to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nOrlando, Ocoee, Winter Garden, Winter Park, Windermere, Pine\nHills, College Park, Conway, Azalea Park, Belle Isle,\nOakland, Orlovista, Fairview Shores, Orlando Executive\nAirport, Edgewood, Gotha, Holden Heights, Lake Butler and\nTildenville.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-13T18:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9dfb7b233acc884b5fd7a10b06d67cd75b656690.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Vilas; Oneida; Forest; Florence; Northern Marinette County; Lincoln; Langlade; Menominee; Northern Oconto County; Door; Marathon; Shawano; Wood; Portage; Waupaca; Outagamie; Brown; Kewaunee; Waushara; Winnebago; Calumet; Manitowoc; Southern Marinette County; Southern Oconto County",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values of 95 to 105 expected. Highest heat index\nvalues in far northeast Wisconsin. Overnight heat indices will drop\nto 70 to 75 degrees, which will still be hazardous for anyone\nwithout shelter after the heat in the afternoon.\n\n* WHERE...Portions of central, east central, north central, and\nnortheast Wisconsin.\n\n* WHEN...Until 9 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-13T23:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.92bfe8cf1b02edf6fc8f0e2c05326c44eaf31250.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.6eb3fe55e2f4b9bc3cd97d2080ec3bc01d72593a.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Special Weather Statement",
     "geometry": "Polygon",
-    "location": "Northern Lake County; Orange; Southern Lake County",
+    "location": "Sevier; Little River; McCurtain",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -81.95,
-            28.96
+            -94.48,
+            33.89
           ],
           [
-            -81.66,
-            28.96
+            -94.5,
+            33.88
           ],
           [
-            -81.66,
-            28.99
+            -94.76,
+            34.05
           ],
           [
-            -81.5,
-            28.98
+            -94.46,
+            34.19
           ],
           [
-            -81.64,
-            28.54
+            -94.37,
+            34.19
           ],
           [
-            -81.95,
-            28.54
+            -94.2,
+            34
           ],
           [
-            -81.95,
-            28.96
+            -94.48,
+            33.89
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 354 PM EDT, Doppler radar was tracking a strong thunderstorm near\nFruitland Park, or near Leesburg, moving east at 30 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nLeesburg, Eustis, Tavares, Lady Lake, and Mount Dora.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-13T16:30:00-04:00"
+      "description": "At 349 PM CDT, Doppler radar was tracking a strong thunderstorm 7\nmiles west of De Queen, moving northwest at 10 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nDe Queen, Horatio, Broken Bow, West Line, West Otis, Eagletown,\nCerrogordo and Geneva.",
+      "instruction": "Monitor the weather situation closely and be alert for threatening\nweather conditions.\n\nTorrential rainfall is also occurring with this storm and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+      "expires": "2026-07-13T16:15:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.3ccb1bcbec94cb07d5b71a371aa1f443fc9fd8f5.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.32289f4d35cd91c7e1ec4bc594fa5589e68941b5.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Lincoln; McCormick; Newberry; Edgefield; Saluda; Lexington; Aiken",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -82.06,
+            33.98
+          ],
+          [
+            -82.05,
+            33.98
+          ],
+          [
+            -82.04,
+            33.95
+          ],
+          [
+            -82.01,
+            33.96
+          ],
+          [
+            -81.99,
+            33.99
+          ],
+          [
+            -81.95,
+            34.04
+          ],
+          [
+            -81.92,
+            34.09
+          ],
+          [
+            -81.87,
+            34.13
+          ],
+          [
+            -81.9,
+            34.16
+          ],
+          [
+            -81.86,
+            34.2
+          ],
+          [
+            -81.09,
+            33.91
+          ],
+          [
+            -81.51,
+            33.39
+          ],
+          [
+            -81.53,
+            33.37
+          ],
+          [
+            -82.27,
+            33.75
+          ],
+          [
+            -82.06,
+            33.98
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 446 PM EDT, Doppler radar was tracking numerous strong\nthunderstorms, moving north at 5 mph.\n\nHAZARD...Wind gusts up to 50 mph and torrential rainfall.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nAiken, Lexington, Batesburg-Leesville, Aiken Mall, Red Bank,\nEdgefield, Saluda, Johnston, South Congaree, Pine Ridge, New\nEllenton, Ridge Spring, Edgefield County Airport, Hamilton Branch\nState Park, Citizens Park, USC Aiken, Saluda County Airport, Aiken\nMunicipal Airport, Gloverville, and Aiken State Park.\n\nThis includes Interstate 20 in South Carolina between mile markers 7\nand 55.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-13T17:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2c8abee599f1fd705f23869eaffb460e7b0ad45c.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "St. Andrews Bay Waterways; Coastal waters from Okaloosa-Walton County Line to Mexico Beach out 20 NM; Coastal Waters from Mexico Beach to Apalachicola out 20 NM; Waters from Okaloosa-Walton County Line to Mexico Beach from 20 to 60 NM; Waters from Mexico Beach to Apalachicola FL from 20 to 60 NM",
+    "location": "South Mobile Bay; Mississippi Sound; Coastal waters from Pensacola FL to Pascagoula MS out 20 NM; Coastal waters from Okaloosa-Walton County Line to Pensacola FL out 20 NM; Waters from Pensacola FL to Pascagoula MS from 20 to 60 NM; Waters from Okaloosa-Walton County Line to Pensacola FL from 20 to 60 NM",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...West winds 15 to 25 kt with gusts up to 30 kt.\n\n* WHERE...Offshore Gulf waters from the Walton-Okaloosa County\nline to Apalachicola from 20 to 60 nautical miles out, St.\nAndrews Bay Waterways, Coastal waters from Mexico Beach to\nOkaloosa Walton County Line FL out 20 NM, and Coastal waters\nfrom Mexico Beach to Apalachicola FL out 20 NM.\n\n* WHEN...Until 1 AM CDT Tuesday.\n\n* IMPACTS...A Small Craft Advisory means that wind speeds of 20\nto 33 knots, or seas of 7 feet or greater, are expected to\nproduce hazardous conditions for small craft. These hazardous\nconditions may result in poor vessel handling and steering\nresponse, broaching, overturned dinghies and kayaks, slips and\nfalls on slippery decks, rub damage along docks and seawalls,\nand dragging anchors.",
+      "description": "* WHAT...West winds around 20 kt with gusts up to 25 kt and seas\n2 to 5 ft.\n\n* WHERE...Portions of the coastal waters of Alabama and\nnorthwest Florida.\n\n* WHEN...Until 1 AM CDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T02:00:00-04:00"
+      "expires": "2026-07-14T00:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.92a420591c7e9c9c2090370d985bda8f5ddf16af.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.b3072df94204f35ed1ae00853fe3584d0eac3557.003.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Special Weather Statement",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Stanley; Sully; Hughes; Hyde; Hand; Jones; Lyman; Buffalo",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 101 each afternoon.\n\n* WHERE...Buffalo, Hand, Hughes, Hyde, Jones, Lyman, Stanley, and\nSully Counties.\n\n* WHEN...Until 10 PM CDT /9 PM MDT/ Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b3072df94204f35ed1ae00853fe3584d0eac3557.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Traverse; Big Stone; McPherson; Brown; Marshall; Roberts; Edmunds; Day; Faulk; Spink; Grant",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 100 each afternoon.\n\n* WHERE...Portions of west central Minnesota and north central and\nnortheast South Dakota.\n\n* WHEN...Until 10 PM CDT Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b3072df94204f35ed1ae00853fe3584d0eac3557.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Corson; Campbell; Walworth; Dewey; Potter",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Prolonged dangerously hot conditions with heat index values\nup to 105 each afternoon.\n\n* WHERE...Campbell, Corson, Dewey, Potter, and Walworth Counties.\n\n* WHEN...Until 10 PM CDT /9 PM MDT/ Thursday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b84c41d94c1407db970c4bbb2c26facc61f8c578.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Orange; Osceola; Southern Lake County",
+    "location": "Brunswick, NC; New Hanover, NC",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -81.8,
-            28.47
+            -78.25,
+            34.22
           ],
           [
-            -81.28,
-            28.53
+            -78.22,
+            34.26
           ],
           [
-            -81.29,
-            28.21
+            -77.86,
+            34.25
           ],
           [
-            -81.55,
-            28.25
+            -77.89,
+            34.2
           ],
           [
-            -81.56,
-            28.26
+            -77.94,
+            34.16
           ],
           [
-            -81.66,
-            28.26
+            -78.04,
+            34.13
           ],
           [
-            -81.66,
-            28.35
+            -78.26,
+            34.15
           ],
           [
-            -81.79,
-            28.35
+            -78.26,
+            34.21
           ],
           [
-            -81.79,
-            28.36
-          ],
-          [
-            -81.82,
-            28.36
-          ],
-          [
-            -81.8,
-            28.47
+            -78.25,
+            34.22
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 349 PM EDT, Doppler radar was tracking a strong thunderstorm near\nFour Corners, or near Bay Lake, moving east at 35 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nOrlando, Kissimmee, Saint Cloud, Windermere, and Bay Lake.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-13T16:15:00-04:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northeastern Brunswick County in southeastern North\nCarolina...\nWestern New Hanover County in southeastern North Carolina...\n\n* WHEN...Until 645 PM EDT.\n\n* IMPACTS...Ponding of water in urban or other areas is occurring or\nis imminent.\n\n* ADDITIONAL DETAILS...\n- At 442 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2.5 inches of rain have\nfallen.\n- Additional rainfall amounts up to 2.5 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nWilmington, Leland, Bishop, Town Creek, Winnabow, Batarora,\nBelville, Navassa and New Hanover Regional Medical Center.\n- weather.gov/safety/flood",
+      "instruction": "Be aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-13T18:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4844a84018bbac968e27bf867ccd3deb9459f75a.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.d67404c64ace0a00547e48d0bb59702ad7aea654.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Davidson, NC; Montgomery, NC; Stanly, NC",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.06,
+            35.58
+          ],
+          [
+            -80.07,
+            35.51
+          ],
+          [
+            -79.77,
+            35.51
+          ],
+          [
+            -79.71,
+            35.28
+          ],
+          [
+            -79.66,
+            35.23
+          ],
+          [
+            -79.66,
+            35.19
+          ],
+          [
+            -79.61,
+            35.16
+          ],
+          [
+            -79.85,
+            35.18
+          ],
+          [
+            -80.04,
+            35.14
+          ],
+          [
+            -80.08,
+            35.14
+          ],
+          [
+            -80.11,
+            35.19
+          ],
+          [
+            -80.17,
+            35.16
+          ],
+          [
+            -80.2,
+            35.17
+          ],
+          [
+            -80.22,
+            35.16
+          ],
+          [
+            -80.25,
+            35.21
+          ],
+          [
+            -80.43,
+            35.3
+          ],
+          [
+            -80.3,
+            35.5
+          ],
+          [
+            -80.18,
+            35.5
+          ],
+          [
+            -80.21,
+            35.57
+          ],
+          [
+            -80.06,
+            35.58
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "FFWRAH\n\nThe National Weather Service in Raleigh has issued a\n\n* Flash Flood Warning for...\nSoutheastern Davidson County in central North Carolina...\nMontgomery County in central North Carolina...\nStanly County in central North Carolina...\n\n* Until 745 PM EDT.\n\n* At 442 PM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. One to Three inches of rain has\nalready fallen in some areas. Flash flooding is ongoing or\nexpected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nAlbemarle, Troy, Badin Lake, Biscoe, Plyler, Norwood, Badin, Mount\nGilead, Star, Richfield, New London, Norman, Lake Tillery, and\nEldorado.",
+      "instruction": "Be aware of your surroundings and do not drive on flooded roads.\nTurn around, don't drown when encountering flooded roads.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.",
+      "expires": "2026-07-13T19:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.89b5ac56e4e34e1b57e4a1db4fc7a487dc7dea98.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Red Flag Warning",
     "geometry": "unknown",
-    "location": "Pine Ridge/Nebraska National Forest; Box Butte/South Sioux/Niobrara River; Lower North Platte River Basin/Scottsbluff National Monument; Lodgepole Creek/Southern Nebraska Panhandle; Niobrara/Lower Elevations of Converse/Thunder Basin National Grassland; Middle North Platte River Basin/Niobrara and Converse High Plains; North Laramie Range and Adjacent High Plains; North Laramie Valley/Shirley Basin; Southwest Carbon County; North Snowy Range Foothills; Laramie Foothills and High Plains; Laramie East High Plains; Bordeaux/Chugwater/Wheatland; Goshen/Middle-Lower North Platte River Basin",
+    "location": "Corson; Dewey",
     "coordinates": {},
     "details": {
-      "description": "* AFFECTED AREA...Fire weather zones 417, 418, 423, and 430\nthrough 434.\n\n* WIND...South to southeast winds 10 to 15 mph gusting up to 35\nmph\n\n* HUMIDITY...Between 10 and 15 percent\n\n* IMPACTS...any fires that develop will likely spread rapidly.\nOutdoor burning is not recommended.",
-      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
-      "expires": "2026-07-14T06:00:00-06:00"
+      "description": "...RED FLAG WARNING REMAINS IN EFFECT UNTIL 8 PM MDT THIS EVENING DUE\nTO WIND AND LOW RELATIVE HUMIDITY FOR CORSON AND DEWEY...\n\n* AFFECTED AREA...In South Dakota, Corson and Dewey.\n\n* TIMING...Until 8 PM MDT this evening.\n\n* WINDS...South winds 15 to 20 mph with gusts up to 30 mph.\n\n* RELATIVE HUMIDITY...Relative Humidity between 19 to 27 percent.\n\n* IMPACTS...Any fires that develop will spread rapidly. Outdoor\nburning is not recommended.",
+      "instruction": "A Red Flag Warning is issued when we identify weather conditions that\npromote rapid spread of fire which may become life-threatening. This\ndoes not mean there is a fire. These conditions are either occurring\nnow or will begin soon. It is important to have multiple ways to\nreceive information from authorities.\n\nFollow all fire restrictions. One less spark, one less wildfire.",
+      "expires": "2026-07-13T21:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a22021ba1e8c296dd24e141246d8de0c08ff3268.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.99eecf4fecbcf8ba758a06d8f3c9e45f84485f3e.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Caddo; Bossier",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -93.88,
+            32.68
+          ],
+          [
+            -93.56,
+            32.68
+          ],
+          [
+            -93.56,
+            32.41
+          ],
+          [
+            -93.88,
+            32.41
+          ],
+          [
+            -93.88,
+            32.68
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 341 PM CDT, Doppler radar was tracking a strong thunderstorm near\nFosters, or near Bossier City, and is stationary.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nShreveport, Bossier City, Blanchard, Fosters, Eastwood, Ferguson,\nBarksdale Air Force Base, Red Chute, Bodcau, Cross Lake, Linton and\nSligo.",
+      "instruction": "Monitor the weather situation closely and be alert for threatening\nweather conditions.",
+      "expires": "2026-07-13T16:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a5875ce78af2d9fb4069d17cbf642bacb859cb55.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Apalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee River Fl out to 20 Nm; Coastal Waters from Mexico Beach to Apalachicola out 20 NM; Coastal Waters From  Ochlockonee River to Apalachicola FL out to 20 Nm; Waters from Mexico Beach to Apalachicola FL from 20 to 60 NM; Waters from Suwannee River to Apalachicola FL from 20 to 60 NM",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -85.41,
-            28.66
-          ],
-          [
-            -85.1,
-            29.19
-          ],
-          [
-            -84.87,
-            29.85
-          ],
-          [
-            -84.8,
-            29.81
-          ],
-          [
-            -84.52,
-            29.94
-          ],
-          [
-            -84.38,
-            30.11
-          ],
-          [
-            -84.25,
-            30.15
-          ],
-          [
-            -84.32,
-            28.81
-          ],
-          [
-            -84.53,
-            28.69
-          ],
-          [
-            -84.88,
-            28.6
-          ],
-          [
-            -85.2,
-            28.59
-          ],
-          [
-            -85.41,
-            28.66
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "For the following areas...\nApalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee\nRiver Fl out to 20 Nm...\nCoastal Waters From  Ochlockonee River to Apalachicola FL out to 20\nNm...\nCoastal Waters from Mexico Beach to Apalachicola out 20 NM...\nWaters from Mexico Beach to Apalachicola FL from 20 to 60 NM...\nWaters from Suwannee River to Apalachicola FL from 20 to 60 NM...\n\nAt 347 PM EDT/247 PM CDT/, strong thunderstorms were located along a\nline extending from 8 nm west of Marker 24 Barge to 41 nm south of\nEmpire Mica Wreck, moving southeast at 25 knots.\n\nHAZARD...Wind gusts to 40 knots.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect wind gusts in excess of 34 knots...suddenly higher\nwaves...frequent lightning...and heavy downpours. Make sure\nall on board are wearing life jackets.\n\nLocations impacted include...\nS Tower, V Tower, O Tower, C Tower, St George Island, and K Tower.",
-      "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-13T17:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.51563a73d1ac3586d04da99b7dc1d51396de267b.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Atoka; Bryan",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -96.07,
-            34.38
-          ],
-          [
-            -95.98,
-            34.21
-          ],
-          [
-            -96.23,
-            34.09
-          ],
-          [
-            -96.34,
-            34.33
-          ],
-          [
-            -96.07,
-            34.38
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 247 PM CDT, Doppler radar was tracking a strong thunderstorm 4\nmiles southeast of Tushka, moving southwest at 15 mph.\n\nHAZARD...Wind gusts of 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nAtoka, Tushka, Caney, Boggy Depot Park, and Bentley.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-13T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2990d85c14ec19117f731ed974d23fa9eb1eb4a6.003.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
+    "title": "Red Flag Warning",
     "geometry": "unknown",
-    "location": "Western Monmouth; Eastern Monmouth",
+    "location": "Northeastern Interior Humboldt and Southwestern Siskiyou Including Orleans; Northwestern Trinity Including Salyer and Big Bar; Northeastern Trinity Including Trinity Lake; Eastern Trinity Including Weaverville and Hayfork; Southern Trinity Including Ruth Lake and the Yolla Bollys",
     "coordinates": {},
     "details": {
-      "description": "The New Jersey Department of Environmental Protection has issued\na code orange air quality alert Tuesday for Monmouth County.\n\nA code orange air quality alert means that air pollution\nconcentrations within the region may become unhealthy for\nsensitive groups. Sensitive groups include children...people\nsuffering from asthma... heart disease or other lung\ndiseases...and the elderly. The effects of air pollution can\nbe minimized by avoiding strenuous activity or exercise outdoors.\n\nFor more information on ground-level ozone and fine\nparticles...visit http://www.state.nj.us/dep/",
-      "instruction": null,
-      "expires": "2026-07-15T00:00:00-04:00"
+      "description": "The National Weather Service in Eureka has issued a Red Flag\nWarning, which is in effect from 1 PM Tuesday to 2 AM PDT\nWednesday.\n\n* AFFECTED AREA...Trinity County, Northeastern Humboldt County,\nand southwestern Siskiyou County.\n\n* THUNDERSTORMS...Isolated to scattered dry thunderstorms Tuesday\nafternoon and evening. Activity may continue overnight into\nearly Wednesday morning.\n\n* OUTFLOW WINDS...Gusty and erratic outflow winds likely with any\nthunderstorms. Winds may gust to 50 mph or higher with the\nstrongest cells.\n\n* IMPACTS...Any fires that develop will likely spread rapidly.\nOutdoor burning is not recommended.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-14T04:00:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2990d85c14ec19117f731ed974d23fa9eb1eb4a6.002.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Gloucester; Camden; Northwestern Burlington",
-    "coordinates": {},
-    "details": {
-      "description": "The New Jersey Department of Environmental Protection has\nissued a code orange air quality alert Tuesday for Southwestern\nNew Jersey.\n\nA code orange air quality alert means that air pollution\nconcentrations within the region may become unhealthy for\nsensitive groups. Sensitive groups include children...people\nsuffering from asthma... heart disease or other lung\ndiseases...and the elderly. The effects of air pollution can\nbe minimized by avoiding strenuous activity or exercise outdoors.\n\nFor more information on ground-level ozone and fine\nparticles...visit http://www.state.nj.us/dep/",
-      "instruction": null,
-      "expires": "2026-07-15T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2990d85c14ec19117f731ed974d23fa9eb1eb4a6.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Middlesex; Mercer",
-    "coordinates": {},
-    "details": {
-      "description": "The New Jersey Department of Environmental Protection has issued\na code orange air quality alert Tuesday for Middlesex and Mercer\nCounties in New Jersey.\n\nA code orange air quality alert means that air pollution\nconcentrations within the region may become unhealthy for\nsensitive groups. Sensitive groups include children...people\nsuffering from asthma... heart disease or other lung\ndiseases...and the elderly. The effects of air pollution can\nbe minimized by avoiding strenuous activity or exercise outdoors.\n\nFor more information on ground-level ozone and fine\nparticles...visit http://www.state.nj.us/dep/",
-      "instruction": null,
-      "expires": "2026-07-15T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2990d85c14ec19117f731ed974d23fa9eb1eb4a6.004.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Ocean; Coastal Ocean; Southeastern Burlington",
-    "coordinates": {},
-    "details": {
-      "description": "The New Jersey Department of Environmental Protection has issued\na code orange air quality alert Tuesday for Ocean County and\nsoutheastern Burlington County New Jersey.\n\nA code orange air quality alert means that air pollution\nconcentrations within the region may become unhealthy for\nsensitive groups. Sensitive groups include children...people\nsuffering from asthma... heart disease or other lung\ndiseases...and the elderly. The effects of air pollution can\nbe minimized by avoiding strenuous activity or exercise outdoors.\n\nFor more information on ground-level ozone and fine\nparticles...visit http://www.state.nj.us/dep/",
-      "instruction": null,
-      "expires": "2026-07-15T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.aac9a084bd6897620cd17dcde6d1f28e2610e945.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Sumter; Coastal Hernando; Coastal Pasco; Inland Hernando; Inland Pasco",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -82.86,
-            28.29
-          ],
-          [
-            -82.74,
-            28.4
-          ],
-          [
-            -82.36,
-            28.55
-          ],
-          [
-            -82.01,
-            28.93
-          ],
-          [
-            -81.96,
-            28.92
-          ],
-          [
-            -81.96,
-            28.31
-          ],
-          [
-            -82.04,
-            28.32
-          ],
-          [
-            -82.06,
-            28.27
-          ],
-          [
-            -82.26,
-            28.19
-          ],
-          [
-            -82.86,
-            28.18
-          ],
-          [
-            -82.86,
-            28.29
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 343 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Wildwood to near Hill n Dale to Hudson.\nMovement was east at 35 mph.\n\nHAZARD...Wind of 40 to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nSpring Hill, New Port Richey, Zephyrhills, Brooksville, Wildwood,\nDade City, Bushnell, Hudson, Holiday, St. Leo, New Port Richey East,\nZephyrhills West, Land O Lakes, Hernando County Airport, Wesley\nChapel South, Hill n Dale, Beacon Square, Jasmine Estates,\nZephyrhills North, and South Brooksville.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-13T16:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.29a3941ab7d49f0ced12fa4b52385572abfdd7c8.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Dawes; Box Butte; Scotts Bluff; Banner; Morrill; Kimball; Cheyenne; North Sioux; South Sioux; Converse County Lower Elevations; Niobrara County; East Platte County; Goshen County; Central Laramie County; East Laramie County",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Afternoon temperatures will be near or exceed 100 degrees\nwith overnight temperatures dipping to between 65 to 70, providing\nlittle relief.\n\n* WHERE...Portions of panhandle Nebraska and east central and\nsoutheast Wyoming.\n\n* WHEN...Until midnight MDT Wednesday Night.\n\n* IMPACTS...Hot temperatures and poor hydration may cause heat\nillnesses or injuries.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
-      "expires": "2026-07-14T06:00:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c4639dd75697df1eaf5b1aa2f1862dcfb98fdfbf.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.874b4cc180c764b2f6899f7592e63ab8a569d210.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Marine Weather Statement",
     "geometry": "Polygon",
-    "location": "Coastal waters from Fernandina Beach to St. Augustine FL out 20 NM; Coastal waters from St. Augustine to Flagler Beach FL out 20 NM; Waters from Altamaha Sound GA to Fernandina Beach FL from 20 to 60 NM; Waters from Fernandina Beach to St. Augustine FL from 20 to 60 NM; Waters from St. Augustine to Flagler Beach FL from 20 to 60 NM",
+    "location": "Tampa Bay waters; Coastal waters from Englewood to Tarpon Springs FL out 20 NM; Waters from Englewood to Tarpon Springs FL out 20 to 60 NM",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -81.04,
-            29.47
+            -83.23,
+            28.12
           ],
           [
-            -81.07,
-            29.94
+            -82.75,
+            28.15
           ],
           [
-            -81.03,
-            30.13
+            -82.75,
+            28.14
           ],
           [
-            -80.97,
-            30.7
+            -82.73,
+            28.11
           ],
           [
-            -80.42,
-            30.73
+            -82.75,
+            27.87
           ],
           [
-            -80.43,
-            30.63
+            -83.34,
+            27.5
           ],
           [
-            -80.38,
-            30.42
+            -83.66,
+            27.42
           ],
           [
-            -80.36,
-            30.06
+            -83.76,
+            27.8
           ],
           [
-            -80.5,
-            29.48
-          ],
-          [
-            -81.04,
-            29.47
+            -83.23,
+            28.12
           ]
         ]
       ]
     },
     "details": {
-      "description": "A Marine Weather Statement has been issued for the following areas...\nCoastal waters from Fernandina Beach to St. Augustine FL out 20\nNM...\nCoastal waters from St. Augustine to Flagler Beach FL out 20 NM...\nWaters from Altamaha Sound GA to Fernandina Beach FL from 20 to 60\nNM...\nWaters from Fernandina Beach to St. Augustine FL from 20 to 60\nNM...\nWaters from St. Augustine to Flagler Beach FL from 20 to 60 NM...\n\nAt 344 PM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds to around 30 knots. These thunderstorms were\nlocated along a line extending from 34 nm east of Talbot Island to 16\nnm east of Marineland, moving east at 10 knots.",
+      "description": "A Marine Weather Statement has been issued for the following areas...\nCoastal waters from Englewood to Tarpon Springs FL out 20 NM...\nTampa Bay waters...\nWaters from Englewood to Tarpon Springs FL out 20 to 60 NM...\n\nAt 437 PM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds to around 30 knots. These thunderstorms were\nlocated along a line extending from 20 nm west of Clearwater Beach to\n46 nm west of Indian Rocks Beach to 78 nm west of Egmont Key, moving\neast at 5 knots.",
       "instruction": "Mariners can expect gusty winds to around 30 knots, locally higher\nwaves, and lightning strikes. Boaters should seek safe harbor\nimmediately until these storms pass.",
-      "expires": "2026-07-13T16:45:00-04:00"
+      "expires": "2026-07-13T17:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.5bbf031a19030608fb3c939b1ee12da39a7d21f3.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.419fb56a2ac087126f12da95eb007a67f4e7fe48.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Austin, TX; Colorado, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -96.61,
+            30.03
+          ],
+          [
+            -96.58,
+            30.06
+          ],
+          [
+            -96.42,
+            30.06
+          ],
+          [
+            -96.33,
+            30.02
+          ],
+          [
+            -96.3,
+            29.93
+          ],
+          [
+            -96.43,
+            29.74
+          ],
+          [
+            -96.54,
+            29.52
+          ],
+          [
+            -96.66,
+            29.43
+          ],
+          [
+            -96.79,
+            29.58
+          ],
+          [
+            -96.83,
+            29.58
+          ],
+          [
+            -96.84,
+            29.58
+          ],
+          [
+            -96.83,
+            29.6
+          ],
+          [
+            -96.84,
+            29.62
+          ],
+          [
+            -96.87,
+            29.63
+          ],
+          [
+            -96.72,
+            29.79
+          ],
+          [
+            -96.57,
+            29.96
+          ],
+          [
+            -96.61,
+            30.03
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southeast Texas, including the following\ncounties, Austin and Colorado.\n\n* WHEN...Until 645 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nPonding of water in urban or other areas is occurring or is\nimminent.\n\n* ADDITIONAL DETAILS...\n- At 338 PM CDT, Doppler radar and automated rain gauges\nindicated heavy rain due to thunderstorms. Minor flooding is\nongoing or expected to begin shortly in the advisory area.\nBetween 1 and 2 inches of rain have fallen.\n- Additional rainfall amounts of 1.5 to 2.5 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nColumbus, Shelby, Weimar, Industry, Frelsburg, New Ulm, Rock\nIsland and Sheridan.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-13T18:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4162ddb1d0a2cd84cf94639d011362bd75cefd5f.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Harding; Northern Perkins; Butte; Northern Meade Co Plains; Ziebach; Northern Foothills; Rapid City; Southern Foothills; Custer Co Plains; Pennington Co Plains; Haakon; Western Fall River; Northern Oglala Lakota; Northern Jackson; Bennett; Mellette; Todd; Tripp; Sturgis/Piedmont Foothills; Southern Meade Co Plains; Hermosa Foothills; Eastern Fall River; Southern Oglala Lakota; Southern Jackson; Southern Perkins; Northern Campbell; Southern Campbell; Western Crook; Weston County Plains; Newcastle; Northeastern Crook",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 105.\n\n* WHERE...Portions of northwestern, south central, and southwestern\nSouth Dakota and northeast Wyoming.\n\n* WHEN...Until 9 PM MDT /10 PM CDT/ Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Take extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-14T06:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.aa3f81cce8058a43483c984fa3f3749c7e2744cb.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Inland Volusia; Orange; Seminole; Coastal Volusia; Inland Northern Brevard; Mainland Northern Brevard; Northern Brevard Barrier Islands",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -81.34,
+            28.69
+          ],
+          [
+            -80.99,
+            29.01
+          ],
+          [
+            -80.85,
+            29.03
+          ],
+          [
+            -80.7,
+            28.82
+          ],
+          [
+            -81.05,
+            28.47
+          ],
+          [
+            -81.48,
+            28.47
+          ],
+          [
+            -81.64,
+            28.56
+          ],
+          [
+            -81.34,
+            28.69
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 431 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from Edgewater to Conway. Movement was east at 30\nmph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nOrlando, Sanford, Altamonte Springs, Ocoee, and Winter Garden.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nFrequent cloud to ground lightning is occurring with these storms.\nSeek safe shelter inside a sturdy building or hard-topped vehicle.\nRemember, lightning can strike beyond 10 miles away from a\nthunderstorm. When thunder roars, go indoors!\n\nThese storms may intensify, so be certain to monitor local radio\nstations and available television stations for additional information\nand possible warnings from the National Weather Service.",
+      "expires": "2026-07-13T17:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.9970582fd0318ff5f51414da089879cc418ff8dc.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Central and Southeast Phillips; Petroleum; Southwest Phillips",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall is possible.\n\n* WHERE...A portion of northeast Montana, including the following\nareas, Central and Southeast Phillips, Petroleum and Southwest\nPhillips.\n\n* WHEN...From Tuesday evening through late Tuesday night.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Thunderstorms will be moving east into the Watch area, with the\npotential of heavy downpours that would bring flooding.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-14T06:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a5fdd33450a4e72591f05364a569a6868b003026.001.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Butler; Beaver; Allegheny; Armstrong; Washington; Westmoreland; Westmoreland Ridges; Fayette; Fayette Ridges",
+    "coordinates": {},
+    "details": {
+      "description": "The Pennsylvania Department of Environmental Protection has\nissued a code ORANGE air quality alert for Tuesday, for the\ngreater Pittsburgh region, including Allegheny, Butler, Beaver,\nArmstrong, Washington, Westmoreland and Fayette counties.\n\nA code ORANGE air quality alert means that air pollution\nconcentrations within the region may become unhealthy for sensitive\ngroups. Sensitive groups include children, the elderly, and people\nsuffering from asthma, heart disease, or other lung diseases. The\neffects of air pollution can be minimized by avoiding outdoor\nexercise or strenuous activity.\n\nFor more information on ground-level ozone and\nfine particles, visit http://www.airnow.gov and\nhttps://www.ahs.dep.pa.gov/AQPartnersWeb/",
+      "instruction": null,
+      "expires": "2026-07-14T16:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.42e43a51af58293db20311e818df4b6c02d9fd83.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Beach Hazards Statement",
     "geometry": "unknown",
-    "location": "San Diego County Coastal Areas; Orange County Coastal",
+    "location": "San Luis Obispo County Beaches; Santa Barbara County Central Coast Beaches; Santa Barbara County Southwestern Coast; Santa Barbara County Southeastern Coast; Ventura County Beaches; Malibu Coast; Los Angeles County Beaches",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Minor coastal flooding due to high astronomical tides\nof 7 to 7.5 feet and surf to 3 to 5 feet.\n\n* WHERE...San Diego County coastal areas and Orange County\ncoastal areas.\n\n* WHEN...Through Tuesday evening.\n\n* IMPACTS...Areas of flooding from tidal overflow in low lying\nareas, boardwalks, beach parking lots, and beach adjacent\nstreets. Beach erosion. Highest impacts expected during high\ntides in the evening.\n\n* ADDITIONAL DETAILS...A 3 foot south swell (from 190 degrees)\nat 13-15 seconds will lead to surf 3-5 feet at south-facing\nbeaches. Elsewhere, surf of 2-4 feet is expected.",
-      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
-      "expires": "2026-07-13T22:00:00-07:00"
+      "description": "* WHAT...Dangerous rip currents and breaking waves with elevated\nsurf expected. Minor coastal flooding possible.\n\n* WHERE...San Luis Obispo County Beaches, Santa Barbara County\nCentral Coast Beaches, Santa Barbara County Southwestern\nCoast, Santa Barbara County Southeastern Coast, Ventura County\nBeaches, Malibu Coast and Los Angeles County Beaches.\n\n* WHEN...Through Wednesday evening.\n\n* IMPACTS...There is an increased risk of ocean drowning. Rip\ncurrents can pull swimmers and surfers out to sea. Waves can\nwash people off beaches and rocks, and capsize small boats\nnearshore.\n\n* ADDITIONAL DETAILS...Southerly swell combined with abnormally\nhigh tides of 7.0 to 7.6 feet will bring the potential for\nminor coastal flooding in low-lying areas in the evening.",
+      "instruction": "Remain out of the water due to hazardous swimming conditions, or\nstay near occupied lifeguard towers. Rock jetties can be deadly\nin such conditions, stay off the rocks.",
+      "expires": "2026-07-13T21:30:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4c905604a3b9732d850d4180d15d336c9894cb3c.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.6e62d0ba9c7274be93fb74c1f8001b84f55625da.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Rowan, NC",
+    "location": "Grimes, TX; Montgomery, TX; Walker, TX; Waller, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.77,
-            35.68
+            -95.89,
+            30.45
           ],
           [
-            -80.63,
-            35.72
+            -95.73,
+            30.59
           ],
           [
-            -80.59,
-            35.74
+            -95.4,
+            30.57
           ],
           [
-            -80.57,
-            35.72
+            -95.37,
+            30.31
           ],
           [
-            -80.62,
-            35.63
+            -95.43,
+            30.19
           ],
           [
-            -80.61,
-            35.5
+            -95.54,
+            30.23
           ],
           [
-            -80.7,
-            35.51
+            -95.71,
+            30.2
           ],
           [
-            -80.74,
-            35.51
+            -95.9,
+            30.27
           ],
           [
-            -80.74,
-            35.54
-          ],
-          [
-            -80.75,
-            35.58
-          ],
-          [
-            -80.75,
-            35.6
-          ],
-          [
-            -80.77,
-            35.68
+            -95.89,
+            30.45
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Southwestern Rowan County in the piedmont of North\nCarolina...\n\n* WHEN...Until 545 PM EDT.\n\n* IMPACTS...Nuisance flooding of low-lying areas adjacent to streams\nand other poor-drainage areas, including farmland, parks,\ngreenways, boat-access areas, golf courses, underpasses, and\nparking lots.  Isolated, shallow flows over roadways is possible.\nA few flood-prone, low-water crossings may become impassible.\n\n* ADDITIONAL DETAILS...\n- At 337 PM EDT, Doppler radar and automated rain gauges indicated\nheavy rain due to slow-moving showers has ended. However streams\nremain elevated following earlier heavy rainfall.  North Second\nCreek, downstream of the heaviest rainfall, continues to rise in\nresponse to the excessive runoff upstream.  Areas of nuisance\nflooding along tributaries to North Second Creek is likely\nongoing, though conditions are expected to gradually improve over\nthe next 2-3 hours, with a crest of North Second Creek expected\nlater this evening.  While North Second Creek is not expected to\nreach Action/Advisory Stage, the Flood Advisory has been extended\nto allow upstream floodwaters to crest and recede. Please\ncontinue to stay away from all swollen streams and heed any\nbarricades that may be in place.\n\n- Some locations that may continue to experience nuisanceflooding\ninclude...\nLandis, Enochville, and Mount Ulla.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
-      "expires": "2026-07-13T17:45:00-04:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...A portion of southeast Texas, including the following\ncounties, Grimes, Montgomery, Walker and Waller.\n\n* WHEN...Until 545 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nPonding of water in urban or other areas is occurring or is\nimminent.\n\n* ADDITIONAL DETAILS...\n- At 325 PM CDT, Doppler radar and automated rain gauges\nindicated heavy rain due to thunderstorms. Minor flooding is\nongoing or expected to begin shortly in the advisory area.\nBetween 1 and 3 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+      "expires": "2026-07-13T17:45:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.cffd5c22a8ec27bee3cb3d1558cb1075d44786d1.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.4d342c89ecec88356ee1419492954541b87bd13d.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Point Piedras Blancas to Point Sal from 10 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Point Piedras Blancas to Point Sal from 10 to 60 NM.\n\n* WHEN...From noon Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-13T21:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4d342c89ecec88356ee1419492954541b87bd13d.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Waters from Pt. Sal to Santa Cruz Island CA and westward 60 nm including San Miguel and Santa Rosa Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Waters from Pt. Sal to Santa Cruz Island CA and\nwestward 60 nm including San Miguel and Santa Rosa Islands.\n\n* WHEN...From 3 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-13T21:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4d342c89ecec88356ee1419492954541b87bd13d.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Outer waters from Santa Cruz Island to San Clemente Island to 60 NM offshore including San Nicolas and Santa Barbara Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Outer waters from Santa Cruz Island to San Clemente\nIsland to 60 NM offshore including San Nicolas and Santa\nBarbara Islands.\n\n* WHEN...From 6 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-13T21:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.c65cb626b5be9c9cbf521894e27fa84049516717.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Special Marine Warning",
+    "title": "Flood Warning",
     "geometry": "Polygon",
-    "location": "Waters from Pensacola FL to Pascagoula MS from 20 to 60 NM; Waters from Okaloosa-Walton County Line to Pensacola FL from 20 to 60 NM",
+    "location": "Terrell, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -86.44,
-            29.33
+            -102.54,
+            30.49
           ],
           [
-            -86.48,
-            29.36
-          ],
-          [
-            -86.54,
-            29.38
-          ],
-          [
-            -86.66,
-            29.39
-          ],
-          [
-            -87.06,
-            29.32
-          ],
-          [
-            -87.24,
-            29.32
-          ],
-          [
-            -87.34,
-            29.59
-          ],
-          [
-            -87.54,
-            29.81
-          ],
-          [
-            -86.57,
-            30.05
-          ],
-          [
-            -86.53,
-            30.05
-          ],
-          [
-            -86.4,
-            29.91
-          ],
-          [
-            -86.4,
-            29.31
-          ],
-          [
-            -86.43,
-            29.31
-          ],
-          [
-            -86.44,
-            29.33
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SMWMOB\n\nThe National Weather Service in Mobile has issued a\n\n* Special Marine Warning for...\nWaters from Okaloosa-Walton County Line to Pensacola FL from 20 to\n60 NM...\nWaters from Pensacola FL to Pascagoula MS from 20 to 60 NM...\n\n* Until 400 PM CDT.\n\n* At 240 PM CDT, strong thunderstorms were located along a line\nextending from 21 nm southwest of Oriskany Reef to 36 nm southwest\nof Okaloosa Deep Water Reef to 55 nm south of Pensacola Beach,\nmoving east at 40 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nOkaloosa Deep Water Reef.",
-      "instruction": null,
-      "expires": "2026-07-13T16:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ab75869f2721b0bb6c5b68eac795c7a48d7662c9.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Presque Isle; Montmorency; Alpena; Oscoda; Alcona; Ogemaw; Iosco; Gladwin; Arenac",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 104.\n\n* WHERE...Alcona, Alpena, Arenac, Gladwin, Iosco, Montmorency,\nOgemaw, Oscoda, and Presque Isle Counties.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-14T03:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ab75869f2721b0bb6c5b68eac795c7a48d7662c9.003.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Western Chippewa; Central Chippewa; Southeast Chippewa; Western Mackinac; Eastern Mackinac; Mackinac Island/Bois Blanc Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 102.\n\n* WHERE...Central Chippewa, Eastern Mackinac, Southeast Chippewa,\nWestern Chippewa, and Western Mackinac Counties, and Mackinac\nIsland/Bois Blanc Island.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-14T03:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ab75869f2721b0bb6c5b68eac795c7a48d7662c9.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Emmet; Cheboygan; Leelanau; Antrim; Otsego; Benzie; Grand Traverse; Kalkaska; Crawford; Manistee; Wexford; Missaukee; Roscommon; Beaver Island and surrounding islands; Charlevoix",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 99.\n\n* WHERE...A portion of Northern Lower Michigan.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-14T03:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9afd41f4a259026cb2f85df12d452b07c6933850.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Flagler Beach to Volusia-Brevard County Line 0-20 nm",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -81.13,
-            29.42
-          ],
-          [
-            -81.1,
-            29.43
-          ],
-          [
-            -81.11,
-            29.44
-          ],
-          [
-            -81.12,
-            29.43
-          ],
-          [
-            -81.11,
-            29.45
-          ],
-          [
-            -81.12,
-            29.45
-          ],
-          [
-            -81.13,
-            29.46
-          ],
-          [
-            -81.04,
-            29.47
-          ],
-          [
-            -80.76,
-            29.48
-          ],
-          [
-            -80.66,
-            29.29
-          ],
-          [
-            -80.62,
-            29.23
-          ],
-          [
-            -81.03,
-            29.19
-          ],
-          [
-            -81.13,
-            29.38
-          ],
-          [
-            -81.13,
-            29.42
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nFlagler Beach to Volusia-Brevard County Line 0-20 nm...\n\n* Until 415 PM EDT.\n\n* At 337 PM EDT, a strong thunderstorm was located over\nOrmond-By-the-Sea, moving east at 15 knots.\n\nHAZARD...Wind gusts to 40 knots.\n\nSOURCE...Radar.\n\nIMPACT...Expect wind gusts in excess of 34 knots, suddenly higher\nwaves, lightning and heavy downpours. Make sure all on\nboard are wearing life jackets. Return to safe harbor if\npossible.\n\n* Locations impacted include...\nOrmond-By-the-Sea, Ormond Beach, Holly Hill, Daytona Beach, and\nDaytona Beach Shores.",
-      "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-13T16:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.5485a760da225e863152a7b8027d42b8ad2aee56.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Marine Weather Statement",
-    "geometry": "Polygon",
-    "location": "Flagler Beach to Volusia-Brevard County Line 0-20 nm",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -81.13,
-            29.42
-          ],
-          [
-            -81.1,
-            29.43
-          ],
-          [
-            -81.13,
-            29.46
-          ],
-          [
-            -81.04,
-            29.47
-          ],
-          [
-            -80.75,
-            29.48
-          ],
-          [
-            -80.63,
-            29.25
-          ],
-          [
-            -80.37,
-            28.86
-          ],
-          [
-            -80.75,
-            28.82
-          ],
-          [
-            -80.74,
-            28.8
-          ],
-          [
-            -80.76,
-            28.81
-          ],
-          [
-            -80.81,
-            28.82
-          ],
-          [
-            -80.79,
-            28.8
-          ],
-          [
-            -80.89,
-            28.79
-          ],
-          [
-            -80.85,
-            28.84
-          ],
-          [
-            -81.13,
-            29.38
-          ],
-          [
-            -81.13,
-            29.42
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "The areas affected include...\nFlagler Beach to Volusia-Brevard County Line 0-20 nm...\n\nAt 331 PM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds to around 30 knots. These thunderstorms were\nlocated along a line extending from near Ormond-By-the-Sea to 10 nm\nsouthwest of Daytona Beach to 22 nm west of Maytown, moving east at\n10 knots.",
-      "instruction": "Mariners can expect gusty winds to around 30 knots, locally higher\nwaves, and lightning strikes. Boaters should seek safe harbor\nimmediately until these storms pass.\n\nFrequent cloud to water lightning is occurring with these storms. If\ncaught on the open water stay below deck and, if possible, avoid\nungrounded metal objects. Remember, lightning can strike beyond 10\nmiles away from a thunderstorm.",
-      "expires": "2026-07-13T16:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0b6701d8d453b694e92ee597507a3624150f30d0.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northern Bristol; Western Plymouth; Eastern Plymouth; Southern Bristol; Southern Plymouth; Barnstable; Dukes; Nantucket",
-    "coordinates": {},
-    "details": {
-      "description": "The Massachusetts Department of Environmental Protection has issued\nan Air Quality Alert for Ground Level Ozone, from 11 AM to 11 PM EDT\nTuesday.\n\nAn Air Quality Alert day means that Ground Level Ozone\nconcentrations within the region may approach or exceed levels that\nare Unhealthy for Sensitive Groups.\n\nAir is unhealthy for sensitive children and adults, such as those\nwith asthma, lung or heart disease, and older adults. Sensitive\nchildren and adults should limit prolonged outdoor activity.\n\nFor additional information, please visit the Massachusetts\nDepartment of Environmental Protection website at:\nhttps://mass.gov/dep/massair/forecast",
-      "instruction": null,
-      "expires": "2026-07-14T15:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0b6701d8d453b694e92ee597507a3624150f30d0.002.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northwest Providence; Southeast Providence; Western Kent; Eastern Kent; Bristol; Washington; Newport; Block Island",
-    "coordinates": {},
-    "details": {
-      "description": "The Rhode Island Department of Environmental Management has issued\nan Air Quality Alert Day for Ground Level Ozone, from 11 AM to 11 PM\nEDT Tuesday.\n\nAn Air Quality Alert day means that Ground Level Ozone\nconcentrations within the region may approach or exceed unhealthy\nstandards. For additional information, please visit the Rhode Island\nDepartment of Environmental Management website at:\n\nhttps://dem.ri.gov/",
-      "instruction": null,
-      "expires": "2026-07-14T15:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4666a77c1c4657c73208d93b35487b1f49ac7cfd.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Midland, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -102.29,
-            32.01
-          ],
-          [
-            -102.02,
-            32.08
-          ],
-          [
-            -101.94,
-            31.92
-          ],
-          [
-            -102.18,
-            31.89
-          ],
-          [
-            -102.22,
-            31.88
-          ],
-          [
-            -102.29,
-            32
-          ],
-          [
-            -102.29,
-            32.01
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 229 PM CDT, trained weather spotters reported thunderstorms\nproducing heavy rain across the warned area. Between 0.5 and 1.5\ninches of rain have fallen. Flash flooding is ongoing or expected to\nbegin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Trained spotter reported water over the road at the\nintersection of State Hwy 349 and I-20.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\nSome locations that will experience flash flooding include...\nMidland, Midland International Air and Space Port, Midland Airpark,\nCotton Flat and Warfield.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
-      "expires": "2026-07-13T15:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.48fdce5f3a59eb9c62b082fe14d087ec715d1d84.006.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Grand Marais to Whitefish Point MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 10 to 20 kt with gusts up to 25 kt and waves\n2 to 5 ft expected.\n\n* WHERE...Grand Marais to Whitefish Point MI.\n\n* WHEN...From 5 AM to 7 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T03:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.48fdce5f3a59eb9c62b082fe14d087ec715d1d84.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Portage Lake to Huron Island MI to Lower Entrance of Portage Canal To Huron Islands MI Including Keweenaw and Huron Bays; Huron Islands to Marquette MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 15 to 20 kt with gusts up to 30 kt and waves\n1 to 3 ft expected.\n\n* WHERE...Lower Entrance of Portage Canal To Huron Islands MI\nIncluding Keweenaw and Huron Bays and Huron Islands to\nMarquette MI.\n\n* WHEN...From 2 AM to 10 AM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T03:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.48fdce5f3a59eb9c62b082fe14d087ec715d1d84.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Ontonagon to Upper Entrance of Portage Canal MI; Upper Entrance of Portage Canal to Eagle River MI; Eagle River to Manitou Island MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 15 to 25 kt with gusts up to 30 kt and waves\n3 to 6 ft occurring.\n\n* WHERE...Ontonagon to Upper Entrance of Portage Canal MI, Upper\nEntrance of Portage Canal to Eagle River MI and Eagle River to\nManitou Island MI.\n\n* WHEN...Until 3 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T03:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.48fdce5f3a59eb9c62b082fe14d087ec715d1d84.005.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Marquette to Munising MI; Munising to Grand Marais MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 5 to 15 kt with gusts up to 25 kt and\nwaves 1 to 4 ft expected.\n\n* WHERE...Marquette to Munising MI and Munising to Grand Marais\nMI.\n\n* WHEN...From 8 AM to 5 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T03:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.48fdce5f3a59eb9c62b082fe14d087ec715d1d84.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Black River To Ontonagon MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds around 15 kt with gusts up to 25 kt and\nwaves 2 to 4 ft expected.\n\n* WHERE...Black River to Ontonagon MI.\n\n* WHEN...From 1 AM EDT /midnight CDT/ to 8 AM EDT /7 AM CDT/\nTuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T03:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.48fdce5f3a59eb9c62b082fe14d087ec715d1d84.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Manitou Island to Point Isabelle MI; Point Isabelle to Lower Entrance of Portage Canal MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 15 to 20 kt with gusts up to 30 kt and waves\n1 to 4 ft expected.\n\n* WHERE...Manitou Island to Point Isabelle MI and Point Isabelle\nto Lower Entrance of Portage Canal MI.\n\n* WHEN...From 11 PM this evening to 10 AM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T03:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bc7091ef36406ec42dc1b02592ba373762a93505.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Buzzards Bay",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 3 to 5 feet expected.\n\n* WHERE...Buzzards Bay.\n\n* WHEN...From noon Tuesday to 5 AM EDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bc7091ef36406ec42dc1b02592ba373762a93505.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nantucket Sound; Vineyard Sound; Rhode Island Sound; Block Island Sound; Coastal waters from Provincetown MA to Chatham MA to Nantucket MA out 20 NM; Coastal Waters extending out to 25 NM South of Marthas Vineyard and Nantucket; Coastal Waters from Montauk NY to Marthas Vineyard extending out to 20 NM South of Block Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 34 kt and\nseas 5 to 8 feet expected. Brief gales are possible for southern\nand eastern outer water zones late afternoon through Tuesday\nnight.\n\n* WHERE...Portions of Massachusetts coastal waters and Rhode\nIsland coastal waters.\n\n* WHEN...From noon Tuesday to 11 AM EDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bc7091ef36406ec42dc1b02592ba373762a93505.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Massachusetts Bay and Ipswich Bay",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 30 kt and\nseas around 3 feet expected.\n\n* WHERE...Massachusetts Bay and Ipswich Bay.\n\n* WHEN...From 4 PM to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bc7091ef36406ec42dc1b02592ba373762a93505.005.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Cod Bay; Coastal waters east of Ipswich Bay and the Stellwagen Bank National Marine Sanctuary",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 30 kt and\nseas 3 to 5 feet expected.\n\n* WHERE...Cape Cod Bay and Coastal waters east of Ipswich Bay\nand the Stellwagen Bank National Marine Sanctuary.\n\n* WHEN...From 4 PM to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bc7091ef36406ec42dc1b02592ba373762a93505.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Boston Harbor",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nwaves around 2 feet expected.\n\n* WHERE...Boston Harbor.\n\n* WHEN...From 4 PM to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.02af0677c6fd66cb78cad58f78e14b5b4e37cf03.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Polk, TX; Trinity, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -95.21,
-            31.05
-          ],
-          [
-            -95.09,
-            31.1
-          ],
-          [
-            -94.84,
-            31.1
-          ],
-          [
-            -94.78,
-            31.12
-          ],
-          [
-            -94.75,
-            31.11
-          ],
-          [
-            -94.71,
-            31.11
-          ],
-          [
-            -94.66,
-            31.09
-          ],
-          [
-            -94.65,
-            31.1
-          ],
-          [
-            -94.64,
-            31.09
-          ],
-          [
-            -94.62,
-            31.08
-          ],
-          [
-            -94.56,
-            31.06
-          ],
-          [
-            -94.66,
-            31.01
-          ],
-          [
-            -94.65,
-            30.98
-          ],
-          [
-            -94.75,
-            30.99
-          ],
-          [
-            -94.85,
-            30.99
-          ],
-          [
-            -94.87,
-            30.98
-          ],
-          [
-            -94.97,
+            -102.52,
             30.89
           ],
           [
-            -94.95,
-            30.74
+            -102.04,
+            30.71
           ],
           [
-            -95.12,
-            30.84
+            -101.65,
+            30.5
           ],
           [
-            -95.18,
-            30.91
+            -101.67,
+            30.29
           ],
           [
-            -95.21,
-            31.05
+            -102.54,
+            30.49
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southeast Texas, including the following\ncounties, Polk and Trinity.\n\n* WHEN...Until 315 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 220 PM CDT, Doppler radar and automated rain gauges\nindicated heavy rain due to thunderstorms. Minor flooding is\nongoing or expected to begin shortly in the advisory area.\nBetween 1 and 2 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nCorrigan and Groveton.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
-      "expires": "2026-07-13T15:15:00-05:00"
+      "description": "...The National Weather Service in Midland/Odessa has issued a Flood\nWarning for the following rivers in Texas...\n\nIndependence Creek at Independence Creek near Sheffield, Texas\naffecting Terrell County.\n\nFor the Pecos River...including Independence Creek near Sheffield,\nTexas...Minor flooding is forecast.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Independence Creek at Independence Creek near Sheffield,\nTexas.\n\n* WHEN...Until Tuesday morning.\n\n* ADDITIONAL DETAILS...\n- At 3:10 PM CDT Monday the stage was 10.6 feet.\n- Bankfull stage is 8.5 feet.\n- Forecast...The river is expected to rise above flood stage late\nthis afternoon to a crest of 11.4 feet this evening. It will then\nfall below flood stage this evening.\n- Flood stage is 11.0 feet.\n- Flood History...This crest compares to a previous crest of 11.9\nfeet on 10/25/2023.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Please report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued late tonight at 330 AM CDT.",
+      "expires": "2026-07-14T03:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bb3bd14c28dc8700c458ec1b41ff068db7c62a1f.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.c96270c7a458e8d990cfe728114c969102457f0c.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Columbia River Bar",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Rough bar conditions expected with seas 6 to 8 ft due to\na very strong ebb current of 7.15 kt.\n\n* WHERE...In the Main Channel of the Columbia River Bar.\n\n* WHEN...From 2 AM to 9 AM PDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft,\nespecially when operating near to, or attempting to cross, the\nColumbia River Bar.\n\n* ADDITIONAL DETAILS...Ebb current of 3.33 kt at 449 PM Monday.\nSeas 4 ft. Very strong ebb current of 7.15 kt at 502 AM\nTuesday. Seas 6 to 8 ft.",
+      "instruction": "A Small Craft Advisory means that wave conditions are expected to\nbe hazardous to small craft in the vicinity of the Columbia River\nBar. Mariners are advised to obtain the latest bar conditions\nfrom the United States Coast Guard before attempting to cross the\nbar.",
+      "expires": "2026-07-14T05:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.93c3744d8e3b038c9e7f2297fdbdb1e1fb2a5f72.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flash Flood Warning",
+    "title": "Special Marine Warning",
     "geometry": "Polygon",
-    "location": "Clarendon, SC; Sumter, SC",
+    "location": "St. Andrews Bay Waterways; Coastal waters from Okaloosa-Walton County Line to Mexico Beach out 20 NM; Coastal Waters from Mexico Beach to Apalachicola out 20 NM; Waters from Okaloosa-Walton County Line to Mexico Beach from 20 to 60 NM",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.5,
-            33.75
+            -86.39,
+            30.07
           ],
           [
-            -80.16,
-            33.8
+            -85.73,
+            30.21
           ],
           [
-            -80.11,
-            33.69
+            -85.51,
+            30.24
           ],
           [
-            -80.18,
-            33.58
+            -85.6,
+            30.19
           ],
           [
-            -80.47,
-            33.58
+            -85.46,
+            30.18
           ],
           [
-            -80.49,
-            33.63
+            -85.36,
+            30.12
           ],
           [
-            -80.5,
-            33.75
+            -85.34,
+            30.04
+          ],
+          [
+            -85.41,
+            29.99
+          ],
+          [
+            -85.26,
+            29.82
+          ],
+          [
+            -85.25,
+            29.73
+          ],
+          [
+            -85.22,
+            29.74
+          ],
+          [
+            -85.18,
+            29.48
+          ],
+          [
+            -85.6,
+            29.42
+          ],
+          [
+            -85.63,
+            29.44
+          ],
+          [
+            -85.64,
+            29.42
+          ],
+          [
+            -86.4,
+            29.32
+          ],
+          [
+            -86.39,
+            30.07
           ]
         ]
       ]
     },
     "details": {
-      "description": "FFWCAE\n\nThe National Weather Service in Columbia has issued a\n\n* Flash Flood Warning for...\nWest Central Clarendon County in central South Carolina...\nSouthern Sumter County in central South Carolina...\n\n* Until 545 PM EDT.\n\n* At 318 PM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 3 inches of rain\nhave fallen. The expected rainfall rate is 1.5 to 2 inches in 1\nhour. Additional rainfall amounts of 1 to 3 inches are possible in\nthe warned area. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nManning, Summerton, Alcolu, Santee Cooper Regional Airport,\nPinewood, Paxville, Davis Station and St. Paul.\n\nThis includes Interstate 95 between mile markers 107 and 127.",
-      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.",
-      "expires": "2026-07-13T17:45:00-04:00"
+      "description": "SMWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Special Marine Warning for...\nCoastal Waters from Mexico Beach to Apalachicola out 20 NM...\nCoastal waters from Okaloosa-Walton County Line to Mexico Beach out\n20 NM...\nSt. Andrews Bay Waterways...\nWaters from Okaloosa-Walton County Line to Mexico Beach from 20 to\n60 NM...\n\n* Until 615 PM CDT.\n\n* At 320 PM CDT, strong thunderstorms were located along a line\nextending from 10 nm south of Oriskany Reef to 38 nm south of\nOkaloosa Deep Water Reef, moving east at 35 knots.\n\nHAZARD...Wind gusts to 40 knots.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect wind gusts in excess of 34 knots...suddenly higher\nwaves...frequent lightning...and heavy downpours. Make\nsure all on board are wearing life jackets.\n\n* Locations impacted include...\nCape San Blas, Mexico Beach, Port St. Joe, and Panama City Beach.",
+      "instruction": "Move to safe harbor until hazardous weather passes.",
+      "expires": "2026-07-13T18:15:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.388fc38b157cf6732cef5f5b564bffb1fe6e6285.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.7828d928fc2256bcde59aa8f32cd4daed70bd6cb.001.1",
     "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
+    "severity": "moderate",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Southern Fairfield; Southern New Haven; Southern Middlesex; Southern New London",
+    "location": "Eastern Toole and Liberty; Hill County; Northern Blaine County; Southern High Plains; Eastern Pondera and Eastern Teton; Western and Central Chouteau County; Bears Paw Mountains and Southern Blaine; Cascade County below 5000ft; Judith Basin County and Judith Gap; Fergus County below 4500ft; Gates of the Mountains; Helena Valley; Canyon Ferry Area; Missouri Headwaters; Madison River Valley; Gallatin Valley",
     "coordinates": {},
     "details": {
-      "description": "The Connecticut Department of Energy and Environmental Protection\nhas issued an Air Quality Action Day for the following counties:\n\nS Fairfield, S New Haven, S Middlesex, S New London\n\nfrom 11 AM to 11 PM EDT Tuesday.\n\nAn Air Quality Action Day means that Ground Level Ozone within the\nregion may approach or exceed unhealthy standards. For additional\ninformation, please visit the Connecticut Department of Energy and\nEnvironmental Protection Web site at http://www.ct.gov/deep/aqi",
-      "instruction": null,
-      "expires": "2026-07-14T23:00:00-04:00"
+      "description": "* WHAT...Hot daytime temperatures of 90 to 98 degrees, with overnight\ntemperatures of 60 to 70 degrees.\n\n* WHERE...Portions of central, north central, and southwest Montana.\n\n* WHEN...Until 9 PM MDT this evening.\n\n* IMPACTS...Multiple days of hot temperatures may cause heat\nillnesses and cumulative heat stress.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-13T21:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.80f6c4569b3735f8075bef6245dd401823a7c6ce.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Outer Apostle Islands Beyond 5 NM from Mainland",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 15 kt with gusts up to 25 kt and\nwaves 1 to 2 ft.\n\n* WHERE...Outer Apostle Islands Beyond 5 NM from Mainland.\n\n* WHEN...Until 6 AM CDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-14T03:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.80f6c4569b3735f8075bef6245dd401823a7c6ce.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Two Harbors to Duluth MN; Duluth MN to Port Wing WI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 15 knots with gusts to 25 knots.\nWaves 1 to 2 ft expected.\n\n* WHERE...Two Harbors to Duluth MN and Duluth MN to Port Wing WI.\n\n* WHEN...Until 7 PM CDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-13T19:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.80f6c4569b3735f8075bef6245dd401823a7c6ce.002.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Grand Portage to Grand Marais MN",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 20 kt with gusts up to 30 kt and\nwaves 3 to 6 ft.\n\n* WHERE...Grand Portage to Grand Marais MN.\n\n* WHEN...Until 6 AM CDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...Occasional gusts near gale force are\npossible between Grand Portage and Isle Royale late this\nafternoon into the early evening.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-14T03:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.80f6c4569b3735f8075bef6245dd401823a7c6ce.001.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Grand Marais to Taconite Harbor MN; Taconite Harbor to Silver Bay Harbor MN; Silver Bay Harbor to Two Harbors MN",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds with gusts up to 25 knots and waves 1 to\n3 ft expected.\n\n* WHERE...Grand Marais to Taconite Harbor MN, Taconite Harbor to\nSilver Bay Harbor MN and Silver Bay Harbor to Two Harbors MN.\n\n* WHEN...Until 9 PM CDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-13T21:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.80f6c4569b3735f8075bef6245dd401823a7c6ce.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Port Wing to Sand Island WI; Sand Island to Bayfield WI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 15 kt with gusts up to 25 kt and\nwaves 1 to 2 ft.\n\n* WHERE...Port Wing to Sand Island WI and Sand Island to\nBayfield WI.\n\n* WHEN...Until 9 PM CDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+      "expires": "2026-07-13T21:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ccef1ca52fb7bde381423c70b5cdaeff87bca916.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Aiken, SC; Edgefield, SC; Lexington, SC; Saluda, SC",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -81.93,
+            33.6
+          ],
+          [
+            -81.94,
+            33.89
+          ],
+          [
+            -81.25,
+            34.04
+          ],
+          [
+            -81.11,
+            33.93
+          ],
+          [
+            -81.34,
+            33.69
+          ],
+          [
+            -81.6,
+            33.51
+          ],
+          [
+            -81.93,
+            33.58
+          ],
+          [
+            -81.93,
+            33.6
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Northern Aiken County in central South Carolina...\nEastern Edgefield County in central South Carolina...\nSouthwestern Lexington County in central South Carolina...\nSoutheastern Saluda County in central South Carolina...\n\n* WHEN...Until 615 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 415 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Additional development is expected into this\nevening, and will cause urban and small stream flooding.\n- Some locations that will experience flooding include...\nAiken, Lexington, Batesburg-Leesville, Red Bank, Edgefield,\nJohnston, South Congaree, Ridge Spring, Aiken Municipal Airport,\nEdgefield County Airport, Citizens Park, USC Aiken, Graniteville,\nPelion, Gilbert and Summit.\n- This includes Interstate 20 in South Carolina between mile\nmarkers 7 and 58.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.",
+      "expires": "2026-07-13T18:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e56b5c9ee9bc21267156e82db7456d1032066254.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Southern Rocky Mountain Front; Southern High Plains; Western and Central Chouteau County; Bears Paw Mountains and Southern Blaine; Cascade County below 5000ft; Judith Basin County and Judith Gap; Fergus County below 4500ft; Upper Blackfoot and MacDonald Pass; Gates of the Mountains; Little Belt and Highwood Mountains; Snowy and Judith Mountains; Helena Valley; Big Belt, Bridger and Castle Mountains; Meagher County Valleys; Elkhorn and Boulder Mountains; Canyon Ferry Area; Missouri Headwaters; Gallatin Valley; Gallatin and Madison County Mountains and Centennial Mountains",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of central, north central, and southwest Montana.\n\n* WHEN...From Tuesday afternoon through Tuesday evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas and along burn\nscars.\n\n* ADDITIONAL DETAILS...\n- Heavy rainfall produced by thunderstorms may lead to flash\nflooding. Rainfall rates in excessive of 1 inch per hour are\npossible under heavier thunderstorms.\n- Some locations that may experience flooding include...\nGreat Falls, Bozeman, Helena, Lewistown, Townsend, Fort Benton,\nWest Yellowstone, White Sulphur Springs, Cascade, Big Sandy,\nStanford, Lincoln, Belgrade, East Helena, Three Forks, Manhattan,\nBelt, Geraldine, Denton, Hobson and the Horse Gulch burn scar.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-14T03:15:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7b163111a07247ef26821cbff54181fef36c0e67.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Lee, GA; Randolph, GA; Terrell, GA; Turner, GA; Worth, GA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.68,
+            31.93
+          ],
+          [
+            -84.45,
+            31.92
+          ],
+          [
+            -84.44,
+            31.97
+          ],
+          [
+            -84.34,
+            31.87
+          ],
+          [
+            -84.34,
+            31.92
+          ],
+          [
+            -83.92,
+            31.91
+          ],
+          [
+            -83.94,
+            31.85
+          ],
+          [
+            -83.86,
+            31.84
+          ],
+          [
+            -83.85,
+            31.82
+          ],
+          [
+            -83.8,
+            31.8
+          ],
+          [
+            -83.61,
+            31.8
+          ],
+          [
+            -83.61,
+            31.85
+          ],
+          [
+            -83.48,
+            31.85
+          ],
+          [
+            -83.45,
+            31.76
+          ],
+          [
+            -83.47,
+            31.74
+          ],
+          [
+            -83.45,
+            31.71
+          ],
+          [
+            -83.49,
+            31.7
+          ],
+          [
+            -83.49,
+            31.66
+          ],
+          [
+            -84.68,
+            31.65
+          ],
+          [
+            -84.68,
+            31.93
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of south central and southwest Georgia, including\nthe following counties, in south central Georgia, Turner and\nWorth. In southwest Georgia, Lee, Randolph and Terrell.\n\n* WHEN...Until 615 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 412 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nLeesburg, Albany, Dawson, Ashburn, Shellman, Smithville,\nWorth, Sycamore, Warwick, Sasser, Bronwood, Rebecca, Parrott,\nStarksville, Mossy Dell, Jordan Place, Neyami, Century and\nScrutchins.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-13T18:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.0fa02664ae07525c4a00662fc9a73e21a5989da9.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Fire Weather Watch",
+    "geometry": "unknown",
+    "location": "Santa Barbara County Southwestern Coast; Santa Barbara County Southeastern Coast; Santa Ynez Mountains Western Range; Santa Ynez Mountains Eastern Range; Santa Barbara County Interior Mountains; Southern Ventura County Mountains; Northern Ventura County Mountains; Interstate 5 Corridor",
+    "coordinates": {},
+    "details": {
+      "description": "...FIRE WEATHER WATCH IN EFFECT FROM WEDNESDAY AFTERNOON THROUGH\nTHURSDAY MORNING FOR STRONG NORTHWEST TO NORTH WINDS ALONG WITH\nLOW RELATIVE HUMIDITY AND HOT TEMPERATURES FOR THE MOUNTAINS AND\nSOUTH COAST OF SANTA BARBARA COUNTY AS WELL AS THE VENTURA COUNTY\nMOUNTAINS AND INTERSTATE 5 CORRIDOR...\n\n.Strong northwest to north winds, hot temperatures, and low\nrelative humidity will produce the potential for critical fire-\nweather conditions late Wednesday through early Thursday.\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\nFire Weather Watch for strong northwest to north winds along with\nlow relative humidity and hot temperatures, which is in effect\nfrom Wednesday afternoon through Thursday morning.\n\n* WINDS...Northwest to north winds 20 to 30 mph with gusts of 45\nto 55 mph, strongest in Sundowner wind prone areas of southern\nSanta Barbara County.\n\n* RELATIVE HUMIDITY...10 to 25 percent.\n\n* IMPACTS...If fire ignition occurs, conditions are favorable for\nextreme fire behavior, rapid fire growth, and long range\nspotting, which could threaten life and property. The hot air\nmass will also contribute to the potential for significant\nvertical plume growth.",
+      "instruction": "A Fire Weather Watch means that critical fire weather conditions\nare likely to occur in the coming days. Residents near wildland\ninterfaces should prepare now on what to do if a wildfire breaks\nout. See readyforwildfire.org and wildfirerisk.org for\ninformation.",
+      "expires": "2026-07-16T09:00:00-07:00"
     },
     "source": "NOAA Weather"
   }
