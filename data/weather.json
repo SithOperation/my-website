@@ -1,75 +1,527 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2a5a9cd01f92d77879ada1633c3eaf1090cdf6b5.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.74cdcc1195ee4e6cd92cc3470d65993f96497e98.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
     "geometry": "Polygon",
-    "location": "Knox, TN",
+    "location": "Madison, MT",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -84.03,
-            35.88
+            -111.66,
+            45.64
           ],
           [
-            -84.14,
-            35.88
+            -111.43,
+            45.24
           ],
           [
-            -84.22,
-            35.89
+            -111.75,
+            45.25
           ],
           [
-            -84.1,
-            36.01
+            -111.87,
+            45.41
           ],
           [
-            -83.66,
-            35.99
-          ],
-          [
-            -83.76,
-            35.91
-          ],
-          [
-            -83.8,
-            35.88
-          ],
-          [
-            -83.81,
-            35.88
-          ],
-          [
-            -83.82,
-            35.87
-          ],
-          [
-            -83.95,
-            35.87
-          ],
-          [
-            -83.95,
-            35.88
-          ],
-          [
-            -84.03,
-            35.88
+            -111.66,
+            45.64
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southern Knox County in east Tennessee...\n\n* WHEN...Until 1000 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways. Ponding of water in urban or other areas is\noccurring or is imminent.\n\n* ADDITIONAL DETAILS...\n- At 756 PM EDT, Doppler radar indicated heavy rain. Minor flooding\nis ongoing or expected to begin shortly in the advisory area.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nKnoxville, Farragut, Bearden, Lake Forest, Karns and Kimberlin\nHeights.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Be aware of your surroundings and do not drive on flooded roads.",
-      "expires": "2026-07-13T22:00:00-04:00"
+      "description": "At 920 PM MDT, severe thunderstorms were located along a line\nextending from 18 miles southeast of Harrison to near Ennis, moving\nnortheast at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nEnnis, Norris, Jeffers, and Mcallister.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
+      "expires": "2026-07-13T21:45:00-06:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-35606",
+    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Point Piedras Blancas to Point Sal from 10 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Point Piedras Blancas to Point Sal from 10 to 60 NM.\n\n* WHEN...From noon Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Outer waters from Santa Cruz Island to San Clemente Island to 60 NM offshore including San Nicolas and Santa Barbara Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Outer waters from Santa Cruz Island to San Clemente\nIsland to 60 NM offshore including San Nicolas and Santa\nBarbara Islands.\n\n* WHEN...From 6 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Waters from Pt. Sal to Santa Cruz Island CA and westward 60 nm including San Miguel and Santa Rosa Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Waters from Pt. Sal to Santa Cruz Island CA and\nwestward 60 nm including San Miguel and Santa Rosa Islands.\n\n* WHEN...From 3 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "East Santa Barbara Channel from Pt. Conception to Pt. Mugu CA including Santa Cruz Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...East Santa Barbara Channel from Pt. Conception to Pt.\nMugu CA including Santa Cruz Island.\n\n* WHEN...From 3 PM to 9 PM PDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e8fb9baa90b27fd8af9c4ab2748861c8111a8a31.001.2",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake",
+    "coordinates": {},
+    "details": {
+      "description": "* WHEN...Tuesday afternoon and evening.\n\n* AFFECTED AREA...In Minnesota, Koochiching, North St. Louis and\nNorthern Cook and Lake counties.\n\n* WINDS...Northwest 5 to 10 mph with gusts up to 20 mph.\n\n* RELATIVE HUMIDITY...As low as 22 percent.\n\n* TEMPERATURES...90 to 95.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-14T10:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Sitkinak to Castle Cape out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 6 ft. Rain showers.\n.TUE...S wind 30 kt. Seas 8 ft. Widespread rain showers.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED...Variable wind 10 kt. Seas 5 ft.\n.WED NIGHT...S wind 15 kt. Seas 4 ft.\n.THU THROUGH FRI...SW wind 15 kt. Seas 7 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Sitkinak to Castle Cape from 15 to 100 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 10 ft. Rain showers.\n.TUE...SW wind 30 kt. Seas 11 ft. Rain.\n.TUE NIGHT...W wind 25 kt. Seas 11 ft.\n.WED...SW wind 15 kt. Seas 8 ft.\n.WED NIGHT...SW wind 20 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 8 ft.\n.SAT...S wind 15 kt. Seas 10 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Castle Cape to Cape Tolstoi out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 6 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 7 ft. Rain.\n.TUE NIGHT...W wind 25 kt diminishing to 15 kt after midnight.\nSeas 5 ft.\n.WED AND WED NIGHT...SW wind 15 kt. Seas 4 ft.\n.THU...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 15 kt. Seas 7 ft.\n.SAT...S wind 15 kt. Seas 7 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.009.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Port Heiden to Nelson Lagoon from 15 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 6 ft. Rain.\n.TUE...SW wind 35 kt. Seas 10 ft. Rain.\n.TUE NIGHT...W wind 25 kt. Seas 8 ft.\n.WED...S wind 15 kt. Seas 5 ft.\n.WED NIGHT...E wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 8 ft.\n.SAT...SE wind 15 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.025.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Pacific Side from 15 to 75 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 9 ft.\n.TUE...SW wind 15 kt. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft. Rain.\n.WED...W wind 25 kt. Seas 9 ft.\n.WED NIGHT...N wind 20 kt. Seas 7 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 25 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.006.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Tolstoi to Cape Sarichef out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 9 ft. Widespread rain showers.\n.TUE...W wind 25 kt. Seas 8 ft.\n.TUE NIGHT...W wind 20 kt in the evening becoming variable 10 kt.\nSeas 7 ft.\n.WED...S wind 15 kt. Seas 5 ft.\n.WED NIGHT...SW wind 15 kt. Seas 5 ft.\n.THU...NW wind 15 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 11 ft.\n.SAT...S wind 15 kt. Seas 7 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.027.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Adak to Kiska Pacific Side",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...NW wind 15 kt. Seas 7 ft.\n.TUE...SW wind 15 kt becoming S 25 kt in the afternoon. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 7 ft. Rain.\n.WED...NW wind 20 kt. Seas 7 ft.\n.WED NIGHT...N wind 15 kt. Seas 6 ft.\n.THU...SW wind 20 kt. Seas 5 ft.\n.FRI...W wind 25 kt. Seas 8 ft.\n.SAT...NW wind 20 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.016.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Pacific Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt becoming W 20 kt after midnight.\nSeas 9 ft.\n.TUE...W wind 20 kt. Seas 8 ft.\n.TUE NIGHT...SW wind 15 kt. Seas 6 ft.\n.WED...SW wind 20 kt. Seas 6 ft.\n.WED NIGHT...NW wind 15 kt. Seas 7 ft.\n.THU...W wind 15 kt. Seas 6 ft.\n.FRI...SW wind 25 kt. Seas 11 ft.\n.SAT...W wind 20 kt. Seas 7 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.012.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unimak Pass",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 9 ft. Rain showers.\n.TUE...W wind 20 kt. Seas 7 ft.\n.TUE NIGHT...S wind 15 kt. Seas 6 ft.\n.WED...S wind 20 kt. Seas 5 ft.\n.WED NIGHT...NW wind 15 kt. Seas 6 ft.\n.THU...W wind 20 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 12 ft.\n.SAT...W wind 15 kt. Seas 9 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.035.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Kuskokwim Delta from 15 to 80 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...E wind 20 kt. Seas 4 ft. Rain.\n.TUE...W wind 30 kt. Seas 8 ft. Areas of fog.\n.TUE NIGHT...W wind 25 kt. Seas 8 ft.\n.WED...SW wind 15 kt. Seas 5 ft.\n.WED NIGHT...W wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 3 ft.\n.FRI...S wind 15 kt. Seas 6 ft.\n.SAT...E wind 10 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.015.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unalaska Bay",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 30 kt. Seas 2 ft building to 4 ft after\nmidnight. Rain.\n.TUE...W wind 20 kt. Seas 3 ft.\n.TUE NIGHT...N wind 10 kt becoming SE after midnight.\nSeas 3 ft. Rain.\n.WED...S wind 15 kt. Seas 2 ft.\n.WED NIGHT...NW wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 3 ft.\n.FRI...SW wind 15 kt. Seas 2 ft.\n.SAT...W wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Castle Cape to Cape Tolstoi from 15 to 100 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 12 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 12 ft.\n.TUE NIGHT...W wind 25 kt. Seas 10 ft.\n.WED AND WED NIGHT...SW wind 20 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 9 ft.\n.SAT...S wind 20 kt. Seas 10 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.033.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Bristol Bay from Cape Chichagof to Cape Pierce out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 4 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 4 ft building to 7 ft in the afternoon.\nRain.\n.TUE NIGHT...W wind 30 kt. Seas 7 ft.\n.WED...SW wind 15 kt. Seas 4 ft.\n.WED NIGHT...W wind 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 15 kt. Seas 3 ft.\n.SAT...SE wind 10 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.007.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Tolstoi to Unalga Pass from 15 to 100 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 12 ft. Rain showers.\n.TUE...SW wind 25 kt. Seas 12 ft.\n.TUE NIGHT...SW wind 20 kt. Seas 9 ft.\n.WED...S wind 25 kt. Seas 7 ft.\n.WED NIGHT...SW wind 20 kt. Seas 8 ft.\n.THU...W wind 20 kt. Seas 7 ft.\n.FRI THROUGH SAT...SW wind 25 kt. Seas 12 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.025.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Pacific Side from 15 to 75 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 9 ft.\n.TUE...SW wind 15 kt. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft. Rain.\n.WED...W wind 25 kt. Seas 9 ft.\n.WED NIGHT...N wind 20 kt. Seas 7 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 25 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.020.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nikolski to Seguam Pacfic Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 8 ft.\n.TUE...W wind 20 kt. Seas 7 ft.\n.TUE NIGHT...S wind 20 kt. Seas 6 ft. Rain.\n.WED...SW wind 20 kt. Seas 7 ft.\n.WED NIGHT...NW wind 20 kt. Seas 7 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI...W wind 25 kt. Seas 11 ft.\n.SAT...NW wind 20 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.008.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Port Heiden to Nelson Lagoon out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 30 kt. Seas 4 ft.\n.TUE...SW wind 35 kt. Seas 7 ft.\n.TUE NIGHT...W wind 25 kt. Seas 6 ft.\n.WED...SE wind 15 kt. Seas 4 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...SE wind 15 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.014.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Bering Side from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 25 kt. Seas 6 ft.\n.TUE...W wind 20 kt. Seas 5 ft. Areas of fog.\n.TUE NIGHT...S wind 15 kt. Seas 4 ft. Rain.\n.WED...SE wind 15 kt. Seas 4 ft.\n.WED NIGHT...N wind 15 kt. Seas 4 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...SW wind 25 kt. Seas 13 ft.\n.SAT...NW wind 20 kt. Seas 10 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.017.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Pacific Side from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt. Seas 11 ft.\n.TUE...W wind 25 kt. Seas 10 ft.\n.TUE NIGHT...SW wind 20 kt. Seas 8 ft. Rain.\n.WED...SW wind 25 kt. Seas 8 ft.\n.WED NIGHT...W wind 20 kt. Seas 8 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI THROUGH SAT...W wind 25 kt. Seas 11 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.013.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Bering Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt. Seas 4 ft. Rain.\n.TUE...W wind 20 kt. Seas 4 ft.\n.TUE NIGHT...SW wind 15 kt. Seas 3 ft. Rain.\n.WED...S wind 20 kt. Seas 3 ft.\n.WED NIGHT...NW wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 25 kt. Seas 12 ft.\n.SAT...W wind 20 kt. Seas 11 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.024.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Pacific Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 7 ft.\n.TUE...SW wind 15 kt. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 7 ft. Rain.\n.WED...W wind 20 kt. Seas 7 ft.\n.WED NIGHT...N wind 20 kt. Seas 6 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 20 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.031.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Bristol Bay greater than 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 5 ft. Rain.\n.TUE...SW wind 35 kt. Seas 10 ft. Rain.\n.TUE NIGHT...W wind 30 kt. Seas 9 ft.\n.WED...SW wind 15 kt. Seas 5 ft.\n.WED NIGHT...E wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...SE wind 10 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.034.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Kuskokwim Delta and Etolin Strait out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...NE wind 20 kt. Seas 3 ft.\n.TUE...NW wind 30 kt. Seas 5 ft.\n.TUE NIGHT...W wind 25 kt. Seas 5 ft.\n.WED...SW wind 15 kt. Seas 3 ft.\n.WED NIGHT...W wind 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 2 ft.\n.FRI...S wind 15 kt. Seas 4 ft.\n.SAT...NE wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.010.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Nelson Lagoon to Cape Sarichef out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 35 kt. Seas 6 ft. Rain.\n.TUE...W wind 30 kt. Seas 7 ft.\n.TUE NIGHT...W wind 20 kt. Seas 5 ft.\n.WED...SE wind 15 kt. Seas 3 ft.\n.WED NIGHT...N wind 15 kt. Seas 3 ft.\n.THU...W wind 20 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 10 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.032.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Bristol Bay from Port Heiden to Cape Chichagof out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 3 ft.\n.TUE...S wind 35 kt. Seas 5 ft building to 8 ft in the afternoon.\n.TUE NIGHT...SW wind 30 kt. Seas 7 ft.\n.WED...SW wind 15 kt. Seas 4 ft.\n.WED NIGHT...E wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 5 ft.\n.SAT...SE wind 10 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.011.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Nelson Lagoon to Unalga Pass from 15 to 70 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt becoming SW 35 kt after midnight. Seas 7\nft. Rain.\n.TUE...W wind 30 kt. Seas 8 ft. Areas of fog.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED...SE wind 15 kt. Seas 4 ft.\n.WED NIGHT...N wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 12 ft.\n.SAT...NE wind 15 kt. Seas 9 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.021.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nikolski to Seguam Pacific Side from 15 to 75 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 25 kt. Seas 10 ft.\n.TUE...W wind 20 kt. Seas 9 ft.\n.TUE NIGHT...S wind 20 kt. Seas 7 ft. Rain.\n.WED...SW wind 25 kt. Seas 9 ft.\n.WED NIGHT...NW wind 20 kt. Seas 8 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI...W wind 25 kt. Seas 11 ft.\n.SAT...NW wind 25 kt. Seas 10 ft.",
+      "instruction": null,
+      "expires": "2026-07-14T08:30:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-15172",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -79,1395 +531,619 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-14T00:05:33+00:00"
+      "expires": "2026-07-14T03:25:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a693cd9b7ecb344ef176de2edc5f497b56947d72.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Pima, AZ",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -110.83,
-            32.49
-          ],
-          [
-            -110.95,
-            32.49
-          ],
-          [
-            -111.18,
-            32.48
-          ],
-          [
-            -111.26,
-            32.33
-          ],
-          [
-            -111.16,
-            32.19
-          ],
-          [
-            -110.99,
-            32.04
-          ],
-          [
-            -110.91,
-            32.03
-          ],
-          [
-            -110.83,
-            32.23
-          ],
-          [
-            -110.68,
-            32.22
-          ],
-          [
-            -110.62,
-            32.35
-          ],
-          [
-            -110.69,
-            32.47
-          ],
-          [
-            -110.78,
-            32.48
-          ],
-          [
-            -110.83,
-            32.49
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 454 PM MST, Doppler radar indicated thunderstorms producing heavy\nrain across the warned area. Between 0.5 and 1.5 inches of rain have\nfallen. Additional rainfall amounts up to 0.5 inches are possible in\nthe warned area. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\nSome locations that will experience flash flooding include...\nTucson, Catalina, Oro Valley, Marana, Davis-Monthan Air Force Base,\nCasas Adobes, Drexel Heights, Flowing Wells, Tanque Verde, South\nTucson, Pascua Pueblo Yaqui Reservation, Tortolita, San Xavier\nCommunity, Mount Lemmon/Summerhaven, Catalina Foothills, Catalina\nState Park, Sabino Canyon Recreation Area, Tucson International\nAirport, Tucson Mountain Park and Saguaro National Park West.\n\nThis includes the following highways...\nInterstate 19 between mile markers 53 and 63. Route 86 between mile\nmarkers 164 and 171. Route 77 between mile markers 70 and 86.\nInterstate 10 between mile markers 238 and 268.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
-      "expires": "2026-07-13T18:45:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.cc6c8d2cc1e42e458d9fc3fc533f560b98c9d325.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.dbe8573a729aaad8e0d81960d8dbb9f8bd1d78eb.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Chesterfield, SC; Kershaw, SC; Lancaster, SC",
+    "location": "Fairfield, SC; Kershaw, SC; Lee, SC; Richland, SC; Sumter, SC",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.5,
-            34.6
+            -81.17,
+            34.21
           ],
           [
-            -80.21,
-            34.81
+            -81.2,
+            34.22
           ],
           [
-            -79.93,
-            34.81
+            -81.33,
+            34.27
           ],
           [
-            -79.93,
-            34.77
+            -81.3,
+            34.28
           ],
           [
-            -79.89,
-            34.74
+            -81.19,
+            34.34
           ],
           [
-            -79.87,
-            34.69
+            -81.05,
+            34.38
           ],
           [
-            -79.83,
-            34.66
+            -80.97,
+            34.39
           ],
           [
-            -79.8,
-            34.65
+            -80.8,
+            34.36
           ],
           [
-            -79.8,
-            34.64
-          ],
-          [
-            -79.78,
-            34.61
-          ],
-          [
-            -79.8,
-            34.61
-          ],
-          [
-            -79.83,
-            34.53
-          ],
-          [
-            -79.86,
-            34.52
-          ],
-          [
-            -79.88,
-            34.49
-          ],
-          [
-            -79.96,
-            34.49
-          ],
-          [
-            -79.98,
-            34.5
-          ],
-          [
-            -80.02,
-            34.49
-          ],
-          [
-            -80.05,
-            34.49
-          ],
-          [
-            -80.37,
-            34.33
+            -80.62,
+            34.29
           ],
           [
             -80.47,
-            34.49
+            34.19
+          ],
+          [
+            -80.4,
+            34
+          ],
+          [
+            -80.44,
+            33.96
           ],
           [
             -80.5,
-            34.6
+            33.95
+          ],
+          [
+            -80.61,
+            34.03
+          ],
+          [
+            -80.93,
+            34.1
+          ],
+          [
+            -81.17,
+            34.21
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Chesterfield County in central South Carolina...\nNortheastern Kershaw County in central South Carolina...\nEastern Lancaster County in central South Carolina...\n\n* WHEN...Until 1000 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 754 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. This  will cause urban and small stream flooding.\nBetween 0.5 and 2 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nCheraw, Chesterfield, Carolina Sandhills Wildlife Refuge, Cheraw\nMunicipal Airport, Northeastern Technical College, Cheraw State\nPark, Mt Pisgah, Mcbee, Jefferson, Ruby, Patrick, Bethune, Mount\nCroghan, Bay Springs Fire Station, Alligator Fire Station,\nMiddendorf, Chesterfield Ruby Middle School, Chesterfield\nDetention Center and Cheraw Fish Hatchery.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.",
-      "expires": "2026-07-13T22:00:00-04:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southern Fairfield County in central South Carolina...\nSouthwestern Kershaw County in central South Carolina...\nWest Central Lee County in central South Carolina...\nNortheastern Richland County in central South Carolina...\nNorthwestern Sumter County in central South Carolina...\n\n* WHEN...Until 215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1111 PM EDT, Doppler radar and automated rain gauges indicated\nheavy rain due to thunderstorms. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area. Between 1.5 and\n2.5 inches of rain have fallen.\n- Additional rainfall amounts of 0.5 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nColumbia, Sumter, Camden, Winnsboro, Shaw Air Base, Elgin, Lake\nCarolina, Villages at Sandhill, Lugoff, Killian, Longtown,\nFairfield County Airport, Oakland, Jenkinsville, Blythewood,\nRidgeway, Pine Grove Fire Station and Smallwood.\n- This includes the following highways...\nInterstate 20 in South Carolina between mile markers 79 and 102.\nInterstate 77 between mile markers 21 and 39.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-14T02:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Castle Cape to Cape Tolstoi out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 6 ft. Widespread rain showers.\n.TUE...SW wind 25 kt. Seas 6 ft. Rain.\n.TUE NIGHT...W wind 20 kt. Seas 5 ft.\n.WED AND WED NIGHT...SW wind 15 kt. Seas 4 ft.\n.THU...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 15 kt. Seas 7 ft.\n.SAT...S wind 15 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.010.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nelson Lagoon to Cape Sarichef out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 4 ft. Rain.\n.TUE...SW wind 25 kt. Seas 5 ft.\n.TUE NIGHT...W wind 15 kt. Seas 4 ft.\n.WED...Variable wind 10 kt. Seas 3 ft.\n.WED NIGHT...NE wind 15 kt. Seas 3 ft.\n.THU...W wind 20 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 10 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.006.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Tolstoi to Cape Sarichef out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 8 ft. Widespread rain showers.\n.TUE...W wind 20 kt. Seas 7 ft.\n.TUE NIGHT...W wind 15 kt. Seas 7 ft.\n.WED...S wind 15 kt. Seas 5 ft.\n.WED NIGHT...SW wind 15 kt. Seas 5 ft.\n.THU...NW wind 15 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 11 ft.\n.SAT...S wind 15 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Sitkinak to Castle Cape out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 7 ft. Rain showers.\n.TUE...S wind 25 kt. Seas 7 ft. Widespread rain showers.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED AND WED NIGHT...S wind 15 kt. Seas 5 ft.\n.THU THROUGH FRI...SW wind 15 kt. Seas 7 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.035.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Kuskokwim Delta from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...E wind 20 kt. Seas 4 ft. Rain.\n.TUE...W wind 25 kt. Seas 6 ft. Areas of fog.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED...SW wind 15 kt. Seas 4 ft.\n.WED NIGHT...W wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 3 ft.\n.FRI...S wind 15 kt. Seas 6 ft.\n.SAT...E wind 10 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.033.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Bristol Bay from Cape Chichagof to Cape Pierce out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 20 kt. Seas 3 ft. Widespread rain showers.\n.TUE...SW wind 25 kt. Seas 5 ft. Rain.\n.TUE NIGHT...W wind 25 kt. Seas 5 ft.\n.WED...SW wind 15 kt. Seas 3 ft.\n.WED NIGHT...W wind 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 15 kt. Seas 3 ft.\n.SAT...SE wind 10 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.032.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Bristol Bay from Port Heiden to Cape Chichagof out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 20 kt. Seas 3 ft.\n.TUE...S wind 25 kt. Seas 3 ft building to 6 ft in the afternoon.\n.TUE NIGHT...W wind 25 kt. Seas 6 ft.\n.WED...SW wind 15 kt. Seas 4 ft.\n.WED NIGHT...Variable wind less than 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 5 ft.\n.SAT...SE wind 10 kt. Seas 4 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Sitkinak to Castle Cape from 15 to 100 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 10 ft. Rain showers.\n.TUE...SW wind 30 kt. Seas 12 ft. Rain.\n.TUE NIGHT...SW wind 25 kt. Seas 11 ft.\n.WED...SW wind 15 kt. Seas 8 ft.\n.WED NIGHT...SW wind 20 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 9 ft.\n.SAT...S wind 15 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.005.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Castle Cape to Cape Tolstoi from 15 to 100 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt. Seas 12 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 12 ft.\n.TUE NIGHT...W wind 25 kt. Seas 10 ft.\n.WED AND WED NIGHT...SW wind 20 kt. Seas 8 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 9 ft.\n.SAT...S wind 20 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.008.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Port Heiden to Nelson Lagoon out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 4 ft.\n.TUE...SW wind 25 kt. Seas 6 ft.\n.TUE NIGHT...W wind 20 kt. Seas 5 ft.\n.WED...Variable wind 10 kt. Seas 3 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 2 ft.\n.THU...NW wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...SE wind 15 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.016.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Pacific Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 25 kt. Seas 9 ft.\n.TUE...W wind 20 kt. Seas 8 ft.\n.TUE NIGHT...SW wind 15 kt. Seas 7 ft.\n.WED...SW wind 20 kt. Seas 6 ft.\n.WED NIGHT...NW wind 15 kt. Seas 7 ft.\n.THU...NW wind 15 kt. Seas 6 ft.\n.FRI...SW wind 25 kt. Seas 11 ft.\n.SAT...W wind 20 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.009.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Port Heiden to Nelson Lagoon from 15 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 5 ft. Rain.\n.TUE...SW wind 25 kt. Seas 7 ft. Rain.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED...S wind 15 kt. Seas 4 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 3 ft.\n.THU...NW wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 8 ft.\n.SAT...SE wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.017.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Pacific Side from 15 to 85 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt. Seas 11 ft.\n.TUE...W wind 25 kt. Seas 10 ft.\n.TUE NIGHT...SW wind 15 kt. Seas 8 ft. Rain.\n.WED...SW wind 20 kt. Seas 9 ft.\n.WED NIGHT...W wind 15 kt. Seas 8 ft.\n.THU...NW wind 15 kt. Seas 7 ft.\n.FRI THROUGH SAT...W wind 25 kt. Seas 11 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.011.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nelson Lagoon to Unalga Pass from 15 to 70 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 25 kt. Seas 5 ft. Rain.\n.TUE...W wind 25 kt. Seas 5 ft. Areas of fog.\n.TUE NIGHT...W wind 15 kt. Seas 5 ft.\n.WED...Variable wind 10 kt. Seas 4 ft.\n.WED NIGHT...N wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 12 ft.\n.SAT...NE wind 15 kt. Seas 9 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.007.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Tolstoi to Unalga Pass from 15 to 100 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 11 ft. Rain showers.\n.TUE...SW wind 25 kt. Seas 11 ft.\n.TUE NIGHT...SW wind 20 kt. Seas 9 ft.\n.WED AND WED NIGHT...SW wind 20 kt. Seas 8 ft.\n.THU...W wind 20 kt. Seas 7 ft.\n.FRI THROUGH SAT...SW wind 25 kt. Seas 12 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.031.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Bristol Bay greater than 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 20 kt. Seas 4 ft. Rain.\n.TUE...S wind 25 kt. Seas 6 ft. Rain.\n.TUE NIGHT...W wind 25 kt. Seas 7 ft.\n.WED...SW wind 15 kt. Seas 5 ft.\n.WED NIGHT...E wind 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...SE wind 10 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.013.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Bering Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 25 kt. Seas 4 ft. Rain.\n.TUE...W wind 20 kt. Seas 4 ft.\n.TUE NIGHT...S wind 15 kt. Seas 3 ft. Rain.\n.WED...S wind 15 kt. Seas 3 ft.\n.WED NIGHT...NW wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 25 kt. Seas 12 ft.\n.SAT...W wind 20 kt. Seas 11 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.027.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Adak to Kiska Pacific Side",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...NW wind 15 kt. Seas 7 ft.\n.TUE...SW wind 15 kt increasing to 25 kt in the afternoon. Seas\n7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft. Rain.\n.WED...NW wind 20 kt. Seas 7 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 6 ft.\n.THU...SW wind 20 kt. Seas 5 ft.\n.FRI...W wind 25 kt. Seas 8 ft.\n.SAT...NW wind 20 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.020.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nikolski to Seguam Pacfic Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 8 ft.\n.TUE...W wind 15 kt. Seas 7 ft.\n.TUE NIGHT...S wind 20 kt. Seas 6 ft. Rain.\n.WED...SW wind 20 kt. Seas 7 ft.\n.WED NIGHT...NW wind 15 kt. Seas 7 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI...W wind 25 kt. Seas 11 ft.\n.SAT...NW wind 20 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.012.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unimak Pass",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 9 ft. Rain showers.\n.TUE...W wind 20 kt. Seas 7 ft.\n.TUE NIGHT...Variable wind 10 kt. Seas 6 ft.\n.WED...S wind 15 kt. Seas 5 ft.\n.WED NIGHT...NW wind 15 kt. Seas 6 ft.\n.THU...NW wind 20 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 12 ft.\n.SAT...W wind 15 kt. Seas 9 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.025.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Seguam to Adak Pacific Side from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 9 ft.\n.TUE...SW wind 15 kt. Seas 8 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft. Rain.\n.WED...W wind 25 kt. Seas 8 ft.\n.WED NIGHT...N wind 15 kt. Seas 7 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 25 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.266650c888d7b7dd918902b4e5b5a26ed9010153.021.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nikolski to Seguam Pacific Side from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 9 ft.\n.TUE...SW wind 20 kt. Seas 9 ft.\n.TUE NIGHT...SW wind 20 kt. Seas 7 ft. Rain.\n.WED...SW wind 25 kt. Seas 9 ft.\n.WED NIGHT...NW wind 15 kt. Seas 8 ft.\n.THU...NW wind 15 kt. Seas 7 ft.\n.FRI...W wind 25 kt. Seas 11 ft.\n.SAT...NW wind 25 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a282821c2b55d6b35592918cc35784b8b0aa7f00.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.4e2c4e89edaefee89e27f208d71f64cb50048011.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "St. Lucie, FL",
+    "location": "Horry, SC",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.64,
-            27.47
+            -78.97,
+            33.67
           ],
           [
-            -80.57,
-            27.56
+            -78.95,
+            33.74
           ],
           [
-            -80.54,
-            27.56
+            -78.87,
+            33.75
           ],
           [
-            -80.53,
-            27.56
+            -78.84,
+            33.72
           ],
           [
-            -80.52,
-            27.56
+            -78.94,
+            33.64
           ],
           [
-            -80.51,
-            27.56
+            -78.97,
+            33.61
           ],
           [
-            -80.5,
-            27.56
-          ],
-          [
-            -80.45,
-            27.5
-          ],
-          [
-            -80.56,
-            27.43
-          ],
-          [
-            -80.64,
-            27.47
+            -78.97,
+            33.67
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of east central Florida, including the following\ncounty, St. Lucie.\n\n* WHEN...Until 915 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 752 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 3 inches of rain have\nfallen.\n- Additional rainfall amounts up to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nmainly rural areas of Northwestern St. Lucie County\n- http://www.weather.gov/safety/flood",
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...South Central Horry County in northeastern South\nCarolina...\n\n* WHEN...Until 215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1108 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nMyrtle Beach, Surfside Beach, Myrtle Beach Airport and\nForestbrook.\n- weather.gov/safety/flood",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T21:15:00-04:00"
+      "expires": "2026-07-14T02:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b9ef3e9cf4bb330692dec5e2dd61d18cc8699f4c.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Marquette; Green Lake; Fond Du Lac; Sheboygan; Sauk; Columbia; Dodge; Washington; Ozaukee; Iowa; Dane; Jefferson; Waukesha; Milwaukee; Lafayette; Green; Rock; Walworth; Racine; Kenosha",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 103 expected.\n\n* WHERE...Portions of east central, south central, and southeast\nWisconsin.\n\n* WHEN...From noon Tuesday to 8 PM CDT Wednesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-14T03:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.91ed88461bda942494a2959bbd9f3336967992b9.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.f64eb1a20dc627558ec439f3dc0022eac9df51e4.002.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Colleton, SC",
+    "location": "Hoke, NC; Montgomery, NC; Moore, NC; Richmond, NC",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.82,
-            33.17
+            -79.84,
+            35.3
           ],
           [
-            -80.74,
-            32.95
+            -79.72,
+            35.38
           ],
           [
-            -80.91,
-            32.91
+            -79.2,
+            35.16
           ],
           [
-            -80.98,
-            33.08
-          ],
-          [
-            -80.94,
-            33.1
-          ],
-          [
-            -80.91,
-            33.06
-          ],
-          [
-            -80.9,
-            33.06
-          ],
-          [
-            -80.89,
-            33.08
-          ],
-          [
-            -80.88,
-            33.09
-          ],
-          [
-            -80.89,
-            33.1
-          ],
-          [
-            -80.89,
-            33.12
-          ],
-          [
-            -80.84,
-            33.15
-          ],
-          [
-            -80.82,
-            33.17
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Colleton County in southeastern South Carolina...\n\n* WHEN...Until 1045 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 749 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1.5 and 2.5 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nColleton, Smoaks, Lodge, Williams, Ruffin, Padgetts, Bells\nCrossroads, Caldwell and Smyly.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T22:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8316ec88d1550bb0e4a11712a3cb7758f92b517d.013.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Etolin Strait to Kwemeluk Pass from 15 to 90 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...W winds 10 kt becoming N. Seas 4 ft subsiding.\n.TUE...NW winds 25 kt. Seas 4 ft.\n.TUE NIGHT...W winds 15 kt. Seas 3 ft.\n.WED...W winds 15 kt. Seas 3 ft.\n.WED NIGHT...NW winds 10 kt. Seas 3 ft.\n.THU...NW winds 10 kt. Seas 2 ft.\n.THU NIGHT...W winds 10 kt. Seas 2 ft.\n.FRI...N winds 10 kt. Seas 3 ft.\n.SAT...N winds 10 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T06:00:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8316ec88d1550bb0e4a11712a3cb7758f92b517d.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Etolin Strait to Dall Point out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...W winds 10 kt becoming N. Seas 3 ft.\n.TUE...NW winds 25 kt. Seas 4 ft.\n.TUE NIGHT...W winds 25 kt. Seas 5 ft.\n.WED...W winds 20 kt. Seas 4 ft.\n.WED NIGHT...W winds 15 kt. Seas 3 ft.\n.THU...NW winds 10 kt. Seas 2 ft.\n.THU NIGHT...W winds 15 kt. Seas 3 ft.\n.FRI...N winds 10 kt. Seas 2 ft.\n.SAT...N winds 15 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T06:00:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4ca471ae463aa6b9af4edd779eae8971d76bb94e.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Smith; Jasper; Clarke",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -88.47,
-            31.9
-          ],
-          [
-            -88.64,
-            31.85
-          ],
-          [
-            -88.84,
-            31.83
-          ],
-          [
-            -89.62,
-            31.88
-          ],
-          [
-            -89.65,
-            31.96
-          ],
-          [
-            -89.66,
-            32.04
-          ],
-          [
-            -89.69,
-            32.05
-          ],
-          [
-            -89.73,
-            32.16
-          ],
-          [
-            -89.73,
-            32.22
-          ],
-          [
-            -88.45,
-            32.08
-          ],
-          [
-            -88.47,
-            31.9
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 648 PM CDT, Doppler radar was tracking strong thunderstorms along\na line extending from near White Oak to near Quitman. Movement was\nsoutheast at 25 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nQuitman, Bay Springs, Raleigh, Polkville, Heidelberg, Shubuta, Louin,\nDe Soto, Pachuta, Montrose, Sylvarena, Crandall, Paulding, Stringer,\nGoodwater, Orange, Stafford Springs, Center Ridge, Sykes, and White\nOak.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-13T19:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.705054931fba6817d65fcdf56c0b13964c48d0f2.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Warning",
-    "geometry": "Polygon",
-    "location": "Pinal, AZ",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -110.74,
-            32.97
-          ],
-          [
-            -110.86,
-            32.73
-          ],
-          [
-            -111.46,
-            32.89
-          ],
-          [
-            -111.08,
-            33.16
-          ],
-          [
-            -110.79,
-            33
-          ],
-          [
-            -110.78,
-            32.99
-          ],
-          [
-            -110.78,
-            32.98
-          ],
-          [
-            -110.77,
-            32.99
-          ],
-          [
-            -110.74,
-            32.97
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SVRTWC\n\nThe National Weather Service in Tucson has issued a\n\n* Severe Thunderstorm Warning for...\nNortheastern Pinal County in southeastern Arizona...\n\n* Until 530 PM MST.\n\n* At 447 PM MST, a severe thunderstorm was located 21 miles west of\nKearny, moving west at 15 mph.\n\nHAZARD...60 mph wind gusts and small hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nKearny, Dudleyville and Cactus Forest.\n\nThis includes the following highways...\nRoute 79 between mile markers 116 and 128. Route 77 between mile\nmarkers 133 and 134. Route 177 between mile markers 140 and 146.",
-      "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds.",
-      "expires": "2026-07-13T17:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.fdb2182e550681a7973609934c2d7ea0e68b5258.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Columbia, AR; Lafayette, AR; Nevada, AR; Union, AR",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -93.48,
-            33.48
-          ],
-          [
-            -93.48,
-            33.62
-          ],
-          [
-            -93.12,
-            33.47
-          ],
-          [
-            -93.12,
-            33.38
-          ],
-          [
-            -92.88,
-            33.37
-          ],
-          [
-            -92.8,
-            33.34
-          ],
-          [
-            -92.74,
-            33.32
-          ],
-          [
-            -92.78,
-            33.02
-          ],
-          [
-            -93.49,
-            33.33
-          ],
-          [
-            -93.48,
-            33.48
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Western Union County in south central Arkansas...\nNorthern Columbia County in southwestern Arkansas...\nNortheastern Lafayette County in southwestern Arkansas...\nSouthern Nevada County in southwestern Arkansas...\n\n* WHEN...Until 745 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 646 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nMagnolia, Stamps, Waldo, McNeil, Buckner, Willisville, Bodcaw,\nVillage, Mount Holly, Lisbon, Wesson, Calhoun, Mount Vernon,\nLaughlin, Ebenezer, Medlock, College Hill, Spotville, Lamartine\nand Marysville.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T19:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c1d98e3e18fc52e2ca761bf9f51a3c2994b490d6.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Anson, NC; Richmond, NC; Scotland, NC",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -80.16,
-            34.91
-          ],
-          [
-            -80.08,
-            34.87
-          ],
-          [
-            -79.86,
-            34.86
-          ],
-          [
-            -79.58,
-            34.93
-          ],
-          [
-            -79.57,
+            -79.05,
             34.99
           ],
           [
-            -79.47,
-            35.04
+            -79.03,
+            34.95
+          ],
+          [
+            -79.19,
+            34.83
+          ],
+          [
+            -79.34,
+            34.84
           ],
           [
             -79.35,
             34.94
           ],
           [
-            -79.34,
-            34.85
-          ],
-          [
-            -79.36,
-            34.82
-          ],
-          [
-            -79.33,
-            34.77
-          ],
-          [
             -79.46,
-            34.63
+            35.04
           ],
           [
-            -79.68,
-            34.8
+            -79.55,
+            35.01
           ],
           [
-            -80.2,
-            34.81
+            -79.58,
+            34.98
           ],
           [
-            -80.16,
-            34.91
+            -79.74,
+            35.05
+          ],
+          [
+            -79.83,
+            35.19
+          ],
+          [
+            -79.84,
+            35.3
           ]
         ]
       ]
     },
     "details": {
-      "description": "FFWRAH\n\nThe National Weather Service in Raleigh has issued a\n\n* Flash Flood Warning for...\nSoutheastern Anson County in central North Carolina...\nSoutheastern Richmond County in central North Carolina...\nScotland County in central North Carolina...\n\n* Until 1015 PM EDT.\n\n* At 746 PM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Up to 2 inches of rain have\nfallen across southern Richmond county. Additional rainfall\namounts of 1 to 2 inches are possible in the warned area. Flash\nflooding is ongoing or expected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nLaurinburg, Hamlet, Wagram, Gibson, Morven, East Laurinburg,\nMcFarlan, Laurel Hill, Sandhills Game Land, and Diggs.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T22:15:00-04:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...A portion of central North Carolina, including the\nfollowing counties, Hoke, Montgomery, Moore and Richmond.\n\n* WHEN...Until 1215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1108 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2 inches of rain have\nfallen.\n- Some locations that will experience flooding include...\nSouthern Pines, Raeford, Pinehurst, Aberdeen, Hoffman,\nAntioch, Whispering Pines, Pinebluff, Ellerbe, Foxfire,\nCandor, Taylortown, Norman, Ashley Heights, Sandhills Game\nLand, Derby, Seven Lakes, Bowmore, Silver City and Eagle\nSprings.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-14T00:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.cde1d388d23594ddacc95234ebd4db3dc1482c71.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.42651c458c5cdfa3e693d7095ab36e06247c873c.001.1",
     "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Sebastian Inlet to Jupiter Inlet 0-20 nm",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -80.15,
-            27.06
-          ],
-          [
-            -80.22,
-            27.15
-          ],
-          [
-            -80.28,
-            27.14
-          ],
-          [
-            -80.32,
-            27.18
-          ],
-          [
-            -80.35,
-            27.23
-          ],
-          [
-            -80.35,
-            27.28
-          ],
-          [
-            -80.32,
-            27.29
-          ],
-          [
-            -80.26,
-            27.24
-          ],
-          [
-            -80.37,
-            27.46
-          ],
-          [
-            -80.42,
-            27.67
-          ],
-          [
-            -80.09,
-            27.66
-          ],
-          [
-            -79.88,
-            27.04
-          ],
-          [
-            -80.15,
-            27.06
-          ]
-        ]
-      ]
-    },
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "unknown",
+    "location": "Koror Palau Coastal Waters; Yap Coastal Waters",
+    "coordinates": {},
     "details": {
-      "description": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nSebastian Inlet to Jupiter Inlet 0-20 nm...\n\n* Until 845 PM EDT.\n\n* At 744 PM EDT, a strong thunderstorm was located over Fort Pierce\nNorth, or over Fort Pierce, moving southeast at 25 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Expect wind gusts in excess of 34 knots, suddenly higher\nwaves, lightning and heavy downpours. Make sure all on\nboard are wearing life jackets. Return to safe harbor if\npossible.\n\n* Locations impacted include...\nFrederick Douglass Park, Fort Pierce, Fort Pierce North, Surfside\nPark, and Fort Pierce Ocean Park.",
-      "instruction": "Move to safe harbor immediately as gusty winds and high waves are\nexpected.",
-      "expires": "2026-07-13T20:45:00-04:00"
+      "description": "Latest satellite derived ocean surface wind data shows a weakening,\nthough still a fresh burst of west to southwest winds. These\nstronger winds will continue around Yap and Palau into Wednesday.\nGusts up to near gale force, or around 30 kt, can be expected at both\nYap and Palau through at least the overnight hours. Seas will\ncontinue build in response to the fresh southwest winds with\nhazardous conditions expected to continue at Yap, making inter-island\ntravel unsafe, especially to small craft.\n\nRegional weather continues to be dominated by the circulation, known\nas 97W, which sits northwest of Yap near 14N134E. This circulation\nis still showing a broad wind field and was a subject of a Tropical\nCyclone Formation Alert by the Joint Typhoon Warning Center, but has\nshown signs of weakening overnight and this morning. Formation of a\ntropical depression is still possible but not expected to occur\nduring the the next 24 hours. As 97W lifts northward, winds, and seas\nwill continue to gradually subside, first across Palau, then across\nwestern Yap State.\n\nResidents and mariners should keep up to date with the latest\nforecasts for Yap and Palau by visiting weather.gov/gum or seeking\nupdated information from local weather service offices and emergency\nmanagers. This will be the last issuance as west to southwest winds\ncontinue to weaken over the area.",
+      "instruction": null,
+      "expires": "2026-07-14T21:15:00+10:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.015.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.62225baa69f2414912dce4d350d35fef371f6411.002.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "West of Barren Islands Including Kamishak Bay",
+    "location": "Waters from Point Arena to Point Reyes 10-60 NM",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 30 kt. Seas 8 ft.\n.TUE...SE wind 30 kt. Seas 8 ft. Rain.\n.TUE NIGHT...SE wind 20 kt. Seas 5 ft.\n.WED...W wind 20 kt. Seas 5 ft.\n.WED NIGHT...SW wind 15 kt. Seas 4 ft.\n.THU...Variable wind 10 kt. Seas 3 ft.\n.FRI...Variable wind 10 kt. Seas 3 ft.\n.SAT...SE wind 15 kt. Seas 4 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
+      "description": "* WHAT...Northwest winds 15 to 20 kt with gusts up to 30 kt.\n\n* WHERE...Waters from Point Arena to Point Reyes 10-60 NM.\n\n* WHEN...Until 3 PM PDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:15:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.008.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.62225baa69f2414912dce4d350d35fef371f6411.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Northwest Prince William Sound",
+    "location": "Coastal Waters from Point Pinos to Point Piedras Blancas California out to 10 nm",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...E wind 10 kt. Seas 2 ft. Rain.\n.TUE...NE wind 20 kt. Seas 4 ft. Rain.\n.TUE NIGHT...E wind 25 kt diminishing to 15 kt after midnight.\nSeas 4 ft. Rain.\n.WED AND WED NIGHT...E wind 10 kt. Seas 2 ft.\n.THU...E wind 10 kt. Seas 2 ft.\n.FRI THROUGH SAT...E wind 15 kt. Seas 2 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
+      "description": "* WHAT...Northwest winds 15 to 25 kt expected.\n\n* WHERE...Coastal Waters from Point Pinos to Point Piedras\nBlancas California out to 10 NM.\n\n* WHEN...From 9 PM Tuesday to 9 AM PDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:15:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.016.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.62225baa69f2414912dce4d350d35fef371f6411.003.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Barren Islands East",
+    "location": "Coastal Waters from Point Arena to Point Reyes California out to 10 nm",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 20 kt increasing to 30 kt after midnight. Seas\n5 ft. Rain.\n.TUE...SE wind 30 kt. Seas 7 ft.\n.TUE NIGHT...SE wind 20 kt. Seas 7 ft.\n.WED...W wind 20 kt. Seas 4 ft.\n.WED NIGHT...SW wind 15 kt. Seas 3 ft.\n.THU...Variable wind 10 kt. Seas 4 ft.\n.FRI...Variable wind 10 kt. Seas 4 ft.\n.SAT...SE wind 15 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
+      "description": "* WHAT...Northwest winds 10 to 20 kt with gusts up to 30 kt\nexpected.\n\n* WHERE...Coastal Waters from Point Arena to Point Reyes\nCalifornia out to 10 NM.\n\n* WHEN...From 3 PM Tuesday to 3 PM PDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T04:15:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Gravel Point to Cape Cleare out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 15 kt. Seas 4 ft.\n.TUE...SE wind 25 kt. Seas 5 ft. Rain.\n.TUE NIGHT...SE wind 25 kt. Seas 8 ft. Rain.\n.WED...SW wind 15 kt. Seas 6 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 5 ft.\n.THU THROUGH FRI...SE wind 15 kt. Seas 6 ft.\n.SAT...S wind 20 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.009.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Central and Eastern Prince William Sound",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 15 kt. Seas 3 ft. Rain.\n.TUE...E wind 20 kt. Seas 4 ft. Rain.\n.TUE NIGHT...SE wind 25 kt. Seas 6 ft subsiding to 4 ft after\nmidnight. Rain.\n.WED...S wind 15 kt. Seas 3 ft.\n.WED NIGHT...SE wind 10 kt. Seas 2 ft.\n.THU THROUGH SAT...SE wind 15 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Suckling to Gravel Point out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 15 kt. Seas 4 ft.\n.TUE...SE wind 20 kt increasing to 30 kt in the afternoon. Seas\n6 ft. Rain.\n.TUE NIGHT...SE wind 30 kt becoming S 20 kt after midnight. Seas\n8 ft. Rain.\n.WED...S wind 15 kt. Seas 6 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 6 ft.\n.THU THROUGH FRI...SE wind 15 kt. Seas 6 ft.\n.SAT...SE wind 20 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Suckling to Cape Cleare from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 15 kt. Seas 4 ft.\n.TUE...SE wind 25 kt. Seas 7 ft. Rain.\n.TUE NIGHT...S wind 25 kt. Seas 8 ft.\n.WED AND WED NIGHT...SW wind 15 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...S wind 20 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.018.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Marmot Island to Sitkinak out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 5 ft. Rain.\n.TUE...S wind 25 kt. Seas 8 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft.\n.WED AND WED NIGHT...SW wind 20 kt. Seas 6 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 6 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.62237647b1ef97b00e2713898a65475f2bbc0249.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Manatee, FL",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -82.06,
-            27.51
-          ],
-          [
-            -82.09,
-            27.47
-          ],
-          [
-            -82.15,
-            27.42
-          ],
-          [
-            -82.2,
-            27.43
-          ],
-          [
-            -82.23,
-            27.46
-          ],
-          [
-            -82.24,
-            27.47
-          ],
-          [
-            -82.21,
-            27.51
-          ],
-          [
-            -82.2,
-            27.54
-          ],
-          [
-            -82.19,
-            27.56
-          ],
-          [
-            -82.16,
-            27.56
-          ],
-          [
-            -82.1,
-            27.53
-          ],
-          [
-            -82.06,
-            27.51
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of west central Florida, including the following\ncounty, Manatee.\n\n* WHEN...Until 900 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 743 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 2 and 5 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area.\n- Some locations that will experience flooding include...\nmainly rural areas of East Central Manatee County\n- https://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T21:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.017.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Gore Point to Marmot Island from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 20 kt. Seas 4 ft. Rain.\n.TUE...S wind 25 kt. Seas 8 ft. Rain.\n.TUE NIGHT...S wind 25 kt. Seas 8 ft.\n.WED...W wind 20 kt. Seas 7 ft.\n.WED NIGHT...SW wind 15 kt. Seas 6 ft.\n.THU...S wind 15 kt. Seas 5 ft.\n.FRI...W wind 15 kt. Seas 6 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.022.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Shelikof Strait",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 20 kt. Seas 3 ft. Rain.\n.TUE...SE wind 20 kt. Seas 5 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 6 ft.\n.WED...SW wind 25 kt. Seas 5 ft.\n.WED NIGHT...SW wind 20 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 5 ft.\n.SAT...SE wind 15 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.efabce49c5cff6103976344c05643dcfc97ff115.019.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Marmot Island To Sitkinak from 15 to 85 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 7 ft.\n.TUE...S wind 25 kt. Seas 10 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 10 ft.\n.WED AND WED NIGHT...SW wind 20 kt. Seas 8 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 8 ft.\n.SAT...S wind 15 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T04:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e1dd2256f9f847d26d23fa22229acfaaaa258b9.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ae902e162a753f86ccd5a0db5ab188b4219001f7.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Caddo, LA; Harrison, TX; Marion, TX; Panola, TX",
+    "location": "Fairfield, SC; Newberry, SC",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -94.58,
-            32.73
+            -81.75,
+            34.42
           ],
           [
-            -94.57,
-            32.78
+            -81.7,
+            34.45
           ],
           [
-            -94.53,
-            32.74
+            -81.64,
+            34.53
           ],
           [
-            -94.26,
-            32.53
+            -81.55,
+            34.48
           ],
           [
-            -93.98,
-            32.43
+            -81.56,
+            34.46
           ],
           [
-            -94.05,
-            32.3
+            -81.54,
+            34.45
           ],
           [
-            -94.61,
-            32.49
+            -81.48,
+            34.49
           ],
           [
-            -94.58,
-            32.73
+            -81.45,
+            34.49
+          ],
+          [
+            -81.42,
+            34.5
+          ],
+          [
+            -81.36,
+            34.5
+          ],
+          [
+            -81.25,
+            34.45
+          ],
+          [
+            -81.2,
+            34.34
+          ],
+          [
+            -81.3,
+            34.28
+          ],
+          [
+            -81.61,
+            34.25
+          ],
+          [
+            -81.7,
+            34.25
+          ],
+          [
+            -81.79,
+            34.3
+          ],
+          [
+            -81.8,
+            34.35
+          ],
+          [
+            -81.78,
+            34.37
+          ],
+          [
+            -81.75,
+            34.42
           ]
         ]
       ]
     },
     "details": {
-      "description": "FFWSHV\n\nThe National Weather Service in Shreveport has issued a\n\n* Flash Flood Warning for...\nWestern Caddo Parish in northwestern Louisiana...\nCentral Harrison County in northeastern Texas...\nSouthwestern Marion County in northeastern Texas...\nNortheastern Panola County in northeastern Texas...\n\n* Until 945 PM CDT.\n\n* At 641 PM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Flash flooding is ongoing or\nexpected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nMarshall, Hallsville, Elysian Fields, Harleton, Scottsville and\nNesbitt.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T21:45:00-05:00"
+      "description": "FFWCAE\n\nThe National Weather Service in Columbia has issued a\n\n* Flash Flood Warning for...\nWest Central Fairfield County in central South Carolina...\nCentral Newberry County in central South Carolina...\n\n* Until 145 AM EDT.\n\n* At 1052 PM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1 and 2.5 inches of rain\nhave fallen. Additional rainfall amounts of 1 to 2 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nNewberry, VC Summer Nuclear Station, Whitmire, Blair, Newberry\nCollege, Newberry County Airport, Monticello, Pomaria, US-176 and\nSC-34 Crossroads, Enoree Ranger District Office, Maybington Fire\nStation, Henderson Island, Newberry County Detention Center and\nBush River Fire Station.\n\nThis includes Interstate 26 between mile markers 62 and 79.",
+      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-14T01:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.43718c492c6d83804e64a05cac9b2bb969f1f401.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.e7943b55fd1caca401e1bcbfd30cb7f954ffe2d9.003.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Marine Weather Statement",
+    "severity": "severe",
+    "title": "Flood Warning",
     "geometry": "Polygon",
-    "location": "Sebastian Inlet to Jupiter Inlet 0-20 nm",
+    "location": "Calcasieu, LA",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.11,
-            26.97
+            -93.14,
+            30.38
           ],
           [
-            -80.18,
-            27.11
+            -93.03,
+            30.31
           ],
           [
-            -80.22,
-            27.15
+            -93.08,
+            30.25
           ],
           [
-            -80.27,
-            27.13
+            -93.21,
+            30.19
           ],
           [
-            -80.31,
-            27.16
+            -93.29,
+            30.3
           ],
           [
-            -80.35,
-            27.23
-          ],
-          [
-            -80.35,
-            27.28
-          ],
-          [
-            -80.32,
-            27.29
-          ],
-          [
-            -80.31,
-            27.29
-          ],
-          [
-            -80.26,
-            27.24
-          ],
-          [
-            -80.37,
-            27.46
-          ],
-          [
-            -80.41,
-            27.66
-          ],
-          [
-            -80.01,
-            27.67
-          ],
-          [
-            -79.73,
-            26.97
-          ],
-          [
-            -80.11,
-            26.97
+            -93.14,
+            30.38
           ]
         ]
       ]
     },
     "details": {
-      "description": "The areas affected include...\nSebastian Inlet to Jupiter Inlet 0-20 nm...\n\nAt 741 PM EDT, Doppler radar indicated a gust front, capable of\nproducing winds to around 30 knots. This front was located over Port\nSaint Lucie River Park, or over Port Saint Lucie, moving southeast\nat 25 knots.",
-      "instruction": "Mariners can expect gusty winds to around 30 knots, locally higher\nwaves, and lightning strikes. Boaters should seek safe harbor\nimmediately until this storm passes.",
-      "expires": "2026-07-13T20:45:00-04:00"
+      "description": "...The Flood Warning is extended for the following rivers in\nLouisiana...\n\nCalcasieu River Near Glenmora\n\nCalcasieu River near White Oak Park\n\n...The Flood Warning is cancelled for the following rivers in\nLouisiana...\n\nVermilion River At Lafayette, Surrey Street Gage\n\nAdditional information is available at www.weather.gov.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Calcasieu River near White Oak Park.\n\n* WHEN...From Tuesday afternoon until further notice.\n\n* IMPACTS...At 2.0 feet, Minor flooding of Goos Ferry Road will\noccur.\n\n* ADDITIONAL DETAILS...\n- At 9:35 PM CDT Monday the stage was 1.7 feet.\n- Forecast...The river will oscillate around flood stage with a\nmaximum value of 2.4 feet Saturday morning.\n- Flood stage is 2.0 feet.\n- http://www.weather.gov/safety/flood",
+      "instruction": null,
+      "expires": "2026-07-14T22:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e7943b55fd1caca401e1bcbfd30cb7f954ffe2d9.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Rapides, LA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -92.75,
+            31.15
+          ],
+          [
+            -92.65,
+            31.05
+          ],
+          [
+            -92.62,
+            30.9
+          ],
+          [
+            -92.69,
+            30.9
+          ],
+          [
+            -92.79,
+            31.13
+          ],
+          [
+            -92.75,
+            31.15
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...The Flood Warning is extended for the following rivers in\nLouisiana...\n\nCalcasieu River Near Glenmora\n\nCalcasieu River near White Oak Park\n\n...The Flood Warning is cancelled for the following rivers in\nLouisiana...\n\nVermilion River At Lafayette, Surrey Street Gage\n\nAdditional information is available at www.weather.gov.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Calcasieu River near Glenmora.\n\n* WHEN...From late tonight to early Thursday afternoon.\n\n* IMPACTS...At 12.0 feet, When the river is falling and the gauge\nreading is forecast to be near 12 feet, flooding of forested areas\nnear the river will occur.\n\n* ADDITIONAL DETAILS...\n- At 8:45 PM CDT Monday the stage was 11.8 feet.\n- Forecast...The river is expected to rise above flood stage\njust after midnight tonight to a crest of 12.5 feet tomorrow\nevening. It will then fall below flood stage Thursday\nmorning.\n- Flood stage is 12.0 feet.\n- http://www.weather.gov/safety/flood",
+      "instruction": null,
+      "expires": "2026-07-14T22:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.498579e0cf396382698de6452c9551ddfdbce870.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Vilas; Oneida; Forest; Florence; Northern Marinette County; Lincoln; Langlade; Menominee; Northern Oconto County; Door; Marathon; Shawano; Wood; Portage; Waupaca; Outagamie; Brown; Kewaunee; Waushara; Winnebago; Calumet; Manitowoc; Southern Marinette County; Southern Oconto County",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values of 95 to 105 expected again on Tuesday.\nHighest heat index values in far northeast Wisconsin. Heat indices\nthe rest of tonight will only drop to 70 to 75 degrees, which will\nstill be hazardous for anyone without shelter after the heat this\nafternoon.\n\n* WHERE...Portions of central, east central, north central, and\nnortheast Wisconsin.\n\n* WHEN...Until 9 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T06:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.0b7cee9991af50e9c4fa739fa156f469144ca513.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Palm Beach, FL",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.34,
+            26.68
+          ],
+          [
+            -80.07,
+            26.75
+          ],
+          [
+            -80.04,
+            26.75
+          ],
+          [
+            -80.03,
+            26.71
+          ],
+          [
+            -80.05,
+            26.53
+          ],
+          [
+            -80.34,
+            26.59
+          ],
+          [
+            -80.34,
+            26.68
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southeast Florida, including the following\ncounty, Palm Beach.\n\n* WHEN...Until 1245 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways. Ponding of water in urban or other areas is\noccurring or is imminent.\n\n* ADDITIONAL DETAILS...\n- At 1044 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 2 and 3 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nWest Palm Beach, Boynton Beach, Wellington, Lake Worth, Palm\nBeach, Ocean Ridge, Greenacres, Royal Palm Beach, Palm\nSprings, Lantana, Atlantis, Haverhill, Cloud Lake, Lake\nBelvedere Estates, Royal Palm Estates, Golden Lakes, Gun Club\nEstates, President Donald J. Trump International Airport,\nSchall Circle and Loxahatchee Groves.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+      "expires": "2026-07-14T00:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.05138213fd79370e8dbe2276e2a4238d9e779a97.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Nevada, CA; Placer, CA; Sierra, CA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -120.22,
+            39.44
+          ],
+          [
+            -120.01,
+            39.46
+          ],
+          [
+            -120.01,
+            39.35
+          ],
+          [
+            -120.28,
+            39.28
+          ],
+          [
+            -120.3,
+            39.35
+          ],
+          [
+            -120.22,
+            39.44
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of east central and northeast California,\nincluding the following counties, in east central California,\nNevada and Placer. In northeast California, Sierra.\n\n* WHEN...Until 945 PM PDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 744 PM PDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in along I-80. Between 0.5 and 1 inch of rain has\nfallen.\n- Along Interstate 80 and Hwy 89 are the most likely places to\nexperience minor flooding.\nAdditional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nProsser Creek Reservoir, Boca Reservoir, Glenshire-Devonshire\nCdp, Hirschdale, Floriston, Truckee, Lakeside Campground,\nHobart Mills, Boca Campground, Alpine Meadows Campground,\nTruckee-Tahoe Airport, Glenshire-Devonshire, Boca Rest\nCampground, Ca 89 At Nevada-Sierra Co Line, Ca 89 At Placer-\nNevada Co Line, Granite Flat Campground and Donner Memorial\nCampground.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-13T21:45:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bf794cd93b87f3c2748b183e9d36d585adc9ebde.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Emmet; Cheboygan; Leelanau; Antrim; Otsego; Benzie; Grand Traverse; Kalkaska; Crawford; Manistee; Wexford; Missaukee; Roscommon; Beaver Island and surrounding islands; Charlevoix",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 99.\n\n* WHERE...A portion of Northern Lower Michigan.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-14T10:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bf794cd93b87f3c2748b183e9d36d585adc9ebde.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Western Chippewa; Central Chippewa; Southeast Chippewa; Western Mackinac; Eastern Mackinac; Mackinac Island/Bois Blanc Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 103.\n\n* WHERE...Central Chippewa, Eastern Mackinac, Southeast Chippewa,\nWestern Chippewa, and Western Mackinac Counties, and Mackinac\nIsland/Bois Blanc Island.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-14T10:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bf794cd93b87f3c2748b183e9d36d585adc9ebde.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Presque Isle; Montmorency; Alpena; Oscoda; Alcona; Ogemaw; Iosco; Gladwin; Arenac",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 103.\n\n* WHERE...Alcona, Alpena, Arenac, Gladwin, Iosco, Montmorency,\nOgemaw, Oscoda, and Presque Isle Counties.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-14T10:45:00-04:00"
     },
     "source": "NOAA Weather"
   }
