@@ -1,813 +1,51 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.74cdcc1195ee4e6cd92cc3470d65993f96497e98.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Warning",
-    "geometry": "Polygon",
-    "location": "Madison, MT",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -111.66,
-            45.64
-          ],
-          [
-            -111.43,
-            45.24
-          ],
-          [
-            -111.75,
-            45.25
-          ],
-          [
-            -111.87,
-            45.41
-          ],
-          [
-            -111.66,
-            45.64
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 920 PM MDT, severe thunderstorms were located along a line\nextending from 18 miles southeast of Harrison to near Ennis, moving\nnortheast at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nEnnis, Norris, Jeffers, and Mcallister.",
-      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-      "expires": "2026-07-13T21:45:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Point Piedras Blancas to Point Sal from 10 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Point Piedras Blancas to Point Sal from 10 to 60 NM.\n\n* WHEN...From noon Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Outer waters from Santa Cruz Island to San Clemente Island to 60 NM offshore including San Nicolas and Santa Barbara Islands",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Outer waters from Santa Cruz Island to San Clemente\nIsland to 60 NM offshore including San Nicolas and Santa\nBarbara Islands.\n\n* WHEN...From 6 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Waters from Pt. Sal to Santa Cruz Island CA and westward 60 nm including San Miguel and Santa Rosa Islands",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Waters from Pt. Sal to Santa Cruz Island CA and\nwestward 60 nm including San Miguel and Santa Rosa Islands.\n\n* WHEN...From 3 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4ff406723eb29d0dc2f3d0306d3be3560219d319.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "East Santa Barbara Channel from Pt. Conception to Pt. Mugu CA including Santa Cruz Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...East Santa Barbara Channel from Pt. Conception to Pt.\nMugu CA including Santa Cruz Island.\n\n* WHEN...From 3 PM to 9 PM PDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e8fb9baa90b27fd8af9c4ab2748861c8111a8a31.001.2",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Red Flag Warning",
-    "geometry": "unknown",
-    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake",
-    "coordinates": {},
-    "details": {
-      "description": "* WHEN...Tuesday afternoon and evening.\n\n* AFFECTED AREA...In Minnesota, Koochiching, North St. Louis and\nNorthern Cook and Lake counties.\n\n* WINDS...Northwest 5 to 10 mph with gusts up to 20 mph.\n\n* RELATIVE HUMIDITY...As low as 22 percent.\n\n* TEMPERATURES...90 to 95.\n\n* IMPACTS...The rapid spread of any fires may occur due to the\nforecast weather conditions and dry fuels per guidance from\nlocal land management agencies.",
-      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
-      "expires": "2026-07-14T10:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Sitkinak to Castle Cape out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt. Seas 6 ft. Rain showers.\n.TUE...S wind 30 kt. Seas 8 ft. Widespread rain showers.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED...Variable wind 10 kt. Seas 5 ft.\n.WED NIGHT...S wind 15 kt. Seas 4 ft.\n.THU THROUGH FRI...SW wind 15 kt. Seas 7 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Sitkinak to Castle Cape from 15 to 100 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 10 ft. Rain showers.\n.TUE...SW wind 30 kt. Seas 11 ft. Rain.\n.TUE NIGHT...W wind 25 kt. Seas 11 ft.\n.WED...SW wind 15 kt. Seas 8 ft.\n.WED NIGHT...SW wind 20 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 8 ft.\n.SAT...S wind 15 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Castle Cape to Cape Tolstoi out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 6 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 7 ft. Rain.\n.TUE NIGHT...W wind 25 kt diminishing to 15 kt after midnight.\nSeas 5 ft.\n.WED AND WED NIGHT...SW wind 15 kt. Seas 4 ft.\n.THU...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 15 kt. Seas 7 ft.\n.SAT...S wind 15 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.009.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ad90e6e92956aad59ca81ce9b61188cf188731d5.001.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Gale Warning",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Port Heiden to Nelson Lagoon from 15 to 60 NM",
+    "location": "Northern Litchfield; Southern Berkshire; Bennington",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 6 ft. Rain.\n.TUE...SW wind 35 kt. Seas 10 ft. Rain.\n.TUE NIGHT...W wind 25 kt. Seas 8 ft.\n.WED...S wind 15 kt. Seas 5 ft.\n.WED NIGHT...E wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 8 ft.\n.SAT...SE wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
+      "description": "* WHAT...Heat index values up to 103 expected.\n\n* WHERE...In Connecticut, Northern Litchfield County. In\nMassachusetts, Southern Berkshire County. In Vermont, Bennington\nCounty.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T15:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.025.2",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Seguam to Adak Pacific Side from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 9 ft.\n.TUE...SW wind 15 kt. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft. Rain.\n.WED...W wind 25 kt. Seas 9 ft.\n.WED NIGHT...N wind 20 kt. Seas 7 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 25 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.006.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Tolstoi to Cape Sarichef out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 9 ft. Widespread rain showers.\n.TUE...W wind 25 kt. Seas 8 ft.\n.TUE NIGHT...W wind 20 kt in the evening becoming variable 10 kt.\nSeas 7 ft.\n.WED...S wind 15 kt. Seas 5 ft.\n.WED NIGHT...SW wind 15 kt. Seas 5 ft.\n.THU...NW wind 15 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 11 ft.\n.SAT...S wind 15 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.027.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Adak to Kiska Pacific Side",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...NW wind 15 kt. Seas 7 ft.\n.TUE...SW wind 15 kt becoming S 25 kt in the afternoon. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 7 ft. Rain.\n.WED...NW wind 20 kt. Seas 7 ft.\n.WED NIGHT...N wind 15 kt. Seas 6 ft.\n.THU...SW wind 20 kt. Seas 5 ft.\n.FRI...W wind 25 kt. Seas 8 ft.\n.SAT...NW wind 20 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.016.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Pacific Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt becoming W 20 kt after midnight.\nSeas 9 ft.\n.TUE...W wind 20 kt. Seas 8 ft.\n.TUE NIGHT...SW wind 15 kt. Seas 6 ft.\n.WED...SW wind 20 kt. Seas 6 ft.\n.WED NIGHT...NW wind 15 kt. Seas 7 ft.\n.THU...W wind 15 kt. Seas 6 ft.\n.FRI...SW wind 25 kt. Seas 11 ft.\n.SAT...W wind 20 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.012.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unimak Pass",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 9 ft. Rain showers.\n.TUE...W wind 20 kt. Seas 7 ft.\n.TUE NIGHT...S wind 15 kt. Seas 6 ft.\n.WED...S wind 20 kt. Seas 5 ft.\n.WED NIGHT...NW wind 15 kt. Seas 6 ft.\n.THU...W wind 20 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 12 ft.\n.SAT...W wind 15 kt. Seas 9 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.035.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Kuskokwim Delta from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...E wind 20 kt. Seas 4 ft. Rain.\n.TUE...W wind 30 kt. Seas 8 ft. Areas of fog.\n.TUE NIGHT...W wind 25 kt. Seas 8 ft.\n.WED...SW wind 15 kt. Seas 5 ft.\n.WED NIGHT...W wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 3 ft.\n.FRI...S wind 15 kt. Seas 6 ft.\n.SAT...E wind 10 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.015.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalaska Bay",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 30 kt. Seas 2 ft building to 4 ft after\nmidnight. Rain.\n.TUE...W wind 20 kt. Seas 3 ft.\n.TUE NIGHT...N wind 10 kt becoming SE after midnight.\nSeas 3 ft. Rain.\n.WED...S wind 15 kt. Seas 2 ft.\n.WED NIGHT...NW wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 3 ft.\n.FRI...SW wind 15 kt. Seas 2 ft.\n.SAT...W wind 15 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.005.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Castle Cape to Cape Tolstoi from 15 to 100 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 12 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 12 ft.\n.TUE NIGHT...W wind 25 kt. Seas 10 ft.\n.WED AND WED NIGHT...SW wind 20 kt. Seas 7 ft.\n.THU THROUGH FRI...SW wind 20 kt. Seas 9 ft.\n.SAT...S wind 20 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.033.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Bristol Bay from Cape Chichagof to Cape Pierce out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 4 ft. Widespread rain showers.\n.TUE...SW wind 30 kt. Seas 4 ft building to 7 ft in the afternoon.\nRain.\n.TUE NIGHT...W wind 30 kt. Seas 7 ft.\n.WED...SW wind 15 kt. Seas 4 ft.\n.WED NIGHT...W wind 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 15 kt. Seas 3 ft.\n.SAT...SE wind 10 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.007.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Tolstoi to Unalga Pass from 15 to 100 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 30 kt. Seas 12 ft. Rain showers.\n.TUE...SW wind 25 kt. Seas 12 ft.\n.TUE NIGHT...SW wind 20 kt. Seas 9 ft.\n.WED...S wind 25 kt. Seas 7 ft.\n.WED NIGHT...SW wind 20 kt. Seas 8 ft.\n.THU...W wind 20 kt. Seas 7 ft.\n.FRI THROUGH SAT...SW wind 25 kt. Seas 12 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.025.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Seguam to Adak Pacific Side from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 9 ft.\n.TUE...SW wind 15 kt. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 8 ft. Rain.\n.WED...W wind 25 kt. Seas 9 ft.\n.WED NIGHT...N wind 20 kt. Seas 7 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 25 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.020.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nikolski to Seguam Pacfic Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 8 ft.\n.TUE...W wind 20 kt. Seas 7 ft.\n.TUE NIGHT...S wind 20 kt. Seas 6 ft. Rain.\n.WED...SW wind 20 kt. Seas 7 ft.\n.WED NIGHT...NW wind 20 kt. Seas 7 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI...W wind 25 kt. Seas 11 ft.\n.SAT...NW wind 20 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.008.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ad90e6e92956aad59ca81ce9b61188cf188731d5.002.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Gale Warning",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Port Heiden to Nelson Lagoon out to 15 NM",
+    "location": "Southern Litchfield; Eastern Ulster; Western Dutchess; Eastern Dutchess",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 30 kt. Seas 4 ft.\n.TUE...SW wind 35 kt. Seas 7 ft.\n.TUE NIGHT...W wind 25 kt. Seas 6 ft.\n.WED...SE wind 15 kt. Seas 4 ft.\n.WED NIGHT...Variable wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...SE wind 15 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
+      "description": "* WHAT...Heat index values up to 104 expected today and up to 100\nWednesday.\n\n* WHERE...In Connecticut, Southern Litchfield County. In New York,\nEastern Dutchess, Eastern Ulster, and Western Dutchess Counties.\n\n* WHEN...From 11 AM this morning to 7 PM EDT Wednesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T15:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.014.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Bering Side from 15 to 85 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 25 kt. Seas 6 ft.\n.TUE...W wind 20 kt. Seas 5 ft. Areas of fog.\n.TUE NIGHT...S wind 15 kt. Seas 4 ft. Rain.\n.WED...SE wind 15 kt. Seas 4 ft.\n.WED NIGHT...N wind 15 kt. Seas 4 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...SW wind 25 kt. Seas 13 ft.\n.SAT...NW wind 20 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.017.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Pacific Side from 15 to 85 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt. Seas 11 ft.\n.TUE...W wind 25 kt. Seas 10 ft.\n.TUE NIGHT...SW wind 20 kt. Seas 8 ft. Rain.\n.WED...SW wind 25 kt. Seas 8 ft.\n.WED NIGHT...W wind 20 kt. Seas 8 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI THROUGH SAT...W wind 25 kt. Seas 11 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.013.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Unalga Pass to Nikolski Bering Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 30 kt. Seas 4 ft. Rain.\n.TUE...W wind 20 kt. Seas 4 ft.\n.TUE NIGHT...SW wind 15 kt. Seas 3 ft. Rain.\n.WED...S wind 20 kt. Seas 3 ft.\n.WED NIGHT...NW wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 25 kt. Seas 12 ft.\n.SAT...W wind 20 kt. Seas 11 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.024.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Seguam to Adak Pacific Side out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 7 ft.\n.TUE...SW wind 15 kt. Seas 7 ft.\n.TUE NIGHT...SW wind 25 kt. Seas 7 ft. Rain.\n.WED...W wind 20 kt. Seas 7 ft.\n.WED NIGHT...N wind 20 kt. Seas 6 ft.\n.THU...W wind 20 kt. Seas 6 ft.\n.FRI...W wind 25 kt. Seas 9 ft.\n.SAT...NW wind 20 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.031.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ad90e6e92956aad59ca81ce9b61188cf188731d5.003.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Gale Warning",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Bristol Bay greater than 15 NM",
+    "location": "Southern Herkimer; Southern Fulton; Montgomery; Northern Saratoga; Northern Warren; Northern Washington; Schoharie; Western Schenectady; Eastern Schenectady; Southern Saratoga; Western Albany; Eastern Albany; Western Rensselaer; Eastern Rensselaer; Western Greene; Eastern Greene; Western Columbia; Eastern Columbia; Western Ulster; Southeast Warren; Southern Washington; Western Windham; Eastern Windham",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 5 ft. Rain.\n.TUE...SW wind 35 kt. Seas 10 ft. Rain.\n.TUE NIGHT...W wind 30 kt. Seas 9 ft.\n.WED...SW wind 15 kt. Seas 5 ft.\n.WED NIGHT...E wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 6 ft.\n.SAT...SE wind 10 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
+      "description": "* WHAT...Heat index values up to 104 expected.\n\n* WHERE...Portions of east central and eastern New York and southern\nVermont.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T15:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.034.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Kuskokwim Delta and Etolin Strait out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...NE wind 20 kt. Seas 3 ft.\n.TUE...NW wind 30 kt. Seas 5 ft.\n.TUE NIGHT...W wind 25 kt. Seas 5 ft.\n.WED...SW wind 15 kt. Seas 3 ft.\n.WED NIGHT...W wind 10 kt. Seas 2 ft.\n.THU...W wind 15 kt. Seas 2 ft.\n.FRI...S wind 15 kt. Seas 4 ft.\n.SAT...NE wind 15 kt. Seas 4 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.010.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Gale Warning",
-    "geometry": "unknown",
-    "location": "Nelson Lagoon to Cape Sarichef out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SW wind 35 kt. Seas 6 ft. Rain.\n.TUE...W wind 30 kt. Seas 7 ft.\n.TUE NIGHT...W wind 20 kt. Seas 5 ft.\n.WED...SE wind 15 kt. Seas 3 ft.\n.WED NIGHT...N wind 15 kt. Seas 3 ft.\n.THU...W wind 20 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 10 ft.\n.SAT...S wind 15 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.032.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Gale Warning",
-    "geometry": "unknown",
-    "location": "Bristol Bay from Port Heiden to Cape Chichagof out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...SE wind 25 kt. Seas 3 ft.\n.TUE...S wind 35 kt. Seas 5 ft building to 8 ft in the afternoon.\n.TUE NIGHT...SW wind 30 kt. Seas 7 ft.\n.WED...SW wind 15 kt. Seas 4 ft.\n.WED NIGHT...E wind 10 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 15 kt. Seas 5 ft.\n.SAT...SE wind 10 kt. Seas 4 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.011.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Gale Warning",
-    "geometry": "unknown",
-    "location": "Nelson Lagoon to Unalga Pass from 15 to 70 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...S wind 25 kt becoming SW 35 kt after midnight. Seas 7\nft. Rain.\n.TUE...W wind 30 kt. Seas 8 ft. Areas of fog.\n.TUE NIGHT...W wind 20 kt. Seas 6 ft.\n.WED...SE wind 15 kt. Seas 4 ft.\n.WED NIGHT...N wind 15 kt. Seas 3 ft.\n.THU...W wind 15 kt. Seas 5 ft.\n.FRI...SW wind 20 kt. Seas 12 ft.\n.SAT...NE wind 15 kt. Seas 9 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.089a22df57484f08ba8c23ebede412622be4ef16.021.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Nikolski to Seguam Pacific Side from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 25 kt. Seas 10 ft.\n.TUE...W wind 20 kt. Seas 9 ft.\n.TUE NIGHT...S wind 20 kt. Seas 7 ft. Rain.\n.WED...SW wind 25 kt. Seas 9 ft.\n.WED NIGHT...NW wind 20 kt. Seas 8 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.FRI...W wind 25 kt. Seas 11 ft.\n.SAT...NW wind 25 kt. Seas 10 ft.",
-      "instruction": null,
-      "expires": "2026-07-14T08:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-15172",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Test Message",
-    "geometry": "unknown",
-    "location": "Montgomery",
-    "coordinates": {},
-    "details": {
-      "description": "Monitoring message only. Please disregard.",
-      "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-14T03:25:33+00:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.dbe8573a729aaad8e0d81960d8dbb9f8bd1d78eb.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Fairfield, SC; Kershaw, SC; Lee, SC; Richland, SC; Sumter, SC",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -81.17,
-            34.21
-          ],
-          [
-            -81.2,
-            34.22
-          ],
-          [
-            -81.33,
-            34.27
-          ],
-          [
-            -81.3,
-            34.28
-          ],
-          [
-            -81.19,
-            34.34
-          ],
-          [
-            -81.05,
-            34.38
-          ],
-          [
-            -80.97,
-            34.39
-          ],
-          [
-            -80.8,
-            34.36
-          ],
-          [
-            -80.62,
-            34.29
-          ],
-          [
-            -80.47,
-            34.19
-          ],
-          [
-            -80.4,
-            34
-          ],
-          [
-            -80.44,
-            33.96
-          ],
-          [
-            -80.5,
-            33.95
-          ],
-          [
-            -80.61,
-            34.03
-          ],
-          [
-            -80.93,
-            34.1
-          ],
-          [
-            -81.17,
-            34.21
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southern Fairfield County in central South Carolina...\nSouthwestern Kershaw County in central South Carolina...\nWest Central Lee County in central South Carolina...\nNortheastern Richland County in central South Carolina...\nNorthwestern Sumter County in central South Carolina...\n\n* WHEN...Until 215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1111 PM EDT, Doppler radar and automated rain gauges indicated\nheavy rain due to thunderstorms. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area. Between 1.5 and\n2.5 inches of rain have fallen.\n- Additional rainfall amounts of 0.5 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nColumbia, Sumter, Camden, Winnsboro, Shaw Air Base, Elgin, Lake\nCarolina, Villages at Sandhill, Lugoff, Killian, Longtown,\nFairfield County Airport, Oakland, Jenkinsville, Blythewood,\nRidgeway, Pine Grove Fire Station and Smallwood.\n- This includes the following highways...\nInterstate 20 in South Carolina between mile markers 79 and 102.\nInterstate 77 between mile markers 21 and 39.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-      "expires": "2026-07-14T02:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e2c4e89edaefee89e27f208d71f64cb50048011.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Horry, SC",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -78.97,
-            33.67
-          ],
-          [
-            -78.95,
-            33.74
-          ],
-          [
-            -78.87,
-            33.75
-          ],
-          [
-            -78.84,
-            33.72
-          ],
-          [
-            -78.94,
-            33.64
-          ],
-          [
-            -78.97,
-            33.61
-          ],
-          [
-            -78.97,
-            33.67
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...South Central Horry County in northeastern South\nCarolina...\n\n* WHEN...Until 215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1108 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nMyrtle Beach, Surfside Beach, Myrtle Beach Airport and\nForestbrook.\n- weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-14T02:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f64eb1a20dc627558ec439f3dc0022eac9df51e4.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Hoke, NC; Montgomery, NC; Moore, NC; Richmond, NC",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -79.84,
-            35.3
-          ],
-          [
-            -79.72,
-            35.38
-          ],
-          [
-            -79.2,
-            35.16
-          ],
-          [
-            -79.05,
-            34.99
-          ],
-          [
-            -79.03,
-            34.95
-          ],
-          [
-            -79.19,
-            34.83
-          ],
-          [
-            -79.34,
-            34.84
-          ],
-          [
-            -79.35,
-            34.94
-          ],
-          [
-            -79.46,
-            35.04
-          ],
-          [
-            -79.55,
-            35.01
-          ],
-          [
-            -79.58,
-            34.98
-          ],
-          [
-            -79.74,
-            35.05
-          ],
-          [
-            -79.83,
-            35.19
-          ],
-          [
-            -79.84,
-            35.3
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...A portion of central North Carolina, including the\nfollowing counties, Hoke, Montgomery, Moore and Richmond.\n\n* WHEN...Until 1215 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1108 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 2 inches of rain have\nfallen.\n- Some locations that will experience flooding include...\nSouthern Pines, Raeford, Pinehurst, Aberdeen, Hoffman,\nAntioch, Whispering Pines, Pinebluff, Ellerbe, Foxfire,\nCandor, Taylortown, Norman, Ashley Heights, Sandhills Game\nLand, Derby, Seven Lakes, Bowmore, Silver City and Eagle\nSprings.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-      "expires": "2026-07-14T00:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.42651c458c5cdfa3e693d7095ab36e06247c873c.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "unknown",
-    "location": "Koror Palau Coastal Waters; Yap Coastal Waters",
-    "coordinates": {},
-    "details": {
-      "description": "Latest satellite derived ocean surface wind data shows a weakening,\nthough still a fresh burst of west to southwest winds. These\nstronger winds will continue around Yap and Palau into Wednesday.\nGusts up to near gale force, or around 30 kt, can be expected at both\nYap and Palau through at least the overnight hours. Seas will\ncontinue build in response to the fresh southwest winds with\nhazardous conditions expected to continue at Yap, making inter-island\ntravel unsafe, especially to small craft.\n\nRegional weather continues to be dominated by the circulation, known\nas 97W, which sits northwest of Yap near 14N134E. This circulation\nis still showing a broad wind field and was a subject of a Tropical\nCyclone Formation Alert by the Joint Typhoon Warning Center, but has\nshown signs of weakening overnight and this morning. Formation of a\ntropical depression is still possible but not expected to occur\nduring the the next 24 hours. As 97W lifts northward, winds, and seas\nwill continue to gradually subside, first across Palau, then across\nwestern Yap State.\n\nResidents and mariners should keep up to date with the latest\nforecasts for Yap and Palau by visiting weather.gov/gum or seeking\nupdated information from local weather service offices and emergency\nmanagers. This will be the last issuance as west to southwest winds\ncontinue to weaken over the area.",
-      "instruction": null,
-      "expires": "2026-07-14T21:15:00+10:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.62225baa69f2414912dce4d350d35fef371f6411.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Waters from Point Arena to Point Reyes 10-60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 15 to 20 kt with gusts up to 30 kt.\n\n* WHERE...Waters from Point Arena to Point Reyes 10-60 NM.\n\n* WHEN...Until 3 PM PDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.62225baa69f2414912dce4d350d35fef371f6411.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal Waters from Point Pinos to Point Piedras Blancas California out to 10 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 15 to 25 kt expected.\n\n* WHERE...Coastal Waters from Point Pinos to Point Piedras\nBlancas California out to 10 NM.\n\n* WHEN...From 9 PM Tuesday to 9 AM PDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.62225baa69f2414912dce4d350d35fef371f6411.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal Waters from Point Arena to Point Reyes California out to 10 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 10 to 20 kt with gusts up to 30 kt\nexpected.\n\n* WHERE...Coastal Waters from Point Arena to Point Reyes\nCalifornia out to 10 NM.\n\n* WHEN...From 3 PM Tuesday to 3 PM PDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-14T04:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae902e162a753f86ccd5a0db5ab188b4219001f7.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.0e1d93cfdf198a569299ed6b0d9feb5dfd0a7918.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Flash Flood Warning",
@@ -897,253 +135,953 @@
       ]
     },
     "details": {
-      "description": "FFWCAE\n\nThe National Weather Service in Columbia has issued a\n\n* Flash Flood Warning for...\nWest Central Fairfield County in central South Carolina...\nCentral Newberry County in central South Carolina...\n\n* Until 145 AM EDT.\n\n* At 1052 PM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1 and 2.5 inches of rain\nhave fallen. Additional rainfall amounts of 1 to 2 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nNewberry, VC Summer Nuclear Station, Whitmire, Blair, Newberry\nCollege, Newberry County Airport, Monticello, Pomaria, US-176 and\nSC-34 Crossroads, Enoree Ranger District Office, Maybington Fire\nStation, Henderson Island, Newberry County Detention Center and\nBush River Fire Station.\n\nThis includes Interstate 26 between mile markers 62 and 79.",
-      "instruction": "Most flooding deaths occur in vehicles. Never drive through a flooded\nroadway or around barricades. Turn around, don't drown.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.",
-      "expires": "2026-07-14T01:45:00-04:00"
+      "description": "The heavy rain has ended. Flooding is no longer expected to pose a\nthreat. Please continue to heed remaining road closures.",
+      "instruction": null,
+      "expires": "2026-07-14T01:50:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e7943b55fd1caca401e1bcbfd30cb7f954ffe2d9.003.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-20686",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Test Message",
+    "geometry": "unknown",
+    "location": "Montgomery",
+    "coordinates": {},
+    "details": {
+      "description": "Monitoring message only. Please disregard.",
+      "instruction": "Monitoring message only. Please disregard.",
+      "expires": "2026-07-14T05:45:33+00:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.5f8c18ff08dca951e7282aac9f53125a525992ca.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Warning",
+    "title": "Special Marine Warning",
     "geometry": "Polygon",
-    "location": "Calcasieu, LA",
+    "location": "St. Andrews Bay Waterways; Coastal waters from Okaloosa-Walton County Line to Mexico Beach out 20 NM; Waters from Okaloosa-Walton County Line to Mexico Beach from 20 to 60 NM",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -93.14,
+            -85.56,
             30.38
           ],
           [
-            -93.03,
-            30.31
+            -85.47,
+            30.32
           ],
           [
-            -93.08,
-            30.25
+            -85.51,
+            30.23
           ],
           [
-            -93.21,
+            -85.6,
             30.19
           ],
           [
-            -93.29,
-            30.3
+            -85.46,
+            30.18
           ],
           [
-            -93.14,
+            -85.4,
+            30.14
+          ],
+          [
+            -85.37,
+            30.01
+          ],
+          [
+            -85.41,
+            29.99
+          ],
+          [
+            -85.34,
+            29.88
+          ],
+          [
+            -85.39,
+            29.92
+          ],
+          [
+            -85.41,
+            29.88
+          ],
+          [
+            -86.06,
+            29.91
+          ],
+          [
+            -86.16,
+            30.21
+          ],
+          [
+            -85.99,
+            30.29
+          ],
+          [
+            -85.89,
+            30.26
+          ],
+          [
+            -85.85,
+            30.36
+          ],
+          [
+            -85.81,
+            30.38
+          ],
+          [
+            -85.75,
+            30.37
+          ],
+          [
+            -85.7,
+            30.31
+          ],
+          [
+            -85.6,
+            30.39
+          ],
+          [
+            -85.56,
             30.38
           ]
         ]
       ]
     },
     "details": {
-      "description": "...The Flood Warning is extended for the following rivers in\nLouisiana...\n\nCalcasieu River Near Glenmora\n\nCalcasieu River near White Oak Park\n\n...The Flood Warning is cancelled for the following rivers in\nLouisiana...\n\nVermilion River At Lafayette, Surrey Street Gage\n\nAdditional information is available at www.weather.gov.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Calcasieu River near White Oak Park.\n\n* WHEN...From Tuesday afternoon until further notice.\n\n* IMPACTS...At 2.0 feet, Minor flooding of Goos Ferry Road will\noccur.\n\n* ADDITIONAL DETAILS...\n- At 9:35 PM CDT Monday the stage was 1.7 feet.\n- Forecast...The river will oscillate around flood stage with a\nmaximum value of 2.4 feet Saturday morning.\n- Flood stage is 2.0 feet.\n- http://www.weather.gov/safety/flood",
-      "instruction": null,
-      "expires": "2026-07-14T22:00:00-05:00"
+      "description": "SMWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Special Marine Warning for...\nCoastal waters from Okaloosa-Walton County Line to Mexico Beach out\n20 NM...\nSt. Andrews Bay Waterways...\nWaters from Okaloosa-Walton County Line to Mexico Beach from 20 to\n60 NM...\n\n* Until 130 AM CDT.\n\n* At 1233 AM CDT, a severe thunderstorm capable of producing\nwaterspouts was located 9 nm southwest of Panama City Beach, moving\neast at 20 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can quickly form and capsize boats...damage\nvessels...and create suddenly higher waves. Make sure all\non board are in a secure location and wearing life\njackets. Expect wind gusts in excess of 34\nknots...suddenly higher waves...frequent lightning...and\nheavy downpours. Make sure all on board are wearing life\njackets.\n\n* Locations impacted include...\nMexico Beach, Panama City Beach, and Laguna Beach.",
+      "instruction": "Move to safe harbor until hazardous weather passes.",
+      "expires": "2026-07-14T01:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e7943b55fd1caca401e1bcbfd30cb7f954ffe2d9.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.75bd6fe7e881b2c543ca2ed3eae91417378a1f8e.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Warning",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Rapides, LA",
+    "location": "Medina, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -92.75,
-            31.15
+            -98.89,
+            29.23
           ],
           [
-            -92.65,
-            31.05
+            -99.41,
+            29.26
           ],
           [
-            -92.62,
-            30.9
+            -99.41,
+            29.54
           ],
           [
-            -92.69,
-            30.9
+            -98.95,
+            29.53
           ],
           [
-            -92.79,
-            31.13
-          ],
-          [
-            -92.75,
-            31.15
+            -98.89,
+            29.23
           ]
         ]
       ]
     },
     "details": {
-      "description": "...The Flood Warning is extended for the following rivers in\nLouisiana...\n\nCalcasieu River Near Glenmora\n\nCalcasieu River near White Oak Park\n\n...The Flood Warning is cancelled for the following rivers in\nLouisiana...\n\nVermilion River At Lafayette, Surrey Street Gage\n\nAdditional information is available at www.weather.gov.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Calcasieu River near Glenmora.\n\n* WHEN...From late tonight to early Thursday afternoon.\n\n* IMPACTS...At 12.0 feet, When the river is falling and the gauge\nreading is forecast to be near 12 feet, flooding of forested areas\nnear the river will occur.\n\n* ADDITIONAL DETAILS...\n- At 8:45 PM CDT Monday the stage was 11.8 feet.\n- Forecast...The river is expected to rise above flood stage\njust after midnight tonight to a crest of 12.5 feet tomorrow\nevening. It will then fall below flood stage Thursday\nmorning.\n- Flood stage is 12.0 feet.\n- http://www.weather.gov/safety/flood",
+      "description": "At 1233 AM CDT, Doppler radar and automated rain gauges indicated\nthunderstorms producing heavy rain across the warned area. Between 3\nand 6 inches of rain have fallen. Additional rainfall amounts of 1\nto 2 inches are possible in the warned area. Flash flooding is\nongoing or expected to begin shortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar and automated gauges.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\nSome locations that will experience flash flooding include...\nHondo, New Fountain, D'Hanis, Quihi, Dunlay, Bader and Noonan.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-14T03:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.66ce3d29df9d791e44e80f8acfbae898658ecae1.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Dawes; Box Butte; Scotts Bluff; Banner; Morrill; Kimball; Cheyenne; North Sioux; South Sioux; Converse County Lower Elevations; Niobrara County; East Platte County; Goshen County; Central Laramie County; East Laramie County",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Afternoon temperatures will be near or exceed 100 degrees\nwith overnight temperatures dipping to between 65 to 70, providing\nlittle relief.\n\n* WHERE...Portions of panhandle Nebraska and east central and\nsoutheast Wyoming.\n\n* WHEN...Until midnight MDT Wednesday Night.\n\n* IMPACTS...Hot temperatures and poor hydration may cause heat\nillnesses or injuries.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
+      "expires": "2026-07-14T18:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.aa63b0dff543a194cf4f3b4cf6e30f396d9b7b7c.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Chickasaw, MS",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -88.83,
+            34.07
+          ],
+          [
+            -88.72,
+            34.07
+          ],
+          [
+            -88.72,
+            33.81
+          ],
+          [
+            -88.93,
+            33.81
+          ],
+          [
+            -88.83,
+            34.07
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Urban and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...A portion of North Mississippi, including the following\ncounty, Chickasaw.\n\n* WHEN...Until 315 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1215 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. This will cause urban and small stream\nflooding. Between 1.5 and 3 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nOkolona, Trebloc, Buena Vista, Egypt, McCondy and Leotis.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-14T03:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.90f9a440b0181a85f550d2f66346b48b42c63fa4.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "South Mobile Bay; Mississippi Sound; Coastal waters from Pensacola FL to Pascagoula MS out 20 NM; Coastal waters from Okaloosa-Walton County Line to Pensacola FL out 20 NM; Waters from Pensacola FL to Pascagoula MS from 20 to 60 NM; Waters from Okaloosa-Walton County Line to Pensacola FL from 20 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Seas 3 to 5 ft.\n\n* WHERE...Portions of the coastal waters of Alabama and\nnorthwest Florida.\n\n* WHEN...Until 1 AM CDT early this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T01:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.74eeddb987913e1928ff9f20234cb0679a4fc494.001.2",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Corson; Campbell; Walworth; Dewey; Potter",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Prolonged dangerously hot conditions with heat index values\nup to 103 each afternoon.\n\n* WHERE...Campbell, Corson, Dewey, Potter, and Walworth Counties.\n\n* WHEN...Until 10 PM CDT /9 PM MDT/ Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T10:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.74eeddb987913e1928ff9f20234cb0679a4fc494.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Stanley; Sully; Hughes; Hyde; Hand; Jones; Lyman; Buffalo",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 101 each afternoon.\n\n* WHERE...Buffalo, Hand, Hughes, Hyde, Jones, Lyman, Stanley, and\nSully Counties.\n\n* WHEN...Until 10 PM CDT /9 PM MDT/ Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T10:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.74eeddb987913e1928ff9f20234cb0679a4fc494.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Traverse; Big Stone; McPherson; Brown; Marshall; Roberts; Edmunds; Day; Faulk; Spink; Grant",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 100 each afternoon.\n\n* WHERE...Portions of west central Minnesota and north central and\nnortheast South Dakota.\n\n* WHEN...Until 10 PM CDT Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-14T10:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.9828389731c2bb1cef3226738058e63495437887.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "San Bernardino and Riverside County Valleys-The Inland Empire; San Diego County Inland Valleys; San Bernardino County Mountains; Riverside County Mountains; Santa Ana Mountains and Foothills; San Diego County Mountains; San Gorgonio Pass Near Banning; Orange County Inland",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hot and humid conditions with elevated overnight\ntemperatures. Temperatures will be in the 90s for inland Orange\nCounty and in the mountains below 6000 feet, 90s to near 100 in\nthe San Diego County valleys, and 100 to 110 for the Inland Empire.\n\n* WHERE...Orange County Inland Areas, Riverside County Mountains,\nSan Bernardino County Mountains, San Bernardino and Riverside\nCounty Valleys-The Inland Empire, San Diego County Mountains, San\nDiego County Valleys, San Gorgonio Pass near Banning, and Santa\nAna Mountains and Foothills.\n\n* WHEN...From 10 AM Wednesday to 8 PM PDT Thursday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events. Those spending long periods outdoors will be\nat greater risk for heat health impacts.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
+      "expires": "2026-07-14T06:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.9828389731c2bb1cef3226738058e63495437887.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "San Diego County Coastal Areas; Orange County Coastal",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Warm and humid conditions with elevated overnight\ntemperatures. Temperatures will be in the low 80s at the beaches,\nnear 90 further inland.\n\n* WHERE...Orange County Coastal Areas and San Diego County Coastal\nAreas.\n\n* WHEN...From 10 AM Wednesday to 8 PM PDT Thursday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-14T06:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.eef0b34bafed030c880a6bd0239a0afe4a11e8fc.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Marquette; Green Lake; Fond Du Lac; Sheboygan; Sauk; Columbia; Dodge; Washington; Ozaukee; Iowa; Dane; Jefferson; Waukesha; Milwaukee; Lafayette; Green; Rock; Walworth; Racine; Kenosha",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 103 expected.\n\n* WHERE...Portions of east central, south central, and southeast\nWisconsin.\n\n* WHEN...From noon Tuesday to 8 PM CDT Wednesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-14T07:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1351821eefe189976c46903d8769165656124c67.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Bandera, TX; Kerr, TX; Medina, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -99.42,
+            29.63
+          ],
+          [
+            -99.43,
+            29.68
+          ],
+          [
+            -99.23,
+            29.76
+          ],
+          [
+            -99.1,
+            29.93
+          ],
+          [
+            -99.06,
+            29.97
+          ],
+          [
+            -99.04,
+            29.97
+          ],
+          [
+            -98.92,
+            29.96
+          ],
+          [
+            -98.92,
+            29.92
+          ],
+          [
+            -98.92,
+            29.89
+          ],
+          [
+            -98.92,
+            29.78
+          ],
+          [
+            -98.91,
+            29.78
+          ],
+          [
+            -98.9,
+            29.61
+          ],
+          [
+            -99.05,
+            29.53
+          ],
+          [
+            -99.41,
+            29.54
+          ],
+          [
+            -99.41,
+            29.63
+          ],
+          [
+            -99.42,
+            29.63
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1137 PM CDT, Doppler radar and automated rain gauges indicated\nthunderstorms producing heavy rain across the warned area. Between 2\nand 6 inches of rain have fallen. Additional rainfall amounts up to\n1 inch are possible in the warned area. Flash flooding is already\noccurring.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar and automated gauges.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\nSome locations that will experience flash flooding include...\nComfort, Bandera, Tarpley, Hill Country State Natural Area,\nBandera Falls, Camp Verde, Pipe Creek, Lakehills, Center Point and\nLake Medina Shores.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
+      "expires": "2026-07-14T01:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.436f388bcbca2e452fa722881d30ea2efdcdfd4c.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Central Penobscot; Southern Penobscot; Southern Piscataquis",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 99 expected.\n\n* WHERE...Southern Piscataquis, Central Penobscot, and Southern\nPenobscot Counties.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-14T08:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.09d1efc89a08a3d12fa22e804c9d5cee7e768edb.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Beach Hazards Statement",
+    "geometry": "unknown",
+    "location": "San Luis Obispo County Beaches; Santa Barbara County Central Coast Beaches; Santa Barbara County Southwestern Coast; Santa Barbara County Southeastern Coast; Ventura County Beaches; Malibu Coast; Los Angeles County Beaches",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerous rip currents and breaking waves with elevated\nsurf expected. Minor coastal flooding possible.\n\n* WHERE...San Luis Obispo County Beaches, Santa Barbara County\nCentral Coast Beaches, Santa Barbara County Southwestern\nCoast, Santa Barbara County Southeastern Coast, Ventura County\nBeaches, Malibu Coast and Los Angeles County Beaches.\n\n* WHEN...Through Wednesday evening.\n\n* IMPACTS...There is an increased risk of ocean drowning. Rip\ncurrents can pull swimmers and surfers out to sea. Waves can\nwash people off beaches and rocks, and capsize small boats\nnearshore.\n\n* ADDITIONAL DETAILS...Southerly swell combined with abnormally\nhigh tides of 7.0 to 7.6 feet will bring the potential for\nminor coastal flooding in low-lying areas in the evening.",
+      "instruction": "Remain out of the water due to hazardous swimming conditions, or\nstay near occupied lifeguard towers. Rock jetties can be deadly\nin such conditions, stay off the rocks.",
+      "expires": "2026-07-14T14:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e1b470616816192a1eb8a71245ed4c9a6cfbd8d4.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Point Piedras Blancas to Point Sal from 10 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Point Piedras Blancas to Point Sal from 10 to 60 NM.\n\n* WHEN...From noon Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T09:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e1b470616816192a1eb8a71245ed4c9a6cfbd8d4.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Outer waters from Santa Cruz Island to San Clemente Island to 60 NM offshore including San Nicolas and Santa Barbara Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Outer waters from Santa Cruz Island to San Clemente\nIsland to 60 NM offshore including San Nicolas and Santa\nBarbara Islands.\n\n* WHEN...From 6 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T09:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e1b470616816192a1eb8a71245ed4c9a6cfbd8d4.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "East Santa Barbara Channel from Pt. Conception to Pt. Mugu CA including Santa Cruz Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...East Santa Barbara Channel from Pt. Conception to Pt.\nMugu CA including Santa Cruz Island.\n\n* WHEN...From 3 PM to 9 PM PDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T09:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e1b470616816192a1eb8a71245ed4c9a6cfbd8d4.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Waters from Pt. Sal to Santa Cruz Island CA and westward 60 nm including San Miguel and Santa Rosa Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Waters from Pt. Sal to Santa Cruz Island CA and\nwestward 60 nm including San Miguel and Santa Rosa Islands.\n\n* WHEN...From 3 PM Tuesday to 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T09:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e0499e85234551a1fb21a4571bce914293eec7ab.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Ward; Crane; Upton; Reagan; Pecos; Terrell; Reeves County Plains; Chinati Mountains; Marfa Plateau; Davis Mountains; Davis Mountains Foothills; Central Brewster County; Chisos Basin; Presidio Valley; Lower Brewster County",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of southwest and western Texas, including the\nfollowing areas, in southwest Texas, Central Brewster, Chinati\nMountains, Chisos Basin, Davis Mountains, Davis Mountains\nFoothills, Lower Brewster County, Marfa Plateau, Pecos, Presidio\nValley and Terrell. In western Texas, Crane, Reagan, Reeves County\nPlains, Upton and Ward.\n\n* WHEN...Through Thursday evening.\n\n* IMPACTS...Creeks and streams may rise out of their banks. Flooding\nmay occur in poor drainage and urban areas. Low-water crossings may\nbe flooded.\n\n* ADDITIONAL DETAILS...\n- Multiple rounds of heavy rainfall are expected tonight through\nThursday.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-14T11:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cc4fa19fe48522b0152f700f6bdc2e1e436cb18e.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Waters from Cape Mendocino to Pt. Arena CA from 10 to 60 nm",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Northwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 6 to 9 feet.\n\n* WHERE...Waters from Cape Mendocino to Pt. Arena CA from 10 to\n60 nm.\n\n* WHEN...Until 5 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T05:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cc4fa19fe48522b0152f700f6bdc2e1e436cb18e.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal waters from Cape Mendocino to Pt. Arena CA out 10 nm",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Northwest winds 15 to 25 kt with gusts up to 35 kt and\nseas 5 to 8 feet.\n\n* WHERE...Coastal waters from Cape Mendocino to Pt. Arena CA out\n10 nm.\n\n* WHEN...Until 5 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T05:30:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.fed56cf05997a449a348b254e247f2644daf6b47.001.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Delaware; Franklin; Licking; Fairfield",
+    "coordinates": {},
+    "details": {
+      "description": "The Mid-Ohio Regional Planning Commission has issued an Air Quality\nAlert for Delaware, Fairfield, Franklin and Licking counties in\nCentral Ohio, from 6 AM this morning to 9 PM EDT this evening.\n\nLevels of ozone within the region may approach or exceed unhealthy\nstandards.\n\nOn Alert days, help reduce ozone by taking the following actions:\n\n* Carpool, if possible, bike, walk or take the bus instead of\ndriving alone.\n* Refuel your vehicle after 8 pm.\n* Do not idle your vehicle, exhaust contributes to air pollution.\n* Mow your lawn in the evening hours and avoid the use of\ngas-powered lawn equipment.\n\nFor additional information, please visit the Mid-Ohio Regional\nPlanning Commission's website at morpc.org/airquality",
       "instruction": null,
-      "expires": "2026-07-14T22:00:00-05:00"
+      "expires": "2026-07-14T21:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.498579e0cf396382698de6452c9551ddfdbce870.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.fed56cf05997a449a348b254e247f2644daf6b47.002.1",
     "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
     "geometry": "unknown",
-    "location": "Vilas; Oneida; Forest; Florence; Northern Marinette County; Lincoln; Langlade; Menominee; Northern Oconto County; Door; Marathon; Shawano; Wood; Portage; Waupaca; Outagamie; Brown; Kewaunee; Waushara; Winnebago; Calumet; Manitowoc; Southern Marinette County; Southern Oconto County",
+    "location": "Dearborn; Boone; Kenton; Campbell; Butler; Warren; Hamilton; Clermont",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values of 95 to 105 expected again on Tuesday.\nHighest heat index values in far northeast Wisconsin. Heat indices\nthe rest of tonight will only drop to 70 to 75 degrees, which will\nstill be hazardous for anyone without shelter after the heat this\nafternoon.\n\n* WHERE...Portions of central, east central, north central, and\nnortheast Wisconsin.\n\n* WHEN...Until 9 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-14T06:00:00-05:00"
+      "description": "The Southwest Ohio Air Quality Agency has issued an Air Quality\nAdvisory for Butler, Clermont, Hamilton and Warren counties in Ohio;\nBoone, Campbell and Kenton counties in Kentucky; and Dearborn County\nin Indiana, until midnight EDT tonight.\n\nLevels of ozone within the region may approach or exceed unhealthy\nstandards.\n\nOn Alert days, help reduce ozone by taking the following actions:\n\n* Carpool, if possible, bike, walk or take the bus instead of\ndriving alone.\n* Refuel your vehicle after 8 pm.\n* Do not idle your vehicle, exhaust contributes to air pollution.\n* Mow your lawn in the evening hours and avoid the use of\ngas-powered lawn equipment.\n\nFor additional information, please visit the Southwest Ohio Air\nQuality Agency's web site at\nwww.southwestohioair.org/local_air_quality",
+      "instruction": null,
+      "expires": "2026-07-14T21:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0b7cee9991af50e9c4fa739fa156f469144ca513.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.6286c044972e18452b85e5d16f8daf9588acbb20.006.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Boston Harbor",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nwaves around 2 feet expected.\n\n* WHERE...Boston Harbor.\n\n* WHEN...From 4 PM to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6286c044972e18452b85e5d16f8daf9588acbb20.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal waters from Provincetown MA to Chatham MA to Nantucket MA out 20 NM; Coastal Waters extending out to 25 NM South of Marthas Vineyard and Nantucket; Coastal Waters from Montauk NY to Marthas Vineyard extending out to 20 NM South of Block Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 5 to 8 feet expected.\n\n* WHERE...In Massachusetts coastal waters, Coastal waters from\nProvincetown MA to Chatham MA to Nantucket MA out 20 NM and\nCoastal Waters extending out to 25 NM South of Marthas\nVineyard and Nantucket. In Rhode Island coastal waters,\nCoastal Waters from Montauk NY to Marthas Vineyard extending\nout to 20 NM South of Block Island.\n\n* WHEN...From noon Tuesday to 8 PM EDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6286c044972e18452b85e5d16f8daf9588acbb20.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Cod Bay; Coastal waters east of Ipswich Bay and the Stellwagen Bank National Marine Sanctuary",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 30 kt and\nseas 2 to 4 feet expected.\n\n* WHERE...Cape Cod Bay and Coastal waters east of Ipswich Bay\nand the Stellwagen Bank National Marine Sanctuary.\n\n* WHEN...From 4 PM to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6286c044972e18452b85e5d16f8daf9588acbb20.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nantucket Sound; Vineyard Sound; Buzzards Bay; Rhode Island Sound; Block Island Sound",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 4 to 6 feet expected.\n\n* WHERE...In Massachusetts coastal waters, Nantucket Sound,\nVineyard Sound and Buzzards Bay. In Rhode Island coastal\nwaters, Rhode Island Sound and Block Island Sound.\n\n* WHEN...From noon Tuesday to 8 PM EDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6286c044972e18452b85e5d16f8daf9588acbb20.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Massachusetts Bay and Ipswich Bay",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nseas 2 to 3 feet expected.\n\n* WHERE...Massachusetts Bay and Ipswich Bay.\n\n* WHEN...From 4 PM to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6286c044972e18452b85e5d16f8daf9588acbb20.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Narragansett Bay",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 30 kt and\nwaves 2 to 4 feet expected.\n\n* WHERE...Narragansett Bay.\n\n* WHEN...From noon to 11 PM EDT Tuesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.be1b0af90b08904a9cace1c218764692f59cd4eb.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
     "geometry": "Polygon",
-    "location": "Palm Beach, FL",
+    "location": "Maricopa, AZ",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.34,
-            26.68
+            -112.83,
+            32.98
           ],
           [
-            -80.07,
-            26.75
+            -112.81,
+            33.13
           ],
           [
-            -80.04,
-            26.75
+            -112.71,
+            33.21
           ],
           [
-            -80.03,
-            26.71
+            -112.43,
+            33.08
           ],
           [
-            -80.05,
-            26.53
+            -112.42,
+            32.96
           ],
           [
-            -80.34,
-            26.59
+            -112.63,
+            32.88
           ],
           [
-            -80.34,
-            26.68
+            -112.73,
+            32.9
+          ],
+          [
+            -112.78,
+            32.93
+          ],
+          [
+            -112.83,
+            32.98
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southeast Florida, including the following\ncounty, Palm Beach.\n\n* WHEN...Until 1245 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways. Ponding of water in urban or other areas is\noccurring or is imminent.\n\n* ADDITIONAL DETAILS...\n- At 1044 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 2 and 3 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nWest Palm Beach, Boynton Beach, Wellington, Lake Worth, Palm\nBeach, Ocean Ridge, Greenacres, Royal Palm Beach, Palm\nSprings, Lantana, Atlantis, Haverhill, Cloud Lake, Lake\nBelvedere Estates, Royal Palm Estates, Golden Lakes, Gun Club\nEstates, President Donald J. Trump International Airport,\nSchall Circle and Loxahatchee Groves.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
-      "expires": "2026-07-14T00:45:00-04:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Maricopa County in south central Arizona...\n\n* WHEN...Until midnight MST tonight.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 853 PM MST, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.25 and 1 inch of rain has\nfallen.\n- Additional rainfall amounts of 0.25 to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nGila Bend, Cotton Center, Bosque and Sonoran National Monument.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-14T00:00:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.05138213fd79370e8dbe2276e2a4238d9e779a97.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.767d625f80b60996ad7805836f1d23c5dcf3446d.003.1",
     "type": "weather",
     "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Nevada, CA; Placer, CA; Sierra, CA",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -120.22,
-            39.44
-          ],
-          [
-            -120.01,
-            39.46
-          ],
-          [
-            -120.01,
-            39.35
-          ],
-          [
-            -120.28,
-            39.28
-          ],
-          [
-            -120.3,
-            39.35
-          ],
-          [
-            -120.22,
-            39.44
-          ]
-        ]
-      ]
-    },
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Penobscot Bay",
+    "coordinates": {},
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Portions of east central and northeast California,\nincluding the following counties, in east central California,\nNevada and Placer. In northeast California, Sierra.\n\n* WHEN...Until 945 PM PDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 744 PM PDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in along I-80. Between 0.5 and 1 inch of rain has\nfallen.\n- Along Interstate 80 and Hwy 89 are the most likely places to\nexperience minor flooding.\nAdditional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nProsser Creek Reservoir, Boca Reservoir, Glenshire-Devonshire\nCdp, Hirschdale, Floriston, Truckee, Lakeside Campground,\nHobart Mills, Boca Campground, Alpine Meadows Campground,\nTruckee-Tahoe Airport, Glenshire-Devonshire, Boca Rest\nCampground, Ca 89 At Nevada-Sierra Co Line, Ca 89 At Placer-\nNevada Co Line, Granite Flat Campground and Donner Memorial\nCampground.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-13T21:45:00-07:00"
+      "description": "* WHAT...Southwest winds 5 to 15 kt with gusts up to 25 kt and\nseas 1 to 4 ft expected.\n\n* WHERE...Penobscot Bay.\n\n* WHEN...From 6 AM Tuesday to 6 AM EDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T14:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bf794cd93b87f3c2748b183e9d36d585adc9ebde.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.767d625f80b60996ad7805836f1d23c5dcf3446d.002.1",
     "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Emmet; Cheboygan; Leelanau; Antrim; Otsego; Benzie; Grand Traverse; Kalkaska; Crawford; Manistee; Wexford; Missaukee; Roscommon; Beaver Island and surrounding islands; Charlevoix",
+    "location": "Coastal Waters from Stonington, ME to Port Clyde, ME out 25 NM; Coastal Waters from Port Clyde, ME to Cape Elizabeth, ME out 25 NM",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values up to 99.\n\n* WHERE...A portion of Northern Lower Michigan.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-14T10:45:00-04:00"
+      "description": "* WHAT...Southwest winds 10 to 20 kt with gusts up to 25 kt and\nseas 3 to 6 ft.\n\n* WHERE...Coastal Waters from Stonington, ME to Port Clyde, ME\nout 25 NM and Coastal Waters from Port Clyde, ME to Cape\nElizabeth, ME out 25 NM.\n\n* WHEN...Until 6 AM EDT Wednesday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-14T14:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bf794cd93b87f3c2748b183e9d36d585adc9ebde.003.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.16ad36c8bf25420f9bfb2b4792f09fc1621e860c.001.1",
     "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
     "geometry": "unknown",
-    "location": "Western Chippewa; Central Chippewa; Southeast Chippewa; Western Mackinac; Eastern Mackinac; Mackinac Island/Bois Blanc Island",
+    "location": "Northern Bristol; Western Plymouth; Eastern Plymouth; Southern Bristol; Southern Plymouth; Barnstable; Dukes; Nantucket",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values up to 103.\n\n* WHERE...Central Chippewa, Eastern Mackinac, Southeast Chippewa,\nWestern Chippewa, and Western Mackinac Counties, and Mackinac\nIsland/Bois Blanc Island.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-14T10:45:00-04:00"
+      "description": "The Massachusetts Department of Environmental Protection has issued\nan Air Quality Alert for Ground Level Ozone, from 11 AM to 11 PM EDT\nTuesday.\n\nAn Air Quality Alert day means that Ground Level Ozone\nconcentrations within the region may approach or exceed levels that\nare Unhealthy for Sensitive Groups.\n\nAir is unhealthy for sensitive children and adults, such as those\nwith asthma, lung or heart disease, and older adults. Sensitive\nchildren and adults should limit prolonged outdoor activity.\n\nFor additional information, please visit the Massachusetts\nDepartment of Environmental Protection website at:\nhttps://mass.gov/dep/massair/forecast",
+      "instruction": null,
+      "expires": "2026-07-14T23:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bf794cd93b87f3c2748b183e9d36d585adc9ebde.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.16ad36c8bf25420f9bfb2b4792f09fc1621e860c.002.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Northwest Providence; Southeast Providence; Western Kent; Eastern Kent; Bristol; Washington; Newport; Block Island",
+    "coordinates": {},
+    "details": {
+      "description": "The Rhode Island Department of Environmental Management has issued\nan Air Quality Alert Day for Ground Level Ozone, from 11 AM to 11 PM\nEDT Tuesday.\n\nAn Air Quality Alert day means that Ground Level Ozone\nconcentrations within the region may approach or exceed unhealthy\nstandards. For additional information, please visit the Rhode Island\nDepartment of Environmental Management website at:\n\nhttps://dem.ri.gov/",
+      "instruction": null,
+      "expires": "2026-07-14T23:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.9de1e343598f7bfc66b699fedd1bd46cd8be97bc.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Rip Current Statement",
+    "geometry": "unknown",
+    "location": "Southern Bristol; Southern Plymouth; Barnstable; Dukes; Nantucket; Washington; Newport; Block Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerous rip currents expected, especially on south-facing\nbeaches.\n\n* WHERE...Washington, Southern Bristol MA, Southern Plymouth MA,\nBarnstable MA, Dukes MA, Nantucket MA, and Newport RI Counties.\n\n* WHEN...From 10 AM EDT Tuesday through Wednesday evening.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
+      "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
+      "expires": "2026-07-14T16:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d70f728110e07cde97fadaee3c72fb3c75facd38.002.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Presque Isle; Montmorency; Alpena; Oscoda; Alcona; Ogemaw; Iosco; Gladwin; Arenac",
+    "location": "Sonoma Coastal Range; North Bay Interior Mountains; North Bay Interior Valleys; East Bay Interior Valleys; Santa Clara Valley Including San Jose; Eastern Santa Clara Hills; East Bay Hills; Northern Salinas Valley/Hollister Valley and Carmel Valley",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values up to 103.\n\n* WHERE...Alcona, Alpena, Arenac, Gladwin, Iosco, Montmorency,\nOgemaw, Oscoda, and Presque Isle Counties.\n\n* WHEN...Until 8 PM EDT Tuesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-14T10:45:00-04:00"
+      "description": "* WHAT...Widespread high temperatures in the 90s with hotspots\nreaching the low 100s.\n\n* WHERE...North Bay Interior Mountains and Valleys, The Santa\nClara Valley and Eastern Hills, The East Bay Hills and\nValleys, and Northern Salinas Valley/Hollister Valley and\nCarmel Valley.\n\n* WHEN...From 10 AM to 10 PM PDT Tuesday.\n\n* IMPACTS...This level of heat affects most individuals\nsensitive to heat, especially those without effective cooling\nand/or adequate hydration. Impacts possible in some health\nsystems and in heat-sensitive industries.\n\n* ADDITIONAL DETAILS...Widespread Moderate HeatRisk in the upper\n90s with favored hotspots reaching the low 100s on Tuesday.\nLimited overnight recovery is expected with overnight lows\nonly dropping into the low to mid 60s. Higher elevations may\nonly see overnight lows drop into the upper 60s to mid 70s.",
+      "instruction": "Hydration is a critical piece to surviving the heat. Drink water,\nand if possible, take water to those who are vulnerable.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks\nin shaded or air conditioned environments. Anyone overcome by\nheat should be moved to a cool and shaded location. Heat stroke\nis an emergency! Call 9 1 1.\n\nBeat the heat and check the backseat! Do not leave young children\nor pets in unattended vehicles.Car interiors will reach lethal\ntemperatures in a matter of minutes.",
+      "expires": "2026-07-14T10:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d70f728110e07cde97fadaee3c72fb3c75facd38.001.2",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Southern Salinas Valley/Arroyo Seco and Lake San Antonio; Santa Lucia Mountains and Los Padres National Forest",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...High temperatures in the upper 90s to low 100s Tuesday\nand Wednesday with limited overnight cooling.\n\n* WHERE...Interior Monterey County and the Santa Lucia Range,\nand Southern Salinas Valley/Arroyo Seco and Lake San Antonio.\n\n* WHEN...For the first Heat Advisory, from 10 AM to 10 PM PDT\nTuesday. For the second Heat Advisory, from 10 AM to 10 PM PDT\nWednesday.\n\n* IMPACTS...This level of heat affects most individuals\nsensitive to heat, especially those without effective cooling\nand/or adequate hydration. Impacts possible in some health\nsystems and in heat-sensitive industries.\n\n* ADDITIONAL DETAILS...Widespread Moderate HeatRisk is forecast\nacross interior Monterey County Tuesday and Wednesday. Limited\novernight cooling is expected, particularly in the Santa Lucia\nRange, with low temperatures in the mid 60s to 70s expected.",
+      "instruction": "Hydration is a critical piece to surviving the heat. Drink water,\nand if possible, take water to those who are vulnerable.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks\nin shaded or air conditioned environments. Anyone overcome by\nheat should be moved to a cool and shaded location. Heat stroke\nis an emergency! Call 9 1 1.\n\nBeat the heat and check the backseat! Do not leave young children\nor pets in unattended vehicles.Car interiors will reach lethal\ntemperatures in a matter of minutes.",
+      "expires": "2026-07-14T10:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d70f728110e07cde97fadaee3c72fb3c75facd38.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Southern Salinas Valley/Arroyo Seco and Lake San Antonio; Santa Lucia Mountains and Los Padres National Forest",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...High temperatures in the upper 90s to low 100s Tuesday\nand Wednesday with limited overnight cooling.\n\n* WHERE...Interior Monterey County and the Santa Lucia Range,\nand Southern Salinas Valley/Arroyo Seco and Lake San Antonio.\n\n* WHEN...For the first Heat Advisory, from 10 AM to 10 PM PDT\nTuesday. For the second Heat Advisory, from 10 AM to 10 PM PDT\nWednesday.\n\n* IMPACTS...This level of heat affects most individuals\nsensitive to heat, especially those without effective cooling\nand/or adequate hydration. Impacts possible in some health\nsystems and in heat-sensitive industries.\n\n* ADDITIONAL DETAILS...Widespread Moderate HeatRisk is forecast\nacross interior Monterey County Tuesday and Wednesday. Limited\novernight cooling is expected, particularly in the Santa Lucia\nRange, with low temperatures in the mid 60s to 70s expected.",
+      "instruction": "Hydration is a critical piece to surviving the heat. Drink water,\nand if possible, take water to those who are vulnerable.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks\nin shaded or air conditioned environments. Anyone overcome by\nheat should be moved to a cool and shaded location. Heat stroke\nis an emergency! Call 9 1 1.\n\nBeat the heat and check the backseat! Do not leave young children\nor pets in unattended vehicles.Car interiors will reach lethal\ntemperatures in a matter of minutes.",
+      "expires": "2026-07-14T10:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.028a77150ed1da4ed1e9a3d47405571095589113.003.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Kittson; Roseau; Lake Of The Woods; West Marshall; East Marshall; North Beltrami; Pennington; Red Lake; Towner; Cavalier; Pembina; Benson; Ramsey; Eastern Walsh County; Eddy; Nelson; Western Walsh County",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with heat index values this\nevening.\n\n* WHERE...Portions of north central and northwest Minnesota and\nnortheast North Dakota.\n\n* WHEN...Until 1 AM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nIf you do not have air conditioning in your home or lack shelter,\nyou can call 211 or visit for assistance locating appropriate\nshelter from the heat.",
+      "expires": "2026-07-14T01:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.028a77150ed1da4ed1e9a3d47405571095589113.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Norman; Clay; Mahnomen; South Clearwater; Hubbard; West Becker; East Becker; Wilkin; West Otter Tail; East Otter Tail; Wadena; Grant; Barnes; Cass; Ransom; Sargent; Richland",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with heat index values up to 105.\n\n* WHERE...Portions of central, north central, northwest, and west\ncentral Minnesota and southeast North Dakota.\n\n* WHEN...Until 10 PM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Overnight relief tonight into Tuesday morning\nwill be minimal, with overnight low temperatures remaining in the\nlow to mid 70s along with high humidity.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nIf you do not have air conditioning in your home or lack shelter,\nyou can call 211 for assistance locating appropriate shelter from\nthe heat.",
+      "expires": "2026-07-14T06:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.028a77150ed1da4ed1e9a3d47405571095589113.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "West Polk; East Polk; North Clearwater; South Beltrami; Grand Forks; Griggs; Steele; Traill",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerously hot conditions with heat index values up to 100.\n\n* WHERE...In Minnesota, South Beltrami, East Polk, North Clearwater,\nand West Polk Counties. In North Dakota, Grand Forks, Griggs,\nSteele, and Traill Counties.\n\n* WHEN...Until 10 PM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.\n\n* ADDITIONAL DETAILS...Overnight relief tonight into Tuesday morning\nwill be minimal, with overnight low temperatures remaining in the\nlow to mid 70s along with high humidity.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nIf you do not have air conditioning in your home or lack shelter,\nyou can call 211 for assistance locating appropriate shelter from\nthe heat.",
+      "expires": "2026-07-14T06:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cde3b5efd7c425068fdfdaeb1d32f18fff88a58b.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Cuyama Valley; Santa Barbara County Interior Mountains; Interstate 5 Corridor; Western San Gabriel Mountains and Highway 14 Corridor; Eastern San Gabriel Mountains",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Temperatures of 90 to 110 degrees, hottest on Wednesday and\nover interior areas.\n\n* WHERE...Cuyama Valley, Eastern San Gabriel Mountains, Interstate 5\nCorridor, Santa Barbara County Interior Mountains, and Western San\nGabriel Mountains and Highway 14 Corridor.\n\n* WHEN...For the Heat Advisory, until 10 AM PDT Tuesday. For the\nExtreme Heat Warning, from 10 AM Tuesday to 8 PM PDT Thursday.\n\n* IMPACTS...There is a high risk for dangerous heat illness for\nanyone, especially for the very young, the very old, those without\nair conditioning, and those active outdoors.\n\n* ADDITIONAL DETAILS...Humid conditions will add to the heat to\npotentially worsen heat impacts. Effects of the heat will build\nthrough the week, with warm overnight low temperatures providing\nlittle relief from the heat.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nStay cool, stay hydrated, stay informed.\n\nMonitor the latest forecasts and warnings for updates.",
+      "expires": "2026-07-14T12:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cde3b5efd7c425068fdfdaeb1d32f18fff88a58b.001.2",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Cuyama Valley; Santa Barbara County Interior Mountains; Interstate 5 Corridor; Western San Gabriel Mountains and Highway 14 Corridor; Eastern San Gabriel Mountains",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Temperatures of 90 to 110 degrees, hottest on Wednesday and\nover interior areas.\n\n* WHERE...Cuyama Valley, Eastern San Gabriel Mountains, Interstate 5\nCorridor, Santa Barbara County Interior Mountains, and Western San\nGabriel Mountains and Highway 14 Corridor.\n\n* WHEN...For the Heat Advisory, until 10 AM PDT Tuesday. For the\nExtreme Heat Warning, from 10 AM Tuesday to 8 PM PDT Thursday.\n\n* IMPACTS...There is a high risk for dangerous heat illness for\nanyone, especially for the very young, the very old, those without\nair conditioning, and those active outdoors.\n\n* ADDITIONAL DETAILS...Humid conditions will add to the heat to\npotentially worsen heat impacts. Effects of the heat will build\nthrough the week, with warm overnight low temperatures providing\nlittle relief from the heat.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nStay cool, stay hydrated, stay informed.\n\nMonitor the latest forecasts and warnings for updates.",
+      "expires": "2026-07-14T12:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cde3b5efd7c425068fdfdaeb1d32f18fff88a58b.005.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Catalina and Santa Barbara Islands; San Luis Obispo County Inland Central Coast; Santa Lucia Mountains; Santa Barbara County Inland Central Coast; Santa Ynez Valley; Ventura County Beaches; Ventura County Inland Coast; Malibu Coast; Los Angeles County Beaches; Palos Verdes Hills; San Miguel and Santa Rosa Islands; Santa Cruz and Anacapa Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Temperatures up to 96 expected.\n\n* WHERE...A portion of southwest California.\n\n* WHEN...From 10 AM Tuesday to 8 PM PDT Thursday.\n\n* IMPACTS...There is a high risk for heat illness for sensitive\npopulations including the very young, the very old, those without\nair conditioning, and those active outdoors.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nMonitor the latest forecasts and warnings for updates.",
+      "expires": "2026-07-14T12:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cde3b5efd7c425068fdfdaeb1d32f18fff88a58b.002.2",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Santa Clarita Valley; Los Angeles County Inland Coast including Downtown Los Angeles; Western San Fernando Valley; Eastern San Fernando Valley; Santa Susana Mountains; Los Angeles County San Gabriel Valley",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Temperatures of 90 to 110 degrees, hottest on Wednesday and\nover interior areas.\n\n* WHERE...Eastern San Fernando Valley, Los Angeles County Inland\nCoast including Downtown Los Angeles, Los Angeles County San\nGabriel Valley, Santa Clarita Valley, Santa Susana Mountains, and\nWestern San Fernando Valley.\n\n* WHEN...For the Heat Advisory, until 10 AM PDT Tuesday. For the\nExtreme Heat Warning, from 10 AM Tuesday to 8 PM PDT Thursday.\n\n* IMPACTS...There is a high risk for dangerous heat illness for\nanyone, especially for the very young, the very old, those without\nair conditioning, and those active outdoors.\n\n* ADDITIONAL DETAILS...Humid conditions will add to the heat to\npotentially worsen heat impacts. Effects of the heat will build\nthrough the week, with warm overnight low temperatures providing\nlittle relief from the heat.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nStay cool, stay hydrated, stay informed.\n\nMonitor the latest forecasts and warnings for updates.",
+      "expires": "2026-07-14T12:15:00-07:00"
     },
     "source": "NOAA Weather"
   }
