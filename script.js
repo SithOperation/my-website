@@ -2598,8 +2598,221 @@ function initUFOButton() {
 }
 
 
+/* =====================================================
+    SENTINEL DASHBOARD
+===================================================== */
+async function loadSentinelDashboard() {
+
+    try {
+
+        const response = await fetch(
+            "data/dashboard.json"
+        );
 
 
+        const dashboard = await response.json();
+
+
+        console.log(
+            "Sentinel Grid Dashboard Loaded:",
+            dashboard
+        );
+
+
+        displayDashboardSummary(
+            dashboard
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Dashboard loading failed:",
+            error
+        );
+
+    }
+
+}
+
+
+
+function displayDashboardSummary(dashboard) {
+
+
+    const threat =
+        document.getElementById("threat-level");
+
+
+    const total =
+        document.getElementById("total-events");
+
+
+    const critical =
+        document.getElementById("critical-events");
+
+
+
+    if (!threat || !total || !critical) {
+        console.warn(
+            "Sentinel dashboard elements missing"
+        );
+        return;
+    }
+
+
+
+    threat.textContent =
+        dashboard.summary?.threat_level ?? "UNKNOWN";
+
+
+    total.textContent =
+        dashboard.summary?.total_events ?? 0;
+
+
+    critical.textContent =
+        dashboard.critical_events?.length ?? 0;
+
+
+}
+
+async function loadSentinelBrief(){
+
+    try {
+
+        const response =
+            await fetch(
+                "data/intelligence_brief.json"
+            );
+
+
+        const brief =
+            await response.json();
+
+
+
+        const container =
+            document.getElementById(
+                "intel-brief"
+            );
+
+
+        if(!container)
+            return;
+
+
+
+        container.innerHTML = `
+
+            <h3>${brief.title}</h3>
+
+            <p>
+            Threat Level:
+            ${brief.global_threat_level}
+            </p>
+
+
+            <ul>
+
+            ${
+                brief.critical_events
+                .map(event =>
+                    `<li>
+                    ${event.title}
+                    </li>`
+                )
+                .join("")
+            }
+
+            </ul>
+
+        `;
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Brief loading failed:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SENTINEL INTELLIGENCE BRIEF
+===================================================== */
+
+async function loadSentinelBrief(){
+
+    try {
+
+        const response =
+            await fetch(
+                "data/intelligence_brief.json"
+            );
+
+
+        const brief =
+            await response.json();
+
+
+        const container =
+            document.getElementById(
+                "intel-brief"
+            );
+
+
+        if(!container){
+            return;
+        }
+
+
+        container.innerHTML = `
+
+            <h3>
+            ${brief.title}
+            </h3>
+
+            <p>
+            GLOBAL STATUS:
+            ${brief.global_threat_level}
+            </p>
+
+
+            <ul>
+
+            ${
+                brief.critical_events
+                .map(event =>
+                    `
+                    <li>
+                    ${event.title}
+                    </li>
+                    `
+                )
+                .join("")
+            }
+
+            </ul>
+
+        `;
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Brief loading failed:",
+            error
+        );
+
+    }
+
+}
 
 
 
@@ -2655,6 +2868,22 @@ document.addEventListener(
         }
 
 
+        try {
+
+            loadSentinelDashboard();
+
+            loadSentinelBrief();
+
+        }
+        catch(error) {
+
+            console.error(
+                "Sentinel failed:",
+                error
+            );
+
+        }
+
 
         try {
 
@@ -2670,7 +2899,6 @@ document.addEventListener(
             );
 
         }
-
 
 
         try {
@@ -2733,3 +2961,5 @@ document.addEventListener(
     }
 
 );
+
+
