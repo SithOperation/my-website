@@ -1127,13 +1127,17 @@ function shouldUseMobileFallback() {
 
     const isSafari = /Safari/.test(userAgent) && !/Chrome|CriOS|FxiOS|EdgiOS|OPiOS/.test(userAgent);
 
+    const isIOS = /iPad|iPhone|iPod/i.test(userAgent);
+
     const hasCoarsePointer = typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
 
     const isTouchDevice = navigator.maxTouchPoints > 0 || hasCoarsePointer;
 
-    const isSmallViewport = window.innerWidth <= 900;
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || 1200;
 
-    const isLikelyMobile = isMobile || isSafari || (isTouchDevice && isSmallViewport);
+    const isSmallViewport = screenWidth <= 900;
+
+    const isLikelyMobile = isMobile || isSafari || isIOS || isTouchDevice || isSmallViewport;
 
     return isLikelyMobile || !hasWebGLSupport();
 
@@ -1431,6 +1435,8 @@ async function loadDisasterMap() {
 
         await loadLeafletFallbackMap(mapElement);
 
+        mapInitializationInProgress = false;
+
         return;
 
     }
@@ -1444,7 +1450,7 @@ async function loadDisasterMap() {
 
         disasterMap = new maplibregl.Map({
 
-            container: "disaster-map",
+            container: mapElement,
 
             style: {
 
