@@ -5,6 +5,80 @@
 
 
 let disasterMap = null;
+let mapInitializationInProgress = false;
+let activeMapResizeHandler = null;
+
+
+function refreshMapLayout(mapInstance) {
+
+    if (!mapInstance) {
+
+        return;
+
+    }
+
+
+    if (typeof mapInstance.invalidateSize === "function") {
+
+        try {
+
+            mapInstance.invalidateSize();
+
+        }
+        catch (error) {
+
+            console.warn("Map invalidateSize failed", error);
+
+        }
+
+    }
+
+
+    if (typeof mapInstance.resize === "function") {
+
+        try {
+
+            mapInstance.resize();
+
+        }
+        catch (error) {
+
+            console.warn("Map resize failed", error);
+
+        }
+
+    }
+
+}
+
+
+function bindMapResizeHandler(mapInstance) {
+
+    if (activeMapResizeHandler) {
+
+        window.removeEventListener("resize", activeMapResizeHandler);
+        window.removeEventListener("orientationchange", activeMapResizeHandler);
+        document.removeEventListener("visibilitychange", activeMapResizeHandler);
+
+    }
+
+
+    activeMapResizeHandler = () => {
+
+        requestAnimationFrame(() => {
+
+            refreshMapLayout(mapInstance);
+
+        });
+
+    };
+
+
+    window.addEventListener("resize", activeMapResizeHandler);
+    window.addEventListener("orientationchange", activeMapResizeHandler);
+    document.addEventListener("visibilitychange", activeMapResizeHandler);
+
+}
 
 
 /* =====================================================
@@ -1078,6 +1152,8 @@ async function loadLeafletFallbackMap(mapElement) {
 
 
     mapElement.innerHTML = "";
+    mapElement.style.width = "100%";
+    mapElement.style.height = "100%";
 
 
     const map = window.L.map(mapElement, {
@@ -1269,10 +1345,19 @@ async function loadLeafletFallbackMap(mapElement) {
 
     setTimeout(() => {
 
-        map.invalidateSize();
+        refreshMapLayout(map);
 
     }, 150);
 
+
+    setTimeout(() => {
+
+        refreshMapLayout(map);
+
+    }, 900);
+
+
+    bindMapResizeHandler(map);
 
     disasterMap = map;
 
@@ -1285,6 +1370,15 @@ async function loadLeafletFallbackMap(mapElement) {
 
 
 async function loadDisasterMap() {
+
+    if (mapInitializationInProgress) {
+
+        return;
+
+    }
+
+
+    mapInitializationInProgress = true;
 
 
     const mapElement =
@@ -1324,6 +1418,11 @@ async function loadDisasterMap() {
         disasterMap = null;
 
     }
+
+
+    mapElement.innerHTML = "";
+    mapElement.style.width = "100%";
+    mapElement.style.height = "100%";
 
 
     if (shouldUseMobileFallback()) {
@@ -1451,6 +1550,15 @@ async function loadDisasterMap() {
     );
 
 
+    bindMapResizeHandler(disasterMap);
+
+    requestAnimationFrame(() => {
+
+        refreshMapLayout(disasterMap);
+
+    });
+
+
     const loadTimeout = setTimeout(() => {
 
         if (fallbackTriggered) {
@@ -1488,6 +1596,8 @@ async function loadDisasterMap() {
         "load",
 
         async () => {
+
+            refreshMapLayout(disasterMap);
 
 
             console.log(
