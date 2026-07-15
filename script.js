@@ -1013,6 +1013,38 @@ function getEventColor(type) {
 }
 
 
+function hasWebGLSupport() {
+
+    if (typeof window === "undefined" || typeof document === "undefined") {
+
+        return false;
+
+    }
+
+
+    const canvas = document.createElement("canvas");
+
+    const contexts = ["webgl", "experimental-webgl", "webgl2"];
+
+
+    return contexts.some(contextName => {
+
+        try {
+
+            return !!canvas.getContext(contextName);
+
+        }
+        catch (error) {
+
+            return false;
+
+        }
+
+    });
+
+}
+
+
 function shouldUseMobileFallback() {
 
     const userAgent = navigator.userAgent || "";
@@ -1021,7 +1053,15 @@ function shouldUseMobileFallback() {
 
     const isSafari = /Safari/.test(userAgent) && !/Chrome|CriOS|FxiOS|EdgiOS|OPiOS/.test(userAgent);
 
-    return isMobile && window.innerWidth <= 768 || isSafari && window.innerWidth <= 768;
+    const hasCoarsePointer = typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
+
+    const isTouchDevice = navigator.maxTouchPoints > 0 || hasCoarsePointer;
+
+    const isSmallViewport = window.innerWidth <= 900;
+
+    const isLikelyMobile = isMobile || isSafari || (isTouchDevice && isSmallViewport);
+
+    return isLikelyMobile || !hasWebGLSupport();
 
 }
 
@@ -1298,11 +1338,16 @@ async function loadDisasterMap() {
 
 
 
-    disasterMap = new maplibregl.Map({
+    let fallbackTriggered = false;
 
-        container: "disaster-map",
 
-        style: {
+    try {
+
+        disasterMap = new maplibregl.Map({
+
+            container: "disaster-map",
+
+            style: {
 
             version: 8,
 
@@ -1356,16 +1401,47 @@ async function loadDisasterMap() {
 
         zoom: 2
 
+        });
+
+    }
+    catch (error) {
+
+        console.warn("MapLibre failed to initialize, using Leaflet fallback", error);
+
+        fallbackTriggered = true;
+
+        disasterMap = null;
+
+        await loadLeafletFallbackMap(mapElement);
+
+        return;
+
+    }
+
+
+    disasterMap.on("error", (event) => {
+
+        if (fallbackTriggered) {
+
+            return;
+
+        }
+
+        fallbackTriggered = true;
+
+        console.warn("MapLibre error detected, switching to Leaflet fallback", event.error);
+
+        disasterMap.remove();
+
+        disasterMap = null;
+
+        loadLeafletFallbackMap(mapElement).catch(error => {
+
+            console.error("Leaflet fallback failed", error);
+
+        });
+
     });
-
-   disasterMap.on("error", (e) => {
-
-    console.error(
-        "MAPLIBRE ERROR:",
-        e.error
-    );
-
-   });
 
 
     disasterMap.addControl(
@@ -1373,6 +1449,35 @@ async function loadDisasterMap() {
         new maplibregl.NavigationControl()
 
     );
+
+
+    const loadTimeout = setTimeout(() => {
+
+        if (fallbackTriggered) {
+
+            return;
+
+        }
+
+        if (!disasterMap || !disasterMap.loaded()) {
+
+            fallbackTriggered = true;
+
+            console.warn("MapLibre did not finish loading in time, switching to Leaflet fallback");
+
+            disasterMap.remove();
+
+            disasterMap = null;
+
+            loadLeafletFallbackMap(mapElement).catch(error => {
+
+                console.error("Leaflet fallback failed", error);
+
+            });
+
+        }
+
+    }, 4000);
 
 
 
