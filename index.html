@@ -121,7 +121,7 @@ frame-src 'self';
                 Intelligence
             </a>
 
-            
+
             <a href="#disaster-map-section">
                 Disaster Map
             </a>
@@ -131,7 +131,7 @@ frame-src 'self';
                 Sentinel Grid
             </a>
 
-            
+
             <a href="#skills">
                 Skills
             </a>
@@ -382,83 +382,160 @@ frame-src 'self';
 
         </section>
 
+        <!-- =====================================================
+        SENTINEL GRID INTELLIGENCE DASHBOARD
+        ===================================================== -->
+
+
         <section id="sentinel-dashboard">
 
-<h1 class="sentinel-title">
-SENTINEL GRID INTELLIGENCE CENTER
-</h1>
+
+            <h1 class="sentinel-title">
+                SENTINEL GRID INTELLIGENCE CENTER
+            </h1>
 
 
-<div class="sentinel-grid">
-
-
-<div class="sentinel-card">
-<h3>GLOBAL THREAT LEVEL</h3>
-<div id="threat-level">--</div>
-</div>
-
-
-<div class="sentinel-card">
-<h3>TOTAL EVENTS</h3>
-<div id="total-events">--</div>
-</div>
-
-
-<div class="sentinel-card">
-<h3>CRITICAL EVENTS</h3>
-<div id="critical-events">--</div>
-</div>
-
-
-<div class="sentinel-card">
-<h3>HIGH PRIORITY</h3>
-<div id="high-events">--</div>
-</div>
-
-
-</div>
-
-
-<div class="sentinel-panels">
-
-
-<div class="sentinel-panel">
-
-<h2>
-REGIONAL ACTIVITY
-</h2>
-
-<div id="regional-summary"></div>
-
-</div>
+            <p class="intel-subtitle">
+                GLOBAL OSINT / GEOINT THREAT MONITORING SYSTEM
+            </p>
 
 
 
-<div class="sentinel-panel">
-
-<h2>
-INTELLIGENCE BRIEF
-</h2>
-
-<div id="intel-brief"></div>
-
-</div>
+            <!-- =========================
+            STATUS CARDS
+            ========================= -->
 
 
-</div>
+            <div class="sentinel-grid">
 
 
-<div id="sentinel-map">
+                <div class="sentinel-card">
 
-</div>
+                    <h3>
+                        GLOBAL THREAT LEVEL
+                    </h3>
+
+                    <div id="threat-level">
+                        UNKNOWN
+                    </div>
+
+                </div>
 
 
-<div id="sentinel-events">
 
-</div>
+                <div class="sentinel-card">
+
+                    <h3>
+                        TOTAL EVENTS
+                    </h3>
+
+                    <div id="total-events">
+                        0
+                    </div>
+
+                </div>
 
 
-</section>
+
+
+                <div class="sentinel-card">
+
+                    <h3>
+                        CRITICAL EVENTS
+                    </h3>
+
+                    <div id="critical-events">
+                        0
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <!-- =========================
+            MAP
+            ========================= -->
+
+
+            <div class="sentinel-panel">
+
+
+                <h2>
+                    GLOBAL ACTIVITY MAP
+                </h2>
+
+
+                <div id="sentinel-map"></div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- =========================
+            INTELLIGENCE BRIEF
+            ========================= -->
+
+
+            <div class="sentinel-panel">
+
+
+                <h2>
+                    INTELLIGENCE BRIEF
+                </h2>
+
+
+                <div id="intel-brief">
+
+                    Loading intelligence...
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- =========================
+            EVENT STREAM
+            ========================= -->
+
+
+            <div class="sentinel-panel">
+
+
+                <h2>
+                    LIVE EVENT STREAM
+                </h2>
+
+
+                <div id="sentinel-events">
+
+                    Loading events...
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </section>
 
 
         <section id="projects" class="card">

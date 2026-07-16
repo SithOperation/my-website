@@ -1454,57 +1454,57 @@ async function loadDisasterMap() {
 
             style: {
 
-            version: 8,
+                version: 8,
 
 
-            sources: {
+                sources: {
 
-                osm: {
+                    osm: {
 
-                    type: "raster",
+                        type: "raster",
 
-                    tiles: [
-                       
-                       "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                       "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                       "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        tiles: [
 
-                    ],
+                            "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                            "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                            "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-                    tileSize: 256
+                        ],
 
-                }
+                        tileSize: 256
+
+                    }
+
+                },
+
+
+                layers: [
+
+                    {
+
+                        id: "osm",
+
+                        type: "raster",
+
+                        source: "osm"
+
+                    }
+
+                ]
 
             },
 
 
-            layers: [
+            center: [
 
-                {
+                0,
 
-                    id: "osm",
+                20
 
-                    type: "raster",
-
-                    source: "osm"
-
-                }
-
-            ]
-
-        },
+            ],
 
 
-        center: [
-
-            0,
-
-            20
-
-        ],
-
-
-        zoom: 2
+            zoom: 2
 
         });
 
@@ -1688,7 +1688,7 @@ async function loadDisasterMap() {
                     }
 
 
-                    catch(error) {
+                    catch (error) {
 
 
                         console.error(
@@ -1716,206 +1716,206 @@ async function loadDisasterMap() {
 
                     type:
 
-                    "FeatureCollection",
+                        "FeatureCollection",
 
 
 
                     features:
 
-                    events.map(event => {
+                        events.map(event => {
 
 
 
-                        /*
-                            POINT EVENTS
-
-                            Earthquake
-                            Volcano
-
-                        */
-
-
-                        if (
+                            /*
+                                POINT EVENTS
+    
+                                Earthquake
+                                Volcano
+    
+                            */
 
 
-                            event.coordinates &&
+                            if (
 
 
-                            event.coordinates.lat !== undefined &&
+                                event.coordinates &&
 
 
-                            event.coordinates.lon !== undefined
+                                event.coordinates.lat !== undefined &&
 
 
-                        ) {
+                                event.coordinates.lon !== undefined
 
 
-
-                            return {
-
-
-                                type:
-
-                                "Feature",
+                            ) {
 
 
 
-                                properties: {
-
-
-                                    title:
-
-                                    event.title,
-
-
-
-                                    location:
-
-                                    event.location,
-
-
-
-                                    severity:
-
-                                    event.severity,
-
+                                return {
 
 
                                     type:
 
-                                    event.type
-
-
-                                },
+                                        "Feature",
 
 
 
-                                geometry: {
+                                    properties: {
+
+
+                                        title:
+
+                                            event.title,
+
+
+
+                                        location:
+
+                                            event.location,
+
+
+
+                                        severity:
+
+                                            event.severity,
+
+
+
+                                        type:
+
+                                            event.type
+
+
+                                    },
+
+
+
+                                    geometry: {
+
+
+                                        type:
+
+                                            "Point",
+
+
+
+                                        coordinates:
+
+                                            [
+
+
+                                                event.coordinates.lon,
+
+
+                                                event.coordinates.lat
+
+
+                                            ]
+
+                                    }
+
+
+                                };
+
+
+                            }
+
+
+
+
+
+                            /*
+                                WEATHER POLYGONS
+    
+                            */
+
+
+                            if (
+
+
+                                event.coordinates &&
+
+
+                                event.coordinates.polygon
+
+
+                            ) {
+
+
+
+                                return {
 
 
                                     type:
 
-                                    "Point",
+                                        "Feature",
 
 
 
-                                    coordinates:
+                                    properties: {
 
-                                    [
 
+                                        title:
 
-                                        event.coordinates.lon,
+                                            event.title,
 
 
-                                        event.coordinates.lat
 
+                                        location:
 
-                                    ]
+                                            event.location,
 
-                                }
 
 
-                            };
+                                        severity:
 
+                                            event.severity,
 
-                        }
 
 
+                                        type:
 
+                                            event.type
 
 
-                        /*
-                            WEATHER POLYGONS
+                                    },
 
-                        */
 
 
-                        if (
+                                    geometry: {
 
 
-                            event.coordinates &&
+                                        type:
 
+                                            "Polygon",
 
-                            event.coordinates.polygon
 
 
-                        ) {
+                                        coordinates:
 
+                                            event.coordinates.polygon
 
 
-                            return {
+                                    }
 
 
-                                type:
+                                };
 
-                                "Feature",
 
+                            }
 
 
-                                properties: {
 
 
-                                    title:
 
-                                    event.title,
+                            return null;
 
 
 
-                                    location:
+                        })
 
-                                    event.location,
 
-
-
-                                    severity:
-
-                                    event.severity,
-
-
-
-                                    type:
-
-                                    event.type
-
-
-                                },
-
-
-
-                                geometry: {
-
-
-                                    type:
-
-                                    "Polygon",
-
-
-
-                                    coordinates:
-
-                                    event.coordinates.polygon
-
-
-                                }
-
-
-                            };
-
-
-                        }
-
-
-
-
-
-                        return null;
-
-
-
-                    })
-
-
-                    .filter(Boolean)
+                            .filter(Boolean)
 
 
                 };
@@ -1945,12 +1945,12 @@ async function loadDisasterMap() {
 
                         type:
 
-                        "geojson",
+                            "geojson",
 
 
                         data:
 
-                        geojson
+                            geojson
 
 
                     }
@@ -1974,38 +1974,38 @@ async function loadDisasterMap() {
 
                     id:
 
-                    "disaster-points",
+                        "disaster-points",
 
 
 
                     type:
 
-                    "circle",
+                        "circle",
 
 
 
                     source:
 
-                    "disaster-events",
+                        "disaster-events",
 
 
 
                     filter:
 
 
-                    [
-
-                        "==",
-
                         [
 
-                            "geometry-type"
+                            "==",
+
+                            [
+
+                                "geometry-type"
+
+                            ],
+
+                            "Point"
 
                         ],
-
-                        "Point"
-
-                    ],
 
 
 
@@ -2017,62 +2017,62 @@ async function loadDisasterMap() {
 
                         "circle-radius":
 
-                        7,
+                            7,
 
 
 
                         "circle-color":
 
 
-                        [
-
-                            "match",
-
-
                             [
 
-                                "get",
+                                "match",
 
-                                "type"
+
+                                [
+
+                                    "get",
+
+                                    "type"
+
+                                ],
+
+
+
+                                "earthquake",
+
+                                "#ff4444",
+
+
+
+                                "volcano",
+
+                                "#ff9900",
+
+
+
+                                "#00ffff"
+
 
                             ],
 
 
 
-                            "earthquake",
-
-                            "#ff4444",
-
-
-
-                            "volcano",
-
-                            "#ff9900",
-
-
-
-                            "#00ffff"
-
-
-                        ],
-
-
-
                         "circle-opacity":
 
-                        0.85,
+                            0.85,
 
 
 
                         "circle-stroke-width":
 
-                        2,
+                            2,
 
 
 
                         "circle-stroke-color":
 
-                        "#ffffff"
+                            "#ffffff"
 
 
                     }
@@ -2097,38 +2097,38 @@ async function loadDisasterMap() {
 
                     id:
 
-                    "weather-polygons",
+                        "weather-polygons",
 
 
 
                     type:
 
-                    "fill",
+                        "fill",
 
 
 
                     source:
 
-                    "disaster-events",
+                        "disaster-events",
 
 
 
                     filter:
 
 
-                    [
-
-                        "==",
-
                         [
 
-                            "geometry-type"
+                            "==",
+
+                            [
+
+                                "geometry-type"
+
+                            ],
+
+                            "Polygon"
 
                         ],
-
-                        "Polygon"
-
-                    ],
 
 
 
@@ -2140,13 +2140,13 @@ async function loadDisasterMap() {
 
                         "fill-color":
 
-                        "#9933ff",
+                            "#9933ff",
 
 
 
                         "fill-opacity":
 
-                        0.25
+                            0.25
 
 
                     }
@@ -2165,38 +2165,38 @@ async function loadDisasterMap() {
 
                     id:
 
-                    "weather-outline",
+                        "weather-outline",
 
 
 
                     type:
 
-                    "line",
+                        "line",
 
 
 
                     source:
 
-                    "disaster-events",
+                        "disaster-events",
 
 
 
                     filter:
 
 
-                    [
-
-                        "==",
-
                         [
 
-                            "geometry-type"
+                            "==",
+
+                            [
+
+                                "geometry-type"
+
+                            ],
+
+                            "Polygon"
 
                         ],
-
-                        "Polygon"
-
-                    ],
 
 
 
@@ -2208,13 +2208,13 @@ async function loadDisasterMap() {
 
                         "line-color":
 
-                        "#cc66ff",
+                            "#cc66ff",
 
 
 
                         "line-width":
 
-                        2
+                            2
 
 
                     }
@@ -2398,8 +2398,8 @@ async function loadDisasterMap() {
 
 
                         disasterMap.getCanvas()
-                        .style.cursor =
-                        "pointer";
+                            .style.cursor =
+                            "pointer";
 
 
                     }
@@ -2418,8 +2418,8 @@ async function loadDisasterMap() {
 
 
                         disasterMap.getCanvas()
-                        .style.cursor =
-                        "pointer";
+                            .style.cursor =
+                            "pointer";
 
 
                     }
@@ -2438,8 +2438,8 @@ async function loadDisasterMap() {
 
 
                         disasterMap.getCanvas()
-                        .style.cursor =
-                        "";
+                            .style.cursor =
+                            "";
 
 
                     }
@@ -2458,8 +2458,8 @@ async function loadDisasterMap() {
 
 
                         disasterMap.getCanvas()
-                        .style.cursor =
-                        "";
+                            .style.cursor =
+                            "";
 
 
                     }
@@ -2471,7 +2471,7 @@ async function loadDisasterMap() {
             }
 
 
-            catch(error) {
+            catch (error) {
 
 
                 console.error(
@@ -2599,218 +2599,510 @@ function initUFOButton() {
 
 
 /* =====================================================
-    SENTINEL DASHBOARD
+   SENTINEL GRID INTELLIGENCE ENGINE
 ===================================================== */
+
+
+let sentinelMap = null;
+let sentinelMapResizeHandler = null;
+
+
+
+
 async function loadSentinelDashboard() {
+
 
     try {
 
-        const response = await fetch(
-            "data/dashboard.json"
-        );
+
+        const data =
+            await fetchJSON(
+                "data/dashboard.json"
+            );
 
 
-        const dashboard = await response.json();
+
+        document.getElementById(
+            "threat-level"
+        ).textContent =
+            data.summary.global_threat_level;
 
 
-        console.log(
-            "Sentinel Grid Dashboard Loaded:",
-            dashboard
-        );
+
+        document.getElementById(
+            "total-events"
+        ).textContent =
+            data.summary.total_events;
 
 
-        displayDashboardSummary(
-            dashboard
-        );
+
+        document.getElementById(
+            "critical-events"
+        ).textContent =
+            data.critical_events.length;
 
 
-    } catch (error) {
+
+    }
+
+    catch (error) {
 
         console.error(
-            "Dashboard loading failed:",
+            "Sentinel dashboard failed",
             error
         );
 
+
     }
+
 
 }
 
 
 
-function displayDashboardSummary(dashboard) {
-
-
-    const threat =
-        document.getElementById("threat-level");
-
-
-    const total =
-        document.getElementById("total-events");
-
-
-    const critical =
-        document.getElementById("critical-events");
 
 
 
-    if (!threat || !total || !critical) {
-        console.warn(
-            "Sentinel dashboard elements missing"
+async function loadSentinelBrief() {
+
+
+    try {
+
+
+        const data =
+            await fetchJSON(
+                "data/intelligence_brief.json"
+            );
+
+
+
+        const box =
+            document.getElementById(
+                "intel-brief"
+            );
+
+
+
+        box.innerHTML = `
+
+
+<h3>
+${data.title}
+</h3>
+
+
+<p>
+
+Threat Level:
+
+${data.global_threat_level}
+
+</p>
+
+
+
+<ul>
+
+${data.critical_events.map(event => `
+
+<li>
+${event.title}
+</li>
+
+`).join("")}
+
+</ul>
+
+
+`;
+
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Brief failed",
+            error
         );
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+async function loadSentinelEvents() {
+
+
+    try {
+
+
+        const events =
+            await fetchJSON(
+                "data/world_events.json"
+            );
+
+
+
+        const box =
+            document.getElementById(
+                "sentinel-events"
+            );
+
+
+
+        box.innerHTML =
+
+
+            events.slice(0, 10)
+
+                .map(event => `
+
+
+<div class="sentinel-event">
+
+
+<b>
+${event.title}
+</b>
+
+
+<br>
+
+
+Type:
+${event.type}
+
+
+<br>
+
+
+Threat:
+${event.threat_level}
+
+
+</div>
+
+
+
+`).join("");
+
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Event stream failed",
+            error
+        );
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+async function loadSentinelMap() {
+
+    const container =
+        document.getElementById(
+            "sentinel-map"
+        );
+
+
+    if (!container) {
         return;
     }
 
 
+    if (sentinelMap) {
 
-    threat.textContent =
-        dashboard.summary?.threat_level ?? "UNKNOWN";
+        sentinelMap.remove();
 
-
-    total.textContent =
-        dashboard.summary?.total_events ?? 0;
-
-
-    critical.textContent =
-        dashboard.critical_events?.length ?? 0;
-
-
-}
-
-async function loadSentinelBrief(){
-
-    try {
-
-        const response =
-            await fetch(
-                "data/intelligence_brief.json"
-            );
-
-
-        const brief =
-            await response.json();
-
-
-
-        const container =
-            document.getElementById(
-                "intel-brief"
-            );
-
-
-        if(!container)
-            return;
-
-
-
-        container.innerHTML = `
-
-            <h3>${brief.title}</h3>
-
-            <p>
-            Threat Level:
-            ${brief.global_threat_level}
-            </p>
-
-
-            <ul>
-
-            ${
-                brief.critical_events
-                .map(event =>
-                    `<li>
-                    ${event.title}
-                    </li>`
-                )
-                .join("")
-            }
-
-            </ul>
-
-        `;
-
-
-    }
-    catch(error){
-
-        console.error(
-            "Brief loading failed:",
-            error
-        );
+        sentinelMap = null;
 
     }
 
-}
 
 
-/* =====================================================
-   SENTINEL INTELLIGENCE BRIEF
-===================================================== */
+    sentinelMap = new maplibregl.Map({
 
-async function loadSentinelBrief(){
+        container: container,
 
-    try {
+        style: {
 
-        const response =
-            await fetch(
-                "data/intelligence_brief.json"
+            version: 8,
+
+            sources: {
+
+                osm: {
+
+                    type: "raster",
+
+                    tiles: [
+                        "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    ],
+
+                    tileSize: 256
+
+                }
+
+            },
+
+            layers: [
+
+                {
+
+                    id: "osm",
+
+                    type: "raster",
+
+                    source: "osm"
+
+                }
+
+            ]
+
+        },
+
+
+        center: [
+            0,
+            20
+        ],
+
+        zoom: 2
+
+    });
+
+
+
+    sentinelMap.on(
+        "load",
+        async () => {
+
+
+            console.log(
+                "Sentinel map loaded"
             );
 
 
-        const brief =
-            await response.json();
+
+            const events =
+                await fetchJSON(
+                    "data/map_events.json"
+                );
 
 
-        const container =
-            document.getElementById(
-                "intel-brief"
+
+            const geojson = {
+
+                type: "FeatureCollection",
+
+                features:
+
+                    events
+
+                        .filter(event =>
+                            event.latitude &&
+                            event.longitude
+                        )
+
+                        .map(event => ({
+
+                            type: "Feature",
+
+                            properties: event,
+
+
+                            geometry: {
+
+                                type: "Point",
+
+                                coordinates: [
+
+                                    event.longitude,
+
+                                    event.latitude
+
+                                ]
+
+                            }
+
+                        }))
+
+            };
+
+
+
+            sentinelMap.addSource(
+                "sentinel-events",
+                {
+
+                    type: "geojson",
+
+                    data: geojson
+
+                }
             );
 
 
-        if(!container){
-            return;
+
+            sentinelMap.addLayer({
+
+                id: "sentinel-events",
+
+                type: "circle",
+
+                source: "sentinel-events",
+
+
+                paint: {
+
+
+                    "circle-radius": 8,
+
+
+                    "circle-color": [
+
+                        "match",
+
+                        [
+                            "get",
+                            "threat_level"
+                        ],
+
+
+                        "CRITICAL",
+                        "#ff004c",
+
+                        "HIGH",
+                        "#ff8800",
+
+                        "MEDIUM",
+                        "#ffff00",
+
+                        "#00ffff"
+
+                    ],
+
+
+                    "circle-stroke-width": 2,
+
+                    "circle-stroke-color": "white"
+
+
+                }
+
+            });
+
+
+
+            sentinelMap.on(
+                "click",
+                "sentinel-events",
+                e => {
+
+
+                    const p =
+                        e.features[0].properties;
+
+
+
+                    new maplibregl.Popup()
+
+                        .setLngLat(
+                            e.lngLat
+                        )
+
+                        .setHTML(`
+
+
+                    <h3>
+                    ${safe(p.title)}
+                    </h3>
+
+
+                    Type:
+                    ${safe(p.type)}
+
+                    <br>
+
+
+                    Threat:
+                    ${safe(p.threat_level)}
+
+                    <br>
+
+
+                    Confidence:
+                    ${safe(p.confidence)}%
+
+
+                    `)
+
+                        .addTo(
+                            sentinelMap
+                        );
+
+
+                }
+            );
+
+
+
+            setTimeout(() => {
+
+                sentinelMap.resize();
+
+            }, 500);
+
+
+
         }
 
-
-        container.innerHTML = `
-
-            <h3>
-            ${brief.title}
-            </h3>
-
-            <p>
-            GLOBAL STATUS:
-            ${brief.global_threat_level}
-            </p>
+    );
 
 
-            <ul>
 
-            ${
-                brief.critical_events
-                .map(event =>
-                    `
-                    <li>
-                    ${event.title}
-                    </li>
-                    `
-                )
-                .join("")
+    sentinelMapResizeHandler =
+        () => {
+
+            if (sentinelMap) {
+
+                sentinelMap.resize();
+
             }
 
-            </ul>
-
-        `;
+        };
 
 
-    }
-    catch(error){
 
-        console.error(
-            "Brief loading failed:",
-            error
-        );
+    window.addEventListener(
+        "resize",
+        sentinelMapResizeHandler
+    );
 
-    }
 
 }
 
@@ -2834,7 +3126,7 @@ document.addEventListener(
 
         }
 
-        catch(error) {
+        catch (error) {
 
             console.error(
                 "Typewriter failed:",
@@ -2858,7 +3150,7 @@ document.addEventListener(
 
         }
 
-        catch(error) {
+        catch (error) {
 
             console.error(
                 "Background failed:",
@@ -2874,8 +3166,12 @@ document.addEventListener(
 
             loadSentinelBrief();
 
+            loadSentinelEvents();
+
+            loadSentinelMap();
+
         }
-        catch(error) {
+        catch (error) {
 
             console.error(
                 "Sentinel failed:",
@@ -2891,7 +3187,7 @@ document.addEventListener(
 
         }
 
-        catch(error) {
+        catch (error) {
 
             console.error(
                 "Intelligence failed:",
@@ -2907,7 +3203,7 @@ document.addEventListener(
 
         }
 
-        catch(error) {
+        catch (error) {
 
             console.error(
                 "Projects failed:",
@@ -2924,7 +3220,7 @@ document.addEventListener(
 
         }
 
-        catch(error) {
+        catch (error) {
 
             console.error(
                 "UFO failed:",
@@ -2944,7 +3240,7 @@ document.addEventListener(
 
             }
 
-            catch(error) {
+            catch (error) {
 
                 console.error(
                     "Map failed:",
@@ -2954,7 +3250,7 @@ document.addEventListener(
             }
 
 
-        },1500);
+        }, 1500);
 
 
 
