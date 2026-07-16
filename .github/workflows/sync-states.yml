@@ -83,6 +83,20 @@ jobs:
 
 
 
+      - name: Checkout Sentinel Grid
+
+        uses: actions/checkout@v4
+
+        with:
+
+          repository: SithOperation/sentinel-grid-intelligence
+
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+          path: external/sentinel
+
+
+
       - name: Verify source files
 
         run: |
@@ -118,6 +132,22 @@ jobs:
 
 
 
+          echo "Checking Sentinel Grid..."
+
+          test -f external/sentinel/data/output/dashboard.json
+
+          test -f external/sentinel/data/output/intelligence_brief.json
+
+          test -f external/sentinel/data/output/map_events.json
+
+          test -f external/sentinel/data/output/timeline.json
+
+          test -f external/sentinel/data/output/trends.json
+
+          test -f external/sentinel/data/output/world_events.json
+
+
+
           echo "All source files found"
 
 
@@ -132,21 +162,23 @@ jobs:
 
 
 
+          # ==========================
           # EWS
+          # ==========================
 
           cp external/ews/state.json \
           data/ews_state.json
 
 
 
-          # Disaster dashboard feed
+          # ==========================
+          # Disaster Intelligence
+          # ==========================
 
           cp external/disaster/data/disaster_state.json \
           data/disaster_state.json
 
 
-
-          # MapLibre feeds
 
           cp external/disaster/data/earthquakes.json \
           data/earthquakes.json
@@ -168,10 +200,46 @@ jobs:
 
 
 
-          # AI digest
+          # ==========================
+          # AI Cyber Digest
+          # ==========================
 
           cp external/ai/data/ai_cyber_digest.json \
           data/ai_cyber_digest.json
+
+
+
+          # ==========================
+          # Sentinel Grid Intelligence
+          # ==========================
+
+          cp external/sentinel/data/output/dashboard.json \
+          data/dashboard.json
+
+
+
+          cp external/sentinel/data/output/intelligence_brief.json \
+          data/intelligence_brief.json
+
+
+
+          cp external/sentinel/data/output/map_events.json \
+          data/map_events.json
+
+
+
+          cp external/sentinel/data/output/timeline.json \
+          data/timeline.json
+
+
+
+          cp external/sentinel/data/output/trends.json \
+          data/trends.json
+
+
+
+          cp external/sentinel/data/output/world_events.json \
+          data/world_events.json
 
 
 
@@ -181,22 +249,24 @@ jobs:
         run: |
 
 
-          echo "Dashboard data:"
+          echo "Website dashboard data:"
 
 
           ls -lh data/
 
 
 
-          echo "Earthquakes sample:"
-
-          head -30 data/earthquakes.json
+          echo "Sentinel Dashboard Sample:"
 
 
+          head -40 data/dashboard.json
 
-          echo "Weather sample:"
 
-          head -30 data/weather.json
+
+          echo "Sentinel Brief Sample:"
+
+
+          head -40 data/intelligence_brief.json
 
 
 
