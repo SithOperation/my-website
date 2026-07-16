@@ -1198,6 +1198,7 @@ nav a,
 
 /* =========================
    SENTINEL GRID DASHBOARD
+   GLOBAL SECURITY OPERATIONS
 ========================= */
 
 
@@ -1205,28 +1206,50 @@ nav a,
 
     max-width:1100px;
 
-    margin:50px auto;
+    margin:60px auto;
 
     padding:25px;
 
+    position:relative;
+
 }
 
+
+
+/* =========================
+   TITLE
+========================= */
 
 
 .sentinel-title {
 
     font-family:monospace;
 
-    color:#00ffff;
+    color:#ff004c;
 
     text-align:center;
 
-    letter-spacing:5px;
+    letter-spacing:6px;
 
-    font-size:36px;
+    font-size:38px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+
+    0 0 10px rgba(255,0,76,.7),
+
+    0 0 25px rgba(255,0,76,.35);
 
 }
 
+
+
+
+
+/* =========================
+   STATUS CARDS
+========================= */
 
 
 .sentinel-grid {
@@ -1236,16 +1259,18 @@ nav a,
 
 
     grid-template-columns:
+
     repeat(auto-fit,minmax(220px,1fr));
 
 
     gap:20px;
 
 
-    margin-top:30px;
+    margin-top:35px;
 
 
 }
+
 
 
 
@@ -1253,11 +1278,21 @@ nav a,
 
 
     background:
-    rgba(0,0,0,.75);
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(255,0,76,.08),
+
+        rgba(0,0,0,.85)
+
+    );
 
 
     border:
-    1px solid rgba(0,255,255,.35);
+
+    1px solid rgba(255,0,76,.35);
 
 
     border-radius:12px;
@@ -1271,10 +1306,15 @@ nav a,
 
     box-shadow:
 
-    0 0 20px rgba(0,255,255,.15);
+
+    inset 0 0 20px rgba(255,0,76,.05),
+
+    0 0 25px rgba(255,0,76,.15);
 
 
 }
+
+
 
 
 
@@ -1283,9 +1323,19 @@ nav a,
 
     font-family:monospace;
 
-    color:#00ffff;
+
+    color:#ff6688;
+
+
+    letter-spacing:2px;
+
+
+    font-size:14px;
+
 
 }
+
+
 
 
 
@@ -1294,13 +1344,31 @@ nav a,
 
     font-family:monospace;
 
+
     font-size:42px;
 
-    color:#00ff99;
+
+    color:#ffcc00;
+
+
+    margin-top:15px;
+
+
+    text-shadow:
+
+
+    0 0 15px rgba(255,204,0,.5);
 
 
 }
 
+
+
+
+
+/* =========================
+   INTELLIGENCE PANELS
+========================= */
 
 
 .sentinel-panels {
@@ -1310,16 +1378,19 @@ nav a,
 
 
     grid-template-columns:
+
     repeat(auto-fit,minmax(350px,1fr));
 
 
     gap:20px;
 
 
-    margin-top:30px;
+    margin-top:35px;
 
 
 }
+
+
 
 
 
@@ -1327,34 +1398,205 @@ nav a,
 
 
     background:
-    rgba(0,0,0,.7);
+
+    rgba(0,0,0,.75);
 
 
     border:
-    1px solid rgba(0,255,255,.25);
+
+    1px solid rgba(255,0,76,.25);
 
 
     border-radius:12px;
 
 
-    padding:20px;
+    padding:25px;
+
+
+    box-shadow:
+
+
+    inset 0 0 25px rgba(255,0,76,.05);
 
 
 }
 
 
 
+
+
+.sentinel-panel h2 {
+
+
+    font-family:monospace;
+
+
+    color:#ff004c;
+
+
+    letter-spacing:3px;
+
+
+}
+
+
+
+
+
+/* =========================
+   SENTINEL GLOBAL ACTIVITY MAP
+========================= */
+
+
 #sentinel-map {
 
 
-    height:500px;
+    width:100%;
+
+
+    height:600px;
+
+
+    margin-top:35px;
+
+
+    border-radius:12px;
+
+
+    overflow:hidden;
+
+
+    border:
+
+    1px solid rgba(255,0,76,.5);
+
+
+    background:#000;
+
+
+    box-shadow:
+
+
+    inset 0 0 25px rgba(0,0,0,.8),
+
+
+    0 0 30px rgba(255,0,76,.2);
+
+
+}
+
+
+
+
+
+#sentinel-map canvas {
+
+
+    width:100% !important;
+
+
+    height:100% !important;
+
+
+}
+
+
+
+
+
+/* =========================
+   EVENT STREAM
+========================= */
+
+
+#sentinel-events {
 
 
     margin-top:30px;
 
 
+    background:
+
+    rgba(0,0,0,.75);
+
+
     border:
-    1px solid rgba(0,255,255,.5);
+
+    1px solid rgba(255,0,76,.25);
+
+
+    border-radius:12px;
+
+
+    padding:25px;
+
+
+}
+
+
+
+
+
+.sentinel-event {
+
+
+    padding:15px;
+
+
+    margin-bottom:15px;
+
+
+    border-left:
+
+    3px solid #ff004c;
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+
+@media(max-width:768px){
+
+
+    #sentinel-dashboard {
+
+        padding:15px;
+
+    }
+
+
+
+    .sentinel-title {
+
+        font-size:26px;
+
+        letter-spacing:3px;
+
+    }
+
+
+
+    #sentinel-map {
+
+        height:420px;
+
+    }
+
 
 
 }
