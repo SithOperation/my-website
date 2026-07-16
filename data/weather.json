@@ -1,145 +1,585 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c2adf9e972ec6c57447320b9baee93cf430606b3.001.1",
-    "type": "weather",
-    "severity": "extreme",
-    "title": "Tornado Warning",
-    "geometry": "Polygon",
-    "location": "Bandera, TX; Real, TX; Uvalde, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.5,
-            29.55
-          ],
-          [
-            -99.66,
-            29.52
-          ],
-          [
-            -99.84,
-            29.84
-          ],
-          [
-            -99.52,
-            29.91
-          ],
-          [
-            -99.51,
-            29.91
-          ],
-          [
-            -99.5,
-            29.55
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "TOREWX\n\nThe National Weather Service in Austin San Antonio has issued a\n\n* Tornado Warning for...\nNorthwestern Bandera County in south central Texas...\nNortheastern Uvalde County in south central Texas...\nSoutheastern Real County in south central Texas...\n\n* Until 630 AM CDT.\n\n* At 550 AM CDT, a severe thunderstorm capable of producing a tornado\nwas located near Utopia, or 10 miles south of Vanderpool, moving\nnorth at 20 mph.\n\nHAZARD...Tornado.\n\nSOURCE...Radar indicated rotation.\n\nIMPACT...Flying debris will be dangerous to those caught without\nshelter. Mobile homes will be damaged or destroyed.\nDamage to roofs, windows, and vehicles will occur.  Tree\ndamage is likely.\n\n* This tornadic thunderstorm will remain over mainly rural areas of\nnorthwestern Bandera, northeastern Uvalde and southeastern Real\nCounties.",
-      "instruction": "TAKE COVER NOW! Move to a basement or an interior room on the lowest\nfloor of a sturdy building. Avoid windows. If you are outdoors, in a\nmobile home, or in a vehicle, move to the closest substantial shelter\nand protect yourself from flying debris.\n\nTornadoes are extremely difficult to see and confirm at night. Do not\nwait to see or hear the tornado. TAKE COVER NOW!",
-      "expires": "2026-07-16T06:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1598008752d7fd257533156f9636adadb7f7bf02.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "West Side of Fresno and Kings Counties; Caruthers - San Joaquin - Selma; Fresno-Clovis; Buttonwillow - Lost Hills - I5; Delano-Wasco-Shafter; Hanford - Corcoran - Lemoore; Visalia - Porterville - Reedley; Buena Vista; Bakersfield; Southeast San Joaquin Valley; South End San Joaquin Valley; Fresno-Tulare Foothills; South End Sierra Foothills",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Afternoon high temperatures up to 102 degrees. Overnight low\ntemperatures approaching 70 degrees.\n\n* WHERE...Across the Southern San Joaquin Valley and adjacent lower\nfoothills\n\n* WHEN...Until 11 PM PDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-16T12:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.80b03274dd505e768b7696c5ee248efc5f477f1f.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.60f62a191730abb733fd1443ad04b4b773da184d.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Warning",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Kendall, TX",
+    "location": "Medina, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -98.91,
-            29.93
+            -99.41,
+            29.27
           ],
           [
-            -98.9,
-            30
+            -99.41,
+            29.63
           ],
           [
-            -98.63,
-            29.96
+            -98.98,
+            29.62
           ],
           [
-            -98.4,
-            29.9
+            -98.98,
+            29.61
           ],
           [
-            -98.39,
-            29.83
+            -98.99,
+            29.59
           ],
           [
-            -98.64,
-            29.88
+            -98.98,
+            29.58
           ],
           [
-            -98.91,
-            29.93
+            -98.99,
+            29.57
+          ],
+          [
+            -98.97,
+            29.56
+          ],
+          [
+            -98.97,
+            29.55
+          ],
+          [
+            -99.11,
+            29.46
+          ],
+          [
+            -99.2,
+            29.3
+          ],
+          [
+            -99.41,
+            29.27
           ]
         ]
       ]
     },
     "details": {
-      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nGuadalupe River At Comfort affecting Kendall County.\n\n* WHAT...Minor flooding is occurring and major flooding is forecast.\n\n* WHERE...Guadalupe River at Comfort.\n\n* WHEN...Until just after midnight tonight.\n\n* IMPACTS...At 35.0 feet, Disastrous flooding damages many homes\nabove Center Point to below Comfort. Roads, bridges, and crossings\nare extremely dangerous to motorists entering the Guadalupe River\nchannel. Residents of flood prone areas below Kerrville to below\nComfort should prepare to evacuate as emergency officials assess\nthe threat.\n\n* ADDITIONAL DETAILS...\n- At 5:35 AM CDT Thursday the stage was 21.4 feet.\n- Bankfull stage is 10.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 5:35 AM CDT Thursday was 21.4 feet.\n- Forecast...The river is expected to rise to a crest of 35.6\nfeet this morning. It will then fall below flood stage this\nafternoon.\n- Flood stage is 21.0 feet.\n- Flood History...This crest compares to a previous crest of\n36.2 feet on 08/21/1919.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Be especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nTurn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued late tonight by midnight CDT.",
-      "expires": "2026-07-17T00:00:00-05:00"
+      "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has extended the\n\n* Flash Flood Warning for...\nNorthwestern Medina County in south central Texas...\n\n* Until 1100 AM CDT.\n\n* At 707 AM CDT, emergency management reported heavy rain across the\nwarned area. Between 3 and 15 inches of rain have fallen.\nAdditional rainfall amounts up to 0.5 inches are possible in the\nwarned area. Flash flooding is already occurring.\n\nHAZARD...Flash flooding caused by heavy rain.\n\nSOURCE...Emergency management reported.\n\nIMPACT...Flash flooding of small creeks and streams, urban\nareas, highways, streets and underpasses as well as\nother poor drainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nHondo, D'Hanis, Hill Country State Natural Area, Lakehills and\nLake Medina Shores.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMove to higher ground now. Act quickly to protect your life.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
+      "expires": "2026-07-16T11:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8ab98c089736fad64641b22ad881c0e26f09b9e5.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Dense Smoke Advisory",
-    "geometry": "unknown",
-    "location": "Winthrop Harbor to Wilmette Harbor IL; Wilmette Harbor to Northerly Island IL; Northerly Island to Calumet Harbor IL; Calumet Harbor IL to Gary IN; Gary to Burns Harbor IN; Burns Harbor to Michigan City IN",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dense smoke will reduce visibility 1 NM or less at times.\n\n* WHERE...Winthrop Harbor to Wilmette Harbor IL, Wilmette Harbor\nto Northerly Island IL, Northerly Island to Calumet Harbor IL,\nCalumet Harbor IL to Gary IN, Gary to Burns Harbor IN and\nBurns Harbor to Michigan City IN.\n\n* WHEN...Until 1 PM CDT this afternoon.\n\n* IMPACTS...Low visibility will make navigation difficult.\n\n* ADDITIONAL DETAILS...Low visibilities in smoke may continue\nthrough the afternoon and into the evening.",
-      "instruction": "If you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
-      "expires": "2026-07-16T13:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.22a6ee569ac76e7e41bf097dcb1e2dbe60d695db.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.013.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Special Weather Statement",
+    "title": "Gale Warning",
     "geometry": "unknown",
-    "location": "Lake; Ashtabula Inland; Ashtabula Lakeshore; Northern Erie; Southern Erie; Crawford",
+    "location": "Unalga Pass to Nikolski Bering Side out to 15 NM",
     "coordinates": {},
     "details": {
-      "description": "Areas of wildfire smoke and fog, locally dense in spots, may\naffect the morning commute. Motorists will encounter visibilities\nof less than one mile and possibly as low as one quarter mile\nthrough mid to late morning.\n\nIf driving, slow down, use your low beam headlights, and leave\nplenty of distance ahead of you.",
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 4 ft.\n.TONIGHT...SW wind 20 kt. Seas 3 ft.\n.FRI...SW wind 35 kt. Seas 9 ft. Rain.\n.FRI NIGHT...SW wind 30 kt. Seas 11 ft.\n.SAT...NW wind 30 kt. Seas 12 ft.\n.SUN...W wind 20 kt. Seas 8 ft.\n.MON...Variable wind 10 kt. Seas 3 ft.",
       "instruction": null,
-      "expires": "2026-07-16T10:00:00-04:00"
+      "expires": "2026-07-16T17:15:00-08:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-44725",
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.019.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Nikolski to Seguam Bering Side from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 5 ft.\n.TONIGHT...W wind 15 kt becoming SW 30 kt after midnight. Seas 6\nft.\n.FRI...SW wind 35 kt. Seas 13 ft. Rain.\n.FRI NIGHT...NW wind 30 kt. Seas 14 ft.\n.SAT...NW wind 30 kt. Seas 15 ft.\n.SUN...W wind 15 kt. Seas 7 ft.\n.MON...NE wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.016.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Pacific Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 6 ft.\n.TONIGHT...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 35 kt. Seas 7 ft building to 11 ft in the\nafternoon.\nRain.\n.FRI NIGHT...SW wind 30 kt. Seas 12 ft.\n.SAT...NW wind 30 kt. Seas 8 ft.\n.SUN...W wind 20 kt. Seas 5 ft.\n.MON...S wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.841e2d65c4f0c4ee4d3de5be2e9acab133603847.004.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Bering Sea Offshore 171W to 180 and South of 56N",
+    "coordinates": {},
+    "details": {
+      "description": "Offshore Waters Forecast for the Bering Sea\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...W wind 10 to 25 kt. Seas 5 ft. Areas of fog. Vsby 1 NM or\nless.\n.TONIGHT...SW wind 15 to 30 kt increasing to 25 to 35 kt after\nmidnight. Seas 5 to 10 ft. Rain.\n.FRI...NW wind 20 to 35 kt. Seas 9 to 12 ft.\n.FRI NIGHT...N wind 15 to 30 kt. Seas 8 to 13 ft.\n.SAT...NW wind 15 to 30 kt. Seas 5 to 10 ft.\n.SUN...SW wind 15 kt. Seas 3 to 6 ft.\n.MON...NE wind 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T18:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.018.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Nikolski to Seguam Bering Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 5 ft.\n.TONIGHT...W wind 15 kt becoming SW 25 kt after midnight. Seas 5\nft.\nRain.\n.FRI...SW wind 35 kt. Seas 11 ft. Rain.\n.FRI NIGHT...NW wind 30 kt. Seas 14 ft.\n.SAT...NW wind 30 kt. Seas 14 ft.\n.SUN...W wind 15 kt. Seas 7 ft.\n.MON...Variable wind 10 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.008.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Port Heiden to Nelson Lagoon out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 15 kt becoming NW 25 kt in the afternoon. Seas 5\nft.\nRain.\n.TONIGHT...W wind 20 kt. Seas 5 ft.\n.FRI...S wind 20 kt. Seas 3 ft. Rain.\n.FRI NIGHT...SE wind 25 kt. Seas 4 ft.\n.SAT...SE wind 20 kt. Seas 5 ft.\n.SUN THROUGH MON...S wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.024.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Pacific Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 15 kt. Seas 5 ft.\n.TONIGHT...SW wind 20 kt increasing to 30 kt after midnight. Seas\n6 ft.\n.FRI...SW wind 35 kt. Seas 9 ft.\n.FRI NIGHT...NW wind 25 kt. Seas 8 ft.\n.SAT...NW wind 25 kt. Seas 6 ft.\n.SUN...SW wind 15 kt. Seas 4 ft.\n.MON...W wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.031.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Bristol Bay greater than 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...E wind 20 kt becoming NW in the afternoon. Seas 4 ft.\nRain.\n.TONIGHT...W wind 25 kt. Seas 5 ft.\n.FRI...W wind 20 kt. Seas 4 ft.\n.FRI NIGHT...SE wind 20 kt. Seas 5 ft.\n.SAT...E wind 25 kt. Seas 7 ft.\n.SUN...SE wind 20 kt. Seas 5 ft.\n.MON...S wind 10 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.011.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nelson Lagoon to Unalga Pass from 15 to 70 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 4 ft.\n.TONIGHT...W wind 15 kt. Seas 4 ft.\n.FRI...S wind 30 kt. Seas 5 ft building to 9 ft in the afternoon.\nRain.\n.FRI NIGHT...S wind 25 kt. Seas 11 ft.\n.SAT...N wind 25 kt. Seas 8 ft.\n.SUN...W wind 20 kt. Seas 7 ft.\n.MON...S wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.011.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nelson Lagoon to Unalga Pass from 15 to 70 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 4 ft.\n.TONIGHT...W wind 15 kt. Seas 4 ft.\n.FRI...S wind 30 kt. Seas 5 ft building to 9 ft in the afternoon.\nRain.\n.FRI NIGHT...S wind 25 kt. Seas 11 ft.\n.SAT...N wind 25 kt. Seas 8 ft.\n.SUN...W wind 20 kt. Seas 7 ft.\n.MON...S wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.015.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Unalaska Bay",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 4 ft subsiding to 2 ft in the\nafternoon.\n.TONIGHT...W wind 15 kt. Seas 2 ft.\n.FRI...S wind 25 kt. Seas 4 ft. Rain.\n.FRI NIGHT...SW wind 15 kt. Seas 2 ft.\n.SAT...NW wind 25 kt. Seas 7 ft.\n.SUN...W wind 20 kt. Seas 7 ft.\n.MON...S wind 10 kt. Seas 2 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Sitkinak to Castle Cape out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 20 kt. Seas 5 ft. Rain.\n.TONIGHT...W wind 25 kt. Seas 5 ft.\n.FRI...W wind 20 kt. Seas 4 ft.\n.FRI NIGHT...S wind 25 kt. Seas 5 ft.\n.SAT...SE wind 25 kt. Seas 6 ft.\n.SUN...S wind 20 kt. Seas 6 ft.\n.MON...S wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.017.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Pacific Side from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 7 ft.\n.TONIGHT...W wind 15 kt. Seas 6 ft.\n.FRI...SW wind 35 kt. Seas 6 ft building to 12 ft in the\nafternoon.\nRain.\n.FRI NIGHT...SW wind 35 kt. Seas 13 ft.\n.SAT...NW wind 30 kt. Seas 11 ft.\n.SUN...W wind 25 kt. Seas 7 ft.\n.MON...SW wind 15 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.030.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Pribilof Islands Nearshore Waters",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 15 kt. Seas 4 ft. Areas of fog.\n.TONIGHT...W wind 15 kt becoming S 25 kt after midnight. Seas 5\nft.\nRain.\n.FRI...SE wind 25 kt. Seas 10 ft. Rain.\n.FRI NIGHT...N wind 30 kt. Seas 10 ft.\n.SAT...N wind 30 kt. Seas 9 ft.\n.SUN...W wind 15 kt. Seas 5 ft.\n.MON...Variable wind 10 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.006.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Tolstoi to Cape Sarichef out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...W wind 25 kt. Seas 5 ft.\n.TONIGHT...NW wind 15 kt. Seas 4 ft.\n.FRI...SW wind 20 kt becoming S 30 kt in the afternoon. Seas 4 ft\nbuilding to 8 ft in the afternoon. Rain.\n.FRI NIGHT...S wind 30 kt. Seas 10 ft.\n.SAT...SW wind 20 kt. Seas 8 ft.\n.SUN...W wind 20 kt. Seas 5 ft.\n.MON...S wind 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Castle Cape to Cape Tolstoi from 15 to 100 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 25 kt. Seas 9 ft.\n.TONIGHT...W wind 25 kt. Seas 9 ft.\n.FRI...SW wind 20 kt. Seas 6 ft.\n.FRI NIGHT...S wind 30 kt. Seas 10 ft.\n.SAT...S wind 30 kt. Seas 11 ft.\n.SUN...SW wind 20 kt. Seas 9 ft.\n.MON...SW wind 15 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Castle Cape to Cape Tolstoi out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...W wind 25 kt. Seas 4 ft. Rain.\n.TONIGHT...W wind 25 kt. Seas 4 ft.\n.FRI...SW wind 20 kt. Seas 3 ft. Rain.\n.FRI NIGHT...S wind 25 kt. Seas 6 ft.\n.SAT...S wind 25 kt. Seas 7 ft.\n.SUN THROUGH MON...SW wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.012.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Unimak Pass",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 6 ft.\n.TONIGHT...W wind 20 kt. Seas 4 ft.\n.FRI...S wind 25 kt increasing to 35 kt in the afternoon. Seas 9\nft.\nRain.\n.FRI NIGHT...SW wind 30 kt. Seas 11 ft.\n.SAT...NW wind 25 kt. Seas 8 ft.\n.SUN...W wind 20 kt. Seas 8 ft.\n.MON...Variable wind 10 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Sitkinak to Castle Cape from 15 to 100 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 25 kt. Seas 8 ft. Rain.\n.TONIGHT...W wind 25 kt. Seas 9 ft.\n.FRI...W wind 20 kt. Seas 7 ft.\n.FRI NIGHT...S wind 25 kt. Seas 7 ft.\n.SAT...S wind 25 kt. Seas 9 ft.\n.SUN...S wind 20 kt. Seas 9 ft.\n.MON...SW wind 15 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.023.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Bering Side from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 15 kt. Seas 4 ft.\n.TONIGHT...SW wind 25 kt increasing to 35 kt after midnight. Seas\n4 ft building to 9 ft after midnight.\n.FRI...SW wind 35 kt. Seas 12 ft. Rain.\n.FRI NIGHT...NW wind 30 kt. Seas 10 ft.\n.SAT...NW wind 25 kt. Seas 10 ft.\n.SUN...SW wind 15 kt. Seas 6 ft.\n.MON...NW wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.010.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nelson Lagoon to Cape Sarichef out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 4 ft. Rain.\n.TONIGHT...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 20 kt becoming S 30 kt in the afternoon. Seas 5 ft.\nRain.\n.FRI NIGHT...S wind 30 kt. Seas 6 ft.\n.SAT THROUGH SUN...W wind 20 kt. Seas 6 ft.\n.MON...S wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.029.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Kiska to Attu Pacific Side",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 20 kt. Seas 5 ft.\n.TONIGHT...SW wind 25 kt. Seas 6 ft.\n.FRI...W wind 30 kt. Seas 8 ft.\n.FRI NIGHT...W wind 15 kt. Seas 7 ft.\n.SAT THROUGH MON...W wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.032.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Bristol Bay from Port Heiden to Cape Chichagof out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...E wind 20 kt becoming SW in the afternoon. Seas 2 ft.\nRain.\n.TONIGHT...W wind 25 kt. Seas 4 ft.\n.FRI...W wind 20 kt. Seas 4 ft.\n.FRI NIGHT...SE wind 20 kt. Seas 3 ft.\n.SAT...SE wind 25 kt. Seas 4 ft.\n.SUN THROUGH MON...S wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.007.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Tolstoi to Unalga Pass from 15 to 100 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...W wind 25 kt. Seas 8 ft.\n.TONIGHT...W wind 20 kt. Seas 8 ft.\n.FRI...SW wind 20 kt increasing to 30 kt in the afternoon. Seas\n8 ft. Rain.\n.FRI NIGHT...S wind 35 kt. Seas 13 ft.\n.SAT...SW wind 30 kt. Seas 12 ft.\n.SUN...W wind 20 kt. Seas 9 ft.\n.MON...S wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.025.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Pacific Side from 15 to 75 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 15 kt. Seas 5 ft.\n.TONIGHT...SW wind 15 kt increasing to 25 kt after midnight. Seas\n6 ft.\n.FRI...SW wind 35 kt. Seas 10 ft. Rain.\n.FRI NIGHT...NW wind 25 kt. Seas 10 ft.\n.SAT...NW wind 20 kt. Seas 7 ft.\n.SUN THROUGH MON...W wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.028.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Kiska to Attu Bering Side",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 25 kt. Seas 6 ft.\n.TONIGHT...SW wind 30 kt. Seas 9 ft.\n.FRI...W wind 30 kt. Seas 9 ft.\n.FRI NIGHT...Variable wind 10 kt. Seas 6 ft.\n.SAT...Variable wind 10 kt. Seas 4 ft.\n.SUN THROUGH MON...Variable wind 10 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.010.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Nelson Lagoon to Cape Sarichef out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 4 ft. Rain.\n.TONIGHT...W wind 15 kt. Seas 4 ft.\n.FRI...SW wind 20 kt becoming S 30 kt in the afternoon. Seas 5 ft.\nRain.\n.FRI NIGHT...S wind 30 kt. Seas 6 ft.\n.SAT THROUGH SUN...W wind 20 kt. Seas 6 ft.\n.MON...S wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.021.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Nikolski to Seguam Pacific Side from 15 to 75 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 6 ft.\n.TONIGHT...W wind 15 kt becoming SW 25 kt after midnight. Seas 5\nft.\n.FRI...SW wind 35 kt. Seas 12 ft. Rain.\n.FRI NIGHT...W wind 30 kt. Seas 12 ft.\n.SAT...NW wind 30 kt. Seas 11 ft.\n.SUN...W wind 20 kt. Seas 7 ft.\n.MON...W wind 15 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.020.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Nikolski to Seguam Pacfic Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 15 kt. Seas 5 ft.\n.TONIGHT...W wind 15 kt becoming SW 25 kt after midnight. Seas 5\nft.\nRain.\n.FRI...SW wind 35 kt. Seas 11 ft. Rain.\n.FRI NIGHT...W wind 30 kt. Seas 11 ft.\n.SAT...NW wind 30 kt. Seas 11 ft.\n.SUN THROUGH MON...W wind 15 kt. Seas 6 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.027.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Adak to Kiska Pacific Side",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 15 kt. Seas 4 ft.\n.TONIGHT...SW wind 25 kt. Seas 6 ft.\n.FRI...W wind 30 kt. Seas 9 ft.\n.FRI NIGHT...N wind 20 kt. Seas 8 ft.\n.SAT...Variable wind 10 kt. Seas 5 ft.\n.SUN THROUGH MON...W wind 15 kt. Seas 5 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.014.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Unalga Pass to Nikolski Bering Side from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 5 ft.\n.TONIGHT...SW wind 20 kt. Seas 4 ft.\n.FRI...S wind 35 kt. Seas 12 ft. Rain.\n.FRI NIGHT...W wind 30 kt. Seas 12 ft.\n.SAT...NW wind 30 kt. Seas 14 ft.\n.SUN...W wind 20 kt. Seas 8 ft.\n.MON...SE wind 15 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.022.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Gale Warning",
+    "geometry": "unknown",
+    "location": "Seguam to Adak Bering Side out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NW wind 15 kt. Seas 3 ft.\n.TONIGHT...SW wind 20 kt increasing to 30 kt after midnight. Seas\n5 ft.\n.FRI...SW wind 35 kt. Seas 9 ft. Rain.\n.FRI NIGHT...NW wind 25 kt. Seas 8 ft.\n.SAT...NW wind 25 kt. Seas 9 ft.\n.SUN...SW wind 15 kt. Seas 6 ft.\n.MON...NW wind 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.006.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Tolstoi to Cape Sarichef out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...W wind 25 kt. Seas 5 ft.\n.TONIGHT...NW wind 15 kt. Seas 4 ft.\n.FRI...SW wind 20 kt becoming S 30 kt in the afternoon. Seas 4 ft\nbuilding to 8 ft in the afternoon. Rain.\n.FRI NIGHT...S wind 30 kt. Seas 10 ft.\n.SAT...SW wind 20 kt. Seas 8 ft.\n.SUN...W wind 20 kt. Seas 5 ft.\n.MON...S wind 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7adaab0b718eaaf5dd934a7f6f893c4874f401e3.026.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Adak to Kiska Bering Side",
+    "coordinates": {},
+    "details": {
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 20 kt. Seas 4 ft.\n.TONIGHT...SW wind 30 kt. Seas 8 ft.\n.FRI...W wind 30 kt. Seas 10 ft. Rain.\n.FRI NIGHT...N wind 20 kt. Seas 8 ft.\n.SAT...Variable wind 10 kt. Seas 6 ft.\n.SUN...SW wind 15 kt. Seas 4 ft.\n.MON...NW wind 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-16T17:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-23510",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -149,255 +589,270 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-16T10:55:33+00:00"
+      "expires": "2026-07-16T12:15:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.886315da826bb0459e12f16f76853d97f79b53cc.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.e6afad06a5d11a125850dcfb3826b02bc1e1fd7e.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Rota, MP",
+    "location": "Nolan, TX; Taylor, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            145.1,
-            14.1
+            -100.38,
+            32.37
           ],
           [
-            145.1,
-            14.13
+            -99.85,
+            32.37
           ],
           [
-            145.12,
-            14.16
+            -99.84,
+            32.08
           ],
           [
-            145.15,
-            14.19
+            -99.88,
+            32.08
           ],
           [
-            145.22,
-            14.23
+            -100.39,
+            32.1
           ],
           [
-            145.23,
-            14.23
-          ],
-          [
-            145.28,
-            14.22
-          ],
-          [
-            145.3,
-            14.21
-          ],
-          [
-            145.31,
-            14.2
-          ],
-          [
-            145.31,
-            14.19
-          ],
-          [
-            145.3,
-            14.14
-          ],
-          [
-            145.28,
-            14.13
-          ],
-          [
-            145.25,
-            14.13
-          ],
-          [
-            145.22,
-            14.09
-          ],
-          [
-            145.17,
-            14.08
-          ],
-          [
-            145.16,
-            14.08
-          ],
-          [
-            145.15,
-            14.1
-          ],
-          [
-            145.13,
-            14.09
-          ],
-          [
-            145.12,
-            14.09
-          ],
-          [
-            145.1,
-            14.1
+            -100.38,
+            32.37
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Rota County in the Marianas...\n\n* WHEN...Until 1145 PM ChST.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 842 PM ChST, Doppler radar indicated heavy rain, with one half\nto one inch of rain during the past hour. Minor flooding is\nongoing or expected to begin shortly in the advisory area.\n- Some locations that will experience flooding include...\nthe entire island of Rota.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-16T23:45:00+10:00"
+      "description": "FFWSJT\n\nThe National Weather Service in San Angelo has issued a\n\n* Flash Flood Warning for...\nSoutheastern Nolan County in west central Texas...\nSouthwestern Taylor County in west central Texas...\n\n* Until 1000 AM CDT.\n\n* At 703 AM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 3 inches of rain\nhave fallen. Additional rainfall amounts of 1 to 2 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar indicated.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nNolan, Happy Valley, Coronados Camp, Hylton, Bradshaw, View, Shep,\nCamp Butman, Lake Abilene, Camp Tonkawa and The Intersection Of\nHighway 70 And Ranch Road 53.\n\nThis includes the following Low Water Crossings...\nFM 89 crossing Elm Creek, FM 1086 crossing Red Lake Creek, FM 89\ncrossing Elm Creek, FM 89 crossing Scott Hollow, County Road 180\ncrossing Oak Creek, County Road 180 crossing Bear Creek, crossings\nalong County Road 181, County Road 236 crossing Oak Creek, County\nRoad 181 crossing Cas Russell Creek and County Road 209 crossing\nBitter Creek.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-16T10:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b792dd4ab337b0166d16925c72fb711f189b87a0.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.b79635ea125f92cb1d4a8441680d137cc82ace1d.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Dense Smoke Advisory",
-    "geometry": "unknown",
-    "location": "St Joseph to South Haven MI; South Haven to Holland MI; Holland to Grand Haven MI; Grand Haven to Whitehall MI; Whitehall to Pentwater MI; Pentwater to Manistee MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dense smoke will reduce visibility to less than one\nnautical mile.\n\n* WHERE...St Joseph to South Haven MI, South Haven to Holland\nMI, Holland to Grand Haven MI, Grand Haven to Whitehall MI,\nWhitehall to Pentwater MI and Pentwater to Manistee MI.\n\n* WHEN...Until 2 PM EDT this afternoon.\n\n* IMPACTS...Low visibility will make navigation difficult.",
-      "instruction": "If you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
-      "expires": "2026-07-16T14:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c31e86084a2945ec5e6849e59a125ac43556c9a7.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "unknown",
-    "location": "Elkhart; Lagrange; Steuben; Noble; De Kalb; Starke; Pulaski; Marshall; Fulton; Whitley; Allen; White; Cass; Miami; Wabash; Huntington; Wells; Adams; Grant; Blackford; Jay; Northern La Porte; Eastern St. Joseph; Northern Kosciusko; Southern La Porte; Western St. Joseph; Southern Kosciusko; Cass; St. Joseph; Branch; Hillsdale; Northern Berrien; Southern Berrien; Williams; Fulton; Defiance; Henry; Paulding; Putnam; Van Wert; Allen",
-    "coordinates": {},
-    "details": {
-      "description": "Current observations show patches of ground fog mixed with smoke\nwith visibilities down to less than a mile. Be cautious while\ntraveling this morning and give more following space between your\nvehicle in case of sudden stops or drops in visibility.",
-      "instruction": null,
-      "expires": "2026-07-16T08:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.60177aefcbd94a1e2cf411aaf92bb81f30b8c0e4.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Pulaski; Fulton; White; Cass; Miami; Wabash; Huntington; Wells; Adams; Grant; Blackford; Jay",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values from the mid 90s to around 100 expected.\n\n* WHERE...A portion of northern Indiana.\n\n* WHEN...From noon today to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-16T18:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e4f06272797d56708e6e275108bd6766bd54abdc.001.1",
-    "type": "weather",
-    "severity": "extreme",
-    "title": "Tornado Warning",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Edwards, TX; Real, TX; Uvalde, TX",
+    "location": "Bandera, TX; Kendall, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -99.98,
-            29.4
+            -98.91,
+            30.14
           ],
           [
-            -100.11,
-            29.44
+            -98.59,
+            30.14
           ],
           [
-            -100.11,
+            -98.41,
+            29.94
+          ],
+          [
+            -98.65,
+            29.75
+          ],
+          [
+            -98.78,
+            29.72
+          ],
+          [
+            -98.93,
+            29.56
+          ],
+          [
+            -98.97,
+            29.55
+          ],
+          [
+            -98.99,
+            29.57
+          ],
+          [
+            -98.98,
+            29.61
+          ],
+          [
+            -99.03,
             29.7
           ],
           [
-            -99.81,
-            29.63
+            -99.01,
+            29.76
           ],
           [
-            -99.98,
-            29.4
+            -98.97,
+            29.79
+          ],
+          [
+            -98.92,
+            29.78
+          ],
+          [
+            -98.91,
+            30.14
           ]
         ]
       ]
     },
     "details": {
-      "description": "TOREWX\n\nThe National Weather Service in Austin San Antonio has issued a\n\n* Tornado Warning for...\nNorthwestern Uvalde County in south central Texas...\nSouth central Edwards County in south central Texas...\nSouthwestern Real County in south central Texas...\n\n* Until 630 AM CDT.\n\n* At 538 AM CDT, a severe thunderstorm capable of producing a tornado\nwas located over Montell, or 22 miles southwest of Leakey, moving\nnorth at 15 mph.\n\nHAZARD...Tornado.\n\nSOURCE...Radar indicated rotation.\n\nIMPACT...Flying debris will be dangerous to those caught without\nshelter. Mobile homes will be damaged or destroyed.\nDamage to roofs, windows, and vehicles will occur.  Tree\ndamage is likely.\n\n* This dangerous storm will be near...\nMontell around 545 AM CDT.\nCamp Wood around 615 AM CDT.",
-      "instruction": "TAKE COVER NOW! Move to a basement or an interior room on the lowest\nfloor of a sturdy building. Avoid windows. If you are outdoors, in a\nmobile home, or in a vehicle, move to the closest substantial shelter\nand protect yourself from flying debris.\n\nTornadoes are extremely difficult to see and confirm at night. Do not\nwait to see or hear the tornado. TAKE COVER NOW!",
-      "expires": "2026-07-16T06:30:00-05:00"
+      "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has extended the\n\n* Flash Flood Warning for...\nSoutheastern Bandera County in south central Texas...\nKendall County in south central Texas...\n\n* Until 100 PM CDT.\n\n* At 702 AM CDT, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. Between 3 and 12 inches\nof rain have fallen. Additional rainfall amounts up to 1 inch are\npossible in the warned area. Flash flooding from runoff and\nadditional rain is ongoing or expected to begin shortly.\n\nHAZARD...Life threatening flash flooding. Heavy rain producing\nflash flooding.\n\nSOURCE...Radar and automated gauges.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nBoerne, Comfort, Fair Oaks Ranch, Welfare, Walnut Grove, Nelson\nCity, Waring, Sisterdale, Kreutzberg, Bergheim, Kronkosky State\nNatural Area, Old Tunnel State Park, Kendalia, Bankersmith,\nGuadalupe River State Park, Pipe Creek, Bandera Falls, Spring\nBranch, Lakehills and Crown.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
+      "expires": "2026-07-16T13:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.de8e47958d75004a769fc23b2aa3c6af46b660fd.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.72282cb070134e9d7935af5a33ba4be294cad060.004.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Warning",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "East Washington South Central Cascade Mountains",
+    "coordinates": {},
+    "details": {
+      "description": "...ISOLATED TO SCATTERED THUNDERSTORMS WILL LEAD TO CRITICAL FIRE\nWEATHER CONDITIONS THROUGH THURSDAY MORNING...\n\n.An upper weather system moving across the region through\nThursday morning will lead to the development of thunderstorms\nmoving north into the central WA Cascades tonight. Thunderstorms\nwill be capable of frequent lightning, heavy downpours, and gusty\noutflow winds.\n\n* AFFECTED AREA...Fire Weather Zone 695 East Washington South\nCentral Cascade Mountains.\n\n* TIMING...Until 10 AM PDT this morning.\n\n* IMPACTS...Any fire that develops will catch and spread\nquickly. Outdoor burning is not recommended.\n\n* THUNDERSTORMS...Rain amounts will range from 0.05 to 0.15\ninches, with stronger storms capable of producing 0.25 inches\nor more.\n\n* OUTFLOW WINDS...25 to 45 mph, locally higher.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-16T10:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.72282cb070134e9d7935af5a33ba4be294cad060.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Lower Columbia Basin; Yakama Alpine District",
+    "coordinates": {},
+    "details": {
+      "description": "...ISOLATED TO SCATTERED THUNDERSTORMS WILL LEAD TO CRITICAL FIRE\nWEATHER CONDITIONS THROUGH THURSDAY MORNING...\n\n.An upper weather system moving across the region through\nThursday morning will lead to the development of thunderstorms\nmoving north into the central WA Cascades tonight. Thunderstorms\nwill be capable of frequent lightning, heavy downpours, and gusty\noutflow winds.\n\n* AFFECTED AREA...Fire Weather Zones 691 Lower Columbia Basin of\nWashington and 694 Yakama Alpine District.\n\n* TIMING...Until 10 AM PDT this morning.\n\n* IMPACTS...Any fire that develops will catch and spread\nquickly. Outdoor burning is not recommended.\n\n* THUNDERSTORMS...Rain amounts will range from 0.05 to 0.15\ninches, with stronger storms capable of producing 0.25 inches\nor more.\n\n* OUTFLOW WINDS...25 to 45 mph, locally higher.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-16T10:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.72282cb070134e9d7935af5a33ba4be294cad060.003.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Kittitas Valley",
+    "coordinates": {},
+    "details": {
+      "description": "...ISOLATED TO SCATTERED THUNDERSTORMS WILL LEAD TO CRITICAL FIRE\nWEATHER CONDITIONS THROUGH THURSDAY MORNING...\n\n.An upper weather system moving across the region through\nThursday morning will lead to the development of thunderstorms\nmoving north into the central WA Cascades tonight. Thunderstorms\nwill be capable of frequent lightning, heavy downpours, and gusty\noutflow winds.\n\n* AFFECTED AREA...Fire Weather Zone 690 Kittitas Valley.\n\n* TIMING...Until 10 AM PDT this morning.\n\n* IMPACTS...Any fire that develops will catch and spread\nquickly. Outdoor burning is not recommended.\n\n* THUNDERSTORMS...Rain amounts will range from 0.05 to 0.15\ninches, with stronger storms capable of producing 0.25 inches\nor more.\n\n* OUTFLOW WINDS...25 to 45 mph, locally higher.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-16T10:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b603409d9a23b59a6d20b3053d99cf83f95c85ec.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Blanco, TX; Gillespie, TX",
+    "location": "Uvalde, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -98.95,
-            30.17
+            -99.41,
+            29.32
           ],
           [
-            -98.96,
-            30.25
+            -99.41,
+            29.31
           ],
           [
-            -98.41,
-            30.34
+            -99.41,
+            29.23
           ],
           [
-            -98.41,
-            30.26
+            -99.41,
+            29.13
           ],
           [
-            -98.95,
-            30.17
+            -99.41,
+            29.12
+          ],
+          [
+            -100.11,
+            29.19
+          ],
+          [
+            -100.11,
+            29.62
+          ],
+          [
+            -99.42,
+            29.63
+          ],
+          [
+            -99.41,
+            29.33
+          ],
+          [
+            -99.41,
+            29.32
           ]
         ]
       ]
     },
     "details": {
-      "description": "...The National Weather Service in Austin/San Antonio TX has issued\na Flood Warning for the following rivers in Texas...\n\nPedernales River At Fredericksburg affecting Blanco and Gillespie\nCounties.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Pedernales River at Fredericksburg.\n\n* WHEN...From this morning to just after midnight tonight.\n\n* IMPACTS...At 25.0 feet, Moderate lowland flooding covers many\nsecondary roads and bridges from the headwaters to Stonewall\nmaking them very dangerous to motorists. Low areas of LBJ National\nPark and the Park Road 49 bridge are flooded.\n\n* ADDITIONAL DETAILS...\n- At 5:00 AM CDT Thursday the stage was 9.4 feet.\n- Bankfull stage is 12.0 feet.\n- Forecast...The river is expected to rise above flood stage\nlate this morning to a crest of 23.8 feet this afternoon. It\nwill then fall below flood stage this afternoon.\n- Flood stage is 22.0 feet.\n- Flood History...This crest compares to a previous crest of\n22.6 feet on 10/16/2018.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 1145 PM CDT.",
-      "expires": "2026-07-16T23:45:00-05:00"
+      "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has extended the\n\n* Flash Flood Warning for...\nUvalde County in south central Texas...\n\n* Until 100 PM CDT Thursday.\n\n* At 656 AM CDT, emergency management reported flash flooding across\nthe warned area. Between 6 and 16 inches of rain have fallen.\nAdditional rainfall amounts up to 0.5 inches are possible in the\nwarned area. Flash flooding is already occurring.\n\nHAZARD...Life threatening flash flooding. Heavy rain producing\nflash flooding.\n\nSOURCE...Emergency management reported.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nUvalde, Sabinal, Concan, Knippa, Reagan Wells, Garner State Park,\nUvalde Estates, Laguna, Montell, Utopia, Cline and Blewett.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
+      "expires": "2026-07-16T13:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.5283ba40ea5b5b6d88ce9e3e46ce006762a8d4ab.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.52bb6c4491f2fda5cb884bea413c72b497f2e19d.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Coastal Flood Advisory",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
     "geometry": "unknown",
-    "location": "San Francisco; North Bay Interior Valleys; San Francisco Bay Shoreline",
+    "location": "Douglas; Todd; Morrison; Mille Lacs; Kanabec; Pope; Stearns; Benton; Sherburne; Isanti; Chisago; Kandiyohi; Meeker; Wright; Hennepin; Anoka; Ramsey; Washington; McLeod; Sibley; Carver; Scott; Dakota; Le Sueur; Rice; Goodhue",
     "coordinates": {},
     "details": {
-      "description": "The Coastal Flood Advisory will be allowed to expire at 4 AM PDT\nearly this morning as water levels have dropped below criteria.",
-      "instruction": null,
-      "expires": "2026-07-16T04:45:00-07:00"
+      "description": "MNZ041>045-048>053-057>063-066>070-076>078-171600-\nAnoka-Benton-Carver-Chisago-Dakota-Douglas-Goodhue-Hennepin-\nIsanti-Kanabec-Kandiyohi-Le Sueur-McLeod-Meeker-Mille Lacs-\nMorrison-Pope-Ramsey-Rice-Scott-Sherburne-Sibley-Stearns-Todd-\nWashington-Wright-\nIncluding the Tribal Nations of Mille Lacs and Prairie Island\nIncluding the cities of Alexandria, Apple Valley, Blaine,\nBloomington, Brooklyn Park, Buffalo, Burnsville, Eagan, Eden\nPrairie, Farmington, Hastings, Maple Grove, Minneapolis,\nMinnetonka, Northfield, Plymouth, Prior Lake, Ramsey, Rogers,\nRosemount, Roseville, Shakopee, St. Cloud, St. Louis Park, St.\nPaul, Stillwater, Waconia, White Bear Lake, and Woodbury\n\n...AIR QUALITY ALERT REMAINS IN EFFECT UNTIL 11 AM CDT FRIDAY...\n\n* WHAT...The Minnesota Pollution Control Agency has issued an Air\nQuality Alert for fine particles pollution. The Air Quality Index\n(AQI) is expected to reach the Maroon or Hazardous category.\n\n* WHERE...Central Minnesota including the Twin Cities.\n\n* WHEN...Until 11 AM CDT Friday.\n\n* IMPACTS...Everyone can be affected by wildfire smoke in these\nconcentrations. Minor trace amounts of ashfall are likely and\nhave been reported across Minnesota.\n\n* ADDITIONAL DETAILS... Dense smoke is causing observed\nHazardous/Maroon conditions across central Minnesota. Smoke\nconcentrations will gradually decrease through Friday, but the\nair quality will remain in the Hazardous/Maroon to Unhealthy For\nAll/Red categories through that time in the alert area before\nimproving Friday morning.",
+      "instruction": "Sensitive groups, such as people with lung disease (including\nasthma), heart disease, and children and older adults, should\nremain indoors and keep activity levels low. The general public\nshould avoid all physical activities outdoors.\n\nKeep windows closed overnight to prevent smoke from getting\nindoors.\n\nReduce or eliminate activities that contribute to air pollution,\nsuch as outdoor burning, and use of residential wood burning\ndevices.",
+      "expires": "2026-07-17T11:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2252529c3c442d6a0549af69e77a891501a4a12e.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.52bb6c4491f2fda5cb884bea413c72b497f2e19d.002.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Stevens; Swift; Chippewa; Renville; Nicollet; Blue Earth; Waseca; Steele",
+    "coordinates": {},
+    "details": {
+      "description": "MNZ047-055-056-065-075-083>085-171600-\nBlue Earth-Chippewa-Nicollet-Renville-Steele-Stevens-Swift-Waseca-\nIncluding the Tribal Nation of Upper Sioux\nIncluding the city of Mankato\n\n...AIR QUALITY ALERT REMAINS IN EFFECT UNTIL 11 AM CDT FRIDAY...\n\n* WHAT...The Minnesota Pollution Control Agency has issued an Air\nQuality Alert for fine particles pollution. The Air Quality Index\n(AQI) is expected to reach the Red or Unhealthy category.\n\n* WHERE...Portions of central Minnesota.\n\n* WHEN...Until 11 AM CDT Friday.\n\n* IMPACTS...Some members of the general public may experience\nhealth effects. Sensitive groups, such as people with lung\ndisease (including asthma), heart disease, and children and older\nadults, may experience health effects.\n\n* ADDITIONAL DETAILS...Dense smoke is being pulled by a quasi-\nstationary front across southern Minnesota. Smoke has settled\nacross the Minnesota River Valley and little additional southward\nmovement is forecasted today. There continues to be a sharp\ngradient of smoke, with some areas of the same counties\nexperiencing Good/Green air quality while other experience\nRed/Unhealthy for All conditions. Conditions will gradually\nimprove by Friday morning as the front slowly retreats northward.",
+      "instruction": "Sensitive groups, such as people with lung disease (including\nasthma), heart disease, and children and older adults, should\navoid prolonged or heavy exertion. The general public should\nlimit prolonged or heavy exertion.\n\nReduce or eliminate activities that contribute to air pollution,\nsuch as outdoor burning, and use of residential wood burning\ndevices. Reduce vehicle trips and vehicle idling as much as\npossible.\n\nKeep windows closed overnight to prevent smoke from getting\nindoors.",
+      "expires": "2026-07-17T11:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b6418e6ff58e7efe599dcd9682a323ac836c0b21.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Flood Advisory",
@@ -408,982 +863,141 @@
       "polygon": [
         [
           [
-            -98.92,
-            32.08
-          ],
-          [
-            -99.12,
-            32.08
-          ],
-          [
-            -99.11,
-            32.51
-          ],
-          [
-            -98.91,
-            32.51
-          ],
-          [
-            -98.7,
+            -98.59,
             32.52
+          ],
+          [
+            -98.48,
+            32.51
+          ],
+          [
+            -98.47,
+            32.3
+          ],
+          [
+            -98.68,
+            32.19
           ],
           [
             -98.81,
             32.13
           ],
           [
-            -98.92,
-            32.08
+            -98.7,
+            32.52
+          ],
+          [
+            -98.59,
+            32.52
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Eastland County in north central Texas...\n\n* WHEN...Until 800 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 528 AM CDT, Doppler radar and automated rain gauges indicated\nheavy rain due to thunderstorms. Minor flooding is ongoing or\nexpected to begin shortly in the advisory area. Between 2 and 3\ninches of rain have fallen.\n- Additional rainfall amounts up to 1 inch are expected over the\narea. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nEastland, Cisco, Rising Star, Lake Cisco, Lake Olden, Pleasant\nHill, Carbon, Nimrod, Sabanno, Scranton, Okra, Morton Valley,\nOlden and Pioneer.",
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Eastern Eastland County in north central Texas...\n\n* WHEN...Until 800 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 650 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 3 inches of rain have\nfallen.\n- Additional rainfall amounts up to 1 inch are expected over the\narea. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nRanger, Gorman, Lake Leon, Staff, Kokomo and Desdemona.",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
       "expires": "2026-07-16T08:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a5e19a1e899c21975b72862195b56fd5d5b0b7c7.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.63f3cba4f03e397bdd34b149cc3a71cf4880c9b2.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "unknown",
+    "location": "Divide",
+    "coordinates": {},
+    "details": {
+      "description": "Areas of fog will reduce visibility to one quarter mile or less\nin parts of far northwest North Dakota early this morning, mainly\nimpacting Divide County. Motorists should be prepared for rapidly\nchanging conditions and use extra caution traveling. Use low beam\nheadlights and be extra cautious at intersections and railroad\ncrossings.\n\nThe fog is expected to dissipate by 10 AM CDT.",
+      "instruction": null,
+      "expires": "2026-07-16T09:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a1de0cd15f4ef41560621e1bb7dea4ce0b4a8779.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Kendall, TX; Kerr, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -98.83,
-            30
-          ],
-          [
-            -98.8,
-            29.98
-          ],
-          [
-            -98.74,
-            29.98
-          ],
-          [
-            -98.67,
-            29.98
-          ],
-          [
-            -98.66,
-            29.96
-          ],
-          [
-            -98.66,
-            29.92
-          ],
-          [
-            -98.64,
-            29.91
-          ],
-          [
-            -98.68,
-            29.88
-          ],
-          [
-            -98.69,
-            29.92
-          ],
-          [
-            -98.73,
-            29.94
-          ],
-          [
-            -98.81,
-            29.95
-          ],
-          [
-            -98.87,
-            29.96
-          ],
-          [
-            -98.88,
-            29.95
-          ],
-          [
-            -98.9,
-            29.94
-          ],
-          [
-            -99.01,
-            29.92
-          ],
-          [
-            -99.09,
-            29.92
-          ],
-          [
-            -99.07,
-            29.97
-          ],
-          [
-            -99.01,
-            29.96
-          ],
-          [
-            -98.83,
-            30
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has issued a\n\n* Flash Flood Warning for...\nWest Central Kendall County in south central Texas...\nEast Central Kerr County in south central Texas...\n\n* Until 1130 AM CDT.\n\n* At 530 AM CDT, river gauge reports a large and deadly flood wave\nis moving down the Guadalupe River. The river gauge at Center\nPoint has risen 32 feet in 4 hours and is expected to reach a\ncrest similar to July 4, 2025 catastrophic river flood. Flash\nflooding is already occurring.\n\nThis is a FLASH FLOOD EMERGENCY for The Guadalupe River between\nCenter Point throuhg Bergheim. This is a PARTICULARLY DANGEROUS\nSITUATION. SEEK HIGHER GROUND NOW!\n\nHAZARD...Life threatening flash flooding. Thunderstorms\nproducing flash flooding.\n\nSOURCE...Gauges reported a 32 ft rise at the Center Point gauge\nover the past 4 hours.\n\nIMPACT...This is a PARTICULARLY DANGEROUS SITUATION. SEEK\nHIGHER GROUND NOW! Life threatening flash flooding of\nlow water crossings, small creeks and streams, urban\nareas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nKerrville, Comfort, Waring, Sisterdale, Center Point and Crown.\n\nThis includes the following streams and drainages...\nBlock Creek, Sabinas Creek, Holliday Creek, Jacobs Creek, Verde\nCreek, Turtle Creek, Cherry Creek, Guadalupe River, Wasp Creek,\nBruins Creek, Joshua Creek, Steel Creek, Elm Creek, Werner Creek,\nWest Sister Creek, Violet Creek, Cypress Creek and East Sister\nCreek.",
-      "instruction": "Move to higher ground now! This is an extremely dangerous and\nlife-threatening situation. Do not attempt to travel unless you are\nfleeing an area subject to flooding or under an evacuation order.\n\nTurn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
-      "expires": "2026-07-16T11:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2bddc2b594da98969f570347b76d37b1137b0ec6.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Kerr, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.19,
-            30.03
-          ],
-          [
-            -99.16,
-            30.1
-          ],
-          [
-            -99.02,
-            29.97
-          ],
-          [
-            -98.9,
-            30
-          ],
-          [
-            -98.91,
-            29.93
-          ],
-          [
-            -99.06,
-            29.91
-          ],
-          [
-            -99.19,
-            30.03
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nGuadalupe River At Kerrville affecting Kerr County.\n\n* WHAT...Moderate flooding is occurring and major flooding is\nforecast.\n\n* WHERE...Guadalupe River at Kerrville.\n\n* WHEN...Until late this evening.\n\n* IMPACTS...At 24.0 feet, Flow is near the USGS 1:25 year flood\nlevel. Flooding is life threatening from the headwaters to below\nComfort. Lowest homes above Center Point to below Comfort flood.\n\n* ADDITIONAL DETAILS...\n- At 5:05 AM CDT Thursday the stage was 16.8 feet.\n- Bankfull stage is 7.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 5:05 AM CDT Thursday was 17.0 feet.\n- Forecast...The river will rise to 22.5 feet this morning. It\nwill then fall below flood stage late this morning to 3.8\nfeet late this evening. It will rise to 3.9 feet late this\nevening. It will then fall to 2.4 feet early Saturday\nmorning. It will rise to 2.6 feet Saturday morning. It will\nthen fall again and remain below flood stage.\n- Flood stage is 9.0 feet.\n- Flood History...No available flood history.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 1100 PM CDT.",
-      "expires": "2026-07-16T23:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c2a4636170eff47aa7061c38fcf90c35da6fc385.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Kerr, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.41,
-            30.03
-          ],
-          [
-            -99.41,
-            30.1
-          ],
-          [
-            -99.16,
-            30.1
-          ],
-          [
-            -99.19,
-            30.03
-          ],
-          [
-            -99.41,
-            30.03
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning continues for the following rivers in Texas...\n\nGuadalupe River at Hunt affecting Kerr County.\n\n* WHAT...Moderate flooding is occurring and moderate flooding is\nforecast.\n\n* WHERE...Guadalupe River at Hunt.\n\n* WHEN...Until tomorrow morning.\n\n* IMPACTS...At 18.0 feet, Automobiles parked near the North Fork of\nthe Guadalupe River at Camp Waldemar wash downstream. Roads and\nlow bridges near the North and South Forks flood badly and are\ndangerous to motorists. Schumacher Crossing near Hunt is under six\nfeet of water. Some residents are cut off and should stay put.\nSecondary roads and bridges near the river are extremely dangerous\nto motorists. Near the USGS 1:5 year flood level.\n\n* ADDITIONAL DETAILS...\n- At 5:05 AM CDT Thursday the stage was 16.9 feet.\n- Bankfull stage is 10.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 5:05 AM CDT Thursday was 20.5 feet.\n- Forecast...The river is expected to fall below flood stage\nthis evening and continue falling to 8.6 feet early Tuesday\nmorning.\n- Flood stage is 10.0 feet.\n- Flood History...This crest compares to a previous crest of\n16.7 feet on 07/05/2002.\n- http://www.weather.gov/safety/flood",
-      "instruction": "To escape rising water, take the shortest path to higher ground.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nTurn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 1130 PM CDT.",
-      "expires": "2026-07-16T23:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f837ceb9a6735d9bf8407714f9f1aa5e6ef34fb7.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Bandera, TX; Gillespie, TX; Kerr, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.3,
-            30.36
-          ],
-          [
-            -98.82,
-            30.37
-          ],
-          [
-            -98.86,
-            30.14
-          ],
-          [
-            -98.92,
-            30.14
-          ],
-          [
-            -98.92,
-            29.79
-          ],
-          [
-            -99.03,
-            29.7
-          ],
-          [
-            -99.28,
-            29.77
-          ],
-          [
-            -99.14,
-            30.04
-          ],
-          [
-            -99.15,
-            30.14
-          ],
-          [
-            -99.27,
-            30.14
-          ],
-          [
-            -99.31,
-            30.03
-          ],
-          [
-            -99.3,
-            30.36
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has extended the\n\n* Flash Flood Warning for...\nNortheastern Bandera County in south central Texas...\nSouthwestern Gillespie County in south central Texas...\nEastern Kerr County in south central Texas...\n\n* Until 1100 AM CDT.\n\n* At 526 AM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 6 and 12 inches of rain\nhave fallen over the past 2 days with 3 to 6 inches in the past 3\nhours. Additional rainfall amounts of 2 to 5 inches are possible\nin the warned area. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms\nproducing flash flooding.\n\nSOURCE...Radar.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nMedina, Kerrville, Fredericksburg, Comfort, Bandera,\nKerrville-Schreiner Park, Cypress Creek, Center Point, Tivydale,\nCamp Verde and Harper.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
-      "expires": "2026-07-16T11:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a241734dbbb501a9b250b62ff96b4b524510db07.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Marine Weather Statement",
-    "geometry": "Polygon",
-    "location": "Coastal waters from Tarpon Springs to Suwannee River FL out 20 NM; Waters from Tarpon Springs to Suwannee River FL out 20 to 60 NM",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -83.09,
-            29.32
-          ],
-          [
-            -82.99,
-            29.23
-          ],
-          [
-            -82.83,
-            29.23
-          ],
-          [
-            -82.57,
-            28.69
-          ],
-          [
-            -82.57,
-            28.53
-          ],
-          [
-            -82.66,
-            28.24
-          ],
-          [
-            -82.72,
-            28.18
-          ],
-          [
-            -83.23,
-            28.14
-          ],
-          [
-            -83.54,
-            28.78
-          ],
-          [
-            -83.5,
-            29.17
-          ],
-          [
-            -83.09,
-            29.32
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "The areas affected include...\nCoastal waters from Tarpon Springs to Suwannee River FL out 20\nNM...\nWaters from Tarpon Springs to Suwannee River FL out 20 to 60 NM...\n\nAt 620 AM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds to around 30 knots. These thunderstorms were\nlocated along a line extending from 17 nm southwest of Cedar Key to\n15 nm southwest of Ozello to 8 nm east of Hernando Beach, moving\nsoutheast at 15 knots.",
-      "instruction": "Mariners can expect gusty winds to around 30 knots, locally higher\nwaves, and lightning strikes. Boaters should seek safe harbor\nimmediately until these storms pass.",
-      "expires": "2026-07-16T07:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b77adc218ec0414d86b405956f8021642cda3db0.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
+    "title": "Fire Weather Watch",
     "geometry": "unknown",
-    "location": "Northern Herkimer; Hamilton; Southern Herkimer; Southern Fulton; Montgomery; Northern Saratoga; Northern Warren; Northern Washington; Schoharie; Western Schenectady; Eastern Schenectady; Southern Saratoga; Western Albany; Eastern Albany; Western Rensselaer; Eastern Rensselaer; Western Greene; Eastern Greene; Western Columbia; Eastern Columbia; Western Ulster; Eastern Ulster; Western Dutchess; Eastern Dutchess; Northern Fulton; Southeast Warren; Southern Washington",
+    "location": "Modoc County Except for the Surprise Valley; Klamath Basin and the Fremont-Winema National Forest",
     "coordinates": {},
     "details": {
-      "description": "The New York State Department of Environmental Conservation at\nAlbany has issued a Air Quality Health Advisory for Fine\nParticulates, until midnight EDT tonight.\n\nAir quality levels in outdoor air are predicted to be greater than\nan air quality index value of 100 for Fine Particulates. The air\nquality index...or AQI...was created as an easy way to correlate\nlevels of different pollutants to one scale. The higher the AQI\nvalue, the greater the health concern.\n\nWhen pollution levels are elevated...the New York State Department\nof Health recommends that individuals consider limiting strenuous\noutdoor physical activity to reduce the risk of adverse health\neffects. People who may be especially sensitive to the effects of\nelevated levels of pollutants include the very young and those with\npre existing respiratory problems such as asthma or heart disease.\nThose with symptoms should consider consulting their personal\nphysician.\n\nFor additional information, please visit the New York State\nDepartment of Environmental Conservation website at,\nhttps://on.ny.gov/nyaqi, or call the Air Quality Hotline at 800-535-\n1345.",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b77adc218ec0414d86b405956f8021642cda3db0.002.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northern Berkshire; Southern Berkshire",
-    "coordinates": {},
-    "details": {
-      "description": "The Massachusetts Department of Environmental Protection has issued\na Air Quality Alert for Fine Particulates, until midnight EDT\ntonight.\n\nAn Air Quality Alert means that Fine Particulates concentrations\nwithin the region may approach or exceed levels that are unhealthy\nfor sensitive groups. Air is unhealthy for sensitive children and\nadults, such as those with asthma, lung or heart disease, and older\nadults. Sensitive children and adults should limit prolonged outdoor\nactivity.\n\nFor additional information...please visit the Massachusetts Air\nQuality Web site at WWW.MASS.GOV/DEP/",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b77adc218ec0414d86b405956f8021642cda3db0.003.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northern Litchfield; Southern Litchfield",
-    "coordinates": {},
-    "details": {
-      "description": "The Connecticut Department of Environmental Protection has issued a\nAir Quality Action Day for Fine Particulates, until midnight EDT\ntonight.\n\nAn Air Quality Action Day means that Fine Particulates\nconcentrations within the region may approach or exceed unhealthy\nstandards. For additional information...please visit the Connecticut\nAir Quality Web site at http://www.ct.gov/deep/aqi",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b77adc218ec0414d86b405956f8021642cda3db0.004.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Bennington; Western Windham; Eastern Windham",
-    "coordinates": {},
-    "details": {
-      "description": "The Vermont Agency of Natural Resources has issued a Air Quality\nAction Day for Fine Particulates.. until 11 PM EDT this evening.\n\nAn Air Quality Action Day means that Fine Particulates\nconcentrations within the region may approach or exceed unhealthy\nstandards.\n\nChildren and older adults, as well as people with heart or lung\ndisease, should reduce prolonged or heavy exertion. Exposure to\nelevated levels of fine particles such as wood smoke can increase\nthe likelihood of respiratory symptoms in sensitive individuals and\naggravate heart or lung disease.",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae54e0854cc8e1cd200ccac9f10f94174f73c30d.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Western Franklin; Eastern Franklin; Northern Worcester; Central Middlesex County; Western Essex; Eastern Essex; Western Hampshire; Western Hampden; Eastern Hampshire; Eastern Hampden; Southern Worcester; Western Norfolk; Southeast Middlesex; Suffolk; Eastern Norfolk; Northern Bristol; Western Plymouth; Eastern Plymouth; Southern Bristol; Southern Plymouth; Barnstable; Dukes; Nantucket; Northwest Middlesex County",
-    "coordinates": {},
-    "details": {
-      "description": "The Massachusetts Department of Environmental Protection has issued\nan Air Quality Alert for Fine Particulates, until midnight EDT\ntonight.\n\nAn Air Quality Alert day means that Fine Particulates concentrations\nwithin the region may approach or exceed levels that are Unhealthy\nfor Sensitive Groups.\n\nAir is unhealthy for sensitive children and adults, such as those\nwith asthma, lung or heart disease, and older adults. Sensitive\nchildren and adults should limit prolonged outdoor activity.\n\nFor additional information, please visit the Massachusetts\nDepartment of Environmental Protection website at:\nhttps://mass.gov/dep/massair/forecast",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae54e0854cc8e1cd200ccac9f10f94174f73c30d.002.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northwest Providence; Southeast Providence; Western Kent; Eastern Kent; Bristol; Washington; Newport; Block Island",
-    "coordinates": {},
-    "details": {
-      "description": "The Rhode Island Department of Environmental Management has issued\nan Air Quality Alert Day for Fine Particulates, until midnight EDT\ntonight.\n\nAn Air Quality Alert day means that Fine Particulates concentrations\nwithin the region may approach or exceed unhealthy standards. For\nadditional information, please visit the Rhode Island Department of\nEnvironmental Management website at:\n\nhttps://dem.ri.gov/",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ae54e0854cc8e1cd200ccac9f10f94174f73c30d.003.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Hartford; Tolland; Windham",
-    "coordinates": {},
-    "details": {
-      "description": "The Connecticut Department of Environmental Protection has issued an\nAir Quality Alert Day for Fine Particulates, until midnight EDT\ntonight.\n\nAn Air Quality Alert day means that Fine Particulates concentrations\nwithin the region may approach or exceed unhealthy standards. For\nadditional information, please visit the Connecticut Department of\nEnergy and Environmental Protection website at:\n\nhttps://portal.ct.gov/deep",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b73e06a38e8430c6a264f1ccd47c295ee45764bf.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Bandera, TX; Kerr, TX; Real, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.7,
-            29.83
-          ],
-          [
-            -99.68,
-            29.91
-          ],
-          [
-            -99.68,
-            30.29
-          ],
-          [
-            -99.34,
-            30.29
-          ],
-          [
-            -99.31,
-            30.29
-          ],
-          [
-            -99.31,
-            30.03
-          ],
-          [
-            -99.37,
-            29.81
-          ],
-          [
-            -99.41,
-            29.63
-          ],
-          [
-            -99.42,
-            29.63
-          ],
-          [
-            -99.49,
-            29.63
-          ],
-          [
-            -99.6,
-            29.63
-          ],
-          [
-            -99.68,
-            29.63
-          ],
-          [
-            -99.74,
-            29.63
-          ],
-          [
-            -99.7,
-            29.83
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has extended the\n\n* Flash Flood Warning for...\nWestern Bandera County in south central Texas...\nNorthwestern Kerr County in south central Texas...\nSoutheastern Real County in south central Texas...\n\n* Until 1030 AM CDT.\n\n* At 518 AM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 3 and 12 inches of rain\nhave fallen. Additional rainfall amounts up to 3 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms\nproducing flash flooding.\n\nSOURCE...Radar.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nVanderpool, Hunt, Kerr Wildlife Management Area, Lost Maples State\nNatural Area, Mountain Home and Rio Frio.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.",
-      "expires": "2026-07-16T10:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.907ea6a5c2c3a7c3929b20778a8eb6efbab7dc8d.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northern Fairfield; Northern New Haven; Northern Middlesex; Northern New London; Southern Fairfield; Southern New Haven; Southern Middlesex; Southern New London",
-    "coordinates": {},
-    "details": {
-      "description": "The Connecticut Department of Energy and Environmental Protection\nhas issued an Air Quality Action Day for the following counties:\n\nFairfield, New Haven, Middlesex, New London.\n\nuntil midnight EDT tonight.\n\nAn Air Quality Action Day means that Fine Particulates within the\nregion may approach or exceed unhealthy standards. For additional\ninformation, please visit the Connecticut Department of Energy and\nEnvironmental Protection Web site at http://www.ct.gov/deep/aqi",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.907ea6a5c2c3a7c3929b20778a8eb6efbab7dc8d.003.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Western Passaic; Eastern Passaic; Hudson; Western Bergen; Eastern Bergen; Western Essex; Eastern Essex; Western Union; Eastern Union",
-    "coordinates": {},
-    "details": {
-      "description": "The New Jersey Department of Environmental Protection has issued an\nAir Quality Action Day for the following counties:\n\nBergen, Passaic, Hudson, Essex, Union\n\nuntil midnight EDT Thursday night.\n\nAn Air Quality Action Day means that Fine Particulates within the\nregion may approach or exceed unhealthy standards.\n\nFor additional information, please visit the New Jersey Department\nof Environmental Protection Web site at https://dep.nj.gov/airmon",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.907ea6a5c2c3a7c3929b20778a8eb6efbab7dc8d.002.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Orange; Putnam; Rockland; Northern Westchester; Southern Westchester; New York (Manhattan); Bronx; Richmond (Staten Is.); Kings (Brooklyn); Northwest Suffolk; Northeast Suffolk; Southwest Suffolk; Southeast Suffolk; Northern Queens; Northern Nassau; Southern Queens; Southern Nassau",
-    "coordinates": {},
-    "details": {
-      "description": "The New York State Department of Environmental Conservation has\nissued an Air Quality Health Advisory for the following counties:\n\nNew York, Bronx, Kings, Queens, Richmond, Nassau, Suffolk,\nWestchester, Rockland, Orange, Putnam\n\nuntil midnight EDT Thursday night.\n\nAir quality levels in outdoor air are predicted to be greater than\nan Air Quality Index value of 100 for the pollutant of Fine\nParticulates. The Air Quality Index, or AQI, was created as an easy\nway to correlate levels of different pollutants to one scale. The\nhigher the AQI value, the greater the health concern.\n\nWhen pollution levels are elevated, the New York State Department of\nHealth recommends that individuals consider limiting strenuous\noutdoor physical activity to reduce the risk of adverse health\neffects. People who may be especially sensitive to the effects of\nelevated levels of pollutants include the very young, and those with\npreexisting respiratory problems such as asthma or heart disease.\nThose with symptoms should consider consulting their personal\nphysician.\n\nFor additional information, please visit the New York State\nDepartment of Environmental Conservation website at,\nhttps://on.ny.gov/nyaqi, or call the Air Quality Hotline at\n1 800 5 3 5, 1 3 4 5.",
-      "instruction": null,
-      "expires": "2026-07-17T00:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8376f5588e6dd0864ee0c4da5cc5e75297d0ed04.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Red Flag Warning",
-    "geometry": "unknown",
-    "location": "West Portion of the Olympic Mountains; West Slopes of the North Cascades Generally above 1500 Feet; West Slopes of the Central Cascades Generally above 1500 Feet; East Portion of the Olympic Mountains",
-    "coordinates": {},
-    "details": {
-      "description": "* AFFECTED AREA...Fire Weather Zone 652 West Portion of the\nOlympic Mountains, Fire Weather Zone 658 West Slopes of the\nNorth Cascades Generally above 1500 Feet, Fire Weather Zone\n659 West Slopes of the Central Cascades Generally above 1500\nFeet and Fire Weather Zone 661 East Portion of the Olympic\nMountains.\n\n* LIGHTNING...Scattered thunderstorm coverage in the Cascades\nand Olympic mountains. Timing on thunderstorm development will\nbe early Thursday morning and again in the afternoon and\nevening.\n\n* OUTFLOW WINDS...Any storms that develop will be capable of\ngusty and erratic outflow winds between 35 and 50 miles per\nhour. Outflow winds can occur ahead of and behind storms and\ncause erratic wind directions.\n\n* IMPACTS...Scattered lightning in dry fuels can cause multiple\nfire starts. Thunderstorms can also bring sudden sharp wind\nshifts on existing fires, causing rapid changes in a fire's\nrate of spread and direction of spread. Thunderstorm outflow\nwinds can be a threat for several hours following the start of\na new lightning-caused fire. If a fire were to begin, air\nquality may diminish in the surrounding area. Very warm\nweather Friday into next week increases the chances of\nincreased fire activity on potential new starts from\nThursday's lightning activity.",
-      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either imminent or occurring now. Any fires that develop will\nlikely spread quickly. Outdoor burning is not recommended.",
+      "description": "* IMPACTS...Any fires that develop will likely spread rapidly.\n\n* AFFECTED AREA...In CAZ285...Fire weather zone 285. In\nORZ624...southeastern portions of fire weather zone 624.\n\n* WIND...Southwest 12 to 17 mph with gusts 25 to 30 mph.\n\n* HUMIDITY...7 to 12 percent.\n\n* DETAILED URL...View the hazard area in detail at\nhttps://weather.gov/wrh/hazards?wfo=mfr",
+      "instruction": "Follow all fire restrictions. Avoid activities that could cause\nsparks. Visit weather.gov/medford/wildfire for links to fire\nrestrictions in your area.\n\nIf you have not packet your go kit yet, now is the time to do so.\nThis includes items like important documents and essentials you\ncannot live without. Fill your vehicle's fuel tank. Visit\nready.gov/kit for more information.\n\nA Fire Weather Watch means that critical fire weather conditions\nare possible during the valid watch time. These conditions could\npromote the rapid spread of wildfires which could become life-\nthreatening. Check weather.gov/medford for forecast updates and a\npossible upgrade of the this watch to a Red Flag Warning.",
       "expires": "2026-07-16T17:00:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9731799133fb8c932d5f4d30426f1ce77732ee9e.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ed3f5f3e07a2421b6a8d46253c5d33b3c759d0f4.001.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Dense Fog Advisory",
+    "title": "Special Weather Statement",
     "geometry": "unknown",
-    "location": "Benton; Carroll; Washington; Madison; Northern Crawford; Northern Franklin; North and Central Sebastian; Southern Crawford; Central and Southern Franklin; Delaware; Cherokee; Adair; Northern Sequoyah; Northern Le Flore; Central and Southern Sequoyah",
+    "location": "Jefferson; Franklin; Jackson; Williamson; Union; Alexander; Perry; Cape Girardeau; Scott",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Visibilities as low as a quarter mile in dense fog.\n\n* WHERE...Portions of northwest and west central Arkansas and east\ncentral, northeast, and southeast Oklahoma.\n\n* WHEN...Until 9 AM CDT this morning.\n\n* IMPACTS...Visibilities are expected to be reduced to less than one\nquarter mile by dense fog. Rapidly changing visibility will create\nhazardous driving conditions.",
-      "instruction": "If driving, slow down, use your low beam headlights, and leave plenty\nof distance ahead of you.",
-      "expires": "2026-07-16T09:00:00-05:00"
+      "description": "Localized dense fog has formed early this morning in portions of\nSouthern Illinois and Southeast Missouri. Caution is advised on\nthe roads during the morning commute. Slow down, use your\nheadlights, and leave plenty of distance ahead of you. Fog is\nexpected to lift by mid-morning.",
+      "instruction": null,
+      "expires": "2026-07-16T08:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2e71ead069498c2f34503dbd38a6b66026a78f8f.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.862fad192661e0da111781a9ec6d5d73b9e7f615.001.1",
     "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
+    "severity": "extreme",
+    "title": "Tornado Warning",
     "geometry": "Polygon",
-    "location": "Uvalde, TX",
+    "location": "Kinney, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -99.71,
-            29.23
+            -100.24,
+            29.37
           ],
           [
-            -99.62,
-            29.29
-          ],
-          [
-            -99.17,
-            28.98
-          ],
-          [
-            -99.12,
-            28.76
-          ],
-          [
-            -99.2,
-            28.73
-          ],
-          [
-            -99.24,
-            28.93
-          ],
-          [
-            -99.71,
-            29.23
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...Forecast flooding changed from Moderate to Major severity for the\nfollowing rivers in Texas...\n\nFrio River Below Dry Frio affecting Uvalde County.\n\n* WHAT...Moderate flooding is occurring and major flooding is\nforecast.\n\n* WHERE...Frio River below Dry Frio.\n\n* WHEN...Until tomorrow afternoon.\n\n* IMPACTS...At 17.0 feet, Major flooding of crop and pastureland,\ntraps livestock and can drown them. Secondary and primary roads\nand low bridges are flooded and dangerous.\n\n* ADDITIONAL DETAILS...\n- At 4:30 AM CDT Thursday the stage was 16.5 feet.\n- Bankfull stage is 10.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 4:30 AM CDT Thursday was 17.7 feet.\n- Forecast...The river will fall below flood stage late this\nmorning to 11.1 feet this afternoon. It will then rise above\nflood stage this afternoon to 15.4 feet this evening. It will\nfall below flood stage again late tonight.\n- Flood stage is 12.0 feet.\n- Flood History...This crest compares to a previous crest of\n17.8 feet on 09/21/1995.\n- http://www.weather.gov/safety/flood",
-      "instruction": "To escape rising water, take the shortest path to higher ground.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nTurn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 1100 PM CDT.",
-      "expires": "2026-07-16T23:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e48e90d46df74345b9d0c7c8ba885fb32e2a31b4.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Uvalde, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.75,
-            29.51
-          ],
-          [
-            -99.67,
-            29.51
-          ],
-          [
-            -99.62,
-            29.43
-          ],
-          [
-            -99.62,
-            29.29
-          ],
-          [
-            -99.71,
-            29.23
-          ],
-          [
-            -99.7,
-            29.42
-          ],
-          [
-            -99.75,
-            29.51
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nFrio River At Concan affecting Uvalde County.\n\n* WHAT...Major flooding is forecast.\n\n* WHERE...Frio River at Concan.\n\n* WHEN...Until just after midnight tonight.\n\n* IMPACTS...At 15.0 feet, Major flooding increases very quickly to\nseveral feet deep over the Frio River banks of recreation camps\nnear Rio Frio to near Concan. Sleeping campers, autos and\nrecreational vehicles can be washed downstream. This is a life\nthreatening level.\n\n* ADDITIONAL DETAILS...\n- At 4:45 AM CDT Thursday the stage was 9.3 feet.\n- Bankfull stage is 7.0 feet.\n- Forecast...The river will rise above flood stage early this\nmorning to 15.2 feet this morning. It will then fall below\nflood stage this afternoon to 5.1 feet early tomorrow\nafternoon. It will rise to 5.2 feet early tomorrow afternoon.\nIt will then fall to 4.6 feet late Sunday morning. It will\nrise to 5.1 feet early Monday morning. It will then fall\nagain and remain below flood stage.\n- Flood stage is 11.0 feet.\n- Flood History...This crest compares to a previous crest of\n14.4 feet on 10/08/2018.\n- http://www.weather.gov/safety/flood",
-      "instruction": "To escape rising water, take the shortest path to higher ground.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nTurn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 1100 PM CDT.",
-      "expires": "2026-07-16T23:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d60bb9e51d301f41474afa2fe9cb74fcf898c379.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Dense Fog Advisory",
-    "geometry": "unknown",
-    "location": "Central and Southeast Phillips; Central and Southern Valley; Daniels; Sheridan; Western Roosevelt; Northern Phillips; Northern Valley; Eastern Roosevelt",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Visibility less than a quarter miles at times in dense fog.\n\n* WHERE...Central and Southeast Phillips, Valley, Daniels, and\nRoosevelt Counties.\n\n* WHEN...Until 9 AM MDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
-      "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
-      "expires": "2026-07-16T09:00:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.558a58f18e53e5b3452f8346f6d21f2ea7dd5193.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "McKenzie; Dunn; Mercer; Oliver; Sheridan; Wells; Foster; Golden Valley; Billings; Stark; Burleigh; Kidder; Stutsman; Slope; Hettinger; Grant; Bowman; Adams; Emmons; Logan; La Moure; McIntosh; Dickey; Western McLean; Eastern McLean; Western Morton; Eastern Morton; Western Sioux; Eastern Sioux",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values and temperatures near 100.\n\n* WHERE...Southern North Dakota.\n\n* WHEN...Until 10 PM CDT /9 PM MDT/ this evening.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-16T13:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.cf8b2f5225885c25cb97363aff9f79ee70b62ae6.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Dense Fog Advisory",
-    "geometry": "unknown",
-    "location": "Marion; Baxter; Fulton; Sharp; Randolph; Stone; Izard; Independence; Lawrence; Cleburne; Jackson; White; Woodruff; Boone County Except Southwest; Newton County Higher Elevations; Searcy County Lower Elevations; Boone County Higher Elevations; Newton County Lower Elevations; Northwest Searcy County Higher Elevations; Eastern, Central, and Southern Searcy County Higher Elevations",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Visibility 1/4 mile or less in dense fog.\n\n* WHERE...Portions of central, eastern, and north central Arkansas.\n\n* WHEN...Until 9 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
-      "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
-      "expires": "2026-07-16T09:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0f3669c9a7a975cf00fa686bbb89ac04275187ee.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...North winds 15 to 25 kt with gusts up to 30 kt and seas 5\nto 8 ft at 7 seconds expected.\n\n* WHERE...South of Port Orford.\n\n* WHEN...From 11 AM Friday to 11 AM PDT Saturday.\n\n* IMPACTS...Gusty winds and/or steep seas could capsize or\ndamage smaller vessels.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
-      "instruction": "Inexperienced mariners and those operating smaller vessels should\nremain in port and avoid the area of hazardous conditions.",
-      "expires": "2026-07-16T15:45:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.490b0ed83366c87efc8a4c920be50a7461f28d25.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Dense Fog Advisory",
-    "geometry": "unknown",
-    "location": "Clay; Greene; Craighead; Poinsett; Mississippi; Cross; Crittenden; St. Francis; Dunklin; Pemiscot; Lake; Obion; Weakley; Henry; Dyer; Gibson; Carroll; Benton; Lauderdale; Tipton; Haywood; Crockett; Madison; Chester; Henderson; Decatur; Shelby; Fayette; Hardeman; McNairy; Hardin",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Visibility 1/4 of a mile in dense fog.\n\n* WHERE...Portions of East Arkansas, Southeast Missouri, and West\nTennessee.\n\n* WHEN...Until 10 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
-      "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
-      "expires": "2026-07-16T10:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.fa47b22566dbc3d071bc6b98ed31af36d004bb7c.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Moses Lake Area; Upper Columbia Basin; Wenatchee Area; Okanogan Valley; Waterville Plateau",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hot temperatures with daytime highs 92 to 101 degrees.\nLimited overnight relief with low temperatures 65 to 73 degrees.\n\n* WHERE...Entiat, Pangborn Airport, Othello, Moses Lake, Grand\nCoulee, Ritzville, Badger Mountain Road, Ephrata, Omak, Okanogan,\nCreston, Coulee City, Oroville, Bridgeport, Wilbur, Chelan,\nMansfield, Disautel Pass, Harrington, Waterville, Tonasket,\nCashmere, Number 1 Canyon, Quincy, Nespelem, Odessa, Brewster,\nWenatchee, and Number 2 Canyon.\n\n* WHEN...Until 9 PM PDT this evening.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-16T21:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.fa47b22566dbc3d071bc6b98ed31af36d004bb7c.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Coeur d'Alene Area; Idaho Palouse; Lewiston Area; Lewis and Southern Nez Perce Counties; Lower Garfield and Asotin Counties; Washington Palouse; Spokane Area",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hot temperatures with daytime highs 94 to 101 degrees.\n\n* WHERE...Hayden, Winchester, Gifford, La Crosse, Downtown Spokane,\nFairfield, Peck, Davenport, Uniontown, Lewiston, Tekoa, Lapwai,\nCheney, Genesee, Coeur d'Alene, Alpowa Summit, Colfax, Pullman,\nCraigmont, Lewiston Grade, Kamiah, Soldiers Meadow Road,\nClarkston, Rockford, Culdesac, Nezperce, Worley, Airway Heights,\nMoscow, Post Falls, Rosalia, Oakesdale, Spokane Valley, Pomeroy,\nPlummer, and Potlatch.\n\n* WHEN...From noon today to 9 PM PDT this evening.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-16T21:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8043fe8e395331c309c5783c79277f6c99322ab9.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Outer waters from Santa Cruz Island to San Clemente Island to 60 NM offshore including San Nicolas and Santa Barbara Islands",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Outer waters from Santa Cruz Island to San Clemente\nIsland to 60 NM offshore including San Nicolas and Santa\nBarbara Islands.\n\n* WHEN...Until 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-16T10:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8043fe8e395331c309c5783c79277f6c99322ab9.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Point Piedras Blancas to Point Sal westward out to 10 NM; Point Piedras Blancas to Point Sal from 10 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Point Piedras Blancas to Point Sal westward out to 10\nNM and Point Piedras Blancas to Point Sal from 10 to 60 NM.\n\n* WHEN...Until 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-16T10:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8043fe8e395331c309c5783c79277f6c99322ab9.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Waters from Pt. Sal to Santa Cruz Island CA and westward 60 nm including San Miguel and Santa Rosa Islands",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Waters from Pt. Sal to Santa Cruz Island CA and\nwestward 60 nm including San Miguel and Santa Rosa Islands.\n\n* WHEN...Until 3 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-16T10:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8894eb10af9813ece5f4b9cb8df26264e83a3c56.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flash Flood Warning",
-    "geometry": "Polygon",
-    "location": "Kimble, TX; Sutton, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -100.19,
-            30.67
-          ],
-          [
-            -99.87,
-            30.67
-          ],
-          [
-            -99.87,
-            30.3
+            -100.3,
+            29.38
           ],
           [
             -100.27,
-            30.3
+            29.51
           ],
           [
-            -100.19,
-            30.67
+            -100.18,
+            29.51
+          ],
+          [
+            -100.24,
+            29.37
           ]
         ]
       ]
     },
     "details": {
-      "description": "FFWSJT\n\nThe National Weather Service in San Angelo has issued a\n\n* Flash Flood Warning for...\nWestern Kimble County in west central Texas...\nSoutheastern Sutton County in west central Texas...\n\n* Until 730 AM CDT.\n\n* At 428 AM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 2.5 inches of rain\nhave fallen. Additional rainfall amounts of 1 to 2 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar indicated.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nRoosevelt, Telegraph, I-10 Near The Sutton-Kimble County Line and\nCleo.\n\nThis includes Interstate 10 between Mile Markers 427 and 449.\n\nThis includes the following Low Water Crossings...\nUS HWY 377 crossing South Llano River, US HWY 377 crossing 2 miles\nNorth of Telegraph, RM 2291 crossings along Bear Creek, KC 210\ncrossing West Bear Creek, CR 150 crossing South Llano River, River\nRoad crossing North Llano River, County Road 260 crossing North Llano\nRiver and County Road 275 crossing North Llano River.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-      "expires": "2026-07-16T07:30:00-05:00"
+      "description": "TOREWX\n\nThe National Weather Service in Austin San Antonio has issued a\n\n* Tornado Warning for...\nEast central Kinney County in south central Texas...\n\n* Until 715 AM CDT.\n\n* At 637 AM CDT, a severe thunderstorm capable of producing a tornado\nwas located 7 miles east of Alamo Village, or 9 miles northeast of\nBrackettville, moving north at 20 mph.\n\nHAZARD...Tornado.\n\nSOURCE...Radar indicated rotation.\n\nIMPACT...Flying debris will be dangerous to those caught without\nshelter. Mobile homes will be damaged or destroyed.\nDamage to roofs, windows, and vehicles will occur.  Tree\ndamage is likely.\n\n* This tornadic thunderstorm will remain over mainly rural areas of\neast central Kinney County.",
+      "instruction": "TAKE COVER NOW! Move to a basement or an interior room on the lowest\nfloor of a sturdy building. Avoid windows. If you are outdoors, in a\nmobile home, or in a vehicle, move to the closest substantial shelter\nand protect yourself from flying debris.",
+      "expires": "2026-07-16T07:15:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13db4367df767c898b6c02e1d32f4f7d27560648.001.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.88c4a1b3364a8bc266796b61c85869469144821f.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Extreme Heat Warning",
+    "title": "Flood Watch",
     "geometry": "unknown",
-    "location": "Santa Barbara County Southwestern Coast; Santa Barbara County Southeastern Coast; Santa Ynez Mountains Western Range; Santa Ynez Mountains Eastern Range; Santa Barbara County Interior Mountains",
+    "location": "Dawson; Borden; Scurry; Martin; Howard; Mitchell; Ector; Midland; Glasscock; Ward; Crane; Upton; Reagan; Pecos; Terrell; Reeves County Plains; Chinati Mountains; Marfa Plateau; Davis Mountains; Davis Mountains Foothills; Central Brewster County; Chisos Basin; Presidio Valley; Lower Brewster County",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...For the Extreme Heat Warning, dangerously hot conditions\nwith temperatures up to 101.\n\n* WHERE...Santa Barbara County Interior Mountains, Santa Barbara\nCounty Southeastern Coast, Santa Barbara County Southwestern\nCoast, Santa Ynez Mountains Eastern Range, and Santa Ynez\nMountains Western Range.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...There is a high risk for dangerous heat illness for\nanyone, especially for the very young, the very old, those without\nair conditioning, and those active outdoors.",
-      "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nDrink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nStay cool, stay hydrated, stay informed.\n\nMonitor the latest forecasts and warnings for updates.",
-      "expires": "2026-07-16T20:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13db4367df767c898b6c02e1d32f4f7d27560648.003.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Catalina and Santa Barbara Islands; San Luis Obispo County Inland Central Coast; Santa Lucia Mountains; Southern Salinas Valley; San Luis Obispo County Interior Valleys; San Luis Obispo County Mountains; Santa Barbara County Inland Central Coast; Santa Ynez Valley; Ventura County Beaches; Ventura County Inland Coast; Malibu Coast; Los Angeles County Beaches; Palos Verdes Hills; Southern Ventura County Mountains; Northern Ventura County Mountains; San Miguel and Santa Rosa Islands; Santa Cruz and Anacapa Islands",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Temperatures up to 104.\n\n* WHERE...A portion of southwest California.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...There is a high risk for heat illness for sensitive\npopulations including the very young, the very old, those without\nair conditioning, and those active outdoors.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nMonitor the latest forecasts and warnings for updates.\n\nIf you do not have air conditioning in your home or lack shelter,\nyou can call 211 for assistance locating appropriate shelter from\nthe heat.",
-      "expires": "2026-07-16T20:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13db4367df767c898b6c02e1d32f4f7d27560648.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Extreme Heat Warning",
-    "geometry": "unknown",
-    "location": "Cuyama Valley; Santa Clarita Valley; Lake Casitas; Ojai Valley; Central Ventura County Valleys; Los Angeles County Inland Coast including Downtown Los Angeles; Western Santa Monica Mountains Recreational Area; Eastern Santa Monica Mountains Recreational Area; Calabasas and Agoura Hills; Western San Fernando Valley; Eastern San Fernando Valley; Southeastern Ventura County Valleys; Santa Susana Mountains; Interstate 5 Corridor; Western San Gabriel Mountains and Highway 14 Corridor; Eastern San Gabriel Mountains; Western Antelope Valley Foothills; Eastern Antelope Valley Foothills; Antelope Valley; Los Angeles County San Gabriel Valley",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dangerously hot conditions with temperatures up to 106.\n\n* WHERE...A portion of southwest California.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...There is a high risk for dangerous heat illness for\nanyone, especially for the very young, the very old, those without\nair conditioning, and those active outdoors.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nStay cool, stay hydrated, stay informed.\n\nMonitor the latest forecasts and warnings for updates.\n\nIf you do not have air conditioning in your home or lack shelter,\nyou can call 211 for assistance locating appropriate shelter from\nthe heat.",
-      "expires": "2026-07-16T20:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0ad4623ba4549790ba2032fd56ba006e1b612355.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Cape Mendocino to Pt. Arena CA out 10 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 15 to 25 kt with gusts up to 35 kt and\nseas 5 to 8 feet.\n\n* WHERE...Coastal waters from Cape Mendocino to Pt. Arena CA out\n10 nm.\n\n* WHEN...Until 3 AM PDT Saturday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-16T10:30:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0ad4623ba4549790ba2032fd56ba006e1b612355.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Waters from Cape Mendocino to Pt. Arena CA from 10 to 60 nm",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...North winds 15 to 25 kt with gusts up to 35 kt and seas\n5 to 8 feet.\n\n* WHERE...Waters from Cape Mendocino to Pt. Arena CA from 10 to\n60 nm.\n\n* WHEN...Until 3 AM PDT Saturday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-16T10:30:00-07:00"
+      "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of southwest and western Texas, including the\nfollowing areas, in southwest Texas, Central Brewster, Chinati\nMountains, Chisos Basin, Davis Mountains, Davis Mountains\nFoothills, Lower Brewster County, Marfa Plateau, Pecos, Presidio\nValley and Terrell. In western Texas, Borden, Crane, Dawson, Ector,\nGlasscock, Howard, Martin, Midland, Mitchell, Reagan, Reeves County\nPlains, Scurry, Upton and Ward.\n\n* WHEN...Through Friday evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas. Low-water\ncrossings may be flooded. Extensive street flooding and flooding of\ncreeks and rivers are possible.\n\n* ADDITIONAL DETAILS...\n- An upper level low pressure system will slowly move into West\nTexas through late this week and will interact with abundant\nmoisture to bring increasing coverage of showers and\nthunderstorms to much of the Permian Basin Thursday and Friday.\nAdditional rainfall amounts of 1 to 3 inches with localized\namounts in excess of 4 inches will be possible through late this\nweek. Heavy rainfall may result in areas of flash flooding.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-16T16:45:00-05:00"
     },
     "source": "NOAA Weather"
   }
