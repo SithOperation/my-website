@@ -1087,285 +1087,8 @@ function getEventColor(type) {
 }
 
 
-function hasWebGLSupport() {
 
-    if (typeof window === "undefined" || typeof document === "undefined") {
 
-        return false;
-
-    }
-
-
-    const canvas = document.createElement("canvas");
-
-    const contexts = ["webgl", "experimental-webgl", "webgl2"];
-
-
-    return contexts.some(contextName => {
-
-        try {
-
-            return !!canvas.getContext(contextName);
-
-        }
-        catch (error) {
-
-            return false;
-
-        }
-
-    });
-
-}
-
-
-function shouldUseMobileFallback() {
-
-    const userAgent = navigator.userAgent || "";
-
-    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(userAgent);
-
-    const isSafari = /Safari/.test(userAgent) && !/Chrome|CriOS|FxiOS|EdgiOS|OPiOS/.test(userAgent);
-
-    const isIOS = /iPad|iPhone|iPod/i.test(userAgent);
-
-    const hasCoarsePointer = typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
-
-    const isTouchDevice = navigator.maxTouchPoints > 0 || hasCoarsePointer;
-
-    const screenWidth = window.innerWidth || document.documentElement.clientWidth || 1200;
-
-    const isSmallViewport = screenWidth <= 900;
-
-    const isLikelyMobile = isMobile || isSafari || isIOS || isTouchDevice || isSmallViewport;
-
-    return isLikelyMobile || !hasWebGLSupport();
-
-}
-
-
-async function loadLeafletFallbackMap(mapElement) {
-
-    if (!window.L) {
-
-        console.error("Leaflet not loaded");
-
-        return;
-
-    }
-
-
-    mapElement.innerHTML = "";
-    mapElement.style.width = "100%";
-    mapElement.style.height = "100%";
-
-
-    const map = window.L.map(mapElement, {
-
-        zoomControl: true,
-
-        scrollWheelZoom: false,
-
-        tap: true
-
-    }).setView([20, 0], 2);
-
-
-    window.L.tileLayer(
-
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-
-        {
-
-            attribution: "&copy; OpenStreetMap contributors",
-
-            maxZoom: 18
-
-        }
-
-    ).addTo(map);
-
-
-    const files = [
-
-        "data/earthquakes.json",
-
-        "data/volcanoes.json",
-
-        "data/weather.json"
-
-    ];
-
-
-    let events = [];
-
-
-    for (const file of files) {
-
-        try {
-
-            const response = await fetch(`${file}?cache=${Date.now()}`);
-
-            if (!response.ok) {
-
-                continue;
-
-            }
-
-            const data = await response.json();
-
-            if (Array.isArray(data)) {
-
-                events = events.concat(data);
-
-            }
-
-        }
-
-        catch (error) {
-
-            console.error("Failed loading", file, error);
-
-        }
-
-    }
-
-
-    const geojson = {
-
-        type: "FeatureCollection",
-
-        features: events
-            .map(event => {
-
-                if (event.coordinates && event.coordinates.lat !== undefined && event.coordinates.lon !== undefined) {
-
-                    return {
-
-                        type: "Feature",
-
-                        properties: {
-
-                            title: event.title,
-
-                            location: event.location,
-
-                            severity: event.severity,
-
-                            type: event.type
-
-                        },
-
-                        geometry: {
-
-                            type: "Point",
-
-                            coordinates: [event.coordinates.lon, event.coordinates.lat]
-
-                        }
-
-                    };
-
-                }
-
-
-                if (event.coordinates && event.coordinates.polygon) {
-
-                    return {
-
-                        type: "Feature",
-
-                        properties: {
-
-                            title: event.title,
-
-                            location: event.location,
-
-                            severity: event.severity,
-
-                            type: event.type
-
-                        },
-
-                        geometry: {
-
-                            type: "Polygon",
-
-                            coordinates: event.coordinates.polygon
-
-                        }
-
-                    };
-
-                }
-
-                return null;
-
-            })
-            .filter(Boolean)
-
-    };
-
-
-    window.L.geoJSON(geojson, {
-
-        pointToLayer: (feature, latlng) => {
-
-            return window.L.circleMarker(latlng, {
-
-                radius: 6,
-
-                color: "#ffffff",
-
-                weight: 1,
-
-                fillColor: getEventColor(feature.properties.type),
-
-                fillOpacity: 0.95
-
-            });
-
-        },
-
-        onEachFeature: (feature, layer) => {
-
-            const props = feature.properties;
-
-            const html = `
-
-                <strong>${props.title}</strong><br>
-                Location: ${props.location}<br>
-                Severity: ${props.severity}<br>
-                Type: ${props.type}
-
-            `;
-
-            layer.bindPopup(html);
-
-        }
-
-    }).addTo(map);
-
-
-    setTimeout(() => {
-
-        refreshMapLayout(map);
-
-    }, 150);
-
-
-    setTimeout(() => {
-
-        refreshMapLayout(map);
-
-    }, 900);
-
-
-    bindMapResizeHandler(map);
-
-    disasterMap = map;
-
-}
 
 
 /* =====================================================
@@ -1428,18 +1151,6 @@ async function loadDisasterMap() {
     mapElement.style.width = "100%";
     mapElement.style.height = "100%";
 
-
-    if (shouldUseMobileFallback()) {
-
-        console.log("USING LEAFLET MOBILE FALLBACK");
-
-        await loadLeafletFallbackMap(mapElement);
-
-        mapInitializationInProgress = false;
-
-        return;
-
-    }
 
 
 
@@ -2823,29 +2534,23 @@ ${event.threat_level}
 async function loadSentinelMap() {
 
     const container =
-        document.getElementById(
-            "sentinel-map"
-        );
+        document.getElementById("sentinel-map");
 
 
     if (!container) {
+        console.error("Sentinel map container missing");
         return;
     }
 
 
     if (sentinelMap) {
-
         sentinelMap.remove();
-
-        sentinelMap = null;
-
     }
-
 
 
     sentinelMap = new maplibregl.Map({
 
-        container: container,
+        container: "sentinel-map",
 
         style: {
 
@@ -2864,25 +2569,21 @@ async function loadSentinelMap() {
                     ],
 
                     tileSize: 256
-
                 }
-
             },
+
 
             layers: [
 
                 {
-
                     id: "osm",
 
                     type: "raster",
 
                     source: "osm"
-
                 }
 
             ]
-
         },
 
 
@@ -2892,216 +2593,109 @@ async function loadSentinelMap() {
         ],
 
         zoom: 2
-
     });
 
 
 
-    sentinelMap.on(
-        "load",
-        async () => {
+    sentinelMap.on("load", async () => {
 
 
-            console.log(
-                "Sentinel map loaded"
+        console.log("Sentinel MapLibre loaded");
+
+
+        const events =
+            await fetchJSON(
+                "data/map_events.json"
             );
 
 
+        const geojson = {
 
-            const events =
-                await fetchJSON(
-                    "data/map_events.json"
-                );
+            type: "FeatureCollection",
 
+            features:
+                events.map(event => ({
 
+                    type: "Feature",
 
-            const geojson = {
+                    properties: event,
 
-                type: "FeatureCollection",
+                    geometry: {
 
-                features:
+                        type: "Point",
 
-                    events
+                        coordinates: [
+                            event.longitude,
+                            event.latitude
+                        ]
 
-                        .filter(event =>
-                            event.latitude &&
-                            event.longitude
-                        )
+                    }
 
-                        .map(event => ({
-
-                            type: "Feature",
-
-                            properties: event,
-
-
-                            geometry: {
-
-                                type: "Point",
-
-                                coordinates: [
-
-                                    event.longitude,
-
-                                    event.latitude
-
-                                ]
-
-                            }
-
-                        }))
-
-            };
-
-
-
-            sentinelMap.addSource(
-                "sentinel-events",
-                {
-
-                    type: "geojson",
-
-                    data: geojson
-
-                }
-            );
-
-
-
-            sentinelMap.addLayer({
-
-                id: "sentinel-events",
-
-                type: "circle",
-
-                source: "sentinel-events",
-
-
-                paint: {
-
-
-                    "circle-radius": 8,
-
-
-                    "circle-color": [
-
-                        "match",
-
-                        [
-                            "get",
-                            "threat_level"
-                        ],
-
-
-                        "CRITICAL",
-                        "#ff004c",
-
-                        "HIGH",
-                        "#ff8800",
-
-                        "MEDIUM",
-                        "#ffff00",
-
-                        "#00ffff"
-
-                    ],
-
-
-                    "circle-stroke-width": 2,
-
-                    "circle-stroke-color": "white"
-
-
-                }
-
-            });
-
-
-
-            sentinelMap.on(
-                "click",
-                "sentinel-events",
-                e => {
-
-
-                    const p =
-                        e.features[0].properties;
-
-
-
-                    new maplibregl.Popup()
-
-                        .setLngLat(
-                            e.lngLat
-                        )
-
-                        .setHTML(`
-
-
-                    <h3>
-                    ${safe(p.title)}
-                    </h3>
-
-
-                    Type:
-                    ${safe(p.type)}
-
-                    <br>
-
-
-                    Threat:
-                    ${safe(p.threat_level)}
-
-                    <br>
-
-
-                    Confidence:
-                    ${safe(p.confidence)}%
-
-
-                    `)
-
-                        .addTo(
-                            sentinelMap
-                        );
-
-
-                }
-            );
-
-
-
-            setTimeout(() => {
-
-                sentinelMap.resize();
-
-            }, 500);
-
-
-
-        }
-
-    );
-
-
-
-    sentinelMapResizeHandler =
-        () => {
-
-            if (sentinelMap) {
-
-                sentinelMap.resize();
-
-            }
+                }))
 
         };
 
 
+        sentinelMap.addSource(
+            "sentinel-events",
+            {
+                type: "geojson",
+                data: geojson
+            }
+        );
 
-    window.addEventListener(
-        "resize",
-        sentinelMapResizeHandler
-    );
+
+
+        sentinelMap.addLayer({
+
+            id: "sentinel-events",
+
+            type: "circle",
+
+            source: "sentinel-events",
+
+            paint: {
+
+                "circle-radius": 8,
+
+                "circle-color": [
+
+                    "match",
+
+                    [
+                        "get",
+                        "threat_level"
+                    ],
+
+
+                    "CRITICAL",
+                    "#ff004c",
+
+                    "HIGH",
+                    "#ff8800",
+
+                    "MEDIUM",
+                    "#ffff00",
+
+                    "#00ffff"
+
+                ]
+
+            }
+
+        });
+
+
+
+        setTimeout(() => {
+
+            sentinelMap.resize();
+
+        }, 500);
+
+
+
+    });
 
 
 }
@@ -3230,25 +2824,9 @@ document.addEventListener(
         }
 
 
-
         setTimeout(() => {
 
-
-            try {
-
-                loadDisasterMap();
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Map failed:",
-                    error
-                );
-
-            }
-
+            loadDisasterMap();
 
         }, 1500);
 
