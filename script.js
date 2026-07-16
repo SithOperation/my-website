@@ -2700,6 +2700,74 @@ async function loadSentinelMap() {
 
 }
 
+sentinelMap.on(
+    "click",
+    "sentinel-events",
+    (e) => {
+
+        const event =
+            e.features[0].properties;
+
+
+        new maplibregl.Popup()
+
+            .setLngLat(
+                e.lngLat
+            )
+
+            .setHTML(`
+
+                        <h3>
+                            ${event.title || "Sentinel Event"}
+                        </h3>
+
+                        <p>
+                            ${event.description || "No description available"}
+                        </p>
+
+                        <p>
+                            <b>Threat:</b>
+                            ${event.threat_level || "Unknown"}
+                        </p>
+
+                        <p>
+                            <b>Source:</b>
+                            ${event.source || "Unknown"}
+                        </p>
+
+                    `)
+
+            .addTo(
+                sentinelMap
+            );
+
+    }
+);
+
+
+
+sentinelMap.on(
+    "mouseenter",
+    "sentinel-events",
+    () => {
+
+        sentinelMap.getCanvas().style.cursor =
+            "pointer";
+
+    }
+);
+
+
+sentinelMap.on(
+    "mouseleave",
+    "sentinel-events",
+    () => {
+
+        sentinelMap.getCanvas().style.cursor =
+            "";
+
+    }
+);
 
 
 /* =====================================================
