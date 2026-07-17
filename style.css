@@ -1661,14 +1661,21 @@ nav a:focus-visible::before {
     font-size: 0;
     box-shadow: none;
     animation: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 #ufo-top:hover,
-#ufo-top:focus-visible {
+#ufo-top:focus-visible,
+#ufo-top:focus,
+#ufo-top:active {
     transform: translateY(-3px);
-    background: transparent;
-    box-shadow: none;
-    outline: none;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: 0 !important;
 }
 #ufo-top.launch { animation: rexReturn .65s ease; }
 .rex-skull {
@@ -1676,15 +1683,13 @@ nav a:focus-visible::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: drop-shadow(0 3px 4px rgba(0,0,0,.72));
+    filter: none;
     transition: filter .25s ease, transform .25s ease;
 }
 
 #ufo-top:hover .rex-skull,
 #ufo-top:focus-visible .rex-skull {
-    filter:
-        drop-shadow(0 0 5px rgba(224, 204, 148, .5))
-        drop-shadow(0 5px 5px rgba(0,0,0,.75));
+    filter: drop-shadow(0 0 5px rgba(224, 204, 148, .5));
     transform: scale(1.04);
 }
 
@@ -1696,6 +1701,21 @@ nav a:focus-visible::before {
     .skill-group { grid-template-columns: 1fr; gap: 8px; }
     .card::before,
     #sentinel-dashboard::before { display: none; }
+
+    #ufo-top,
+    #ufo-top:hover,
+    #ufo-top:focus,
+    #ufo-top:focus-visible,
+    #ufo-top:active {
+        border: 0 !important;
+        border-radius: 0 !important;
+        outline: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
