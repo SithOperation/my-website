@@ -1375,19 +1375,7 @@ nav a,
 
     height: 650px;
 
-
-    margin-top: 20px;
-
-
-    border-radius: 12px;
-
-
-    overflow: hidden;
-
-
     min-height: 320px;
-
-    isolation: isolate;
 
     background: #0b1720;
 
@@ -1793,6 +1781,137 @@ nav a,
 }
 
 
+.sentinel-status {
+
+    margin-top: 16px;
+    padding: 11px 14px;
+    border: 1px solid rgba(0, 255, 255, .35);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .55);
+    color: #eafcff;
+    font-family: monospace;
+    line-height: 1.45;
+
+}
+
+
+.sentinel-status::before {
+
+    content: "●";
+    margin-right: 8px;
+
+}
+
+
+.sentinel-status-loading::before {
+
+    color: #ffcc00;
+
+}
+
+
+.sentinel-status-fresh::before {
+
+    color: #00ff99;
+
+}
+
+
+.sentinel-status-degraded::before {
+
+    color: #ffcc00;
+
+}
+
+
+.sentinel-status-error::before {
+
+    color: #ff6688;
+
+}
+
+
+.sentinel-map-toolbar {
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 14px;
+    margin-top: 18px;
+
+}
+
+
+.sentinel-map-toolbar label {
+
+    display: grid;
+    gap: 6px;
+    color: rgba(255, 255, 255, .78);
+    font-family: monospace;
+    font-size: 13px;
+
+}
+
+
+.sentinel-map-toolbar select,
+.sentinel-map-toolbar button {
+
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid rgba(0, 255, 255, .4);
+    border-radius: 7px;
+    background: #071217;
+    color: #eafcff;
+    font: inherit;
+
+}
+
+
+.sentinel-map-toolbar button {
+
+    cursor: pointer;
+    color: #00ffff;
+
+}
+
+
+.sentinel-map-toolbar select:focus-visible,
+.sentinel-map-toolbar button:focus-visible {
+
+    outline: 3px solid rgba(255, 204, 0, .8);
+    outline-offset: 2px;
+
+}
+
+
+.sentinel-map-summary {
+
+    margin-top: 14px;
+    color: rgba(255, 255, 255, .72);
+    font-family: monospace;
+
+}
+
+
+.sentinel-map-frame {
+
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 0, 76, .35);
+    border-radius: 12px;
+    background: #0b1720;
+
+}
+
+
+#sentinel-map .leaflet-tile {
+
+    outline: 1px solid transparent;
+
+}
+
+
 #sentinel-map .leaflet-container {
 
     width: 100%;
@@ -1861,8 +1980,37 @@ nav a,
 }
 
 
+.map-popup h4 {
+
+    margin: 13px 0 6px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(0, 255, 255, .22);
+    color: #ffcc00;
+    font-size: 13px;
+
+}
+
+
 .map-popup p {
 
     margin: 7px 0;
+
+}
+
+
+@media(max-width:768px) {
+
+    .sentinel-map-toolbar {
+        align-items: stretch;
+    }
+
+    .sentinel-map-toolbar label,
+    .sentinel-map-toolbar button {
+        flex: 1 1 100%;
+    }
+
+    .sentinel-map-toolbar select {
+        width: 100%;
+    }
 
 }

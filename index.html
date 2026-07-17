@@ -438,7 +438,41 @@ frame-src 'self';
                     Select any event to view its intelligence summary.
                 </p>
 
-                <div id="sentinel-map" role="application" aria-label="Global disaster and intelligence activity map"></div>
+                <div id="sentinel-publication-status" class="sentinel-status sentinel-status-loading" role="status" aria-live="polite">
+                    Loading Sentinel Grid publication...
+                </div>
+
+                <div class="sentinel-map-toolbar" aria-label="Map filters">
+                    <label>
+                        Event type
+                        <select id="sentinel-type-filter">
+                            <option value="all">All types</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Threat level
+                        <select id="sentinel-threat-filter">
+                            <option value="all">All levels</option>
+                        </select>
+                    </label>
+
+                    <button id="sentinel-reset-map" type="button">
+                        Reset map
+                    </button>
+                </div>
+
+                <div id="sentinel-map-summary" class="sentinel-map-summary" aria-live="polite">
+                    Preparing map data...
+                </div>
+
+                <div class="sentinel-map-frame">
+                    <div id="sentinel-map" role="region" aria-label="Global Sentinel intelligence activity map"></div>
+                </div>
+
+                <noscript>
+                    <p class="status-alert">JavaScript is required to display the Sentinel intelligence map.</p>
+                </noscript>
 
 
             </div>

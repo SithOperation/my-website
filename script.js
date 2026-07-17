@@ -2331,6 +2331,24 @@ function initUFOButton() {
 
 let sentinelMap = null;
 let sentinelMapResizeHandler = null;
+let sentinelEventLayer = null;
+let sentinelResizeObserver = null;
+let sentinelEvents = [];
+let activeSentinelPublicationId = null;
+
+const SENTINEL_DATA_ROOT = "data";
+const SENTINEL_SUPPORTED_SCHEMA_MAJOR = 1;
+const SENTINEL_REFRESH_INTERVAL = 5 * 60 * 1000;
+const SENTINEL_INITIAL_VIEW = Object.freeze({ center: [20, 0], zoom: 2 });
+const SENTINEL_RELEASE_FILES = Object.freeze([
+    "health.json",
+    "world_events.json",
+    "map_events.json",
+    "timeline.json",
+    "trends.json",
+    "intelligence_brief.json",
+    "dashboard.json"
+]);
 
 
 
@@ -2826,91 +2844,606 @@ function validCoordinate(value, limit) {
 }
 
 
-async function loadUnifiedMap() {
+function sentinelElement(id) {
 
-    const container = document.getElementById("sentinel-map");
+    return document.getElementById(id);
 
-    if (!container || typeof L === "undefined") {
-        console.error("Leaflet or the unified map container is unavailable");
+}
+
+
+function setSentinelStatus(message, state = "loading") {
+
+    const status = sentinelElement("sentinel-publication-status");
+
+    if (!status) {
         return;
     }
 
-    if (sentinelMap) {
-        sentinelMap.remove();
+    status.textContent = message;
+    status.className = `sentinel-status sentinel-status-${state}`;
+
+}
+
+
+function schemaMajor(value) {
+
+    const match = String(value || "").match(/^(\d+)/);
+
+    return match ? Number(match[1]) : null;
+
+}
+
+
+async function fetchSentinelJSON(filename, publicationId = null, noStore = false) {
+
+    const version = publicationId ?
+        `?publication=${encodeURIComponent(publicationId)}` : "";
+    const response = await fetch(`${SENTINEL_DATA_ROOT}/${filename}${version}`, {
+        cache: noStore ? "no-store" : "default",
+        headers: { Accept: "application/json" }
+    });
+
+    if (!response.ok) {
+        throw new Error(`${filename} unavailable (${response.status})`);
     }
 
-    container.innerHTML = "";
+    return response.json();
+
+}
+
+
+async function sha256Hex(bytes) {
+
+    if (!window.crypto?.subtle) {
+        throw new Error("This browser cannot verify Sentinel release integrity");
+    }
+
+    const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+
+    return Array.from(new Uint8Array(digest))
+        .map(value => value.toString(16).padStart(2, "0"))
+        .join("");
+
+}
+
+
+async function fetchVerifiedSentinelArtifact(filename, manifest) {
+
+    const metadata = manifest.files?.[filename];
+
+    if (!metadata) {
+        throw new Error(`Manifest metadata is missing for ${filename}`);
+    }
+
+    const response = await fetch(
+        `${SENTINEL_DATA_ROOT}/${filename}?publication=${encodeURIComponent(manifest.publication_id)}`,
+        { headers: { Accept: "application/json" } }
+    );
+
+    if (!response.ok) {
+        throw new Error(`${filename} unavailable (${response.status})`);
+    }
+
+    const bytes = await response.arrayBuffer();
+
+    if (bytes.byteLength !== metadata.bytes) {
+        throw new Error(`${filename} failed byte-size verification`);
+    }
+
+    const hash = await sha256Hex(bytes);
+    if (hash !== metadata.sha256) {
+        throw new Error(`${filename} failed SHA-256 verification`);
+    }
+
+    try {
+        return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
+    }
+    catch (error) {
+        console.error(`${filename} JSON decoding failed`, error);
+        throw new Error(`${filename} contains invalid UTF-8 JSON`);
+    }
+
+}
+
+
+function validateSentinelArtifacts(artifacts) {
+
+    if (!artifacts.dashboard || typeof artifacts.dashboard !== "object" ||
+        !artifacts.dashboard.summary || typeof artifacts.dashboard.summary !== "object") {
+        throw new Error("dashboard.json does not match the Sentinel 1.0 contract");
+    }
+    if (!Array.isArray(artifacts.mapEvents)) {
+        throw new Error("map_events.json must be a top-level array");
+    }
+    if (!Array.isArray(artifacts.timeline)) {
+        throw new Error("timeline.json must be a top-level array");
+    }
+    if (!artifacts.worldEvents || typeof artifacts.worldEvents !== "object" ||
+        schemaMajor(artifacts.worldEvents.schema_version) !== SENTINEL_SUPPORTED_SCHEMA_MAJOR ||
+        !Array.isArray(artifacts.worldEvents.events)) {
+        throw new Error("world_events.json does not match the Sentinel 1.0 contract");
+    }
+    if (!artifacts.health || typeof artifacts.health !== "object" ||
+        schemaMajor(artifacts.health.schema_version) !== SENTINEL_SUPPORTED_SCHEMA_MAJOR ||
+        !Array.isArray(artifacts.health.sources)) {
+        throw new Error("health.json does not match the Sentinel 1.0 contract");
+    }
+
+}
+
+
+function normalizeSentinelEvent(event) {
+
+    if (!event || typeof event !== "object") {
+        return null;
+    }
+
+    const latitude = event.latitude ?? event.location?.latitude ?? event.coordinates?.lat;
+    const longitude = event.longitude ?? event.location?.longitude ?? event.coordinates?.lon;
+
+    if (!validCoordinate(latitude, 90) || !validCoordinate(longitude, 180)) {
+        return null;
+    }
+
+    return {
+        ...event,
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+        type: String(event.type || event.event_type || event.category || "unknown").toLowerCase(),
+        threat_level: String(event.threat_level || event.priority || "unknown").toUpperCase()
+    };
+
+}
+
+
+function updateSentinelDashboard(data) {
+
+    const summary = data && typeof data.summary === "object" ? data.summary : {};
+    const criticalEvents = Array.isArray(data?.critical_events) ? data.critical_events : [];
+    const threatLevel = summary.global_threat_level || summary.threat_level || "UNKNOWN";
+    const totalEvents = Number.isFinite(Number(summary.total_events)) ? summary.total_events : 0;
+
+    const threat = sentinelElement("threat-level");
+    const total = sentinelElement("total-events");
+    const critical = sentinelElement("critical-events");
+
+    if (threat) threat.textContent = String(threatLevel);
+    if (total) total.textContent = String(totalEvents);
+    if (critical) critical.textContent = String(criticalEvents.length);
+
+}
+
+
+function eventSourceText(event) {
+
+    if (Array.isArray(event.source)) {
+        return event.source.join(", ");
+    }
+
+    return event.source || "Sentinel Grid";
+
+}
+
+
+function appendPopupLine(container, label, value) {
+
+    const paragraph = document.createElement("p");
+    const heading = document.createElement("b");
+
+    heading.textContent = `${label}: `;
+    paragraph.append(heading, document.createTextNode(String(value || "Unknown")));
+    container.appendChild(paragraph);
+
+}
+
+
+function sentinelPopup(events) {
+
+    const article = document.createElement("article");
+    article.className = "map-popup";
+
+    const visibleEvents = events.slice(0, 5);
+    const title = document.createElement("h3");
+    title.textContent = events.length > 1 ?
+        `${events.length} events at this location` :
+        (events[0].title || "Intelligence Event");
+    article.appendChild(title);
+
+    visibleEvents.forEach((event, index) => {
+        if (events.length > 1) {
+            const eventTitle = document.createElement("h4");
+            eventTitle.textContent = event.title || `Event ${index + 1}`;
+            article.appendChild(eventTitle);
+        }
+
+        const summary = document.createElement("p");
+        summary.textContent = eventSummary(event);
+        article.appendChild(summary);
+        appendPopupLine(article, "Category", event.type);
+        appendPopupLine(article, "Threat", event.threat_level);
+        appendPopupLine(article, "Source", eventSourceText(event));
+    });
+
+    if (events.length > visibleEvents.length) {
+        const remaining = document.createElement("p");
+        remaining.textContent = `${events.length - visibleEvents.length} additional events share this location.`;
+        article.appendChild(remaining);
+    }
+
+    return article;
+
+}
+
+
+function eventColor(event) {
+
+    return ({
+        CRITICAL: "#ff004c",
+        HIGH: "#ff8800",
+        MEDIUM: "#ffff00",
+        LOW: "#00ffff"
+    })[event.threat_level] || getEventColor(event.type);
+
+}
+
+
+function groupEventsByCoordinate(events) {
+
+    const groups = new Map();
+
+    events.forEach(event => {
+        const key = `${event.latitude.toFixed(5)},${event.longitude.toFixed(5)}`;
+        const group = groups.get(key) || [];
+        group.push(event);
+        groups.set(key, group);
+    });
+
+    return Array.from(groups.values());
+
+}
+
+
+function activeSentinelFilters() {
+
+    return {
+        type: sentinelElement("sentinel-type-filter")?.value || "all",
+        threat: sentinelElement("sentinel-threat-filter")?.value || "all"
+    };
+
+}
+
+
+function renderSentinelEvents() {
+
+    if (!sentinelMap || !sentinelEventLayer) {
+        return;
+    }
+
+    sentinelEventLayer.clearLayers();
+
+    const filters = activeSentinelFilters();
+    const filtered = sentinelEvents.filter(event =>
+        (filters.type === "all" || event.type === filters.type) &&
+        (filters.threat === "all" || event.threat_level === filters.threat)
+    );
+    const groups = groupEventsByCoordinate(filtered);
+
+    groups.forEach(events => {
+        const event = events[0];
+        const marker = L.circleMarker([event.latitude, event.longitude], {
+            radius: Math.min(13, 7 + Math.log2(events.length)),
+            color: "#ffffff",
+            weight: events.length > 1 ? 2.5 : 1.5,
+            fillColor: eventColor(event),
+            fillOpacity: 0.88
+        });
+
+        marker.bindPopup(sentinelPopup(events), { maxWidth: 360 });
+        marker.addTo(sentinelEventLayer);
+    });
+
+    const summary = sentinelElement("sentinel-map-summary");
+    if (summary) {
+        const overlapCount = filtered.length - groups.length;
+        summary.textContent = filtered.length ?
+            `Showing ${filtered.length} events at ${groups.length} mapped locations${overlapCount ? `; ${overlapCount} overlapping events are grouped` : ""}.` :
+            "No mapped events match the selected filters.";
+    }
+
+}
+
+
+function populateSentinelFilters(events) {
+
+    const typeFilter = sentinelElement("sentinel-type-filter");
+    const threatFilter = sentinelElement("sentinel-threat-filter");
+
+    const populate = (select, values, format) => {
+        if (!select) return;
+        const previous = select.value;
+        select.replaceChildren(new Option(select.id.includes("type") ? "All types" : "All levels", "all"));
+        values.forEach(value => select.add(new Option(format(value), value)));
+        select.value = values.includes(previous) ? previous : "all";
+    };
+
+    const types = Array.from(new Set(events.map(event => event.type))).sort();
+    const threats = Array.from(new Set(events.map(event => event.threat_level))).sort((a, b) =>
+        ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"].indexOf(a) -
+        ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"].indexOf(b)
+    );
+
+    populate(typeFilter, types, value => value.replace(/_/g, " ").replace(/\b\w/g, letter => letter.toUpperCase()));
+    populate(threatFilter, threats, value => value);
+
+}
+
+
+function healthSummary(health, generated) {
+
+    if (!health) {
+        return {
+            state: "degraded",
+            message: generated ? `Publication generated ${formatDate(generated)}. Source health is unavailable.` : "Source health is unavailable."
+        };
+    }
+
+    const sources = Array.isArray(health.sources) ? health.sources : [];
+    const affectedSources = sources.filter(source => {
+        const status = String(source?.status || "").toLowerCase();
+        return source?.enabled !== false && status !== "ok";
+    });
+    const stale = Boolean(health.stale);
+    const degraded = Boolean(health.degraded) || health.status === "degraded" || stale || affectedSources.length > 0;
+    const timestamp = health.generated || generated;
+    const affectedNames = affectedSources
+        .slice(0, 3)
+        .map(source => source.source)
+        .filter(Boolean);
+    const sourceDetail = affectedNames.length ?
+        ` Affected: ${affectedNames.join(", ")}${affectedSources.length > affectedNames.length ? ` and ${affectedSources.length - affectedNames.length} more` : ""}.` : "";
+    const staleDetail = stale ?
+        ` Data exceeds the ${health.stale_after_minutes || 390}-minute freshness threshold.` : "";
+
+    return {
+        state: degraded ? "degraded" : "fresh",
+        message: `${degraded ? "Degraded coverage." : "Coverage operational."}${staleDetail}${sourceDetail}${timestamp ? ` Health generated ${formatDate(timestamp)}.` : ""}`
+    };
+
+}
+
+
+function validateManifest(manifest) {
+
+    if (!manifest || typeof manifest !== "object" || !manifest.publication_id) {
+        const error = new Error("Manifest is missing a publication ID");
+        error.code = "INVALID_MANIFEST";
+        throw error;
+    }
+
+    const major = schemaMajor(manifest.schema_version);
+    if (major !== SENTINEL_SUPPORTED_SCHEMA_MAJOR) {
+        const error = new Error(`Unsupported Sentinel schema version: ${manifest.schema_version || "unknown"}`);
+        error.code = "UNSUPPORTED_SCHEMA";
+        throw error;
+    }
+
+    if (!manifest.files || typeof manifest.files !== "object") {
+        const error = new Error("Manifest is missing release file metadata");
+        error.code = "INVALID_MANIFEST";
+        throw error;
+    }
+
+    for (const filename of SENTINEL_RELEASE_FILES) {
+        const metadata = manifest.files[filename];
+        if (!metadata || !Number.isInteger(metadata.bytes) || metadata.bytes < 0 ||
+            !/^[a-f0-9]{64}$/.test(String(metadata.sha256 || ""))) {
+            const error = new Error(`Manifest metadata is invalid for ${filename}`);
+            error.code = "INVALID_MANIFEST";
+            throw error;
+        }
+    }
+
+}
+
+
+async function loadSentinelPublication() {
+
+    let manifest;
+
+    try {
+        manifest = await fetchSentinelJSON("manifest.json", null, true);
+        validateManifest(manifest);
+    }
+    catch (manifestError) {
+        if (["INVALID_MANIFEST", "UNSUPPORTED_SCHEMA"].includes(manifestError.code)) {
+            setSentinelStatus(manifestError.message, "error");
+            console.error("Sentinel manifest rejected", manifestError);
+            return;
+        }
+
+        if (activeSentinelPublicationId) {
+            const usingLegacyData = activeSentinelPublicationId.startsWith("legacy-");
+            setSentinelStatus(
+                usingLegacyData ?
+                    "Sentinel map is using legacy website data while publication metadata is unavailable." :
+                    "Unable to check for a new publication. The last valid map remains available.",
+                usingLegacyData ? "degraded" : "error"
+            );
+            console.warn("Sentinel manifest refresh failed", manifestError);
+            return;
+        }
+
+        console.warn("Sentinel manifest unavailable; using legacy website data", manifestError);
+        const [dashboard, mapEvents] = await Promise.all([
+            fetchSentinelJSON("dashboard.json"),
+            fetchSentinelJSON("map_events.json")
+        ]);
+        let health = null;
+        try {
+            health = await fetchSentinelJSON("health.json");
+        }
+        catch (healthError) {
+            console.warn("Sentinel health unavailable", healthError);
+        }
+
+        manifest = {
+            publication_id: `legacy-${dashboard.generated || "current"}`,
+            generated: dashboard.generated,
+            legacy: true
+        };
+        applySentinelPublication(manifest, dashboard, mapEvents, health);
+        return;
+    }
+
+    if (manifest.publication_id === activeSentinelPublicationId) {
+        return;
+    }
+
+    setSentinelStatus("Loading a new Sentinel Grid publication...", "loading");
+
+    const releaseEntries = await Promise.all(
+        SENTINEL_RELEASE_FILES.map(async filename => [
+            filename,
+            await fetchVerifiedSentinelArtifact(filename, manifest)
+        ])
+    );
+    const release = Object.fromEntries(releaseEntries);
+    const artifacts = {
+        health: release["health.json"],
+        worldEvents: release["world_events.json"],
+        mapEvents: release["map_events.json"],
+        timeline: release["timeline.json"],
+        trends: release["trends.json"],
+        intelligenceBrief: release["intelligence_brief.json"],
+        dashboard: release["dashboard.json"]
+    };
+
+    validateSentinelArtifacts(artifacts);
+    applySentinelPublication(manifest, artifacts.dashboard, artifacts.mapEvents, artifacts.health);
+
+}
+
+
+function applySentinelPublication(manifest, dashboard, mapEvents, health) {
+
+    if (!dashboard || typeof dashboard !== "object") {
+        throw new Error("Invalid dashboard data");
+    }
+    if (!Array.isArray(mapEvents)) {
+        throw new Error("Invalid map event data");
+    }
+
+    const normalizedEvents = mapEvents.map(normalizeSentinelEvent).filter(Boolean);
+
+    updateSentinelDashboard(dashboard);
+    sentinelEvents = normalizedEvents;
+    activeSentinelPublicationId = manifest.publication_id;
+    populateSentinelFilters(sentinelEvents);
+    renderSentinelEvents();
+
+    const status = healthSummary(health, manifest.generated || dashboard.generated);
+    if (manifest.legacy) {
+        setSentinelStatus(`${status.message} Awaiting manifest-based publication metadata.`, "degraded");
+    }
+    else {
+        setSentinelStatus(status.message, status.state);
+    }
+
+}
+
+
+function resizeSentinelMap() {
+
+    if (!sentinelMap) return;
+
+    const container = sentinelElement("sentinel-map");
+    if (!container || container.clientWidth === 0 || container.clientHeight === 0 || document.visibilityState === "hidden") {
+        return;
+    }
+
+    requestAnimationFrame(() => sentinelMap.invalidateSize({ pan: false, animate: false }));
+
+}
+
+
+function initializeSentinelMap() {
+
+    const container = sentinelElement("sentinel-map");
+
+    if (!container || typeof L === "undefined") {
+        throw new Error("Leaflet or the Sentinel map container is unavailable");
+    }
 
     sentinelMap = L.map(container, {
-        center: [20, 0],
-        zoom: 2,
+        center: SENTINEL_INITIAL_VIEW.center,
+        zoom: SENTINEL_INITIAL_VIEW.zoom,
         minZoom: 2,
         worldCopyJump: true,
-        preferCanvas: true
+        preferCanvas: true,
+        zoomAnimation: false,
+        fadeAnimation: false
     });
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
-        attribution: "&copy; OpenStreetMap contributors"
+        attribution: "&copy; OpenStreetMap contributors",
+        updateWhenZooming: false,
+        keepBuffer: 3
     }).addTo(sentinelMap);
 
-    const sources = [
-        "data/map_events.json",
-        "data/earthquakes.json",
-        "data/volcanoes.json",
-        "data/weather.json",
-        "data/solar.json"
-    ];
+    sentinelEventLayer = L.layerGroup().addTo(sentinelMap);
 
-    const results = await Promise.allSettled(sources.map(fetchJSON));
-    const events = results.flatMap((result, index) => {
-        if (result.status === "fulfilled" && Array.isArray(result.value)) {
-            return result.value;
-        }
+    if (typeof ResizeObserver !== "undefined") {
+        sentinelResizeObserver = new ResizeObserver(resizeSentinelMap);
+        sentinelResizeObserver.observe(container);
+    }
 
-        console.warn(`${sources[index]} unavailable`, result.reason);
-        return [];
+    window.addEventListener("resize", resizeSentinelMap, { passive: true });
+    window.addEventListener("orientationchange", resizeSentinelMap, { passive: true });
+    window.addEventListener("pageshow", resizeSentinelMap, { passive: true });
+    window.visualViewport?.addEventListener("resize", resizeSentinelMap, { passive: true });
+    document.addEventListener("visibilitychange", resizeSentinelMap);
+
+    sentinelElement("sentinel-type-filter")?.addEventListener("change", renderSentinelEvents);
+    sentinelElement("sentinel-threat-filter")?.addEventListener("change", renderSentinelEvents);
+    sentinelElement("sentinel-reset-map")?.addEventListener("click", () => {
+        sentinelMap.setView(SENTINEL_INITIAL_VIEW.center, SENTINEL_INITIAL_VIEW.zoom);
     });
 
-    events.forEach(event => {
-        const latitude = event.latitude ?? event.coordinates?.lat;
-        const longitude = event.longitude ?? event.coordinates?.lon;
-        const polygon = event.coordinates?.polygon;
-        const color = event.threat_level ?
-            ({ CRITICAL: "#ff004c", HIGH: "#ff8800", MEDIUM: "#ffff00", LOW: "#00ffff" }[event.threat_level] || "#00ffff") :
-            getEventColor(event.type);
+    resizeSentinelMap();
+    setTimeout(resizeSentinelMap, 350);
+    setTimeout(resizeSentinelMap, 1200);
 
-        if (validCoordinate(latitude, 90) && validCoordinate(longitude, 180)) {
-            L.circleMarker([Number(latitude), Number(longitude)], {
-                radius: 7,
-                color: "#ffffff",
-                weight: 1.5,
-                fillColor: color,
-                fillOpacity: 0.88
-            })
-                .bindPopup(eventPopup(event), { maxWidth: 340 })
-                .addTo(sentinelMap);
+}
+
+
+async function initializeSentinel() {
+
+    try {
+        initializeSentinelMap();
+        await loadSentinelPublication();
+    }
+    catch (error) {
+        console.error("Sentinel initialization failed", error);
+        setSentinelStatus("Sentinel data is temporarily unavailable. Please try again later.", "error");
+        const summary = sentinelElement("sentinel-map-summary");
+        if (summary) summary.textContent = "The map is available, but event data could not be loaded.";
+    }
+
+    window.setInterval(() => {
+        if (document.visibilityState !== "hidden") {
+            loadSentinelPublication().catch(error => {
+                console.error("Sentinel refresh failed", error);
+                setSentinelStatus("A refresh failed. The last valid map remains available.", "error");
+            });
         }
-        else if (Array.isArray(polygon)) {
-            const leafletPolygon = polygon.map(ring =>
-                ring.map(coordinate => [coordinate[1], coordinate[0]])
-            );
+    }, SENTINEL_REFRESH_INTERVAL);
 
-            L.polygon(leafletPolygon, {
-                color,
-                weight: 2,
-                fillColor: color,
-                fillOpacity: 0.22
-            })
-                .bindPopup(eventPopup(event), { maxWidth: 340 })
-                .addTo(sentinelMap);
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+            loadSentinelPublication().catch(error => console.error("Sentinel visibility refresh failed", error));
         }
     });
-
-    bindMapResizeHandler(sentinelMap);
-
-    requestAnimationFrame(() => refreshMapLayout(sentinelMap));
-    setTimeout(() => refreshMapLayout(sentinelMap), 300);
 
 }
 
@@ -2970,11 +3503,7 @@ document.addEventListener(
 
         try {
 
-            loadSentinelDashboard();
-
-            loadSentinelBrief();
-
-            loadUnifiedMap();
+            initializeSentinel();
 
         }
         catch (error) {
