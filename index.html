@@ -11,8 +11,6 @@
     <title>Joseph Technologies</title>
 
 
-    <link rel="stylesheet" href="assets/leaflet.css">
-
     <link rel="stylesheet" href="style.css">
 
 
@@ -435,44 +433,24 @@ frame-src 'self';
                 </h2>
 
                 <p class="map-instructions">
-                    Select any event to view its intelligence summary.
+                    Explore the dedicated operational map with clustering, threat filters, confidence controls, and
+                    detailed intelligence records.
                 </p>
 
                 <div id="sentinel-publication-status" class="sentinel-status sentinel-status-loading" role="status" aria-live="polite">
                     Loading Sentinel Grid publication...
                 </div>
 
-                <div class="sentinel-map-toolbar" aria-label="Map filters">
-                    <label>
-                        Event type
-                        <select id="sentinel-type-filter">
-                            <option value="all">All types</option>
-                        </select>
-                    </label>
-
-                    <label>
-                        Threat level
-                        <select id="sentinel-threat-filter">
-                            <option value="all">All levels</option>
-                        </select>
-                    </label>
-
-                    <button id="sentinel-reset-map" type="button">
-                        Reset map
-                    </button>
+                <div class="sentinel-launch-panel">
+                    <div>
+                        <span class="sentinel-launch-kicker">LIVE OPERATIONAL PICTURE</span>
+                        <strong id="sentinel-map-summary">Preparing intelligence summary...</strong>
+                        <p>Open the full-screen Sentinel workspace for the clearest and fastest map experience.</p>
+                    </div>
+                    <a class="sentinel-map-launch" href="sentinel.html">
+                        Open Global Map <span aria-hidden="true">→</span>
+                    </a>
                 </div>
-
-                <div id="sentinel-map-summary" class="sentinel-map-summary" aria-live="polite">
-                    Preparing map data...
-                </div>
-
-                <div class="sentinel-map-frame">
-                    <div id="sentinel-map" role="region" aria-label="Global Sentinel intelligence activity map"></div>
-                </div>
-
-                <noscript>
-                    <p class="status-alert">JavaScript is required to display the Sentinel intelligence map.</p>
-                </noscript>
 
 
             </div>
@@ -815,9 +793,11 @@ frame-src 'self';
         🛸
     </button>
 
-    <script src="assets/leaflet.js"></script>
-
     <script src="script.js"></script>
+
+    <script src="assets/js/sentinel-data.js"></script>
+
+    <script src="assets/js/sentinel-home.js"></script>
 
 
 

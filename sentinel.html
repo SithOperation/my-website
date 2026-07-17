@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Sentinel Grid global OSINT and GEOINT intelligence map.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; worker-src 'self' blob:; child-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.openstreetmap.org https://tile.openstreetmap.org; connect-src 'self' https://*.openstreetmap.org https://tile.openstreetmap.org; font-src 'self'; frame-src 'none';">
+    <title>Sentinel Grid | Joseph Technologies</title>
+    <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css">
+    <link rel="stylesheet" href="assets/css/sentinel-map.css">
+</head>
+<body>
+    <a class="skip-link" href="#sentinel-map">Skip to intelligence map</a>
+
+    <main class="ops-shell">
+        <header class="ops-header">
+            <div>
+                <a class="back-link" href="index.html#sentinel-dashboard">← Joseph Technologies</a>
+                <p class="eyebrow">GLOBAL OSINT / GEOINT OPERATIONS</p>
+                <h1>SENTINEL GRID</h1>
+            </div>
+
+            <div id="ops-status" class="ops-status is-loading" role="status" aria-live="polite">
+                <span class="status-light" aria-hidden="true"></span>
+                <span id="ops-status-text">Establishing intelligence feed...</span>
+            </div>
+        </header>
+
+        <section class="metric-strip" aria-label="Sentinel publication summary">
+            <article>
+                <span>THREAT LEVEL</span>
+                <strong id="ops-threat">UNKNOWN</strong>
+            </article>
+            <article>
+                <span>TOTAL EVENTS</span>
+                <strong id="ops-total">0</strong>
+            </article>
+            <article>
+                <span>CRITICAL</span>
+                <strong id="ops-critical">0</strong>
+            </article>
+            <article>
+                <span>MAPPED</span>
+                <strong id="ops-mapped">0</strong>
+            </article>
+            <article class="metric-wide">
+                <span>PUBLICATION</span>
+                <strong id="ops-generated">AWAITING DATA</strong>
+            </article>
+        </section>
+
+        <section class="operations-grid">
+            <aside class="control-panel" aria-label="Intelligence controls">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">LAYER CONTROL</p>
+                        <h2>Signal filters</h2>
+                    </div>
+                    <button id="mobile-panel-toggle" class="mobile-panel-toggle" type="button" aria-expanded="false" aria-controls="filter-content">
+                        Filters
+                    </button>
+                </div>
+
+                <div id="filter-content" class="filter-content">
+                    <label>
+                        Event type
+                        <select id="filter-type">
+                            <option value="all">All event types</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Threat level
+                        <select id="filter-threat">
+                            <option value="all">All threat levels</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Minimum confidence
+                        <select id="filter-confidence">
+                            <option value="0">Any confidence</option>
+                            <option value="50">50% or higher</option>
+                            <option value="70">70% or higher</option>
+                            <option value="90">90% or higher</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Time window
+                        <select id="filter-time">
+                            <option value="all">All retained events</option>
+                            <option value="24">Last 24 hours</option>
+                            <option value="72">Last 72 hours</option>
+                            <option value="168">Last 7 days</option>
+                        </select>
+                    </label>
+
+                    <div class="control-actions">
+                        <button id="reset-filters" type="button">Clear filters</button>
+                        <button id="reset-view" type="button">Reset view</button>
+                    </div>
+
+                    <div class="legend" aria-label="Threat legend">
+                        <h3>Threat signature</h3>
+                        <span><i class="critical"></i> Critical</span>
+                        <span><i class="high"></i> High</span>
+                        <span><i class="medium"></i> Medium</span>
+                        <span><i class="low"></i> Low</span>
+                    </div>
+
+                    <div class="coverage-block">
+                        <h3>Coverage</h3>
+                        <p id="coverage-message">Waiting for source health...</p>
+                        <ul id="coverage-sources"></ul>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="map-stage" aria-labelledby="map-heading">
+                <div class="map-stage-heading">
+                    <div>
+                        <p class="eyebrow">LIVE GEOSPATIAL PICTURE</p>
+                        <h2 id="map-heading">Global intelligence map</h2>
+                    </div>
+                    <p id="map-count" aria-live="polite">Preparing map layers...</p>
+                </div>
+
+                <div class="map-frame">
+                    <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map"></div>
+                    <div class="scanline" aria-hidden="true"></div>
+                    <div id="map-loading" class="map-loading" role="status">
+                        <span></span>
+                        Building operational picture...
+                    </div>
+                </div>
+            </section>
+
+            <aside class="event-panel" aria-label="Selected intelligence event">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">INTELLIGENCE DETAIL</p>
+                        <h2>Selected signal</h2>
+                    </div>
+                </div>
+
+                <div id="event-detail" class="event-detail">
+                    <p class="empty-kicker">NO SIGNAL SELECTED</p>
+                    <p>Select a point or cluster on the map to inspect its intelligence record.</p>
+                </div>
+            </aside>
+        </section>
+
+        <footer class="ops-footer">
+            <span>Sentinel Grid Intelligence</span>
+            <span>Public-source situational awareness</span>
+            <span>Map data © OpenStreetMap contributors</span>
+        </footer>
+    </main>
+
+    <script src="assets/vendor/maplibre/maplibre-gl.js"></script>
+    <script src="assets/js/sentinel-data.js"></script>
+    <script src="assets/js/sentinel-map.js"></script>
+</body>
+</html>

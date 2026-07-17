@@ -3503,21 +3503,6 @@ document.addEventListener(
 
         try {
 
-            initializeSentinel();
-
-        }
-        catch (error) {
-
-            console.error(
-                "Sentinel failed:",
-                error
-            );
-
-        }
-
-
-        try {
-
             loadIntelligence();
 
         }
