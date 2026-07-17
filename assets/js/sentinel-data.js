@@ -60,7 +60,7 @@
             return status && !healthyStatuses.has(status);
         });
         const declared = String(health.status || health.overall_status || "").toLowerCase();
-        const degraded = Boolean(health.degraded) || failedSources.length > 0 ||
+        const degraded = Boolean(health.degraded) || Boolean(health.stale) || failedSources.length > 0 ||
             ["degraded", "stale", "partial", "failed"].includes(declared);
 
         return {

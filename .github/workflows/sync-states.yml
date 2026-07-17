@@ -146,6 +146,10 @@ jobs:
 
           test -f external/sentinel/data/output/world_events.json
 
+          test -f external/sentinel/data/output/health.json
+
+          test -f external/sentinel/data/output/manifest.json
+
 
 
           echo "All source files found"
@@ -243,10 +247,53 @@ jobs:
 
 
 
+          cp external/sentinel/data/output/health.json \
+          data/health.json
+
+
+
+          # Publish the release marker last. The frontend only switches
+          # publications after this complete manifest becomes available.
+          cp external/sentinel/data/output/manifest.json \
+          data/manifest.json
+
+
+
 
       - name: Verify copied files
 
         run: |
+
+
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          data_dir = Path("data")
+          manifest = json.loads((data_dir / "manifest.json").read_text(encoding="utf-8"))
+
+          if str(manifest.get("schema_version", "")).split(".", 1)[0] != "1":
+              raise SystemExit("Unsupported Sentinel manifest schema")
+
+          if not manifest.get("publication_id"):
+              raise SystemExit("Sentinel manifest is missing publication_id")
+
+          for filename, metadata in manifest.get("files", {}).items():
+              path = data_dir / filename
+              if not path.is_file():
+                  raise SystemExit(f"Manifest file missing after copy: {filename}")
+
+              payload = path.read_bytes()
+              if len(payload) != metadata.get("bytes"):
+                  raise SystemExit(f"Size mismatch for {filename}")
+
+              digest = hashlib.sha256(payload).hexdigest()
+              if digest != metadata.get("sha256"):
+                  raise SystemExit(f"SHA-256 mismatch for {filename}")
+
+          print(f"Validated Sentinel publication {manifest['publication_id']}")
+          PY
 
 
           echo "Website dashboard data:"
