@@ -1431,6 +1431,7 @@ body {
     background: var(--site-bg);
     color: var(--site-text);
     font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 16.5px;
 }
 
 .overlay {
@@ -1642,7 +1643,7 @@ nav a.is-current::before {
 .capabilities-heading { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-bottom: 42px; }
 .capabilities-heading h2 { max-width: 680px; margin: 8px 0 0; }
 .capabilities-heading p { margin: 0; color: var(--site-muted); line-height: 1.7; }
-.section-kicker, .section-label, .unit-code { color: var(--site-warm); font: 700 10px monospace; letter-spacing: .18em; text-transform: uppercase; }
+.section-kicker, .section-label, .unit-code { color: var(--site-warm); font: 700 11px monospace; letter-spacing: .18em; text-transform: uppercase; }
 .section-label { display: block; margin-bottom: 14px; }
 .expertise-block { margin-bottom: 46px; }
 .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -1657,13 +1658,13 @@ nav a.is-current::before {
 .capability-unit:first-child { border-top: 1px solid var(--site-line); }
 .capability-unit h3 { margin: 7px 0 0; }
 .capability-unit ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.capability-unit li { padding: 7px 10px; border: 1px solid var(--site-line); color: var(--site-muted); font: 11px monospace; }
+.capability-unit li { padding: 7px 10px; border: 1px solid var(--site-line); color: var(--site-muted); font: 12px monospace; }
 .capability-unit.unit-primary { border-left: 2px solid var(--site-warm); padding-left: 16px; }
 .toolset-block { margin-top: 46px; }
 .tool-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
 .tool-tile { display: flex; align-items: center; gap: 12px; min-height: 68px; padding: 12px; border: 1px solid var(--site-line); background: rgba(0,0,0,.25); }
 .tool-tile b { display: grid; place-items: center; flex: 0 0 36px; height: 36px; border: 1px solid rgba(200,185,143,.45); color: var(--site-warm); font: 700 10px monospace; }
-.tool-tile span { color: var(--site-text); font: 700 11px monospace; }
+.tool-tile span { color: var(--site-text); font: 700 12px monospace; }
 .skills-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
 
 .skill-group {

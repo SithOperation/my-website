@@ -143,7 +143,24 @@
                 </div>
 
                 <div class="map-frame">
-                    <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map"></div>
+                    <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map">
+                        <div class="fullscreen-map-help" aria-live="polite">
+                            <strong>MAP NAVIGATION</strong>
+                            <span>Drag with one finger</span>
+                            <span>Pinch or use + / − to zoom</span>
+                            <span>Tap a pinpoint for intelligence</span>
+                        </div>
+                        <aside class="fullscreen-event-panel" aria-label="Fullscreen selected signal">
+                            <div class="fullscreen-event-heading">
+                                <span>SELECTED SIGNAL</span>
+                                <button id="fullscreen-detail-toggle" type="button" aria-expanded="true" aria-controls="fullscreen-event-detail">Minimize</button>
+                            </div>
+                            <div id="fullscreen-event-detail" class="event-detail">
+                                <p class="empty-kicker">NO SIGNAL SELECTED</p>
+                                <p>Tap a pinpoint or cluster to inspect its intelligence record without leaving the map.</p>
+                            </div>
+                        </aside>
+                    </div>
                     <div class="scanline" aria-hidden="true"></div>
                     <div id="map-loading" class="map-loading" role="status">
                         <span></span>

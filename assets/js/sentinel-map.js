@@ -487,6 +487,24 @@
         map.addControl(new window.maplibregl.FullscreenControl(), "top-right");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
 
+        const handleFullscreenChange = () => {
+            const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+            const fullscreen = fullscreenElement === element("sentinel-map");
+            element("sentinel-map").classList.toggle("is-map-fullscreen", fullscreen);
+            if (fullscreen) map.disableCooperativeGestures?.();
+            else map.enableCooperativeGestures?.();
+            window.setTimeout(() => map.resize(), 80);
+        };
+        document.addEventListener("fullscreenchange", handleFullscreenChange);
+        document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+
+        element("fullscreen-detail-toggle")?.addEventListener("click", event => {
+            const panel = event.currentTarget.closest(".fullscreen-event-panel");
+            const collapsed = panel.classList.toggle("is-collapsed");
+            event.currentTarget.textContent = collapsed ? "Expand" : "Minimize";
+            event.currentTarget.setAttribute("aria-expanded", String(!collapsed));
+        });
+
         map.on("load", () => {
             addIntelligenceLayers();
             mapReady = true;
@@ -645,6 +663,14 @@
         if (event.event_id) appendDefinition(details, "Event ID", event.event_id);
 
         panel.replaceChildren(heading, summary, interpretation, details);
+        syncFullscreenDetail(panel);
+    }
+
+    function syncFullscreenDetail(source) {
+        const fullscreenDetail = element("fullscreen-event-detail");
+        if (!fullscreenDetail) return;
+        fullscreenDetail.replaceChildren(...[...source.children].map(child => child.cloneNode(true)));
+        fullscreenDetail.closest(".fullscreen-event-panel")?.classList.add("has-selection");
     }
 
     function renderEventGroup(events, totalCount) {
@@ -672,6 +698,10 @@
         });
 
         panel.replaceChildren(heading, explanation, list);
+        syncFullscreenDetail(panel);
+        element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
+            button.addEventListener("click", () => renderEventDetail(events[index]));
+        });
     }
 
     function renderHealth(snapshot) {
