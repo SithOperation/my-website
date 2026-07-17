@@ -533,6 +533,11 @@ function safe(value) {
     return String(value)
 
         .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
             /</g,
             "&lt;"
         )
@@ -540,6 +545,16 @@ function safe(value) {
         .replace(
             />/g,
             "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#39;"
         );
 
 }
@@ -2752,6 +2767,154 @@ async function loadSentinelMap() {
 }
 
 
+function plainText(value) {
+
+    const element = document.createElement("div");
+
+    element.innerHTML = String(value || "");
+
+    return (element.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+function eventSummary(event) {
+
+    const details = event.details || {};
+    const summary = event.description ||
+        details.description ||
+        details.message ||
+        details.instruction ||
+        event.location ||
+        "No summary is available for this event.";
+
+    const text = plainText(summary);
+
+    return text.length > 360 ? `${text.slice(0, 357)}...` : text;
+
+}
+
+
+function eventPopup(event) {
+
+    const level = event.threat_level || event.severity || event.priority || "Unknown";
+    const location = event.location ?
+        `<p><b>Location:</b> ${safe(event.location)}</p>` : "";
+
+    return `
+        <article class="map-popup">
+            <h3>${safe(event.title || "Intelligence Event")}</h3>
+            <p>${safe(eventSummary(event))}</p>
+            ${location}
+            <p><b>Category:</b> ${safe(event.type || "Unknown")}</p>
+            <p><b>Level:</b> ${safe(level)}</p>
+            <p><b>Source:</b> ${safe(event.source || "Sentinel Grid")}</p>
+        </article>
+    `;
+
+}
+
+
+function validCoordinate(value, limit) {
+
+    const number = Number(value);
+
+    return Number.isFinite(number) && Math.abs(number) <= limit;
+
+}
+
+
+async function loadUnifiedMap() {
+
+    const container = document.getElementById("sentinel-map");
+
+    if (!container || typeof L === "undefined") {
+        console.error("Leaflet or the unified map container is unavailable");
+        return;
+    }
+
+    if (sentinelMap) {
+        sentinelMap.remove();
+    }
+
+    container.innerHTML = "";
+
+    sentinelMap = L.map(container, {
+        center: [20, 0],
+        zoom: 2,
+        minZoom: 2,
+        worldCopyJump: true,
+        preferCanvas: true
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(sentinelMap);
+
+    const sources = [
+        "data/map_events.json",
+        "data/earthquakes.json",
+        "data/volcanoes.json",
+        "data/weather.json",
+        "data/solar.json"
+    ];
+
+    const results = await Promise.allSettled(sources.map(fetchJSON));
+    const events = results.flatMap((result, index) => {
+        if (result.status === "fulfilled" && Array.isArray(result.value)) {
+            return result.value;
+        }
+
+        console.warn(`${sources[index]} unavailable`, result.reason);
+        return [];
+    });
+
+    events.forEach(event => {
+        const latitude = event.latitude ?? event.coordinates?.lat;
+        const longitude = event.longitude ?? event.coordinates?.lon;
+        const polygon = event.coordinates?.polygon;
+        const color = event.threat_level ?
+            ({ CRITICAL: "#ff004c", HIGH: "#ff8800", MEDIUM: "#ffff00", LOW: "#00ffff" }[event.threat_level] || "#00ffff") :
+            getEventColor(event.type);
+
+        if (validCoordinate(latitude, 90) && validCoordinate(longitude, 180)) {
+            L.circleMarker([Number(latitude), Number(longitude)], {
+                radius: 7,
+                color: "#ffffff",
+                weight: 1.5,
+                fillColor: color,
+                fillOpacity: 0.88
+            })
+                .bindPopup(eventPopup(event), { maxWidth: 340 })
+                .addTo(sentinelMap);
+        }
+        else if (Array.isArray(polygon)) {
+            const leafletPolygon = polygon.map(ring =>
+                ring.map(coordinate => [coordinate[1], coordinate[0]])
+            );
+
+            L.polygon(leafletPolygon, {
+                color,
+                weight: 2,
+                fillColor: color,
+                fillOpacity: 0.22
+            })
+                .bindPopup(eventPopup(event), { maxWidth: 340 })
+                .addTo(sentinelMap);
+        }
+    });
+
+    bindMapResizeHandler(sentinelMap);
+
+    requestAnimationFrame(() => refreshMapLayout(sentinelMap));
+    setTimeout(() => refreshMapLayout(sentinelMap), 300);
+
+}
+
+
 
 /* =====================================================
    APPLICATION START
@@ -2811,7 +2974,7 @@ document.addEventListener(
 
             loadSentinelBrief();
 
-            loadSentinelMap();
+            loadUnifiedMap();
 
         }
         catch (error) {
@@ -2871,14 +3034,6 @@ document.addEventListener(
             );
 
         }
-
-
-        setTimeout(() => {
-
-            loadDisasterMap();
-
-        }, 1500);
-
 
 
     }

@@ -11,8 +11,6 @@
     <title>Joseph Technologies</title>
 
 
-    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css">
-
     <link rel="stylesheet" href="assets/leaflet.css">
 
     <link rel="stylesheet" href="style.css">
@@ -22,23 +20,19 @@
     <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
 
-script-src 'self' https://unpkg.com;
+script-src 'self';
 
 worker-src 'self' blob:;
 
-style-src 'self' 'unsafe-inline' https://unpkg.com;
+style-src 'self' 'unsafe-inline';
 
 img-src 'self' data: blob:
-https://*.maptiler.com
-https://*.maptiler.app
 https://*.openstreetmap.org
 https://tile.openstreetmap.org;
 
-font-src 'self' https://unpkg.com;
+font-src 'self';
 
 connect-src 'self'
-https://*.maptiler.com
-https://*.maptiler.app
 https://*.openstreetmap.org;
 
 frame-src 'self';
@@ -122,13 +116,8 @@ frame-src 'self';
             </a>
 
 
-            <a href="#disaster-map-section">
-                Disaster Map
-            </a>
-
-
             <a href="#sentinel-dashboard">
-                Sentinel Grid
+                Global Map
             </a>
 
 
@@ -358,30 +347,6 @@ frame-src 'self';
 
         </section>
 
-        <section id="disaster-map-section">
-
-            <h1 class="glitch-title" data-text="GLOBAL DISASTER MAP">
-
-                GLOBAL DISASTER MAP
-
-            </h1>
-
-
-            <p class="intel-subtitle">
-
-                WORLDWIDE EARTHQUAKE • VOLCANO • WEATHER • FIRE • SPACE MONITORING
-
-            </p>
-
-
-
-            <div id="disaster-map" role="application" aria-label="Global disaster intelligence map">
-
-            </div>
-
-
-        </section>
-
         <!-- =====================================================
         SENTINEL GRID INTELLIGENCE DASHBOARD
         ===================================================== -->
@@ -466,11 +431,14 @@ frame-src 'self';
 
 
                 <h2>
-                    GLOBAL ACTIVITY MAP
+                    GLOBAL INTELLIGENCE MAP
                 </h2>
 
+                <p class="map-instructions">
+                    Select any event to view its intelligence summary.
+                </p>
 
-                <div id="sentinel-map"></div>
+                <div id="sentinel-map" role="application" aria-label="Global disaster and intelligence activity map"></div>
 
 
             </div>
@@ -812,8 +780,6 @@ frame-src 'self';
     <button id="ufo-top" aria-label="Return to top">
         🛸
     </button>
-
-    <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
 
     <script src="assets/leaflet.js"></script>
 
