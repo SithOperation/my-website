@@ -184,11 +184,35 @@
         });
     }
 
+    function initializeNavigationSelection() {
+        const links = [...document.querySelectorAll('nav a[href^="#"]')];
+        const sections = links.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+        if (!links.length || !sections.length) return;
+
+        const select = id => links.forEach(link => {
+            const selected = link.getAttribute("href") === `#${id}`;
+            link.classList.toggle("is-current", selected);
+            if (selected) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+        });
+
+        select(sections[0].id);
+        const observer = new IntersectionObserver(entries => {
+            const visible = entries.filter(entry => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (visible) select(visible.target.id);
+        }, { rootMargin: "-18% 0px -62%", threshold: [0, .15, .4] });
+
+        sections.forEach(section => observer.observe(section));
+        links.forEach(link => link.addEventListener("click", () => select(link.getAttribute("href").slice(1))));
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
         startTypewriter();
         initializeBackgrounds();
         initializeProjects();
         initializeReturnToTop();
+        initializeNavigationSelection();
         loadCyberNews();
     });
 }());

@@ -1479,19 +1479,47 @@ nav {
     top: 0;
     width: min(var(--content-width), calc(100% - 28px));
     margin: auto;
-    border-block: 1px solid var(--site-line);
-    background: rgba(9, 10, 10, .92);
+    gap: 5px;
+    padding: 9px 9px 24px;
+    border: 1px solid rgba(112, 134, 166, .28);
+    background: rgba(5, 7, 12, .94);
     backdrop-filter: blur(12px);
+}
+
+nav::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: auto 0 0;
+    height: 19px;
+    pointer-events: none;
+    background:
+        linear-gradient(rgba(230, 54, 166, .46) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(230, 54, 166, .38) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(144, 23, 99, .22), rgba(7, 4, 10, .18));
+    background-size: 100% 6px, 34px 100%, 100% 100%;
+    box-shadow: inset 0 1px rgba(255, 115, 211, .22);
+    transform-origin: bottom;
+    transform: perspective(90px) rotateX(9deg);
 }
 
 nav a {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    border: 1px solid rgba(205, 207, 198, .12);
-    color: var(--site-text);
-    background: rgba(255,255,255,.055);
-    box-shadow: inset 0 -2px var(--site-accent);
+    min-width: 104px;
+    padding: 10px 13px;
+    border: 1px solid #1b2845;
+    border-radius: 1px;
+    color: #d9e6ff;
+    background:
+        linear-gradient(135deg, rgba(95, 137, 201, .28), transparent 45%),
+        #132344;
+    box-shadow: inset 0 0 0 1px rgba(119, 161, 225, .1), 0 3px 0 #080d19;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 nav a::before {
@@ -1505,32 +1533,29 @@ nav a::before {
     opacity: 0;
     transform: translateX(-50%) scale(.72);
     border-radius: 50%;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(244, 229, 183, .42) 0%,
-        rgba(200, 185, 143, .17) 34%,
-        transparent 72%
-    );
+    background: radial-gradient(ellipse at center, rgba(210, 237, 255, .56), rgba(108, 169, 220, .2) 36%, transparent 72%);
     filter: blur(5px);
     transition: opacity .28s ease, transform .35s ease;
 }
 
 nav a:hover,
-nav a:focus-visible {
-    color: #fffef5;
-    border-color: rgba(232, 222, 190, .42);
-    background: linear-gradient(to bottom, rgba(232, 222, 190, .16), rgba(255,255,255,.06));
+nav a:focus-visible,
+nav a.is-current {
+    color: #f5fbff;
+    border-color: rgba(210, 237, 255, .88);
+    background: linear-gradient(to bottom, #315f91, #18365f);
     box-shadow:
-        inset 0 -2px var(--site-accent),
-        inset 0 8px 16px rgba(240, 226, 184, .08),
-        0 0 18px rgba(214, 199, 154, .18),
-        0 8px 24px rgba(0,0,0,.55);
-    text-shadow: 0 0 9px rgba(255, 244, 211, .55);
-    transform: translateY(-1px);
+        inset 0 0 0 1px rgba(238, 249, 255, .38),
+        inset 0 7px 13px rgba(188, 226, 255, .14),
+        0 0 12px rgba(129, 190, 231, .28),
+        0 3px 0 #080d19;
+    text-shadow: 0 0 7px rgba(218, 242, 255, .72);
+    transform: translateY(-2px);
 }
 
 nav a:hover::before,
-nav a:focus-visible::before {
+nav a:focus-visible::before,
+nav a.is-current::before {
     opacity: 1;
     transform: translateX(-50%) scale(1);
 }
@@ -1613,6 +1638,32 @@ nav a:focus-visible::before {
     font: 700 12px monospace;
 }
 
+.legacy-skills { display: none; }
+.capabilities-heading { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-bottom: 42px; }
+.capabilities-heading h2 { max-width: 680px; margin: 8px 0 0; }
+.capabilities-heading p { margin: 0; color: var(--site-muted); line-height: 1.7; }
+.section-kicker, .section-label, .unit-code { color: var(--site-warm); font: 700 10px monospace; letter-spacing: .18em; text-transform: uppercase; }
+.section-label { display: block; margin-bottom: 14px; }
+.expertise-block { margin-bottom: 46px; }
+.expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.expertise-card { min-height: 136px; padding: 18px; border: 1px solid var(--site-line); background: rgba(0,0,0,.25); }
+.expertise-card > span { color: var(--site-muted); font: 700 10px monospace; }
+.expertise-card h3 { min-height: 42px; margin: 18px 0 14px; font-size: 15px; }
+.expertise-card.expertise-primary { border-color: rgba(200,185,143,.48); background: linear-gradient(135deg, rgba(200,185,143,.08), rgba(0,0,0,.2)); }
+.expertise-meter { height: 2px; overflow: hidden; background: rgba(255,255,255,.09); }
+.expertise-meter i { display: block; width: var(--level); height: 100%; background: var(--site-warm); }
+.capability-units { display: grid; grid-template-columns: 1fr; }
+.capability-unit { display: grid; grid-template-columns: minmax(210px,.8fr) 2fr; gap: 28px; padding: 20px 4px; border-bottom: 1px solid var(--site-line); }
+.capability-unit:first-child { border-top: 1px solid var(--site-line); }
+.capability-unit h3 { margin: 7px 0 0; }
+.capability-unit ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.capability-unit li { padding: 7px 10px; border: 1px solid var(--site-line); color: var(--site-muted); font: 11px monospace; }
+.capability-unit.unit-primary { border-left: 2px solid var(--site-warm); padding-left: 16px; }
+.toolset-block { margin-top: 46px; }
+.tool-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.tool-tile { display: flex; align-items: center; gap: 12px; min-height: 68px; padding: 12px; border: 1px solid var(--site-line); background: rgba(0,0,0,.25); }
+.tool-tile b { display: grid; place-items: center; flex: 0 0 36px; height: 36px; border: 1px solid rgba(200,185,143,.45); color: var(--site-warm); font: 700 10px monospace; }
+.tool-tile span { color: var(--site-text); font: 700 11px monospace; }
 .skills-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
 
 .skill-group {
@@ -1665,6 +1716,17 @@ nav a:focus-visible::before {
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+}
+
+@media (max-width: 760px) {
+    .capabilities-heading { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+    .capability-unit { grid-template-columns: 1fr; gap: 16px; }
+    .tool-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 440px) {
+    .expertise-grid, .tool-grid { grid-template-columns: 1fr; }
 }
 
 #ufo-top:hover,
