@@ -1653,17 +1653,23 @@ nav a:focus-visible::before {
     right: 24px;
     bottom: 22px;
     padding: 0;
-    overflow: hidden;
-    border: 1px solid var(--site-line);
-    border-radius: 3px;
-    background: rgba(18,19,18,.84);
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: transparent;
     font-size: 0;
-    box-shadow: 0 9px 28px rgba(0,0,0,.45);
+    box-shadow: none;
     animation: none;
 }
 
-#ufo-top:hover { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(0,0,0,.55); }
+#ufo-top:hover,
+#ufo-top:focus-visible {
+    transform: translateY(-3px);
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+}
 #ufo-top.launch { animation: rexReturn .65s ease; }
 .rex-skull {
     display: block;
