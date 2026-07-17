@@ -1410,6 +1410,244 @@ nav a,
 
 }
 
+/* =====================================================
+   FOSSIL OPERATIONS THEME
+===================================================== */
+
+:root {
+    --site-bg: #090a0a;
+    --site-panel: rgba(23, 24, 23, .94);
+    --site-panel-alt: rgba(35, 36, 34, .9);
+    --site-steel: #777a77;
+    --site-line: rgba(205, 207, 198, .2);
+    --site-text: #e4e4dc;
+    --site-muted: #a5a69f;
+    --site-accent: #a72c2c;
+    --site-warm: #c8b98f;
+    --content-width: 1120px;
+}
+
+body {
+    background: var(--site-bg);
+    color: var(--site-text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.overlay {
+    background:
+        linear-gradient(rgba(8, 9, 9, .82), rgba(8, 9, 9, .96)),
+        repeating-linear-gradient(90deg, transparent 0 119px, rgba(255,255,255,.018) 120px);
+}
+
+.bg-layer { opacity: 0 !important; }
+
+.hero { padding: 84px 20px 44px; }
+
+.main-title,
+.glitch-title {
+    color: var(--site-text);
+    text-shadow: none;
+    background: linear-gradient(100deg, #777a77 10%, #efefe7 42%, #9d9f9b 66%, #d8d3c5 90%);
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: mineralWave 12s ease-in-out infinite alternate;
+}
+
+.main-title::before,
+.main-title::after,
+.glitch-title::before,
+.glitch-title::after { display: none; }
+
+@keyframes mineralWave {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+}
+
+.hero-subtitle,
+.intel-subtitle {
+    color: var(--site-muted);
+    letter-spacing: .18em;
+}
+
+.terminal { color: var(--site-warm); }
+
+nav {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    width: min(var(--content-width), calc(100% - 28px));
+    margin: auto;
+    border-block: 1px solid var(--site-line);
+    background: rgba(9, 10, 10, .92);
+    backdrop-filter: blur(12px);
+}
+
+nav a { color: var(--site-muted); }
+nav a:hover,
+nav a:focus-visible {
+    color: var(--site-text);
+    background: rgba(255,255,255,.055);
+    box-shadow: inset 0 -2px var(--site-accent);
+}
+
+.card,
+#sentinel-dashboard {
+    width: min(var(--content-width), calc(100% - 28px));
+    max-width: none;
+    margin: 42px auto;
+    padding: clamp(22px, 4vw, 42px);
+    border: 1px solid var(--site-line);
+    border-radius: 4px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.035), transparent 42%),
+        var(--site-panel);
+    box-shadow: 0 20px 65px rgba(0,0,0,.3);
+}
+
+.card::before,
+#sentinel-dashboard::before {
+    content: "";
+    position: absolute;
+    width: 42px;
+    height: 3px;
+    margin: -43px 0 0 -42px;
+    background: var(--site-accent);
+}
+
+.card h2,
+.card h3 { color: var(--site-text); }
+
+.intel-panel,
+.intel-item,
+.skill-group {
+    border-color: var(--site-line);
+    border-radius: 2px;
+    background: rgba(0,0,0,.25);
+}
+
+.intel-item { border-left-color: var(--site-steel); }
+.intel-status { color: var(--site-warm); }
+
+.grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.project {
+    display: flex;
+    min-width: 0;
+    min-height: 260px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px;
+    border: 1px solid var(--site-line);
+    border-radius: 2px;
+    background: var(--site-panel-alt);
+    color: var(--site-text);
+    font: inherit;
+    text-align: left;
+}
+
+.project:hover,
+.project:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(200,185,143,.55);
+    box-shadow: 0 16px 36px rgba(0,0,0,.35);
+    outline: none;
+}
+
+.project-index {
+    color: var(--site-warm);
+    font: 700 11px monospace;
+    letter-spacing: .16em;
+}
+
+.project h3 { margin-top: 30px; }
+.project p { color: var(--site-muted); }
+.project-action {
+    margin-top: auto;
+    padding-top: 25px;
+    color: var(--site-text);
+    font: 700 12px monospace;
+}
+
+.skills-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+
+.skill-group {
+    display: grid;
+    grid-template-columns: minmax(210px, .8fr) 2fr;
+    gap: 28px;
+    padding: 20px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--site-line);
+}
+
+.skill-group:first-child { border-top: 1px solid var(--site-line); }
+.skill-group h3,
+.skill-group p { margin: 0; }
+.skill-group p { color: var(--site-muted); }
+
+.sentinel-title,
+.sentinel-panel h2 {
+    color: var(--site-text);
+    text-shadow: none;
+}
+
+.sentinel-card,
+.sentinel-panel {
+    border-color: rgba(167,44,44,.38);
+    border-radius: 2px;
+    background: linear-gradient(135deg, rgba(167,44,44,.045), rgba(0,0,0,.45));
+    box-shadow: inset 0 0 28px rgba(0,0,0,.28);
+}
+
+.sentinel-card h3 { color: var(--site-muted); }
+.sentinel-card div { color: var(--site-warm); text-shadow: none; }
+.sentinel-map-launch { border-color: var(--site-steel); color: var(--site-text); }
+
+#ufo-top {
+    width: 72px;
+    height: 58px;
+    right: 24px;
+    bottom: 22px;
+    padding: 6px;
+    overflow: hidden;
+    border: 1px solid var(--site-line);
+    border-radius: 3px;
+    background: rgba(18,19,18,.94);
+    color: transparent;
+    font-size: 0;
+    box-shadow: 0 9px 28px rgba(0,0,0,.45);
+    animation: none;
+}
+
+#ufo-top:hover { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(0,0,0,.55); }
+#ufo-top.launch { animation: rexReturn .65s ease; }
+.rex-skull { width: 100%; height: 100%; }
+.rex-skull path,
+.rex-skull circle {
+    fill: none;
+    stroke: #d3d1c7;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.rex-skull circle { fill: var(--site-accent); stroke: none; }
+
+@keyframes rexReturn { 50% { transform: translateY(-9px) scale(.96); } }
+
+@media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .project { min-height: 215px; }
+    .skill-group { grid-template-columns: 1fr; gap: 8px; }
+    .card::before,
+    #sentinel-dashboard::before { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-title,
+    .glitch-title { animation: none; }
+}
+
 
 .map-instructions {
 
