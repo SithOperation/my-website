@@ -202,6 +202,35 @@ h2 {
     letter-spacing: .05em;
 }
 
+.layer-toggles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin: 17px 0 3px;
+    padding: 12px;
+    border: 1px solid var(--line);
+}
+
+.layer-toggles legend {
+    padding: 0 5px;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.filter-content .layer-toggles label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.layer-toggles input { accent-color: var(--cyan); }
+
 select, .control-actions button, .mobile-panel-toggle {
     width: 100%;
     min-height: 42px;
@@ -253,6 +282,12 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 
 .legend h3 { grid-column: 1 / -1; }
 
+.legend .symbol-heading {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+}
+
 .legend span {
     display: flex;
     align-items: center;
@@ -265,6 +300,13 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     height: 9px;
     border-radius: 50%;
     box-shadow: 0 0 8px currentColor;
+}
+
+.legend b {
+    min-width: 14px;
+    color: var(--cyan);
+    font-size: 15px;
+    text-align: center;
 }
 
 .legend .critical { color: var(--red); background: var(--red); }
@@ -296,6 +338,14 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     color: var(--muted);
     font-size: 11px;
     text-align: right;
+}
+
+.map-guidance {
+    max-width: 620px;
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.45;
 }
 
 .map-frame {
@@ -381,6 +431,24 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 .event-detail .threat-medium { color: var(--yellow); }
 .event-detail .threat-low { color: var(--cyan); }
 .empty-kicker { color: var(--yellow) !important; font-family: inherit !important; letter-spacing: .12em; }
+
+.interpretation-card {
+    margin-top: 18px;
+    padding: 13px;
+    border: 1px solid rgba(0, 240, 255, .22);
+    border-left: 2px solid var(--cyan);
+    background: rgba(0, 240, 255, .045);
+}
+
+.interpretation-card h4 {
+    margin: 0 0 7px;
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.interpretation-card p { margin-bottom: 0; }
 
 .cluster-list {
     display: grid;

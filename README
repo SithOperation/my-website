@@ -1,4 +1,14 @@
+# Personal website and Sentinel Grid frontend
 
-git add .
-git commit -m "Trigger GitHub Pages rebuild"
-git push
+This is a static GitHub Pages site. `index.html` contains the portfolio and AI/cyber news center; `sentinel.html` contains the dedicated MapLibre intelligence map.
+
+## Frontend structure
+
+- `assets/js/site.js` — portfolio, project viewer, background rotation, and AI/cyber feed
+- `assets/js/sentinel-data.js` — Sentinel manifest/health publication client shared by both pages
+- `assets/js/sentinel-home.js` — Sentinel status summary on the homepage
+- `assets/js/sentinel-map.js` — dedicated map rendering, filters, layers, and event details
+- `assets/css/sentinel-map.css` — map-only styling
+- `data/` — static data synchronized by `.github/workflows/sync-states.yml`
+
+No build step or paid service is required. Serve the repository with any static HTTP server for local testing; opening files directly can prevent browsers from fetching local JSON.

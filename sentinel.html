@@ -62,6 +62,14 @@
                 </div>
 
                 <div id="filter-content" class="filter-content">
+                    <fieldset class="layer-toggles">
+                        <legend>Map layers</legend>
+                        <label><input id="layer-intelligence" type="checkbox" checked> Intelligence</label>
+                        <label><input id="layer-earthquakes" type="checkbox" checked> Earthquakes</label>
+                        <label><input id="layer-volcanoes" type="checkbox" checked> Volcanoes</label>
+                        <label><input id="layer-weather" type="checkbox" checked> Weather areas</label>
+                    </fieldset>
+
                     <label>
                         Event type
                         <select id="filter-type">
@@ -107,6 +115,13 @@
                         <span><i class="high"></i> High</span>
                         <span><i class="medium"></i> Medium</span>
                         <span><i class="low"></i> Low</span>
+                        <h3 class="symbol-heading">Symbol key</h3>
+                        <span><b>⌖</b> Conflict</span>
+                        <span><b>!</b> News</span>
+                        <span><b>◇</b> Satellite</span>
+                        <span><b>〽</b> Earthquake</span>
+                        <span><b>▲</b> Volcano</span>
+                        <span><b>▧</b> Weather area</span>
                     </div>
 
                     <div class="coverage-block">
@@ -122,6 +137,7 @@
                     <div>
                         <p class="eyebrow">LIVE GEOSPATIAL PICTURE</p>
                         <h2 id="map-heading">Global intelligence map</h2>
+                        <p class="map-guidance">Clusters separate by regional zoom. Select a remaining group to inspect its reports. Aircraft appear only when explicitly classified as military.</p>
                     </div>
                     <p id="map-count" aria-live="polite">Preparing map layers...</p>
                 </div>

@@ -13,6 +13,28 @@
         return Number.isFinite(number) && Math.abs(number) <= limit;
     }
 
+    function cleanText(value, maximumLength = 700) {
+        const raw = String(value || "");
+        if (!raw) return "";
+
+        const documentNode = new DOMParser().parseFromString(raw, "text/html");
+        documentNode.querySelectorAll("script, style, svg, nav, aside, header, footer, form").forEach(node => node.remove());
+
+        const paragraphs = Array.from(documentNode.querySelectorAll("p"))
+            .map(node => (node.textContent || "").replace(/\s+/g, " ").trim())
+            .filter(text => text.length >= 45);
+        let text = paragraphs[0] || (documentNode.body.textContent || raw);
+        text = text.replace(/\s+/g, " ").trim();
+
+        if (text.length > maximumLength) {
+            const shortened = text.slice(0, maximumLength - 1);
+            const wordBoundary = shortened.lastIndexOf(" ");
+            text = `${shortened.slice(0, Math.max(wordBoundary, maximumLength * 0.75))}…`;
+        }
+
+        return text;
+    }
+
     function normalizeEvent(event) {
         if (!event || typeof event !== "object") return null;
 
@@ -23,8 +45,8 @@
         return {
             ...event,
             event_id: String(event.event_id || event.id || ""),
-            title: String(event.title || "Untitled intelligence event"),
-            description: String(event.description || "No summary is available."),
+            title: cleanText(event.title || "Untitled intelligence event", 180),
+            description: cleanText(event.description || "No summary is available.", 700),
             latitude: Number(latitude),
             longitude: Number(longitude),
             type: String(event.type || event.event_type || event.category || "unknown").toLowerCase(),
@@ -156,6 +178,7 @@
     window.SentinelData = Object.freeze({
         Client,
         normalizeEvent,
+        cleanText,
         validCoordinate,
         supportedSchemaMajor: SUPPORTED_SCHEMA_MAJOR
     });
