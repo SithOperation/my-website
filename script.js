@@ -2376,15 +2376,12 @@ async function loadSentinelDashboard() {
 
 async function loadSentinelBrief() {
 
-
     try {
-
 
         const data =
             await fetchJSON(
-                "data/intelligence_brief.json"
+                "data/dashboard.json"
             );
-
 
 
         const box =
@@ -2393,40 +2390,22 @@ async function loadSentinelBrief() {
             );
 
 
+        if (!box) {
+            return;
+        }
+
 
         box.innerHTML = `
 
+        <h3>
+        Critical Intelligence
+        </h3>
 
-<h3>
-${data.title}
-</h3>
+        <p>
+        Select an alert counter above to view summaries.
+        </p>
 
-
-<p>
-
-Threat Level:
-
-${data.global_threat_level}
-
-</p>
-
-
-
-<ul>
-
-${data.critical_events.map(event => `
-
-<li>
-${event.title}
-</li>
-
-`).join("")}
-
-</ul>
-
-
-`;
-
+        `;
 
 
     }
@@ -2439,7 +2418,6 @@ ${event.title}
         );
 
     }
-
 
 }
 
@@ -2832,8 +2810,6 @@ document.addEventListener(
             loadSentinelDashboard();
 
             loadSentinelBrief();
-
-            loadSentinelEvents();
 
             loadSentinelMap();
 
