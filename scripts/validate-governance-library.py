@@ -17,6 +17,11 @@ def main():
             target=(root/item[key]).resolve()
             if root not in target.parents:errors.append(f"{sid}: {key} escapes repository")
             elif not target.exists():errors.append(f"{sid}: missing {key}")
+        guide=item.get("public_guide")
+        if guide:
+            target=(root/guide).resolve()
+            if root not in target.parents:errors.append(f"{sid}: public_guide escapes repository")
+            elif not target.exists():errors.append(f"{sid}: missing public_guide")
         for key in ["official_url","direct_pdf_url"]:
             value=item.get(key)
             if not value:continue
@@ -30,6 +35,15 @@ def main():
     if len(sources)!=38:errors.append(f"Expected 38 current sources; found {len(sources)}")
     if any(x["source_id"]=="NIST-SP-800-18r1" for x in sources):errors.append("Withdrawn NIST SP 800-18 Rev. 1 must not be public")
     if not any(x["source_id"]=="NIST-SP-800-18r2" for x in sources):errors.append("Current NIST SP 800-18 Rev. 2 missing")
-    report=["# Governance Source Library Validation","",f"Result: **{'FAIL' if errors else 'PASS'}**","",f"- Current source records: **{len(sources)}**",f"- Categories: **{len(catalog.get('categories',[]))}**",f"- Duplicate IDs: **{len(duplicates)}**",f"- Local record failures: **{sum('missing' in x or 'escapes' in x for x in errors)}**","","## Checks","","- Parsed the generated catalog and enforced required metadata.","- Confirmed every local source and companion record exists inside the repository.","- Restricted external links to approved authoritative publisher domains over HTTPS.","- Enforced link-only handling for licensed sources.","- Excluded withdrawn NIST SP 800-18 Rev. 1 and required current Rev. 2.","","## Errors","",*([f"- {x}" for x in errors] or ["- None."]),"","## Warnings","",*([f"- {x}" for x in warnings] or ["- None."]),"","## Boundary","","This validation establishes catalog integrity and source-handling rules. Publication revision status and legal applicability must still be rechecked at use time against the linked official source."]
+    featured=catalog.get("featured_companion")
+    if not featured:errors.append("Featured companion metadata missing")
+    else:
+        for key in ["path","source_matrix"]:
+            value=featured.get(key)
+            if not value:errors.append(f"Featured companion missing {key}");continue
+            target=(root/value).resolve()
+            if root not in target.parents:errors.append(f"Featured companion {key} escapes repository")
+            elif not target.exists():errors.append(f"Featured companion missing {key} file")
+    report=["# Governance Source Library Validation","",f"Result: **{'FAIL' if errors else 'PASS'}**","",f"- Current source records: **{len(sources)}**",f"- Public source guides: **{sum(bool(x.get('public_guide')) for x in sources)}**",f"- Categories: **{len(catalog.get('categories',[]))}**",f"- Duplicate IDs: **{len(duplicates)}**",f"- Local record failures: **{sum('missing' in x or 'escapes' in x for x in errors)}**","","## Checks","","- Parsed the generated catalog and enforced required metadata.","- Confirmed every local source record, public guide, and featured companion artifact exists inside the repository.","- Restricted external links to approved authoritative publisher domains over HTTPS.","- Enforced link-only handling for licensed sources.","- Excluded withdrawn NIST SP 800-18 Rev. 1 and required current Rev. 2.","","## Errors","",*([f"- {x}" for x in errors] or ["- None."]),"","## Warnings","",*([f"- {x}" for x in warnings] or ["- None."]),"","## Boundary","","This validation establishes catalog integrity and source-handling rules. Publication revision status and legal applicability must still be rechecked at use time against the linked official source."]
     out=root/"governance-library/VALIDATION.md";out.write_text("\n".join(report)+"\n",encoding="utf-8");print("\n".join(report[:18]));raise SystemExit(bool(errors))
 if __name__=="__main__":main()
