@@ -785,6 +785,38 @@
         setStatus(message, state);
     }
 
+    function ewsBaselineLabel(zScore) {
+        if (zScore >= 2) return "Significantly above baseline";
+        if (zScore >= 1) return "Above activity baseline";
+        if (zScore <= -2) return "Significantly below baseline";
+        if (zScore <= -1) return "Below activity baseline";
+        return "Near activity baseline";
+    }
+
+    async function refreshEws() {
+        const widget = element("ews-widget");
+        try {
+            const state = await client.fetchJSON("ews_state.json");
+            const level = Number(state.level);
+            const count = Number(state.concurrent_count);
+            const zScore = Number(state.z_score);
+            if (!Number.isInteger(level) || level < 0 || level > 4 || !Number.isFinite(count) || !Number.isFinite(zScore)) {
+                throw new Error("Invalid EWS state");
+            }
+
+            widget.className = `metric-ews ews-level-${level}`;
+            element("ews-level").textContent = `LEVEL ${level}`;
+            element("ews-context").textContent = `${count.toLocaleString()} concurrent · ${ewsBaselineLabel(zScore)}`;
+            widget.title = `Early Warning System: level ${level}; z-score ${zScore.toFixed(2)}; updated ${formatDate(state.as_of || state.last_checked)}. Supporting anomaly indicator only.`;
+        }
+        catch (error) {
+            console.warn("EWS state unavailable", error);
+            widget.className = "metric-ews is-error";
+            element("ews-level").textContent = "UNAVAILABLE";
+            element("ews-context").textContent = "Sentinel map remains operational";
+        }
+    }
+
     async function refresh(options = {}) {
         try {
             const snapshot = await client.load(options);
@@ -840,8 +872,12 @@
         }
 
         refresh();
+        refreshEws();
         window.setInterval(() => {
-            if (document.visibilityState === "visible") refresh();
+            if (document.visibilityState === "visible") {
+                refresh();
+                refreshEws();
+            }
         }, DATA_REFRESH_MS);
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {

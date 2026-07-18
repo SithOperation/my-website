@@ -1,0 +1,80 @@
+name: Sync Early Warning System
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [ews-state-updated]
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: website-data-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-ews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout EWS
+        uses: actions/checkout@v4
+        with:
+          repository: SithOperation/EWS-discord-monitor
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          path: external/ews
+
+      - name: Validate EWS state
+        run: |
+          python3 - <<'PY'
+          import json
+          from datetime import datetime
+          from pathlib import Path
+
+          source = Path("external/ews/state.json")
+          if not source.is_file():
+              raise SystemExit("EWS state.json was not published")
+
+          state = json.loads(source.read_text(encoding="utf-8"))
+          required = {"level", "concurrent_count", "z_score", "last_checked", "as_of"}
+          missing = sorted(required.difference(state))
+          if missing:
+              raise SystemExit(f"EWS state is missing: {', '.join(missing)}")
+
+          if not isinstance(state["level"], int) or not 0 <= state["level"] <= 4:
+              raise SystemExit("EWS level must be an integer from 0 through 4")
+          if not isinstance(state["concurrent_count"], int) or state["concurrent_count"] < 0:
+              raise SystemExit("EWS concurrent_count must be a non-negative integer")
+          if not isinstance(state["z_score"], (int, float)):
+              raise SystemExit("EWS z_score must be numeric")
+          for field in ("last_checked", "as_of"):
+              datetime.fromisoformat(str(state[field]).replace("Z", "+00:00"))
+
+          print(f"Validated EWS level {state['level']} as of {state['as_of']}")
+          PY
+
+      - name: Publish EWS state
+        run: |
+          mkdir -p data
+          cp external/ews/state.json data/ews_state.json
+
+      - name: Commit EWS update
+        run: |
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ews_state.json
+
+          if git diff --cached --quiet; then
+            echo "EWS state is already current"
+            exit 0
+          fi
+
+          git commit -m "Update early warning state"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

@@ -16,6 +16,10 @@ permissions:
 
   contents: write
 
+concurrency:
+  group: website-data-sync
+  cancel-in-progress: false
+
 
 
 jobs:
@@ -38,20 +42,6 @@ jobs:
         with:
 
           fetch-depth: 0
-
-
-
-      - name: Checkout EWS
-
-        uses: actions/checkout@v4
-
-        with:
-
-          repository: SithOperation/EWS-discord-monitor
-
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-
-          path: external/ews
 
 
 
@@ -100,12 +90,6 @@ jobs:
       - name: Verify source files
 
         run: |
-
-
-          echo "Checking EWS..."
-
-          test -f external/ews/state.json
-
 
 
           echo "Checking Disaster State..."
@@ -163,15 +147,6 @@ jobs:
 
 
           mkdir -p data
-
-
-
-          # ==========================
-          # EWS
-          # ==========================
-
-          cp external/ews/state.json \
-          data/ews_state.json
 
 
 
