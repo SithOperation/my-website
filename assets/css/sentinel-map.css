@@ -496,6 +496,13 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 
 .maplibregl-ctrl-attrib a { color: var(--cyan) !important; }
 
+.maplibregl-popup-content { padding: 0 !important; border: 1px solid rgba(205,207,198,.3); border-left: 3px solid var(--red); border-radius: 2px !important; background: rgba(15,16,16,.94) !important; box-shadow: 0 12px 32px rgba(0,0,0,.5) !important; color: var(--text); backdrop-filter: blur(10px); }
+.maplibregl-popup-tip { border-top-color: rgba(15,16,16,.94) !important; }
+.weather-hover-card { padding: 12px 14px; }
+.weather-hover-card strong { display: block; margin-bottom: 5px; color: var(--text); font-size: 13px; }
+.weather-hover-card span { display: block; color: var(--yellow); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+.weather-hover-card p { margin: 8px 0 0; color: #c7c8c1; font: 12px/1.45 Arial, sans-serif; }
+
 .fullscreen-map-help,
 .fullscreen-event-panel { display: none; }
 

@@ -42,14 +42,24 @@
         const longitude = event.longitude ?? event.location?.longitude ?? event.coordinates?.lon;
         if (!validCoordinate(latitude, 90) || !validCoordinate(longitude, 180)) return null;
 
+        const title = cleanText(event.title || "Untitled intelligence event", 180);
+        const description = cleanText(event.description || "No summary is available.", 700);
+        const sourceType = String(event.type || event.event_type || event.category || "unknown").toLowerCase();
+        const classificationText = `${title} ${description}`.toLowerCase();
+        let type = sourceType;
+        if (/\b(prescribed|controlled|planned)\s+(fire|burn)\b|\bprescribed fire rx\b/.test(classificationText)) type = "prescribed_fire";
+        else if (/\b(wildfire|wild fire|bushfire)\b/.test(classificationText)) type = "wildfire";
+        else if (/\b(military|training|live[- ]fire)\s+exercise\b/.test(classificationText)) type = "military_exercise";
+
         return {
             ...event,
             event_id: String(event.event_id || event.id || ""),
-            title: cleanText(event.title || "Untitled intelligence event", 180),
-            description: cleanText(event.description || "No summary is available.", 700),
+            title,
+            description,
             latitude: Number(latitude),
             longitude: Number(longitude),
-            type: String(event.type || event.event_type || event.category || "unknown").toLowerCase(),
+            type,
+            source_type: sourceType,
             threat_level: String(event.threat_level || event.priority || "unknown").toUpperCase(),
             confidence: Number.isFinite(Number(event.confidence)) ? Number(event.confidence) : null,
             timestamp: event.timestamp ? String(event.timestamp) : null

@@ -155,11 +155,27 @@
         context.lineCap = "round";
         context.lineJoin = "round";
         context.strokeStyle = "#e9fbff";
-        context.fillStyle = ({ conflict: "#ff174f", news: "#00f0ff", satellite: "#9b7bff", earthquake: "#ffd400", volcano: "#ff8200", weather: "#44bfff" })[type] || "#8ca6ad";
+        context.fillStyle = ({ conflict: "#ff174f", news: "#00f0ff", satellite: "#9b7bff", wildfire: "#ff5a1f", prescribed_fire: "#d99a4e", military_exercise: "#b8c4cc", earthquake: "#ffd400", volcano: "#ff8200", weather: "#44bfff" })[type] || "#8ca6ad";
         context.shadowColor = context.fillStyle;
         context.shadowBlur = 7;
         context.beginPath();
 
+        if (type === "wildfire" || type === "prescribed_fire") {
+            context.font = '26px "Segoe UI Emoji", sans-serif';
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.shadowBlur = 4;
+            context.fillText("🔥", 0, -1);
+            if (type === "prescribed_fire") {
+                context.shadowBlur = 0;
+                context.fillStyle = "#16110a";
+                context.fillRect(-12, 9, 24, 10);
+                context.fillStyle = "#ffe2a6";
+                context.font = "bold 8px monospace";
+                context.fillText("RX", 0, 14);
+            }
+            return context.getImageData(0, 0, 48, 48);
+        }
         if (type === "conflict") {
             context.rect(-11, -11, 22, 22);
             context.moveTo(-16, 0); context.lineTo(16, 0);
@@ -205,7 +221,7 @@
         if (!map.hasImage("military-aircraft")) {
             map.addImage("military-aircraft", createAircraftIcon(), { pixelRatio: 2 });
         }
-        ["conflict", "news", "satellite", "earthquake", "volcano", "weather"].forEach(type => {
+        ["conflict", "news", "satellite", "wildfire", "prescribed_fire", "military_exercise", "earthquake", "volcano", "weather"].forEach(type => {
             if (!map.hasImage(`marker-${type}`)) map.addImage(`marker-${type}`, createCategoryIcon(type), { pixelRatio: 2 });
         });
 
@@ -276,7 +292,7 @@
             source: "sentinel-events",
             filter: ["all", ["!", ["has", "point_count"]], ["!=", ["get", "type"], "aircraft"]],
             layout: {
-                "icon-image": ["match", ["get", "type"], "conflict", "marker-conflict", "news", "marker-news", "satellite", "marker-satellite", "marker-news"],
+                "icon-image": ["match", ["get", "type"], "conflict", "marker-conflict", "news", "marker-news", "satellite", "marker-satellite", "wildfire", "marker-wildfire", "prescribed_fire", "marker-prescribed_fire", "military_exercise", "marker-military_exercise", "marker-news"],
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.55, 8, 0.85],
                 "icon-allow-overlap": false,
                 "icon-padding": 2
@@ -450,6 +466,26 @@
             const selected = disasterIndex.get(String(click.features?.[0]?.properties?.map_id));
             if (selected) renderEventDetail(selected);
         });
+        const weatherPopup = new window.maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: "330px" });
+        map.on("mousemove", "weather-fill", move => {
+            const selected = disasterIndex.get(String(move.features?.[0]?.properties?.map_id));
+            if (!selected) return;
+            const content = document.createElement("div");
+            const heading = document.createElement("strong");
+            const location = document.createElement("span");
+            const summary = document.createElement("p");
+            heading.textContent = selected.title;
+            location.textContent = `${selected.threat_level} · ${selected.location || "Weather alert area"}`;
+            summary.textContent = selected.description.length > 220 ? `${selected.description.slice(0, 219)}…` : selected.description;
+            content.className = "weather-hover-card";
+            content.append(heading, location, summary);
+            weatherPopup.setLngLat(move.lngLat).setDOMContent(content).addTo(map);
+            map.getCanvas().style.cursor = "help";
+        });
+        map.on("mouseleave", "weather-fill", () => {
+            weatherPopup.remove();
+            map.getCanvas().style.cursor = "";
+        });
         applyLayerVisibility();
         updateMapData();
     }
@@ -609,6 +645,9 @@
             earthquake: "This marker is a USGS seismic observation. Magnitude describes measured ground motion; the marker is the reported epicenter.",
             volcano: "This marker represents a volcano report at the known volcano location. It does not imply that the entire surrounding area is erupting.",
             weather: "This shaded boundary is a NOAA alert area. Conditions and impacts can vary inside the polygon; follow local official guidance.",
+            wildfire: "This is a reported wildfire incident. The marker identifies the supplied incident point, not the complete fire perimeter.",
+            prescribed_fire: "This is a prescribed or controlled burn identified by the source. It is intentionally managed and is not classified as a wildfire emergency.",
+            military_exercise: "This record explicitly describes a military or training exercise. It indicates reported activity, not hostile action.",
             cyber: "This is a cyber intelligence record. Geographic placement, when present, generally represents an affected or reporting region rather than infrastructure coordinates."
         };
         return interpretations[event.type] || "This marker represents the geographic context supplied with the source record; exact location precision was not provided.";
