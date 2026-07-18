@@ -2,36 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Original cybersecurity worksheets, diagrams, and official framework references from Joseph Technologies.">
-  <title>Cybersecurity Resource Library | Joseph Technologies</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Authoritative cybersecurity governance publications from NIST, CISA, HHS, eCFR, ISO, PCI SSC, FTC, and SEC.">
+  <title>Cybersecurity Governance Source Library | Joseph Technologies</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../assets/css/resource-library.css">
+  <link rel="stylesheet" href="../assets/css/governance-library.css">
 </head>
-<body class="resource-page">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <main id="main-content" class="resource-shell">
-    <header class="library-hero">
-      <a class="library-back" href="../index.html">← Joseph Technologies</a>
-      <p class="section-kicker">Defensive Engineering / Public Resources</p>
-      <h1>Cybersecurity Resource Library</h1>
-      <p>Original, practical companion materials for structured security work—paired with authoritative public references.</p>
-      <label class="search-label" for="resource-search">Search the library</label>
-      <input id="resource-search" type="search" autocomplete="off" placeholder="Search titles, frameworks, categories, or tags">
+<body class="governance-page">
+  <a class="gov-skip" href="#source-library">Skip to source library</a>
+  <main class="gov-shell">
+    <header class="gov-hero">
+      <a class="gov-back" href="../index.html">← Joseph Technologies</a>
+      <p class="section-kicker">Authoritative Sources / Governance Intelligence</p>
+      <h1>Cybersecurity Governance Source Library</h1>
+      <p>Primary publications, regulations, and licensed-standard references. Official publishers remain the authority; companion material is clearly separated and never presented as certification.</p>
+      <div class="gov-principles" aria-label="Library principles">
+        <span>Primary sources only</span><span>Edition tracked</span><span>Redistribution-aware</span><span>No invented requirements</span>
+      </div>
     </header>
 
-    <section class="library-controls" aria-label="Library filters">
-      <div id="resource-filters" class="resource-filters"></div>
-      <p id="resource-count" class="resource-count" aria-live="polite"></p>
+    <section id="source-library" class="gov-library">
+      <div class="gov-search-row">
+        <div><label for="source-search">Search official sources</label><input id="source-search" type="search" placeholder="Search NIST, HIPAA, incident response, risk…" autocomplete="off"></div>
+        <p id="source-count" aria-live="polite"></p>
+      </div>
+      <div id="source-filters" class="gov-filters" aria-label="Filter by category"></div>
+      <section id="source-detail" class="gov-detail" hidden></section>
+      <section id="source-grid" class="gov-grid" aria-label="Authoritative sources"></section>
+      <p id="source-status" role="status">Loading authoritative source records…</p>
     </section>
-
-    <section id="resource-detail" class="resource-detail" aria-live="polite" hidden></section>
-    <section id="resource-grid" class="resource-grid" aria-label="Resources"></section>
-    <p id="resource-status" class="resource-status" role="status">Loading resource catalog…</p>
   </main>
-  <footer class="library-footer">
-    <p>Original companion materials for educational and operational planning. No endorsement, certification, or legal advice is implied.</p>
-  </footer>
-  <script src="../assets/js/resource-library.js"></script>
+  <footer class="gov-footer">Joseph Technologies provides an independent reference index. Follow the linked publisher source for controlling requirements and current revisions.</footer>
+  <script src="../assets/js/governance-library.js"></script>
 </body>
 </html>
