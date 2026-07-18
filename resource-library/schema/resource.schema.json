@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Joseph Technologies cybersecurity resource",
+  "type": "object",
+  "required": ["slug", "title", "version", "last_reviewed", "pages"],
+  "properties": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "title": {"type": "string", "minLength": 5},
+    "version": {"type": "string"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "pages": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["title", "sections"]}}
+  },
+  "additionalProperties": true
+}
