@@ -35,7 +35,12 @@
     const head = element("div", "resource-detail__head"); const names = element("div"); names.append(element("p", "section-kicker", `${titleCase(item.category)} / ${item.status}`), element("h2", "", item.title));
     const close = element("button", "detail-close", "Close"); close.type = "button"; close.addEventListener("click", () => { detail.hidden = true; detail.replaceChildren(); history.replaceState(null, "", location.pathname); }); head.append(names, close);
     const summary = element("p", "", item.short_description); const actions = element("div", "download-actions");
-    if (item.status === "published") { actions.append(resourceLink("Printable PDF", item.assets.printable_pdf), resourceLink("Fillable PDF", item.assets.fillable_pdf), resourceLink("Original SVG", item.assets.diagram_svg)); }
+    if (item.status === "published") {
+      if (item.assets.workbook) actions.append(resourceLink("Excel workbook", item.assets.workbook));
+      if (item.assets.printable_pdf) actions.append(resourceLink("PDF guide", item.assets.printable_pdf));
+      if (item.assets.fillable_pdf) actions.append(resourceLink("Fillable PDF", item.assets.fillable_pdf));
+      if (item.assets.diagram_svg) actions.append(resourceLink("Original SVG", item.assets.diagram_svg));
+    }
     else actions.append(element("span", "resource-status", "Downloads will be added after prototype approval."));
     const columns = element("div", "detail-columns"); const usage = element("div"); usage.append(element("h3", "", "Purpose"), element("p", "", item.purpose), element("h3", "", "When to use it"), element("p", "", item.when_to_use), element("h3", "", "Instructions"));
     const instructionList = element("ol"); item.instructions.forEach(text => instructionList.append(element("li", "", text))); usage.append(instructionList);

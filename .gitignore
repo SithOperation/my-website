@@ -1,0 +1,35 @@
+# Local dependency and validation caches
+.uv-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Node/build output if introduced later
+node_modules/
+dist/
+build/
+
+# Temporary files and Office locks
+temp/
+tmp/
+previews/
+rendered-pdfs/
+verification-output/
+~$*.xlsx
+~$*.docx
+~$*.pptx
+
+# Credentials
+.env
+.env.*
+*.key
+*.pem
+secrets.json
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.tmp

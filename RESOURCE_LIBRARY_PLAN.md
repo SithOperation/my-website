@@ -1,5 +1,7 @@
 # Cybersecurity Resource Library Implementation Plan
 
+> Historical prototype plan. The CIA-only checkpoint was completed and later expanded, with user authorization, through the verified batch migration documented in `reports/`.
+
 ## Repository audit
 
 ### 1. Framework and build system
