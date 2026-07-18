@@ -1,6 +1,6 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-6973",
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-52568",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -10,57 +10,872 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-18T07:25:33+00:00"
+      "expires": "2026-07-18T09:05:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0a47796098e592d0e39d9eeb10466fe01af406b4.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.50e386b02f11822858a367bdf52a8eb20a46b692.001.1",
     "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Lee, FL",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -82.16,
+            26.55
+          ],
+          [
+            -82.12,
+            26.48
+          ],
+          [
+            -82.09,
+            26.42
+          ],
+          [
+            -82.09,
+            26.39
+          ],
+          [
+            -82.17,
+            26.42
+          ],
+          [
+            -82.22,
+            26.51
+          ],
+          [
+            -82.26,
+            26.61
+          ],
+          [
+            -82.29,
+            26.67
+          ],
+          [
+            -82.21,
+            26.67
+          ],
+          [
+            -82.16,
+            26.55
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southwest Florida, including the following\ncounty, Lee.\n\n* WHEN...Until 615 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 454 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 3 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 3 inches are expected\nover the area.\n- Some locations that will experience flooding include...\nUseppa Island. Captiva. Sanibel Island.\n- https://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
+      "expires": "2026-07-18T06:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.be23cfb8f09fedfb6ec38645ff27a9694a0cc4c1.001.2",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Hazardous Seas Warning",
     "geometry": "unknown",
-    "location": "Carroll; Warren; Tippecanoe; Clinton; Howard; Fountain; Montgomery; Boone; Tipton; Hamilton; Madison; Delaware; Randolph; Vermillion; Parke; Putnam; Hendricks; Marion; Hancock; Henry; Vigo; Clay; Owen; Morgan; Johnson; Shelby; Rush; Sullivan; Monroe; Brown; Bartholomew; Decatur",
+    "location": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
     "coordinates": {},
     "details": {
-      "description": "The officials at the Indiana Department of Environmental Management\nhave declared an Air Quality Action Day, IN EFFECT FROM MIDNIGHT\nTONIGHT TO MIDNIGHT EDT MONDAY NIGHT.\n\nAn Air Quality Action Day for PM 2.5 has been issued. Fine\nparticulate levels are expected to be in the Unhealthy for Sensitive\nGroups range. Active children and adults, and people with\nrespiratory disease, such as asthma should limit prolonged outdoor\nexposure.\n\nHere are some recommended actions that the public can take:\n\n* Due to observed and forecasted high concentrations of PM 2.5\nvalues in the area, recommendations are for the public to avoid or\nlimit outdoor exposure to wildfire smoke, reduce or avoid exertion\nor heavy work outdoors, and keep windows and doors closed as much\nas possible.\n\nFor additional information, please visit the IDEM Smog page at:\n\nhttp://www.in.gov/idem/airmonitoring/smogwatch/",
-      "instruction": null,
-      "expires": "2026-07-18T17:00:00-04:00"
+      "description": "* WHAT...North winds 20 to 30 kt with gusts up to 35 kt and\nsteep to very steep seas 8 to 10 ft.\n\n* WHERE...All areas will experience conditions hazardous to small\ncraft. But, very steep seas are expected south of Port Orford\nand beyond 5 nm from shore beginning late this afternoon.\n\n* WHEN...For the Small Craft Advisory, until 11 PM PDT Sunday.\nFor the Hazardous Seas Warning, from 5 PM this afternoon to 11\nPM PDT Sunday.\n\n* IMPACTS...Very steep and hazardous seas could capsize or\ndamage vessels. Bar crossings will become especially\ntreacherous.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
+      "instruction": "Recreational boaters should remain in port. Commercial vessels\nshould prepare for very steep seas and consider remaining in port\nuntil conditions improve.",
+      "expires": "2026-07-18T15:00:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6b2f28898ba016634a0340ffd011f86539c0994f.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.be23cfb8f09fedfb6ec38645ff27a9694a0cc4c1.002.1",
     "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Northern Oxford; Northern Franklin; Central Somerset; Southern Oxford; Southern Franklin; Southern Somerset; Interior York; Central Interior Cumberland; Androscoggin; Kennebec; Interior Waldo; Coastal York; Coastal Cumberland; Sagadahoc; Lincoln; Knox; Coastal Waldo; Interior Cumberland Highlands",
+    "location": "Coastal waters from Florence to Cape Blanco OR out 10 nm; Waters from Florence to Cape Blanco OR from 10 to 60 nm",
     "coordinates": {},
     "details": {
-      "description": "The Maine Department of Environmental Protection's Bureau of Air\nQuality has issued an Air Quality Alert for particle pollution from\n10 AM this morning to midnight EDT tonight.\n\nParticle pollution levels are expected to rise into the Unhealthy for\nSensitive Groups range during the day today. Smoke from wildfires in\nwestern Ontario and Manitoba is expected to move back into Maine\nduring the day.\n\nThe Maine Department of Environmental Protection recommends that\nindividuals consider limiting strenuous outdoor physical activity to\nreduce the risk of adverse health effects. People who may be\nespecially sensitive to the effects of elevated levels of pollutants\ninclude the very young, the elderly, those with pre-existing\nrespiratory problems such as asthma, those with heart disease and\nanyone who is working hard outdoors. It is okay to be active\noutdoors. But if you experience symptoms such as shortness of\nbreath, coughing, throat irritation or an uncomfortable sensation in\nyour chest please consider limiting the intensity and duration of\nyour outdoor activities.\n\nA toll free air quality hotline has been established so Maine\nresidents can stay informed on the air quality situations. The toll\nfree number is: 1-800-223-1196.\n\nAdditionally the Maine Department of Environmental Protection has\nthe air quality forecast available on the web at\nwww.maine.gov/dep/air/aqforecast.",
-      "instruction": null,
-      "expires": "2026-07-19T00:00:00-04:00"
+      "description": "* WHAT...North winds 15 to 25 kt with gusts up to 30 kt and\nsteep seas 6 to 8 ft.\n\n* WHERE...All areas.\n\n* WHEN...From 11 AM this morning to 11 PM PDT Sunday.\n\n* IMPACTS...Gusty winds and/or steep seas could capsize or\ndamage smaller vessels.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
+      "instruction": "Inexperienced mariners and those operating smaller vessels should\nremain in port and avoid the area of hazardous conditions.",
+      "expires": "2026-07-18T15:00:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6b2f28898ba016634a0340ffd011f86539c0994f.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.be23cfb8f09fedfb6ec38645ff27a9694a0cc4c1.001.1",
     "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Northern Coos; Southern Coos; Northern Grafton; Northern Carroll; Southern Grafton; Southern Carroll; Sullivan; Merrimack; Belknap; Strafford; Cheshire; Eastern Hillsborough; Interior Rockingham; Coastal Rockingham; Western And Central Hillsborough",
+    "location": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
     "coordinates": {},
     "details": {
-      "description": "The New Hampshire Department of Environmental Services has issued an\nAir Quality Alert for particle pollution until 11 PM EDT this\nevening.\n\nA Code Orange Air Quality Alert means that air pollution\nconcentrations statewide may become unhealthy for sensitive groups.\nSensitive groups include children and older adults; anyone with lung\ndisease such as asthma, emphysema, and bronchitis; and people who are\nactive outdoors. Even healthy individuals may experience mild health\neffects and should consider limiting strenuous or prolonged outdoor\nactivities.\n\nThe New Hampshire Department of Environmental Services is predicting\nunhealthy air quality for sensitive individuals in the above-\nmentioned counties. Sensitive individuals include children and older\nadults; anyone with lung disease such as asthma, emphysema, and\nbronchitis; and people who are active outdoors. Even healthy\nindividuals may experience mild health effects and should consider\nlimiting strenuous or prolonged outdoor activities.\n\nFor additional information, please visit the New Hampshire\nDepartment of Environmental Services website at,\nhttps://www4.des.state.nh.us/airdata/",
-      "instruction": null,
-      "expires": "2026-07-19T00:00:00-04:00"
+      "description": "* WHAT...North winds 20 to 30 kt with gusts up to 35 kt and\nsteep to very steep seas 8 to 10 ft.\n\n* WHERE...All areas will experience conditions hazardous to small\ncraft. But, very steep seas are expected south of Port Orford\nand beyond 5 nm from shore beginning late this afternoon.\n\n* WHEN...For the Small Craft Advisory, until 11 PM PDT Sunday.\nFor the Hazardous Seas Warning, from 5 PM this afternoon to 11\nPM PDT Sunday.\n\n* IMPACTS...Very steep and hazardous seas could capsize or\ndamage vessels. Bar crossings will become especially\ntreacherous.\n\n* View the hazard area in detail at https://go.usa.gov/x6hks",
+      "instruction": "Recreational boaters should remain in port. Commercial vessels\nshould prepare for very steep seas and consider remaining in port\nuntil conditions improve.",
+      "expires": "2026-07-18T15:00:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.78389620719e0d44d1c4be0fa766b4944cb8e54a.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.9d6e0123594239cbfac7c35a3814d7fa160b1de0.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
+    "geometry": "Polygon",
+    "location": "Garrett, MD; Mineral, WV",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -79.32,
+            39.35
+          ],
+          [
+            -79.33,
+            39.43
+          ],
+          [
+            -79.07,
+            39.51
+          ],
+          [
+            -79.06,
+            39.33
+          ],
+          [
+            -79.32,
+            39.35
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "The storm which prompted the warning has weakened below severe\nlimits, and no longer poses an immediate threat to life or property.\nTherefore, the warning will be allowed to expire.",
+      "instruction": null,
+      "expires": "2026-07-18T05:03:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.862c82276b8933a73218fb6f63474985f8c58bf3.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Beach Hazards Statement",
+    "geometry": "unknown",
+    "location": "Lake; Northern Cook; Central Cook; Lake; Porter",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...High wave action and dangerous currents expected at Lake\nMichigan beaches. Waves 4 to 7 ft expected.\n\n* WHERE...In Illinois, Lake, Northern Cook and Central Cook\nCounties. In Indiana, Lake and Porter Counties.\n\n* WHEN...From this evening through early Sunday morning.\n\n* IMPACTS...Swimming conditions will be life threatening,\nespecially for inexperienced swimmers. For information on swim\nadvisories or bans at Chicago beaches: www. cpdbeaches. com.",
+      "instruction": "Remain out of the water to avoid dangerous swimming conditions\nand do not venture out onto piers, jetties, breakwalls, or other\nshoreline structures.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.62ed4be8f3ed5dfd8b3366e4281797242e945c38.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Winthrop Harbor to Wilmette Harbor IL; Wilmette Harbor to Northerly Island IL; Northerly Island to Calumet Harbor IL; Calumet Harbor IL to Gary IN; Gary to Burns Harbor IN; Burns Harbor to Michigan City IN",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Northeast winds to 25 kt and significant waves to 7 ft\noccasionally to 9 ft expected.\n\n* WHERE...Illinois and Indiana nearshore from Winthrop Harbor IL\nto Michigan City IN.\n\n* WHEN...From 7 PM this evening to 4 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2496968adf2c48c5cc84ec7fab70d3ee13ebb3be.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Port Washington to North Point Light WI; North Point Light to Wind Point WI; Wind Point WI to Winthrop Harbor IL",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, waves of 4-6 feet. For\nthe Dense Smoke Advisory, dense smoke will reduce visibility\nto 1 NM.\n\n* WHERE...Port Washington to North Point Light WI, North Point\nLight to Wind Point WI and Wind Point WI to Winthrop Harbor IL.\n\n* WHEN...For the Dense Smoke Advisory, from 3 PM this afternoon\nto 7 AM CDT Monday. For the Small Craft Advisory, from 7 PM\nthis evening to 7 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2496968adf2c48c5cc84ec7fab70d3ee13ebb3be.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Sheboygan to Port Washington WI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, waves of 4-6 feet. For\nthe Dense Smoke Advisory, dense smoke will reduce visibility\nto 1 NM.\n\n* WHERE...Sheboygan to Port Washington WI.\n\n* WHEN...For the Dense Smoke Advisory, from 3 PM this afternoon\nto 7 AM CDT Monday. For the Small Craft Advisory, from 7 PM\nthis evening to 2 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2496968adf2c48c5cc84ec7fab70d3ee13ebb3be.002.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Port Washington to North Point Light WI; North Point Light to Wind Point WI; Wind Point WI to Winthrop Harbor IL",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, waves of 4-6 feet. For\nthe Dense Smoke Advisory, dense smoke will reduce visibility\nto 1 NM.\n\n* WHERE...Port Washington to North Point Light WI, North Point\nLight to Wind Point WI and Wind Point WI to Winthrop Harbor IL.\n\n* WHEN...For the Dense Smoke Advisory, from 3 PM this afternoon\nto 7 AM CDT Monday. For the Small Craft Advisory, from 7 PM\nthis evening to 7 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2496968adf2c48c5cc84ec7fab70d3ee13ebb3be.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Lake Michigan from Seul Choix Point to Rock Island Passage 5NM offshore to Mid Lake; Lake Michigan South of a line from Seul Choix Point to the Mackinac Bridge and North of a line from Charlevoix MI to South Fox Island 5NM offshore; Lake Michigan from Charlevoix to Point Betsie MI 5NM Offshore to mid lake; Lake Michigan from Point Betsie to Manistee MI 5NM offshore to Mid Lake; Lake Michigan from Rock Island Passage to Sturgeon Bay WI 5NM offshore to mid lake; Lake Michigan from Sturgeon Bay to Two Rivers WI 5NM offshore to Mid Lake; Lake Michigan from Two Rivers to Sheboygan WI 5NM offshore to Mid Lake; Lake Michigan from Pentwater to Manistee MI 5NM offshore to Mid Lake",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dense smoke will reduce visibility to 1 NM.\n\n* WHERE...Northern Half of Open Waters of Lake Michigan.\n\n* WHEN...From 10 AM this morning to 7 AM CDT Monday.\n\n* IMPACTS...Low visibility will make navigation difficult.",
+      "instruction": "If you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2496968adf2c48c5cc84ec7fab70d3ee13ebb3be.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Lake Michigan Michigan City IN to St. Joseph MI 5 NM offshore to mid-line of lake.; Lake Michigan from Sheboygan to Port Washington WI 5NM offshore to Mid Lake; Lake Michigan from Port Washington to North Point Light WI 5NM offshore to Mid Lake; Lake Michigan from North Point Light to Wind Point WI 5NM offshore to Mid Lake; Lake Michigan from Wind Point WI to Winthrop Harbor IL 5NM offshore to Mid Lake; Lake Michigan from Winthrop Harbor to Wilmette Harbor IL 5NM offshore to Mid Lake; Lake Michigan from Wilmette Harbor to Michigan City in 5NM offshore to Mid Lake; Lake Michigan from Whitehall to Pentwater MI 5NM offshore to Mid Lake; Lake Michigan from Grand Haven to Whitehall MI 5NM offshore to Mid Lake; Lake Michigan from Holland to Grand Haven MI 5NM offshore to Mid Lake; Lake Michigan from South Haven to Holland MI 5NM offshore to Mid lake; Lake Michigan from St Joseph to South Haven MI 5NM offshore to Mid Lake",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dense smoke will reduce visibility to 2 to 3 NM.\n\n* WHERE...Southern Half of Open Waters of Lake Michigan.\n\n* WHEN...From 3 PM this afternoon to 7 AM CDT Monday.\n\n* IMPACTS...Low visibility will make navigation difficult.",
+      "instruction": "If you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2496968adf2c48c5cc84ec7fab70d3ee13ebb3be.001.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Sheboygan to Port Washington WI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, waves of 4-6 feet. For\nthe Dense Smoke Advisory, dense smoke will reduce visibility\nto 1 NM.\n\n* WHERE...Sheboygan to Port Washington WI.\n\n* WHEN...For the Dense Smoke Advisory, from 3 PM this afternoon\nto 7 AM CDT Monday. For the Small Craft Advisory, from 7 PM\nthis evening to 2 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.31e9b5737f6b0e96645627265eedb2db9b4ba344.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Marine Weather Statement",
+    "geometry": "Polygon",
+    "location": "Chesapeake Bay north of Pooles Island MD; Chesapeake Bay from Pooles Island to Sandy Point MD; Chesapeake Bay from Sandy Point to North Beach MD; Patapsco River including Baltimore Harbor; Chester River to Queenstown MD; Eastern Bay; Choptank River to Cambridge MD and the Little Choptank River",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -76.01,
+            39.4
+          ],
+          [
+            -75.88,
+            39.36
+          ],
+          [
+            -75.89,
+            39.36
+          ],
+          [
+            -76.11,
+            39.37
+          ],
+          [
+            -76.27,
+            39.17
+          ],
+          [
+            -76.17,
+            39
+          ],
+          [
+            -76.25,
+            38.97
+          ],
+          [
+            -76.19,
+            38.79
+          ],
+          [
+            -76.2,
+            38.78
+          ],
+          [
+            -76.24,
+            38.76
+          ],
+          [
+            -76.27,
+            38.85
+          ],
+          [
+            -76.3,
+            38.82
+          ],
+          [
+            -76.34,
+            38.75
+          ],
+          [
+            -76.54,
+            38.75
+          ],
+          [
+            -76.49,
+            38.99
+          ],
+          [
+            -76.41,
+            39.02
+          ],
+          [
+            -76.62,
+            39.28
+          ],
+          [
+            -76.43,
+            39.23
+          ],
+          [
+            -76.37,
+            39.38
+          ],
+          [
+            -75.86,
+            39.49
+          ],
+          [
+            -76.01,
+            39.4
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "The areas affected include...\nChesapeake Bay from Pooles Island to Sandy Point MD...\nChesapeake Bay from Sandy Point to North Beach MD...\nChesapeake Bay north of Pooles Island MD...\nChester River to Queenstown MD...\nChoptank River to Cambridge MD and the Little Choptank River...\nEastern Bay...\nPatapsco River including Baltimore Harbor...\n\nAt 445 AM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds to around 25 knots. These thunderstorms were\nlocated along a line extending from near Back River to near Bloody\nPoint Light, moving east at 20 knots.\n\nLocations impacted include...\nNorth Point State Park, Magothy River, Rock Hall, Chester River,\nEastern Bay, Pooles Island, Greenbury Point, Shady Side, Highland\nBeach, Gunpowder River, Sandy Point State Park, Severn River, Bloody\nPoint Light, Thomas Point Light, Poplar Island, Parsons Island, Fort\nSmallwood State Park, Pinehurst, Turkey Point, and Hart Miller\nIsland.",
+      "instruction": "Mariners can expect gusty winds, locally higher waves, lightning\nstrikes, and heavy downpours. Boaters should seek safe harbor\nimmediately until these storms pass.",
+      "expires": "2026-07-18T06:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1f0923e0313ed264d32b91ded45d4ac1e14807c9.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Central U.S. Waters Strait Of Juan De Fuca; East Entrance U.S. Waters Strait Of Juan De Fuca",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...West winds 15 to 25 kt.\n\n* WHERE...Central U. S. Waters Strait Of Juan De Fuca and East\nEntrance U. S. Waters Strait Of Juan De Fuca.\n\n* WHEN...From 5 PM this afternoon to 1 AM PDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "A Small Craft Advisory means that wind speeds of 21 to 33 knots\nand/or seas 10 feet or higher are expected to produce hazardous\nwave conditions to small craft. Inexperienced mariners,\nespecially those operating smaller vessels should avoid\nnavigating in these conditions.",
+      "expires": "2026-07-18T09:45:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1f0923e0313ed264d32b91ded45d4ac1e14807c9.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal Waters From Cape Flattery To James Island 10 To 60 Nm; Waters From James Island To Point Grenville 10 To 60 Nm; Coastal Waters From Point Grenville To Cape Shoalwater 10 To 60 Nm",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Northwest winds 15 to 25 kt.\n\n* WHERE...Coastal Waters from Cape Flattery to Cape Shoalwater\n10 to 60 nm.\n\n* WHEN...From 5 PM this afternoon to 11 AM PDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "A Small Craft Advisory means that wind speeds of 21 to 33 knots\nand/or seas 10 feet or higher are expected to produce hazardous\nwave conditions to small craft. Inexperienced mariners,\nespecially those operating smaller vessels should avoid\nnavigating in these conditions.",
+      "expires": "2026-07-18T09:45:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.deb7861cee9ddbc97ac243f7ded74a82ef842859.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Lower Treasure Valley",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -116.97,
+            43.53
+          ],
+          [
+            -117.02,
+            43.57
+          ],
+          [
+            -117,
+            43.76
+          ],
+          [
+            -116.74,
+            43.69
+          ],
+          [
+            -116.94,
+            43.5
+          ],
+          [
+            -116.97,
+            43.53
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 242 AM MDT, Doppler radar was tracking a strong thunderstorm near\nHomedale, or 15 miles south of Parma, moving northeast at 20 mph.\n\nHAZARD...Half inch hail and gusts to 30 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Minor damage to outdoor objects is possible.\n\nThis strong thunderstorm will be near...\nHomedale around 250 AM MDT.\nWilder around 300 AM MDT.\nGreenleaf around 310 AM MDT.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+      "expires": "2026-07-18T03:15:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.f35c71a39f1f773157a1149ca94a63a4a9bd2164.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Beach Hazards Statement",
+    "geometry": "unknown",
+    "location": "Huron",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...High swim risk from high wave action and strong currents.\nDangerous swimming conditions are expected.\n\n* WHERE...Huron County.\n\n* WHEN...From 8 AM EDT this morning through this evening.\n\n* IMPACTS...Strong currents can pull swimmers into deep water and\nprevent return to shore.",
+      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
+      "expires": "2026-07-18T22:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cf15b364eed3628dc1468bfc68162aec90b3c117.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Absaroka Mountains; Cody Foothills",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...A portion of northwest Wyoming, including the following\nareas, Absaroka Mountains and Cody Foothills.\n\n* WHEN...From noon MDT today through this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Heavy rain from slow moving thunderstorms may bring local\nflooding this afternoon and evening.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+      "expires": "2026-07-18T22:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.61058de745294398e9df1b1bcc5bed896089efa3.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Coastal Lee",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -82.16,
+            26.39
+          ],
+          [
+            -82.26,
+            26.54
+          ],
+          [
+            -82.3,
+            26.77
+          ],
+          [
+            -82.21,
+            26.78
+          ],
+          [
+            -82.06,
+            26.8
+          ],
+          [
+            -81.98,
+            26.35
+          ],
+          [
+            -82.16,
+            26.39
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 435 AM EDT, Doppler radar was tracking a strong thunderstorm 16\nmiles west of Lovers Key State Park, or 20 miles west of Bonita\nSprings, moving north at 20 mph.\n\nHAZARD...Wind gusts of 40 to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nCape Coral, Matlacha Isles-Matlacha Shores, Pineland, St. James City,\nMatlacha, Pine Island Center, Burnt Store Marina, Bokeelia, Saint\nJames City, Useppa Island, and Punta Rassa.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-18T05:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2c95f9ee50b17516d8129139dfc940846764dfdf.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Western Garrett; Eastern Garrett; Western Mineral",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -79.45,
+            39.34
+          ],
+          [
+            -79.47,
+            39.45
+          ],
+          [
+            -79.11,
+            39.52
+          ],
+          [
+            -79.1,
+            39.33
+          ],
+          [
+            -79.45,
+            39.34
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 427 AM EDT, Doppler radar was tracking a strong thunderstorm over\nLoch Lynn Heights, or over Mountain Lake Park, moving east at 30 mph.\n\nHAZARD...Wind gusts up to 40 mph and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nMountain Lake Park, Oakland, Loch Lynn Heights, Deer Park, Elk\nGarden, Kitzmiller, Crellin, Sulphur City, and Emoryville.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-18T05:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ddedc601dfcb17cbf5ea0883cdaf8a833f4731a8.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "High Surf Advisory",
+    "geometry": "unknown",
+    "location": "Ventura County Beaches; Malibu Coast; Los Angeles County Beaches",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Large breaking waves of 5 to 8 feet with dangerous rip\ncurrents.\n\n* WHERE...Ventura County Beaches, Malibu Coast and Los Angeles\nCounty Beaches.\n\n* WHEN...From 5 PM Sunday to 11 PM PDT Tuesday.\n\n* IMPACTS...There is an increased risk for ocean drowning. Rip\ncurrents can pull swimmers and surfers out to sea. Large\nbreaking waves can cause injury, wash people off beaches and\nrocks, and capsize small boats near shore.\n\n* ADDITIONAL DETAILS...Highest surf will be focused across south\nfacing beaches due to a southerly swell produced by Tropical\nStorm Elida.",
+      "instruction": "Remain out of the water due to dangerous surf conditions, or stay\nnear occupied lifeguard towers. Rock jetties can be deadly in\nsuch conditions, stay off the rocks.",
+      "expires": "2026-07-18T15:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ddedc601dfcb17cbf5ea0883cdaf8a833f4731a8.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Beach Hazards Statement",
+    "geometry": "unknown",
+    "location": "San Luis Obispo County Beaches; Santa Barbara County Central Coast Beaches",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerous rip currents and breaking waves due to\nelevated surf expected.\n\n* WHERE...San Luis Obispo County Beaches and Santa Barbara\nCounty Central Coast Beaches.\n\n* WHEN...From Sunday afternoon through Tuesday evening.\n\n* IMPACTS...There is an increased risk of ocean drowning. Rip\ncurrents can pull swimmers and surfers out to sea. Waves can\nwash people off beaches and rocks, and capsize small boats\nnearshore.\n\n* ADDITIONAL DETAILS...Highest surf will be focused across south\nfacing beaches due to a southerly swell produced by Tropical\nStorm Elida.",
+      "instruction": "Remain out of the water due to hazardous swimming conditions, or\nstay near occupied lifeguard towers. Rock jetties can be deadly\nin such conditions, stay off the rocks.",
+      "expires": "2026-07-18T15:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ddedc601dfcb17cbf5ea0883cdaf8a833f4731a8.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "High Surf Advisory",
+    "geometry": "unknown",
+    "location": "Catalina and Santa Barbara Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Large breaking waves of 5 to 8 feet with dangerous rip\ncurrents.\n\n* WHERE...Catalina and Santa Barbara Islands.\n\n* WHEN...From 5 PM Sunday to 11 PM PDT Tuesday.\n\n* IMPACTS...There is an increased risk for ocean drowning. Rip\ncurrents can pull swimmers and surfers out to sea. Large\nbreaking waves can cause injury, wash people off beaches and\nrocks, and capsize small boats near shore.\n\n* ADDITIONAL DETAILS...Highest surf will be focused across south\nfacing beaches due to a southerly swell produced by Tropical\nStorm Elida.",
+      "instruction": "Remain out of the water due to dangerous surf conditions, or stay\nnear occupied lifeguard towers. Rock jetties can be deadly in\nsuch conditions, stay off the rocks.",
+      "expires": "2026-07-18T15:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.003.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Saxon Harbor WI to Black River MI; Black River To Ontonagon MI; Ontonagon to Upper Entrance of Portage Canal MI; Upper Entrance of Portage Canal to Eagle River MI; Eagle River to Manitou Island MI; Manitou Island to Point Isabelle MI; Point Isabelle to Lower Entrance of Portage Canal MI; Portage Lake to Huron Island MI to Lower Entrance of Portage Canal To Huron Islands MI Including Keweenaw and Huron Bays; Lake Superior from Saxon Harbor WI to Upper Entrance to Portage Canal MI 5NM off shore to the US/Canadian border including Isle Royale National Park; Lake Superior from Upper Entrance to Portage Canal to Manitou Island MI 5NM off shore to the US/Canadian Border; Lake Superior West of Line from Manitou Island to Marquette MI Beyond 5NM from shore; Lake Superior East of a line from Manitou Island to Marquette MI and West of a line from Grand Marais MI to the US/Canadian Border Beyond 5NM from shore; Lake Superior from Grand Marais MI to Whitefish Point MI 5NM off shore to the US/Canadian border",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dense smoke will reduce visibility to less than one\nnautical mile.\n\n* WHERE...Portions of Central, Eastern and Western Lake Superior.\n\n* WHEN...From 8 AM EDT /7 AM CDT/ this morning to 8 PM EDT /7 PM\nCDT/ Sunday.\n\n* IMPACTS...Low visibility will make navigation difficult.",
+      "instruction": "If you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.001.3",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Huron Islands to Marquette MI; Marquette to Munising MI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, northwest winds 10 to 20\nkt with gusts up to 30 kt and waves 2 to 5 ft occurring. For\nthe Dense Smoke Advisory, dense smoke will reduce visibility\nto less than one nautical mile.\n\n* WHERE...Huron Islands to Marquette MI and Marquette to\nMunising MI.\n\n* WHEN...For the Small Craft Advisory, until 6 PM EDT this\nevening. For the Dense Smoke Advisory, from 8 AM this morning\nto 8 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.005.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Green Bay North of line from Cedar River MI to Rock Island Passage; Seul Choix Point to Point Detour MI; 5NM East of a line from Fairport MI to Rock Island Passage",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, north winds 10 to 15 kt\nwith gusts up to 25 kt and waves 1 to 3 ft expected. For the\nDense Smoke Advisory, dense smoke will reduce visibility to\nless than one nautical mile.\n\n* WHERE...Green Bay North of line from Cedar River MI to Rock\nIsland Passage, Seul Choix Point to Point Detour MI and 5NM\nEast of a line from Fairport MI to Rock Island Passage.\n\n* WHEN...For the Small Craft Advisory, from 10 AM this morning\nto 8 PM EDT this evening. For the Dense Smoke Advisory, from\n11 AM this morning to 8 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Green Bay North of line from Cedar River MI to Rock Island Passage; Seul Choix Point to Point Detour MI; 5NM East of a line from Fairport MI to Rock Island Passage",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, north winds 10 to 15 kt\nwith gusts up to 25 kt and waves 1 to 3 ft expected. For the\nDense Smoke Advisory, dense smoke will reduce visibility to\nless than one nautical mile.\n\n* WHERE...Green Bay North of line from Cedar River MI to Rock\nIsland Passage, Seul Choix Point to Point Detour MI and 5NM\nEast of a line from Fairport MI to Rock Island Passage.\n\n* WHEN...For the Small Craft Advisory, from 10 AM this morning\nto 8 PM EDT this evening. For the Dense Smoke Advisory, from\n11 AM this morning to 8 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.001.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Huron Islands to Marquette MI; Marquette to Munising MI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Small Craft Advisory, northwest winds 10 to 20\nkt with gusts up to 30 kt and waves 2 to 5 ft occurring. For\nthe Dense Smoke Advisory, dense smoke will reduce visibility\nto less than one nautical mile.\n\n* WHERE...Huron Islands to Marquette MI and Marquette to\nMunising MI.\n\n* WHEN...For the Small Craft Advisory, until 6 PM EDT this\nevening. For the Dense Smoke Advisory, from 8 AM this morning\nto 8 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.002.2",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
+    "geometry": "unknown",
+    "location": "Munising to Grand Marais MI; Grand Marais to Whitefish Point MI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Dense Smoke Advisory, dense smoke will reduce\nvisibility to less than one nautical mile. For the Small Craft\nAdvisory, northwest winds 10 to 20 kt with gusts up to 25 kt\nand waves 3 to 5 ft expected.\n\n* WHERE...Munising to Grand Marais MI and Grand Marais to\nWhitefish Point MI.\n\n* WHEN...For the Dense Smoke Advisory, from 8 AM this morning to\n8 PM EDT Sunday. For the Small Craft Advisory, from 8 AM this\nmorning to 10 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.633578a998806b74741f1d9eb0852ed77d140abb.002.3",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Munising to Grand Marais MI; Grand Marais to Whitefish Point MI",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Dense Smoke Advisory, dense smoke will reduce\nvisibility to less than one nautical mile. For the Small Craft\nAdvisory, northwest winds 10 to 20 kt with gusts up to 25 kt\nand waves 3 to 5 ft expected.\n\n* WHERE...Munising to Grand Marais MI and Grand Marais to\nWhitefish Point MI.\n\n* WHEN...For the Dense Smoke Advisory, from 8 AM this morning to\n8 PM EDT Sunday. For the Small Craft Advisory, from 8 AM this\nmorning to 10 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T16:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.172bbc4a9936bf61a2ec26667a37974a50b26882.003.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Calhoun, TX; Goliad, TX; Refugio, TX; Victoria, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -97.72,
+            28.71
+          ],
+          [
+            -97.62,
+            28.78
+          ],
+          [
+            -96.9,
+            28.55
+          ],
+          [
+            -96.92,
+            28.48
+          ],
+          [
+            -97.59,
+            28.63
+          ],
+          [
+            -97.72,
+            28.71
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nRio Grande At Columbia Bridge affecting Webb County.\n\nSan Antonio River At Goliad affecting Calhoun, Victoria, Goliad and\nRefugio Counties.\n\n...The Flood Warning continues for the following rivers in Texas...\n\nRio Grande At Laredo affecting Webb County.\n\nFor the Rio Grande...including Columbia Bridge, Laredo...Moderate\nflooding is forecast.\nFor the San Antonio River...including Goliad...Minor flooding is\nforecast.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...San Antonio River at Goliad.\n\n* WHEN...From Sunday morning to Wednesday morning.\n\n* IMPACTS...At 25.0 feet, Minor lowland flooding occurs, with water\nin the lowest areas of Goliad State Park. Livestock below Goliad to\nthe Guadalupe River confluence are cut off and potentially drown.\n\n* ADDITIONAL DETAILS...\n- At 3:00 AM CDT Saturday the stage was 15.8 feet.\n- Bankfull stage is 22.0 feet.\n- Forecast...The river is expected to rise above flood stage late\ntomorrow morning to a crest of 28.0 feet Monday evening. It will\nthen fall below flood stage Tuesday afternoon.\n- Flood stage is 25.0 feet.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-18T18:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.172bbc4a9936bf61a2ec26667a37974a50b26882.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Webb, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -99.7,
+            27.62
+          ],
+          [
+            -99.62,
+            27.68
+          ],
+          [
+            -99.45,
+            27.54
+          ],
+          [
+            -99.41,
+            27.29
+          ],
+          [
+            -99.53,
+            27.21
+          ],
+          [
+            -99.57,
+            27.51
+          ],
+          [
+            -99.7,
+            27.62
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nRio Grande At Columbia Bridge affecting Webb County.\n\nSan Antonio River At Goliad affecting Calhoun, Victoria, Goliad and\nRefugio Counties.\n\n...The Flood Warning continues for the following rivers in Texas...\n\nRio Grande At Laredo affecting Webb County.\n\nFor the Rio Grande...including Columbia Bridge, Laredo...Moderate\nflooding is forecast.\nFor the San Antonio River...including Goliad...Minor flooding is\nforecast.\n\n* WHAT...Moderate flooding is forecast.\n\n* WHERE...Rio Grande at Laredo.\n\n* WHEN...From this morning to late Monday night.\n\n* IMPACTS...At 20.0 feet, or 6.1 meters moderate lowland flooding\noccurs. Water is several feet deep over most of the mall and\ncustoms parking lots. The lowest residences are threatened and\nroads and low bridges become very dangerous.\n\n* ADDITIONAL DETAILS...\n- At 3:00 AM CDT Saturday the stage was 3.2 feet (1.0 meters).\n- Bankfull stage is 7.0 feet (2.1 meters).\n- Forecast...The river is expected to rise above flood stage this\nmorning to a crest of 21.2 feet (6.5 meters) early tomorrow\nafternoon. It will then fall below flood stage late Monday\nmorning.\n- Flood stage is 8.0 feet (2.4 meters).\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-18T18:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.172bbc4a9936bf61a2ec26667a37974a50b26882.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Webb, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -100.23,
+            28.19
+          ],
+          [
+            -100.06,
+            28.2
+          ],
+          [
+            -99.62,
+            27.68
+          ],
+          [
+            -99.7,
+            27.62
+          ],
+          [
+            -99.91,
+            27.76
+          ],
+          [
+            -100.07,
+            28.06
+          ],
+          [
+            -100.23,
+            28.19
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nRio Grande At Columbia Bridge affecting Webb County.\n\nSan Antonio River At Goliad affecting Calhoun, Victoria, Goliad and\nRefugio Counties.\n\n...The Flood Warning continues for the following rivers in Texas...\n\nRio Grande At Laredo affecting Webb County.\n\nFor the Rio Grande...including Columbia Bridge, Laredo...Moderate\nflooding is forecast.\nFor the San Antonio River...including Goliad...Minor flooding is\nforecast.\n\n* WHAT...Moderate flooding is forecast.\n\n* WHERE...Rio Grande at Columbia Bridge.\n\n* WHEN...Until late Sunday night.\n\n* IMPACTS...At 30.0 feet, or 9.1 meters, major lowland flooding\noccurs. Water is several feet deep over most of the mall and\ncustoms parking lots. The lowest residences are threatened and\nroads and low bridges become very dangerous.\n\n* ADDITIONAL DETAILS...\n- At 2:15 AM CDT Saturday the stage was 15.0 feet (4.6 meters).\n- Bankfull stage is 16.0 feet (4.9 meters).\n- Forecast...The river is expected to rise above flood stage early\nthis morning to a crest of 29.6 feet (9.0 meters) this evening.\nIt will then fall below flood stage late tomorrow evening.\n- Flood stage is 18.0 feet (5.5 meters).\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-18T18:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.855f35c877af82074d2a8a25a741d3f36f5c3fe7.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Special Marine Warning",
@@ -71,1045 +886,432 @@
       "polygon": [
         [
           [
-            -83.18,
-            26.5
+            -81.84,
+            26.33
           ],
           [
-            -82.74,
-            27.06
+            -82.71,
+            26.04
           ],
           [
-            -82.36,
+            -82.97,
+            26.07
+          ],
+          [
+            -83.17,
+            26.49
+          ],
+          [
+            -83.5,
             27.04
+          ],
+          [
+            -82.97,
+            27.8
+          ],
+          [
+            -82.85,
+            27.79
+          ],
+          [
+            -82.73,
+            27.62
+          ],
+          [
+            -82.76,
+            27.6
+          ],
+          [
+            -82.75,
+            27.54
+          ],
+          [
+            -82.67,
+            27.5
+          ],
+          [
+            -82.66,
+            27.52
+          ],
+          [
+            -82.67,
+            27.48
+          ],
+          [
+            -82.66,
+            27.46
+          ],
+          [
+            -82.65,
+            27.5
           ],
           [
             -82.27,
             26.92
           ],
           [
-            -82.15,
-            26.54
+            -82.01,
+            26.67
           ],
           [
-            -82.16,
+            -82.01,
+            26.59
+          ],
+          [
+            -81.94,
+            26.52
+          ],
+          [
+            -81.83,
+            26.52
+          ],
+          [
+            -81.84,
             26.33
-          ],
-          [
-            -82.98,
-            26.1
-          ],
-          [
-            -83.18,
-            26.5
           ]
         ]
       ]
     },
     "details": {
-      "description": "SMWTBW\n\nThe National Weather Service in Ruskin has issued a\n\n* Special Marine Warning for...\nCharlotte Harbor and Pine Island Sound...\nCoastal waters from Bonita Beach to Englewood FL out 20 NM...\nCoastal waters from Englewood to Tarpon Springs FL out 20 NM...\nWaters from Bonita Beach to Englewood FL out 20 to 60 NM...\nWaters from Englewood to Tarpon Springs FL out 20 to 60 NM...\n\n* Until 415 AM EDT.\n\n* At 310 AM EDT, strong thunderstorms were located along a line\nextending from Gasparilla Island to 15 nm southwest of Manasota Key\nto 38 nm southwest of Captiva, moving northwest at 10 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Expect wind gusts in excess of 34 knots, suddenly higher\nwaves, frequent lightning, and heavy downpours. Make sure\nall on board are wearing life jackets.\n\n* Locations impacted include...\nGasparilla Island, M17 Reef, Englewood, M10 Reef, Manasota Key,\nCaptiva, Don Pedro Island, and Sanibel.",
+      "description": "SMWTBW\n\nThe National Weather Service in Ruskin has issued a\n\n* Special Marine Warning for...\nCharlotte Harbor and Pine Island Sound...\nCoastal waters from Bonita Beach to Englewood FL out 20 NM...\nCoastal waters from Englewood to Tarpon Springs FL out 20 NM...\nWaters from Bonita Beach to Englewood FL out 20 to 60 NM...\nWaters from Englewood to Tarpon Springs FL out 20 to 60 NM...\n\n* Until 515 AM EDT.\n\n* At 413 AM EDT, strong thunderstorms were located along a line\nextending from 28 nm west of Venice Inlet to 10 nm southwest of New\nPass to 6 nm south of Gasparilla Island to 19 nm north of R Tower,\nmoving north to northwest at 15 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Expect wind gusts in excess of 34 knots, suddenly higher\nwaves, frequent lightning, and heavy downpours. Make sure\nall on board are wearing life jackets.\n\n* Locations impacted include...\nD5 Reef, Manatee Nearshore Reef, Englewood, Madeira Beach Reef,\nLongboat Key, Venice Inlet, Md1 Reef, M7 Reef, Anna Maria Island,\nM8 Reef, M17 Reef, D6 Reef, M1 Reef, Gasparilla Island, M6 Reef, M9\nReef, Manasota Key, D1 Reef, D4 Reef, and Sanibel.",
       "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-18T04:15:00-04:00"
+      "expires": "2026-07-18T05:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b49021d299b1c88cfb6b7ad2b0c69fa4994483c7.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Sheboygan to Port Washington WI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Waves of 4-6 feet.\n\n* WHERE...Nearshore Waters from Sheboygan to Port Washington.\n\n* WHEN...From 7 PM this evening to 2 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T10:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b49021d299b1c88cfb6b7ad2b0c69fa4994483c7.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Port Washington to North Point Light WI; North Point Light to Wind Point WI; Wind Point WI to Winthrop Harbor IL",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Waves of 4-6 feet.\n\n* WHERE...Nearshore Waters from Port Washington to Winthrop\nHarbor IL.\n\n* WHEN...From 7 PM this evening to 7 AM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T10:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.81eabebb420b2366e2e48197a8d6a5aa433a0e74.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Beach Hazards Statement",
-    "geometry": "unknown",
-    "location": "Ozaukee; Milwaukee; Racine; Kenosha",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Life threatening waves of 3 to 5 feet and dangerous\ncurrents are expected.\n\n* WHERE...Ozaukee, Milwaukee, Racine and Kenosha Counties.\n\n* WHEN...From this evening through Sunday morning.\n\n* IMPACTS...Dangerous swimming conditions are expected due to\nhigh waves and onshore winds.",
-      "instruction": "Stay out of the water and away from dangerous areas like piers\nand breakwalls.  Strong structural and longshore currents are\nexpected.  Rip currents are possible.",
-      "expires": "2026-07-18T10:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.849d7708249b3f194b99dc3e80bb365cc6f44fa5.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "5NM East of Mackinac Bridge to Presque Isle Light MI including Bois Blanc Island; Presque Isle Light to Sturgeon Pt MI Including Thunder Bay National Marine Sanctuary",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 6 feet expected.\n\n* WHERE...5NM East of Mackinac Bridge to Presque Isle Light MI\nincluding Bois Blanc Island and Presque Isle Light to Sturgeon\nPt MI Including Thunder Bay National Marine Sanctuary.\n\n* WHEN...From 5 AM Saturday to 5 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T11:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.849d7708249b3f194b99dc3e80bb365cc6f44fa5.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Whitefish Bay (U.S. Portion)/Whitefish Point to Point Iroquois MI",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 5 feet expected.\n\n* WHERE...Whitefish Bay (U. S. Portion)/Whitefish Point to Point\nIroquois MI.\n\n* WHEN...From 5 AM Saturday to 5 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T11:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.7e004a9ca9fc1f0ffc1bda36e8a62eaa6a139e26.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Beach Hazards Statement",
-    "geometry": "unknown",
-    "location": "Presque Isle",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...High swim risk expected Saturday.\n\n* WHERE...Presque Isle County.\n\n* WHEN...From Saturday morning through Saturday evening.\n\n* IMPACTS...Wave heights of 3 to 6 feet are expected Saturday\nalong Presque Isle County beaches.",
-      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
-      "expires": "2026-07-18T11:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a90eeaf7d49bffec77f5d27c7fcdfdccc092780b.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Hamilton, OH",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -84.43,
-            39.09
-          ],
-          [
-            -84.45,
-            39.11
-          ],
-          [
-            -84.46,
-            39.12
-          ],
-          [
-            -84.48,
-            39.12
-          ],
-          [
-            -84.5,
-            39.1
-          ],
-          [
-            -84.52,
-            39.09
-          ],
-          [
-            -84.58,
-            39.11
-          ],
-          [
-            -84.62,
-            39.16
-          ],
-          [
-            -84.56,
-            39.23
-          ],
-          [
-            -84.42,
-            39.23
-          ],
-          [
-            -84.3,
-            39.14
-          ],
-          [
-            -84.32,
-            39.12
-          ],
-          [
-            -84.37,
-            39.09
-          ],
-          [
-            -84.43,
-            39.09
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...The following county, in southwest Ohio, Hamilton.\n\n* WHEN...Until 845 AM EDT.\n\n* IMPACTS...Numerous roads remain closed due to flooding. Expect\nmany areas of slow moving or standing water.\n\n* ADDITIONAL DETAILS...\n- At 256 AM EDT, Residual flooding was continuing due to the\nheavy rain that fell Friday evening.\n- Some locations that may experience flooding include...\nCincinnati, Covington, Norwood, Fort Thomas, Reading, North\nCollege Hill, Madeira, Wyoming, Cheviot, Mount Healthy, Deer\nPark, Dayton, Ludlow, Finneytown, Mariemont, Terrace Park,\nUniversity of Cincinnati, Rossmoyne, Plainville and Skyline\nAcres.",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nTo report flooding, go to our website at weather.gov/iln and submit\nyour report via social media, when you can do so safely.",
-      "expires": "2026-07-18T08:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b4c0760ad469ec29374b161fe53e969371fc7ba7.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.a2fb3a8ce34f9e510fbbcaa6a06b337ae3858f36.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Carter",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -104.98,
-            45.48
-          ],
-          [
-            -104.18,
-            45.5
-          ],
-          [
-            -104.14,
-            45
-          ],
-          [
-            -105.04,
-            45
-          ],
-          [
-            -105.04,
-            45.35
-          ],
-          [
-            -104.99,
-            45.35
-          ],
-          [
-            -104.99,
-            45.44
-          ],
-          [
-            -104.98,
-            45.44
-          ],
-          [
-            -104.98,
-            45.48
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 1254 AM MDT, Doppler radar was tracking an area of strong\nthunderstorms 19 miles northwest of Alzada, or 38 miles southeast of\nBroadus, moving east at 20 mph.\n\nHAZARD...Wind gusts up to 50 mph and half inch size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nRidgeway, Alzada, Albion, Hammond, Boyes and Ridge.",
-      "instruction": "Monitor the weather situation closely and be alert for threatening\nweather conditions.\n\nTorrential rainfall is occurring. Do not attempt to drive across\nwater covered roads.",
-      "expires": "2026-07-18T02:00:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.0addaca415affe461d419a2d0e628896cc45c917.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Rip Current Statement",
     "geometry": "unknown",
-    "location": "Kings (Brooklyn); Southwest Suffolk; Southeast Suffolk; Southern Queens; Southern Nassau",
+    "location": "East Turnagain Arm; Portage; Skilak Lake; Interior Kenai Peninsula; Turnagain Pass; West Prince William Sound & Whittier",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Dangerous rip currents expected.\n\n* WHERE...Kings (Brooklyn), Southwest Suffolk, Southeast\nSuffolk, Southern Queens and Southern Nassau Counties.\n\n* WHEN...From 6 AM EDT this morning through this evening.\n\n* IMPACTS...Life-threatening rip currents are likely for all\npeople entering the surf zone. Anyone visiting the beaches\nshould stay out of the surf. Rip currents can sweep even the\nbest swimmers away from shore into deeper water.\n\n* ADDITIONAL DETAILS...The high rip current risk is expected to\ncontinue for Suffolk county on Sunday.",
-      "instruction": "If you enter the surf zone, always have a flotation device with\nyou and swim near a lifeguard. If caught in a rip current, relax\nand float, and do not swim against the current. If able, swim in\na direction following the shoreline. If unable to escape, face\nthe shore and yell or wave for help.",
-      "expires": "2026-07-18T21:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f0183ccc46163d7f64911170db41cb536383a501.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Northwest Aroostook; Northeast Aroostook; Northern Somerset; Northern Piscataquis; Northern Penobscot; Southeast Aroostook; Central Piscataquis; Central Penobscot; Southern Penobscot; Interior Hancock; Central Washington; Coastal Hancock; Coastal Washington; Southern Piscataquis; Northern Washington",
-    "coordinates": {},
-    "details": {
-      "description": "The Maine Department of Environmental Protection's Bureau of Air\nQuality has issued an Air Quality Alert for particle pollution from\n10 AM this morning to midnight EDT tonight.\n\nParticle pollution levels are expected to rise into the Unhealthy for\nSensitive Groups range during the day today. Smoke from wildfires in\nwestern Ontario and Manitoba is expected to move back into Maine\nduring the day today. Moderate levels of ozone are also expected for\nthe Mid-Coast including the high elevations of Acadia National Park.\n\nThe Maine Department of Environmental Protection recommends that\nindividuals consider limiting strenuous outdoor physical activity to\nreduce the risk of adverse health effects. People who may be\nespecially sensitive to the effects of elevated levels of pollutants\ninclude the very young, older adults, those who work outdoors, those\nwith pre-existing respiratory problems such as asthma, and those\nwith heart disease. It is okay to be active outdoors. But if you\nexperience symptoms such as shortness of breath, coughing, throat\nirritation or an uncomfortable sensation in your chest, please\nconsider limiting the intensity and duration of your outdoor\nactivities.\n\nA toll free air quality hotline has been established so Maine\nresidents can stay informed on the air quality situations. The toll\nfree number is: 1-800-223-1196.\n\nAdditionally the Maine Department of Environmental Protection has\nthe air quality forecast available on the web at\nwww.maine.gov/dep/air/aqforecast.",
+      "description": "A strong frontal system with an atmospheric river of moisture will\nbring periods of moderate to heavy rain and gusty southeasterly\nwinds through Turnagain Arm and across portions of the eastern\nKenai Peninsula. The heaviest rain and strongest winds will\nlikely occur between late Saturday night and Monday evening.\n\nLikely (70-80%) rainfall amounts and wind gusts:\n\nFor Whittier: 3 to 5 inches of rain; wind gusts up to 35 mph.\n\nFor Portage: 2 to 4 inches of rain; wind gusts up to 55 mph.\n\nFor Girdwood: 1 to 2 inches of rain; wind gusts up to 35 mph.\n\nFor Turnagain Arm: 1 to 2 inches of rain; wind gusts up to 55\nmph.\n\nFor Turnagain Pass, Hope, and south to Primrose: 1 to 2.5 inches\nof rain; wind gusts up to 35 mph.\n\nFor Sterling Highway east of Sterling, including Cooper Landing:\n1 to 2 inches of rain; wind gusts 30 to 45 mph, highest near Jean\nLake.\n\nThe combination of heavy rain and strong winds can make driving\ndifficult, especially for high profile vehicles. Heavy rain may\nalso cause ponding of water on area roadways. use caution when\ntravelling.\n\nFor the latest road conditions call 5 1 1 or visit\n511.alaska.gov.",
       "instruction": null,
-      "expires": "2026-07-19T00:00:00-04:00"
+      "expires": "2026-07-18T17:00:00-08:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.245e61cb164f8d1a05c9de421060c4c043153a58.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.efd7fd474cc6e3cc7123af9db97f68ae2b63c6df.001.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Rip Current Statement",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Coastal York; Coastal Cumberland; Sagadahoc; Lincoln; Knox; Coastal Rockingham",
+    "location": "Clinton; Washington; Randolph; Madison; St. Clair; Monroe; Boone; Moniteau; Cole; Osage; Callaway; Montgomery; Gasconade; Warren; St. Charles; Franklin; St. Louis; St. Louis City; Jefferson; Crawford; Washington; St. Francois; Ste. Genevieve; Iron; Madison; Reynolds",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Dangerous rip currents expected.\n\n* WHERE...In Maine, Coastal York, Coastal Cumberland, Sagadahoc,\nLincoln and Knox Counties. In New Hampshire, Coastal\nRockingham County.\n\n* WHEN...From 8 AM EDT this morning through this evening.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
-      "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
-      "expires": "2026-07-18T10:45:00-04:00"
+      "description": "* WHAT...Heat index values up to 105 expected.\n\n* WHERE...Portions of south central and southwest Illinois and\ncentral, east central, and southeast Missouri.\n\n* WHEN...From noon today to 7 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances. Take extra precautions if you work or spend time\noutside. When possible reschedule strenuous activities to early\nmorning or evening. Know the signs and symptoms of heat exhaustion\nand heat stroke. Wear lightweight and loose fitting clothing when\npossible. To reduce risk during outdoor work, the Occupational Safety\nand Health Administration recommends scheduling frequent rest breaks\nin shaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-18T18:15:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.97e9452a697c49b0837ebc41fa4d6894864f1d98.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Beach Hazards Statement",
-    "geometry": "unknown",
-    "location": "Coastal Pender; Coastal New Hanover; Coastal Horry; Coastal Georgetown",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Strong south to north longshore current.\n\n* WHERE...In North Carolina, Coastal Pender and Coastal New\nHanover Counties. In South Carolina, Coastal Horry and Coastal\nGeorgetown Counties.\n\n* WHEN...Today.\n\n* IMPACTS...Longshore currents can sweep swimmers and surfers\ninto rip currents, piers, jetties, and other hazardous areas.\nIt may sweep swimmers off their feet, making it difficult to\nreturn to shore.",
-      "instruction": "Caution should be used when in or near the water. Check with\nlifeguards before entering the ocean for possible hazards.",
-      "expires": "2026-07-18T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8658af501b144bc0d1f7e08dbbc77208401da829.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Gale Warning",
-    "geometry": "unknown",
-    "location": "Waters from Stonington ME to Port Clyde ME from 25 to 60 NM; Waters from Port Clyde ME to Cape Elizabeth ME from 25 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...South winds 25 to 30 kt with gusts up to 35 kt and seas\n5 to 8 ft expected.\n\n* WHERE...Waters from Stonington ME to Port Clyde ME from 25 to\n60 NM and Waters from Port Clyde ME to Cape Elizabeth ME from\n25 to 60 NM.\n\n* WHEN...From 4 PM this afternoon to 2 AM EDT Sunday.\n\n* IMPACTS...Strong winds will cause hazardous seas which could\ncapsize or damage vessels and reduce visibility.",
-      "instruction": "Mariners should alter plans to avoid these hazardous conditions.\nRemain in port, seek safe harbor, alter course, and/or secure the\nvessel for severe conditions.",
-      "expires": "2026-07-18T16:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8658af501b144bc0d1f7e08dbbc77208401da829.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.e0ad210172a1b2e8e6ceb1187e65b9d8585e00d7.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Coastal Waters from Stonington, ME to Port Clyde, ME out 25 NM; Coastal Waters from Port Clyde, ME to Cape Elizabeth, ME out 25 NM; Coastal Waters from Cape Elizabeth, ME to Merrimack River, MA out 25 NM",
+    "location": "Green Bay south of line from  Cedar River to Rock Island Passage and north of a line from Oconto WI to Little Sturgeon Bay WI; Rock Island Passage to Sturgeon Bay WI",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Southwest winds 20 to 30 kt with gusts up to 35 kt and\nseas 5 to 8 ft expected.\n\n* WHERE...Coastal Waters from Stonington, ME to Port Clyde, ME\nout 25 NM, Coastal Waters from Port Clyde, ME to Cape\nElizabeth, ME out 25 NM and Coastal Waters from Cape\nElizabeth, ME to Merrimack River, MA out 25 NM.\n\n* WHEN...From 2 PM this afternoon to 8 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T16:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8658af501b144bc0d1f7e08dbbc77208401da829.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Penobscot Bay; Casco Bay",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...South winds 15 to 25 kt with gusts up to 30 kt and seas\n2 to 5 ft expected.\n\n* WHERE...Penobscot Bay and Casco Bay.\n\n* WHEN...From 2 PM this afternoon to 2 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T16:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.797f7347c32fa2d9e9aa7477383760c0a4486d47.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Frio, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.2,
-            28.73
-          ],
-          [
-            -99.12,
-            28.76
-          ],
-          [
-            -99.02,
-            28.64
-          ],
-          [
-            -99.1,
-            28.64
-          ],
-          [
-            -99.2,
-            28.73
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nFrio River Near Derby affecting Frio County.\n\n* WHAT...Major flooding is occurring and major flooding is forecast.\n\n* WHERE...Frio River near Derby.\n\n* WHEN...Until late Tuesday evening.\n\n* ADDITIONAL DETAILS...\n- At 12:30 AM CDT Saturday the stage was 19.0 feet.\n- Bankfull stage is 6.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 12:30 AM CDT Saturday was 19.0 feet.\n- Forecast...The river is expected to rise to a crest of 21.8\nfeet this afternoon. It will then fall below flood stage late\nTuesday morning.\n- Flood stage is 6.0 feet.\n- Flood History...This crest compares to a previous crest of\n21.8 feet on 06/24/1997.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Be especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. Most flood related deaths\noccur in automobiles. Do not attempt to cross water covered bridges,\ndips, or low water crossings. Never try to cross a flowing stream,\neven a small one, on foot. To escape rising water find another route\nover higher ground.\n\nMotorists should not attempt to drive around barricades or drive\ncars through flooded areas.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 745 PM CDT.",
-      "expires": "2026-07-18T19:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f4ddb00c9876188910ec1eac475273a83a0a2289.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Dimmit, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.75,
-            28.48
-          ],
-          [
-            -99.67,
-            28.53
-          ],
-          [
-            -99.39,
-            28.47
-          ],
-          [
-            -99.39,
-            28.39
-          ],
-          [
-            -99.75,
-            28.48
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning continues for the following rivers in Texas...\n\nNueces River Near Asherton affecting Dimmit County.\n\n* WHAT...Major flooding is occurring and major flooding is forecast.\n\n* WHERE...Nueces River near Asherton.\n\n* WHEN...Until late Wednesday morning.\n\n* IMPACTS...At 31.0 feet, The Nueces River and Turkey Creek are a\nmile and a half wide south and west of Crystal City. Farm to\nMarket 190 is flooded over a mile near the Nueces River and the\nbridge floor is flooded. Livestock should be moved from the flood\nplain. Upstream, Highway 85 becomes impassable as routed water\nspills into Soldier Slough and over the highway.\n\n* ADDITIONAL DETAILS...\n- At 12:30 AM CDT Saturday the stage was 27.4 feet.\n- Bankfull stage is 18.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 12:30 AM CDT Saturday was 27.4 feet.\n- Forecast...The river is expected to rise to a crest of 30.1\nfeet early tomorrow afternoon. It will then fall below flood\nstage late Tuesday evening.\n- Flood stage is 20.0 feet.\n- Flood History...This crest compares to a previous crest of\n30.2 feet on 07/04/2002.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nEven 6 inches of fast-moving flood water can knock you off your feet\nand a depth of 2 feet will float your car. Never try to walk, swim,\nor drive through such swift water. If you come upon flood waters,\nstop, turn around and go another way.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. Most flood related deaths\noccur in automobiles. Do not attempt to cross water covered bridges,\ndips, or low water crossings. Never try to cross a flowing stream,\neven a small one, on foot. To escape rising water find another route\nover higher ground.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 745 PM CDT.",
-      "expires": "2026-07-18T19:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6beafba7e5aa8f2f3c67145cc723980726d9c3ca.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Surf City to Cape Fear NC out 20 nm; Coastal waters from Cape Fear NC to Little River Inlet SC out 20 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 4 to 6 ft expected.\n\n* WHERE...Southeast North Carolina coastal waters out 20 NM.\n\n* WHEN...From 4 PM this afternoon to 11 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T15:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6beafba7e5aa8f2f3c67145cc723980726d9c3ca.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Little River Inlet to Murrells Inlet SC out 20 NM; Coastal waters from Murrells Inlet to South Santee River SC out 20 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt\nexpected.\n\n* WHERE...Northeast South Carolina coastal waters out 20 NM.\n\n* WHEN...From 4 PM this afternoon to 6 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T15:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8805ff37ae396fc9f2c89320c7f755501545010e.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Uvalde, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -99.94,
-            29.13
-          ],
-          [
-            -99.85,
-            29.14
-          ],
-          [
-            -99.74,
-            28.85
-          ],
-          [
-            -99.67,
-            28.53
-          ],
-          [
-            -99.75,
-            28.48
-          ],
-          [
-            -99.85,
-            28.8
-          ],
-          [
-            -99.94,
-            29.13
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning continues for the following rivers in Texas...\n\nNueces River Below Uvalde affecting Uvalde County.\n\n* WHAT...Minor flooding is occurring.\n\n* WHERE...Nueces River below Uvalde.\n\n* WHEN...Until this afternoon.\n\n* IMPACTS...At 11.0 feet, Minor lowland flooding nine miles\nsouthwest of Uvalde closes the Farm to Market 481 bridge floor.\nLivestock in the flood plain should be moved to higher ground.\n\n* ADDITIONAL DETAILS...\n- At 12:30 AM CDT Saturday the stage was 12.1 feet.\n- Bankfull stage is 10.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 12:30 AM CDT Saturday was 14.9 feet.\n- Forecast...The river is expected to fall below flood stage\nearly this morning and continue falling to 5.6 feet early\nThursday morning.\n- Flood stage is 11.0 feet.\n- Flood History...This crest compares to a previous crest of\n13.0 feet on 07/02/2002.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nEven 6 inches of fast-moving flood water can knock you off your feet\nand a depth of 2 feet will float your car. Never try to walk, swim,\nor drive through such swift water. If you come upon flood waters,\nstop, turn around and go another way.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. Most flood related deaths\noccur in automobiles. Do not attempt to cross water covered bridges,\ndips, or low water crossings. Never try to cross a flowing stream,\neven a small one, on foot. To escape rising water find another route\nover higher ground.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this afternoon by 145 PM CDT.",
-      "expires": "2026-07-18T13:45:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.15a7da1dffadcc6ac15f813cebebcd1447691a52.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Carter, MT; Powder River, MT",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -105.04,
-            45.04
-          ],
-          [
-            -105.23,
-            45.02
-          ],
-          [
-            -105.45,
-            45.26
-          ],
-          [
-            -104.73,
-            45.43
-          ],
-          [
-            -104.61,
-            45.09
-          ],
-          [
-            -105.04,
-            45.04
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southwestern Carter County in southeastern Montana...\nSoutheastern Powder River County in southeastern Montana...\n\n* WHEN...Until 330 AM MDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways, including US-212.\n\n* ADDITIONAL DETAILS...\n- At 1236 AM MDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 1.5 inches of rain\nhave fallen.\n- Additional rainfall amounts of 0.5 to 0.8 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nHammond, Boyes, Belle Creek and Ridge.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Be especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-      "expires": "2026-07-18T03:30:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.821d83d756cc15d6ec22bde8f3c659feb5f64063.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Winona; Houston; Trempealeau; Jackson; La Crosse; Monroe; Vernon",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -91.56,
-            44.06
-          ],
-          [
-            -91.24,
-            44.22
-          ],
-          [
-            -90.75,
-            43.98
-          ],
-          [
-            -91.27,
-            43.67
-          ],
-          [
-            -91.56,
-            44.06
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 138 AM CDT, Doppler radar was tracking a strong thunderstorm over\nGalesville, or 13 miles southeast of Arcadia, moving southeast at 45\nmph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nThis strong thunderstorm will be near...\nHolmen and Brice Prairie around 145 AM CDT.\nLa Crosse and Onalaska around 150 AM CDT.\nWest Salem and French Island around 155 AM CDT.\n\nOther locations impacted by this storm include Irish Hill, North Side\nOf La Crosse, Camp Decorah, Beach Corners, South Side Of La Crosse,\nPerrot State Park, Goose Island, Stevenstown, Rockland, and County\nRoads D E And E.\n\nThis includes the following highways...\nInterstate 90 in Minnesota between mile markers 266 and 276.\nInterstate 90 in Wisconsin between mile markers 1 and 22.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-18T02:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8ac0ff69b7d810d1594e6809f4c831226a63dc42.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Flood Warning",
-    "geometry": "Polygon",
-    "location": "Uvalde, TX",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -100.03,
-            29.44
-          ],
-          [
-            -99.95,
-            29.45
-          ],
-          [
-            -99.9,
-            29.28
-          ],
-          [
-            -99.85,
-            29.14
-          ],
-          [
-            -99.94,
-            29.13
-          ],
-          [
-            -99.98,
-            29.26
-          ],
-          [
-            -100.03,
-            29.44
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nNueces River At Laguna affecting Uvalde County.\n\n* WHAT...No flooding is currently forecast.\n\n* WHERE...Nueces River at Laguna.\n\n* WHEN...Until late this morning.\n\n* IMPACTS...At 10.0 feet, Minor lowland flooding reaches low water\ncrossings on Highway 55 above Barksdale on Hackberry Creek. The\nNueces River crossing at Barksdale is very dangerous. East of Camp\nWood Farm to Market 337 crosses Camp Wood Creek in three places.\nVehicular related drownings have occurred at all these sites.\n\n* ADDITIONAL DETAILS...\n- At 1:15 AM CDT Saturday the stage was 9.7 feet.\n- Bankfull stage is 7.0 feet.\n- Forecast...The river is expected to fall to 3.7 feet early\nThursday morning.\n- Flood stage is 10.0 feet.\n- Flood History...This crest compares to a previous crest of\n10.5 feet on 07/02/2002.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nEven 6 inches of fast-moving flood water can knock you off your feet\nand a depth of 2 feet will float your car. Never try to walk, swim,\nor drive through such swift water. If you come upon flood waters,\nstop, turn around and go another way.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. Most flood related deaths\noccur in automobiles. Do not attempt to cross water covered bridges,\ndips, or low water crossings. Never try to cross a flowing stream,\neven a small one, on foot. To escape rising water find another route\nover higher ground.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this morning by 1100 AM CDT.",
+      "description": "* WHAT...For the Small Craft Advisory, north winds 10 to 20 kt\nwith gusts up to 25 kt and waves 1 to 2 ft expected. For the\nDense Smoke Advisory, dense smoke will reduce visibility to 1\nNM.\n\n* WHERE...Green Bay south of line from Cedar River to Rock\nIsland Passage and north of a line from Oconto WI to Little\nSturgeon Bay WI and Rock Island Passage to Sturgeon Bay WI.\n\n* WHEN...For the Small Craft Advisory, from 9 AM this morning to\n7 PM CDT this evening. For the Dense Smoke Advisory, from 10\nAM this morning to 7 PM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
       "expires": "2026-07-18T11:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.443f99c3d096296ed1ee6932b07c7d3e1ccd7aa6.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.e0ad210172a1b2e8e6ceb1187e65b9d8585e00d7.002.1",
     "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
     "geometry": "unknown",
-    "location": "Jefferson; Henry; Des Moines; Van Buren; Lee; Henderson; Warren; Hancock; McDonough; Scotland; Clark",
+    "location": "Green Bay south of line from  Oconto WI to Little Sturgeon Bay WI; Sturgeon Bay to Two Rivers WI; Two Rivers to Sheboygan WI",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values up to 103 expected.\n\n* WHERE...Portions of west central Illinois, southeast Iowa, and\nnortheast Missouri.\n\n* WHEN...From noon today to 7 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-18T09:45:00-05:00"
+      "description": "* WHAT...Dense smoke will reduce visibility to 1 NM.\n\n* WHERE...Green Bay south of line from Oconto WI to Little\nSturgeon Bay WI, Sturgeon Bay to Two Rivers WI and Two Rivers\nto Sheboygan WI.\n\n* WHEN...From 10 AM this morning to 7 PM CDT Sunday.\n\n* IMPACTS...Low visibility will make navigation difficult.",
+      "instruction": "If you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T11:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.443f99c3d096296ed1ee6932b07c7d3e1ccd7aa6.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.e0ad210172a1b2e8e6ceb1187e65b9d8585e00d7.001.2",
     "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
+    "severity": "minor",
+    "title": "Dense Smoke Advisory",
     "geometry": "unknown",
-    "location": "Muscatine; Scott; Keokuk; Washington; Louisa; Rock Island; Mercer",
+    "location": "Green Bay south of line from  Cedar River to Rock Island Passage and north of a line from Oconto WI to Little Sturgeon Bay WI; Rock Island Passage to Sturgeon Bay WI",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values up to 102 expected.\n\n* WHERE...In Illinois, Mercer and Rock Island Counties. In Iowa,\nMuscatine, Scott, Keokuk, Louisa, and Washington Counties.\n\n* WHEN...From noon today to 7 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-18T09:45:00-05:00"
+      "description": "* WHAT...For the Small Craft Advisory, north winds 10 to 20 kt\nwith gusts up to 25 kt and waves 1 to 2 ft expected. For the\nDense Smoke Advisory, dense smoke will reduce visibility to 1\nNM.\n\n* WHERE...Green Bay south of line from Cedar River to Rock\nIsland Passage and north of a line from Oconto WI to Little\nSturgeon Bay WI and Rock Island Passage to Sturgeon Bay WI.\n\n* WHEN...For the Small Craft Advisory, from 9 AM this morning to\n7 PM CDT this evening. For the Dense Smoke Advisory, from 10\nAM this morning to 7 PM CDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft. Low\nvisibility will make navigation difficult.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.\n\nIf you must navigate, proceed with caution. Use proper fog\nsignals. Make sure all running lights are on. Remember to use\nyour radar and compass.",
+      "expires": "2026-07-18T11:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.621b1321c460ed6b706f5821a63d67b70a0e1a90.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ad76981252c390013fd31b754d920add475d8ad4.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Special Marine Warning",
+    "title": "Flood Warning",
     "geometry": "Polygon",
-    "location": "Presque Isle Light to Sturgeon Pt MI Including Thunder Bay National Marine Sanctuary; Sturgeon Pt to Alabaster MI; Lake Huron from Presque Isle Lt. to Sturgeon Point  MI 5NM off shore to US/Canadian border; Lake Huron from Sturgeon Point to Alabaster MI 5NM off shore to US/Canadian border",
+    "location": "Goliad, TX; Karnes, TX",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -82.69,
-            44.44
+            -97.79,
+            28.83
           ],
           [
-            -83.34,
-            44.72
+            -97.72,
+            28.9
           ],
           [
-            -83.37,
-            44.86
+            -97.64,
+            28.78
           ],
           [
-            -83.48,
-            44.9
+            -97.72,
+            28.72
           ],
           [
-            -83.48,
-            44.92
-          ],
-          [
-            -83.45,
-            45.09
-          ],
-          [
-            -83.38,
-            45.12
-          ],
-          [
-            -83.39,
-            45.13
-          ],
-          [
-            -82.46,
-            44.95
-          ],
-          [
-            -82.69,
-            44.44
+            -97.79,
+            28.83
           ]
         ]
       ]
     },
     "details": {
-      "description": "SMWAPX\n\nThe National Weather Service in Gaylord has issued a\n\n* Special Marine Warning for...\nLake Huron from Presque Isle Lt. to Sturgeon Point  MI 5NM off\nshore to US/Canadian border...\nLake Huron from Sturgeon Point to Alabaster MI 5NM off shore to\nUS/Canadian border...\nPresque Isle Light to Sturgeon Pt MI Including Thunder Bay National\nMarine Sanctuary...\nSturgeon Pt to Alabaster MI...\n\n* Until 330 AM EDT.\n\n* At 231 AM EDT, a strong thunderstorm was located over South Point,\nmoving southeast at 30 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nThunder Bay, Sturgeon Point, Alpena, Black River, and South Point.",
-      "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-18T03:30:00-04:00"
+      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nSan Antonio River at Hwy 72 near Runge affecting Goliad and\nKarnes Counties.\n\n* WHAT...Minor flooding is occurring and moderate flooding is\nforecast.\n\n* WHERE...San Antonio River at Hwy 72 near Runge.\n\n* WHEN...Until Monday afternoon.\n\n* ADDITIONAL DETAILS...\n- At 2:15 AM CDT Saturday the stage was 28.9 feet.\n- Bankfull stage is 22.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 2:15 AM CDT Saturday was 28.9 feet.\n- Forecast...The river is expected to rise to a crest of 33.7\nfeet tomorrow morning. It will then fall below flood stage\nearly Monday morning.\n- Flood stage is 27.0 feet.\n- Flood History...This crest compares to a previous crest of\n32.9 feet on 05/28/2013.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Be especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. Most flood related deaths\noccur in automobiles. Do not attempt to cross water covered bridges,\ndips, or low water crossings. Never try to cross a flowing stream,\neven a small one, on foot. To escape rising water find another route\nover higher ground.\n\nCaution is urged when walking near riverbanks.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 900 PM CDT.",
+      "expires": "2026-07-18T21:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.62f0d7ebfb539e13eb0ca1fea4421a05d9375725.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.2dcf414e3f6f841c320de3760f23f1c2f56e075d.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Long Island Sound East of New Haven CT/Port Jefferson NY to the Mouth of the Connecticut River; Long Island Sound East of the Mouth of the Connecticut River; Peconic and Gardiners Bays; South Shore Bays from Jones Inlet through Shinnecock Bay",
+    "location": "The Islands to Vermilion OH; Vermilion to Avon Point OH",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Southwest winds 10 to 20 kt with gusts up to 25 kt.\n\n* WHERE...Long Island Sound east of Port Jefferson and New\nHaven, Peconic and Gardiners Bays, and South Shore Bays from\nJones Inlet through Shinnecock Bay.\n\n* WHEN...From noon today to midnight EDT tonight.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "description": "* WHAT...North winds 15 to 20 knots and waves 2 to 5 feet\nexpected.\n\n* WHERE...The nearshore waters of Lake Erie from The Islands to\nAvon Point OH.\n\n* WHEN...From 10 PM this evening to 8 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T17:00:00-04:00"
+      "expires": "2026-07-18T12:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.62f0d7ebfb539e13eb0ca1fea4421a05d9375725.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.2dcf414e3f6f841c320de3760f23f1c2f56e075d.003.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Moriches Inlet NY to Montauk Point NY out 20 NM; Fire Island Inlet NY to Moriches Inlet NY out 20 NM; Sandy Hook NJ to Fire Island Inlet NY out 20 NM",
+    "location": "Conneaut OH to Ripley NY",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Southwest winds 10 to 20 kt with gusts up to 30 kt and\nseas 4 to 6 feet expected.\n\n* WHERE...Sandy Hook NJ to Montauk Point NY out 20 nm.\n\n* WHEN...From noon today to noon EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "description": "* WHAT...West winds to 20 knots, becoming northwest 15 to 20\nknots and waves 2 to 5 feet expected.\n\n* WHERE...The nearshore waters of Lake Erie from Conneaut OH to\nRipley NY.\n\n* WHEN...From 10 AM this morning to 10 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T17:00:00-04:00"
+      "expires": "2026-07-18T12:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bfa4abb146bb8fec38b601930e118381839f4ddb.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.2dcf414e3f6f841c320de3760f23f1c2f56e075d.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Avon Point to Willowick OH; Willowick to Geneva-on-the Lake OH; Geneva-on-the-Lake to Conneaut OH",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...West winds to 20 knots, becoming north 15 to 20 knots\nand waves 2 to 5 feet expected.\n\n* WHERE...The nearshore waters of Lake Erie from Avon Point to\nConneaut OH.\n\n* WHEN...From 10 AM this morning to 8 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-18T12:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.097e668853ab67a706f9872dfdcf7f15785c3453.001.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Heat Advisory",
+    "title": "Beach Hazards Statement",
     "geometry": "unknown",
-    "location": "Dorchester; Northampton; Hertford; Gates; Pasquotank; Camden; Western Currituck; Bertie; Chowan; Perquimans; Eastern Currituck; Caroline; Westmoreland; Richmond; Northumberland; Lancaster; Brunswick; Dinwiddie; Prince George; Charles City; New Kent; Gloucester; Middlesex; Mathews; Greensville; Sussex; Surry; James City; Southampton; Chesapeake; Virginia Beach; Western Hanover; Eastern Hanover; Western Chesterfield; Eastern Chesterfield (Including Col. Heights); Western Henrico (Including the City of Richmond); Eastern Henrico; Western King William; Eastern King William; Western King and Queen; Eastern King and Queen; Western Essex; Eastern Essex; York; Newport News; Hampton/Poquoson; Isle of Wight; Suffolk; Norfolk; Portsmouth",
+    "location": "Erie; Lorain",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values of 105 to 108 expected.\n\n* WHERE...Portions of southeast Maryland, northeast North Carolina,\nand central, east central, eastern, north central, south central,\nand southeast Virginia.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-18T20:00:00-04:00"
+      "description": "* WHAT...High risk of rip currents expected.\n\n* WHERE...Erie and Lorain Counties.\n\n* WHEN...From this evening through Sunday morning.\n\n* IMPACTS...Wind and wave action will cause currents on the\nlakeshore. Swimmers should not enter the water. Currents can\ncarry swimmers away from shore through a sand bar and along\nstructures extending out into the lake.",
+      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
+      "expires": "2026-07-18T12:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b7bdc79358a5bc0e6fb7ade12773b3fc8bd19516.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Chesapeake Bay from Drum Point MD to Smith Point VA; Tidal Potomac from Cobb Island MD to Smith Point VA; Tangier Sound and the inland waters surrounding Bloodsworth Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 10 to 15 kt with gusts up to 25 kt\nexpected.\n\n* WHERE...Chesapeake Bay from Drum Point MD to Smith Point VA,\nTidal Potomac from Cobb Island MD to Smith Point VA and\nTangier Sound and the inland waters surrounding Bloodsworth\nIsland.\n\n* WHEN...From 11 AM this morning to 6 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T10:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b7bdc79358a5bc0e6fb7ade12773b3fc8bd19516.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Chesapeake Bay north of Pooles Island MD; Chesapeake Bay from Pooles Island to Sandy Point MD; Chesapeake Bay from Sandy Point to North Beach MD; Chesapeake Bay from North Beach to Drum Point MD; Tidal Potomac from Key Bridge to Indian Head MD; Tidal Potomac from Indian Head to Cobb Island MD; Patapsco River including Baltimore Harbor; Chester River to Queenstown MD; Eastern Bay; Choptank River to Cambridge MD and the Little Choptank River; Patuxent River to Broomes Island MD",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 10 to 15 kt with gusts up to 20 kt\nexpected.\n\n* WHERE...Tidal Potomac River from Key Bridge to Cobb Island MD,\nand Chesapeake Bay and adjoining estuaries north of Drum Point\nMD.\n\n* WHEN...From 11 AM this morning to 11 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T10:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.5a4c76f28aa739b148dd00d093063a7a9bc6db71.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.097e668853ab67a706f9872dfdcf7f15785c3453.003.1",
     "type": "weather",
     "severity": "moderate",
-    "title": "Gale Warning",
+    "title": "Beach Hazards Statement",
     "geometry": "unknown",
-    "location": "Waters from Eastport ME to Schoodic Point ME from 25 to 60 NM or the Hague Line; Waters from Schoodic Point ME to Stonington ME from 25 to 60 NM",
+    "location": "Northern Erie",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...South winds 20 to 25 kt with gusts up to 35 kt and seas\n6 to 9 ft expected.\n\n* WHERE...Waters from Eastport ME to Schoodic Point ME from 25\nto 60 NM or the Hague Line and Waters from Schoodic Point ME\nto Stonington ME from 25 to 60 NM.\n\n* WHEN...From 4 PM this afternoon to 4 AM EDT Sunday.\n\n* IMPACTS...Strong winds will cause hazardous seas which could\ncapsize or damage vessels and reduce visibility.",
-      "instruction": "Mariners should alter plans to avoid these hazardous conditions.\nRemain in port, seek safe harbor, alter course, and/or secure the\nvessel for hazardous conditions.",
-      "expires": "2026-07-18T16:00:00-04:00"
+      "description": "* WHAT...High risk of rip currents expected.\n\n* WHERE...Northern Erie County.\n\n* WHEN...From 10 AM EDT this morning through this evening.\n\n* IMPACTS...Wind and wave action will cause currents on the\nlakeshore. Swimmers should not enter the water. Currents can\ncarry swimmers away from shore through a sand bar and along\nstructures extending out into the lake.",
+      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
+      "expires": "2026-07-18T12:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.5a4c76f28aa739b148dd00d093063a7a9bc6db71.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.097e668853ab67a706f9872dfdcf7f15785c3453.002.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Beach Hazards Statement",
     "geometry": "unknown",
-    "location": "Coastal Waters from Eastport, ME to Schoodic Point, ME out 25 NM; Coastal Waters from Schoodic Point, ME to Stonington, ME out 25 NM; Intra Coastal Waters from Schoodic Point, ME to Stonington, ME",
+    "location": "Cuyahoga; Lake; Ashtabula Lakeshore",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 5 to 8 ft expected.\n\n* WHERE...Coastal Waters from Eastport, ME to Schoodic Point, ME\nout 25 NM, Coastal Waters from Schoodic Point, ME to\nStonington, ME out 25 NM and Intra Coastal Waters from\nSchoodic Point, ME to Stonington, ME.\n\n* WHEN...From 3 PM this afternoon to 2 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T16:00:00-04:00"
+      "description": "* WHAT...High risk of rip currents expected.\n\n* WHERE...Cuyahoga, Lake and Ashtabula Lakeshore Counties.\n\n* WHEN...From 10 AM EDT this morning through Sunday morning.\n\n* IMPACTS...Wind and wave action will cause currents on the\nlakeshore. Swimmers should not enter the water. Currents can\ncarry swimmers away from shore through a sand bar and along\nstructures extending out into the lake.",
+      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
+      "expires": "2026-07-18T12:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d89f0b41dc822bc7ead00ef5c5438c150f736de3.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.772f8140db63f1a91baa954202a5795a033e44f6.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Watch",
-    "geometry": "unknown",
-    "location": "Western Passaic; Eastern Passaic; Hudson; Western Bergen; Eastern Bergen; Western Essex; Eastern Essex; Western Union; Eastern Union; Southern Westchester; New York (Manhattan); Bronx; Richmond (Staten Is.); Kings (Brooklyn); Northern Queens; Southern Queens",
-    "coordinates": {},
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Karnes, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -97.98,
+            29.03
+          ],
+          [
+            -97.91,
+            29.08
+          ],
+          [
+            -97.8,
+            28.94
+          ],
+          [
+            -97.9,
+            28.92
+          ],
+          [
+            -97.98,
+            29.03
+          ]
+        ]
+      ]
+    },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of northeast New Jersey, including the following\nareas, Eastern Bergen, Eastern Essex, Eastern Passaic, Eastern\nUnion, Hudson, Western Bergen, Western Essex, Western Passaic and\nWestern Union and southeast New York, including the following\nareas, Bronx, Kings (Brooklyn), New York (Manhattan), Northern\nQueens, Richmond (Staten Island), Southern Queens and Southern\nWestchester.\n\n* WHEN...From 10 AM EDT this morning through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas.\n\n* ADDITIONAL DETAILS...\n- Multiple rounds of heavy showers and thunderstorms are\nexpected from late this morning into tonight. Peak rainfall\nrates are expected to be between 1.5 and 2 inches per hour.\n- http://www.weather.gov/safety/flood",
-      "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
-      "expires": "2026-07-18T17:00:00-04:00"
+      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nCibolo Creek Near Falls City affecting Karnes County.\n\n* WHAT...Moderate flooding is occurring and moderate flooding is\nforecast.\n\n* WHERE...Cibolo Creek near Falls City.\n\n* WHEN...Until tomorrow morning.\n\n* IMPACTS...At 25.0 feet, Major lowland flooding of crop and\npasturelands cut off many livestock and potentially drown them.\nWidespread flooding reaches secondary and primary roads, low\nbridges and crossings. Most of the Goliad State Park facilities\ndownstream are under water.\n\n* ADDITIONAL DETAILS...\n- At 2:15 AM CDT Saturday the stage was 23.1 feet.\n- Bankfull stage is 6.0 feet.\n- Recent Activity...The maximum river stage in the 24 hours\nending at 2:15 AM CDT Saturday was 23.5 feet.\n- Forecast...The river is expected to fall below flood stage\nthis evening and continue falling to 1.9 feet early Thursday\nmorning.\n- Flood stage is 17.0 feet.\n- Flood History...This crest compares to a previous crest of\n23.1 feet on 06/17/1981.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Be especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nFlooding is occurring or is imminent. Most flood related deaths\noccur in automobiles. Do not attempt to cross water covered bridges,\ndips, or low water crossings. Never try to cross a flowing stream,\neven a small one, on foot. To escape rising water find another route\nover higher ground.\n\nCaution is urged when walking near riverbanks.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued this evening by 900 PM CDT.",
+      "expires": "2026-07-18T21:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f773f669b6b26180c4113b0cd28077915299a7a0.003.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.5efbe5ee0dec24d4852e438b9299123757d4ae0f.001.1",
     "type": "weather",
     "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "S of Currituck Beach Light NC to Oregon Inlet NC out to 20 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt\nexpected.\n\n* WHERE...The coastal waters from Duck to Oregon Inlet.\n\n* WHEN...From 4 PM this afternoon to 8 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T14:30:00-04:00"
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Houston, MN; La Crosse, WI",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -91.34,
+            43.97
+          ],
+          [
+            -91.3,
+            44
+          ],
+          [
+            -91.25,
+            43.98
+          ],
+          [
+            -91.2,
+            43.93
+          ],
+          [
+            -91.18,
+            43.88
+          ],
+          [
+            -91.19,
+            43.84
+          ],
+          [
+            -91.18,
+            43.8
+          ],
+          [
+            -91.15,
+            43.75
+          ],
+          [
+            -91.17,
+            43.73
+          ],
+          [
+            -91.29,
+            43.73
+          ],
+          [
+            -91.34,
+            43.8
+          ],
+          [
+            -91.34,
+            43.85
+          ],
+          [
+            -91.29,
+            43.85
+          ],
+          [
+            -91.31,
+            43.87
+          ],
+          [
+            -91.32,
+            43.88
+          ],
+          [
+            -91.32,
+            43.89
+          ],
+          [
+            -91.34,
+            43.97
+          ]
+        ]
+      ]
     },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f773f669b6b26180c4113b0cd28077915299a7a0.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "S of Oregon Inlet NC to Cape Hatteras NC out to 20 NM; S of Cape Hatteras NC to Ocracoke Inlet NC out to 20 NM",
-    "coordinates": {},
     "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 4 to 7 ft expected.\n\n* WHERE...The coastal waters from Oregon Inlet to Ocracoke Inlet.\n\n* WHEN...From 4 PM this afternoon to 11 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T14:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f773f669b6b26180c4113b0cd28077915299a7a0.005.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Pamlico Sound",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nrough waters expected.\n\n* WHERE...Pamlico Sound.\n\n* WHEN...From 4 PM this afternoon to noon EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T14:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f773f669b6b26180c4113b0cd28077915299a7a0.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Neuse and Bay Rivers",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nchoppy waters expected.\n\n* WHERE...Neuse and Bay Rivers.\n\n* WHEN...From 8 PM this evening to 6 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...These winds will predominantly cover\ndownriver portions of the Neuse where the river is oriented from\nSW to NE.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T14:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f773f669b6b26180c4113b0cd28077915299a7a0.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "S of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM; S of Cape Lookout NC to Surf City NC out to 20 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 25 kt with gusts up to 30 kt and\nseas 4 to 7 ft expected.\n\n* WHERE...The coastal waters from Ocracoke Inlet to Surf City.\n\n* WHEN...From 4 PM this afternoon to 6 AM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T14:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.70afe0029ede0c1e8dadb98d9bd5ffcd9c582ab0.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from South Santee River to Edisto Beach SC out 20 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nseas 3 to 5 ft expected.\n\n* WHERE...South Santee River to Edisto Beach out 20 NM.\n\n* WHEN...From 8 PM this evening to 6 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T10:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.70afe0029ede0c1e8dadb98d9bd5ffcd9c582ab0.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Edisto Beach SC to Savannah GA out 20 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 15 to 20 kt with gusts up to 25 kt and\nseas 3 to 5 ft expected.\n\n* WHERE...Edisto Beach to Savannah out 20 NM.\n\n* WHEN...From 8 PM this evening to 6 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-18T10:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.39dc649465b8e1a1c99a222c1bc07e89bcfe9707.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Pointe Coupee; West Feliciana; East Feliciana; St. Helena; Washington; Iberville; West Baton Rouge; East Baton Rouge; Assumption; St. James; St. John The Baptist; Upper St. Bernard; Lower St. Bernard; Northern Tangipahoa; Southeast St. Tammany; Western Orleans; Eastern Orleans; Northern St. Tammany; Southwestern St. Tammany; Central Tangipahoa; Lower Tangipahoa; Northern Livingston; Southern Livingston; Western Ascension; Eastern Ascension; Upper Jefferson; Upper Plaquemines; Central Plaquemines; Lower Plaquemines; Central Jefferson; Coastal Jefferson; Upper Lafourche; Lower Lafourche; Upper Terrebonne; Lower Terrebonne; Upper St. Charles; Central St. Charles; Lower St. Charles; Wilkinson; Amite; Pike; Walthall; Pearl River; Northern Hancock; Northern Harrison; Northern Jackson; Southern Hancock; Southern Harrison; Southern Jackson",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 110 expected.\n\n* WHERE...Southeast Louisiana and southern Mississippi.\n\n* WHEN...From 10 AM this morning to 6 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-18T15:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9f44150ba0a89a105f9dcb29720dd43971ddfa3a.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Union",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 107 expected.\n\n* WHERE...Union County North Carolina.\n\n* WHEN...From noon today to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
-      "expires": "2026-07-18T12:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.b15394727e79f2011943d36a6d5bc6d1405fd83f.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Robeson; Bladen; Columbus; Inland Pender; Coastal Pender; Inland New Hanover; Coastal New Hanover; Inland Brunswick; Coastal Brunswick; Marlboro; Darlington; Dillon; Florence; Marion; Williamsburg; Coastal Horry; Inland Georgetown; Coastal Georgetown; Central Horry; Northern Horry",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 108 expected.\n\n* WHERE...Portions of southeast North Carolina and northeast South\nCarolina.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-18T15:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8735c80bbd5bb0922629af88841eec9434a2f1a1.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "District of Columbia; Southern Baltimore; Prince Georges; Anne Arundel; Charles; St. Marys; Calvert; Fairfax; Arlington/Falls Church/Alexandria; Stafford; Spotsylvania; King George; Central and Southeast Prince William/Manassas/Manassas Park",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values around 105 expected.\n\n* WHERE...Washington DC, and portions of central, northern, and\nsouthern Maryland, and central and northern Virginia.\n\n* WHEN...From 11 AM this morning to 7 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-18T10:30:00-04:00"
+      "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Northeastern Houston County in southeastern Minnesota...\nSouthwestern La Crosse County in west central Wisconsin...\n\n* WHEN...Until 445 AM CDT.\n\n* IMPACTS...Water over roadways. Overflowing poor drainage areas.\nPonding of water in urban or other areas is occurring or is\nimminent.\n\n* ADDITIONAL DETAILS...\n- At 248 AM CDT, ongoing heavy rain has been falling and will\ncontinue.Doppler radar indicated heavy rain due to thunderstorms.\nThis  will cause urban and small stream flooding. Between 0.5 and\n1.5 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nLa Crosse, La Crescent, Onalaska, Holmen, French Island, La\nCrosse Airport, Brice Prairie, Medary, Lock And Dam 7, Highway 33\nAnd Losey Boulevard, Midway, and New Amsterdam.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-18T04:45:00-05:00"
     },
     "source": "NOAA Weather"
   }
