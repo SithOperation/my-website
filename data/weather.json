@@ -1,5 +1,361 @@
 [
   {
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-32518",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Test Message",
+    "geometry": "unknown",
+    "location": "Montgomery",
+    "coordinates": {},
+    "details": {
+      "description": "Monitoring message only. Please disregard.",
+      "instruction": "Monitoring message only. Please disregard.",
+      "expires": "2026-07-18T12:15:33+00:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.f6c5cb4c1ce49639e4a2101034367d25a70d9ad1.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Webb, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -99.7,
+            27.62
+          ],
+          [
+            -99.62,
+            27.68
+          ],
+          [
+            -99.45,
+            27.54
+          ],
+          [
+            -99.41,
+            27.29
+          ],
+          [
+            -99.53,
+            27.21
+          ],
+          [
+            -99.57,
+            27.51
+          ],
+          [
+            -99.7,
+            27.62
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...The Flood Warning is extended for the following rivers in Texas...\n\nRio Grande At Laredo affecting Webb County.\n\nFor the Rio Grande...including Columbia Bridge, Laredo...Major\nflooding is forecast.\n\n* WHAT...Moderate flooding is forecast.\n\n* WHERE...Rio Grande at Laredo.\n\n* WHEN...From this morning to late Monday night.\n\n* IMPACTS...At 20.0 feet, or 6.1 meters moderate lowland flooding\noccurs. Water is several feet deep over most of the mall and\ncustoms parking lots. The lowest residences are threatened and\nroads and low bridges become very dangerous. At 24.0 feet, or 7.3\nmeters, several feet of water are covering Los Dos Laredos Park, as\nwell as Pedergal and Ventura streets. Water flows well back into\nZacate Creek.\n\n* ADDITIONAL DETAILS...\n- At 6:00 AM CDT Saturday the stage was 3.5 feet (1.1 meters).\n- Bankfull stage is 7.0 feet (2.1 meters).\n- Forecast...The river is expected to rise above flood stage late\nthis morning to a crest of 22.2 feet (6.8 meters) tomorrow\nevening. It will then fall below flood stage early Monday\nafternoon.\n- Flood stage is 8.0 feet (2.4 meters).\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-18T22:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.480a36a6ccdfa2ef3b8bce2db22ba234ee6b8a33.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Webb, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -100.23,
+            28.19
+          ],
+          [
+            -100.06,
+            28.2
+          ],
+          [
+            -99.62,
+            27.68
+          ],
+          [
+            -99.7,
+            27.62
+          ],
+          [
+            -99.91,
+            27.76
+          ],
+          [
+            -100.07,
+            28.06
+          ],
+          [
+            -100.23,
+            28.19
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...Forecast flooding changed from Moderate to Major severity and\nincreased in duration for the following rivers in Texas...\n\nRio Grande At Columbia Bridge affecting Webb County.\n\nFor the Rio Grande...including Columbia Bridge, Laredo...Major\nflooding is forecast.\n\n* WHAT...Minor flooding is occurring and major flooding is forecast.\n\n* WHERE...Rio Grande at Columbia Bridge.\n\n* WHEN...Until late Sunday night.\n\n* IMPACTS...At 30.0 feet, or 9.1 meters, major lowland flooding\noccurs. Water is several feet deep over most of the mall and\ncustoms parking lots. The lowest residences are threatened and\nroads and low bridges become very dangerous.\n\n* ADDITIONAL DETAILS...\n- At 6:15 AM CDT Saturday the stage was 18.4 feet (5.6 meters).\n- Bankfull stage is 16.0 feet (4.9 meters).\n- Forecast...The river is expected to rise to a crest of 32.1 feet\n(9.8 meters) just after midnight tonight. It will then fall below\nflood stage late tomorrow evening.\n- Flood stage is 18.0 feet (5.5 meters).\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-18T22:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1aa088b265a84850ae24e6c356574f6b487efa5b.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "District of Columbia; Southern Baltimore; Prince Georges; Anne Arundel; Charles; St. Marys; Calvert; Fairfax; Arlington/Falls Church/Alexandria; Stafford; Spotsylvania; King George; Central and Southeast Prince William/Manassas/Manassas Park",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values around 105 expected.\n\n* WHERE...Washington DC, and portions of central, northern, and\nsouthern Maryland, and central and northern Virginia.\n\n* WHEN...From 11 AM this morning to 7 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! In cases of heat stroke, call 9 1 1.",
+      "expires": "2026-07-18T19:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.584955a5990ea8eb57e828f136e820a4d682a7b4.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Chesapeake Bay from Drum Point MD to Smith Point VA; Tidal Potomac from Cobb Island MD to Smith Point VA; Tangier Sound and the inland waters surrounding Bloodsworth Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 15 kt with gusts up to 25 kt.\n\n* WHERE...Chesapeake Bay from Drum Point MD to Smith Point VA,\nTidal Potomac from Cobb Island MD to Smith Point VA, and\nTangier Sound and the inland waters surrounding Bloodsworth\nIsland.\n\n* WHEN...From 11 AM this morning to 6 AM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-18T23:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.584955a5990ea8eb57e828f136e820a4d682a7b4.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Chesapeake Bay north of Pooles Island MD; Chesapeake Bay from Pooles Island to Sandy Point MD; Chesapeake Bay from Sandy Point to North Beach MD; Chesapeake Bay from North Beach to Drum Point MD; Tidal Potomac from Key Bridge to Indian Head MD; Tidal Potomac from Indian Head to Cobb Island MD; Patapsco River including Baltimore Harbor; Chester River to Queenstown MD; Eastern Bay; Choptank River to Cambridge MD and the Little Choptank River; Patuxent River to Broomes Island MD",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Southwest winds 10 to 15 kt with gusts up to 20 kt.\n\n* WHERE...Tidal Potomac River from Key Bridge to Cobb Island MD,\nand Chesapeake Bay and adjoining estuaries north of Drum Point\nMD.\n\n* WHEN...From 11 AM this morning to 11 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-18T23:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.4550347adc301571d325c46f12b7c341f2a797e4.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Icy Strait",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...West winds 15 to 25 kt expected.\n\n* WHERE...Icy Strait.\n\n* WHEN...From 4 PM this afternoon to 1 AM AKDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-18T12:00:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.be8e04573a0caffe0af16040cb99de24b955b543.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Beaufort to Point Franklin out to 15 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...NE winds 25 kt. Seas 5 ft. Fog.\n.TONIGHT...NE winds 25 kt. Seas 5 ft.\n.SUN...NE winds 20 kt. Seas 5 ft.\n.SUN NIGHT...NE winds 20 kt. Seas 5 ft.\n.MON...E winds 20 kt. Seas 4 ft.\n.MON NIGHT...NE winds 20 kt. Seas 4 ft.\n.TUE...NE winds 10 kt. Seas 3 ft.\n.WED...NE winds 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-18T18:00:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.be8e04573a0caffe0af16040cb99de24b955b543.007.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Cape Beaufort to Point Franklin from 15 to 85 NM",
+    "coordinates": {},
+    "details": {
+      "description": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...NE winds 25 kt. Seas 5 ft. Fog.\n.TONIGHT...NE winds 25 kt. Seas 5 ft.\n.SUN...NE winds 20 kt. Seas 5 ft.\n.SUN NIGHT...NE winds 25 kt. Seas 5 ft.\n.MON...E winds 25 kt. Seas 5 ft.\n.MON NIGHT...NE winds 20 kt. Seas 4 ft.\n.TUE...NE winds 10 kt. Seas 4 ft.\n.WED...NE winds 10 kt. Seas 4 ft.",
+      "instruction": null,
+      "expires": "2026-07-18T18:00:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1ff98f0bd8da4949fdd2a51f36304ca0a22449b5.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "High Surf Advisory",
+    "geometry": "unknown",
+    "location": "San Diego County Coastal Areas; Orange County Coastal",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Large breaking waves of 4 to 7 feet with sets up to 8\nfeet at south or southwest facing beaches.\n\n* WHERE...San Diego County Coastal Areas and Orange County\nCoastal Areas.\n\n* WHEN...From 5 PM Sunday to 11 PM PDT Tuesday.\n\n* IMPACTS...Dangerous swimming and surfing conditions and\nlocalized beach erosion.\n\n* ADDITIONAL DETAILS...South swell 4 to 5 feet coming from 180 to\n200 degrees with a period of 13 seconds will generate high surf,\nprimarily for south-facing beaches. Tides will generally be at\nor below 5.5 feet, but localized areas of beach erosion and\nminor tidal overflow may occur when combining with the high\nsurf. Swell and surf will decrease by Wednesday.",
+      "instruction": "Inexperienced swimmers should remain out of the water due to\ndangerous surf conditions.",
+      "expires": "2026-07-18T14:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d138e8bedd0a432598976901ab4b242b6636cd4d.005.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Icy Strait",
+    "coordinates": {},
+    "details": {
+      "description": "Southeast Alaska Inside Waters from Dixon Entrance to Skagway\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...SW wind 10 kt becoming W 25 kt in the afternoon. Seas\n2 ft or less then 5 ft.\n.TONIGHT...SW wind 25 kt becoming W 20 kt late. Seas 5 ft.\n.SUN...W wind 10 kt increasing to 20 kt in the afternoon. Seas\n4 ft.\n.SUN NIGHT...W wind 20 kt. Seas 4 ft.\n.MON...W wind 20 kt. Seas 4 ft.\n.TUE...W wind 15 kt. Seas 3 ft.\n.WED...W wind 15 kt. Seas 3 ft.",
+      "instruction": null,
+      "expires": "2026-07-18T18:15:00-08:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.9f3e6a531ec19ca0b8861287d640de3dcbe8f74f.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "unknown",
+    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis; Southern Lake/North Shore; Southern Cook/North Shore; North Cass; South Itasca; Northern Aitkin; Carlton/South St. Louis",
+    "coordinates": {},
+    "details": {
+      "description": "Dry conditions and breezy winds will lead to near critical fire\nweather conditions today. North to northwest winds gusting up to\n10 to 20 mph with are forecast this afternoon. Minimum relative\nhumidity values of 30 to 40 percent are also expected. Together,\nthese conditions could lead to the rapid spread of fires,\nespeically in areas where recent lightning activity may have\nstarted fires. Check burning restrictions and fire danger before\nburning.\n\nFor more information on burning restrictions for\nMinnesota, see\nwww.dnr.state.mn.us/forestry/fire/firerating_restrictions.html.",
+      "instruction": null,
+      "expires": "2026-07-18T12:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.6101c86663c42f5ef4f0931e73fd830500c77132.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Alpena, MI; Montmorency, MI",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.11,
+            45.11
+          ],
+          [
+            -83.31,
+            45.11
+          ],
+          [
+            -83.25,
+            45.02
+          ],
+          [
+            -83.35,
+            45.04
+          ],
+          [
+            -83.37,
+            45.06
+          ],
+          [
+            -83.37,
+            45.07
+          ],
+          [
+            -83.44,
+            45.05
+          ],
+          [
+            -83.44,
+            45.02
+          ],
+          [
+            -83.41,
+            44.99
+          ],
+          [
+            -83.44,
+            44.96
+          ],
+          [
+            -83.43,
+            44.94
+          ],
+          [
+            -83.4,
+            44.92
+          ],
+          [
+            -83.39,
+            44.91
+          ],
+          [
+            -83.31,
+            44.88
+          ],
+          [
+            -83.32,
+            44.86
+          ],
+          [
+            -83.77,
+            44.86
+          ],
+          [
+            -84.1,
+            45.02
+          ],
+          [
+            -84.11,
+            45.11
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...A portion of northern Michigan, including the following\ncounties, Alpena and Montmorency.\n\n* WHEN...Until 1030 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 729 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 3 inches of rain\nhave fallen.\n- Additional rainfall amounts up to 1 inch are possible over\nsouthern Alpena County. This additional rain may result in\nminor flooding.\n- Some locations that may experience flooding include...\nAlpena, Ossineke, Lachine, The Town Of Hubbard Lake, Hillman,\nSpratt, Ossineke Township, Fletcher Pond and Devils Lake.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-18T10:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e975f1d0a7153cde6f6344bb009aa14cc4e4bc62.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Lower Columbia Basin of Oregon",
+    "coordinates": {},
+    "details": {
+      "description": "...BREEZY WINDS AND LOW RELATIVE HUMIDITY THROUGH SATURDAY\nEVENING...\n\n.Breezy diurnally driven westerly winds coupled with low relative\nhumidity is expected to continue through the Lower Columbia Basin\nof Oregon each afternoon and evening through Saturday. Relative\nhumidity will be above critical thresholds overnight.\n\n* AFFECTED AREA...Fire Weather Zone 691 Lower Columbia Basin of\nOregon.\n\n* TIMING...Until 10 PM PDT this evening.\n\n* WINDS...West 10 to 20 mph with gusts up to 30 mph.\n\n* RELATIVE HUMIDITY...As low as 185 percent.\n\n* IMPACTS...Any fire that develops will catch and spread\nquickly. Outdoor burning is not recommended.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-18T16:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
     "id": "weather-urn:oid:2.49.0.1.840.0.96b327344a529e795fefe32dda2f1309658a1727.005.1",
     "type": "weather",
     "severity": "minor",
@@ -270,15 +626,15 @@
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.96b327344a529e795fefe32dda2f1309658a1727.004.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.96b327344a529e795fefe32dda2f1309658a1727.030.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Castle Cape to Cape Tolstoi out to 15 NM",
+    "location": "Pribilof Islands Nearshore Waters",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 30 kt. Seas 8 ft.\n.TONIGHT...S wind 25 kt. Seas 7 ft.\n.SUN...SW wind 15 kt. Seas 5 ft.\n.SUN NIGHT...SW wind 15 kt. Seas 4 ft.\n.MON...S wind 20 kt. Seas 6 ft.\n.TUE...SW wind 25 kt. Seas 7 ft.\n.WED...SW wind 20 kt. Seas 4 ft.",
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...N wind 30 kt. Seas 10 ft. Rain.\n.TONIGHT...NW wind 20 kt. Seas 7 ft.\n.SUN...W wind 15 kt. Seas 5 ft.\n.SUN NIGHT...Variable wind 10 kt. Seas 3 ft.\n.MON...S wind 20 kt. Seas 4 ft.\n.TUE...SW wind 15 kt. Seas 6 ft.\n.WED...S wind 25 kt. Seas 9 ft.",
       "instruction": null,
       "expires": "2026-07-18T16:30:00-08:00"
     },
@@ -300,15 +656,15 @@
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.96b327344a529e795fefe32dda2f1309658a1727.030.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.96b327344a529e795fefe32dda2f1309658a1727.004.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Pribilof Islands Nearshore Waters",
+    "location": "Castle Cape to Cape Tolstoi out to 15 NM",
     "coordinates": {},
     "details": {
-      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...N wind 30 kt. Seas 10 ft. Rain.\n.TONIGHT...NW wind 20 kt. Seas 7 ft.\n.SUN...W wind 15 kt. Seas 5 ft.\n.SUN NIGHT...Variable wind 10 kt. Seas 3 ft.\n.MON...S wind 20 kt. Seas 4 ft.\n.TUE...SW wind 15 kt. Seas 6 ft.\n.WED...S wind 25 kt. Seas 9 ft.",
+      "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 30 kt. Seas 8 ft.\n.TONIGHT...S wind 25 kt. Seas 7 ft.\n.SUN...SW wind 15 kt. Seas 5 ft.\n.SUN NIGHT...SW wind 15 kt. Seas 4 ft.\n.MON...S wind 20 kt. Seas 6 ft.\n.TUE...SW wind 25 kt. Seas 7 ft.\n.WED...SW wind 20 kt. Seas 4 ft.",
       "instruction": null,
       "expires": "2026-07-18T16:30:00-08:00"
     },
@@ -416,191 +772,6 @@
       "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...NE wind 25 kt. Seas 5 ft. Rain.\n.TONIGHT...E wind 15 kt. Seas 4 ft. Rain showers.\n.SUN...E wind 15 kt. Seas 3 ft. Rain showers.\n.SUN NIGHT...S wind 10 kt. Seas 2 ft.\n.MON...S wind 20 kt. Seas 5 ft.\n.TUE THROUGH WED...S wind 25 kt. Seas 5 ft.",
       "instruction": null,
       "expires": "2026-07-18T16:30:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-56336",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Test Message",
-    "geometry": "unknown",
-    "location": "Montgomery",
-    "coordinates": {},
-    "details": {
-      "description": "Monitoring message only. Please disregard.",
-      "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-18T11:25:33+00:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ec4ae01e35aa30faa70d35adac9dda0cede7ec77.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM; Coastal waters from East Cape Sable to Chokoloskee FL out 20 NM; Waters from Chokoloskee to Bonita Beach FL from 20 to 60 NM",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -81.85,
-            26.33
-          ],
-          [
-            -81.79,
-            26.31
-          ],
-          [
-            -81.78,
-            26.18
-          ],
-          [
-            -81.75,
-            26.15
-          ],
-          [
-            -81.76,
-            26.08
-          ],
-          [
-            -81.72,
-            26.03
-          ],
-          [
-            -81.65,
-            26
-          ],
-          [
-            -81.62,
-            25.96
-          ],
-          [
-            -81.37,
-            25.9
-          ],
-          [
-            -81.33,
-            25.83
-          ],
-          [
-            -82.3,
-            25.53
-          ],
-          [
-            -82.48,
-            26.11
-          ],
-          [
-            -81.85,
-            26.33
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SMWMFL\n\nThe National Weather Service in Miami has issued a\n\n* Special Marine Warning for...\nCoastal waters from Chokoloskee to Bonita Beach FL out 20 NM...\nCoastal waters from East Cape Sable to Chokoloskee FL out 20 NM...\nWaters from Chokoloskee to Bonita Beach FL from 20 to 60 NM...\n\n* Until 800 AM EDT.\n\n* At 712 AM EDT, severe thunderstorms capable of producing\nwaterspouts were located along a line extending from 9 nm north of\nR Tower to 6 nm south of Naples, moving northeast at 15 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas. Small craft could be damaged in briefly\nhigher winds and suddenly higher waves.\n\n* Locations impacted include...\nCape Romano Aquatic Preserve, R Tower, Cape Romano, Naples,\nVanderbilt Beach, Marco Island, and Bonita Shores.",
-      "instruction": "Move to safe harbor until hazardous weather passes.\n\nReport severe weather to the Coast Guard or the National Weather\nService. You can also share your report with NWS Miami on Facebook\nand Twitter.",
-      "expires": "2026-07-18T08:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.63ef468ffb83320a15c4eb2927a2af31d8b85ff6.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Chesapeake Bay north of Pooles Island MD",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -75.94,
-            39.46
-          ],
-          [
-            -76.01,
-            39.4
-          ],
-          [
-            -75.88,
-            39.36
-          ],
-          [
-            -75.96,
-            39.37
-          ],
-          [
-            -76.11,
-            39.37
-          ],
-          [
-            -76.15,
-            39.33
-          ],
-          [
-            -76.18,
-            39.32
-          ],
-          [
-            -76.18,
-            39.3
-          ],
-          [
-            -76.2,
-            39.28
-          ],
-          [
-            -76.25,
-            39.32
-          ],
-          [
-            -76.22,
-            39.37
-          ],
-          [
-            -76.09,
-            39.45
-          ],
-          [
-            -76.14,
-            39.48
-          ],
-          [
-            -75.97,
-            39.51
-          ],
-          [
-            -75.97,
-            39.49
-          ],
-          [
-            -75.92,
-            39.52
-          ],
-          [
-            -75.87,
-            39.52
-          ],
-          [
-            -75.85,
-            39.45
-          ],
-          [
-            -75.94,
-            39.46
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "For the following areas...\nChesapeake Bay north of Pooles Island MD...\n\nAt 711 AM EDT, a strong thunderstorm was located near Turkey Point,\nmoving east at 25 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Boaters in small craft could be thrown overboard by\nsuddenly higher winds and waves capsizing their vessel.\n\nLocations impacted include...\nTurkey Point, Worton Point, Spesutie Island, and Aberdeen Proving\nGround.",
-      "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-18T07:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
@@ -866,160 +1037,6 @@
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.2038572c090b116e982e332206053eaf84462f32.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Marine Weather Statement",
-    "geometry": "Polygon",
-    "location": "Chesapeake Bay north of Pooles Island MD; Chesapeake Bay from Pooles Island to Sandy Point MD; Patapsco River including Baltimore Harbor",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -75.95,
-            39.54
-          ],
-          [
-            -75.97,
-            39.49
-          ],
-          [
-            -75.87,
-            39.54
-          ],
-          [
-            -75.84,
-            39.45
-          ],
-          [
-            -75.94,
-            39.46
-          ],
-          [
-            -76.01,
-            39.4
-          ],
-          [
-            -75.9,
-            39.37
-          ],
-          [
-            -75.88,
-            39.36
-          ],
-          [
-            -76.11,
-            39.37
-          ],
-          [
-            -76.24,
-            39.23
-          ],
-          [
-            -76.65,
-            39.26
-          ],
-          [
-            -76.6,
-            39.3
-          ],
-          [
-            -76.42,
-            39.25
-          ],
-          [
-            -76.3,
-            39.46
-          ],
-          [
-            -76.22,
-            39.48
-          ],
-          [
-            -76.22,
-            39.37
-          ],
-          [
-            -76.09,
-            39.45
-          ],
-          [
-            -76.13,
-            39.52
-          ],
-          [
-            -76,
-            39.53
-          ],
-          [
-            -75.95,
-            39.54
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "The areas affected include...\nChesapeake Bay from Pooles Island to Sandy Point MD...\nChesapeake Bay north of Pooles Island MD...\nPatapsco River including Baltimore Harbor...\n\nAt 614 AM EDT, Doppler radar indicated a strong thunderstorm, capable\nof producing winds to around 30 knots. This thunderstorm was located\nover Middle River, moving east at 25 knots.\n\nLocations impacted include...\nTurkey Point, Hart Miller Island, Gunpowder River, Northeast River,\nWorton Point, Pooles Island, Spesutie Island, and Aberdeen Proving\nGround.",
-      "instruction": "This strong thunderstorm will likely produce winds to around 30\nknots, and could pose a serious hazard for boaters. A special marine\nwarning may eventually be required if this storm strengthens.\nBoaters should consider heading for shore before this strong\nthunderstorm arrives.",
-      "expires": "2026-07-18T07:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.57d594c123cdeb16ce0ce3ee8dd586d4290c1c44.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Flood Advisory",
-    "geometry": "Polygon",
-    "location": "Lee, FL",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -82.14,
-            26.49
-          ],
-          [
-            -82.04,
-            26.47
-          ],
-          [
-            -82.04,
-            26.39
-          ],
-          [
-            -82.23,
-            26.5
-          ],
-          [
-            -82.32,
-            26.71
-          ],
-          [
-            -82.22,
-            26.72
-          ],
-          [
-            -82.14,
-            26.51
-          ],
-          [
-            -82.14,
-            26.49
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southwest Florida, including the following\ncounty, Lee.\n\n* WHEN...Until 800 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 611 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 4 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected\nover the area.\n- Some locations that will experience flooding include...\nUseppa Island.\n- https://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-      "expires": "2026-07-18T08:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
     "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.019.1",
     "type": "weather",
     "severity": "minor",
@@ -1029,141 +1046,6 @@
     "coordinates": {},
     "details": {
       "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SE wind 25 kt. Seas 8 ft. Rain.\n.TONIGHT...S wind 25 kt. Seas 8 ft. Rain.\n.SUN...S wind 20 kt. Seas 8 ft. Rain.\n.SUN NIGHT...SW wind 15 kt. Seas 7 ft.\n.MON...SW wind 20 kt. Seas 6 ft.\n.TUE THROUGH WED...SW wind 25 kt. Seas 11 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.016.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Barren Islands East",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SE wind 15 kt increasing to 25 kt in the afternoon. Seas\n5 ft. Rain.\n.TONIGHT...E wind 30 kt. Seas 7 ft. Rain.\n.SUN...SE wind 20 kt. Seas 6 ft. Rain.\n.SUN NIGHT...SE wind 15 kt. Seas 5 ft.\n.MON...Variable wind 10 kt. Seas 4 ft.\n.TUE...S wind 20 kt. Seas 5 ft.\n.WED...SW wind 20 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.017.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Gore Point to Marmot Island from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 15 kt becoming SE 25 kt in the afternoon. Seas 6\nft.\n.TONIGHT...SE wind 25 kt. Seas 8 ft. Rain.\n.SUN...SE wind 20 kt. Seas 7 ft. Rain.\n.SUN NIGHT...S wind 15 kt. Seas 7 ft.\n.MON THROUGH WED...SW wind 20 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.018.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Marmot Island to Sitkinak out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...S wind 20 kt. Seas 6 ft. Rain.\n.TONIGHT...S wind 25 kt. Seas 7 ft. Rain.\n.SUN...S wind 20 kt. Seas 6 ft.\n.SUN NIGHT...S wind 15 kt. Seas 6 ft.\n.MON...SW wind 20 kt. Seas 6 ft.\n.TUE THROUGH WED...SW wind 25 kt. Seas 8 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.015.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Gale Warning",
-    "geometry": "unknown",
-    "location": "West of Barren Islands Including Kamishak Bay",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SE wind 20 kt increasing to 30 kt in the afternoon. Seas\n8 ft.\n.TONIGHT...E wind 35 kt. Seas 10 ft. Rain.\n.SUN...SE wind 20 kt. Seas 5 ft. Rain.\n.SUN NIGHT...SE wind 20 kt. Seas 5 ft.\n.MON...SE wind 15 kt. Seas 3 ft.\n.TUE THROUGH WED...S wind 20 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Suckling to Cape Cleare from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 15 kt. Seas 5 ft.\n.TONIGHT...SE wind 25 kt. Seas 6 ft.\n.SUN...SE wind 25 kt. Seas 7 ft.\n.SUN NIGHT...SE wind 25 kt. Seas 8 ft.\n.MON...SW wind 25 kt. Seas 7 ft.\n.TUE THROUGH WED...SW wind 15 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Gravel Point to Cape Cleare out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...Variable wind 10 kt. Seas 4 ft.\n.TONIGHT...SE wind 25 kt. Seas 5 ft. Rain.\n.SUN...SE wind 25 kt. Seas 7 ft. Rain.\n.SUN NIGHT...SE wind 25 kt. Seas 8 ft.\n.MON...S wind 25 kt. Seas 7 ft.\n.TUE...SW wind 15 kt. Seas 4 ft.\n.WED...Variable wind 10 kt. Seas 6 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.025.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Kachemak Bay",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...E wind 10 kt becoming SE 15 kt in the afternoon. Seas 2\nft. Rain.\n.TONIGHT...E wind 25 kt. Seas 3 ft. Rain.\n.SUN...E wind 10 kt. Seas 2 ft. Rain.\n.SUN NIGHT...SE wind 10 kt. Seas 2 ft.\n.MON...S wind 15 kt. Seas 2 ft.\n.TUE THROUGH WED...S wind 15 kt. Seas 2 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.006.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Cleare to Gore Point from 15 to 75 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 15 kt. Seas 5 ft.\n.TONIGHT...SE wind 25 kt. Seas 8 ft. Rain.\n.SUN...SE wind 20 kt. Seas 8 ft. Rain.\n.SUN NIGHT...S wind 20 kt. Seas 7 ft.\n.MON...SW wind 15 kt. Seas 6 ft.\n.TUE THROUGH WED...SW wind 20 kt. Seas 7 ft.",
-      "instruction": null,
-      "expires": "2026-07-18T15:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.531605b7a06e20aeae04a95e86f2fc6f8330a0a5.009.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Central and Eastern Prince William Sound",
-    "coordinates": {},
-    "details": {
-      "description": "Coastal Waters Forecast for the Northern Gulf of Alaska Coast\nup to 100 nm out including Kodiak Island and Cook Inlet.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SE wind 10 kt. Seas 2 ft.\n.TONIGHT...E wind 20 kt. Seas 2 ft building to 4 ft after\nmidnight.\nRain.\n.SUN...E wind 25 kt. Seas 6 ft. Rain.\n.SUN NIGHT...SE wind 25 kt. Seas 6 ft.\n.MON...SE wind 25 kt. Seas 6 ft.\n.TUE THROUGH WED...S wind 10 kt. Seas 2 ft.",
       "instruction": null,
       "expires": "2026-07-18T15:15:00-08:00"
     },
