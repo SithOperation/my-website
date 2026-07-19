@@ -1,164 +1,534 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.85c1c2cb8de39d08257914d5aeffcb6cb90d2613.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ba7915bff90739700c5bb3c052e6a733dce6e027.002.1",
     "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
     "geometry": "Polygon",
-    "location": "Vance; Warren",
+    "location": "Henry, VA; Pittsylvania, VA; City of Martinsville, VA",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -77.9,
+            -79.67,
             36.54
           ],
           [
-            -77.9,
-            36.51
+            -80.05,
+            36.55
           ],
           [
-            -77.92,
-            36.44
+            -80.03,
+            36.66
+          ],
+          [
+            -79.74,
+            36.79
+          ],
+          [
+            -79.41,
+            36.88
+          ],
+          [
+            -79.22,
+            36.75
+          ],
+          [
+            -79.67,
+            36.54
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 202 PM EDT, severe thunderstorms were located along a line\nextending from near Keeling to near Price, moving southeast at 25\nmph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nMartinsville...\nChatham...\nBlairs...\nSpencer...\nCallands...\nAxton...\nand Ridgeway.",
+      "instruction": "Prepare immediately for DAMAGING WINDS. For your safety, move to an\ninterior room on the lowest floor of a sturdy building. Stay away\nfrom windows.\n\nWhen it is safe to do so, please send your reports of hail of any\nsize, as well as reports of any wind damage, including downed trees\nor large limbs, to the National Weather Service by calling toll free\nat 1...8 6 6...2 1 5...4 3 2 4. Reports and pictures can also be\nshared on the National Weather Service Blacksburg Facebook page and\non X.",
+      "expires": "2026-07-19T14:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a96d6fa00a897de3abd5f748bb670975e7dcd2f3.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
+    "geometry": "Polygon",
+    "location": "Jackson, AL; Madison, AL; Marshall, AL",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -86.03,
+            34.55
+          ],
+          [
+            -86.37,
+            34.29
+          ],
+          [
+            -86.55,
+            34.54
+          ],
+          [
+            -86.55,
+            34.56
+          ],
+          [
+            -86.58,
+            34.58
+          ],
+          [
+            -86.62,
+            34.64
+          ],
+          [
+            -86.46,
+            34.76
+          ],
+          [
+            -86.03,
+            34.55
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SVRHUN\n\nThe National Weather Service in Huntsville Alabama has issued a\n\n* Severe Thunderstorm Warning for...\nNorthern Marshall County in northeastern Alabama...\nSouthwestern Jackson County in northeastern Alabama...\nSoutheastern Madison County in north central Alabama...\n\n* Until 200 PM CDT.\n\n* At 101 PM CDT, a severe thunderstorm was located near Owens Cross\nRoads, or 7 miles southeast of Huntsville, moving southeast at 15\nmph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage\nto roofs, siding, and trees.\n\n* Locations impacted include...\nSouthern Huntsville, Guntersville, Redstone Arsenal, Owens Cross\nRoads, Grant, Gurley, Woodville, Langston, Paint Rock, and Union\nGrove.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
+      "expires": "2026-07-19T14:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d078bd9dfb1e28e2ef3742fac65f7b288dec6e8c.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Special Marine Warning",
+    "geometry": "Polygon",
+    "location": "S of Currituck Beach Light NC to Oregon Inlet NC out to 20 NM; S of Oregon Inlet NC to Cape Hatteras NC out to 20 NM; Waters from Currituck Beach Light to Oregon Inlet NC from 20 to 60 NM; Waters from Oregon Inlet to Cape Hatteras NC from 20 to 60 NM",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -75.48,
+            35.74
+          ],
+          [
+            -75.6,
+            35.98
+          ],
+          [
+            -74.89,
+            36.05
+          ],
+          [
+            -74.89,
+            35.71
+          ],
+          [
+            -75.48,
+            35.74
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SMWMHX\n\nThe National Weather Service in Newport has issued a\n\n* Special Marine Warning for...\nS of Currituck Beach Light NC to Oregon Inlet NC out to 20 NM...\nS of Oregon Inlet NC to Cape Hatteras NC out to 20 NM...\nWaters from Currituck Beach Light to Oregon Inlet NC from 20 to 60\nNM...\nWaters from Oregon Inlet to Cape Hatteras NC from 20 to 60 NM...\n\n* Until 300 PM EDT.\n\n* At 200 PM EDT, a strong thunderstorm was located near Ar145, or 8\nnm east of Oregon Inlet, moving east at 15 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nAr140 and Ar145.",
+      "instruction": "Frequent lightning is occurring with this storm. If caught on the\nopen water stay below deck if possible, keep away from ungrounded\nmetal objects.",
+      "expires": "2026-07-19T15:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.785549b7dc454c45c5662ff7650c607839d03e0f.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Beach Hazards Statement",
+    "geometry": "unknown",
+    "location": "Southern Schoolcraft",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Dangerous swimming conditions are expected due to high\nwave action and strong rip currents.\n\n* WHERE...Southern Schoolcraft County.\n\n* WHEN...From Monday morning through Monday evening.\n\n* IMPACTS...High wave action and dangerous currents will lead to\nlife threatening swimming conditions. Waves in rapid\nsuccession can tire swimmers quickly.\n\n* ADDITIONAL DETAILS...Current related fatalities and rescues in\nthe past have occurred due to similar wave conditions at\nlocations listed below:\n\nFor Southern Schoolcraft County: Near Lakeview Park and Seul\nChoix Point.",
+      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
+      "expires": "2026-07-20T22:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb4c0c5176b3c9d5bff821083fb8bb0609f630f9.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Alfalfa; Grant; Kay; Noble; Payne; Lincoln; Pottawatomie; Seminole",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 108 expected.\n\n* WHERE...Lincoln, Payne, Pottawatomie, Seminole, Grant, Kay, Noble,\nand Alfalfa Counties.\n\n* WHEN...From 1 PM to 8 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-20T03:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb4c0c5176b3c9d5bff821083fb8bb0609f630f9.001.2",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Hughes; Coal; Atoka; Bryan",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the first Heat Advisory, heat index values up to 107\nexpected. For the second Heat Advisory, heat index values up to 108\nexpected.\n\n* WHERE...Atoka, Bryan, Coal, and Hughes Counties.\n\n* WHEN...For the first Heat Advisory, until 8 PM CDT this evening.\nFor the second Heat Advisory, from 1 PM to 8 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-20T03:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb4c0c5176b3c9d5bff821083fb8bb0609f630f9.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Hughes; Coal; Atoka; Bryan",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the first Heat Advisory, heat index values up to 107\nexpected. For the second Heat Advisory, heat index values up to 108\nexpected.\n\n* WHERE...Atoka, Bryan, Coal, and Hughes Counties.\n\n* WHEN...For the first Heat Advisory, until 8 PM CDT this evening.\nFor the second Heat Advisory, from 1 PM to 8 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-20T03:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.bb4c0c5176b3c9d5bff821083fb8bb0609f630f9.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Jefferson; Love; Marshall",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 107 expected.\n\n* WHERE...Marshall, Jefferson, and Love Counties.\n\n* WHEN...Until 8 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-19T20:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.cebdabb4cbc44c06d4372a014da1e90979a5365a.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Autauga; Lowndes",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -86.84,
+            32.24
+          ],
+          [
+            -86.85,
+            32.26
+          ],
+          [
+            -86.84,
+            32.3
+          ],
+          [
+            -86.83,
+            32.3
+          ],
+          [
+            -86.84,
+            32.31
+          ],
+          [
+            -86.83,
+            32.34
+          ],
+          [
+            -86.81,
+            32.35
+          ],
+          [
+            -86.81,
+            32.37
+          ],
+          [
+            -86.77,
+            32.49
+          ],
+          [
+            -86.6,
+            32.49
+          ],
+          [
+            -86.57,
+            32.22
+          ],
+          [
+            -86.84,
+            32.24
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1259 PM CDT, Doppler radar was tracking a strong thunderstorm near\nAutaugaville, or 13 miles north of Mosses, moving south at 10 mph.\n\nHAZARD...Wind gusts up to 40 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nAutaugaville, White Hall, Lowndesboro, Benton, Mulberry, and Robert\nF. Henry Lock And Dam.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a425aa083a6af73504a6eafcfdb5865b686bdc57.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Davie",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.4,
+            35.89
+          ],
+          [
+            -80.42,
+            35.88
+          ],
+          [
+            -80.39,
+            35.87
+          ],
+          [
+            -80.39,
+            35.85
+          ],
+          [
+            -80.42,
+            35.85
+          ],
+          [
+            -80.43,
+            35.83
+          ],
+          [
+            -80.46,
+            35.83
+          ],
+          [
+            -80.48,
+            35.84
+          ],
+          [
+            -80.49,
+            35.83
+          ],
+          [
+            -80.47,
+            35.83
+          ],
+          [
+            -80.47,
+            35.8
+          ],
+          [
+            -80.57,
+            35.84
+          ],
+          [
+            -80.55,
+            35.93
+          ],
+          [
+            -80.37,
+            35.93
+          ],
+          [
+            -80.38,
+            35.91
+          ],
+          [
+            -80.37,
+            35.89
+          ],
+          [
+            -80.4,
+            35.89
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 159 PM EDT, Doppler radar was tracking a strong thunderstorm 5\nmiles east of Mocksville, moving east at 10 mph.\n\nHAZARD...Wind gusts up to 50 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to outdoor objects is\npossible.\n\nLocations impacted include...\nMocksville, Fork Church, and Advance.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-19T14:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e008b78164a34a6b37e1d52a46afd4b35d38ed7c.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Cherokee",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -85.43,
+            34.14
+          ],
+          [
+            -85.43,
+            34.12
+          ],
+          [
+            -85.72,
+            34.07
+          ],
+          [
+            -85.67,
+            34.3
+          ],
+          [
+            -85.47,
+            34.33
+          ],
+          [
+            -85.43,
+            34.14
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1257 PM CDT, Doppler radar was tracking a strong thunderstorm over\nCedar Bluff. This thunderstorm was nearly stationary.\n\nHAZARD...Wind gusts up to 40 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nCentre, Cedar Bluff, Centre Municipal Airport, Gaylesville, Tennala,\nCornwall Furnace Park, Eastern Weiss Lake, Moshat, Western Weiss\nLake, Fullerton, Howells Crossroads, and Waterhouse.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.0011c24b82f86249dde02d8d72fb8e30ed19c8f1.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Arco/Mud Lake Desert; Upper Snake River Plain; Lower Snake River Plain; Marsh and Arbon Highlands; Franklin/Eastern Oneida Region",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Temperatures up to 100 expected.\n\n* WHERE...Arco/Mud Lake Desert, Franklin/Eastern Oneida Region, Lower\nSnake River Plain, Marsh and Arbon Highlands, and Upper Snake River\nPlain.\n\n* WHEN...From noon to 8 PM MDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-20T06:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.76a4ede654cf41cd51ac4d88a333b0d52ff3d694.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Severe Thunderstorm Warning",
+    "geometry": "Polygon",
+    "location": "Warren, NC",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -77.94,
+            36.3
+          ],
+          [
+            -78.01,
+            36.2
+          ],
+          [
+            -78.05,
+            36.21
+          ],
+          [
+            -78.11,
+            36.21
+          ],
+          [
+            -78.13,
+            36.25
+          ],
+          [
+            -78.16,
+            36.24
+          ],
+          [
+            -78.17,
+            36.26
+          ],
+          [
+            -78.19,
+            36.25
+          ],
+          [
+            -78.23,
+            36.26
+          ],
+          [
+            -78.31,
+            36.27
+          ],
+          [
+            -78.28,
+            36.3
+          ],
+          [
+            -78.29,
+            36.39
           ],
           [
             -77.91,
-            36.38
+            36.4
           ],
           [
-            -77.93,
-            36.34
-          ],
-          [
-            -77.93,
-            36.33
-          ],
-          [
-            -78.41,
-            36.33
-          ],
-          [
-            -78.45,
-            36.54
-          ],
-          [
-            -77.9,
-            36.54
+            -77.94,
+            36.3
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 108 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from 9 miles west of Norlina to 6 miles east of\nWarrenton. Movement was east at 25 mph.\n\nHAZARD...Wind gusts up to 40 mph, torrential rain, and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nHenderson, Warrenton, Norlina, Littleton, Middleburg, Macon, Steele\nCreek Marina & Campground, Kerr Lake, Lake Gaston, and Wise.\n\nThis includes Interstate 85 between Mile Markers 215 and 233.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\ncentral North Carolina.",
-      "expires": "2026-07-19T14:00:00-04:00"
+      "description": "SVRRAH\n\nThe National Weather Service in Raleigh has issued a\n\n* Severe Thunderstorm Warning for...\nSouthern Warren County in central North Carolina...\n\n* Until 230 PM EDT.\n\n* At 158 PM EDT, a severe thunderstorm was located near Warrenton,\nmoving east at 20 mph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nWarrenton, Arcola, and Afton.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nTorrential rainfall is occurring with this storm, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+      "expires": "2026-07-19T14:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e573b79ee2b6200a37f8ac5a48bbef323d0b4a82.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.0011c24b82f86249dde02d8d72fb8e30ed19c8f1.002.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "North and Central Sebastian; Southern Crawford; Central and Southern Franklin; Southern Sebastian; Washington; Nowata; Craig; Ottawa; Tulsa; Rogers; Mayes; Delaware; Creek; Okfuskee; Okmulgee; Wagoner; Cherokee; Muskogee; McIntosh; Pittsburg; Haskell; Latimer; Northern Le Flore; Northeast Osage; Central and Southern Sequoyah; Central Le Flore; Southeast Osage",
+    "location": "Shoshone/Lava Beds; Eastern Magic Valley; Southern Hills/Albion Mountains; Raft River Region",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Heat index values 105 to 110 degrees expected today and\nMonday.\n\n* WHERE...Portions of northwest and west central Arkansas and east\ncentral, northeast, and southeast Oklahoma.\n\n* WHEN...Heat Advisory until 8 PM CDT this evening and from 1 PM to 8\nPM CDT Monday.\n\n* IMPACTS...Heat related illnesses are possible especially impacting\nthose not acclimated to the conditions or those performing\nstrenuous activities.",
-      "instruction": "Take extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-20T05:00:00-05:00"
+      "description": "* WHAT...Temperatures up to 100 expected.\n\n* WHERE...Eastern Magic Valley, Shoshone/Lava Beds, Raft River\nRegion, and Southern Hills/Albion Mountains.\n\n* WHEN...From noon to 8 PM MDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-20T06:00:00-06:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e573b79ee2b6200a37f8ac5a48bbef323d0b4a82.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Northern Crawford; Northern Franklin; Pawnee; Western Osage; Northern Sequoyah; Southern Le Flore",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values 105 to 110 degrees.\n\n* WHERE...In Arkansas, Northern Crawford and Northern Franklin\nCounties. In Oklahoma, Northern Sequoyah, Pawnee, Western Osage,\nand Southern Le Flore Counties.\n\n* WHEN...From 1 PM to 8 PM CDT Monday.\n\n* IMPACTS...Heat related illnesses are possible especially impacting\nthose not acclimated to the conditions or those performing\nstrenuous activities.",
-      "instruction": "Take extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-20T05:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e573b79ee2b6200a37f8ac5a48bbef323d0b4a82.001.2",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "North and Central Sebastian; Southern Crawford; Central and Southern Franklin; Southern Sebastian; Washington; Nowata; Craig; Ottawa; Tulsa; Rogers; Mayes; Delaware; Creek; Okfuskee; Okmulgee; Wagoner; Cherokee; Muskogee; McIntosh; Pittsburg; Haskell; Latimer; Northern Le Flore; Northeast Osage; Central and Southern Sequoyah; Central Le Flore; Southeast Osage",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values 105 to 110 degrees expected today and\nMonday.\n\n* WHERE...Portions of northwest and west central Arkansas and east\ncentral, northeast, and southeast Oklahoma.\n\n* WHEN...Heat Advisory until 8 PM CDT this evening and from 1 PM to 8\nPM CDT Monday.\n\n* IMPACTS...Heat related illnesses are possible especially impacting\nthose not acclimated to the conditions or those performing\nstrenuous activities.",
-      "instruction": "Take extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-20T05:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d7067a99d64b21951c3a8735c82b29a69f378633.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Lower Columbia River; Tualatin Valley; Inner Portland Metro; East Portland Metro; East Central Willamette Valley; West Columbia River Gorge of Oregon above 500 ft; West Columbia River Gorge I-84 Corridor; Upper Hood River Valley; Central Columbia River Gorge I-84 Corridor; Cowlitz County Lowlands; North Clark County Lowlands; Inner Vancouver Metro; East Clark County Lowlands; West Columbia River Gorge - SR 14; Central Columbia River Gorge - SR 14",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Temperatures 95 to 98 expected.\n\n* WHERE...Western and Central Columbia River Gorge, the Corbett area\nand the Hood River Valley, Portland Metro Lowlands, Greater\nVancouver Metro, Lower Columbia River and Cowlitz River Valleys,\nand East Central Willamette Valley.\n\n* WHEN...From 10 AM Tuesday to 11 PM PDT Wednesday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Smoke from fires south of the region moving\ninto the area could result in cooler daytime high temperatures\nthan currently forecasted.",
-      "instruction": "Drink plenty of fluids, stay in a cool place during the heat of the\nday, stay out of the sunshine, and check up on relatives and\nneighbors. For those without air conditioning, use fans to keep air\nmoving. Keeps windows closed during the day and open at night,\nunless air quality is degraded due to wildfire smoke.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nMonitor the latest forecasts and warnings for updates.",
-      "expires": "2026-07-19T22:15:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6b616a41b89d5f1ab99c23c03e0e569cff730ffb.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Inland Onslow; Coastal Onslow",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -77.47,
-            34.51
-          ],
-          [
-            -77.45,
-            34.69
-          ],
-          [
-            -77.12,
-            34.71
-          ],
-          [
-            -77.16,
-            34.44
-          ],
-          [
-            -77.47,
-            34.51
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 107 PM EDT, Doppler radar was tracking a strong thunderstorm near\nSneads Ferry, or near Camp Lejeune Center, moving east at 25 mph.\n\nHAZARD...Wind gusts up to 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nJacksonville, Camp Lejeune Center, Swansboro, Hammocks Beach, Onslow\nBeach, Hammocks Beach State Park, Sneads Ferry, and Sea View Pier.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\neastern North Carolina.",
-      "expires": "2026-07-19T13:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-47643",
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-44092",
     "type": "weather",
     "severity": "unknown",
     "title": "Test Message",
@@ -168,927 +538,375 @@
     "details": {
       "description": "Monitoring message only. Please disregard.",
       "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-19T17:15:33+00:00"
+      "expires": "2026-07-19T18:05:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e01ff962d11dbae82f843d4c432bd72d9229ed10.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.a8c2aa6d0561b998d16adf57b8dfa38a986a64c0.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Special Weather Statement",
     "geometry": "Polygon",
-    "location": "Alamance; Orange; Chatham",
+    "location": "Clarke; Oglethorpe",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -79.44,
-            35.83
+            -83.2,
+            33.73
           ],
           [
-            -79.47,
-            35.98
+            -83.23,
+            33.74
           ],
           [
-            -79.38,
-            36.04
-          ],
-          [
-            -79.06,
-            36.02
-          ],
-          [
-            -79.07,
-            35.82
-          ],
-          [
-            -79.44,
-            35.83
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 104 PM EDT, Doppler radar was tracking a cluster of strong\nthunderstorms 9 miles south of Graham, moving east at 15 mph.\n\nHAZARD...Wind gusts up to 50 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nChapel Hill, Carrboro, Swepsonville, Snow Camp, Sutphin, Cane Creek\nReservoir, and Saxapahaw.\n\nThis includes Interstate 40 between Mile Markers 263 and 266.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\ncentral North Carolina.",
-      "expires": "2026-07-19T13:45:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.730093701ad0730016f3eb0bcc003f35bfd71348.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Franklin; Henry",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -80.02,
-            36.84
-          ],
-          [
-            -79.83,
-            36.98
-          ],
-          [
-            -79.63,
-            36.92
-          ],
-          [
-            -79.69,
-            36.66
-          ],
-          [
-            -80.02,
-            36.84
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "At 103 PM EDT, Doppler radar was tracking a strong thunderstorm over\nSydnorsville, moving southeast at 25 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nSydnorsville...\nSnow Creek...\nLeatherwood...\nSontag...\nMountain Valley...\nFigsboro...\nand Oak Level.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nThis storm may intensify, so be certain to monitor local radio\nstations and available television stations for additional information\nand possible warnings from the National Weather Service.\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\nnorth central North Carolina...and south central, central,\nsouthwestern and west central Virginia.",
-      "expires": "2026-07-19T13:30:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.74f3507c3c31245427fb1876040beb2ff54c167a.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Watch",
-    "geometry": "unknown",
-    "location": "Alamance, NC; Anson, NC; Chatham, NC; Cumberland, NC; Davidson, NC; Durham, NC; Edgecombe, NC; Forsyth, NC; Franklin, NC; Granville, NC; Guilford, NC; Halifax, NC; Harnett, NC; Hoke, NC; Johnston, NC; Lee, NC; Montgomery, NC; Moore, NC; Nash, NC; Orange, NC; Person, NC; Randolph, NC; Richmond, NC; Sampson, NC; Scotland, NC; Stanly, NC; Vance, NC; Wake, NC; Warren, NC; Wayne, NC; Wilson, NC",
-    "coordinates": {},
-    "details": {
-      "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n498 IN EFFECT UNTIL 8 PM EDT THIS EVENING FOR THE FOLLOWING AREAS\n\nIN NORTH CAROLINA THIS WATCH INCLUDES 31 COUNTIES\n\nIN CENTRAL NORTH CAROLINA\n\nALAMANCE              ANSON                 CHATHAM\nCUMBERLAND            DAVIDSON              DURHAM\nEDGECOMBE             FORSYTH               FRANKLIN\nGRANVILLE             GUILFORD              HALIFAX\nHARNETT               HOKE                  JOHNSTON\nLEE                   MONTGOMERY            MOORE\nNASH                  ORANGE                PERSON\nRANDOLPH              RICHMOND              SAMPSON\nSCOTLAND              STANLY                VANCE\nWAKE                  WARREN                WAYNE\nWILSON\n\nTHIS INCLUDES THE CITIES OF ABERDEEN, ALBEMARLE, ANGIER, APEX,\nARCHDALE, ASHEBORO, BUIES CREEK, BURLINGTON, CAMP MACKALL,\nCARRBORO, CARTHAGE, CARY, CHAPEL HILL, CLAYTON, CLINTON,\nCREEDMOOR, DUNN, DURHAM, ELLERBE, ENFIELD, ERWIN, FAYETTEVILLE,\nFRANKLINTON, GOLDSBORO, GRAHAM, GREENSBORO, HENDERSON,\nHIGH POINT, HILLSBOROUGH, HOPE MILLS, KITTRELL, KNIGHTDALE,\nLAURINBURG, LEXINGTON, LILLINGTON, LOUISBURG, MEBANE, NASHVILLE,\nNORLINA, OXFORD, PINEHURST, PITTSBORO, POLKTON, PRINCEVILLE,\nRAEFORD, RALEIGH, ROANOKE RAPIDS, ROCKINGHAM, ROCKY MOUNT,\nROSEBORO, ROUGEMONT, ROXBORO, SANFORD, SCOTLAND NECK, SELMA,\nSILER CITY, SMITHFIELD, SOUTHERN PINES, SPRING HOPE, SPRING LAKE,\nTARBORO, THOMASVILLE, TROY, WADESBORO, WAGRAM, WAKE FOREST,\nWARRENTON, WILSON, AND WINSTON-SALEM.",
-      "instruction": null,
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.743d9bf6b6e173b0c199cd892062f940a8ccde80.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Clarke; Oconee; Oglethorpe; Walton; Morgan",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -83.22,
-            33.81
-          ],
-          [
-            -83.54,
-            33.7
-          ],
-          [
-            -83.64,
+            -83.29,
             33.83
           ],
           [
-            -83.43,
-            34.02
+            -83.28,
+            33.85
           ],
           [
-            -83.39,
-            34.03
+            -83.31,
+            33.85
+          ],
+          [
+            -83.34,
+            33.89
           ],
           [
             -83.22,
-            33.81
+            34.01
+          ],
+          [
+            -83.22,
+            34
+          ],
+          [
+            -83.19,
+            34.01
+          ],
+          [
+            -82.99,
+            33.92
+          ],
+          [
+            -83.2,
+            33.73
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 100 PM EDT, a strong thunderstorm was over North High Shoals, or 7\nmiles southwest of Watkinsville, moving northeast at 10 mph.\n\nHAZARD...40 to 50 mph wind, pea sized hail and frequent cloud to\nground lightning.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect minor damage to tree limbs and blowing around of\nlight, unsecured objects.\n\nLocations impacted include...\nWatkinsville, Athens, Bogart, North High Shoals, Bostwick, Good Hope,\nBishop, Athens-Clarke County, Whitehall, Westgate Park, James Holland\nYouth Sports Cmpx, Beechwood Hills, Oconee Heights, Eastville,\nBarnett Shoals, State Botanical Garden Of Ga, and Farmington.",
+      "description": "At 154 PM EDT, a strong thunderstorm was over Arnoldsville, or 7\nmiles northwest of Lexington. This storm was nearly stationary.\n\nHAZARD...40 to 50 mph wind, up to penny sized hail and frequent\ncloud to ground lightning.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect minor damage to tree limbs and blowing around of\nlight, unsecured objects.\n\nLocations impacted include...\nLexington, Winterville, Crawford, Arnoldsville, Maxeys, Athens-Clarke\nCounty, Stephens, Dunlap, Smithonia, and Hutchings.",
       "instruction": "People outdoors should seek shelter immediately. If you can hear\nthunder, you are close enough to be struck by lightning.",
-      "expires": "2026-07-19T13:45:00-04:00"
+      "expires": "2026-07-19T14:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.eefe9afe2e872fa630d0181bc4a4ec826b786325.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Watch",
-    "geometry": "unknown",
-    "location": "Caswell, NC; Rockingham, NC; Stokes, NC; Surry, NC; Yadkin, NC; Amherst, VA; Appomattox, VA; Bedford, VA; Buckingham, VA; Campbell, VA; Charlotte, VA; Franklin, VA; Halifax, VA; Henry, VA; Patrick, VA; Pittsylvania, VA; City of Danville, VA; City of Lynchburg, VA; City of Martinsville, VA",
-    "coordinates": {},
-    "details": {
-      "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n498 IN EFFECT UNTIL 8 PM EDT THIS EVENING FOR THE FOLLOWING AREAS\n\nIN NORTH CAROLINA THIS WATCH INCLUDES 5 COUNTIES\n\nIN NORTH CENTRAL NORTH CAROLINA\n\nCASWELL               ROCKINGHAM            STOKES\nSURRY\n\nIN NORTHWEST NORTH CAROLINA\n\nYADKIN\n\nIN VIRGINIA THIS WATCH INCLUDES 14 COUNTIES\n\nIN CENTRAL VIRGINIA\n\nAMHERST               APPOMATTOX            BUCKINGHAM\nCAMPBELL              CITY OF LYNCHBURG\n\nIN SOUTH CENTRAL VIRGINIA\n\nBEDFORD               CHARLOTTE             CITY OF DANVILLE\nCITY OF MARTINSVILLE  HALIFAX               HENRY\nPITTSYLVANIA\n\nIN SOUTHWEST VIRGINIA\n\nPATRICK\n\nIN WEST CENTRAL VIRGINIA\n\nFRANKLIN",
-      "instruction": null,
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.257c5ddf9d9176829c1a3d8a5181e313491893f9.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.79a902031a041543e0bd2dbc1535a3c992a09e10.001.1",
     "type": "weather",
     "severity": "unknown",
     "title": "Air Quality Alert",
     "geometry": "unknown",
-    "location": "Greene; Macoupin; Montgomery; Fayette; Adams; Brown; Pike",
+    "location": "Elkhart; Lagrange; Steuben; Noble; De Kalb; Starke; Pulaski; Marshall; Fulton; Whitley; Allen; White; Cass; Miami; Wabash; Huntington; Wells; Adams; Grant; Blackford; Jay; Northern La Porte; Eastern St. Joseph; Northern Kosciusko; Southern La Porte; Western St. Joseph; Southern Kosciusko",
     "coordinates": {},
     "details": {
-      "description": "The Illinois Environmental Protection Agency in Springfield Illinois\nis forecasting unhealthy conditions for sensitive groups (USG) for\nsmoke until midnight CDT Monday night.\n\nActive children and adults, especially people with pulmonary or\nrespiratory disease such as asthma, should limit prolonged outdoor\nactivity.\n\nAir quality forecasts and tips on how you can reduce your emissions\ncan be found at www.airnow.gov.\n\nMedia Contact...217 558 1536.",
+      "description": "The officials at the Indiana Department of Environmental Management\nhave declared an Air Quality Action Day, in effect for\nSunday and Monday, July 19 and 20.\n\nAn Air Quality Action Day for PM 2.5 has been issued. Fine\nparticulate levels are expected to be in the Unhealthy to unhealthy\nfor sensitive groups range. Active children and adults, and people\nwith respiratory disease, such as asthma should limit prolonged\noutdoor exposure.\n\nHere are some recommended actions that the public can take:\n\n*Due to observed and forecasted high concentrations of PM 2.5 values\nin the area, recommendations are for the public to avoid or limit\noutdoor exposure to wildfire smoke, reduce or avoid exertion or\nheavy work outdoors, and keep windows and doors closed as much as\npossible.\n\nFor additional information, please visit the IDEM Smog page at:\n\nhttp://www.in.gov/idem/airmonitoring/smogwatch/",
       "instruction": null,
-      "expires": "2026-07-20T12:00:00-05:00"
+      "expires": "2026-07-21T00:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13e709464023a0ba2511ae7aca7b1b643f839e93.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Boston Harbor; Narragansett Bay",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 10 to 15 kt and waves around 5 feet.\n\n* WHERE...In Massachusetts coastal waters, Boston Harbor. In\nRhode Island coastal waters, Narragansett Bay.\n\n* WHEN...Until 2 PM EDT this afternoon.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-19T14:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13e709464023a0ba2511ae7aca7b1b643f839e93.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Cod Bay; Nantucket Sound; Vineyard Sound; Buzzards Bay; Rhode Island Sound; Block Island Sound",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds around 10 kt and seas 3 to 5 feet.\n\n* WHERE...Portions of Massachusetts coastal waters and Rhode\nIsland coastal waters.\n\n* WHEN...Until 2 PM EDT this afternoon.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-19T14:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13e709464023a0ba2511ae7aca7b1b643f839e93.001.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters from Provincetown MA to Chatham MA to Nantucket MA out 20 NM; Coastal Waters extending out to 25 NM South of Marthas Vineyard and Nantucket; Coastal Waters from Montauk NY to Marthas Vineyard extending out to 20 NM South of Block Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 5 to 10 kt and seas 3 to 5 feet.\n\n* WHERE...In Massachusetts coastal waters, Coastal waters from\nProvincetown MA to Chatham MA to Nantucket MA out 20 NM and\nCoastal Waters extending out to 25 NM South of Marthas\nVineyard and Nantucket. In Rhode Island coastal waters,\nCoastal Waters from Montauk NY to Marthas Vineyard extending\nout to 20 NM South of Block Island.\n\n* WHEN...Until 8 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.13e709464023a0ba2511ae7aca7b1b643f839e93.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Coastal waters east of Ipswich Bay and the Stellwagen Bank National Marine Sanctuary; Massachusetts Bay and Ipswich Bay",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 10 to 15 kt and seas 3 to 5 feet.\n\n* WHERE...Coastal waters east of Ipswich Bay and the Stellwagen\nBank National Marine Sanctuary and Massachusetts Bay and\nIpswich Bay.\n\n* WHEN...Until 2 PM EDT this afternoon.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-19T14:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d0b4b889526381071cfd0ef5c7cb4e312e5dcb1e.001.1",
-    "type": "weather",
-    "severity": "unknown",
-    "title": "Air Quality Alert",
-    "geometry": "unknown",
-    "location": "Knox; Stark; Peoria; Marshall; Woodford; Fulton; Tazewell; McLean; Schuyler; Mason; Logan; De Witt; Piatt; Champaign; Vermilion; Cass; Menard; Scott; Morgan; Sangamon; Christian; Macon; Moultrie; Douglas; Coles; Edgar; Shelby; Cumberland; Clark; Effingham; Jasper; Crawford; Clay; Richland; Lawrence",
-    "coordinates": {},
-    "details": {
-      "description": "The Illinois Environmental Protection Agency has issued an Areawide\nAir Pollution Action Day for Monday July 20th for portions of\nIllinois. This is in addition to the ongoing Areawide Air Pollution\nAction Day in effect today July 19th for the same areas.\n\nAn Areawide Air Pollution Action Day is declared when weather\nconditions are such that widespread ozone and or particulate levels\nare forecast to be at OR ABOVE the Unhealthy for Sensitive Groups\n(USG) category in all or nearly all Illinois AQI forecast sectors.\n\nAreas both inside and outside of the Action Day coverage area are\nlikely to see smoke/particulates to a varying degree and duration\ntoday and Monday with smoke likely decreasing from southwest to\nnortheast through the day Monday. Those with air quality concerns or\nanyone in Illinois with outdoor plans are encouraged to check\ncurrent NowCast readings or sign up for EnviroFlash alerts on AirNow.\ngov. Before going outside, checking the NowCast AQI will help\nidentify periods of both poor and cleaner air quality regardless of\nthe level of the daily 24-hour AQI forecast.\n\nAQI Category Guidance\nUnhealthy for Sensitive Groups (USG) - Members of sensitive groups\nmay experience health effects. The general public is less likely to\nbe affected. Sensitive groups: Make outdoor activities shorter and\nless intense. Its OK to be active outdoors, but take more breaks.\nWatch for symptoms such as coughing or shortness of breath. People\nwith asthma: Follow your asthma action plan and keep quick relief\nmedicine handy. People with heart disease: Symptoms such as\npalpitations, shortness of breath, or unusual fatigue may indicate a\nserious problem. If you have any of these, contact your health care\nprovider. Unhealthy - Sensitive groups: Avoid long or intense outdoor\nactivities. Consider rescheduling or moving activities indoors.\nEveryone else: Reduce long or intense activities. Take more breaks\nduring outdoor activities.\n\nMedia Contact... Illinois EPA",
-      "instruction": null,
-      "expires": "2026-07-20T15:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c8372778e2850d51537b9c9cccf16175af4507e7.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.f67543cc1ad64d5c435e5975aaa65d728bafb369.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Special Weather Statement",
     "geometry": "Polygon",
-    "location": "Iredell; Rowan",
+    "location": "Morgan; Roane",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.66,
-            35.61
+            -84.72,
+            35.88
           ],
           [
-            -80.94,
-            35.63
+            -84.71,
+            35.89
           ],
           [
-            -80.97,
-            35.67
+            -84.68,
+            35.91
           ],
           [
-            -80.98,
-            35.68
+            -84.72,
+            35.99
           ],
           [
-            -81,
-            35.71
+            -84.67,
+            36.08
           ],
           [
-            -81.02,
-            35.71
+            -84.48,
+            36.1
           ],
           [
-            -81.02,
-            35.76
+            -84.59,
+            35.84
           ],
           [
-            -80.67,
-            35.83
-          ],
-          [
-            -80.66,
-            35.61
+            -84.72,
+            35.88
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 1258 PM EDT, Doppler radar was tracking a strong thunderstorm 5\nmiles south of Statesville, or over Troutman, moving east at 15 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nStatesville, Troutman, Cleveland, Lake Norman State Park,\nMooresville, Lake Norman, and Mount Ulla.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.",
-      "expires": "2026-07-19T13:30:00-04:00"
+      "description": "At 154 PM EDT, Doppler radar was tracking a strong thunderstorm near\nRockwood, moving southeast at 10 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nRockwood, Midtown, Harriman, Oakdale, Pine Orchard, and Frozen Head\nState Park.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+      "expires": "2026-07-19T14:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8447c46bcaa3a5f1aad1573f1c6c6fe36778e69b.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.c925970ba200dfd965db31c67d0847069449d31a.001.1",
     "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Watch",
-    "geometry": "unknown",
-    "location": "Chesapeake Bay from Windmill Point to New Point Comfort VA; Chesapeake Bay from New Point Comfort to Little Creek VA; Currituck Sound; Chesapeake Bay from Little Creek VA to Cape Henry VA including the Chesapeake Bay Bridge Tunnel; York River; James River from Jamestown to the James River Bridge; James River from JRB to HRBT, Including the Elizabeth River; Coastal waters from Parramore Island to Cape Charles Light VA out 20 NM; Coastal Waters from Cape Charles Light to Virginia-North Carolina border out 20 NM; Coastal waters from NC VA border to Currituck Beach Light NC out 20 NM",
-    "coordinates": {},
+    "severity": "minor",
+    "title": "Marine Weather Statement",
+    "geometry": "Polygon",
+    "location": "Tampa Bay waters",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -82.39,
+            27.72
+          ],
+          [
+            -82.43,
+            27.71
+          ],
+          [
+            -82.47,
+            27.61
+          ],
+          [
+            -82.64,
+            27.65
+          ],
+          [
+            -82.57,
+            28.02
+          ],
+          [
+            -82.5,
+            27.98
+          ],
+          [
+            -82.41,
+            27.99
+          ],
+          [
+            -82.33,
+            27.88
+          ],
+          [
+            -82.39,
+            27.72
+          ]
+        ]
+      ]
+    },
     "details": {
-      "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n498 IN EFFECT UNTIL 8 PM EDT THIS EVENING FOR THE FOLLOWING AREAS\n\nTHIS WATCH INCLUDES THE FOLLOWING ADJACENT COASTAL WATERS\n\nCHESAPEAKE BAY FROM WINDMILL POINT TO NEW POINT COMFORT VA\nCHESAPEAKE BAY FROM NEW POINT COMFORT TO LITTLE CREEK VA\nCURRITUCK SOUND\nCHESAPEAKE BAY FROM LITTLE CREEK VA TO CAPE HENRY VA INCLUDING\nTHE CHESAPEAKE BAY BRIDGE TUNNEL\nYORK RIVER\nJAMES RIVER FROM JAMESTOWN TO THE JAMES RIVER BRIDGE\nJAMES RIVER FROM JRB TO HRBT, INCLUDING THE ELIZABETH RIVER\nCOASTAL WATERS FROM PARRAMORE ISLAND TO CAPE CHARLES LIGHT VA OUT\n20 NM\nCOASTAL WATERS FROM CAPE CHARLES LIGHT TO VIRGINIA-NORTH CAROLINA\nBORDER OUT 20 NM\nCOASTAL WATERS FROM NC VA BORDER TO CURRITUCK BEACH LIGHT NC OUT\n20 NM",
-      "instruction": null,
-      "expires": "2026-07-19T20:00:00-04:00"
+      "description": "The areas affected include...\nTampa Bay waters...\n\nAt 153 PM EDT, Doppler radar indicated a strong thunderstorm, capable\nof producing winds to around 30 knots. This thunderstorm was located\nover Tampa Bay, moving north at 25 knots.",
+      "instruction": "Mariners can expect gusty winds to around 30 knots, locally higher\nwaves, and lightning strikes. Boaters should seek safe harbor\nimmediately until this storm passes.",
+      "expires": "2026-07-19T14:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c24c8a3936d509101248a01bcf7b791f24cc8e09.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Watch",
-    "geometry": "unknown",
-    "location": "Beaufort, NC; Carteret, NC; Craven, NC; Dare, NC; Duplin, NC; Greene, NC; Hyde, NC; Jones, NC; Lenoir, NC; Martin, NC; Onslow, NC; Pamlico, NC; Pitt, NC; Tyrrell, NC; Washington, NC",
-    "coordinates": {},
-    "details": {
-      "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n498 IN EFFECT UNTIL 8 PM EDT THIS EVENING FOR THE FOLLOWING AREAS\n\nIN NORTH CAROLINA THIS WATCH INCLUDES 15 COUNTIES\n\nIN EASTERN NORTH CAROLINA\n\nBEAUFORT              CARTERET              CRAVEN\nDARE                  DUPLIN                GREENE\nHYDE                  JONES                 LENOIR\nMARTIN                ONSLOW                PAMLICO\nPITT                  TYRRELL               WASHINGTON\n\nTHIS INCLUDES THE CITIES OF ARAPAHOE, ATLANTIC BEACH,\nEMERALD ISLE, AURORA, BATH, BAYBORO, BEAUFORT, BELHAVEN, BETHEL,\nBEULAVILLE, BUXTON, CHOCOWINITY, COLUMBIA, COVE CITY, CRESWELL,\nENGELHARD, FAIRFIELD, FAISON, FARMVILLE, GREENVILLE, GRIFTON,\nGRIMESLAND, GUM NECK, HAVELOCK, HOOKERTON, JACKSONVILLE,\nJAMESVILLE, KENANSVILLE, KINSTON, KITTY HAWK, LA GRANGE, MANTEO,\nMAYSVILLE, MOREHEAD CITY, NAGS HEAD, NEW BERN, NEWPORT,\nNORTH TOPSAIL BEACH, OAK CITY, OCRACOKE, ORIENTAL, PINK HILL,\nPLYMOUTH, POLLOCKSVILLE, RICHLANDS, ROBERSONVILLE, RODANTHE,\nROPER, SCRANTON, SNOW HILL, STUMPY POINT, SWANQUARTER, SWANSBORO,\nTRENTON, VANCEBORO, VANDEMERE, WALLACE, WALSTONBURG, WARSAW,\nWASHINGTON, AND WILLIAMSTON.",
-      "instruction": null,
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c24c8a3936d509101248a01bcf7b791f24cc8e09.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Watch",
-    "geometry": "unknown",
-    "location": "Alligator River; Pamlico Sound; Pamlico and Pungo Rivers; Neuse and Bay Rivers; S of Currituck Beach Light NC to Oregon Inlet NC out to 20 NM; S of Oregon Inlet NC to Cape Hatteras NC out to 20 NM; S of Cape Hatteras NC to Ocracoke Inlet NC out to 20 NM; S of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM; S of Cape Lookout NC to Surf City NC out to 20 NM; Albemarle Sound; Croatan and Roanoke Sounds",
-    "coordinates": {},
-    "details": {
-      "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n498 IN EFFECT UNTIL 8 PM EDT THIS EVENING FOR THE FOLLOWING AREAS\n\nTHIS WATCH INCLUDES THE FOLLOWING ADJACENT COASTAL WATERS\n\nALLIGATOR RIVER       PAMLICO SOUND\nPAMLICO AND PUNGO RIVERS                    NEUSE AND BAY RIVERS\nS OF CURRITUCK BEACH LIGHT TO OREGON INLET NC OUT 20 NM\nS OF OREGON INLET TO CAPE HATTERAS NC OUT 20 NM\nS OF CAPE HATTERAS TO OCRACOKE INLET NC OUT 20 NM\nINCLUDING THE MONITOR NATIONAL MARINE SANCTUARY\nS OF OCRACOKE INLET TO CAPE LOOKOUT NC OUT 20 NM\nS OF CAPE LOOKOUT TO N OF SURF CITY NC OUT 20 NM\nALBEMARLE SOUND       CROATAN AND ROANOKE SOUNDS",
-      "instruction": null,
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8447c46bcaa3a5f1aad1573f1c6c6fe36778e69b.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Severe Thunderstorm Watch",
-    "geometry": "unknown",
-    "location": "Bertie, NC; Camden, NC; Chowan, NC; Currituck, NC; Gates, NC; Hertford, NC; Northampton, NC; Pasquotank, NC; Perquimans, NC; Amelia, VA; Brunswick, VA; Charles City, VA; Chesterfield, VA; Cumberland, VA; Dinwiddie, VA; Gloucester, VA; Greensville, VA; Henrico, VA; Isle of Wight, VA; James City, VA; Lunenburg, VA; Mathews, VA; Mecklenburg, VA; New Kent, VA; Northampton, VA; Nottoway, VA; Powhatan, VA; Prince Edward, VA; Prince George, VA; Southampton, VA; Surry, VA; Sussex, VA; York, VA; City of Chesapeake, VA; City of Colonial Heights, VA; City of Emporia, VA; City of Franklin, VA; City of Hampton, VA; City of Hopewell, VA; City of Newport News, VA; City of Norfolk, VA; City of Petersburg, VA; City of Poquoson, VA; City of Portsmouth, VA; City of Richmond, VA; City of Suffolk, VA; City of Virginia Beach, VA; City of Williamsburg, VA",
-    "coordinates": {},
-    "details": {
-      "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n498 IN EFFECT UNTIL 8 PM EDT THIS EVENING FOR THE FOLLOWING AREAS\n\nIN NORTH CAROLINA THIS WATCH INCLUDES 9 COUNTIES\n\nIN NORTHEAST NORTH CAROLINA\n\nBERTIE                CAMDEN                CHOWAN\nCURRITUCK             GATES                 HERTFORD\nNORTHAMPTON           PASQUOTANK            PERQUIMANS\n\nIN VIRGINIA THIS WATCH INCLUDES 39 COUNTIES\n\nIN CENTRAL VIRGINIA\n\nAMELIA                CHESTERFIELD\nCITY OF COLONIAL HEIGHTS                    CITY OF RICHMOND\nCUMBERLAND            HENRICO               POWHATAN\nPRINCE EDWARD\n\nIN EAST CENTRAL VIRGINIA\n\nCHARLES CITY          NEW KENT\n\nIN EASTERN VIRGINIA\n\nMATHEWS               NORTHAMPTON\n\nIN SOUTH CENTRAL VIRGINIA\n\nBRUNSWICK             CITY OF HOPEWELL      CITY OF PETERSBURG\nDINWIDDIE             LUNENBURG             MECKLENBURG\nNOTTOWAY              PRINCE GEORGE\n\nIN SOUTHEAST VIRGINIA\n\nCITY OF CHESAPEAKE    CITY OF EMPORIA       CITY OF FRANKLIN\nCITY OF HAMPTON       CITY OF NEWPORT NEWS  CITY OF NORFOLK\nCITY OF POQUOSON      CITY OF PORTSMOUTH    CITY OF SUFFOLK\nCITY OF VIRGINIA BEACH                      CITY OF WILLIAMSBURG\nGLOUCESTER            GREENSVILLE           ISLE OF WIGHT\nJAMES CITY            SOUTHAMPTON           SURRY\nSUSSEX                YORK\n\nTHIS INCLUDES THE CITIES OF AHOSKIE, AMELIA COURTHOUSE, ANGOLA,\nANTE, BACONS CASTLE, BARHAM, BARNETTS, BAVON, BEACH, BON AIR,\nBOOTH FORK, BOTTOMS BRIDGE, BOWERS HILL, BOYKINS, BROWNS CORNER,\nBRUNSWICK, BRYANTOWN, BUFFORD CROSSROADS, BUSCH GARDENS,\nCAPE CHARLES, CAPE COLONY, CENTERVILLE, CHASE CITY,\nCHESAPEAKE AIRPORT, CHESTER, CHESTERFIELD, CHIPPOKES STATE PARK,\nCHRISTENSONS CORNER, CHULA, CLARESVILLE, CLARKSVILLE,\nCOLONIAL HEIGHTS, COURTLAND, COWIE CORNER, CREWE, CROAKER,\nCURRITUCK, DEEP CREEK, DENARO, DURAND, EAGLETOWN, EARLS,\nEDENHOUSE, EDENTON, EDGERTON, ELIZABETH CITY, EMPORIA,\nEMPORIA AIRPORT, EMPORIA RESERVOIR, EWELL, EXMORE, FARMVILLE,\nFENTRESS, FIVE FORKS, FORT LEE, FRANKLIN, GARYSBURG, GASTON,\nGATESVILLE, GLEN ALLEN, GLOUCESTER POINT, GREAT BRIDGE,\nGREEN PLAIN, GREENBRIER, GROVE, GUINEA MILLS, GUM FORKS,\nGWALTNEY CORNER, HAMPTON, HANCOCK, HAWK, HERTFORD,\nHOG ISLAND GAME RESERVE, HOPEWELL, HORSESHOE, HUNTERDALE, IVOR,\nJETERSVILLE, KENBRIDGE, LAWRENCEVILLE, LILLY, MACEDONIA,\nMANNBORO, MAVATON, MEADOWVILLE, MERRY HILL, MIDLOTHIAN, MIDWAY,\nMOSELEY, MOUNT PLEASANT, MOUNTCASTLE, NEW KENT AIRPORT,\nNEW POINT, NEW POINT COMFORT, NEWPORT NEWS, NORFOLK,\nORAPAX FARMS, PEARY, PETERSBURG, POOLESVILLE, POQUOSON,\nPORTSMOUTH, POWHATAN, QUINTON, QUITSNA, RAINES TAVERN, REAMS,\nREEDS, RICH SQUARE, RICHMOND, ROXBURY, SAINT JOHNS, SANDSTON,\nSCOTTS FORK, SHARON, SMITHFIELD, SOUTH HILL, STODDERT, SUFFOLK,\nTALLEYSVILLE, TRIPLET, VALENTINES, VALHALLA, VICTORIA,\nVIRGINIA BEACH, VULTARE, WAKEFIELD, WAVERLY, WAYSIDE,\nWHITE PLAINS, WILLIAMSBURG, WINDSOR, AND YORKTOWN.",
-      "instruction": null,
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e7f6494f330211b3152c3bfa3537a75f9d7d37d4.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Rip Current Statement",
-    "geometry": "unknown",
-    "location": "Southern Bristol; Barnstable; Dukes; Nantucket; Washington; Newport; Block Island",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Dangerous rip currents.\n\n* WHERE...Washington, Southern Bristol MA, Barnstable MA, Dukes\nMA, Nantucket MA, and Newport RI Counties.\n\n* WHEN...Until 8 PM EDT this evening.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
-      "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
-      "expires": "2026-07-19T20:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.70fc920659ae2366956997948c02f31f0c420cb7.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis; North Cass; South Itasca; South Cass; Crow Wing; Northern Aitkin; South Aitkin; Carlton/South St. Louis; Pine; Douglas; Bayfield; Ashland; Burnett; Washburn; Sawyer",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 90 expected.\n\n* WHERE...In Minnesota, Crow Wing, Aitkin, Pine, Koochiching, Cass,\nItasca, Carlton, St. Louis, and Northern Cook and Lake Counties.\nIn Wisconsin, Ashland, Bayfield, Burnett, Douglas, Sawyer, and\nWashburn Counties. This includes the Tribal Lands of the Fond du\nLac Band, the Bad River Reservation, the Red Cliff Band, the Lac\nCourte Oreilles Reservation, the St. Croix Band in Burnett County,\nthe Mille Lacs Band, East Lake, Hinckley, Lena Lake and, Big Sandy\nLake areas and the Bois Forte Band, Deer Creek, Nett Lake and,\nLake Vermilion areas. Other locations including Madeline Island,\nthe Apostle Islands National Lakeshore and Voyageurs National\nPark. The entire Boundary Waters is also included.\n\n* WHEN...Until 8 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ed758d356da2a7cf83b8057f6d53a8e452716fcd.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ba8a017f32d2303fdbfde64742f737d29b4509f4.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Severe Thunderstorm Warning",
     "geometry": "Polygon",
-    "location": "Buckingham, VA",
+    "location": "St. Clair, AL; Talladega, AL",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -78.26,
-            37.62
+            -86.12,
+            33.66
           ],
           [
-            -78.48,
-            37.33
+            -86.06,
+            33.38
           ],
           [
-            -78.82,
-            37.63
+            -86.35,
+            33.37
           ],
           [
-            -78.8,
-            37.64
+            -86.37,
+            33.38
           ],
           [
-            -78.72,
-            37.64
+            -86.38,
+            33.39
           ],
           [
-            -78.72,
-            37.66
-          ],
-          [
-            -78.69,
-            37.68
-          ],
-          [
-            -78.69,
-            37.7
-          ],
-          [
-            -78.66,
-            37.68
-          ],
-          [
-            -78.64,
-            37.68
-          ],
-          [
-            -78.65,
-            37.72
-          ],
-          [
-            -78.63,
-            37.75
-          ],
-          [
-            -78.55,
-            37.77
-          ],
-          [
-            -78.51,
-            37.76
-          ],
-          [
-            -78.49,
-            37.8
-          ],
-          [
-            -78.47,
-            37.76
-          ],
-          [
-            -78.42,
-            37.74
-          ],
-          [
-            -78.24,
-            37.69
-          ],
-          [
-            -78.26,
-            37.62
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SVRRNK\n\nThe National Weather Service in BLACKSBURG has issued a\n\n* Severe Thunderstorm Warning for...\nBuckingham County in central Virginia...\n\n* Until 200 PM EDT.\n\n* At 1256 PM EDT, a severe thunderstorm was located over Schuyler, or\n18 miles southwest of Charlottesville, moving southeast at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nBuckingham...\nDillwyn...\nNew Canton...\nToga...\nCentenary...\nSheppards...\nand Andersonville.",
-      "instruction": "Prepare immediately for damaging winds. For your safety, move to an\ninterior room on the lowest floor of a sturdy building. Stay away\nfrom windows.\n\nWhen it is safe to do so, please send your reports of hail of any\nsize, as well as reports of any wind damage, including downed trees\nor large limbs, to the National Weather Service by calling toll free\nat 1...8 6 6...2 1 5...4 3 2 4. Reports and pictures can also be\nshared on the National Weather Service Blacksburg Facebook page and\non X.",
-      "expires": "2026-07-19T14:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.194c0b45b82b0d7cdb1fb16dd658a9d8f93c9db1.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Benton; Iowa; Keokuk; Washington; Louisa; Jefferson; Henry; Des Moines; Van Buren; Lee; Henderson; Hancock; Scotland; Clark",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Peak heat index values between 100 to 105 expected.\n\n* WHERE...Portions of west central Illinois, east central and\nsoutheast Iowa, and northeast Missouri.\n\n* WHEN...From noon to 8 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.\n\n* ADDITIONAL DETAILS...A round of scattered showers and thunderstorms\nis possible Monday morning into the early afternoon, mainly for\ncounties along and north of I-80. The rain and lingering cloud\ncover could hold peak heat indices lower than currently forecast\nfor areas north of I-80.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-19T22:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.e7075bb08ed9ddffb2e7d71fcb3c6150302b7895.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "unknown",
-    "location": "Koochiching; North St. Louis; Northern Cook/Northern Lake; North Itasca; Central St. Louis; Southern Lake/North Shore; Southern Cook/North Shore; North Cass; South Itasca; Northern Aitkin; Carlton/South St. Louis",
-    "coordinates": {},
-    "details": {
-      "description": "Dry conditions and occasionally breezy winds will lead to near\ncritical fire weather conditions today. Southwest winds of 5 to 10\nmph with gusts of 15 to 20 mph are forecast for this afternoon.\nMinimum relative humidity values of 35 to 45 percent are also\nexpected. Together, these conditions could lead to the rapid\nspread of fires.\n\nCheck burning restrictions and fire danger before burning. For\nmore information on burning restrictions for Minnesota, see\nwww.dnr.state.mn.us/forestry/fire/firerating_restrictions.html.",
-      "instruction": null,
-      "expires": "2026-07-19T19:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.3fa3f207ba80a5a914eaa25f8f615c066de8052c.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Special Marine Warning",
-    "geometry": "Polygon",
-    "location": "Apalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee River Fl out to 20 Nm; Coastal Waters from Mexico Beach to Apalachicola out 20 NM; Coastal Waters From  Ochlockonee River to Apalachicola FL out to 20 Nm; Coastal waters from  Suwannee River to Keaton Beach out 20 NM; Waters from Suwannee River to Apalachicola FL from 20 to 60 NM",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -83.13,
-            29.32
-          ],
-          [
-            -83.54,
-            29.16
-          ],
-          [
-            -84.05,
-            28.85
-          ],
-          [
-            -84.12,
-            28.94
-          ],
-          [
-            -84.4,
-            28.78
-          ],
-          [
-            -85.45,
-            29.66
-          ],
-          [
-            -85.26,
-            29.76
-          ],
-          [
-            -85.04,
-            29.76
-          ],
-          [
-            -84.86,
-            29.86
-          ],
-          [
-            -84.8,
-            29.81
-          ],
-          [
-            -84.5,
-            29.95
-          ],
-          [
-            -84.3,
-            30.16
-          ],
-          [
-            -84.1,
-            30.13
-          ],
-          [
-            -84.01,
-            30.17
-          ],
-          [
-            -83.75,
-            30.04
-          ],
-          [
-            -83.57,
-            29.87
-          ],
-          [
-            -83.53,
-            29.79
-          ],
-          [
-            -83.35,
-            29.66
-          ],
-          [
-            -83.34,
-            29.53
-          ],
-          [
-            -83.16,
-            29.45
-          ],
-          [
-            -83.13,
-            29.32
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "SMWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Special Marine Warning for...\nApalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee\nRiver Fl out to 20 Nm...\nCoastal Waters From  Ochlockonee River to Apalachicola FL out to 20\nNm...\nCoastal Waters from Mexico Beach to Apalachicola out 20 NM...\nCoastal waters from  Suwannee River to Keaton Beach out 20 NM...\nWaters from Suwannee River to Apalachicola FL from 20 to 60 NM...\n\n* Until 300 PM EDT/200 PM CDT/.\n\n* At 1254 PM EDT/1154 AM CDT/, severe thunderstorms capable of\nproducing waterspouts were located along a line extending from 15\nnm east of Buckeye Reef to 8 nm east of S Tower, moving northwest\nat 25 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can quickly form and capsize boats...damage\nvessels...and create suddenly higher waves. Make sure all\non board are in a secure location and wearing life\njackets. Expect wind gusts in excess of 34\nknots...suddenly higher waves...frequent lightning...and\nheavy downpours. Make sure all on board are wearing life\njackets.\n\n* Locations impacted include...\nBuckeye Reef, O Tower, K Tower, S Tower, V Tower, Horseshoe Beach,\nApalachicola, C Tower, Cape San Blas, St George Island, and Marker\n24 Barge.",
-      "instruction": "Move to safe harbor until hazardous weather passes.\n\nThunderstorms can produce sudden waterspouts. Waterspouts can easily\noverturn boats and create locally hazardous seas. Seek safe harbor\nimmediately.",
-      "expires": "2026-07-19T15:00:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.002.2",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Jefferson; Lincoln; Drew",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Heat Advisory, heat index values up to 106\nexpected. For the second Heat Advisory, heat index values up to\n113 expected.\n\n* WHERE...Drew, Jefferson, and Lincoln Counties.\n\n* WHEN...For the first Heat Advisory, until 8 PM CDT this evening.\nFor the second Heat Advisory, from 10 AM Monday to 9 PM CDT\nTuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.003.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Sharp; Randolph; Lawrence; Cleburne; Saline; Southern Johnson County; Southern Pope County; Southeast Van Buren County; Western and Northern Logan County; Northwest Yell County; Southern and Eastern Logan County; Yell Excluding Northwest",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Heat Advisory, heat index values up to 108\nexpected. For the second Heat Advisory, heat index values up to\n110 expected.\n\n* WHERE...Portions of central, eastern, north central, and western\nArkansas.\n\n* WHEN...For the first Heat Advisory, until 8 PM CDT this evening.\nFor the second Heat Advisory, from 10 AM Monday to 9 PM CDT\nTuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.004.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Marion; Baxter; Fulton; Stone; Izard; Garland; Clark; Hot Spring; Grant; Dallas; Cleveland; Ouachita; Calhoun; Bradley; Boone County Except Southwest; Newton County Higher Elevations; Searcy County Lower Elevations; Northern Scott County; Boone County Higher Elevations; Newton County Lower Elevations; Northwest Searcy County Higher Elevations; Johnson County Higher Elevations; Pope County Higher Elevations; Van Buren County Higher Elevations; Eastern, Central, and Southern Searcy County Higher Elevations",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 109 expected.\n\n* WHERE...Portions of central, north central, southeast, southwest,\nand western Arkansas.\n\n* WHEN...From 10 AM Monday to 9 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Extreme Heat Warning",
-    "geometry": "unknown",
-    "location": "Independence; Jackson; Conway; Faulkner; White; Woodruff; Perry; Pulaski; Lonoke; Prairie; Monroe; Arkansas; Desha",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the Heat Advisory, heat index values up to 109\nexpected. For the Extreme Heat Warning, dangerously hot conditions\nwith heat index values up to 114 expected.\n\n* WHERE...Portions of central, eastern, north central, and southeast\nArkansas.\n\n* WHEN...For the Heat Advisory, until 8 PM CDT this evening. For the\nExtreme Heat Warning, from 10 AM Monday to 9 PM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events. Hot temperatures and high\nhumidity may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Jefferson; Lincoln; Drew",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Heat Advisory, heat index values up to 106\nexpected. For the second Heat Advisory, heat index values up to\n113 expected.\n\n* WHERE...Drew, Jefferson, and Lincoln Counties.\n\n* WHEN...For the first Heat Advisory, until 8 PM CDT this evening.\nFor the second Heat Advisory, from 10 AM Monday to 9 PM CDT\nTuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.003.2",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Sharp; Randolph; Lawrence; Cleburne; Saline; Southern Johnson County; Southern Pope County; Southeast Van Buren County; Western and Northern Logan County; Northwest Yell County; Southern and Eastern Logan County; Yell Excluding Northwest",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Heat Advisory, heat index values up to 108\nexpected. For the second Heat Advisory, heat index values up to\n110 expected.\n\n* WHERE...Portions of central, eastern, north central, and western\nArkansas.\n\n* WHEN...For the first Heat Advisory, until 8 PM CDT this evening.\nFor the second Heat Advisory, from 10 AM Monday to 9 PM CDT\nTuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.87be585f62bbb80487586e9382f122749e065ae6.001.2",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Independence; Jackson; Conway; Faulkner; White; Woodruff; Perry; Pulaski; Lonoke; Prairie; Monroe; Arkansas; Desha",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the Heat Advisory, heat index values up to 109\nexpected. For the Extreme Heat Warning, dangerously hot conditions\nwith heat index values up to 114 expected.\n\n* WHERE...Portions of central, eastern, north central, and southeast\nArkansas.\n\n* WHEN...For the Heat Advisory, until 8 PM CDT this evening. For the\nExtreme Heat Warning, from 10 AM Monday to 9 PM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events. Hot temperatures and high\nhumidity may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-      "expires": "2026-07-19T20:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f52183e7cad7cc22e93d1dabe77f49161334dacc.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Extreme Heat Warning",
-    "geometry": "unknown",
-    "location": "St. Francis; Lee; Phillips; Tunica; Coahoma; Quitman; Tallahatchie",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the Heat Advisory, heat index values up to 109. For the\nExtreme Heat Warning, dangerously hot conditions with heat index\nvalues up to 113 expected.\n\n* WHERE...In Arkansas, Lee AR, Phillips, and St. Francis Counties.\nIn Mississippi, Coahoma, Quitman, Tallahatchie, and Tunica\nCounties.\n\n* WHEN...For the Heat Advisory, until 9 PM CDT this evening. For the\nExtreme Heat Warning, from 10 AM Monday to 9 PM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events. Hot temperatures and high\nhumidity may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T01:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f52183e7cad7cc22e93d1dabe77f49161334dacc.003.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Marshall; Benton; Tippah; Alcorn; Tishomingo; Prentiss; Lafayette; Union; Pontotoc; Lee; Itawamba; Yalobusha; Calhoun; Chickasaw; Monroe; Carroll; Benton; Madison; Chester; Henderson; Decatur; Hardeman; McNairy; Hardin",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 108 expected.\n\n* WHERE...Portions of North Mississippi and West Tennessee.\n\n* WHEN...From 10 AM Monday to 9 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T01:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f52183e7cad7cc22e93d1dabe77f49161334dacc.002.2",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Clay; Greene; Craighead; Poinsett; Mississippi; Cross; Crittenden; Dunklin; Pemiscot; DeSoto; Tate; Panola; Lake; Obion; Weakley; Henry; Dyer; Gibson; Lauderdale; Tipton; Haywood; Crockett; Shelby; Fayette",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Heat Advisory, heat index values up to 108.\nFor the second Heat Advisory, heat index values up to 113 expected.\n\n* WHERE...Portions of East Arkansas, North Mississippi, Southeast\nMissouri, and West Tennessee.\n\n* WHEN...For the first Heat Advisory, until 9 PM CDT this evening.\nFor the second Heat Advisory, from 10 AM Monday to 9 PM CDT\nTuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T01:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f52183e7cad7cc22e93d1dabe77f49161334dacc.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Clay; Greene; Craighead; Poinsett; Mississippi; Cross; Crittenden; Dunklin; Pemiscot; DeSoto; Tate; Panola; Lake; Obion; Weakley; Henry; Dyer; Gibson; Lauderdale; Tipton; Haywood; Crockett; Shelby; Fayette",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the first Heat Advisory, heat index values up to 108.\nFor the second Heat Advisory, heat index values up to 113 expected.\n\n* WHERE...Portions of East Arkansas, North Mississippi, Southeast\nMissouri, and West Tennessee.\n\n* WHEN...For the first Heat Advisory, until 9 PM CDT this evening.\nFor the second Heat Advisory, from 10 AM Monday to 9 PM CDT\nTuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T01:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.f52183e7cad7cc22e93d1dabe77f49161334dacc.001.2",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "St. Francis; Lee; Phillips; Tunica; Coahoma; Quitman; Tallahatchie",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...For the Heat Advisory, heat index values up to 109. For the\nExtreme Heat Warning, dangerously hot conditions with heat index\nvalues up to 113 expected.\n\n* WHERE...In Arkansas, Lee AR, Phillips, and St. Francis Counties.\nIn Mississippi, Coahoma, Quitman, Tallahatchie, and Tunica\nCounties.\n\n* WHEN...For the Heat Advisory, until 9 PM CDT this evening. For the\nExtreme Heat Warning, from 10 AM Monday to 9 PM CDT Tuesday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events. Hot temperatures and high\nhumidity may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T01:00:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.8b7a9bca7d57f592131286b74a78230e555fa845.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Special Weather Statement",
-    "geometry": "Polygon",
-    "location": "Walker; Blount; Jefferson; St. Clair",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -86.19,
-            33.54
-          ],
-          [
-            -86.48,
-            33.51
-          ],
-          [
-            -86.48,
-            33.55
-          ],
-          [
-            -86.52,
-            33.55
-          ],
-          [
-            -86.52,
-            33.52
-          ],
-          [
-            -86.57,
+            -86.38,
             33.5
-          ],
-          [
-            -86.78,
-            33.48
-          ],
-          [
-            -87.26,
-            33.5
-          ],
-          [
-            -87.27,
-            33.51
-          ],
-          [
-            -87.29,
-            33.5
-          ],
-          [
-            -87.29,
-            33.51
-          ],
-          [
-            -87.32,
-            33.52
-          ],
-          [
-            -87.32,
-            33.59
-          ],
-          [
-            -87.34,
-            33.59
-          ],
-          [
-            -87.39,
-            33.89
-          ],
-          [
-            -87.01,
-            33.89
-          ],
-          [
-            -87,
-            33.87
-          ],
-          [
-            -86.96,
-            33.86
-          ],
-          [
-            -86.92,
-            33.89
           ],
           [
             -86.34,
-            33.94
+            33.63
           ],
           [
-            -86.19,
-            33.54
+            -86.12,
+            33.66
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 1145 AM CDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Parrish to near Gardendale to 6 miles east\nof Inland Lake. Movement was south at 15 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nBirmingham, Vestavia Hills, Homewood, Mountain Brook, Trussville,\nJasper, Gardendale, Pell City, Irondale, Leeds, Moody, Fairfield,\nFultondale, Oneonta, Springville, Odenville, Sumiton, Cordova, Dora,\nand Dallas.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with these storms.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
-      "expires": "2026-07-19T12:30:00-05:00"
+      "description": "SVRBMX\n\nThe National Weather Service in Birmingham has issued a\n\n* Severe Thunderstorm Warning for...\nCentral Talladega County in east central Alabama...\nSouth central St. Clair County in central Alabama...\n\n* Until 130 PM CDT.\n\n* At 1254 PM CDT, a severe thunderstorm was located over Pell City,\nmoving south at 10 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage\nto roofs, siding, and trees.\n\n* Locations impacted include...\nTalladega, Pell City, Lincoln, Vincent, Alpine Bay Resort, Logan\nMartin Lake, Honda Manufacturing Of Alabama, Coosa Island,\nHarrisburg, Logan Martin Dam, Country Club Estates, St. Clair\nCounty Airport, Jackson Shoals, Cropwell, and Howells Cove.",
+      "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nLarge hail, damaging wind, and continuous cloud to ground lightning\nare occurring with this storm. Move indoors immediately. Lightning is\none of nature's leading killers. Remember, if you can hear thunder,\nyou are close enough to be struck by lightning.",
+      "expires": "2026-07-19T13:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d87d9ffb880f61719be5ee634a054969116b1465.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.cf3e00756c53a6382bb7049a91ce8516143994e5.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Davidson",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.48,
+            35.84
+          ],
+          [
+            -80.46,
+            35.83
+          ],
+          [
+            -80.43,
+            35.83
+          ],
+          [
+            -80.42,
+            35.85
+          ],
+          [
+            -80.39,
+            35.84
+          ],
+          [
+            -80.39,
+            35.86
+          ],
+          [
+            -80.42,
+            35.88
+          ],
+          [
+            -80.37,
+            35.89
+          ],
+          [
+            -80.37,
+            35.93
+          ],
+          [
+            -80.1,
+            35.87
+          ],
+          [
+            -80.14,
+            35.74
+          ],
+          [
+            -80.29,
+            35.64
+          ],
+          [
+            -80.33,
+            35.68
+          ],
+          [
+            -80.33,
+            35.72
+          ],
+          [
+            -80.42,
+            35.72
+          ],
+          [
+            -80.46,
+            35.74
+          ],
+          [
+            -80.45,
+            35.77
+          ],
+          [
+            -80.48,
+            35.79
+          ],
+          [
+            -80.47,
+            35.81
+          ],
+          [
+            -80.49,
+            35.83
+          ],
+          [
+            -80.48,
+            35.84
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 154 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Mocksville to 9 miles south of Bermuda Run\nto near Cooleemee. Movement was southeast at 20 mph.\n\nHAZARD...Wind gusts up to 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nLexington, Linwood, High Rock Lake Marina & Campground, High Rock\nLake, and Welcome.\n\nThis includes Interstate 85 between Mile Markers 83 and 101.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\ncentral North Carolina.",
+      "expires": "2026-07-19T14:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7d8cc5977cbd16aa8e83f2e186373f8c6550badb.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Emmet; Kossuth; Winnebago; Worth; Palo Alto; Hancock; Cerro Gordo; Pocahontas; Humboldt; Wright; Franklin; Butler; Bremer; Sac; Calhoun; Webster; Hamilton; Hardin; Grundy; Black Hawk; Crawford; Carroll; Greene; Boone; Story; Marshall; Tama; Audubon; Guthrie; Dallas; Polk; Jasper; Poweshiek; Cass; Adair; Madison; Warren; Marion; Mahaska; Adams; Union; Clarke; Lucas; Monroe; Wapello; Taylor; Ringgold; Decatur; Wayne; Appanoose; Davis",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 105 expected.\n\n* WHERE...All of Central Iowa.\n\n* WHEN...From noon to 8 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+      "expires": "2026-07-19T23:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.44c49ffae703cbba39869e1b534f1bc97e58d218.001.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Special Weather Statement",
@@ -1099,163 +917,1147 @@
       "polygon": [
         [
           [
-            -77.68,
-            36.47
-          ],
-          [
-            -77.67,
-            36.33
+            -77.74,
+            36.26
           ],
           [
             -78.51,
-            36.33
+            36.26
           ],
           [
             -78.51,
-            36.47
+            36.39
           ],
           [
-            -77.68,
-            36.47
+            -77.74,
+            36.39
+          ],
+          [
+            -77.74,
+            36.26
           ]
         ]
       ]
     },
     "details": {
-      "description": "At 1237 PM EDT, Doppler radar was tracking a cluster of strong\nthunderstorms along a line extending from Littleton to near\nHenderson. Movement was east at 20 mph.\n\nHAZARD...Wind gusts up to 40 mph, and torrential rain.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Localized ponding on roadways and minor\nflooding from torrential rain.\n\nLocations impacted include...\nRoanoke Rapids, Henderson, Warrenton, Norlina, Littleton, Middleburg,\nMacon, Dabney, Satterwhite Point Marina, and Drewry.\n\nThis includes Interstate 85 between Mile Markers 213 and 227.",
-      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.",
-      "expires": "2026-07-19T13:15:00-04:00"
+      "description": "At 153 PM EDT, Doppler radar was tracking a cluster of strong\nthunderstorms along a line extending from 8 miles south of Littleton\nto Henderson. Movement was east at 20 mph.\n\nHAZARD...Wind gusts up to 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nHenderson, Arcola, Dabney, Airlie, Gillburg, Afton, South Henderson,\nand Medoc Mountain State Park.\n\nThis includes Interstate 85 between Mile Markers 209 and 219.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with these storms.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\ncentral North Carolina.",
+      "expires": "2026-07-19T15:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a83b682050ffeb88c328d1d6346fb9d8710e4455.003.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Foothills and Valleys of Thurston and Lewis Counties; Olympia and Southern Puget Sound; Lowlands of Lewis and Southern Thurston Counties; Middle Chehalis River Valley; Southern Hood Canal; Foothills of the Western and Southern Olympic Peninsula",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hot conditions with high temperatures up to 90 to 95\ndegrees expected and low temperatures from 58 to 60 degrees. This\nwill pose a moderate risk of heat-related illness.\n\n* WHERE...Foothills of the Western and Southern Olympic Peninsula,\nMiddle Chehalis River Valley, Southern Hood Canal, Foothills and\nValleys of Thurston and Lewis Counties, Lowlands of Lewis and\nSouthern Thurston Counties, and Olympia and Southern Puget Sound.\n\n* WHEN...From 10 AM Tuesday to 11 PM PDT Wednesday.\n\n* IMPACTS...Heat will significantly increase the risk of\nheat-related illnesses for those who are sensitive to heat,\nespecially those without effective cooling or adequate hydration.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances.\n\nTake extra precautions if you work or spend time outside. When\npossible reschedule strenuous activities to early morning or\nevening. Know the signs and symptoms of heat exhaustion and heat\nstroke. Wear lightweight and loose fitting clothing when possible.\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nFor sheltering information and other human services in your area,\ndial 2 1 1 during business hours or visit wa211.org anytime.",
-      "expires": "2026-07-19T23:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a83b682050ffeb88c328d1d6346fb9d8710e4455.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Foothills and Valleys of the North Cascades; Lowlands of Western Whatcom County; Lowlands of Western Skagit and Northwestern Snohomish Counties; Northern Hood Canal; Port Townsend Area; Eastern Strait of Juan de Fuca; Lake Crescent Area Including US 101",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hot conditions with high temperatures up to 85 to 90\ndegrees expected and low temperatures from 58 to 62 degrees. This\nwill pose a moderate risk of heat-related illness.\n\n* WHERE...Eastern Strait of Juan de Fuca, Foothills and Valleys of\nthe North Cascades, Lake Crescent Area Including US 101, Lowlands\nof Western Skagit and Northwestern Snohomish Counties, Lowlands of\nWestern Whatcom County, Northern Hood Canal, and Port Townsend\nArea.\n\n* WHEN...From 10 AM Tuesday to 11 PM PDT Wednesday.\n\n* IMPACTS...Heat will significantly increase the risk of\nheat-related illnesses for those who are sensitive to heat,\nespecially those without effective cooling or adequate hydration.\n\n* ADDITIONAL DETAILS...Areas closest to the water will experience\ncooler daytime high temperatures.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances.\n\nTake extra precautions if you work or spend time outside. When\npossible reschedule strenuous activities to early morning or\nevening. Know the signs and symptoms of heat exhaustion and heat\nstroke. Wear lightweight and loose fitting clothing when possible.\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nFor sheltering information and other human services in your area,\ndial 2 1 1 during business hours or visit wa211.org anytime.",
-      "expires": "2026-07-19T23:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.a83b682050ffeb88c328d1d6346fb9d8710e4455.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Foothills and Valleys of Snohomish and Northern King Counties; Foothills and Valleys of Central King County; Foothills and Valleys of Pierce and Southern King Counties; Downtown Everett / Marysville Area; Shoreline / Lynnwood / South Everett Area; Eastside; City of Seattle; Lowlands of Pierce and Southern King Counties; Eastern Kitsap County",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Hot conditions with high temperatures up to 88 to 95\ndegrees expected and low temperatures from 62 to 65 degrees. This\nwill pose a moderate to major risk of heat-related illness.\n\n* WHERE...Eastern Kitsap County, City of Seattle, Downtown Everett /\nMarysville Area, Eastside, Foothills and Valleys of Central King\nCounty, Foothills and Valleys of Pierce and Southern King\nCounties, Foothills and Valleys of Snohomish and Northern King\nCounties, Lowlands of Pierce and Southern King Counties, and\nShoreline / Lynnwood / South Everett Area.\n\n* WHEN...From 10 AM Tuesday to 11 PM PDT Wednesday.\n\n* IMPACTS...Heat will significantly increase the risk of\nheat-related illnesses for those who are sensitive to heat,\nespecially those without effective cooling or adequate hydration.\n\n* ADDITIONAL DETAILS...Areas closest to the water will experience\ncooler daytime high temperatures.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances.\n\nTake extra precautions if you work or spend time outside. When\npossible reschedule strenuous activities to early morning or\nevening. Know the signs and symptoms of heat exhaustion and heat\nstroke. Wear lightweight and loose fitting clothing when possible.\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nFor sheltering information and other human services in your area,\ndial 2 1 1 during business hours or visit wa211.org anytime.",
-      "expires": "2026-07-19T23:00:00-07:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ff300d9d9a6fc86d8253ce21e33937953eab9257.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Adams; Knox; Lewis; Shelby; Marion; Monroe; Ralls; Pike; Audrain; Lincoln",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values up to 105 expected.\n\n* WHERE...In Illinois, Adams IL County. In Missouri, Audrain MO,\nLincoln MO, Knox MO, Lewis MO, Marion MO, Monroe MO, Pike MO, Ralls\nMO, and Shelby MO Counties.\n\n* WHEN...From noon to 8 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances. Take extra precautions if you work or spend time\noutside. When possible reschedule strenuous activities to early\nmorning or evening. Know the signs and symptoms of heat exhaustion\nand heat stroke. Wear lightweight and loose fitting clothing when\npossible. To reduce risk during outdoor work, the Occupational Safety\nand Health Administration recommends scheduling frequent rest breaks\nin shaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T02:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ff300d9d9a6fc86d8253ce21e33937953eab9257.002.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Clinton; Washington; Randolph; Madison; St. Clair; Monroe; Boone; Moniteau; Cole; Osage; Callaway; Montgomery; Gasconade; Warren; St. Charles; Franklin; St. Louis; St. Louis City; Jefferson; Crawford; Washington; St. Francois; Ste. Genevieve; Iron; Madison; Reynolds",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Heat index values of 100 to 110 at times.\n\n* WHERE...Portions of south central and southwest Illinois and\ncentral, east central, and southeast Missouri.\n\n* WHEN...Until 7 PM CDT Tuesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances. Take extra precautions if you work or spend time\noutside. When possible reschedule strenuous activities to early\nmorning or evening. Know the signs and symptoms of heat exhaustion\nand heat stroke. Wear lightweight and loose fitting clothing when\npossible. To reduce risk during outdoor work, the Occupational Safety\nand Health Administration recommends scheduling frequent rest breaks\nin shaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-      "expires": "2026-07-20T02:30:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.648746a394219a15aeca4891b8a00df96aa91611.001.1",
-    "type": "weather",
-    "severity": "moderate",
-    "title": "Heat Advisory",
-    "geometry": "unknown",
-    "location": "Canon City Vicinity/Eastern Fremont County; Northern El Paso County/Monument Ridge/Rampart Range Below 7500 Ft; Colorado Springs Vicinity/Southern El Paso County/Rampart Range Below 7400 Ft",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Maximum temperatures ranging between 95 to 100 degrees are\nanticipated\n\n* WHERE...Eastern Fremont county and El Paso county below 7500 feet.\n\n* WHEN...From noon to 6 PM MDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "expires": "2026-07-19T18:30:00-06:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.d24a3eaf0373d0da5fc7094a624aaa47dd7731b9.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.5445572674b68eae3eed33d9e47c28bc11cd7148.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Special Marine Warning",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Corson; Dewey",
+    "coordinates": {},
+    "details": {
+      "description": "...RED FLAG WARNING IN EFFECT FROM 2 PM TO 8 PM MDT MONDAY DUE TO\nWIND AND LOW RELATIVE HUMIDITY FOR CORSON AND DEWEY...\n\n...RED FLAG WARNING IN EFFECT FROM 3 PM TO 9 PM CDT MONDAY DUE TO\nWIND AND LOW RELATIVE HUMIDITY FOR CAMPBELL, WALWORTH, AND POTTER...\n\nThe National Weather Service in Aberdeen SD has issued a Red Flag\nWarning.\n\n* AFFECTED AREA...In South Dakota, Corson and Dewey.\n\n* TIMING...From 2 PM to 8 PM MDT Monday.\n\n* WINDS...Northwest winds 15 to 25 mph with gusts up to 35 mph.\n\n* RELATIVE HUMIDITY...Relative Humidity down to around 20 percent.\n\n* IMPACTS...Any fires that develop will spread rapidly. Outdoor\nburning is not recommended.",
+      "instruction": "A Red Flag Warning is issued when we identify weather conditions that\npromote rapid spread of fire which may become life-threatening. This\ndoes not mean there is a fire. These conditions are either occurring\nnow or will begin soon. It is important to have multiple ways to\nreceive information from authorities.\n\nFollow all fire restrictions. One less spark, one less wildfire.",
+      "expires": "2026-07-19T23:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.5445572674b68eae3eed33d9e47c28bc11cd7148.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Campbell; Walworth; Potter",
+    "coordinates": {},
+    "details": {
+      "description": "...RED FLAG WARNING IN EFFECT FROM 2 PM TO 8 PM MDT MONDAY DUE TO\nWIND AND LOW RELATIVE HUMIDITY FOR CORSON AND DEWEY...\n\n...RED FLAG WARNING IN EFFECT FROM 3 PM TO 9 PM CDT MONDAY DUE TO\nWIND AND LOW RELATIVE HUMIDITY FOR CAMPBELL, WALWORTH, AND POTTER...\n\nThe National Weather Service in Aberdeen SD has issued a Red Flag\nWarning.\n\n* AFFECTED AREA...In South Dakota, Campbell, Walworth, and Potter.\n\n* TIMING...From 3 PM to 9 PM CDT Monday.\n\n* WINDS...Northwest winds 15 to 25 mph with gusts up to 40 mph.\n\n* RELATIVE HUMIDITY...Relative Humidity down to around 20 percent.\n\n* IMPACTS...Any fires that develop will spread rapidly. Outdoor\nburning is not recommended.",
+      "instruction": "A Red Flag Warning is issued when we identify weather conditions that\npromote rapid spread of fire which may become life-threatening. This\ndoes not mean there is a fire. These conditions are either occurring\nnow or will begin soon. It is important to have multiple ways to\nreceive information from authorities.\n\nFollow all fire restrictions. One less spark, one less wildfire.",
+      "expires": "2026-07-19T23:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.567caee8d17d8db64a05e135d2d5bc85e99ad4e6.003.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Delaware; Franklin; Licking; Fairfield",
+    "coordinates": {},
+    "details": {
+      "description": "The Mid-Ohio Regional Planning Commission has issued an Air Quality\nAlert for Delaware, Fairfield, Franklin and Licking counties in\nCentral Ohio, from 6 AM to 9 PM EDT Monday.\n\nGround-level ozone pollution levels are expected to be in the\nUnhealthy for Sensitive Groups range. Active children and adults,\nand people with respiratory disease, such as asthma should limit\nprolonged outdoor exposure.\n\nFor additional information, please visit the Mid-Ohio Regional\nPlanning Commission's website at morpc.org/airquality",
+      "instruction": null,
+      "expires": "2026-07-20T21:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.567caee8d17d8db64a05e135d2d5bc85e99ad4e6.001.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Wayne; Fayette; Union; Franklin",
+    "coordinates": {},
+    "details": {
+      "description": "The Indiana Department of Environmental Management has declared an\nAir Action Day, from midnight tonight to midnight EDT Monday night.\n\nDue to observed and forecasted high concentrations of PM2.5 values in\nthe area, recommendations are for the public to avoid or limit\noutdoor exposure to wildfire smoke, reduce or avoid exertion or heavy\nwork outdoors and keep windows and doors closed as much as possible.\n\nFine particulate levels are expected to be in the Unhealthy for\nSensitive Groups range. Active children and adults, and people with\nrespiratory disease, such as asthma should limit prolonged outdoor\nexposure.\n\nFor additional actions and information, please visit the IDEM Smog\npage at: https://www.in.gov/idem/airmonitoring/smogwatch/",
+      "instruction": null,
+      "expires": "2026-07-20T21:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.567caee8d17d8db64a05e135d2d5bc85e99ad4e6.002.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Darke; Shelby; Miami; Preble; Montgomery; Greene",
+    "coordinates": {},
+    "details": {
+      "description": "The Miami Valley Regional Planning Commission and the Regional Air\nPollution Control Agency have issued an Air Quality Alert for Clark,\nDarke, Greene, Miami, Montgomery, Preble, and Shelby counties in the\nMiami Valley Region, from midnight tonight to midnight EDT Monday\nnight.\n\nFine particulate levels are expected to be in the Unhealthy for\nSensitive Groups range. Active children and adults, and people with\nrespiratory disease, such as asthma should limit prolonged outdoor\nexposure.\n\nFor additional actions and information, visit miamivalleyair.org or\ncall 937-223-6323",
+      "instruction": null,
+      "expires": "2026-07-20T21:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ea4af0bdc51a5339e228406117d8d5351b8aa58f.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
     "geometry": "Polygon",
-    "location": "Coastal waters from  Suwannee River to Keaton Beach out 20 NM; Waters from Suwannee River to Apalachicola FL from 20 to 60 NM",
+    "location": "North Fulton; South Fulton; Fayette; Clayton",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -83.41,
-            29.31
+            -84.5,
+            33.75
           ],
           [
-            -83.89,
-            28.97
+            -84.26,
+            33.58
           ],
           [
-            -84.3,
-            29.42
+            -84.26,
+            33.57
           ],
           [
-            -83.8,
-            29.77
+            -84.46,
+            33.48
           ],
           [
-            -83.41,
-            29.31
+            -84.6,
+            33.57
+          ],
+          [
+            -84.5,
+            33.75
           ]
         ]
       ]
     },
     "details": {
-      "description": "SMWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Special Marine Warning for...\nCoastal waters from  Suwannee River to Keaton Beach out 20 NM...\nWaters from Suwannee River to Apalachicola FL from 20 to 60 NM...\n\n* Until 115 PM EDT.\n\n* At 1217 PM EDT, a strong thunderstorm was located 14 nm southeast\nof Buckeye Reef, moving northwest at 10 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect wind gusts in excess of 34 knots...suddenly higher\nwaves...frequent lightning...and heavy downpours. Make\nsure all on board are wearing life jackets.\n\n* Locations impacted include...\nBuckeye Reef.",
-      "instruction": "Thunderstorms can produce sudden waterspouts. Waterspouts can easily\noverturn boats and create locally hazardous seas. Seek safe harbor\nimmediately.",
-      "expires": "2026-07-19T13:15:00-04:00"
+      "description": "At 151 PM EDT, a strong thunderstorm was near Riverdale, or 8 miles\nnorthwest of Jonesboro. This storm was nearly stationary.\n\nHAZARD...40 to 50 mph wind, nickel sized hail and frequent cloud to\nground lightning.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect minor damage to tree limbs and blowing around of\nlight, unsecured objects.\n\nLocations impacted include...\nAtlanta, Jonesboro, City of South Fulton, East Point, Union City,\nForest Park, Riverdale, College Park, Fairburn, Morrow, Hapeville,\nLake City, Hartsfield-Jackson Airport, Fort Gillem, Cascade Heights,\nand Conley.",
+      "instruction": "People outdoors should seek shelter immediately. If you can hear\nthunder, you are close enough to be struck by lightning.",
+      "expires": "2026-07-19T14:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.fc36f33ababded624aaff4ccd8d8b433031b0296.003.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Benton",
+    "coordinates": {},
+    "details": {
+      "description": "The officials at the Indiana Department of Environmental Management\nhave declared an Air Quality Action Day, in effect until midnight\nEDT Monday night.\n\nAn Air Quality Action Day for smoke has been issued. Smoke levels\nare expected to be in the Unhealthy for Sensitive Groups range.\nActive children and adults, and people with respiratory disease,\nsuch as asthma should limit prolonged outdoor exposure.\n\nDue to observed and forecasted high concentrations of PM2.5 readings\nin the area, recommendations are for the public to avoid or limit\noutdoor exposure to wildfire smoke, reduce or avoid exertion or heavy\nwork outdoors and keep windows and doors closed as much as possible.\n\nFor additional information, please visit the IDEM Smog page at:\n\nhttp://www.in.gov/idem/airmonitoring/smogwatch/",
+      "instruction": null,
+      "expires": "2026-07-21T00:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.fc36f33ababded624aaff4ccd8d8b433031b0296.002.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Lake; Porter; Newton; Jasper",
+    "coordinates": {},
+    "details": {
+      "description": "The officials at the Indiana Department of Environmental Management\nhave declared an Air Quality Action Day, in effect until midnight\nCDT Monday night.\n\nAn Air Quality Action Day for ozone and PM 2.5 has been issued. A\ncombination of fine particulate and ozone levels are expected to be\nin the Unhealthy for Sensitive Groups range. Active children and\nadults, and people with respiratory disease, such as asthma should\nlimit prolonged outdoor exposure.\n\nDue to observed and forecasted high concentrations of PM2.5 readings\nin the area, recommendations are for the public to avoid or limit\noutdoor exposure to wildfire smoke, reduce or avoid exertion or heavy\nwork outdoors and keep windows and doors closed as much as possible.\n\nFor additional information, please visit the IDEM Smog page at:\n\nhttp://www.in.gov/idem/airmonitoring/smogwatch/",
+      "instruction": null,
+      "expires": "2026-07-21T00:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.fc36f33ababded624aaff4ccd8d8b433031b0296.001.1",
+    "type": "weather",
+    "severity": "unknown",
+    "title": "Air Quality Alert",
+    "geometry": "unknown",
+    "location": "Winnebago; Boone; McHenry; Lake; Ogle; Lee; De Kalb; Kane; DuPage; La Salle; Kendall; Grundy; Kankakee; Livingston; Iroquois; Ford; Northern Cook; Central Cook; Southern Cook; Northern Will; Southern Will; Eastern Will",
+    "coordinates": {},
+    "details": {
+      "description": "The Illinois Environmental Protection Agency has issued an Areawide\nAir Pollution Action Day for Monday July 20th for portions of\nIllinois. This is in addition to the ongoing Areawide Air Pollution\nAction Day in effect today July 19th for the same areas.\n\nAn Areawide Air Pollution Action Day is declared when weather\nconditions are such that widespread ozone and or particulate levels\nare forecast to be at or above the Unhealthy for Sensitive Groups\n(USG) category in all or nearly all Illinois AQI forecast sectors.\n\nAreas both inside and outside of the Action Day coverage area are\nlikely to see smoke/particulates to a varying degree and duration\ntoday and Monday with smoke likely decreasing from southwest to\nnortheast through the day Monday. Those with air quality concerns or\nanyone in Illinois with outdoor plans is encouraged to check current\nNowCast readings or sign up for EnviroFlash alerts on AirNow. gov.\nBefore going outside, checking the NowCast AQI will help identify\nperiods of both poor and cleaner air quality regardless of the level\nof the daily 24-hour AQI forecast.\n\nAQI Category Guidance Unhealthy for Sensitive Groups (USG) - Members\nof sensitive groups may experience health effects. The general\npublic is less likely to be affected. Sensitive groups: Make outdoor\nactivities shorter and less intense. Its OK to be active outdoors,\nbut take more breaks. Watch for symptoms such as coughing or\nshortness of breath. People with asthma: Follow your asthma action\nplan and keep quick relief medicine handy. People with heart disease:\nSymptoms such as palpitations, shortness of breath, or unusual\nfatigue may indicate a serious problem. If you have any of these,\ncontact your health care provider. Unhealthy - Sensitive groups:\nAvoid long or intense outdoor activities. Consider rescheduling or\nmoving activities indoors. Everyone else: Reduce long or intense\nactivities. Take more breaks during outdoor activities.\n\n\nMedia Contact... Illinois EPA",
+      "instruction": null,
+      "expires": "2026-07-21T00:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.c9fccd425681e3f5ac7a06daa6afb983cff034fb.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Walker; Tuscaloosa; Jefferson; Shelby; St. Clair; Talladega; Clay; Bibb",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -87.6,
+            33.56
+          ],
+          [
+            -86.14,
+            33.76
+          ],
+          [
+            -86.12,
+            33.71
+          ],
+          [
+            -86.14,
+            33.71
+          ],
+          [
+            -86.14,
+            33.68
+          ],
+          [
+            -86.1,
+            33.68
+          ],
+          [
+            -85.91,
+            33.21
+          ],
+          [
+            -86.66,
+            33.07
+          ],
+          [
+            -86.88,
+            33.07
+          ],
+          [
+            -86.88,
+            33.03
+          ],
+          [
+            -87.22,
+            32.96
+          ],
+          [
+            -87.6,
+            33.56
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1249 PM CDT, Doppler radar was tracking strong thunderstorms along\na line extending from Alpine Bay Resort to Abernant. Movement was\nsoutheast at 25 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nBirmingham, Hoover, Vestavia Hills, Alabaster, Bessemer, Homewood,\nPelham, Mountain Brook, Trussville, Helena, Hueytown, Talladega,\nGardendale, Sylacauga, Pell City, Irondale, Leeds, Moody, Calera, and\nFairfield.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with these storms.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b93af98c5d404f2968baaea09da556abb612d0dc.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Manatee, FL",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -82.65,
+            27.52
+          ],
+          [
+            -82.59,
+            27.57
+          ],
+          [
+            -82.58,
+            27.58
+          ],
+          [
+            -82.5,
+            27.53
+          ],
+          [
+            -82.48,
+            27.44
+          ],
+          [
+            -82.53,
+            27.39
+          ],
+          [
+            -82.58,
+            27.39
+          ],
+          [
+            -82.64,
+            27.43
+          ],
+          [
+            -82.65,
+            27.47
+          ],
+          [
+            -82.65,
+            27.52
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Urban and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...A portion of west central Florida, including the following\ncounty, Manatee.\n\n* WHEN...Until 445 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nOverflowing poor drainage areas. Ponding of water in urban or\nother areas is occurring or is imminent.\n\n* ADDITIONAL DETAILS...\n- At 144 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. This will cause urban and small stream\nflooding. Between 1 and 3 inches of rain have fallen.\n- Some locations that will experience flooding include...\nBradenton, Palmetto, West Samoset, South Bradenton, West\nBradenton, Ellenton, Memphis, Sarasota Bradenton Airport,\nSamoset, Oneco, Bayshore Gardens, Palma Sola and Cortez.\n- https://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-19T16:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.0e68b161d383b48ffb4f8588253bbd60973e4917.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Giles",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -87.22,
+            35
+          ],
+          [
+            -87.22,
+            35.12
+          ],
+          [
+            -87.2,
+            35.12
+          ],
+          [
+            -87.21,
+            35.14
+          ],
+          [
+            -87.2,
+            35.15
+          ],
+          [
+            -87.22,
+            35.17
+          ],
+          [
+            -87.22,
+            35.2
+          ],
+          [
+            -86.93,
+            35.38
+          ],
+          [
+            -86.92,
+            35.35
+          ],
+          [
+            -86.9,
+            35.34
+          ],
+          [
+            -86.91,
+            35.32
+          ],
+          [
+            -86.86,
+            35.3
+          ],
+          [
+            -86.85,
+            35.32
+          ],
+          [
+            -86.83,
+            35.29
+          ],
+          [
+            -86.84,
+            34.99
+          ],
+          [
+            -87.22,
+            35
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1242 PM CDT, Doppler radar was tracking a strong thunderstorm near\nPulaski, moving southeast at 30 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nPulaski, Ardmore, Elkton, Minor Hill, Goodspring, Frankewing, and\nProspect.\n\nThis includes Interstate 65 between mile markers 1 and 22.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.fa71c275d56409ed1c58d1f1766ccd759e2883c1.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Fayette; Tuscaloosa",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -87.71,
+            33.73
+          ],
+          [
+            -87.55,
+            33.75
+          ],
+          [
+            -87.37,
+            33.24
+          ],
+          [
+            -87.67,
+            33.32
+          ],
+          [
+            -87.71,
+            33.73
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1241 PM CDT, Doppler radar was tracking a strong thunderstorm near\nBoley Springs, or 20 miles east of Fayette. This thunderstorm was\nnearly stationary.\n\nHAZARD...Wind gusts up to 40 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nBerry, Bankston, Samantha, Deerlick Creek Campgrounds, Binion Creek\nLanding, Lake Tuscaloosa, Windham Springs, Sexton Bend, New\nLexington, Lake Harris, Tierce Pattton Bridge, Lake Nicol, Highway 69\nBridge, and Lake Nicol Park.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:30:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.03c2b7026830c16eed9af6f78561e21a7328359a.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Fluvanna; Western Louisa; Eastern Louisa",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -78.25,
+            38.07
+          ],
+          [
+            -78.21,
+            38.13
+          ],
+          [
+            -78.18,
+            38.13
+          ],
+          [
+            -78.09,
+            38.15
+          ],
+          [
+            -78.05,
+            38.13
+          ],
+          [
+            -78.01,
+            38.14
+          ],
+          [
+            -77.98,
+            38.12
+          ],
+          [
+            -77.92,
+            38.12
+          ],
+          [
+            -77.9,
+            38.11
+          ],
+          [
+            -77.83,
+            38.1
+          ],
+          [
+            -77.8,
+            38.08
+          ],
+          [
+            -78.04,
+            37.9
+          ],
+          [
+            -78.06,
+            37.91
+          ],
+          [
+            -78.09,
+            37.87
+          ],
+          [
+            -78.18,
+            37.8
+          ],
+          [
+            -78.36,
+            37.94
+          ],
+          [
+            -78.25,
+            38.07
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 139 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Orange to near Charlottesville. Movement\nwas southeast at 15 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down small trees and blow around\nunsecured objects. Wind impacting handling of high profile\nvehicles.\n\nStrong thunderstorms will be near...\nBoswells Tavern around 200 PM EDT.\n\nOther locations impacted by these storms include Louisa Airport,\nGreen Springs, Zion Crossroads, Union Mills, Wildwood, Bybee,\nWaldrop, Byrd Mill, Trevilians, and Wares Crossroads.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-19T14:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1a4df065092a0f370293c585cf41d9c6c7a1f2c6.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flash Flood Warning",
+    "geometry": "Polygon",
+    "location": "Culberson, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -104.79,
+            32
+          ],
+          [
+            -104.78,
+            31.98
+          ],
+          [
+            -104.76,
+            31.97
+          ],
+          [
+            -104.75,
+            31.94
+          ],
+          [
+            -104.74,
+            31.94
+          ],
+          [
+            -104.74,
+            31.92
+          ],
+          [
+            -104.73,
+            31.92
+          ],
+          [
+            -104.71,
+            31.84
+          ],
+          [
+            -104.72,
+            31.84
+          ],
+          [
+            -104.72,
+            31.81
+          ],
+          [
+            -104.73,
+            31.81
+          ],
+          [
+            -104.72,
+            31.8
+          ],
+          [
+            -104.73,
+            31.8
+          ],
+          [
+            -104.73,
+            31.78
+          ],
+          [
+            -104.74,
+            31.78
+          ],
+          [
+            -104.74,
+            31.76
+          ],
+          [
+            -104.76,
+            31.74
+          ],
+          [
+            -104.87,
+            31.73
+          ],
+          [
+            -104.92,
+            31.76
+          ],
+          [
+            -104.92,
+            32
+          ],
+          [
+            -104.79,
+            32
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "FFWMAF\n\nThe National Weather Service in Midland/Odessa has issued a\n\n* Flash Flood Warning for...\nNorthwestern Culberson County in southwestern Texas...\n\n* Until 345 PM CDT /245 PM MDT/.\n\n* At 1239 PM CDT /1139 AM MDT/, Doppler radar and automated rain\ngauges indicated thunderstorms producing heavy rain across the\nwarned area. Between 0.5 and 1 inch of rain has fallen. Additional\nrainfall amounts up to 1 inch are possible in the warned area.\nFlash flooding is ongoing or expected to begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar and automated gauges.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nPine Springs and Guadalupe Mountains National Park.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nFlooding is occurring or is imminent. It is important to know where\nyou are relative to streams, rivers, or creeks which can become\nkillers in heavy rains. Campers and hikers should avoid streams or\ncreeks.",
+      "expires": "2026-07-19T15:45:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b4c359dad08a41a19f99a67fe59c70e5bcd00905.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Great Salt Lake Desert and Mountains; Tooele and Rush Valleys; Eastern Box Elder County; Northern Wasatch Front; Salt Lake Valley",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous temperatures in excess of 100 degrees are\nforecast to develop Monday afternoon across valley locations in\nnorthwest Utah, particularly along the northern Wasatch Front and\nthe Great Salt Lake Desert.\n\n* WHERE...Eastern Box Elder County, Great Salt Lake Desert and\nMountains, Northern Wasatch Front, Salt Lake Valley, and Tooele\nand Rush Valleys.\n\n* WHEN...From noon Monday to midnight MDT Monday Night.\n\n* IMPACTS...Low temperatures into Monday morning will stay elevated\nin the upper 60s to mid 70s for most lower valley locations,\noffering little relief overnight.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-20T02:45:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1346a4d16a40fab7f9a931f41bd4db4a9fe79913.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Perry; Bibb",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -87.17,
+            33.2
+          ],
+          [
+            -87.02,
+            33.19
+          ],
+          [
+            -87.03,
+            33.18
+          ],
+          [
+            -87.03,
+            33.17
+          ],
+          [
+            -86.98,
+            33.16
+          ],
+          [
+            -86.97,
+            33.16
+          ],
+          [
+            -86.97,
+            33.1
+          ],
+          [
+            -86.96,
+            33.1
+          ],
+          [
+            -86.99,
+            32.84
+          ],
+          [
+            -87.02,
+            32.84
+          ],
+          [
+            -87.02,
+            32.78
+          ],
+          [
+            -87.22,
+            32.83
+          ],
+          [
+            -87.17,
+            33.2
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1234 PM CDT, Doppler radar was tracking a strong thunderstorm near\nWest Blocton, or 11 miles west of Montevallo. This thunderstorm was\nnearly stationary.\n\nHAZARD...Wind gusts up to 40 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nBrent, Centreville, West Blocton, Talladega National Forest, West\nCentreville, North Bibb, Oakmulgee, Trio, Hebron, Marvel, Six Mile,\nand Bibb County Airport.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a0c8357d09a25dc790f7ea72eaf299edb9bd052d.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Sheridan",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 100.\n\n* WHERE...Sheridan County.\n\n* WHEN...Until 8 PM MDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-20T04:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a0c8357d09a25dc790f7ea72eaf299edb9bd052d.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Garden; Grant; Hooker; Arthur; Deuel",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 101 expected.\n\n* WHERE...Portions of panhandle and west central Nebraska.\n\n* WHEN...From 10 AM to 8 PM MDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-20T04:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a0c8357d09a25dc790f7ea72eaf299edb9bd052d.004.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Thomas; McPherson; Logan; Custer; Keith; Perkins; Lincoln; Chase; Hayes; Frontier",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 103 expected.\n\n* WHERE...Portions of central, north central, southwest, and west\ncentral Nebraska.\n\n* WHEN...From 11 AM CDT /10 AM MDT/ to 9 PM CDT /8 PM MDT/ Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-20T04:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a0c8357d09a25dc790f7ea72eaf299edb9bd052d.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Eastern Cherry; Keya Paha; Boyd; Brown; Rock; Holt; Blaine; Loup; Garfield; Wheeler; Western Cherry",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 105.\n\n* WHERE...A portion of north central Nebraska.\n\n* WHEN...Until 9 PM CDT /8 PM MDT/ Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-20T04:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.e2b4ee1d48b8a69c3f76abac976d47466bfce495.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Special Marine Warning",
+    "geometry": "Polygon",
+    "location": "James River from Jamestown to the James River Bridge; James River from JRB to HRBT, Including the Elizabeth River",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -76.3,
+            37.01
+          ],
+          [
+            -76.31,
+            37
+          ],
+          [
+            -76.32,
+            37
+          ],
+          [
+            -76.3,
+            36.97
+          ],
+          [
+            -76.27,
+            36.96
+          ],
+          [
+            -76.27,
+            36.82
+          ],
+          [
+            -76.41,
+            36.85
+          ],
+          [
+            -76.42,
+            36.87
+          ],
+          [
+            -76.43,
+            36.86
+          ],
+          [
+            -76.53,
+            36.88
+          ],
+          [
+            -76.55,
+            36.95
+          ],
+          [
+            -76.57,
+            36.96
+          ],
+          [
+            -76.63,
+            36.95
+          ],
+          [
+            -76.67,
+            36.96
+          ],
+          [
+            -76.68,
+            36.99
+          ],
+          [
+            -76.3,
+            37.01
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SMWAKQ\n\nThe National Weather Service in Wakefield has issued a\n\n* Special Marine Warning for...\nJames River from JRB to HRBT, Including the Elizabeth River...\nJames River from Jamestown to the James River Bridge...\n\n* Until 215 PM EDT.\n\n* At 133 PM EDT, a strong thunderstorm was located near Burwell Bay,\nmoving east at 10 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nSewells Point, James River Bridge, Hampton Flats, Dominion Pier,\nMonitor Merrimack Bridge Tunnel, and Willoughby Bay.",
+      "instruction": "Move to safe harbor until hazardous weather passes.",
+      "expires": "2026-07-19T14:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.1bd64fcf14b967cf127c69a7833ec3ff0278c181.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Granville; Orange; Durham; Wake",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -78.51,
+            36.26
+          ],
+          [
+            -78.51,
+            36.18
+          ],
+          [
+            -78.5,
+            36.17
+          ],
+          [
+            -78.54,
+            36.08
+          ],
+          [
+            -78.55,
+            36.02
+          ],
+          [
+            -78.86,
+            35.84
+          ],
+          [
+            -78.91,
+            35.84
+          ],
+          [
+            -78.91,
+            35.87
+          ],
+          [
+            -79.08,
+            35.86
+          ],
+          [
+            -79.13,
+            35.87
+          ],
+          [
+            -79.19,
+            36.04
+          ],
+          [
+            -78.6,
+            36.24
+          ],
+          [
+            -78.51,
+            36.26
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 133 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Creedmoor to near Chapel Hill. Movement\nwas east at 10 mph.\n\nHAZARD...Wind gusts up to 50 mph, torrential rain and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible. Localized ponding on roadways and minor flooding\npossible.\n\nLocations impacted include...\nRaleigh, Durham, Chapel Hill, Hillsborough, Creedmoor, Carrboro,\nButner, Morrisville, Stem, and Falls Lake State Rec Area.\n\nThis includes the following highways...\nInterstate 85 between Mile Markers 163 and 196.\nInterstate 40 between Mile Markers 259 and 283.\nInterstate 540 between Mile Markers 0 and 6.\nthe Durham Freeway between Mile Markers 2 and 17.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.\n\nA Severe Thunderstorm Watch remains in effect until 800 PM EDT for\ncentral North Carolina.",
+      "expires": "2026-07-19T14:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.744e1f13899ea3012051ad1c5ca54f7da651ef94.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Madison; Morgan; Jackson",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -86.21,
+            34.61
+          ],
+          [
+            -86.24,
+            34.6
+          ],
+          [
+            -86.3,
+            34.6
+          ],
+          [
+            -86.3,
+            34.58
+          ],
+          [
+            -86.33,
+            34.57
+          ],
+          [
+            -86.32,
+            34.56
+          ],
+          [
+            -86.51,
+            34.48
+          ],
+          [
+            -86.54,
+            34.5
+          ],
+          [
+            -86.55,
+            34.54
+          ],
+          [
+            -86.57,
+            34.46
+          ],
+          [
+            -86.61,
+            34.44
+          ],
+          [
+            -86.76,
+            34.85
+          ],
+          [
+            -86.55,
+            34.93
+          ],
+          [
+            -86.21,
+            34.61
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1229 PM CDT, Doppler radar was tracking a strong thunderstorm over\nnorthwestern Huntsville, moving southeast at 15 mph.\n\nHAZARD...Wind gusts up to 50 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nHuntsville, Madison, Moores Mill, Redstone Arsenal, Meridianville,\nHazel Green, Owens Cross Roads, Gurley, Woodville, and Alabama A And\nM University.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nThis storm may intensify, so be certain to monitor local radio\nstations and available television stations for additional information\nand possible warnings from the National Weather Service.",
+      "expires": "2026-07-19T13:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.df8d51f3ec696198d58f1131ef8e7b9cfc1b8281.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Shelby; Bibb; Chilton; Coosa",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -87,
+            32.77
+          ],
+          [
+            -86.95,
+            33.14
+          ],
+          [
+            -86.56,
+            33.27
+          ],
+          [
+            -86.47,
+            33.12
+          ],
+          [
+            -86.48,
+            33.12
+          ],
+          [
+            -86.49,
+            33.1
+          ],
+          [
+            -86.46,
+            33.1
+          ],
+          [
+            -86.34,
+            32.91
+          ],
+          [
+            -87,
+            32.77
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1227 PM CDT, Doppler radar was tracking a strong thunderstorm near\nJemison, moving south at 15 mph.\n\nHAZARD...Wind gusts up to 40 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nAlabaster, Calera, Clanton, Montevallo, Columbiana, Jemison, Thorsby,\nMaplesville, Wilton, Gap Of The Mountain, American Village, Marble\nValley, Lawley, Ashby, Brierfield Ironworks Park, Lay Lake Dam,\nUniversity Of Montevallo, Chilton County Motor Sports Park, Shelby\nCounty Airport, and Lay Lake.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+      "expires": "2026-07-19T13:15:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a98aed8df57788cbe53cea3d5fd83eaa4b2f37fa.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Special Marine Warning",
+    "geometry": "Polygon",
+    "location": "South Mobile Bay; Coastal waters from Pensacola FL to Pascagoula MS out 20 NM; Waters from Pensacola FL to Pascagoula MS from 20 to 60 NM",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -87.75,
+            30.33
+          ],
+          [
+            -87.51,
+            30.24
+          ],
+          [
+            -87.95,
+            29.55
+          ],
+          [
+            -88.22,
+            29.71
+          ],
+          [
+            -88.25,
+            29.77
+          ],
+          [
+            -87.75,
+            30.33
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SMWMOB\n\nThe National Weather Service in Mobile has issued a\n\n* Special Marine Warning for...\nCoastal waters from Pensacola FL to Pascagoula MS out 20 NM...\nSouth Mobile Bay...\nWaters from Pensacola FL to Pascagoula MS from 20 to 60 NM...\n\n* Until 200 PM CDT.\n\n* At 1226 PM CDT, a strong thunderstorm was located over Gulf Shores\nBeach, moving southwest at 25 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Locations impacted include...\nGulf Shores Beach.",
+      "instruction": "Move to safe harbor immediately as gusty winds and high waves are\nexpected.",
+      "expires": "2026-07-19T14:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b5a2d7358c2aff9c98ed2d5daad9ddff18f62cbf.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Knox; Cedar; Antelope; Pierce",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 105 today. Heat index values up to\n105 to 110 on Monday.\n\n* WHERE...Antelope, Cedar, Knox, and Pierce Counties.\n\n* WHEN...Until 10 PM CDT Monday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.\n\n* ADDITIONAL DETAILS...Overnight heat index values between 75 to 80\nwill provide little relief.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-20T22:00:00-05:00"
     },
     "source": "NOAA Weather"
   }
