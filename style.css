@@ -1,3 +1,19 @@
+@font-face {
+    font-family: "Michroma";
+    src: url("assets/fonts/michroma/michroma-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Russo One";
+    src: url("assets/fonts/russo-one/russo-one-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 /* =========================
    BASE
 ========================= */
@@ -1454,6 +1470,59 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: mineralWave 12s ease-in-out infinite alternate;
+}
+
+.main-title {
+    font-family: "Michroma", "Segoe UI", sans-serif;
+    font-weight: 400;
+    letter-spacing: clamp(.18rem, .8vw, .62rem);
+    background-image:
+        linear-gradient(180deg, #f2f0e9 0%, #aaa9a2 24%, #efeee8 43%, #686a67 58%, #d2cec1 78%, #858681 100%),
+        repeating-linear-gradient(96deg, rgba(255,255,255,.18) 0 1px, rgba(0,0,0,.14) 1px 3px);
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0 27%,
+        transparent 27% 30%,
+        #000 30% 67%,
+        transparent 67% 70%,
+        #000 70% 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        #000 0 27%,
+        transparent 27% 30%,
+        #000 30% 67%,
+        transparent 67% 70%,
+        #000 70% 100%
+    );
+    filter: drop-shadow(0 2px 0 #252625) drop-shadow(0 8px 18px rgba(0,0,0,.58));
+}
+
+.glitch-title,
+.card > h2,
+.capabilities-heading h2,
+.sentinel-title {
+    font-family: "Russo One", Impact, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #cbc9c0;
+    background-image:
+        linear-gradient(180deg, #deddd6 0%, #888a86 30%, #c7c4b9 48%, #5e605d 67%, #aaa79d 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, rgba(0,0,0,.12) 1px 4px);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 0 rgba(0,0,0,.4);
+}
+
+.glitch-title,
+.sentinel-title {
+    letter-spacing: clamp(.12rem, .55vw, .34rem);
+}
+
+.card > h2,
+.capabilities-heading h2 {
+    letter-spacing: .08em;
 }
 
 .main-title::before,
