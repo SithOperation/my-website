@@ -14,6 +14,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Wallpoet";
+    src: url("assets/fonts/wallpoet/wallpoet-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 /* =========================
    BASE
 ========================= */
@@ -1473,29 +1481,29 @@ body {
 }
 
 .main-title {
-    font-family: "Michroma", "Segoe UI", sans-serif;
+    display: block;
+    width: min(var(--content-width), calc(100% - 28px));
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: "Wallpoet", "Michroma", "Segoe UI", sans-serif;
+    font-size: clamp(30px, 4.6vw, 60px);
     font-weight: 400;
-    letter-spacing: clamp(.18rem, .8vw, .62rem);
+    line-height: 1.16;
+    letter-spacing: clamp(.08rem, .45vw, .32rem);
+    overflow-wrap: normal;
+    text-wrap: balance;
     background-image:
         linear-gradient(180deg, #f2f0e9 0%, #aaa9a2 24%, #efeee8 43%, #686a67 58%, #d2cec1 78%, #858681 100%),
         repeating-linear-gradient(96deg, rgba(255,255,255,.18) 0 1px, rgba(0,0,0,.14) 1px 3px);
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        #000 0 27%,
-        transparent 27% 30%,
-        #000 30% 67%,
-        transparent 67% 70%,
-        #000 70% 100%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        #000 0 27%,
-        transparent 27% 30%,
-        #000 30% 67%,
-        transparent 67% 70%,
-        #000 70% 100%
-    );
     filter: drop-shadow(0 2px 0 #252625) drop-shadow(0 8px 18px rgba(0,0,0,.58));
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        width: 100%;
+        font-size: clamp(23px, 7.5vw, 32px);
+        letter-spacing: 1px;
+    }
 }
 
 .glitch-title,
