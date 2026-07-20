@@ -22,6 +22,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Cinzel";
+    src: url("assets/fonts/cinzel/cinzel-variable.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+}
+
 /* =========================
    BASE
 ========================= */
@@ -1485,23 +1493,24 @@ body {
     width: min(var(--content-width), calc(100% - 28px));
     max-width: 100%;
     margin: 0 auto;
-    font-family: "Wallpoet", "Michroma", "Segoe UI", sans-serif;
-    font-size: clamp(30px, 4.6vw, 60px);
-    font-weight: 400;
-    line-height: 1.16;
-    letter-spacing: clamp(.08rem, .45vw, .32rem);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: clamp(32px, 4.8vw, 64px);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: clamp(.08rem, .28vw, .22rem);
     overflow-wrap: normal;
     text-wrap: balance;
     background-image:
-        linear-gradient(180deg, #f2f0e9 0%, #aaa9a2 24%, #efeee8 43%, #686a67 58%, #d2cec1 78%, #858681 100%),
-        repeating-linear-gradient(96deg, rgba(255,255,255,.18) 0 1px, rgba(0,0,0,.14) 1px 3px);
-    filter: drop-shadow(0 2px 0 #252625) drop-shadow(0 8px 18px rgba(0,0,0,.58));
+        repeating-linear-gradient(103deg, rgba(255,255,255,.16) 0 1px, rgba(45,24,10,.18) 1px 4px),
+        linear-gradient(180deg, #e5c489 0%, #8a5a2b 24%, #d2a261 43%, #4a2c17 61%, #b77b40 79%, #6d4324 100%);
+    background-blend-mode: overlay, normal;
+    filter: drop-shadow(0 2px 0 #2b190e) drop-shadow(0 8px 18px rgba(0,0,0,.62));
 }
 
 @media (max-width: 480px) {
     .main-title {
         width: 100%;
-        font-size: clamp(23px, 7.5vw, 32px);
+        font-size: clamp(26px, 7.3vw, 31px);
         letter-spacing: 1px;
     }
 }
