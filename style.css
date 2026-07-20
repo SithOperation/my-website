@@ -1488,30 +1488,70 @@ body {
     animation: mineralWave 12s ease-in-out infinite alternate;
 }
 
-.main-title {
-    display: block;
-    width: min(var(--content-width), calc(100% - 28px));
-    max-width: 100%;
+.brand-wordmark {
+    width: min(var(--content-width), 100%);
     margin: 0 auto;
-    font-family: "Cinzel", Georgia, serif;
-    font-size: clamp(32px, 4.8vw, 64px);
-    font-weight: 900;
-    line-height: 1.12;
-    letter-spacing: clamp(.08rem, .28vw, .22rem);
-    overflow-wrap: normal;
-    text-wrap: balance;
-    background-image:
-        repeating-linear-gradient(103deg, rgba(255,255,255,.16) 0 1px, rgba(45,24,10,.18) 1px 4px),
-        linear-gradient(180deg, #e5c489 0%, #8a5a2b 24%, #d2a261 43%, #4a2c17 61%, #b77b40 79%, #6d4324 100%);
-    background-blend-mode: overlay, normal;
-    filter: drop-shadow(0 2px 0 #2b190e) drop-shadow(0 8px 18px rgba(0,0,0,.62));
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem;
+    overflow: hidden;
+    background: #050607;
+    text-align: center;
+}
+
+.brand-wordmark__primary {
+    position: relative;
+    margin: 0;
+    font-family: "Michroma", sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: #65676a;
+    background: linear-gradient(180deg, #b7b8b9 0%, #747679 22%, #4b4d50 55%, #222427 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter:
+        drop-shadow(0 2px 0 #c5c6c7)
+        drop-shadow(0 5px 0 #1c1d1f)
+        drop-shadow(0 9px 10px rgba(0,0,0,.85));
+}
+
+.brand-wordmark__divider {
+    width: min(82%, 1100px);
+    height: 2px;
+    margin: 1.5rem auto 1.4rem;
+    background: linear-gradient(90deg, transparent, #5e0808 15%, #b41414 50%, #5e0808 85%, transparent);
+    box-shadow: 0 0 7px rgba(150,15,15,.35);
+}
+
+.brand-wordmark__secondary {
+    margin: 0;
+    padding-left: .55em;
+    font-family: "Michroma", sans-serif;
+    font-size: clamp(.9rem, 2vw, 1.7rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: .55em;
+    text-transform: uppercase;
+    color: #9b9da0;
+    text-shadow: 0 1px 0 #d0d0d0, 0 3px 5px rgba(0,0,0,.8);
 }
 
 @media (max-width: 480px) {
-    .main-title {
-        width: 100%;
-        font-size: clamp(26px, 7.3vw, 31px);
-        letter-spacing: 1px;
+    .brand-wordmark {
+        padding-inline: .5rem;
+    }
+
+    .brand-wordmark__primary {
+        font-size: clamp(2.65rem, 12vw, 4rem);
+    }
+}
+
+@media (max-width: 360px) {
+    .brand-wordmark__secondary {
+        font-size: .875rem;
+        letter-spacing: .48em;
     }
 }
 
