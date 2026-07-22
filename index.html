@@ -24,7 +24,7 @@
     <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
 
-script-src 'self';
+script-src 'self' https://www.clarity.ms 'sha256-HZWEd+5mrwL20z/n1blzUZoQwKr+ru5xXjqJ/zKIJRQ=';
 
 worker-src 'self' blob:;
 
@@ -36,11 +36,19 @@ https://tile.openstreetmap.org;
 
 font-src 'self';
 
-connect-src 'self'
+connect-src 'self' https://www.clarity.ms
 https://*.openstreetmap.org;
 
 frame-src 'self';
 ">
+
+    <script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "xqfzvrj349");
+</script>
 
 </head>
 
