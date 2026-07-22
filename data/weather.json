@@ -1,21 +1,430 @@
 [
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.466f8c7cc95531be4db9310289cf186593e1dd68.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-48980",
     "type": "weather",
-    "severity": "minor",
-    "title": "Marine Weather Statement",
+    "severity": "unknown",
+    "title": "Test Message",
     "geometry": "unknown",
-    "location": "Charleston Harbor; Coastal waters from South Santee River to Edisto Beach SC out 20 NM; Coastal waters from Edisto Beach SC to Savannah GA out 20 NM; Coastal waters from Savannah GA to Altamaha Sound GA out 20 nm, including Grays Reef National Marine Sanctuary",
+    "location": "Montgomery",
     "coordinates": {},
     "details": {
-      "description": "The Doppler Radar detected a line of showers and towering cumulus\nacross the Georgia and South Carolina coast this morning. The\nenvironment is favorable for the development of waterspouts within\nthis line of showers. Waterspouts are most likely within breaks\nwithin the line of showers.",
-      "instruction": "If waterspouts occur, move your boat away from the waterspout.\nRemember that waterspouts can develop rapidly and produce winds\nand seas that are dangerous for vessels and everyone onboard.\n\nReport waterspouts via social media or by calling the National\nWeather Service at 1-888-383-2024.",
-      "expires": "2026-07-22T10:30:00-04:00"
+      "description": "Monitoring message only. Please disregard.",
+      "instruction": "Monitoring message only. Please disregard.",
+      "expires": "2026-07-22T14:35:33+00:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1b2ceb2faebbdac2fa1a7a2497369d35a9310455.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.2d454deb64d0756985f5e32e626e6b067714364a.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Special Marine Warning",
+    "geometry": "Polygon",
+    "location": "Chesapeake Bay from Windmill Point to New Point Comfort VA; Chesapeake Bay from New Point Comfort to Little Creek VA; York River; James River from Jamestown to the James River Bridge; James River from JRB to HRBT, Including the Elizabeth River",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -76.73,
+            37.28
+          ],
+          [
+            -76.63,
+            37.25
+          ],
+          [
+            -76.41,
+            37.02
+          ],
+          [
+            -76.33,
+            37.08
+          ],
+          [
+            -76.32,
+            37.09
+          ],
+          [
+            -76.43,
+            37.12
+          ],
+          [
+            -76.7,
+            37.36
+          ],
+          [
+            -76.54,
+            37.36
+          ],
+          [
+            -76.47,
+            37.29
+          ],
+          [
+            -76.46,
+            37.36
+          ],
+          [
+            -76.11,
+            37.36
+          ],
+          [
+            -76.18,
+            36.96
+          ],
+          [
+            -76.4,
+            36.84
+          ],
+          [
+            -76.4,
+            36.86
+          ],
+          [
+            -76.51,
+            36.85
+          ],
+          [
+            -76.55,
+            36.95
+          ],
+          [
+            -76.66,
+            36.96
+          ],
+          [
+            -76.79,
+            37.13
+          ],
+          [
+            -76.73,
+            37.28
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "SMWAKQ\n\nThe National Weather Service in Wakefield has issued a\n\n* Special Marine Warning for...\nChesapeake Bay from New Point Comfort to Little Creek VA...\nChesapeake Bay from Windmill Point to New Point Comfort VA...\nJames River from JRB to HRBT, Including the Elizabeth River...\nJames River from Jamestown to the James River Bridge...\nYork River...\n\n* Until 1130 AM EDT.\n\n* At 1024 AM EDT, strong thunderstorms were located along a line\nextending from 17 nm west of Coleman Bridge to 7 nm west of Cobham\nBay to 17 nm west of Burwell Bay, moving east at 45 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Small craft could be damaged in briefly higher winds and\nsuddenly higher waves.\n\n* Strong thunderstorms will be near...\nCobham Bay around 1030 AM EDT.\nColeman Bridge around 1040 AM EDT.\nBurwell Bay around 1045 AM EDT.\nTue Marshes Light, Mobjack Bay, and Poquoson around 1050 AM EDT.\nNew Point Comfort around 1055 AM EDT.\nYork Spit Reef around 1100 AM EDT.\nThe Hump around 1105 AM EDT.\nBluefish Rock around 1110 AM EDT.",
+      "instruction": "Move to safe harbor until hazardous weather passes.\n\nFrequent lightning is occurring with these storms. If caught on the\nopen water stay below deck if possible, keep away from ungrounded\nmetal objects.",
+      "expires": "2026-07-22T11:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.97db5ffd3aa899fd88ef9ca134cbfcf78e42910e.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Monroe, OH; Noble, OH; Wetzel, WV",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -81.64,
+            39.75
+          ],
+          [
+            -80.87,
+            39.67
+          ],
+          [
+            -80.87,
+            39.65
+          ],
+          [
+            -80.88,
+            39.62
+          ],
+          [
+            -80.94,
+            39.61
+          ],
+          [
+            -81.04,
+            39.54
+          ],
+          [
+            -81.04,
+            39.57
+          ],
+          [
+            -81.26,
+            39.58
+          ],
+          [
+            -81.26,
+            39.61
+          ],
+          [
+            -81.28,
+            39.61
+          ],
+          [
+            -81.28,
+            39.59
+          ],
+          [
+            -81.39,
+            39.6
+          ],
+          [
+            -81.41,
+            39.63
+          ],
+          [
+            -81.45,
+            39.63
+          ],
+          [
+            -81.45,
+            39.65
+          ],
+          [
+            -81.47,
+            39.65
+          ],
+          [
+            -81.47,
+            39.58
+          ],
+          [
+            -81.59,
+            39.59
+          ],
+          [
+            -81.59,
+            39.66
+          ],
+          [
+            -81.64,
+            39.67
+          ],
+          [
+            -81.64,
+            39.75
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Small stream flooding caused by excessive rainfall\ncontinues.\n\n* WHERE...Southern Monroe County in east central Ohio...\nSouthern Noble County in east central Ohio...\nWestern Wetzel County in northern West Virginia...\n\n* WHEN...Until 700 PM EDT Wednesday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 1013 AM EDT, gauge reports indicated elevated stream levels\nacross the area due to recent heavy rainfall. Flooding is ongoing\nor expected to begin shortly in the warned area. Between 1.5 and\n3 inches of rain have fallen.\n- Duck Creek at Macksburg was at 15 feet. Flood stage is 13 feet.\nSeveral road closures were also reported across the area.\n- Some locations that will experience flooding include...\nDudley, Sardis, Dexter City, Fly, Antioch, Stafford, Graysville,\nHarriettsville, Rinard Mills and Hannibal.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+      "expires": "2026-07-22T19:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.b392540b789445186bcc4d43771e76b3ba8e05e2.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Harrison, WV",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -80.39,
+            39.35
+          ],
+          [
+            -80.26,
+            39.35
+          ],
+          [
+            -80.29,
+            39.18
+          ],
+          [
+            -80.42,
+            39.19
+          ],
+          [
+            -80.39,
+            39.35
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "...The Flood Warning is extended for the following rivers in West\nVirginia...\n\nWest Fork River above Clarksburg affecting Harrison County.\n\nFor the West Fork River...Major flooding is forecast.\n\n* WHAT...Minor flooding is occurring and major flooding is forecast.\n\n* WHERE...West Fork River above Clarksburg.\n\n* WHEN...Until Thursday morning.\n\n* IMPACTS...At 14.0 feet, Water begins to enter some homes along the\nlow sections near the river. Liberty Avenue floods. At 15.0 feet,\nHomes along the low sections of the river on Liberty Avenue and\nRoute 19 flood. At 16.0 feet, Areas of Baltimore Street and River\nRoad flood. At 18.0 feet, Major flooding occurs along the river in\nClarksburg.\n\n* ADDITIONAL DETAILS...\n- At 9:15 AM EDT Wednesday the stage was 15.6 feet.\n- Recent Activity...The maximum river stage in the 24 hours ending\nat 9:15 AM EDT Wednesday was 15.6 feet.\n- Forecast...The river will rise to 18.1 feet this afternoon. It\nwill then fall below flood stage just after midnight tonight to\n5.0 feet by early Friday morning.\n- Flood stage is 14.0 feet.\n- Flood History...This crest compares to a previous crest of 18.0\nfeet on 02/19/2000.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nCaution is urged when walking near riverbanks.\n\nReport flooding to the National Weather Service by calling toll free,\n800 401 9535, when you can do so safely.\n\nAdditional information is available at www.weather.gov/rlx.\n\nThe next statement will be issued this evening at 1030 PM EDT.",
+      "expires": "2026-07-22T22:30:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ff47066b33ee15e9ae77af8006c91b0f83842b13.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Prince George; Charles City; Gloucester; Sussex; Surry; James City; York; Newport News; Hampton/Poquoson; Isle of Wight",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -76.6,
+            37
+          ],
+          [
+            -77.26,
+            37.08
+          ],
+          [
+            -77.11,
+            37.15
+          ],
+          [
+            -77.02,
+            37.31
+          ],
+          [
+            -76.36,
+            37.34
+          ],
+          [
+            -76.34,
+            37.22
+          ],
+          [
+            -76.26,
+            37.14
+          ],
+          [
+            -76.26,
+            37.09
+          ],
+          [
+            -76.6,
+            37
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1020 AM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Rustic to near Cabin Point to near\nDisputanta. Movement was east at 45 mph.\n\nHAZARD...Wind gusts up to 40 mph, heavy rain, and frequent\nlightning.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Reduced visibility and minor flooding\npossible. Frequent cloud to ground lightning strikes.\n\nStrong thunderstorms will be near...\nSurry around 1025 AM EDT.\nWilliamsburg, College Of William And Mary, Jamestown, Scotland,\nKings Point, and Elberon around 1030 AM EDT.\nQueens Lake, Grove, Busch Gardens, York Terrace, and Carver\nGardens around 1035 AM EDT.\nNewport News, Gloucester Point, and Lee Hall around 1040 AM EDT.\nVirginia Institute For Marine Sciences, Fort Eustis, and Wicomico\naround 1045 AM EDT.\nPatrick Henry Field, Seaford, Denbigh, and Achilles around 1050 AM\nEDT.\nTabb around 1055 AM EDT.\n\nOther locations impacted by these storms include Rushmere, Taylors\nCorner, Carsley, Lackey, Chippokes State Park, Camp Peary, Glass,\nOriana, Spring Grove, and Newport News Golf Course.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-22T11:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d21ee555c51050e402e94f1e441309d3ae33bb1d.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Carter, TN; Greene, TN; Hawkins, TN; Sullivan, TN; Washington, TN",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -82.88,
+            36.35
+          ],
+          [
+            -82.87,
+            36.45
+          ],
+          [
+            -82.7,
+            36.54
+          ],
+          [
+            -82.19,
+            36.58
+          ],
+          [
+            -82.19,
+            36.29
+          ],
+          [
+            -82.8,
+            36.28
+          ],
+          [
+            -82.89,
+            36.27
+          ],
+          [
+            -82.88,
+            36.35
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...West Central Carter County in east Tennessee...\nNortheastern Greene County in east Tennessee...\nEast Central Hawkins County in east Tennessee...\nWestern Sullivan County in east Tennessee...\nNorthern Washington County in east Tennessee...\n\n* WHEN...Until 115 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 1019 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 1.5 inches of rain\nhave fallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nJohnson City, Kingsport, Bristol Tn, Elizabethton, Jonesborough,\nGray, Spurgeon, Colonial Heights, Oak Grove and Midway.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.",
+      "expires": "2026-07-22T13:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.2b0ab12fc441095d94b0e697b14084b91300f058.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "San Juan and Vicinity; Northeast; Southeast; Eastern Interior; North Central; Ponce and Vicinity; Northwest; Mayaguez and Vicinity; Southwest; Culebra; Vieques; St.Thomas...St. John.. and Adjacent Islands; St Croix",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...This level of heat affects most individuals sensitive to\nheat, especially those without effective cooling and/or adequate\nhydration.\n\n* WHERE...Portions of Puerto Rico and Virgin Islands.\n\n* WHEN...Until 4 PM AST this afternoon.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Take extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-22T16:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.564033810ec8264c4587da8ceee446e251751baf.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
+    "geometry": "Polygon",
+    "location": "Pittsylvania",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -79.68,
+            36.71
+          ],
+          [
+            -79.65,
+            36.8
+          ],
+          [
+            -79.13,
+            36.89
+          ],
+          [
+            -79.2,
+            36.63
+          ],
+          [
+            -79.68,
+            36.71
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "At 1016 AM EDT, Doppler radar was tracking a strong thunderstorm over\nSwansonville, or near Callands, moving east at 40 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nChatham...\nBlairs...\nCallands...\nJava...\nSwansonville...\nDry Fork...\nand Sandy River.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+      "expires": "2026-07-22T10:45:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a8dae9e90c85e11c8d6781245ec5a8ad973c1c89.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Flood Warning",
@@ -113,126 +522,511 @@
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Barbour County in northeastern West Virginia...\nNorthwestern Randolph County in northeastern West Virginia...\nNortheastern Upshur County in northeastern West Virginia...\nHarrison County in northern West Virginia...\nTaylor County in northern West Virginia...\n\n* WHEN...Until 1030 AM EDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 814 AM EDT, flooding is already occurring in the warned area\ndue to thunderstorms last night. Between 1.5 and 3.5 inches of\nrain have fallen.\n- Some locations that will experience flooding include...\nClarksburg, Grafton, Philippi, Audra State Park, Bridgeport,\nShinnston, Belington, Stonewood, Nutter Fort, Lumberport,\nAnmoore, Enterprise, West Milford, Junior, Lost Creek,\nFlemington, Galloway, Rosemont, Meadland and Century.\n- This includes the following highways...\nInterstate 79 between mile markers 109 and 128. Route 50 in West\nVirginia between mile markers 69 and 82.\n- http://www.weather.gov/safety/flood",
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Barbour County in northeastern West Virginia...\nNorthwestern Randolph County in northeastern West Virginia...\nNortheastern Upshur County in northeastern West Virginia...\nHarrison County in northern West Virginia...\nTaylor County in northern West Virginia...\n\n* WHEN...Until 430 PM EDT Wednesday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. It will take\nseveral hours for all the water from these storms to work through\nlocal drainage systems.\n\n* ADDITIONAL DETAILS...\n- At 1013 AM EDT, Flooding is occurring in the warned area due to\nthunderstorms last night. This includes locations along Middle\nFork Tygart Valley River where the automated gauge at Audra State\nPark was in moderate flood. The latest gauge reading there was\n11.65 feet and falling. At these stages the the campground and\nroads within the park are flooded. In addition, lowl-lying\nlocations along the West Fork River from Shinnston to Enterprise\ncan expect flooding.\n- Some locations that will experience flooding include...\nClarksburg, Grafton, Philippi, Audra State Park, Bridgeport,\nShinnston, Belington, Stonewood, Nutter Fort, Lumberport,\nAnmoore, Enterprise, West Milford, Junior, Lost Creek,\nFlemington, Galloway, Rosemont, Meadland and Century.\n- This includes the following highways...\nInterstate 79 between mile markers 109 and 128. Route 50 in West\nVirginia between mile markers 69 and 82.\n- http://www.weather.gov/safety/flood",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nReport flooding to the National Weather Service by calling toll free,\n800 401 9535, when you can do so safely.",
-      "expires": "2026-07-22T10:30:00-04:00"
+      "expires": "2026-07-22T16:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0-KEEPALIVE-34194",
+    "id": "weather-urn:oid:2.49.0.1.840.0.83ca2f70e8c08f7f206caf020db906cdc64a9cdc.001.1",
     "type": "weather",
-    "severity": "unknown",
-    "title": "Test Message",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Montgomery",
+    "location": "Coastal waters from South Santee River to Edisto Beach SC out 20 NM",
     "coordinates": {},
     "details": {
-      "description": "Monitoring message only. Please disregard.",
-      "instruction": "Monitoring message only. Please disregard.",
-      "expires": "2026-07-22T12:25:33+00:00"
+      "description": "* WHAT...South winds 15 to 20 kt with gusts up to 25 kt and seas\n3 to 5 ft.\n\n* WHERE...South Santee River to Edisto Beach out 20 NM.\n\n* WHEN...Until 5 AM EDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T18:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.1d71ebc1be07ffcd3931cf76bf09277be14ea249.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.83ca2f70e8c08f7f206caf020db906cdc64a9cdc.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal waters from Edisto Beach SC to Savannah GA out 20 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...South winds 15 to 20 kt with gusts up to 25 kt and seas\n3 to 5 ft.\n\n* WHERE...Edisto Beach to Savannah out 20 NM.\n\n* WHEN...Until 5 AM EDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T18:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.83ca2f70e8c08f7f206caf020db906cdc64a9cdc.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Waters from Savannah GA to Altamaha Sound GA extending from 20 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...South winds 15 to 20 kt with gusts up to 25 kt.\n\n* WHERE...Savannah to Altamaha Sound from 20 to 60 NM.\n\n* WHEN...Until midnight EDT tonight.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T18:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.83ca2f70e8c08f7f206caf020db906cdc64a9cdc.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Coastal waters from Savannah GA to Altamaha Sound GA out 20 nm, including Grays Reef National Marine Sanctuary",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...South winds 15 to 20 kt with gusts up to 25 kt.\n\n* WHERE...Savannah to Altamaha Sound out 20 NM.\n\n* WHEN...Until midnight EDT tonight.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T18:15:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.c976cbe770d0366ec05885110384d9efec7fe752.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Flood Warning",
+    "title": "Flash Flood Warning",
     "geometry": "Polygon",
-    "location": "Barbour, WV; Randolph, WV; Upshur, WV",
+    "location": "Anderson, TN; Campbell, TN; Union, TN",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -80.39,
-            38.8
+            -84.27,
+            36.2
           ],
           [
-            -80.35,
-            38.91
+            -84.28,
+            36.25
           ],
           [
-            -80.07,
-            38.87
+            -84.2,
+            36.29
           ],
           [
-            -80.02,
-            38.98
+            -83.85,
+            36.34
           ],
           [
-            -79.94,
-            38.99
+            -83.84,
+            36.18
           ],
           [
-            -79.84,
-            39.13
+            -83.92,
+            36.17
           ],
           [
-            -79.78,
-            39.08
+            -83.94,
+            36.19
           ],
           [
-            -79.78,
-            39.04
+            -83.96,
+            36.18
           ],
           [
-            -79.82,
-            39.03
+            -83.97,
+            36.17
           ],
           [
-            -79.79,
-            39.01
+            -83.98,
+            36.17
           ],
           [
-            -79.82,
-            39.01
+            -83.98,
+            36.16
           ],
           [
-            -79.79,
-            38.99
+            -84.11,
+            36.15
           ],
           [
-            -79.77,
-            38.99
+            -84.2,
+            36.15
           ],
           [
-            -79.8,
-            38.98
+            -84.27,
+            36.17
           ],
           [
-            -79.85,
-            39
-          ],
-          [
-            -79.91,
-            38.95
-          ],
-          [
-            -80.01,
-            38.92
-          ],
-          [
-            -80.11,
-            38.7
-          ],
-          [
-            -80.39,
-            38.8
+            -84.27,
+            36.2
           ]
         ]
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Southeastern Barbour County in northeastern West\nVirginia...\nNorthwestern Randolph County in northeastern West Virginia...\nSouthern Upshur County in northeastern West Virginia...\n\n* WHEN...Until 1000 AM EDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 814 AM EDT, local law enforcement reported heavy rain in the\nwarned area due to thunderstorms. Flooding is already occurring.\nBetween 2 and 3 inches of rain have fallen.\n- Some locations that will experience flooding include...\nRock Cave, Junior, Montrose, Alton, Alexander, French Creek and\nKerens.\n- http://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nReport flooding to the National Weather Service by calling toll free,\n800 401 9535, when you can do so safely.",
-      "expires": "2026-07-22T10:00:00-04:00"
+      "description": "FFWMRX\n\nThe National Weather Service in Morristown has issued a\n\n* Flash Flood Warning for...\nNortheastern Anderson County in east Tennessee...\nSoutheastern Campbell County in east Tennessee...\nSouthwestern Union County in east Tennessee...\n\n* Until 115 PM EDT.\n\n* At 1010 AM EDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1 and 2.5 inches of rain\nhave fallen. The expected rainfall rate is 1 to 2 inches in 1 hour.\nAdditional rainfall amounts of 1 to 2 inches are possible in the\nwarned area. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nRocky Top, Norris, Norris Dam State Park, Andersonville, Disney,\nBig Ridge State Park, Norris Lake and Paulette.\n\nThis includes Interstate 75 in Tennessee between mile markers 122 and\n133.",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+      "expires": "2026-07-22T13:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.bce34e5d475ddf684c9e3766e311e8796d98b227.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.a7a34f2a40887e33b81a0d7252d681be620fd801.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Point Piedras Blancas to Point Sal from 10 to 60 NM",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Point Piedras Blancas to Point Sal from 10 to 60 NM.\n\n* WHEN...From 6 PM this evening to 5 PM PDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T15:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a7a34f2a40887e33b81a0d7252d681be620fd801.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Waters from Pt. Sal to Santa Cruz Island CA and westward 60 nm including San Miguel and Santa Rosa Islands; Outer waters from Santa Cruz Island to San Clemente Island to 60 NM offshore including San Nicolas and Santa Barbara Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Waters from Pt. Sal to Santa Cruz Island CA and\nwestward 60 nm including San Miguel and Santa Rosa Islands and\nOuter waters from Santa Cruz Island to San Clemente Island to\n60 NM offshore including San Nicolas and Santa Barbara Islands.\n\n* WHEN...Until 5 PM PDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T15:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a7a34f2a40887e33b81a0d7252d681be620fd801.003.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "East Santa Barbara Channel from Pt. Conception to Pt. Mugu CA including Santa Cruz Island",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...East Santa Barbara Channel from Pt. Conception to Pt.\nMugu CA including Santa Cruz Island.\n\n* WHEN...From 3 PM this afternoon to 3 AM PDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T15:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.a7a34f2a40887e33b81a0d7252d681be620fd801.004.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Hazardous sea conditions.\n\n* WHERE...Inner waters from Point Mugu to San Mateo Pt. CA\nincluding Santa Catalina and Anacapa Islands.\n\n* WHEN...From 3 PM this afternoon to 9 PM PDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.\n\n* ADDITIONAL DETAILS...See the Coastal Waters Forecast (CWFLOX)\nfor more.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T15:15:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.56fe7424f8fafb6b77f929dbbef54cb83c1d6e24.002.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Kerr; Bandera; Gillespie; Kendall; Blanco; Uvalde; Zavala; Dimmit",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 112 expected.\n\n* WHERE...Bandera, Blanco, Dimmit, Gillespie, Kendall, Kerr, Uvalde,\nand Zavala Counties.\n\n* WHEN...Until 8 PM CDT Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.\n\n* ADDITIONAL DETAILS...Overnight temperatures will stay in the 80s\nprompting a heat advisory to remain in effect through the\novernight hours.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-23T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.56fe7424f8fafb6b77f929dbbef54cb83c1d6e24.003.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Llano; Burnet; Hays; Medina; Bexar; Comal; Guadalupe; Caldwell; Frio; Atascosa; Wilson; Karnes; Gonzales; De Witt",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Heat index values up to 112 expected.\n\n* WHERE...The Hill Country, I-35 Corridor, Coastal Plains, and\nportions of the Rio Grande Plains.\n\n* WHEN...Until 8 PM CDT Thursday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.\n\n* ADDITIONAL DETAILS...Overnight temperatures will stay in the 80s\nprompting a heat advisory to remain in effect through the\novernight hours.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+      "expires": "2026-07-23T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.56fe7424f8fafb6b77f929dbbef54cb83c1d6e24.001.2",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Extreme Heat Warning",
+    "geometry": "unknown",
+    "location": "Williamson; Travis; Bastrop; Lee; Fayette; Lavaca",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Extreme Heat Warning, dangerously hot conditions\nwith heat index values up to 115 expected. For the Heat Advisory,\nheat index values up to 112 expected.\n\n* WHERE...Bastrop, Fayette, Lavaca, Lee, Travis, and Williamson\nCounties.\n\n* WHEN...For the Extreme Heat Warning, until 8 PM CDT this evening.\nFor the Heat Advisory, from 8 PM this evening to 8 PM CDT Thursday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events. Hot temperatures and high\nhumidity may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Overnight temperatures will stay in the 80s\nprompting a heat advisory to remain in effect through the\novernight hours.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children or pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-23T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.56fe7424f8fafb6b77f929dbbef54cb83c1d6e24.001.3",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Heat Advisory",
+    "geometry": "unknown",
+    "location": "Williamson; Travis; Bastrop; Lee; Fayette; Lavaca",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...For the Extreme Heat Warning, dangerously hot conditions\nwith heat index values up to 115 expected. For the Heat Advisory,\nheat index values up to 112 expected.\n\n* WHERE...Bastrop, Fayette, Lavaca, Lee, Travis, and Williamson\nCounties.\n\n* WHEN...For the Extreme Heat Warning, until 8 PM CDT this evening.\nFor the Heat Advisory, from 8 PM this evening to 8 PM CDT Thursday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat and high humidity events. Hot temperatures and high\nhumidity may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Overnight temperatures will stay in the 80s\nprompting a heat advisory to remain in effect through the\novernight hours.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nDo not leave young children or pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-23T05:00:00-05:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.220e68a92fcb8d62e8b2aa007559be2dc6711722.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Red Lodge Foothills; Paradise Valley; Livingston Area; Beartooth Foothills; Absaroka/Beartooth Mountains; Southern Big Horn; Southeastern Carbon; Bighorn Canyon; Northern Carbon; Pryor/Northern Bighorn Mountains; Northeast Bighorn Mountains; Sheridan Foothills",
+    "coordinates": {},
+    "details": {
+      "description": "The combination of a moist and unstable air mass with slow moving\nthunderstorms capable of producing very heavy rain, will bring a risk\nof flash flooding Wednesday afternoon and evening.\n\n* WHAT...Flash flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of south central Montana, including the following\nareas, Absaroka/Beartooth Mountains, Beartooth Foothills, Bighorn\nCanyon, Livingston Area, Northern Carbon, Paradise Valley,\nPryor/Northern Bighorn Mountains, Red Lodge Foothills, Southeastern\nCarbon and Southern Big Horn and north central Wyoming, including\nthe following areas, Northeast Bighorn Mountains and Sheridan\nFoothills.\n\n* WHEN...From 1 PM MDT this afternoon through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\nstreams, and other low-lying and flood-prone locations. Recent burn\nscars, including the Robertson Draw and East Side south of Red\nLodge, and the Elk along the eastern slopes of the Bighorn\nMountains, are at risk of experiencing flash flooding and debris\nflows.\n\n* ADDITIONAL DETAILS...\n- Thunderstorms capable of producing very heavy rain are expected\nthis afternoon and evening. These storms may cause localized\nflash flooding. Expect storms to begin developing over the\nmountains by 1 or 2 pm.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor the forecast and be prepared to take action should\nFlash Flood Warnings be issued.",
+      "expires": "2026-07-23T02:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d0c13b8223d3ca9269a9bcda6da6d38c3b876d1a.001.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Maalaea Bay; Pailolo Channel; Alenuihaha Channel; Big Island Leeward Waters; Big Island Southeast Waters",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...East winds to 25 kt, except north in Maalaea Bay.\n\n* WHERE...Maalaea Bay, Pailolo Channel, Alenuihaha Channel, Big\nIsland Leeward Waters and Big Island Southeast Waters.\n\n* WHEN...Until 6 AM HST Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in these conditions.",
+      "expires": "2026-07-22T17:15:00-10:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.ad909130e1fa5c8096200bc7cf66376b5319b452.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Ritchie, WV",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -81.26,
+            39.09
+          ],
+          [
+            -81.25,
+            39.13
+          ],
+          [
+            -81.15,
+            39.08
+          ],
+          [
+            -81.21,
+            39.06
+          ],
+          [
+            -81.26,
+            39.09
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southwestern Ritchie County in northwestern West\nVirginia...\n\n* WHEN...Until 400 PM EDT.\n\n* IMPACTS...Flooding of rivers, creeks, and other low-lying and\nflood-prone locations is occurring. Low-water crossings are\ninundated with water and may not be passable.\n\n* ADDITIONAL DETAILS...\n- At 959 AM EDT, The automated gauge on South Fork Hughes River\nbelow MacFarlan was in minor flood with the latest stage reading\nof 23 feet and slowly rising. At stages of 22 feet low sections\nof Oxbow Road below the gauge floods along with several low-lying\nareas adjacent to the river near the gauge.\n- Some locations that will experience flooding include...\nMacfarlan.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nReport flooding to the National Weather Service by calling toll free,\n800 401 9535, when you can do so safely.",
+      "expires": "2026-07-22T16:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7da664939012fabcecea1192e6f040ca4383a5cc.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Burns BLM; Steens Mountain; Southern Grasslands",
+    "coordinates": {},
+    "details": {
+      "description": "...SCATTERED THUNDERSTORMS THIS AFTERNOON AND EVENING ACROSS FAR\nSOUTHEAST OREGON ZONES...\n\n.Scattered thunderstorms are expected to develop near the Nevada\nborder and south-central Oregon this afternoon. The thunderstorms\nare expected to be a mix of wet and dry. Expect gusty and erratic\nwinds up to 45 mph in the vicinity of these thunderstorms.\n\nThe National Weather Service in Boise has issued a Red Flag\nWarning for lightning, which is in effect from 11 AM this morning\nto 11 PM PDT this evening.\n\n* AFFECTED AREA...In Oregon, Fire Weather Zones 670 Burns BLM,\n671 Steens Mountain, and 672 Southern Grasslands.\n\n* TIMING...From 11 AM this morning to 11 PM PDT this evening.\n\n* THUNDERSTORMS...Scattered coverage with abundant lightning.\n\n* OUTFLOW WINDS...Gusty erratic winds up to 45 mph.\n\n* IMPACTS...Any fire that develops will catch and spread\nquickly. Outdoor burning is not recommended.",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will occur shortly.",
+      "expires": "2026-07-23T00:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.0683bd56cb411f0344935da1b62da7b0ccccf33b.002.1",
+    "type": "weather",
+    "severity": "minor",
+    "title": "Small Craft Advisory",
+    "geometry": "unknown",
+    "location": "Avon Point to Willowick OH; Willowick to Geneva-on-the Lake OH; Geneva-on-the-Lake to Conneaut OH; Conneaut OH to Ripley NY",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Northwest winds 5 to 15 knots and waves 2 to 5 feet.\n\n* WHERE...The nearshore waters of Lake Erie from Avon Point OH\nto Ripley NY.\n\n* WHEN...Until 10 PM EDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+      "expires": "2026-07-22T18:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.09f54e12190238f5bd29bd70f5c845036f498a3a.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Washington, OH; Doddridge, WV; Pleasants, WV; Ritchie, WV; Tyler, WV",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -81.47,
+            39.65
+          ],
+          [
+            -81.45,
+            39.65
+          ],
+          [
+            -81.45,
+            39.63
+          ],
+          [
+            -81.36,
+            39.59
+          ],
+          [
+            -81.26,
+            39.61
+          ],
+          [
+            -81.26,
+            39.58
+          ],
+          [
+            -81.04,
+            39.57
+          ],
+          [
+            -81.04,
+            39.54
+          ],
+          [
+            -80.94,
+            39.61
+          ],
+          [
+            -80.89,
+            39.58
+          ],
+          [
+            -80.85,
+            39.6
+          ],
+          [
+            -80.82,
+            39.55
+          ],
+          [
+            -80.78,
+            39.55
+          ],
+          [
+            -80.72,
+            39.48
+          ],
+          [
+            -80.62,
+            39.45
+          ],
+          [
+            -80.71,
+            39.43
+          ],
+          [
+            -80.86,
+            39.32
+          ],
+          [
+            -81.54,
+            39.5
+          ],
+          [
+            -81.49,
+            39.58
+          ],
+          [
+            -81.47,
+            39.58
+          ],
+          [
+            -81.47,
+            39.65
+          ]
+        ]
+      ]
+    },
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Northeastern Washington County in southeastern Ohio...\nNorthwestern Doddridge County in northern West Virginia...\nTyler County in northern West Virginia...\nNortheastern Pleasants County in northwestern West Virginia...\nNortheastern Ritchie County in northwestern West Virginia...\n\n* WHEN...Until 700 PM EDT Wednesday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. It will take\nseveral hours for all the water from these storms to work through\nlocal drainage systems in urban areas.\n\n* ADDITIONAL DETAILS...\n- At 948 AM EDT, Flooding continues along many creeks and streams\nacross the area as a result of heavy thunderstorms Tuesday\nevening. This includes Duck Creek and the Little Muskingum River.\n- Some locations that will experience flooding include...\nSt. Marys, Middlebourne, Paden City, Sistersville, Matamoras,\nLowell, Macksburg, Friendly, Lower Salem, New Matamoras, Point\nLookout, Arvilla, Wick, Mountain, Alma, Lima and Devola.\n- This includes Interstate 77 in Ohio between mile markers 6 and\n17.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nReport flooding to the National Weather Service by calling toll free,\n800 401 9535, when you can do so safely.",
+      "expires": "2026-07-22T19:00:00-04:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.f3271c54b9c05e19d135146ee48479b5f5900f7e.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Red Flag Warning",
+    "geometry": "unknown",
+    "location": "Southern Blue Mountains; Central Mountains of Oregon; Southern Deschutes National Forest",
+    "coordinates": {},
+    "details": {
+      "description": "...The upper level low offshore will shift to the east just\nenough today to allow for monsoonal moisture to move into the\nregion. Instability will accompany the moisture and allow for\nincreased chances of isolated to scattered thunderstorms across\ncentral Oregon and portions of the eastern mountains. Brief heavy\ndownpours, gusty outflow winds, small hail, and frequent lightning\nwill be possible...\n\n* AFFECTED AREA...Fire Weather Zones 698 Southern Blue\nMountains, 700 Central Mountains of Oregon and 705 Southern\nDeschutes National Forest.\n\n* TIMING...From 11 AM this morning to 11 PM PDT this evening.\n\n* IMPACTS...Any fire that develops will catch and spread\nquickly. Outdoor burning is not recommended.\n\n* THUNDERSTORMS...Isolated to scattered dry thunderstorms after 11\nAM today.\n\n* OUTFLOW WINDS...Gusts from 25-45 mph",
+      "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either occurring now, or will shortly. A combination of\nstrong winds, low relative humidity, and warm temperatures can\ncontribute to extreme fire behavior.",
+      "expires": "2026-07-22T23:00:00-07:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.d1af0876c651b9ef6a20412f7008ddeb1d0f509e.001.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Cache Valley/Utah Portion; Wasatch Back; Bear Lake and Bear River Valley; Wasatch Mountains I-80 North; Wasatch Mountains South of I-80; Western Uinta Mountains; Wasatch Plateau/Book Cliffs; Western Uinta Basin; Eastern Juab/Millard Counties; Central Mountains; Sanpete Valley; Sevier Valley; Castle Country; San Rafael Swell; Southwest Utah; Lower Washington County; Zion National Park; Southern Mountains; Upper Sevier River Valleys; Bryce Canyon Country; South Central Utah; Capitol Reef National Park and Vicinity; Western Canyonlands; Glen Canyon Recreation Area/Lake Powell; Southwest Wyoming",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flash flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of Utah, including the following areas, Bear Lake\nand Bear River Valley, Bryce Canyon Country, Cache Valley/Utah\nPortion, Capitol Reef National Park and Vicinity, Castle Country,\nCentral Mountains, Eastern Juab/Millard Counties, Glen Canyon\nRecreation Area/Lake Powell, Lower Washington County, San Rafael\nSwell, Sanpete Valley, Sevier Valley, South Central Utah, Southern\nMountains, Southwest Utah, Upper Sevier River Valleys, Wasatch\nBack, Wasatch Mountains I-80 North, Wasatch Mountains South of\nI-80, Wasatch Plateau/Book Cliffs, Western Canyonlands, Western\nUinta Basin, Western Uinta Mountains and Zion National Park and\nWyoming, including the following area, Southwest Wyoming. This\nalso includes recent burn scars such as Cottonwood, Silver King,\nMonroe Canyon, France Canyon, and Forsyth.\n\n* WHEN...From noon MDT today through this evening.\n\n* IMPACTS...Excessive rainfall may result in flooding of slot\ncanyons, normally dry washes, slick rock areas, rivers, creeks,\nstreams, recent burn scars including Forsyth, France Canyon,\nCottonwood, Silver King, and Monroe Canyon, and other low-lying\nand flood-prone locations. Flooding may occur in poor drainage and\nurban areas.\n\n* ADDITIONAL DETAILS...\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+      "expires": "2026-07-22T23:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.7fd42329996b650b9d084736da7b9a59af72f8f3.001.1",
     "type": "weather",
     "severity": "severe",
     "title": "Flood Warning",
@@ -310,2278 +1104,496 @@
       ]
     },
     "details": {
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Southwestern Barbour County in northeastern West\nVirginia...\nWest Central Randolph County in northeastern West Virginia...\nCentral Upshur County in northeastern West Virginia...\n\n* WHEN...Until 1000 AM EDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 811 AM EDT, emergency management reported heavy rain in the\nwarned area due to thunderstorms. Flooding is ongoing or expected\nto begin shortly. Between 5 and 7 inches of rain have fallen.\n- Flooding impacts will continue, but no additional rainfall is\nexpected.\n- Some locations that will experience flooding include...\nBuckhannon, Tallmansville, Overhill and Ellamore.\n- This includes Route 33 between mile markers 15 and 17.\n- http://www.weather.gov/safety/flood",
+      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Southwestern Barbour County in northeastern West\nVirginia...\nWest Central Randolph County in northeastern West Virginia...\nCentral Upshur County in northeastern West Virginia...\n\n* WHEN...Until 400 PM EDT Wednesday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. It will take\nseveral hours for all the water from these storms to work through\nlocal drainage systems.\n\n* ADDITIONAL DETAILS...\n- At 948 AM EDT, Flooding is ongoing due to heavy rain from earlier\nthunderstorms. River gauges indicate minor flooding is occurring\non Sand Run and Middle Fork Tygart Valley River near Ellamore.\n- Flooding impacts will continue, but no additional rainfall is\nexpected.\n- Some locations that will experience flooding include...\nBuckhannon, Tallmansville, Overhill and Ellamore.\n- This includes Route 33 between mile markers 15 and 17.\n- http://www.weather.gov/safety/flood",
       "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.\n\nReport flooding to the National Weather Service by calling toll free,\n800 401 9535, when you can do so safely.",
-      "expires": "2026-07-22T10:00:00-04:00"
+      "expires": "2026-07-22T16:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e171187d091b151865ef28abe09fd66ff8460fc.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Dixon Entrance to Cape Decision from 15 to 90 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Coastal Waters from Dixon Entrance to\nCape Suckling out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Seas forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 10 ft.\n.TONIGHT...NW wind 25 kt. Seas 8 ft.\n.THU...W wind 20 kt. Seas 8 ft.\n.THU NIGHT...W wind 20 kt. Seas 7 ft.\n.FRI...W wind 15 kt. Seas 8 ft.\n.SAT...S wind 10 kt. Seas 7 ft.\n.SUN...SE wind 10 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T22:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e171187d091b151865ef28abe09fd66ff8460fc.005.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Decision to Cape Edgecumbe from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Coastal Waters from Dixon Entrance to\nCape Suckling out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Seas forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...NW wind 20 kt. Seas 8 ft.\n.TONIGHT...NW wind 20 kt. Seas 8 ft.\n.THU...W wind 20 kt. Seas 8 ft.\n.THU NIGHT...W wind 20 kt. Seas 8 ft.\n.FRI...W wind 20 kt. Seas 9 ft.\n.SAT...SE wind 10 kt. Seas 7 ft.\n.SUN...SE wind 10 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T22:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e171187d091b151865ef28abe09fd66ff8460fc.009.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Spencer to Cape Fairweather from 15 to 85 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Coastal Waters from Dixon Entrance to\nCape Suckling out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Seas forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...W wind 20 kt. Seas 8 ft.\n.TONIGHT...W wind 20 kt. Seas 8 ft.\n.THU...W wind 15 kt. Seas 7 ft.\n.THU NIGHT...W wind 20 kt. Seas 9 ft.\n.FRI...W wind 15 kt. Seas 9 ft.\n.SAT...Light winds. Seas 6 ft.\n.SUN...SW wind 10 kt. Seas 4 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T22:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e171187d091b151865ef28abe09fd66ff8460fc.007.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Edgecumbe to Cape Spencer from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Coastal Waters from Dixon Entrance to\nCape Suckling out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Seas forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...W wind 20 kt. Seas 8 ft.\n.TONIGHT...W wind 20 kt. Seas 8 ft.\n.THU...W wind 15 kt. Seas 8 ft.\n.THU NIGHT...W wind 20 kt. Seas 9 ft.\n.FRI...W wind 20 kt. Seas 9 ft.\n.SAT...Light winds. Seas 7 ft.\n.SUN...S wind 10 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T22:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e171187d091b151865ef28abe09fd66ff8460fc.011.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Fairweather to Icy Cape from 15 to 80 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Coastal Waters from Dixon Entrance to\nCape Suckling out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Seas forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...W wind 15 kt. Seas 8 ft. Showers in the afternoon.\n.TONIGHT...W wind 15 kt. Seas 8 ft.\n.THU...SW wind 15 kt. Seas 7 ft. Showers in the afternoon.\n.THU NIGHT...W wind 20 kt. Seas 9 ft.\n.FRI...NW wind 15 kt. Seas 9 ft.\n.SAT...N wind 10 kt. Seas 5 ft.\n.SUN...Light winds. Seas 4 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T22:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.4e171187d091b151865ef28abe09fd66ff8460fc.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Dixon Entrance to Cape Decision out to 15 NM",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Coastal Waters from Dixon Entrance to\nCape Suckling out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Seas forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...NW wind 25 kt. Seas 10 ft.\n.TONIGHT...NW wind 25 kt. Seas 8 ft.\n.THU...NW wind 20 kt. Seas 8 ft.\n.THU NIGHT...W wind 20 kt. Seas 7 ft.\n.FRI...SW wind 10 kt. Seas 7 ft.\n.SAT...Light winds. Seas 7 ft.\n.SUN...SE wind 10 kt. Seas 5 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T22:15:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.c57b7a1b51d385ed7eca0999991f905e07742278.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Northern Lynn Canal",
-    "coordinates": {},
-    "details": {
-      "description": "Southeast Alaska Inside Waters from Dixon Entrance to Skagway\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...SE wind 25 kt diminishing to 20 kt in the morning. Seas\n5 ft.\n.TONIGHT...S wind 25 kt. Seas 5 ft.\n.THU...S wind 25 kt. Seas 5 ft. Showers in the afternoon.\n.THU NIGHT...SE wind 30 kt. Seas 6 ft. Showers.\n.FRI...S wind 20 kt. Seas 4 ft.\n.SAT...N wind 15 kt. Seas 3 ft.\n.SUN...SE wind 15 kt. Seas 3 ft.",
-      "instruction": null,
-      "expires": "2026-07-22T18:45:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9c7ab85e838871503615afe1af95523c22b03ce7.003.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "East Cameron",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -93.127,
-            29.758
-          ],
-          [
-            -93.194,
-            29.774
-          ],
-          [
-            -93.246,
-            29.779
-          ],
-          [
-            -93.297,
-            29.775
-          ],
-          [
-            -93.345,
-            29.76
-          ],
-          [
-            -93.348,
-            29.824
-          ],
-          [
-            -93.335,
-            29.824
-          ],
-          [
-            -93.328,
-            29.84
-          ],
-          [
-            -93.274,
-            29.839
-          ],
-          [
-            -93.244,
-            29.852
-          ],
-          [
-            -93.236,
-            29.866
-          ],
-          [
-            -93.24,
-            29.881
-          ],
-          [
-            -93.233,
-            29.896
-          ],
-          [
-            -93.243,
-            29.916
-          ],
-          [
-            -93.26,
-            29.934
-          ],
-          [
-            -93.277,
-            29.971
-          ],
-          [
-            -93.282,
-            29.99
-          ],
-          [
-            -93.285,
-            30.01
-          ],
-          [
-            -93.286,
-            30.051
-          ],
-          [
-            -93.128,
-            30.053
-          ],
-          [
-            -93.127,
-            30.039
-          ],
-          [
-            -92.996,
-            30.038
-          ],
-          [
-            -92.724,
-            30.038
-          ],
-          [
-            -92.616,
-            30.035
-          ],
-          [
-            -92.618,
-            29.579
-          ],
-          [
-            -92.74,
-            29.616
-          ],
-          [
-            -92.933,
-            29.699
-          ],
-          [
-            -93.009,
-            29.723
-          ],
-          [
-            -93.127,
-            29.758
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* LOCATIONS AFFECTED\n- Cameron\n- Creole\n- Grand Chenier\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 10-20 mph with gusts to 35 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- The wind threat has remained nearly steady from the\nprevious assessment.\n- PLAN: The sustained wind should remain less than tropical\nstorm force. Conditions may still be gusty.\n- PREPARE: Listen for any instructions from local officials.\n- ACT: Ensure emergency readiness should the forecast change.\n\n- REALIZED IMPACTS: Being Assessed\n- Little to no additional wind impacts expected. Community\nofficials are now assessing the extent of actual wind\nimpacts accordingly.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- The storm surge threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: No additional significant rainfall\nforecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- The flooding rain threat has remained nearly steady from\nthe previous assessment.\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- The tornado threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9c7ab85e838871503615afe1af95523c22b03ce7.006.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Lower St. Mary",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -91.353,
-            29.332
-          ],
-          [
-            -91.374,
-            29.329
-          ],
-          [
-            -91.508,
-            29.404
-          ],
-          [
-            -91.491,
-            29.425
-          ],
-          [
-            -91.466,
-            29.425
-          ],
-          [
-            -91.349,
-            29.368
-          ],
-          [
-            -91.346,
-            29.333
-          ],
-          [
-            -91.353,
-            29.332
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* LOCATIONS AFFECTED\n- Burns Point\n- Cypremort Point\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 10-20 mph with gusts to 30 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- The wind threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Remaining efforts to protect property should be\ncompleted as soon as possible. Prepare for limited wind\ndamage.\n- ACT: Move to safe shelter before the wind becomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- The storm surge threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: No additional significant rainfall\nforecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- The flooding rain threat has remained nearly steady from\nthe previous assessment.\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- The tornado threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9c7ab85e838871503615afe1af95523c22b03ce7.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Lower Jefferson",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -94.091,
-            30.095
-          ],
-          [
-            -94.093,
-            30.09
-          ],
-          [
-            -94.087,
-            30.088
-          ],
-          [
-            -94.094,
-            30.084
-          ],
-          [
-            -94.081,
-            30.076
-          ],
-          [
-            -94.051,
-            30.078
-          ],
-          [
-            -94.043,
-            30.064
-          ],
-          [
-            -94.028,
-            30.066
-          ],
-          [
-            -94.029,
-            30.052
-          ],
-          [
-            -94.036,
-            30.043
-          ],
-          [
-            -94.03,
-            30.026
-          ],
-          [
-            -94.004,
-            30.031
-          ],
-          [
-            -93.997,
-            30.014
-          ],
-          [
-            -93.983,
-            30.022
-          ],
-          [
-            -93.982,
-            30.01
-          ],
-          [
-            -93.961,
-            30.014
-          ],
-          [
-            -93.954,
-            30.001
-          ],
-          [
-            -93.931,
-            29.991
-          ],
-          [
-            -93.914,
-            29.996
-          ],
-          [
-            -93.903,
-            29.986
-          ],
-          [
-            -93.871,
-            29.981
-          ],
-          [
-            -93.859,
-            29.977
-          ],
-          [
-            -93.855,
-            29.961
-          ],
-          [
-            -93.849,
-            29.943
-          ],
-          [
-            -93.86,
-            29.882
-          ],
-          [
-            -93.917,
-            29.84
-          ],
-          [
-            -93.938,
-            29.783
-          ],
-          [
-            -93.898,
-            29.761
-          ],
-          [
-            -93.899,
-            29.757
-          ],
-          [
-            -93.894,
-            29.741
-          ],
-          [
-            -93.874,
-            29.733
-          ],
-          [
-            -93.853,
-            29.706
-          ],
-          [
-            -93.853,
-            29.698
-          ],
-          [
-            -93.841,
-            29.689
-          ],
-          [
-            -93.842,
-            29.68
-          ],
-          [
-            -93.873,
-            29.673
-          ],
-          [
-            -94.001,
-            29.681
-          ],
-          [
-            -94.057,
-            29.671
-          ],
-          [
-            -94.354,
-            29.56
-          ],
-          [
-            -94.358,
-            29.859
-          ],
-          [
-            -94.203,
-            29.99
-          ],
-          [
-            -94.135,
-            30.063
-          ],
-          [
-            -94.135,
-            30.095
-          ],
-          [
-            -94.105,
-            30.096
-          ],
-          [
-            -94.1,
-            30.095
-          ],
-          [
-            -94.091,
-            30.095
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Nederland\n- Port Arthur\n- Sabine Pass\n- Sea Rim State Park\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 15-25 mph with gusts to 40 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- The wind threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- The storm surge threat has increased from the previous\nassessment.\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: No significant rainfall forecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little or no\npotential for flooding rain\n- The flooding rain threat has remained nearly steady from\nthe previous assessment.\n- PLAN: There is little or no potential for flooding rain.\n- PREPARE: Little to no preparations are needed to protect\nagainst flooding rain at this time.\n- ACT: Monitor for changes to the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from flooding rain.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- The tornado threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9c7ab85e838871503615afe1af95523c22b03ce7.004.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Lower Vermilion",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -91.989,
-            29.952
-          ],
-          [
-            -91.972,
-            29.834
-          ],
-          [
-            -91.985,
-            29.821
-          ],
-          [
-            -91.978,
-            29.802
-          ],
-          [
-            -91.984,
-            29.795
-          ],
-          [
-            -92.035,
-            29.782
-          ],
-          [
-            -92.168,
-            29.702
-          ],
-          [
-            -92.148,
-            29.696
-          ],
-          [
-            -92.136,
-            29.701
-          ],
-          [
-            -92.102,
-            29.7
-          ],
-          [
-            -92.104,
-            29.691
-          ],
-          [
-            -92.131,
-            29.672
-          ],
-          [
-            -92.133,
-            29.661
-          ],
-          [
-            -92.124,
-            29.654
-          ],
-          [
-            -92.124,
-            29.642
-          ],
-          [
-            -92.064,
-            29.62
-          ],
-          [
-            -92.049,
-            29.624
-          ],
-          [
-            -92.04,
-            29.633
-          ],
-          [
-            -92.03,
-            29.632
-          ],
-          [
-            -92.006,
-            29.615
-          ],
-          [
-            -92.039,
-            29.617
-          ],
-          [
-            -92.071,
-            29.6
-          ],
-          [
-            -92.065,
-            29.591
-          ],
-          [
-            -92.043,
-            29.591
-          ],
-          [
-            -92.047,
-            29.584
-          ],
-          [
-            -92.158,
-            29.582
-          ],
-          [
-            -92.213,
-            29.562
-          ],
-          [
-            -92.251,
-            29.539
-          ],
-          [
-            -92.295,
-            29.532
-          ],
-          [
-            -92.618,
-            29.579
-          ],
-          [
-            -92.616,
-            30.022
-          ],
-          [
-            -92.496,
-            30.022
-          ],
-          [
-            -92.495,
-            30.009
-          ],
-          [
-            -92.494,
-            30.007
-          ],
-          [
-            -92.397,
-            30.006
-          ],
-          [
-            -92.315,
-            30.007
-          ],
-          [
-            -92.265,
-            29.991
-          ],
-          [
-            -92.19,
-            29.992
-          ],
-          [
-            -92.16,
-            29.987
-          ],
-          [
-            -92.155,
-            29.984
-          ],
-          [
-            -92.149,
-            29.985
-          ],
-          [
-            -92.111,
-            29.979
-          ],
-          [
-            -92.102,
-            29.972
-          ],
-          [
-            -92.069,
-            29.963
-          ],
-          [
-            -92.06,
-            29.962
-          ],
-          [
-            -92.049,
-            29.963
-          ],
-          [
-            -92.03,
-            29.962
-          ],
-          [
-            -92.017,
-            29.956
-          ],
-          [
-            -91.989,
-            29.952
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* LOCATIONS AFFECTED\n- Abbeville\n- Intracoastal City\n- Forked Island\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 15-25 mph with gusts to 35 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- The wind threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- The storm surge threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: Additional around 1 inch\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- The flooding rain threat has remained nearly steady from\nthe previous assessment.\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- The tornado threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9c7ab85e838871503615afe1af95523c22b03ce7.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "West Cameron",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -93.705,
-            30.053
-          ],
-          [
-            -93.31,
-            30.052
-          ],
-          [
-            -93.328,
-            29.84
-          ],
-          [
-            -93.335,
-            29.824
-          ],
-          [
-            -93.348,
-            29.824
-          ],
-          [
-            -93.345,
-            29.76
-          ],
-          [
-            -93.475,
-            29.769
-          ],
-          [
-            -93.675,
-            29.748
-          ],
-          [
-            -93.766,
-            29.73
-          ],
-          [
-            -93.835,
-            29.693
-          ],
-          [
-            -93.851,
-            29.717
-          ],
-          [
-            -93.862,
-            29.726
-          ],
-          [
-            -93.87,
-            29.741
-          ],
-          [
-            -93.877,
-            29.743
-          ],
-          [
-            -93.881,
-            29.748
-          ],
-          [
-            -93.888,
-            29.752
-          ],
-          [
-            -93.885,
-            29.762
-          ],
-          [
-            -93.886,
-            29.768
-          ],
-          [
-            -93.893,
-            29.768
-          ],
-          [
-            -93.905,
-            29.795
-          ],
-          [
-            -93.879,
-            29.811
-          ],
-          [
-            -93.848,
-            29.818
-          ],
-          [
-            -93.838,
-            29.824
-          ],
-          [
-            -93.808,
-            29.828
-          ],
-          [
-            -93.772,
-            29.936
-          ],
-          [
-            -93.757,
-            29.952
-          ],
-          [
-            -93.758,
-            29.969
-          ],
-          [
-            -93.773,
-            29.977
-          ],
-          [
-            -93.786,
-            29.971
-          ],
-          [
-            -93.789,
-            29.988
-          ],
-          [
-            -93.769,
-            29.997
-          ],
-          [
-            -93.758,
-            30.013
-          ],
-          [
-            -93.74,
-            30.023
-          ],
-          [
-            -93.738,
-            30.037
-          ],
-          [
-            -93.721,
-            30.052
-          ],
-          [
-            -93.705,
-            30.053
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Johnson Bayou\n- Holly Beach\n- Hackberry\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 10-20 mph with gusts to 35 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- The wind threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- The storm surge threat has increased from the previous\nassessment.\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: Additional around 1 inch\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little or no\npotential for flooding rain\n- The flooding rain threat has remained nearly steady from\nthe previous assessment.\n- PLAN: There is little or no potential for flooding rain.\n- PREPARE: Little to no preparations are needed to protect\nagainst flooding rain at this time.\n- ACT: Monitor for changes to the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from flooding rain.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- The tornado threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9c7ab85e838871503615afe1af95523c22b03ce7.005.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Lower Iberia",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -91.689,
-            29.579
-          ],
-          [
-            -91.768,
-            29.482
-          ],
-          [
-            -91.813,
-            29.431
-          ],
-          [
-            -91.854,
-            29.399
-          ],
-          [
-            -91.863,
-            29.434
-          ],
-          [
-            -91.846,
-            29.479
-          ],
-          [
-            -91.964,
-            29.531
-          ],
-          [
-            -91.987,
-            29.51
-          ],
-          [
-            -92.036,
-            29.578
-          ],
-          [
-            -91.99,
-            29.624
-          ],
-          [
-            -91.906,
-            29.644
-          ],
-          [
-            -91.849,
-            29.636
-          ],
-          [
-            -91.783,
-            29.598
-          ],
-          [
-            -91.689,
-            29.579
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "* LOCATIONS AFFECTED\n- Avery Island\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 15-25 mph with gusts to 40 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- The wind threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Remaining efforts to protect property should be\ncompleted as soon as possible. Prepare for limited wind\ndamage.\n- ACT: Move to safe shelter before the wind becomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- The storm surge threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: No additional significant rainfall\nforecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- The flooding rain threat has remained nearly steady from\nthe previous assessment.\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- The tornado threat has remained nearly steady from the\nprevious assessment.\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ee8f72f2f26227a0a731e5a38f49da84a13e484a.001.2",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Warning",
-    "geometry": "unknown",
-    "location": "Coastal waters from Intracoastal City to Cameron LA out 20 NM; Waters from Intracoastal City to Cameron LA from 20 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 25 to 35 kt with gusts up to 45 kt and\nseas 5 to 8 ft.\n\n* WHERE...Coastal waters from Intracoastal City to Cameron LA\nout 20 NM and Coastal waters from Intracoastal City to Cameron\nLA from 20 to 60 NM.\n\n* WHEN...Tonight into thursday ngiht.\n\n* IMPACTS...Tropical storm force winds and hazardous seas will\ncapsize or damage vessels and reduce visibility.",
-      "instruction": "Mariners should alter plans to avoid these hazardous conditions.\nRemain in port, seek safe harbor, alter course, and/or secure the\nvessel for hazardous conditions.",
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ee8f72f2f26227a0a731e5a38f49da84a13e484a.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Warning",
-    "geometry": "unknown",
-    "location": "Atchafalaya and East Cote Blanche Bays; Coastal waters from Lower Atchafalaya River to Intracoastal City LA out 20 NM; Waters from Lower Atchafalaya River to Intracoastal City LA from 20 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 25 to 35 kt with gusts up to 45 kt and\nseas 6 to 11 ft.\n\n* WHERE...Atchafalaya and East Cote Blanche Bays, Coastal waters\nfrom Lower Atchafalaya River to Intracoastal City LA out 20 NM\nand Coastal waters from Lower Atchafalaya River to\nIntracoastal City LA from 20 to 60 NM.\n\n* WHEN...tonight into tomorrow night.\n\n* IMPACTS...Tropical storm force winds and hazardous seas will\ncapsize or damage vessels and reduce visibility.",
-      "instruction": "Mariners should alter plans to avoid these hazardous conditions.\nRemain in port, seek safe harbor, alter course, and/or secure the\nvessel for hazardous conditions.",
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ee8f72f2f26227a0a731e5a38f49da84a13e484a.004.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "unknown",
-    "location": "Vermilion and West Cote Blanche Bays",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 20 to 30 kt with gusts up to 40 kt.\n\n* WHERE...Vermilion and West Cote Blanche Bays.\n\n* WHEN...Tonight and thursday.\n\n* IMPACTS...Tropical storm force winds and hazardous seas could\ncapsize or damage vessels and reduce visibility.",
-      "instruction": "Mariners should consider altering plans to avoid possible\nhazardous conditions. Remain in port, seek safe harbor, alter\ncourse, and/or secure the vessel for severe wind and seas.",
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.ee8f72f2f26227a0a731e5a38f49da84a13e484a.003.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "unknown",
-    "location": "Sabine Lake; Calcasieu Lake; Coastal waters from Cameron LA to High Island TX out 20 NM; Waters from Cameron LA to High Island TX from 20 to 60 NM",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Southwest winds 20 to 30 kt with gusts up to 45 kt and\nseas 4 to 6 ft.\n\n* WHERE...Sabine Lake, Calcasieu Lake, Coastal waters from\nCameron LA to High Island TX out 20 NM and Coastal waters from\nCameron LA to High Island TX from 20 to 60 NM.\n\n* WHEN...tonight into thursday night.\n\n* IMPACTS...Tropical storm force winds and hazardous seas could\ncapsize or damage vessels and reduce visibility.",
-      "instruction": "Mariners should consider altering plans to avoid possible\nhazardous conditions. Remain in port, seek safe harbor, alter\ncourse, and/or secure the vessel for severe wind and seas.",
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.74d5a88d7fd8efad6783b234f4e353d170b38a78.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "North Point Light to Wind Point WI; Wind Point WI to Winthrop Harbor IL",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...North winds 15 to 20 kt with gusts up to 25 kt and\nwaves 5 to 8 ft.\n\n* WHERE...Nearshore Waters from North Point Lighthouse to\nWinthrop Harbor IL.\n\n* WHEN...Until 4 PM CDT this afternoon.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6c056cdfc14ff5ad2581e98bf9b21cc79af2c5d4.003.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Mexico Bay NY to the St. Lawrence River",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 15 to 25 knots and waves 6 to 9 feet.\n\n* WHERE...The nearshore waters of Lake Ontario from Mexico Bay\nto the Saint Lawrence River.\n\n* WHEN...Until 10 AM EDT Thursday.\n\n* IMPACTS...Winds and/or waves will cause hazardous conditions\nthat could capsize or damage small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T16:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6c056cdfc14ff5ad2581e98bf9b21cc79af2c5d4.004.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Hamlin Beach to Sodus Bay NY; Sodus Bay to Mexico Bay NY",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 15 to 25 knots and waves 6 to 9 feet.\n\n* WHERE...The nearshore waters of Lake Ontario from Hamlin Beach\nto Mexico Bay.\n\n* WHEN...Until 10 AM EDT Thursday.\n\n* IMPACTS...Winds and/or waves will cause hazardous conditions\nthat could capsize or damage small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T16:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.6c056cdfc14ff5ad2581e98bf9b21cc79af2c5d4.002.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Niagara River to Hamlin Beach NY",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...West winds 15 to 25 knots and waves 3 to 6 feet.\n\n* WHERE...The nearshore waters of Lake Ontario from the Niagara\nRiver to Hamlin Beach.\n\n* WHEN...Until 6 AM EDT Thursday.\n\n* IMPACTS...Winds and/or waves will cause hazardous conditions\nthat could capsize or damage small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T16:15:00-04:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.10320d7ae3c5dd49d94aafa68f6fa258d84e475c.004.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Chambers",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -94.354,
-            29.56
-          ],
-          [
-            -94.371,
-            29.554
-          ],
-          [
-            -94.373,
-            29.597
-          ],
-          [
-            -94.41,
-            29.597
-          ],
-          [
-            -94.419,
-            29.589
-          ],
-          [
-            -94.412,
-            29.587
-          ],
-          [
-            -94.417,
-            29.579
-          ],
-          [
-            -94.413,
-            29.573
-          ],
-          [
-            -94.418,
-            29.569
-          ],
-          [
-            -94.473,
-            29.557
-          ],
-          [
-            -94.489,
-            29.553
-          ],
-          [
-            -94.499,
-            29.544
-          ],
-          [
-            -94.523,
-            29.54
-          ],
-          [
-            -94.543,
-            29.557
-          ],
-          [
-            -94.543,
-            29.569
-          ],
-          [
-            -94.562,
-            29.574
-          ],
-          [
-            -94.616,
-            29.555
-          ],
-          [
-            -94.74,
-            29.526
-          ],
-          [
-            -94.763,
-            29.524
-          ],
-          [
-            -94.78,
-            29.53
-          ],
-          [
-            -94.789,
-            29.546
-          ],
-          [
-            -94.78,
-            29.564
-          ],
-          [
-            -94.745,
-            29.577
-          ],
-          [
-            -94.719,
-            29.638
-          ],
-          [
-            -94.715,
-            29.685
-          ],
-          [
-            -94.73,
-            29.776
-          ],
-          [
-            -94.74,
-            29.788
-          ],
-          [
-            -94.793,
-            29.765
-          ],
-          [
-            -94.816,
-            29.757
-          ],
-          [
-            -94.851,
-            29.721
-          ],
-          [
-            -94.874,
-            29.671
-          ],
-          [
-            -94.9,
-            29.659
-          ],
-          [
-            -94.917,
-            29.646
-          ],
-          [
-            -94.927,
-            29.661
-          ],
-          [
-            -94.93,
-            29.673
-          ],
-          [
-            -94.923,
-            29.673
-          ],
-          [
-            -94.928,
-            29.679
-          ],
-          [
-            -94.92,
-            29.687
-          ],
-          [
-            -94.932,
-            29.705
-          ],
-          [
-            -94.945,
-            29.717
-          ],
-          [
-            -94.929,
-            29.739
-          ],
-          [
-            -94.929,
-            29.751
-          ],
-          [
-            -94.919,
-            29.756
-          ],
-          [
-            -94.919,
-            29.765
-          ],
-          [
-            -94.914,
-            29.767
-          ],
-          [
-            -94.924,
-            29.795
-          ],
-          [
-            -94.913,
-            29.809
-          ],
-          [
-            -94.908,
-            29.826
-          ],
-          [
-            -94.922,
-            29.833
-          ],
-          [
-            -94.935,
-            29.832
-          ],
-          [
-            -94.951,
-            29.855
-          ],
-          [
-            -94.974,
-            29.866
-          ],
-          [
-            -94.979,
-            29.883
-          ],
-          [
-            -94.442,
-            29.89
-          ],
-          [
-            -94.358,
-            29.888
-          ],
-          [
-            -94.354,
-            29.56
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Anahuac\n- Beach City\n- Mont Belview\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 10-20 mph with gusts to 30 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Wind less than 39 mph\n- PLAN: The sustained wind should remain less than tropical\nstorm force. Conditions may still be gusty.\n- PREPARE: Little to no preparations needed to guard against\ntropical winds at this time.\n- ACT: Ensure emergency readiness should the forecast change.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from wind.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: No significant rainfall forecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little or no\npotential for flooding rain\n- PLAN: There is little or no potential for flooding rain.\n- PREPARE: Little to no preparations are needed to protect\nagainst flooding rain at this time.\n- ACT: Monitor for changes to the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from flooding rain.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.\n\n* FOR MORE INFORMATION:\n- Hurricane Preparedness: Federal Emergency Management Agency\n- http://ready.gov/hurricanes\n- Local weather conditions and forecasts: NWS Houston/Galveston, TX\n- http://www.weather.gov/hgx/",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.10320d7ae3c5dd49d94aafa68f6fa258d84e475c.002.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Bolivar Peninsula",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -94.371,
-            29.554
-          ],
-          [
-            -94.501,
-            29.505
-          ],
-          [
-            -94.61,
-            29.461
-          ],
-          [
-            -94.68,
-            29.425
-          ],
-          [
-            -94.715,
-            29.396
-          ],
-          [
-            -94.731,
-            29.369
-          ],
-          [
-            -94.744,
-            29.369
-          ],
-          [
-            -94.753,
-            29.357
-          ],
-          [
-            -94.775,
-            29.361
-          ],
-          [
-            -94.782,
-            29.364
-          ],
-          [
-            -94.783,
-            29.376
-          ],
-          [
-            -94.725,
-            29.442
-          ],
-          [
-            -94.706,
-            29.436
-          ],
-          [
-            -94.694,
-            29.46
-          ],
-          [
-            -94.672,
-            29.477
-          ],
-          [
-            -94.64,
-            29.488
-          ],
-          [
-            -94.598,
-            29.495
-          ],
-          [
-            -94.6,
-            29.521
-          ],
-          [
-            -94.551,
-            29.538
-          ],
-          [
-            -94.532,
-            29.518
-          ],
-          [
-            -94.511,
-            29.519
-          ],
-          [
-            -94.51,
-            29.523
-          ],
-          [
-            -94.473,
-            29.557
-          ],
-          [
-            -94.418,
-            29.569
-          ],
-          [
-            -94.413,
-            29.573
-          ],
-          [
-            -94.417,
-            29.579
-          ],
-          [
-            -94.412,
-            29.587
-          ],
-          [
-            -94.419,
-            29.589
-          ],
-          [
-            -94.41,
-            29.597
-          ],
-          [
-            -94.373,
-            29.597
-          ],
-          [
-            -94.371,
-            29.554
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Bolivar\n- Crystal Beach\n- High Island\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 15-25 mph with gusts to 45 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: around 1 inch\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little or no\npotential for flooding rain\n- PLAN: There is little or no potential for flooding rain.\n- PREPARE: Little to no preparations are needed to protect\nagainst flooding rain at this time.\n- ACT: Monitor for changes to the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from flooding rain.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.\n\n* FOR MORE INFORMATION:\n- Hurricane Preparedness: Federal Emergency Management Agency\n- http://ready.gov/hurricanes\n- Local weather conditions and forecasts: NWS Houston/Galveston, TX\n- http://www.weather.gov/hgx/",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.10320d7ae3c5dd49d94aafa68f6fa258d84e475c.003.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Coastal Galveston",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -95.017,
-            29.548
-          ],
-          [
-            -95,
-            29.521
-          ],
-          [
-            -94.986,
-            29.513
-          ],
-          [
-            -94.959,
-            29.503
-          ],
-          [
-            -94.909,
-            29.497
-          ],
-          [
-            -94.891,
-            29.433
-          ],
-          [
-            -94.89,
-            29.369
-          ],
-          [
-            -94.894,
-            29.309
-          ],
-          [
-            -94.943,
-            29.306
-          ],
-          [
-            -95.058,
-            29.199
-          ],
-          [
-            -95.134,
-            29.314
-          ],
-          [
-            -95.082,
-            29.314
-          ],
-          [
-            -95.046,
-            29.335
-          ],
-          [
-            -95.031,
-            29.373
-          ],
-          [
-            -95.049,
-            29.419
-          ],
-          [
-            -95.086,
-            29.461
-          ],
-          [
-            -95.119,
-            29.51
-          ],
-          [
-            -95.104,
-            29.512
-          ],
-          [
-            -95.094,
-            29.524
-          ],
-          [
-            -95.079,
-            29.536
-          ],
-          [
-            -95.079,
-            29.545
-          ],
-          [
-            -95.067,
-            29.558
-          ],
-          [
-            -95.017,
-            29.548
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Dickinson\n- Eastern League City\n- Texas City\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 10-20 mph with gusts to 30 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- LATEST LOCAL FORECAST: Localized storm surge possible\n- Peak Storm Surge Inundation: The potential for 1-3 feet\nabove ground somewhere within surge prone areas\n- Window of concern: Thursday morning until Friday morning\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for storm\nsurge flooding greater than 1 foot above ground\n- PLAN: Plan for storm surge flooding greater than 1 foot\nabove ground.\n- PREPARE: Complete preparations for storm surge flooding,\nespecially in low-lying vulnerable areas, before conditions\nbecome unsafe.\n- ACT: Leave immediately if evacuation orders are given for\nyour area.\n\n- POTENTIAL IMPACTS: Limited\n- Localized inundation with storm surge flooding mainly along\nimmediate shorelines and in low-lying spots, or in areas\nfarther inland near where higher surge waters move ashore.\n- Sections of near-shore roads and parking lots become\noverspread with surge water. Driving conditions dangerous\nin places where surge water covers the road.\n- Moderate beach erosion. Heavy surf also breaching dunes,\nmainly in usually vulnerable locations. Strong rip currents.\n- Minor to locally moderate damage to marinas, docks,\nboardwalks, and piers. A few small craft broken away from\nmoorings.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: No significant rainfall forecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little or no\npotential for flooding rain\n- PLAN: There is little or no potential for flooding rain.\n- PREPARE: Little to no preparations are needed to protect\nagainst flooding rain at this time.\n- ACT: Monitor for changes to the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from flooding rain.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.\n\n* FOR MORE INFORMATION:\n- Hurricane Preparedness: Federal Emergency Management Agency\n- http://ready.gov/hurricanes\n- Local weather conditions and forecasts: NWS Houston/Galveston, TX\n- http://www.weather.gov/hgx/",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.10320d7ae3c5dd49d94aafa68f6fa258d84e475c.005.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Coastal Brazoria",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -95.134,
-            29.314
-          ],
-          [
-            -95.058,
-            29.199
-          ],
-          [
-            -95.096,
-            29.176
-          ],
-          [
-            -95.113,
-            29.172
-          ],
-          [
-            -95.12,
-            29.172
-          ],
-          [
-            -95.107,
-            29.184
-          ],
-          [
-            -95.112,
-            29.195
-          ],
-          [
-            -95.138,
-            29.19
-          ],
-          [
-            -95.149,
-            29.183
-          ],
-          [
-            -95.152,
-            29.152
-          ],
-          [
-            -95.158,
-            29.142
-          ],
-          [
-            -95.201,
-            29.106
-          ],
-          [
-            -95.206,
-            29.082
-          ],
-          [
-            -95.23,
-            29.037
-          ],
-          [
-            -95.234,
-            29.018
-          ],
-          [
-            -95.262,
-            28.986
-          ],
-          [
-            -95.283,
-            28.971
-          ],
-          [
-            -95.307,
-            28.944
-          ],
-          [
-            -95.322,
-            28.931
-          ],
-          [
-            -95.388,
-            28.896
-          ],
-          [
-            -95.399,
-            28.9
-          ],
-          [
-            -95.446,
-            28.871
-          ],
-          [
-            -95.488,
-            28.858
-          ],
-          [
-            -95.531,
-            28.834
-          ],
-          [
-            -95.534,
-            28.83
-          ],
-          [
-            -95.573,
-            28.833
-          ],
-          [
-            -95.58,
-            28.86
-          ],
-          [
-            -95.643,
-            28.906
-          ],
-          [
-            -95.652,
-            28.923
-          ],
-          [
-            -95.646,
-            28.939
-          ],
-          [
-            -95.676,
-            28.964
-          ],
-          [
-            -95.691,
-            28.965
-          ],
-          [
-            -95.654,
-            28.993
-          ],
-          [
-            -95.626,
-            29.008
-          ],
-          [
-            -95.55,
-            29.014
-          ],
-          [
-            -95.322,
-            29.213
-          ],
-          [
-            -95.29,
-            29.292
-          ],
-          [
-            -95.259,
-            29.321
-          ],
-          [
-            -95.166,
-            29.315
-          ],
-          [
-            -95.134,
-            29.314
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Freeport\n- Lake Jackson\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 10-20 mph with gusts to 30 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- No storm surge inundation forecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little to no storm\nsurge flooding\n- PLAN: There is little to no threat of storm surge flooding.\nRough surf, coastal erosion, and life-threatening rip\ncurrents are possible.\n- PREPARE: Little to no preparations for storm surge flooding\nare needed.\n- ACT: Follow the instructions of local officials. Monitor\nforecasts.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from storm surge flooding.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: around 1 inch\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.\n\n* FOR MORE INFORMATION:\n- Hurricane Preparedness: Federal Emergency Management Agency\n- http://ready.gov/hurricanes\n- Local weather conditions and forecasts: NWS Houston/Galveston, TX\n- http://www.weather.gov/hgx/",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.10320d7ae3c5dd49d94aafa68f6fa258d84e475c.001.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Galveston Island",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -94.707,
-            29.335
-          ],
-          [
-            -95.113,
-            29.081
-          ],
-          [
-            -95.119,
-            29.086
-          ],
-          [
-            -95.12,
-            29.092
-          ],
-          [
-            -95.053,
-            29.191
-          ],
-          [
-            -95.058,
-            29.199
-          ],
-          [
-            -94.943,
-            29.306
-          ],
-          [
-            -94.894,
-            29.309
-          ],
-          [
-            -94.89,
-            29.369
-          ],
-          [
-            -94.891,
-            29.433
-          ],
-          [
-            -94.81,
-            29.364
-          ],
-          [
-            -94.707,
-            29.335
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Galveston\n- Jamaica Beach\n- West End Galveston Island\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 20-30 mph with gusts to 40 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- No storm surge inundation forecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little to no storm\nsurge flooding\n- PLAN: There is little to no threat of storm surge flooding.\nRough surf, coastal erosion, and life-threatening rip\ncurrents are possible.\n- PREPARE: Little to no preparations for storm surge flooding\nare needed.\n- ACT: Follow the instructions of local officials. Monitor\nforecasts.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from storm surge flooding.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: around 1 inch\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.\n\n* FOR MORE INFORMATION:\n- Hurricane Preparedness: Federal Emergency Management Agency\n- http://ready.gov/hurricanes\n- Local weather conditions and forecasts: NWS Houston/Galveston, TX\n- http://www.weather.gov/hgx/",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.10320d7ae3c5dd49d94aafa68f6fa258d84e475c.006.1",
-    "type": "weather",
-    "severity": "severe",
-    "title": "Tropical Storm Watch",
-    "geometry": "Polygon",
-    "location": "Brazoria Islands",
-    "coordinates": {
-      "type": "Polygon",
-      "polygon": [
-        [
-          [
-            -95.505,
-            28.826
-          ],
-          [
-            -95.508,
-            28.837
-          ],
-          [
-            -95.534,
-            28.83
-          ],
-          [
-            -95.531,
-            28.834
-          ],
-          [
-            -95.488,
-            28.858
-          ],
-          [
-            -95.446,
-            28.871
-          ],
-          [
-            -95.399,
-            28.9
-          ],
-          [
-            -95.388,
-            28.896
-          ],
-          [
-            -95.322,
-            28.931
-          ],
-          [
-            -95.307,
-            28.944
-          ],
-          [
-            -95.283,
-            28.971
-          ],
-          [
-            -95.262,
-            28.986
-          ],
-          [
-            -95.234,
-            29.018
-          ],
-          [
-            -95.23,
-            29.037
-          ],
-          [
-            -95.206,
-            29.082
-          ],
-          [
-            -95.201,
-            29.106
-          ],
-          [
-            -95.158,
-            29.142
-          ],
-          [
-            -95.118,
-            29.068
-          ],
-          [
-            -95.262,
-            28.969
-          ],
-          [
-            -95.296,
-            28.935
-          ],
-          [
-            -95.335,
-            28.915
-          ],
-          [
-            -95.38,
-            28.876
-          ],
-          [
-            -95.384,
-            28.866
-          ],
-          [
-            -95.397,
-            28.862
-          ],
-          [
-            -95.433,
-            28.86
-          ],
-          [
-            -95.441,
-            28.857
-          ],
-          [
-            -95.505,
-            28.826
-          ]
-        ]
-      ]
-    },
-    "details": {
-      "description": "A Tropical Storm Watch means tropical storm-force winds are possible\nsomewhere within this area within the next 48 hours\n\n* LOCATIONS AFFECTED\n- Surfside Beach\n\n* WIND\n- LATEST LOCAL FORECAST: Below tropical storm force wind\n- Peak Wind Forecast: 20-30 mph with gusts to 40 mph\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for wind 39\nto 57 mph\n- PLAN: Plan for hazardous wind of equivalent tropical storm\nforce.\n- PREPARE: Efforts to protect property should now be\nunderway. Prepare for limited wind damage.\n- ACT: Act now to complete preparations before the wind\nbecomes hazardous.\n\n- POTENTIAL IMPACTS: Limited\n- Damage to porches, awnings, carports, sheds, and unanchored\nmobile homes. Unsecured lightweight objects blown about.\n- Many large tree limbs broken off. A few trees snapped or\nuprooted, but with greater numbers in places where trees\nare shallow rooted. Some fences and roadway signs blown\nover.\n- A few roads impassable from debris, particularly within\nurban or heavily wooded places. Hazardous driving\nconditions on bridges and other elevated roadways.\n- Scattered power and communications outages.\n\n* STORM SURGE\n- No storm surge inundation forecast\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Little to no storm\nsurge flooding\n- PLAN: There is little to no threat of storm surge flooding.\nRough surf, coastal erosion, and life-threatening rip\ncurrents are possible.\n- PREPARE: Little to no preparations for storm surge flooding\nare needed.\n- ACT: Follow the instructions of local officials. Monitor\nforecasts.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from storm surge flooding.\n\n* FLOODING RAIN\n- LATEST LOCAL FORECAST:\n- Peak Rainfall Amounts: around 1 inch\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Potential for\nlocalized flooding rain\n- PLAN: Emergency plans should include the potential for\nlocalized flooding from heavy rain.\n- PREPARE: Consider protective actions if you are in an area\nvulnerable to flooding.\n- ACT: Heed any flood watches and warnings.\n\n- POTENTIAL IMPACTS: Limited\n- Localized rainfall flooding may prompt a few evacuations.\n- Rivers and tributaries may quickly rise with swifter\ncurrents. Small streams, creeks, canals, and ditches may\nbecome swollen and overflow in spots.\n- Flood waters can enter a few structures, especially in\nusually vulnerable spots. A few places where rapid ponding\nof water occurs at underpasses, low-lying spots, and poor\ndrainage areas. Several storm drains and retention ponds\nbecome near-full and begin to overflow. Some brief road and\nbridge closures.\n\n* TORNADO\n- LATEST LOCAL FORECAST:\n- Situation is unfavorable for tornadoes\n\n- THREAT TO LIFE AND PROPERTY THAT INCLUDES TYPICAL FORECAST\nUNCERTAINTY IN TRACK, SIZE AND INTENSITY: Tornadoes not expected\n- PLAN: Tornadoes are not expected. Showers and thunderstorms\nwith gusty winds may still occur.\n- PREPARE: Little to no preparations needed to protect\nagainst tornadoes at this time. Keep informed of the latest\ntornado situation.\n- ACT: Listen for changes in the forecast.\n\n- POTENTIAL IMPACTS: Little to None\n- Little to no potential impacts from tornadoes.\n\n* FOR MORE INFORMATION:\n- Hurricane Preparedness: Federal Emergency Management Agency\n- http://ready.gov/hurricanes\n- Local weather conditions and forecasts: NWS Houston/Galveston, TX\n- http://www.weather.gov/hgx/",
-      "instruction": null,
-      "expires": "2026-07-22T15:15:00-05:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.9f38488eb47bc90e00c916ed725fbfe1ea24ed1b.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.0b52b9d1c7528685c9cf84332605ec5dd4c87973.002.1",
     "type": "weather",
     "severity": "moderate",
     "title": "Beach Hazards Statement",
     "geometry": "unknown",
-    "location": "Milwaukee; Racine; Kenosha",
+    "location": "Cuyahoga; Lake; Ashtabula Lakeshore; Northern Erie",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Life threatening waves of 3 to 5 feet and dangerous\ncurrents are expected.\n\n* WHERE...Milwaukee, Racine and Kenosha Counties.\n\n* WHEN...Until 1 PM CDT this afternoon.\n\n* IMPACTS...Dangerous swimming conditions are expected due to\nhigh waves and onshore winds.",
-      "instruction": "Stay out of the water and away from dangerous areas like piers\nand breakwalls.  Strong structural and longshore currents are\nexpected.  Rip currents are possible.",
-      "expires": "2026-07-22T13:00:00-05:00"
+      "description": "* WHAT...High risk of rip currents.\n\n* WHERE...In Ohio, Cuyahoga, Lake and Ashtabula Lakeshore\nCounties. In Pennsylvania, Northern Erie County.\n\n* WHEN...Through this evening.\n\n* IMPACTS...Wind and wave action will cause currents on the\nlakeshore. Swimmers should not enter the water. Currents can\ncarry swimmers away from shore through a sand bar and along\nstructures extending out into the lake.",
+      "instruction": "Remain out of the water to avoid hazardous swimming conditions.",
+      "expires": "2026-07-22T18:00:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.49f0a56145f1f383a1fe03544bd3b3a51b8aff0d.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.076df4157b37c95f89b44cedcff59fbba1c5cde5.001.1",
     "type": "weather",
     "severity": "severe",
-    "title": "Special Marine Warning",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Converse County Lower Elevations; Niobrara County; North Laramie Range; Ferris/Seminoe/Shirley Mountains; Shirley Basin; Central Laramie Range and Southwest Platte County; East Platte County; Goshen County; Central Carbon County; North Snowy Range Foothills; Southwest Carbon County; Upper North Platte River Basin; Laramie Valley; South Laramie Range; South Laramie Range Foothills; Central Laramie County; East Laramie County",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of east central, south central, and southeast\nWyoming, including the following areas, in east central Wyoming,\nConverse County Lower Elevations and Niobrara County. In south\ncentral Wyoming, Central Carbon County, Ferris/Seminoe/Shirley\nMountains, North Snowy Range Foothills, Shirley Basin, Southwest\nCarbon County and Upper North Platte River Basin. In southeast\nWyoming, Central Laramie County, Central Laramie Range and\nSouthwest Platte County, East Laramie County, East Platte County,\nGoshen County, Laramie Valley, North Laramie Range, South Laramie\nRange and South Laramie Range Foothills.\n\n* WHEN...From noon MDT today through Thursday evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas. Area creeks\nand streams are running high and could flood with more heavy rain.\n\n* ADDITIONAL DETAILS...\n- Torrential Rainfall combined with training Thunderstorms may\nlead to rises in creeks, flood low lying areas, and\ntemporarily overwhelm drainage areas due to excessive run off\nfrom Hydrophobic soils.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+      "expires": "2026-07-23T00:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.076df4157b37c95f89b44cedcff59fbba1c5cde5.002.1",
+    "type": "weather",
+    "severity": "severe",
+    "title": "Flood Watch",
+    "geometry": "unknown",
+    "location": "Dawes; Box Butte; Scotts Bluff; Banner; Morrill; Kimball; Cheyenne; North Sioux; South Sioux",
+    "coordinates": {},
+    "details": {
+      "description": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...A portion of panhandle Nebraska, including the following\nareas, Banner County, Box Butte County, Cheyenne County, Dawes\nCounty, Kimball County, Morrill County, Northern Sioux County,\nScotts Bluff County and Southern Sioux County.\n\n* WHEN...From 6 PM MDT this evening through Thursday evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas. Low-water\ncrossings may be flooded. Extensive street flooding and flooding\nof creeks and rivers are possible. Area creeks and streams are\nrunning high and could flood with more heavy rain.\n\n* ADDITIONAL DETAILS...\n- Torrential Rainfall combined with training Thunderstorms may\nlead to rises in creeks, flood low lying areas, and\ntemporarily overwhelm drainage areas due to excessive run off\nfrom Hydrophobic soils.\n- http://www.weather.gov/safety/flood",
+      "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+      "expires": "2026-07-23T00:00:00-06:00"
+    },
+    "source": "NOAA Weather"
+  },
+  {
+    "id": "weather-urn:oid:2.49.0.1.840.0.3a6f20b6cac7208dd6d54d026041534814e2f1a3.001.1",
+    "type": "weather",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
     "geometry": "Polygon",
-    "location": "Coastal waters from Fenwick Island DE to Chincoteague VA out 20 NM; Coastal waters from Chincoteague to Parramore Island VA out 20 NM; Coastal waters from Parramore Island to Cape Charles Light VA out 20 NM; Waters from Fenwick Island DE to Chintoteague VA from 20 to 60 NM; Waters from Chincoteague VA to Parramore Island VA from 20 to 60 NM; Waters from Parramore Island VA to Cape Charles Light VA from 20 to 60 NM",
+    "location": "Dinwiddie; Prince George; Charles City; Sussex; Surry; Eastern Chesterfield (Including Col. Heights)",
     "coordinates": {
       "type": "Polygon",
       "polygon": [
         [
           [
-            -74.48,
-            37.31
+            -77.83,
+            37.1
           ],
           [
-            -74.7,
-            36.96
+            -77.66,
+            37.22
           ],
           [
-            -75.96,
-            37.13
+            -77.56,
+            37.33
           ],
           [
-            -75.71,
-            37.64
+            -77.3,
+            37.36
           ],
           [
-            -75.46,
-            37.99
+            -77.27,
+            37.35
           ],
           [
-            -74.53,
-            38.02
+            -77.27,
+            37.36
           ],
           [
-            -74.3,
-            37.5
+            -76.97,
+            37.39
           ],
           [
-            -74.48,
-            37.31
+            -76.92,
+            37.16
+          ],
+          [
+            -77.15,
+            37.02
+          ],
+          [
+            -77.83,
+            37.1
           ]
         ]
       ]
     },
     "details": {
-      "description": "For the following areas...\nCoastal waters from Chincoteague to Parramore Island VA out 20 NM...\nCoastal waters from Fenwick Island DE to Chincoteague VA out 20 NM...\nCoastal waters from Parramore Island to Cape Charles Light VA out 20\nNM...\nWaters from Chincoteague VA to Parramore Island VA from 20 to 60\nNM...\nWaters from Fenwick Island DE to Chintoteague VA from 20 to 60 NM...\nWaters from Parramore Island VA to Cape Charles Light VA from 20 to\n60 NM...\n\nAt 754 AM EDT, severe thunderstorms capable of producing waterspouts\nwere located along a line extending from near Blackfish Reef to 14 nm\nsouth of Bone Wreck to 11 nm north of 26 Mile Hill to 11 nm northwest\nof Triangle Reef, moving east at 30 knots.\n\nHAZARD...Waterspouts and wind gusts to 40 knots.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas. Small craft could be damaged in briefly\nhigher winds and suddenly higher waves.\n\nLocations impacted include...\nWachapreague Inlet, Parking Lot, Assateague Beach, Wachapreague Reef,\nBlackfish Reef, Quinby Inlet, Ship Shoal Inlet, Great Machipongo\nInlet, Sand Shoal Inlet, Chincoteague, Bone Wreck, Parramore Island,\n26 Mile Hill, and Cape Charles Light.",
-      "instruction": "Move to safe harbor until hazardous weather passes.",
-      "expires": "2026-07-22T08:45:00-04:00"
+      "description": "At 942 AM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Ettrick to near Sutherland to near\nDinwiddie. Movement was east at 40 mph.\n\nHAZARD...Wind gusts up to 50 mph, heavy rain, and frequent\nlightning.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down small trees and blow around\nunsecured objects. Wind impacting handling of high profile\nvehicles. Reduced visibility and minor flooding possible.\nFrequent cloud to ground lightning strikes.\n\nStrong thunderstorms will be near...\nPetersburg, Hopewell, Colonial Heights, Fort Lee, Virginia State\nUniversity, Ettrick, and Matoaca around 950 AM EDT.\nPrince George and Jordans Point around 955 AM EDT.\nGarysville around 1000 AM EDT.\nDisputanta around 1005 AM EDT.\nBurrowsville around 1010 AM EDT.\nClaremont and Cabin Point around 1015 AM EDT.\n\nOther locations impacted by these storms include Taylors Corner,\nBirchett Estate, Addison, Spring Grove, Jordan Point Country Club,\nPetersburg National Battlefield, Church Road, Richard Bland College,\nTempleton, and Barnetts.",
+      "instruction": "If outdoors, consider seeking shelter inside a building.",
+      "expires": "2026-07-22T10:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.004.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.a4f64f6995febb02fa72da215d1dcb49c5d683b3.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Icy Cape to Cape Suckling out to 15 NM",
+    "location": "Eastern Columbia River Gorge of Oregon; Lower Columbia Basin of Oregon; Foothills of the Northern Blue Mountains of Oregon; Eastern Columbia River Gorge of Washington; Yakima Valley; Lower Columbia Basin of Washington; Foothills of the Blue Mountains of Washington",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 30 kt with gusts up to 45 kt and\nseas 6 to 9 ft.\n\n* WHERE...Cape Spencer to Cape Fairweather out to 15 NM.\n\n* WHEN...Until 7 PM AKDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "* WHAT...Hot conditions with temperatures up to 103 degrees. This\nwill pose a moderate to major risk of heat-related illness.\n\n* WHERE...Eastern Columbia River Gorge of Oregon and Washington,\nLower Columbia Basin of Oregon and Washington, Foothills of the\nNorthern Blue Mountains of Oregon, Yakima Valley, and Foothills of\nthe Blue Mountains of Washington.\n\n* WHEN...Until 9 PM PDT Thursday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Today is expected to be the hottest day, with\nMajor HeatRisk across the Columbia Basin, Yakima Valley and\nportions of the Gorge and Blue Mountain Foothills.\n\nThursday will also see widespread moderate HeatRisk and locally\nmajor HeatRisk, mainly across the Columbia Basin.\n\nSmoke from area wildfires could end up affecting how hot\ntemperatures get.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances.\n\nTake extra precautions if you work or spend time outside. When\npossible reschedule strenuous activities to early morning or\nevening. Know the signs and symptoms of heat exhaustion and heat\nstroke. Wear lightweight and loose fitting clothing when possible.\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.\n\nFor sheltering information and other human services in your area,\ndial 2 1 1 during business hours or visit 211info.org for Oregon or\nwa211.org for Washington anytime.",
+      "expires": "2026-07-22T23:30:00-07:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.005.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ff4fd07bda5b627160c4d541a87a6356a672c9d8.002.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Cape Spencer to Cape Fairweather from 15 to 85 NM",
+    "location": "St. Andrews Bay Waterways",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...For the first Small Craft Advisory, west winds 20 to 30\nkt with gusts up to 35 kt and seas 6 to 8 ft. For the second\nSmall Craft Advisory, seas 7 to 8 ft expected.\n\n* WHERE...Cape Spencer to Cape Fairweather from 15 to 85 NM.\n\n* WHEN...For the first Small Craft Advisory, until 6 AM AKDT\nearly this morning. For the second Small Craft Advisory, from\n6 PM this evening to 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "description": "* WHAT...South winds 20 kt with gusts up to 30 kt\n\n* WHERE...St. Andrews Bay Waterways.\n\n* WHEN...Until 7 PM CDT this evening.\n\n* IMPACTS...A Small Craft Advisory means that wind speeds of 20\nto 33 knots, or seas of 7 feet or greater, are expected to\nproduce hazardous conditions for small craft. These hazardous\nconditions may result in poor vessel handling and steering\nresponse, broaching, overturned dinghies and kayaks, slips and\nfalls on slippery decks, rub damage along docks and seawalls,\nand dragging anchors.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "expires": "2026-07-22T17:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.006.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ff4fd07bda5b627160c4d541a87a6356a672c9d8.004.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Cape Edgecumbe to Cape Spencer from 15 to 80 NM",
+    "location": "Coastal Waters From  Ochlockonee River to Apalachicola FL out to 20 Nm; Waters from Suwannee River to Apalachicola FL from 20 to 60 NM",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...For the first Small Craft Advisory, northwest winds 20\nto 25 kt with gusts up to 35 kt and seas 6 to 8 ft. For the\nsecond Small Craft Advisory, seas 7 to 8 ft expected.\n\n* WHERE...Cape Edgecumbe to Cape Spencer from 15 to 80 NM.\n\n* WHEN...For the first Small Craft Advisory, until 4 AM AKDT\nearly this morning. For the second Small Craft Advisory, from\n10 PM this evening to 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "description": "* WHAT...South winds 15 to 25 kt with gusts up to 30 kt and seas\n5 to 8 ft.\n\n* WHERE...Coastal Waters From Ochlockonee River to Apalachicola\nFl out to 20 Nm and Waters from Suwannee River to Apalachicola\nFL from 20 to 60 NM.\n\n* WHEN...Until 3 AM EDT Thursday.\n\n* IMPACTS...A Small Craft Advisory means that wind speeds of 20\nto 33 knots, or seas of 7 feet or greater, are expected to\nproduce hazardous conditions for small craft. These hazardous\nconditions may result in poor vessel handling and steering\nresponse, broaching, overturned dinghies and kayaks, slips and\nfalls on slippery decks, rub damage along docks and seawalls,\nand dragging anchors.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "expires": "2026-07-22T17:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.006.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ff4fd07bda5b627160c4d541a87a6356a672c9d8.001.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Cape Edgecumbe to Cape Spencer from 15 to 80 NM",
+    "location": "Apalachee Bay or Coastal Waters From Keaton Beach to Ochlockonee River Fl out to 20 Nm; Coastal waters from  Suwannee River to Keaton Beach out 20 NM",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...For the first Small Craft Advisory, northwest winds 20\nto 25 kt with gusts up to 35 kt and seas 6 to 8 ft. For the\nsecond Small Craft Advisory, seas 7 to 8 ft expected.\n\n* WHERE...Cape Edgecumbe to Cape Spencer from 15 to 80 NM.\n\n* WHEN...For the first Small Craft Advisory, until 4 AM AKDT\nearly this morning. For the second Small Craft Advisory, from\n10 PM this evening to 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "description": "* WHAT...South winds 15 to 20 kt with gusts up to 25 kt.\n\n* WHERE...Nearshore Gulf waters from the Ochlockonee River to\nthe Suwannee River out 20 nautical miles.\n\n* WHEN...Until 7 PM EDT this evening.\n\n* IMPACTS...A Small Craft Advisory means that wind speeds of 20\nto 33 knots, or seas of 7 feet or greater, are expected to\nproduce hazardous conditions for small craft. These hazardous\nconditions may result in poor vessel handling and steering\nresponse, broaching, overturned dinghies and kayaks, slips and\nfalls on slippery decks, rub damage along docks and seawalls,\nand dragging anchors.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "expires": "2026-07-22T17:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.003.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.ff4fd07bda5b627160c4d541a87a6356a672c9d8.003.1",
     "type": "weather",
     "severity": "minor",
     "title": "Small Craft Advisory",
     "geometry": "unknown",
-    "location": "Icy Cape to Cape Suckling from 15 to 80 NM",
+    "location": "Coastal waters from Okaloosa-Walton County Line to Mexico Beach out 20 NM; Coastal Waters from Mexico Beach to Apalachicola out 20 NM; Waters from Okaloosa-Walton County Line to Mexico Beach from 20 to 60 NM; Waters from Mexico Beach to Apalachicola FL from 20 to 60 NM",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Seas 6 to 9 ft expected.\n\n* WHERE...Icy Cape to Cape Suckling from 15 to 80 NM.\n\n* WHEN...From 7 AM this morning to 10 PM AKDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+      "description": "* WHAT...South winds 20 to 30 kt with gusts up to 35 kt and seas\n6 to 11 ft.\n\n* WHERE...Offshore Gulf waters from the Walton-Okaloosa County\nline to Apalachicola from 20 to 60 nautical miles out, Coastal\nwaters from Mexico Beach to Okaloosa Walton County Line FL out\n20 NM, and Coastal waters from Mexico Beach to Apalachicola FL\nout 20 NM.\n\n* WHEN...Until 10 AM CDT Thursday.\n\n* IMPACTS...A Small Craft Advisory means that wind speeds of 20\nto 33 knots, or seas of 7 feet or greater, are expected to\nproduce hazardous conditions for small craft. These hazardous\nconditions may result in poor vessel handling and steering\nresponse, broaching, overturned dinghies and kayaks, slips and\nfalls on slippery decks, rub damage along docks and seawalls,\nand dragging anchors.",
       "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "expires": "2026-07-22T17:45:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.013.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.7dd3a48f7cbf609bcf8f437fe94c768226e6b9c7.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
     "geometry": "unknown",
-    "location": "Cape Fairweather to Icy Cape from 15 to 80 NM",
+    "location": "Kuskokwim Delta Coast and Nunivak Island; Western Capes",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Seas 6 to 9 ft expected.\n\n* WHERE...Cape Fairweather to Icy Cape from 15 to 80 NM.\n\n* WHEN...From 1 PM this afternoon to 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "A strong Bering Sea system will bring widespread moderate to\nheavy rain at times along with gusty winds and rough seas for the\ncoastal waters of the Kuskokwim Delta and the Western Capes today\nand into Thursday.\n\n-Winds: Southerly to southwest winds 30 to 40 mph with gusts up to\n45 mph. Occasional gusts up to 50 mph are also likely. Winds\nslowly diminish through Thursday.\n\n-Wave Heights: 5 to 6 ft waves this morning build to 8 to 14 ft\nthis afternoon. The higher end totals are more likely farther\nfrom the coast. Wave heights slowly subside beginning Thursday\nmorning.\n\n-Rainfall amounts: Expect moderate to heavy rain at times (about\n0.50 to 1.00 inches storm total), with the highest amounts near\nPlatinum, Quinhagak, and along the Northern Kuskokwim Bay Coast.\nSteady rain tapers to showers beginning this afternoon and\nevening.",
+      "instruction": null,
+      "expires": "2026-07-22T22:00:00-08:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.002.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.7dd3a48f7cbf609bcf8f437fe94c768226e6b9c7.002.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Special Weather Statement",
     "geometry": "unknown",
-    "location": "Cape Decision to Cape Edgecumbe from 15 to 80 NM",
+    "location": "Northern Bristol Bay Coast",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 25 kt with gusts up to 35 kt and\nseas 6 to 8 ft.\n\n* WHERE...Cape Decision to Cape Edgecumbe from 15 to 80 NM.\n\n* WHEN...Until 10 AM AKDT this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "A strong Bering Sea system will bring moderate to heavy rain at\ntimes along the coast as well as gusty winds and rough seas along\nthe coastal waters of Northern Bristol Bay today and into\nThursday. A southerly push of winds up Nushagak Bay this morning\nmay bring increased water-levels up the Bay but coastal flooding\nis of little to no concern due to lower tides.\n\n-Winds: Southerly winds this morning turn southwesterly through\nthe day and increasing to 25 to 35 mph with gusts between 35 to\n45 mph. Peak winds occur this afternoon into this evening before\nslowly diminishing through Thursday morning.\n\n-Wave Heights: Expect peak wave heights of 9 to 13 ft this\nafternoon to this evening for the coastal waters of northern\nBristol Bay. The higher end totals are more likely farther from\nthe coast. Wave heights begin to slowly subside through Thursday\nmorning.\n\n-Rainfall amounts: Expect a steady light rain with pockets of\nmoderate rain at times (about 0.50 to 0.75 inches storm total).\nThe highest rainfall totals will occur near Togiak. Steady rain\ntapers to showers through tonight into early Thursday morning.",
+      "instruction": null,
+      "expires": "2026-07-22T22:00:00-08:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.003.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.a35993b0e1eb93292edae05fa5e9e7689c4ea12e.001.1",
     "type": "weather",
     "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Icy Cape to Cape Suckling from 15 to 80 NM",
-    "coordinates": {},
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Smyth, VA; Wythe, VA",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -81.55,
+            36.88
+          ],
+          [
+            -81.32,
+            36.89
+          ],
+          [
+            -81,
+            36.91
+          ],
+          [
+            -81.1,
+            36.8
+          ],
+          [
+            -81.27,
+            36.79
+          ],
+          [
+            -81.6,
+            36.78
+          ],
+          [
+            -81.64,
+            36.87
+          ],
+          [
+            -81.57,
+            36.88
+          ],
+          [
+            -81.55,
+            36.88
+          ]
+        ]
+      ]
+    },
     "details": {
-      "description": "* WHAT...Seas 6 to 9 ft expected.\n\n* WHERE...Icy Cape to Cape Suckling from 15 to 80 NM.\n\n* WHEN...From 7 AM this morning to 10 PM AKDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...A portion of southwest Virginia, including the following\ncounties, Smyth and Wythe.\n\n* WHEN...Until 1230 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nSome low-water crossings may become impassable.\n\n* ADDITIONAL DETAILS...\n- At 927 AM EDT, Doppler radar and automated rain gauges\nindicated heavy rain due to thunderstorms. Minor flooding is\nongoing or expected to begin shortly in the advisory area. Up\nto 1.5 inches of rain have fallen.\n- This includes the following streams and drainages...\nDry Creek, Cripple Creek, Deans Branch, Blue Spring Creek,\nDulton Branch, Hungry Mother Creek, Georges Branch, Dry Run,\nCold Run, Killinger Creek and Dungeon Branch.\nAdditional rainfall amounts up to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nMarion...                          Rural Retreat...\nMount Rogers National Recreation Area...Sugar Grove...\nSpeedwell...                       Atkins...\nCrockett...\n- http://www.weather.gov/safety/flood",
+      "instruction": "In hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.\n\nWhen it is safe to do so, please send your reports of flooding,\nincluding mudslides or flooded roads, to the National Weather\nService by calling toll free at 1...8 6 6...2 1 5...4 3 2 4. Reports\nand pictures can also be shared on the National Weather Service\nBlacksburg Facebook page and on X.",
+      "expires": "2026-07-22T12:30:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.001.2",
+    "id": "weather-urn:oid:2.49.0.1.840.0.a0fd2be47b68f2ece9d3f77684db646221c1f50a.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Northern Lynn Canal",
-    "coordinates": {},
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "Live Oak, TX; McMullen, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -99.11,
+            28.65
+          ],
+          [
+            -99.01,
+            28.65
+          ],
+          [
+            -98.83,
+            28.52
+          ],
+          [
+            -98.21,
+            28.54
+          ],
+          [
+            -98.19,
+            28.44
+          ],
+          [
+            -98.94,
+            28.39
+          ],
+          [
+            -99.11,
+            28.65
+          ]
+        ]
+      ]
+    },
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 30 kt with gusts up to 45 kt and\nseas 6 to 9 ft.\n\n* WHERE...Cape Spencer to Cape Fairweather out to 15 NM.\n\n* WHEN...Until 7 PM AKDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "...The Flood Warning continues for the following rivers in Texas...\n\nFrio River At Tilden affecting Live Oak and McMullen Counties.\n\nFor the Frio River...including Tilden...Major flooding is forecast.\n\n- Forecast...The river is expected to rise to a crest of 29.1 feet\ntomorrow evening.\n- Flood stage is 22.0 feet.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nCaution is urged when walking near riverbanks.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-22T23:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.001.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.d1822f836d32b5156d31c6f9bd2ee91892f30d3b.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Northern Lynn Canal",
-    "coordinates": {},
+    "severity": "severe",
+    "title": "Flood Warning",
+    "geometry": "Polygon",
+    "location": "La Salle, TX",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -99.4,
+            28.59
+          ],
+          [
+            -98.94,
+            28.18
+          ],
+          [
+            -98.8,
+            28.17
+          ],
+          [
+            -98.8,
+            28.07
+          ],
+          [
+            -99.06,
+            28.08
+          ],
+          [
+            -99.39,
+            28.41
+          ],
+          [
+            -99.4,
+            28.59
+          ]
+        ]
+      ]
+    },
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 30 kt with gusts up to 45 kt and\nseas 6 to 9 ft.\n\n* WHERE...Cape Spencer to Cape Fairweather out to 15 NM.\n\n* WHEN...Until 7 PM AKDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "...The Flood Warning continues for the following rivers in Texas...\n\nNueces River At Cotulla affecting La Salle County.\n\nFor the Nueces River...including Cotulla, Tilden, Three Rivers,\nMathis, Bluntzer, Calallen...Major flooding is forecast.\n\n- Forecast...The river is expected to fall to 25.5 feet early\nMonday morning.\n- Flood stage is 15.0 feet.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMotorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nCaution is urged when walking near riverbanks.\n\nAdditional information is available at www.weather.gov/crp.",
+      "expires": "2026-07-22T23:30:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.002.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.0078e7c8c57c5705475336471aafdf4ec8e9f2ab.002.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Cape Decision to Cape Edgecumbe from 15 to 80 NM",
+    "location": "Perry; Chilton; Marengo; Dallas; Autauga; Lowndes",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 25 kt with gusts up to 35 kt and\nseas 6 to 8 ft.\n\n* WHERE...Cape Decision to Cape Edgecumbe from 15 to 80 NM.\n\n* WHEN...Until 10 AM AKDT this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "* WHAT...Heat index values up to 104.\n\n* WHERE...Autauga, Chilton, Dallas, Lowndes, Marengo, and Perry\nCounties.\n\n* WHEN...Until 9 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances.\n\nTake extra precautions if you work or spend time outside. When\npossible, reschedule strenuous activities to early morning or\nevening. Know the signs and symptoms of heat exhaustion and heat\nstoke. Wear light weight and loose fitting clothing when possible\nand drink plenty of water.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-22T21:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.009.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.0078e7c8c57c5705475336471aafdf4ec8e9f2ab.001.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Heat Advisory",
     "geometry": "unknown",
-    "location": "Dixon Entrance to Cape Decision from 15 to 90 NM",
+    "location": "Lamar; Fayette; Walker; Pickens; Tuscaloosa; Jefferson; Shelby; Sumter; Greene; Hale; Bibb",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 30 kt with gusts up to 40 kt and\nseas 7 to 10 ft.\n\n* WHERE...Dixon Entrance to Cape Decision out to 15 NM and Dixon\nEntrance to Cape Decision from 15 to 90 NM.\n\n* WHEN...Until 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "* WHAT...Heat index values up to 105.\n\n* WHERE...Bibb, Fayette, Greene, Hale, Jefferson, Lamar, Pickens,\nShelby, Sumter, Tuscaloosa, and Walker Counties.\n\n* WHEN...Until 9 PM CDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors. Young children and\npets should never be left unattended in vehicles under any\ncircumstances.\n\nTake extra precautions if you work or spend time outside. When\npossible, reschedule strenuous activities to early morning or\nevening. Know the signs and symptoms of heat exhaustion and heat\nstoke. Wear light weight and loose fitting clothing when possible\nand drink plenty of water.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+      "expires": "2026-07-22T21:00:00-05:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.005.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.6ea8d521034912086055582c8cf7263a73e86562.001.1",
     "type": "weather",
     "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Cape Spencer to Cape Fairweather from 15 to 85 NM",
-    "coordinates": {},
+    "title": "Flood Advisory",
+    "geometry": "Polygon",
+    "location": "Anderson, TN; Campbell, TN; Morgan, TN; Scott, TN; Union, TN",
+    "coordinates": {
+      "type": "Polygon",
+      "polygon": [
+        [
+          [
+            -84.43,
+            36.13
+          ],
+          [
+            -84.59,
+            36.11
+          ],
+          [
+            -84.61,
+            36.27
+          ],
+          [
+            -84.26,
+            36.33
+          ],
+          [
+            -83.84,
+            36.36
+          ],
+          [
+            -83.84,
+            36.19
+          ],
+          [
+            -83.94,
+            36.18
+          ],
+          [
+            -83.94,
+            36.19
+          ],
+          [
+            -83.96,
+            36.18
+          ],
+          [
+            -84.43,
+            36.13
+          ]
+        ]
+      ]
+    },
     "details": {
-      "description": "* WHAT...For the first Small Craft Advisory, west winds 20 to 30\nkt with gusts up to 35 kt and seas 6 to 8 ft. For the second\nSmall Craft Advisory, seas 7 to 8 ft expected.\n\n* WHERE...Cape Spencer to Cape Fairweather from 15 to 85 NM.\n\n* WHEN...For the first Small Craft Advisory, until 6 AM AKDT\nearly this morning. For the second Small Craft Advisory, from\n6 PM this evening to 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northern Anderson County in east Tennessee...\nSouthern Campbell County in east Tennessee...\nNortheastern Morgan County in east Tennessee...\nSoutheastern Scott County in east Tennessee...\nSouthwestern Union County in east Tennessee...\n\n* WHEN...Until 1215 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 916 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain have\nfallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nJacksboro, Caryville, Rocky Top, Norris, Disney, Cove Lake State\nPark and Norris Dam State Park.\n- http://www.weather.gov/safety/flood",
+      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.",
+      "expires": "2026-07-22T12:15:00-04:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.008.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.9fcabb0343614172beca5b0a674369eedd1484bb.003.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Wind Advisory",
     "geometry": "unknown",
-    "location": "Dixon Entrance to Cape Decision out to 15 NM",
+    "location": "SW Kenai Peninsula; NW Kenai Peninsula",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 30 kt with gusts up to 40 kt and\nseas 7 to 10 ft.\n\n* WHERE...Dixon Entrance to Cape Decision out to 15 NM and Dixon\nEntrance to Cape Decision from 15 to 90 NM.\n\n* WHEN...Until 1 AM AKDT Thursday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T12:00:00-08:00"
+      "description": "* WHAT...South to southwest winds 15 to 30 mph with gusts of 35 to\n50 mph expected.\n\n* WHERE...Western Kenai Peninsula along and near Cook Inlet.\n\n* WHEN...From 1 AM to 4 PM AKDT Thursday.\n\n* IMPACTS...Gusty winds will blow around unsecured objects and a few\npower outages may result. Dipnetting and other recreational\nactivities along Cook Inlet beaches will be impacted by high winds\nand rough seas, with 8 to 12 foot waves coming off of Cook Inlet.\n\n* ADDITIONAL DETAILS...The strongest winds will occur Thursday\nmorning between around 7am and Noon. Cook Inlet beaches,\nespecially from the Kenai River to Nikiski will see the highest\nwind gusts.",
+      "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nSecure outdoor objects.",
+      "expires": "2026-07-22T17:00:00-08:00"
     },
     "source": "NOAA Weather"
   },
   {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.007.1",
+    "id": "weather-urn:oid:2.49.0.1.840.0.9fcabb0343614172beca5b0a674369eedd1484bb.002.1",
     "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
+    "severity": "moderate",
+    "title": "Wind Advisory",
     "geometry": "unknown",
-    "location": "Cross Sound; Cape Edgecumbe to Cape Spencer out to 15 NM",
+    "location": "Anchorage",
     "coordinates": {},
     "details": {
-      "description": "* WHAT...Northwest winds 20 to 30 kt with gusts up to 35 kt and\nseas 6 to 9 ft.\n\n* WHERE...Cross Sound and Cape Edgecumbe to Cape Spencer out to\n15 NM.\n\n* WHEN...Until 6 AM AKDT early this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T07:00:00-08:00"
-    },
-    "source": "NOAA Weather"
-  },
-  {
-    "id": "weather-urn:oid:2.49.0.1.840.0.473386819645f81c05adaa441c589787aaec1fd8.010.1",
-    "type": "weather",
-    "severity": "minor",
-    "title": "Small Craft Advisory",
-    "geometry": "unknown",
-    "location": "Clarence Strait",
-    "coordinates": {},
-    "details": {
-      "description": "* WHAT...Northwest winds 15 to 25 kt expected.\n\n* WHERE...Clarence Strait.\n\n* WHEN...From 4 AM to 10 AM AKDT this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-      "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-      "expires": "2026-07-22T10:00:00-08:00"
+      "description": "* WHAT...Southeast winds 15 to 30 mph with gusts of 35 to 50 mph\nexpected. Strongest winds in south to west Anchorage (along\nTurnagain Arm).\n\n* WHERE...Lower elevations of Anchorage and Eagle River.\n\n* WHEN...From 1 AM to noon AKDT Thursday.\n\n* IMPACTS...Gusty winds will blow around unsecured objects and a few\npower outages may result. The combination of saturated soils and\nwind could also lead to downed trees, especially already damaged\nor diseased trees.\n\n* ADDITIONAL DETAILS...The strongest winds will be late tonight\nthrough early Thursday morning, approximately between 3am and 9am.",
+      "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nSecure outdoor objects.",
+      "expires": "2026-07-22T17:00:00-08:00"
     },
     "source": "NOAA Weather"
   }
