@@ -24,6 +24,29 @@ const cleanResponse = {
   checked_at: "2026-07-22T12:00:00Z",
 };
 
+const enrichment = {
+  schemaVersion: "1.0",
+  status: "partial",
+  dns: {
+    status: "available", a: ["203.0.113.8"], aaaa: ["2001:db8::8"],
+    mx: ["10 mail.example.com"], ns: ["ns1.example.com"], cname: null,
+  },
+  registration: {
+    status: "unavailable", registrar: null, createdAt: null, updatedAt: null,
+    expiresAt: null, approximateAgeDays: null, domainStatuses: [],
+  },
+  network: {
+    status: "available", asn: 64496, organization: "Example Network",
+    registrationCountry: "US",
+  },
+  certificateTransparency: {
+    status: "available", certificateCount: 2,
+    earliestObservedAt: "2025-01-01T00:00:00.000Z",
+    latestObservedAt: "2025-02-01T00:00:00.000Z",
+    names: ["example.com"],
+  },
+};
+
 describe("frontend URL validation and structural analysis", () => {
   it("requires an explicit protocol", () => {
     expect(() => parseInspectorUrl("example.com")).toThrow(/http:\/\//u);
@@ -115,6 +138,28 @@ describe("backend response handling", () => {
   it("validates the strict expected response", () => {
     expect(validateSuccessResponse(cleanResponse)?.status).toBe("no_known_threat_detected");
   });
+
+  it("accepts a strictly valid versioned enrichment object", () => {
+    const result = validateSuccessResponse({ ...cleanResponse, enrichment });
+    expect(result?.enrichment?.network.asn).toBe(64496);
+  });
+
+  it.each([
+    { ...enrichment, extra: true },
+    { ...enrichment, dns: { ...enrichment.dns, extra: true } },
+    { ...enrichment, network: { ...enrichment.network, registrationCountry: "USA" } },
+    { ...enrichment, registration: { ...enrichment.registration, createdAt: "not-a-date" } },
+    { ...enrichment, certificateTransparency: {
+      ...enrichment.certificateTransparency,
+      names: Array.from({ length: 21 }, () => "example.com"),
+    } },
+  ])("rejects malformed or expanded enrichment %#", (malformed) => {
+    expect(validateSuccessResponse({ ...cleanResponse, enrichment: malformed })).toBeNull();
+  });
+
+  it("remains backward compatible when enrichment is absent", () => {
+    expect(validateSuccessResponse(cleanResponse)?.enrichment).toBeNull();
+  });
 });
 
 describe("privacy and request lifecycle", () => {
@@ -156,6 +201,7 @@ describe("privacy and request lifecycle", () => {
     const script = readFileSync(resolve(root, "assets/js/url-inspector.js"), "utf8");
     expect(script).not.toMatch(/localStorage|sessionStorage|document\.cookie|innerHTML|document\.write|\beval\s*\(/u);
     expect(script).not.toMatch(/\.href\s*=\s*(?:input|structure|normalized)/u);
+    expect(script).not.toMatch(/cloudflare-dns\.com|rdap\.org|stat\.ripe\.net|crt\.sh/u);
   });
 
   it("does not render the submitted URL as an anchor", () => {

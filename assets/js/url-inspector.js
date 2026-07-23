@@ -151,7 +151,7 @@ export function validateSuccessResponse(payload) {
     if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
     const allowedKeys = new Set([
         "schema_version", "status", "risk_score", "threats", "url_hash",
-        "provider", "checked_at", "request_id"
+        "provider", "checked_at", "request_id", "enrichment"
     ]);
     if (Object.keys(payload).some(key => !allowedKeys.has(key))) return null;
     if (payload.schema_version !== "1.0" ||
@@ -170,6 +170,10 @@ export function validateSuccessResponse(payload) {
     if (payload.status === "known_threat_detected" && payload.threats.length === 0) return null;
     if (payload.status === "no_known_threat_detected" && payload.threats.length !== 0) return null;
     if (payload.status === "unavailable" && (payload.risk_score !== null || payload.threats.length !== 0)) return null;
+    const enrichment = payload.enrichment === undefined
+        ? null
+        : validateEnrichment(payload.enrichment);
+    if (payload.enrichment !== undefined && !enrichment) return null;
     return {
         schemaVersion: payload.schema_version,
         status: payload.status,
@@ -178,7 +182,79 @@ export function validateSuccessResponse(payload) {
         urlHash: payload.url_hash,
         provider: payload.provider,
         checkedAt: payload.checked_at,
-        requestId: payload.request_id || null
+        requestId: payload.request_id || null,
+        enrichment
+    };
+}
+
+function exactObject(value, keys) {
+    return value && typeof value === "object" && !Array.isArray(value) &&
+        Object.keys(value).length === keys.length &&
+        Object.keys(value).every(key => keys.includes(key));
+}
+
+function nullableString(value, maximum = 300) {
+    return value === null ||
+        (typeof value === "string" && value.length <= maximum && !/[\u0000-\u001f\u007f]/u.test(value));
+}
+
+function stringArray(value, maximum = 20) {
+    return Array.isArray(value) && value.length <= maximum &&
+        value.every(item => nullableString(item) && item !== null);
+}
+
+function nullableDate(value) {
+    return value === null ||
+        (nullableString(value, 40) && !Number.isNaN(Date.parse(value)));
+}
+
+export function validateEnrichment(value) {
+    if (!exactObject(value, [
+        "schemaVersion", "status", "dns", "registration", "network",
+        "certificateTransparency"
+    ]) || value.schemaVersion !== "1.0" ||
+        !["available", "partial", "unavailable"].includes(value.status)) return null;
+    const dns = value.dns;
+    const registration = value.registration;
+    const network = value.network;
+    const certificate = value.certificateTransparency;
+    if (!exactObject(dns, ["status", "a", "aaaa", "mx", "ns", "cname"]) ||
+        !["available", "unavailable"].includes(dns.status) ||
+        !stringArray(dns.a) || !stringArray(dns.aaaa) || !stringArray(dns.mx) ||
+        !stringArray(dns.ns) || !nullableString(dns.cname, 253)) return null;
+    if (!exactObject(registration, [
+        "status", "registrar", "createdAt", "updatedAt", "expiresAt",
+        "approximateAgeDays", "domainStatuses"
+    ]) || !["available", "unavailable"].includes(registration.status) ||
+        !nullableString(registration.registrar) ||
+        !nullableDate(registration.createdAt) ||
+        !nullableDate(registration.updatedAt) ||
+        !nullableDate(registration.expiresAt) ||
+        !(registration.approximateAgeDays === null ||
+          (Number.isInteger(registration.approximateAgeDays) && registration.approximateAgeDays >= 0)) ||
+        !stringArray(registration.domainStatuses)) return null;
+    if (!exactObject(network, ["status", "asn", "organization", "registrationCountry"]) ||
+        !["available", "unavailable"].includes(network.status) ||
+        !(network.asn === null || (Number.isInteger(network.asn) && network.asn > 0)) ||
+        !nullableString(network.organization) ||
+        !(network.registrationCountry === null ||
+          (typeof network.registrationCountry === "string" &&
+           /^[A-Z]{2}$/u.test(network.registrationCountry)))) return null;
+    if (!exactObject(certificate, [
+        "status", "certificateCount", "earliestObservedAt", "latestObservedAt", "names"
+    ]) || !["available", "unavailable"].includes(certificate.status) ||
+        !(certificate.certificateCount === null ||
+          (Number.isInteger(certificate.certificateCount) && certificate.certificateCount >= 0)) ||
+        !nullableDate(certificate.earliestObservedAt) ||
+        !nullableDate(certificate.latestObservedAt) ||
+        !stringArray(certificate.names)) return null;
+    return {
+        schemaVersion: value.schemaVersion,
+        status: value.status,
+        dns: { ...dns, a: [...dns.a], aaaa: [...dns.aaaa], mx: [...dns.mx], ns: [...dns.ns] },
+        registration: { ...registration, domainStatuses: [...registration.domainStatuses] },
+        network: { ...network },
+        certificateTransparency: { ...certificate, names: [...certificate.names] }
     };
 }
 
@@ -328,6 +404,86 @@ function addDefinition(list, label, value) {
     list.append(term, description);
 }
 
+function renderEnrichment(result) {
+    const unavailable = {
+        status: "unavailable",
+        dns: { status: "unavailable", a: [], aaaa: [], mx: [], ns: [], cname: null },
+        registration: {
+            status: "unavailable", registrar: null, createdAt: null, updatedAt: null,
+            expiresAt: null, approximateAgeDays: null, domainStatuses: []
+        },
+        network: { status: "unavailable", asn: null, organization: null, registrationCountry: null },
+        certificateTransparency: {
+            status: "unavailable", certificateCount: null, earliestObservedAt: null,
+            latestObservedAt: null, names: []
+        }
+    };
+    const enrichment = result.enrichment || unavailable;
+    const fill = (id, explanation, rows) => {
+        const container = document.getElementById(id);
+        const notice = document.createElement("p");
+        const list = document.createElement("dl");
+        notice.textContent = explanation;
+        list.className = "technical-list";
+        rows.forEach(([label, value]) => addDefinition(list, label, value ?? "Unavailable"));
+        container.replaceChildren(notice, list);
+    };
+    const dns = enrichment.dns;
+    fill(
+        "dns-details",
+        dns.status === "available"
+            ? "Passive DNS metadata returned by Cloudflare DNS-over-HTTPS."
+            : "DNS metadata is unavailable. Absence of data is not evidence of maliciousness.",
+        [
+            ["Status", displayText(dns.status)],
+            ["A records", dns.a.length ? dns.a.join(", ") : "None returned"],
+            ["AAAA records", dns.aaaa.length ? dns.aaaa.join(", ") : "None returned"],
+            ["MX records", dns.mx.length ? dns.mx.join(", ") : "None returned"],
+            ["NS records", dns.ns.length ? dns.ns.join(", ") : "None returned"],
+            ["CNAME", dns.cname]
+        ]
+    );
+    const registration = enrichment.registration;
+    fill(
+        "registration-details",
+        registration.status === "available"
+            ? "Passive RDAP registration metadata. Redacted or missing fields remain unavailable."
+            : "Registration metadata is unavailable. Missing registration data is not treated as suspicious.",
+        [
+            ["Status", displayText(registration.status)],
+            ["Registrar", registration.registrar],
+            ["Created", registration.createdAt],
+            ["Updated", registration.updatedAt],
+            ["Expires", registration.expiresAt],
+            ["Approximate age", registration.approximateAgeDays === null ? null : `${registration.approximateAgeDays} days`],
+            ["Domain statuses", registration.domainStatuses.length ? registration.domainStatuses.join(", ") : "None returned"]
+        ]
+    );
+    const network = enrichment.network;
+    fill(
+        "network-details",
+        "Country is infrastructure/network registration information and does not identify the website owner’s physical location.",
+        [
+            ["Status", displayText(network.status)],
+            ["ASN", network.asn === null ? null : `AS${network.asn}`],
+            ["Network organization", network.organization],
+            ["Registration country", network.registrationCountry]
+        ]
+    );
+    const certificate = enrichment.certificateTransparency;
+    fill(
+        "certificate-details",
+        "Certificate Transparency is passive, historical metadata and may be incomplete. No live TLS connection is made.",
+        [
+            ["Status", displayText(certificate.status)],
+            ["Certificate records", certificate.certificateCount],
+            ["Earliest observed", certificate.earliestObservedAt],
+            ["Latest observed", certificate.latestObservedAt],
+            ["Limited certificate names", certificate.names.length ? certificate.names.join(", ") : "None returned"]
+        ]
+    );
+}
+
 function displayText(value) {
     return String(value || "")
         .replace(/_/gu, " ")
@@ -407,6 +563,7 @@ function initializeInspector() {
         document.getElementById("provider-status").textContent = assessment.providerStatus;
         document.getElementById("result-explanation").textContent = assessment.explanation;
         document.getElementById("analyst-interpretation").textContent = buildAnalystInterpretation(result, structure);
+        renderEnrichment(result);
 
         const providerDetails = document.getElementById("provider-details");
         providerDetails.replaceChildren();

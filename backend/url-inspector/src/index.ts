@@ -1,12 +1,14 @@
 import { keyedHash } from "./privacy";
-import { checkGoogleSafeBrowsing, ProviderUnavailableError, scoreThreats, type ReputationResult } from "./reputation";
-import { ALLOWED_ORIGINS, type Env, type ErrorResponse, type InspectionResponse, type ThreatType } from "./types";
+import { enrichHostname, unavailableEnrichment } from "./enrichment";
+import { checkGoogleSafeBrowsing, scoreThreats, type ReputationResult } from "./reputation";
+import { ALLOWED_ORIGINS, type EnrichmentResult, type Env, type ErrorResponse, type InspectionResponse } from "./types";
 import { parseSubmittedUrl, UrlPolicyError } from "./url-policy";
 
 const MAX_BODY_BYTES = 4 * 1024;
 const ENDPOINT = "/api/url-check";
 
 type ReputationChecker = (url: string, apiKey: string) => Promise<ReputationResult>;
+type EnrichmentChecker = (hostname: string) => Promise<EnrichmentResult>;
 
 function corsHeaders(origin: string | null): Headers {
   const headers = new Headers({
@@ -78,7 +80,12 @@ function extractUrl(payload: unknown): unknown {
   return (payload as { url: unknown }).url;
 }
 
-export function createHandler(checker: ReputationChecker = checkGoogleSafeBrowsing) {
+export function createHandler(
+  checker: ReputationChecker = checkGoogleSafeBrowsing,
+  enricher: EnrichmentChecker = checker === checkGoogleSafeBrowsing
+    ? enrichHostname
+    : async () => unavailableEnrichment(),
+) {
   return async function handle(request: Request, env: Env): Promise<Response> {
     const requestUrl = new URL(request.url);
     const origin = request.headers.get("Origin");
@@ -131,13 +138,14 @@ export function createHandler(checker: ReputationChecker = checkGoogleSafeBrowsi
       const payload = await readJsonBody(request);
       const parsed = parseSubmittedUrl(extractUrl(payload));
       const urlHash = await keyedHash(env.APP_HASH_SECRET, `url:${parsed.href}`);
-      let result: ReputationResult;
-      try {
-        result = await checker(parsed.href, env.GOOGLE_SAFE_BROWSING_API_KEY);
-      } catch (error) {
-        if (!(error instanceof ProviderUnavailableError)) {
-          // Collapse all provider-layer failures into the same public state.
-        }
+      const [reputationSettled, enrichmentSettled] = await Promise.allSettled([
+        checker(parsed.href, env.GOOGLE_SAFE_BROWSING_API_KEY),
+        enricher(parsed.hostname.replace(/^\[|\]$/gu, "")),
+      ]);
+      const enrichment = enrichmentSettled.status === "fulfilled"
+        ? enrichmentSettled.value
+        : unavailableEnrichment();
+      if (reputationSettled.status === "rejected") {
         return jsonResponse({
           schema_version: "1.0",
           status: "unavailable",
@@ -146,8 +154,10 @@ export function createHandler(checker: ReputationChecker = checkGoogleSafeBrowsi
           url_hash: urlHash,
           provider: "google_safe_browsing",
           checked_at: new Date().toISOString(),
+          enrichment,
         }, 503, origin);
       }
+      const result = reputationSettled.value;
       const threats = result.threats;
       return jsonResponse({
         schema_version: "1.0",
@@ -157,6 +167,7 @@ export function createHandler(checker: ReputationChecker = checkGoogleSafeBrowsi
         url_hash: urlHash,
         provider: "google_safe_browsing",
         checked_at: new Date().toISOString(),
+        enrichment,
       }, 200, origin);
     } catch (error) {
       if (error instanceof UrlPolicyError) {
@@ -171,6 +182,7 @@ export function createHandler(checker: ReputationChecker = checkGoogleSafeBrowsi
         url_hash: "unavailable",
         provider: "google_safe_browsing",
         checked_at: new Date().toISOString(),
+        enrichment: unavailableEnrichment(),
       }, 503, origin);
     }
   };

@@ -134,8 +134,20 @@ describe("request boundary", () => {
     expect(payload.status).toBe("no_known_threat_detected");
     expect(JSON.stringify(payload)).not.toContain('"safe"');
     expect(Object.keys(payload).sort()).toEqual([
-      "checked_at", "provider", "risk_score", "schema_version", "status", "threats", "url_hash",
+      "checked_at", "enrichment", "provider", "risk_score", "schema_version", "status", "threats", "url_hash",
     ]);
+  });
+
+  it("keeps the Safe Browsing result when passive enrichment fails", async () => {
+    const response = await createHandler(
+      async () => ({ threats: ["MALWARE"], cacheDurationSeconds: null }),
+      async () => { throw new Error("passive provider failed"); },
+    )(request('{"url":"https://example.com"}'), env);
+    const payload = await responseJson(response);
+    expect(response.status).toBe(200);
+    expect(payload.status).toBe("known_threat_detected");
+    expect(payload.threats).toEqual(["MALWARE"]);
+    expect((payload.enrichment as { status: string }).status).toBe("unavailable");
   });
 
   it("enforces rate limiting", async () => {

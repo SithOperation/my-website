@@ -127,6 +127,22 @@
                             <div id="structural-findings" class="findings-list"></div>
                         </details>
                         <details>
+                            <summary>Domain registration</summary>
+                            <div id="registration-details" class="details-content enrichment-details"></div>
+                        </details>
+                        <details>
+                            <summary>DNS infrastructure</summary>
+                            <div id="dns-details" class="details-content enrichment-details"></div>
+                        </details>
+                        <details>
+                            <summary>Network ownership</summary>
+                            <div id="network-details" class="details-content enrichment-details"></div>
+                        </details>
+                        <details>
+                            <summary>Certificate Transparency</summary>
+                            <div id="certificate-details" class="details-content enrichment-details"></div>
+                        </details>
+                        <details>
                             <summary>Technical metadata</summary>
                             <dl id="technical-metadata" class="technical-list"></dl>
                         </details>
@@ -134,7 +150,8 @@
                             <summary>Limitations</summary>
                             <div class="details-content">
                                 <p>This is a point-in-time reputation lookup and passive string analysis. It does not establish that a URL is harmless or malicious.</p>
-                                <p>No website content, redirects, DNS, WHOIS, TLS certificates, ASN, hosting location, or domain age are inspected.</p>
+                                <p>No website content, redirect chain, live TLS connection, port, header, or vulnerability behavior is inspected.</p>
+                                <p>Missing passive metadata is not evidence of maliciousness. Network registration country does not identify the website owner’s physical location, and Certificate Transparency data may be historical or incomplete.</p>
                             </div>
                         </details>
                     </div>
@@ -164,7 +181,6 @@
                         <article><h3>URLhaus</h3><span>Unavailable</span></article>
                         <article><h3>OpenPhish</h3><span>Unavailable</span></article>
                         <article><h3>PhishTank</h3><span>Unavailable</span></article>
-                        <article><h3>ASN and hosting intelligence</h3><span>Unavailable</span></article>
                     </div>
                 </section>
             </aside>
