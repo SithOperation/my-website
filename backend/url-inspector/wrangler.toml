@@ -1,0 +1,14 @@
+name = "sentinel-url-inspector"
+main = "src/index.ts"
+compatibility_date = "2026-07-22"
+compatibility_flags = ["url_standard"]
+workers_dev = true
+keep_vars = true
+
+[[ratelimits]]
+name = "URL_CHECK_RATE_LIMITER"
+namespace_id = "104729"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
