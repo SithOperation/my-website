@@ -24,11 +24,10 @@ AI Cyber Daily Digest repository
 
 Other monitor repositories
 -> generate their own JSON files
--> apply source-specific retention before publication
 -> commit valid output independently
 
 Website `Sync Monitor States`
--> runs after the source windows
+-> runs three times daily and pulls the newest valid source files available
 -> checks out disaster and Sentinel sources independently
 -> validates every available file before atomic replacement
 -> preserves last-known-good website files after unavailable or invalid input
@@ -48,29 +47,38 @@ by the website sync.
 
 ## Schedule
 
-GitHub cron expressions use UTC. Each scheduled workflow includes both possible
-EST and EDT hours, then uses an `America/New_York` local-hour guard to prevent a
-duplicate run.
+GitHub cron expressions use UTC. The daily digest and monitor-state workflows
+include both possible EST and EDT hours, then use an `America/New_York` guard to
+prevent a duplicate run.
 
 - AI & Cyber Daily Digest: approximately 9:00 AM Eastern daily.
 - Sync AI & Cyber Daily Digest: approximately 9:10 AM Eastern daily.
 - Sync Monitor States: approximately 9:10 AM, 3:10 PM, and 9:10 PM Eastern.
-- Sync Early Warning System: repository-dispatch updates plus fallback runs at
-  approximately 9:10 AM, 3:10 PM, and 9:10 PM Eastern.
+- Sync Early Warning System: every 10 minutes. Manual and repository-dispatch
+  triggers are supported, but the current EWS source does not emit that dispatch.
+- Sentinel Grid source collection: its existing `17 */6 * * *` UTC schedule;
+  it has not been changed to the requested 9:00 AM, 3:00 PM, and 9:00 PM
+  Eastern source windows.
+- Disaster monitor source collection: its existing frequent schedule. It has
+  not been changed or coordinated by this website repository.
 - Deploy Website: every push to `main`.
 
 All sync workflows retain `workflow_dispatch` for manual runs. GitHub may delay
 a scheduled job; the sync always uses the newest valid source publication
 available when it starts.
+The source-generation schedules are not yet fully aligned with the three daily
+website synchronization slots.
 
 ## Retention and last-known-good behavior
 
 Time-sensitive retention belongs in each source repository, before publication.
 The website sync does not rewrite intelligence records or apply a blanket cutoff.
-Map events, world events, environmental events, and recent timelines should use
-the source project's configured recent-event window. Trends, current dashboard
-snapshots, active events, and internal deduplication state must not be blindly
-limited to seven days.
+Seven-day public event retention has not yet been implemented. It must be added
+later in Sentinel Grid, the disaster monitor, and any other source repository
+that produces recent-event data. Sentinel trends and internal history must
+remain longer than seven days, and this website must not delete source
+intelligence records. The standalone AI digest already applies its own story
+count and age limits.
 
 `scripts/sync-monitor-data.py` validates downloaded JSON and expected structures.
 Sentinel files are additionally checked against the publication manifest's byte

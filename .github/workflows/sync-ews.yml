@@ -5,13 +5,9 @@ on:
   repository_dispatch:
     types: [ews-state-updated]
   schedule:
-    # Fallback sync at approximately 09:10, 15:10, and 21:10 Eastern.
-    - cron: "10 1 * * *"
-    - cron: "10 2 * * *"
-    - cron: "10 13 * * *"
-    - cron: "10 14 * * *"
-    - cron: "10 19 * * *"
-    - cron: "10 20 * * *"
+    # The source does not currently emit repository_dispatch events, so retain
+    # a frequent fallback that is independent of Eastern-time scheduling.
+    - cron: "*/10 * * * *"
 
 permissions:
   contents: write
@@ -24,35 +20,12 @@ jobs:
   sync-ews:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Eastern sync hour
-        id: schedule
-        shell: bash
-        run: |
-          event_name="${{ github.event_name }}"
-          schedule_expression="${{ github.event.schedule }}"
-          eastern_offset="$(TZ=America/New_York date +%z)"
-          scheduled_hour="$(awk '{print $2}' <<< "$schedule_expression")"
-
-          if [[ "$event_name" != "schedule" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Running EWS sync at $(TZ=America/New_York date '+%Y-%m-%d %H:%M:%S %Z')"
-          elif [[ "$eastern_offset" == "-0400" && ",1,13,19," == *",$scheduled_hour,"* ]] ||
-               [[ "$eastern_offset" == "-0500" && ",2,14,20," == *",$scheduled_hour,"* ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Running delayed-safe Eastern schedule $schedule_expression"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping inactive DST candidate $schedule_expression for offset $eastern_offset"
-          fi
-
       - name: Checkout website
-        if: steps.schedule.outputs.run == 'true'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Checkout EWS
-        if: steps.schedule.outputs.run == 'true'
         continue-on-error: true
         uses: actions/checkout@v4
         with:
@@ -61,11 +34,9 @@ jobs:
           path: external/ews
 
       - name: Validate and publish EWS state
-        if: steps.schedule.outputs.run == 'true'
         run: python3 scripts/sync-monitor-data.py --ews-only
 
       - name: Commit EWS update
-        if: steps.schedule.outputs.run == 'true'
         shell: bash
         run: |
           git config user.name "github-actions"

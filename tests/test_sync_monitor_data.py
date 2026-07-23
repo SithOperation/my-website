@@ -95,6 +95,23 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(result.status, "failed")
             self.assertEqual(destination.read_text(encoding="utf-8"), '{"valid": true}')
 
+    def test_malformed_ai_json_preserves_last_known_good(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.json"
+            destination = root / "data.json"
+            destination.write_text('{"valid": true}', encoding="utf-8")
+            source.write_text('{"stories": [', encoding="utf-8")
+
+            result = sync_monitor_data.publish_file(
+                source,
+                destination,
+                sync_monitor_data.validate_ai_digest,
+            )
+
+            self.assertEqual(result.status, "failed")
+            self.assertEqual(destination.read_text(encoding="utf-8"), '{"valid": true}')
+
     def test_missing_source_preserves_destination(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -134,6 +151,38 @@ class SyncMonitorDataTests(unittest.TestCase):
             },
             "ews_state.json",
         )
+
+    def test_ews_only_mode_preserves_last_known_good_then_updates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "external" / "ews" / "state.json"
+            destination = root / "data" / "ews_state.json"
+            source.parent.mkdir(parents=True)
+            destination.parent.mkdir(parents=True)
+            destination.write_text('{"level": 1}', encoding="utf-8")
+            source.write_text('{"level": 9}', encoding="utf-8")
+
+            rejected = sync_monitor_data.sync_ews(root)
+
+            self.assertEqual(rejected.status, "failed")
+            self.assertEqual(destination.read_text(encoding="utf-8"), '{"level": 1}')
+
+            source.write_text(
+                json.dumps(
+                    {
+                        "level": 2,
+                        "concurrent_count": 10,
+                        "z_score": 1.5,
+                        "last_checked": "2026-07-23T13:49:32Z",
+                        "as_of": "2026-07-23T13:49:32Z",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            updated = sync_monitor_data.sync_ews(root)
+
+            self.assertEqual(updated.status, "updated")
+            self.assertEqual(json.loads(destination.read_text())["level"], 2)
 
     def test_valid_sentinel_publication_is_published(self):
         with tempfile.TemporaryDirectory() as directory:
