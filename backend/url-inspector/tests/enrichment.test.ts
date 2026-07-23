@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   calculateApproximateAgeDays,
+  discoverDomainRdapEndpoint,
   enrichHostname,
   EnrichmentProviderError,
   parseCertificateTransparency,
@@ -9,6 +10,8 @@ import {
   parseIpRdap,
   parseRdapDate,
   queryDns,
+  queryNetwork,
+  queryRegistration,
   sanitizeCertificateName,
 } from "../src/enrichment";
 
@@ -33,6 +36,10 @@ describe("passive DNS metadata", () => {
   it("rejects malformed DNS provider responses", () => {
     expect(() => parseDnsResponse({ Status: "0", Answer: [] }, 1))
       .toThrow(EnrichmentProviderError);
+    expect(() => parseDnsResponse({
+      Status: 0,
+      Answer: Array.from({ length: 201 }, () => ({ type: 1, data: "8.8.8.8" })),
+    }, 1)).toThrow(EnrichmentProviderError);
     expect(() => parseDnsResponse({ Status: 0, Answer: [{ type: 1, data: "999.1.1.1" }] }, 1))
       .toThrow(EnrichmentProviderError);
   });
@@ -80,6 +87,21 @@ describe("RDAP registration metadata", () => {
     expect(() => parseDomainRdap({ objectClassName: "domain", events: "redacted" }))
       .toThrow(EnrichmentProviderError);
   });
+
+  it("rejects an unsafe RDAP redirect", async () => {
+    const unsafeBootstrap = vi.fn(async () => jsonResponse({
+      services: [[["com"], ["http://127.0.0.1/rdap/"]]],
+    })) as typeof fetch;
+    await expect(queryRegistration("example.com", unsafeBootstrap))
+      .rejects.toBeInstanceOf(EnrichmentProviderError);
+    expect(unsafeBootstrap).toHaveBeenCalledOnce();
+  });
+
+  it("discovers an HTTPS domain RDAP endpoint from the IANA bootstrap", () => {
+    expect(discoverDomainRdapEndpoint({
+      services: [[["com", "net"], ["https://rdap.registry.example/v1/"]]],
+    }, "example.com")).toBe("https://rdap.registry.example/v1/domain/example.com");
+  });
 });
 
 describe("IP and Certificate Transparency metadata", () => {
@@ -89,6 +111,16 @@ describe("IP and Certificate Transparency metadata", () => {
     expect(parseIpRdap({ objectClassName: "ip network", name: "IPv6 Example", country: "DE" }))
       .toEqual({ organization: "IPv6 Example", registrationCountry: "DE" });
   });
+
+  it.each(["127.0.0.1", "10.0.0.1", "169.254.169.254", "203.0.113.8", "::1", "fc00::1"])(
+    "rejects non-public network lookup address %s",
+    async (address) => {
+      const providerFetch = vi.fn() as unknown as typeof fetch;
+      await expect(queryNetwork(address, providerFetch))
+        .rejects.toBeInstanceOf(EnrichmentProviderError);
+      expect(providerFetch).not.toHaveBeenCalled();
+    },
+  );
 
   it("sanitizes certificate names to the requested domain", () => {
     expect(sanitizeCertificateName("*.Api.Example.com.", "example.com")).toBe("api.example.com");
@@ -111,6 +143,13 @@ describe("IP and Certificate Transparency metadata", () => {
   it("rejects malformed Certificate Transparency responses", () => {
     expect(() => parseCertificateTransparency([{ name_value: "example.com" }], "example.com"))
       .toThrow(EnrichmentProviderError);
+    expect(() => parseCertificateTransparency(
+      Array.from({ length: 5_001 }, () => ({
+        entry_timestamp: "2025-01-01T00:00:00Z",
+        name_value: "example.com",
+      })),
+      "example.com",
+    )).toThrow(EnrichmentProviderError);
   });
 });
 
@@ -124,14 +163,19 @@ describe("enrichment orchestration", () => {
         const type = url.searchParams.get("type");
         return jsonResponse({
           Status: 0,
-          Answer: type === "A" ? [{ type: 1, data: "203.0.113.8" }] : [],
+          Answer: type === "A" ? [{ type: 1, data: "8.8.8.8" }] : [],
         });
       }
-      if (url.hostname === "rdap.org" && url.pathname.startsWith("/domain/")) {
+      if (url.hostname === "data.iana.org") {
+        return jsonResponse({
+          services: [[["example"], ["https://rdap.registry.example/v1/"]]],
+        });
+      }
+      if (url.hostname === "rdap.registry.example") {
         return jsonResponse({ errorCode: 503 }, 503);
       }
       if (url.hostname === "stat.ripe.net") {
-        return jsonResponse({ data: { asns: [64496], holder: "Example Network" } });
+        return jsonResponse({ data: { asns: [{ asn: 64496, holder: "Example Network" }] } });
       }
       if (url.hostname === "rdap.org" && url.pathname.startsWith("/ip/")) {
         return jsonResponse({ objectClassName: "ip network", name: "Example Net", country: "US" });
@@ -152,7 +196,10 @@ describe("enrichment orchestration", () => {
     expect(result.certificateTransparency.status).toBe("available");
     expect(calls.every((url) => url.hostname !== "submitted.example")).toBe(true);
     expect(new Set(calls.map((url) => url.hostname))).toEqual(
-      new Set(["cloudflare-dns.com", "rdap.org", "stat.ripe.net", "crt.sh"]),
+      new Set([
+        "cloudflare-dns.com", "data.iana.org", "rdap.registry.example",
+        "rdap.org", "stat.ripe.net", "crt.sh",
+      ]),
     );
   });
 });

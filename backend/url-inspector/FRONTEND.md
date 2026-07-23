@@ -38,16 +38,21 @@ enrichment provider.
 - Google Safe Browsing v5 receives the normalized URL for reputation checking.
 - Cloudflare DNS-over-HTTPS receives the normalized hostname for A, AAAA, MX,
   NS, and CNAME queries. Each query has a 3.5-second timeout and 64 KiB limit.
-- `rdap.org` receives the hostname for domain RDAP and the selected public IP
-  for network RDAP. Each request has a 5-second timeout and 384 KiB limit.
+- The IANA DNS RDAP bootstrap is used to discover the authoritative registry
+  endpoint for the hostname's TLD. The selected HTTPS registry receives the
+  hostname. `rdap.org` receives only the selected public IP for network RDAP
+  discovery; one redirect is followed only after validating an HTTPS,
+  credential-free, non-IP provider target. Requests use strict timeouts and
+  response-size limits.
 - RIPEstat Prefix Overview receives one resolved public IP for ASN and network
   holder metadata. It has a 4-second timeout and 128 KiB limit.
 - `crt.sh` receives the normalized hostname for an exact passive Certificate
   Transparency query. It has a 5-second timeout and 1 MiB limit. Returned names
   are sanitized, restricted to the queried domain, sorted, and limited to 20.
 
-Provider requests use GET, reject redirects, enforce response-size limits, and
-strictly validate returned JSON. Independent settled-result handling means a
+Provider requests use GET, enforce response-size limits, and strictly validate
+returned JSON. Redirects are rejected except for the single validated network
+RDAP discovery redirect described above. Independent settled-result handling means a
 timeout, oversized response, malformed response, or provider error marks only
 the affected metadata section unavailable. Enrichment failure never changes
 the independent Google Safe Browsing result. Missing or redacted registration
@@ -64,6 +69,10 @@ public response contains no provider request URLs or raw upstream responses.
   strings, or session-history entries.
 - Current-tab history contains only status, checked time, and a shortened
   privacy-safe HMAC.
+- Each Worker inspection receives a random UUID request ID. The same UUID is
+  returned in `request_id` and `X-Request-ID`; it contains no URL-derived data.
+- Sanitized Worker logs contain only that request ID and provider/section
+  availability categories, never submitted indicators or provider bodies.
 - Submitted URLs and returned domains, IPs, and certificate names are inert
   text, never clickable links.
 - Dynamic content uses `textContent`, `createElement`, and `replaceChildren`;

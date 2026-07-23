@@ -10,7 +10,7 @@ const ENDPOINT = "/api/url-check";
 type ReputationChecker = (url: string, apiKey: string) => Promise<ReputationResult>;
 type EnrichmentChecker = (hostname: string) => Promise<EnrichmentResult>;
 
-function corsHeaders(origin: string | null): Headers {
+function corsHeaders(origin: string | null, requestId?: string): Headers {
   const headers = new Headers({
     "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store",
@@ -20,6 +20,7 @@ function corsHeaders(origin: string | null): Headers {
   if (origin && ALLOWED_ORIGINS.has(origin)) {
     headers.set("Access-Control-Allow-Origin", origin);
   }
+  if (requestId) headers.set("X-Request-ID", requestId);
   return headers;
 }
 
@@ -27,9 +28,10 @@ function jsonResponse(
   payload: InspectionResponse | ErrorResponse,
   status: number,
   origin: string | null,
+  requestId: string,
   extraHeaders?: Record<string, string>,
 ): Response {
-  const headers = corsHeaders(origin);
+  const headers = corsHeaders(origin, requestId);
   Object.entries(extraHeaders ?? {}).forEach(([name, value]) => headers.set(name, value));
   return new Response(JSON.stringify(payload), { status, headers });
 }
@@ -40,12 +42,14 @@ function errorResponse(
   code: string,
   message: string,
   origin: string | null,
+  requestId: string,
   extraHeaders?: Record<string, string>,
 ): Response {
   return jsonResponse(
-    { schema_version: "1.0", status: responseStatus, code, message },
+    { schema_version: "1.0", status: responseStatus, code, message, request_id: requestId },
     status,
     origin,
+    requestId,
     extraHeaders,
   );
 }
@@ -89,15 +93,16 @@ export function createHandler(
   return async function handle(request: Request, env: Env): Promise<Response> {
     const requestUrl = new URL(request.url);
     const origin = request.headers.get("Origin");
+    const requestId = crypto.randomUUID();
 
     if (origin && !ALLOWED_ORIGINS.has(origin)) {
-      return errorResponse(403, "invalid_request", "origin_not_allowed", "request origin is not allowed", null);
+      return errorResponse(403, "invalid_request", "origin_not_allowed", "request origin is not allowed", null, requestId);
     }
     if (requestUrl.pathname !== ENDPOINT) {
-      return errorResponse(404, "not_found", "not_found", "endpoint not found", origin);
+      return errorResponse(404, "not_found", "not_found", "endpoint not found", origin, requestId);
     }
     if (request.method === "OPTIONS") {
-      const headers = corsHeaders(origin);
+      const headers = corsHeaders(origin, requestId);
       headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
       headers.set("Access-Control-Allow-Headers", "Content-Type");
       headers.set("Access-Control-Max-Age", "86400");
@@ -113,11 +118,12 @@ export function createHandler(
         "method_not_allowed",
         "only POST and OPTIONS are permitted",
         origin,
+        requestId,
         { Allow: "POST, OPTIONS" },
       );
     }
     if (!request.headers.get("Content-Type")?.toLowerCase().startsWith("application/json")) {
-      return errorResponse(415, "invalid_request", "unsupported_media_type", "Content-Type must be application/json", origin);
+      return errorResponse(415, "invalid_request", "unsupported_media_type", "Content-Type must be application/json", origin, requestId);
     }
 
     try {
@@ -131,6 +137,7 @@ export function createHandler(
           "rate_limit_exceeded",
           "request rate limit exceeded",
           origin,
+          requestId,
           { "Retry-After": "60" },
         );
       }
@@ -145,6 +152,15 @@ export function createHandler(
       const enrichment = enrichmentSettled.status === "fulfilled"
         ? enrichmentSettled.value
         : unavailableEnrichment();
+      console.info("url_inspection_completed", {
+        requestId,
+        reputation: reputationSettled.status === "fulfilled" ? "available" : "unavailable",
+        enrichment: enrichment.status,
+        dns: enrichment.dns.status,
+        registration: enrichment.registration.status,
+        network: enrichment.network.status,
+        certificateTransparency: enrichment.certificateTransparency.status,
+      });
       if (reputationSettled.status === "rejected") {
         return jsonResponse({
           schema_version: "1.0",
@@ -154,8 +170,9 @@ export function createHandler(
           url_hash: urlHash,
           provider: "google_safe_browsing",
           checked_at: new Date().toISOString(),
+          request_id: requestId,
           enrichment,
-        }, 503, origin);
+        }, 503, origin, requestId);
       }
       const result = reputationSettled.value;
       const threats = result.threats;
@@ -167,13 +184,15 @@ export function createHandler(
         url_hash: urlHash,
         provider: "google_safe_browsing",
         checked_at: new Date().toISOString(),
+        request_id: requestId,
         enrichment,
-      }, 200, origin);
+      }, 200, origin, requestId);
     } catch (error) {
       if (error instanceof UrlPolicyError) {
         const status = error.code === "request_too_large" ? 413 : 400;
-        return errorResponse(status, "invalid_request", error.code, error.message, origin);
+        return errorResponse(status, "invalid_request", error.code, error.message, origin, requestId);
       }
+      console.warn("url_inspection_failed", { requestId, category: "internal_failure" });
       return jsonResponse({
         schema_version: "1.0",
         status: "unavailable",
@@ -182,8 +201,9 @@ export function createHandler(
         url_hash: "unavailable",
         provider: "google_safe_browsing",
         checked_at: new Date().toISOString(),
+        request_id: requestId,
         enrichment: unavailableEnrichment(),
-      }, 503, origin);
+      }, 503, origin, requestId);
     }
   };
 }

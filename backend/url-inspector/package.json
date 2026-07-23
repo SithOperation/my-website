@@ -9,6 +9,9 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --dry-run"
   },
+  "overrides": {
+    "sharp": "0.35.3"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260723.1",
     "@types/node": "^24.0.0",

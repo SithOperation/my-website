@@ -78,6 +78,7 @@ export interface InspectionResponse {
   url_hash: string;
   provider: "google_safe_browsing";
   checked_at: string;
+  request_id: string;
   enrichment: EnrichmentResult;
 }
 
@@ -86,4 +87,5 @@ export interface ErrorResponse {
   status: "invalid_request" | "rate_limited" | "not_found";
   code: string;
   message: string;
+  request_id: string;
 }

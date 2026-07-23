@@ -135,8 +135,36 @@ describe("request boundary", () => {
     expect(payload.status).toBe("no_known_threat_detected");
     expect(JSON.stringify(payload)).not.toContain('"safe"');
     expect(Object.keys(payload).sort()).toEqual([
-      "checked_at", "enrichment", "provider", "risk_score", "schema_version", "status", "threats", "url_hash",
+      "checked_at", "enrichment", "provider", "request_id", "risk_score",
+      "schema_version", "status", "threats", "url_hash",
     ]);
+  });
+
+  it("returns a unique random request ID in JSON and the response header", async () => {
+    const handler = createHandler(async () => ({ threats: [], cacheDurationSeconds: null }));
+    const first = await handler(request('{"url":"https://example.com/private?token=one"}'), env);
+    const second = await handler(request('{"url":"https://example.com/private?token=one"}'), env);
+    const firstPayload = await responseJson(first);
+    const secondPayload = await responseJson(second);
+    expect(firstPayload.request_id).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u,
+    );
+    expect(secondPayload.request_id).not.toBe(firstPayload.request_id);
+    expect(first.headers.get("X-Request-ID")).toBe(firstPayload.request_id);
+    expect(JSON.stringify(firstPayload.request_id)).not.toContain("example.com");
+  });
+
+  it("logs only sanitized request and section status metadata", async () => {
+    const info = vi.spyOn(console, "info").mockImplementation(() => undefined);
+    const handler = createHandler(async () => ({ threats: [], cacheDurationSeconds: null }));
+    await handler(request('{"url":"https://example.com/path?secret=value"}'), env);
+    const serialized = JSON.stringify(info.mock.calls);
+    expect(serialized).not.toContain("example.com");
+    expect(serialized).not.toContain("secret=value");
+    expect(serialized).not.toContain(env.APP_HASH_SECRET);
+    expect(serialized).not.toContain(env.GOOGLE_SAFE_BROWSING_API_KEY);
+    expect(serialized).toContain("requestId");
+    info.mockRestore();
   });
 
   it("keeps the Safe Browsing result when passive enrichment fails", async () => {

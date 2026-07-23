@@ -5,9 +5,11 @@ import type {
   NetworkEnrichment,
   RegistrationEnrichment,
 } from "./types";
+import { parseSubmittedUrl } from "./url-policy";
 
 const DOH_ENDPOINT = "https://cloudflare-dns.com/dns-query";
 const RDAP_ENDPOINT = "https://rdap.org";
+const IANA_DNS_RDAP_BOOTSTRAP = "https://data.iana.org/rdap/dns.json";
 const RIPESTAT_ENDPOINT = "https://stat.ripe.net/data/prefix-overview/data.json";
 const CT_ENDPOINT = "https://crt.sh/";
 const CONTROL = /[\u0000-\u001f\u007f]/u;
@@ -39,26 +41,64 @@ function isIpv4(value: string): boolean {
 }
 
 function isIpv6(value: string): boolean {
-  return value.includes(":") && IPV6.test(value) && value.length <= 45;
+  if (!value.includes(":") || !IPV6.test(value) || value.length > 45) return false;
+  try {
+    return new URL(`http://[${value}]/`).hostname.length > 2;
+  } catch {
+    return false;
+  }
+}
+
+function providerFetch(fetcher: typeof fetch | undefined, url: string, init: RequestInit): Promise<Response> {
+  return fetcher ? fetcher(url, init) : globalThis.fetch(url, init);
+}
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new EnrichmentProviderError()), timeoutMs);
+    promise.then(
+      (value) => {
+        clearTimeout(timeout);
+        resolve(value);
+      },
+      (error: unknown) => {
+        clearTimeout(timeout);
+        reject(error);
+      },
+    );
+  });
+}
+
+function acceptedContentType(response: Response, accepted: readonly string[]): boolean {
+  const mediaType = response.headers.get("Content-Type")?.split(";", 1)[0]?.trim().toLowerCase();
+  return mediaType !== undefined && accepted.includes(mediaType);
 }
 
 async function fetchJsonLimited(
   url: string,
-  fetcher: typeof fetch,
+  fetcher: typeof fetch | undefined,
   timeoutMs: number,
   maximumBytes: number,
   accept: string,
+  acceptedTypes: readonly string[],
+  redirectValidator?: (target: URL) => boolean,
 ): Promise<unknown> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const response = await fetcher(url, {
+    const init: RequestInit = {
       method: "GET",
       headers: { Accept: accept },
-      redirect: "error",
-      signal: controller.signal,
-    });
+      redirect: "manual",
+    };
+    let response = await withTimeout(providerFetch(fetcher, url, init), timeoutMs);
+    if (response.status >= 300 && response.status < 400 && redirectValidator) {
+      const location = response.headers.get("Location");
+      if (!location) throw new EnrichmentProviderError();
+      const target = new URL(location, url);
+      if (!redirectValidator(target)) throw new EnrichmentProviderError();
+      response = await withTimeout(providerFetch(fetcher, target.href, init), timeoutMs);
+    }
     if (!response.ok) throw new EnrichmentProviderError();
+    if (!acceptedContentType(response, acceptedTypes)) throw new EnrichmentProviderError();
     const declared = Number(response.headers.get("Content-Length") ?? 0);
     if (declared > maximumBytes) throw new EnrichmentProviderError();
     if (!response.body) throw new EnrichmentProviderError();
@@ -85,8 +125,6 @@ async function fetchJsonLimited(
   } catch (error) {
     if (error instanceof EnrichmentProviderError) throw error;
     throw new EnrichmentProviderError();
-  } finally {
-    clearTimeout(timeout);
   }
 }
 
@@ -105,6 +143,7 @@ export function parseDnsResponse(payload: unknown, expectedType: number): string
   }
   if (response.Answer === undefined) return [];
   if (!Array.isArray(response.Answer)) throw new EnrichmentProviderError();
+  if (response.Answer.length > 200) throw new EnrichmentProviderError();
   const values: string[] = [];
   for (const candidate of response.Answer) {
     if (!candidate || typeof candidate !== "object" || Array.isArray(candidate)) {
@@ -120,6 +159,7 @@ export function parseDnsResponse(payload: unknown, expectedType: number): string
     if ([2, 5].includes(expectedType)) normalized = cleanDnsName(raw);
     if (expectedType === 15) {
       const match = raw.match(/^(\d{1,5})\s+(.+)$/u);
+      if (match?.[2] === ".") continue;
       const target = match ? cleanDnsName(match[2]) : null;
       if (match && target && Number(match[1]) <= 65535) normalized = `${Number(match[1])} ${target}`;
     }
@@ -129,13 +169,16 @@ export function parseDnsResponse(payload: unknown, expectedType: number): string
   return Array.from(new Set(values)).sort().slice(0, 20);
 }
 
-export async function queryDns(hostname: string, fetcher: typeof fetch = fetch): Promise<DnsEnrichment> {
+export async function queryDns(hostname: string, fetcher?: typeof fetch): Promise<DnsEnrichment> {
   const types = [["A", 1], ["AAAA", 28], ["MX", 15], ["NS", 2], ["CNAME", 5]] as const;
   const results = await Promise.all(types.map(async ([type, code]) => {
     const requestUrl = new URL(DOH_ENDPOINT);
     requestUrl.searchParams.set("name", hostname);
     requestUrl.searchParams.set("type", type);
-    const payload = await fetchJsonLimited(requestUrl.href, fetcher, 3_500, 64 * 1024, "application/dns-json");
+    const payload = await fetchJsonLimited(
+      requestUrl.href, fetcher, 3_500, 64 * 1024, "application/dns-json",
+      ["application/dns-json", "application/json"],
+    );
     return parseDnsResponse(payload, code);
   }));
   const [a = [], aaaa = [], mx = [], ns = [], cnameRecords = []] = results;
@@ -210,7 +253,8 @@ export function parseDomainRdap(payload: unknown, now = new Date()): Registratio
   };
   if (value.objectClassName !== "domain") throw new EnrichmentProviderError();
   if (value.status !== undefined &&
-      (!Array.isArray(value.status) || !value.status.every((item) => cleanText(item, 160)))) {
+      (!Array.isArray(value.status) || value.status.length > 100 ||
+       !value.status.every((item) => cleanText(item, 160)))) {
     throw new EnrichmentProviderError();
   }
   const createdAt = rdapEvent(value.events, ["registration"]);
@@ -227,17 +271,56 @@ export function parseDomainRdap(payload: unknown, now = new Date()): Registratio
   };
 }
 
+export function discoverDomainRdapEndpoint(payload: unknown, hostname: string): string {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    throw new EnrichmentProviderError();
+  }
+  const services = (payload as { services?: unknown }).services;
+  if (!Array.isArray(services) || services.length > 2_000) throw new EnrichmentProviderError();
+  const tld = hostname.toLowerCase().split(".").at(-1);
+  if (!tld) throw new EnrichmentProviderError();
+  for (const service of services) {
+    if (!Array.isArray(service) || service.length !== 2 ||
+        !Array.isArray(service[0]) || !Array.isArray(service[1]) ||
+        service[0].length > 100 || service[1].length > 20 ||
+        !service[0].every((item) => typeof item === "string") ||
+        !service[1].every((item) => typeof item === "string")) {
+      throw new EnrichmentProviderError();
+    }
+    if (!service[0].map((item) => item.toLowerCase()).includes(tld)) continue;
+    for (const candidate of service[1]) {
+      const endpoint = new URL(candidate);
+      if (endpoint.protocol === "https:" && !endpoint.username && !endpoint.password &&
+          endpoint.hostname !== "localhost" && !isIpv4(endpoint.hostname) && !isIpv6(endpoint.hostname)) {
+        return new URL(`domain/${encodeURIComponent(hostname)}`, endpoint.href.endsWith("/") ? endpoint : `${endpoint.href}/`).href;
+      }
+    }
+    throw new EnrichmentProviderError();
+  }
+  throw new EnrichmentProviderError();
+}
+
 export async function queryRegistration(
   hostname: string,
-  fetcher: typeof fetch = fetch,
+  fetcher?: typeof fetch,
   now = new Date(),
 ): Promise<RegistrationEnrichment> {
-  const payload = await fetchJsonLimited(
-    `${RDAP_ENDPOINT}/domain/${encodeURIComponent(hostname)}`,
+  const bootstrap = await fetchJsonLimited(
+    IANA_DNS_RDAP_BOOTSTRAP,
     fetcher,
-    5_000,
+    3_000,
+    256 * 1024,
+    "application/json",
+    ["application/json"],
+  );
+  const endpoint = discoverDomainRdapEndpoint(bootstrap, hostname);
+  const payload = await fetchJsonLimited(
+    endpoint,
+    fetcher,
+    4_000,
     384 * 1024,
     "application/rdap+json, application/json",
+    ["application/rdap+json", "application/json"],
   );
   return parseDomainRdap(payload, now);
 }
@@ -246,13 +329,23 @@ export function parseRipePrefix(payload: unknown): { asn: number | null; organiz
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) throw new EnrichmentProviderError();
   const data = (payload as { data?: unknown }).data;
   if (!data || typeof data !== "object" || Array.isArray(data)) throw new EnrichmentProviderError();
-  const record = data as { asns?: unknown; holder?: unknown };
-  if (!Array.isArray(record.asns) || !record.asns.every((asn) => Number.isInteger(asn) && Number(asn) > 0)) {
+  const record = data as { asns?: unknown };
+  if (!Array.isArray(record.asns) || record.asns.length > 16) {
     throw new EnrichmentProviderError();
   }
+  const networks = record.asns.map((candidate) => {
+    if (!candidate || typeof candidate !== "object" || Array.isArray(candidate)) {
+      throw new EnrichmentProviderError();
+    }
+    const network = candidate as { asn?: unknown; holder?: unknown };
+    if (!Number.isInteger(network.asn) || Number(network.asn) <= 0) {
+      throw new EnrichmentProviderError();
+    }
+    return { asn: Number(network.asn), holder: cleanText(network.holder, 200) };
+  }).sort((left, right) => left.asn - right.asn);
   return {
-    asn: record.asns.length ? Number(record.asns[0]) : null,
-    organization: cleanText(record.holder, 200),
+    asn: networks[0]?.asn ?? null,
+    organization: networks[0]?.holder ?? null,
   };
 }
 
@@ -267,12 +360,29 @@ export function parseIpRdap(payload: unknown): { organization: string | null; re
   return { organization: cleanText(value.name, 200), registrationCountry: country };
 }
 
-export async function queryNetwork(address: string, fetcher: typeof fetch = fetch): Promise<NetworkEnrichment> {
+function isPublicAddress(address: string): boolean {
+  try {
+    parseSubmittedUrl(`http://${isIpv6(address) ? `[${address}]` : address}/`);
+    return isIpv4(address) || isIpv6(address);
+  } catch {
+    return false;
+  }
+}
+
+export async function queryNetwork(address: string, fetcher?: typeof fetch): Promise<NetworkEnrichment> {
+  if (!isPublicAddress(address)) throw new EnrichmentProviderError();
   const ripeUrl = new URL(RIPESTAT_ENDPOINT);
   ripeUrl.searchParams.set("resource", address);
   const settled = await Promise.allSettled([
-    fetchJsonLimited(ripeUrl.href, fetcher, 4_000, 128 * 1024, "application/json"),
-    fetchJsonLimited(`${RDAP_ENDPOINT}/ip/${encodeURIComponent(address)}`, fetcher, 5_000, 384 * 1024, "application/rdap+json, application/json"),
+    fetchJsonLimited(
+      ripeUrl.href, fetcher, 4_000, 128 * 1024, "application/json", ["application/json"],
+    ),
+    fetchJsonLimited(
+      `${RDAP_ENDPOINT}/ip/${encodeURIComponent(address)}`, fetcher, 5_000, 384 * 1024,
+      "application/rdap+json, application/json", ["application/rdap+json", "application/json"],
+      (target) => target.protocol === "https:" && !target.username && !target.password &&
+        target.hostname !== "localhost" && !isIpv4(target.hostname) && !isIpv6(target.hostname),
+    ),
   ]);
   if (settled.every((result) => result.status === "rejected")) throw new EnrichmentProviderError();
   const ripe = settled[0].status === "fulfilled" ? parseRipePrefix(settled[0].value) : { asn: null, organization: null };
@@ -297,6 +407,7 @@ export function parseCertificateTransparency(
   nameLimit = 20,
 ): CertificateTransparencyEnrichment {
   if (!Array.isArray(payload)) throw new EnrichmentProviderError();
+  if (payload.length > 5_000) throw new EnrichmentProviderError();
   const observed: number[] = [];
   const names = new Set<string>();
   for (const candidate of payload) {
@@ -321,12 +432,14 @@ export function parseCertificateTransparency(
 
 export async function queryCertificateTransparency(
   hostname: string,
-  fetcher: typeof fetch = fetch,
+  fetcher?: typeof fetch,
 ): Promise<CertificateTransparencyEnrichment> {
   const url = new URL(CT_ENDPOINT);
   url.searchParams.set("q", hostname);
   url.searchParams.set("output", "json");
-  const payload = await fetchJsonLimited(url.href, fetcher, 5_000, 1024 * 1024, "application/json");
+  const payload = await fetchJsonLimited(
+    url.href, fetcher, 5_000, 1024 * 1024, "application/json", ["application/json"],
+  );
   return parseCertificateTransparency(payload, hostname);
 }
 
@@ -351,7 +464,7 @@ export function unavailableEnrichment(): EnrichmentResult {
 
 export async function enrichHostname(
   hostname: string,
-  fetcher: typeof fetch = fetch,
+  fetcher?: typeof fetch,
   now = new Date(),
 ): Promise<EnrichmentResult> {
   const dnsPromise = queryDns(hostname, fetcher);
@@ -366,7 +479,9 @@ export async function enrichHostname(
     if (!address) throw new EnrichmentProviderError();
     return queryNetwork(address, fetcher);
   });
-  const settled = await Promise.allSettled([dnsPromise, registrationPromise, networkPromise, ctPromise]);
+  const settled = await Promise.allSettled([
+    dnsPromise, registrationPromise, networkPromise, ctPromise,
+  ]);
   const fallback = unavailableEnrichment();
   const components = {
     dns: settled[0].status === "fulfilled" ? settled[0].value : fallback.dns,
