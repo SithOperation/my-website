@@ -3,6 +3,7 @@ import { createHandler } from "../src/index";
 import {
   checkGoogleSafeBrowsing,
   parseGoogleSafeBrowsingResponse,
+  parseGoogleSafeBrowsingProtobuf,
   ProviderUnavailableError,
   scoreThreats,
 } from "../src/reputation";
@@ -162,11 +163,8 @@ describe("request boundary", () => {
 });
 
 describe("Google provider boundary", () => {
-  it("aborts provider requests at the configured timeout", async () => {
-    const hangingFetch = ((_input: RequestInfo | URL, init?: RequestInit) =>
-      new Promise<Response>((_resolve, reject) => {
-        init?.signal?.addEventListener("abort", () => reject(new Error("aborted")));
-      })) as typeof fetch;
+  it("times out provider requests at the configured boundary", async () => {
+    const hangingFetch = (() => new Promise<Response>(() => undefined)) as typeof fetch;
     await expect(checkGoogleSafeBrowsing("https://example.com/", "key", hangingFetch, 5))
       .rejects.toBeInstanceOf(ProviderUnavailableError);
   });
@@ -174,7 +172,25 @@ describe("Google provider boundary", () => {
   it("treats provider HTTP errors as unavailable", async () => {
     const failedFetch = vi.fn(async () => new Response("upstream detail", { status: 503 })) as typeof fetch;
     await expect(checkGoogleSafeBrowsing("https://example.com/", "key", failedFetch))
-      .rejects.toBeInstanceOf(ProviderUnavailableError);
+      .rejects.toThrow("provider returned an error");
+  });
+
+  it("parses a protobuf response instead of attempting JSON parsing", async () => {
+    const protobufFetch = vi.fn(async () => new Response(
+      new Uint8Array([18, 3, 8, 172, 2]),
+      { headers: { "Content-Type": "application/x-protobuf" } },
+    )) as typeof fetch;
+    await expect(checkGoogleSafeBrowsing("https://example.com/", "key", protobufFetch))
+      .resolves.toEqual({ threats: [], cacheDurationSeconds: 300 });
+  });
+
+  it("rejects malformed JSON provider responses", async () => {
+    const malformedFetch = vi.fn(async () => new Response(
+      "{",
+      { headers: { "Content-Type": "application/json; charset=UTF-8" } },
+    )) as typeof fetch;
+    await expect(checkGoogleSafeBrowsing("https://example.com/", "key", malformedFetch))
+      .rejects.toThrow("invalid provider response");
   });
 
   it("accepts a v5 empty threats response", () => {
@@ -234,7 +250,7 @@ describe("Google provider boundary", () => {
     })).toThrow(ProviderUnavailableError);
   });
 
-  it("uses GET, an empty body, and a correctly encoded repeated urls parameter", async () => {
+  it("uses GET, protobuf negotiation, an empty body, and a correctly encoded repeated urls parameter", async () => {
     const providerFetch = vi.fn(async (
       _input: RequestInfo | URL,
       _init?: RequestInit,
@@ -256,10 +272,23 @@ describe("Google provider boundary", () => {
       .toBe("https://safebrowsing.googleapis.com/v5/urls:search");
     expect(providerUrl.searchParams.getAll("urls"))
       .toEqual(["https://example.com/path?q=one two"]);
+    expect(providerUrl.searchParams.has("alt")).toBe(false);
     expect(String(input)).toContain(
       "urls=https%3A%2F%2Fexample.com%2Fpath%3Fq%3Done+two",
     );
     expect(providerUrl.searchParams.get("key")).toBe("server-key");
+    expect(new Headers(init?.headers).get("Accept")).toBe("application/x-protobuf");
+  });
+
+  it("decodes known protobuf threat types and rejects unknown ones", () => {
+    const url = new TextEncoder().encode("example.com/path");
+    const threat = new Uint8Array([10, url.length, ...url, 18, 2, 1, 2]);
+    const response = new Uint8Array([10, threat.length, ...threat]);
+    expect(parseGoogleSafeBrowsingProtobuf(response).threats)
+      .toEqual(["MALWARE", "SOCIAL_ENGINEERING"]);
+    const unknown = new Uint8Array([10, url.length + 2, 10, url.length, ...url, 16, 99]);
+    expect(() => parseGoogleSafeBrowsingProtobuf(unknown))
+      .toThrow(ProviderUnavailableError);
   });
 });
 
