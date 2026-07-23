@@ -14,6 +14,7 @@
     let eventIndex = new Map();
     let coordinateCounts = new Map();
     let disasterIndex = new Map();
+    let earlyReportIndex = new Map();
     let environmentalCount = 0;
 
     const element = id => document.getElementById(id);
@@ -443,6 +444,132 @@
         map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
     }
 
+    function appendEarlyReportField(container, label, value) {
+        const row = document.createElement("div");
+        const name = document.createElement("strong");
+        name.textContent = `${label}: `;
+        row.append(name, document.createTextNode(String(value || "Unknown")));
+        container.append(row);
+    }
+
+    function buildEarlyReportDetail(properties) {
+        const content = document.createElement("article");
+        content.className = "early-report-detail";
+        const title = document.createElement("h3");
+        const warning = document.createElement("p");
+        title.textContent = properties.title || "Social Media Early Report";
+        warning.className = "warning";
+        warning.textContent = "EARLY REPORT — not independently verified";
+        content.append(title, warning);
+        appendEarlyReportField(content, "Status", displayType(properties.source_status));
+        appendEarlyReportField(content, "Verification", properties.verification_status);
+        appendEarlyReportField(content, "Location precision", displayType(properties.location_precision));
+        appendEarlyReportField(content, "Source", (properties.accounts || []).map(account => `@${account}`).join(", "));
+        appendEarlyReportField(content, "Collected", properties.last_updated_at);
+        const summary = document.createElement("p");
+        summary.textContent = properties.summary || "No report summary supplied.";
+        content.append(summary);
+        (properties.source_urls || []).forEach((url, index) => {
+            const link = document.createElement("a");
+            link.href = url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = `Open original X post${properties.source_urls.length > 1 ? ` ${index + 1}` : ""}`;
+            content.append(link);
+        });
+        return content;
+    }
+
+    async function loadEarlyReportLayer() {
+        const geojson = await client.fetchJSON("output/x_report_pinpoints.geojson");
+        const markerImage = await map.loadImage("assets/images/x-early-report-pinpoint.png");
+        if (!map.hasImage("x-early-report-pinpoint")) {
+            map.addImage("x-early-report-pinpoint", markerImage.data);
+        }
+        earlyReportIndex = new Map();
+        (geojson.features || []).forEach(feature => {
+            const properties = feature.properties || {};
+            earlyReportIndex.set(String(properties.id), properties);
+        });
+        map.addSource("x-early-reports-source", {
+            type: "geojson",
+            data: geojson,
+            cluster: true,
+            clusterMaxZoom: 7,
+            clusterRadius: 38,
+            clusterMinPoints: 2
+        });
+        map.addLayer({
+            id: "x-early-report-cluster-glow",
+            type: "circle",
+            source: "x-early-reports-source",
+            filter: ["has", "point_count"],
+            paint: {
+                "circle-radius": ["step", ["get", "point_count"], 22, 10, 29],
+                "circle-color": "#ff9f1c",
+                "circle-opacity": 0.16,
+                "circle-blur": 0.55
+            }
+        });
+        map.addLayer({
+            id: "x-early-report-clusters",
+            type: "circle",
+            source: "x-early-reports-source",
+            filter: ["has", "point_count"],
+            paint: {
+                "circle-radius": ["step", ["get", "point_count"], 16, 10, 21],
+                "circle-color": "#161616",
+                "circle-stroke-color": "#ffbf47",
+                "circle-stroke-width": 2
+            }
+        });
+        map.addLayer({
+            id: "x-early-report-cluster-count",
+            type: "symbol",
+            source: "x-early-reports-source",
+            filter: ["has", "point_count"],
+            layout: {
+                "text-field": ["get", "point_count_abbreviated"],
+                "text-font": ["Noto Sans Regular"],
+                "text-size": 11
+            },
+            paint: { "text-color": "#ffffff" }
+        });
+        map.addLayer({
+            id: "x-early-reports",
+            type: "symbol",
+            source: "x-early-reports-source",
+            filter: ["!", ["has", "point_count"]],
+            layout: {
+                "icon-image": "x-early-report-pinpoint",
+                "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.16, 8, 0.25],
+                "icon-allow-overlap": false,
+                "icon-padding": 3
+            }
+        });
+        map.on("click", "x-early-report-clusters", async click => {
+            const feature = click.features?.[0];
+            if (!feature) return;
+            const zoom = await map.getSource("x-early-reports-source")
+                .getClusterExpansionZoom(feature.properties.cluster_id);
+            map.easeTo({ center: feature.geometry.coordinates, zoom: Math.min(9, zoom), duration: 450 });
+        });
+        map.on("click", "x-early-reports", click => {
+            const feature = click.features?.[0];
+            const properties = earlyReportIndex.get(String(feature?.properties?.id));
+            if (!feature || !properties) return;
+            new window.maplibregl.Popup({ maxWidth: "390px", offset: 10 })
+                .setLngLat(feature.geometry.coordinates)
+                .setDOMContent(buildEarlyReportDetail(properties))
+                .addTo(map);
+        });
+        ["x-early-report-clusters", "x-early-reports"].forEach(layerId => {
+            map.on("mouseenter", layerId, () => { map.getCanvas().style.cursor = "pointer"; });
+            map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
+        });
+        applyLayerVisibility();
+    }
+
     async function loadEnvironmentalLayers() {
         const files = ["earthquakes.json", "volcanoes.json", "weather.json"];
         const results = await Promise.allSettled(files.map(file => client.fetchJSON(file)));
@@ -499,6 +626,12 @@
         setLayersVisible(["earthquakes-clusters", "earthquakes-count", "earthquakes"], element("layer-earthquakes").checked);
         setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
         setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
+        setLayersVisible([
+            "x-early-report-cluster-glow",
+            "x-early-report-clusters",
+            "x-early-report-cluster-count",
+            "x-early-reports"
+        ], element("layer-x-reports").checked);
     }
 
     function initializeMap() {
@@ -547,6 +680,7 @@
             element("sentinel-map").dataset.mapReady = "true";
             updateMapData();
             loadEnvironmentalLayers().catch(error => console.warn("Environmental map layers unavailable", error));
+            loadEarlyReportLayer().catch(error => console.warn("Social Media Early Reports layer unavailable", error));
         });
 
         map.on("error", event => {
@@ -838,7 +972,7 @@
             element(id).addEventListener("change", updateMapData);
         });
 
-        ["layer-intelligence", "layer-earthquakes", "layer-volcanoes", "layer-weather"].forEach(id => {
+        ["layer-intelligence", "layer-earthquakes", "layer-volcanoes", "layer-weather", "layer-x-reports"].forEach(id => {
             element(id).addEventListener("change", applyLayerVisibility);
         });
 

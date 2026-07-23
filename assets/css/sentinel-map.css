@@ -240,6 +240,12 @@ h2 {
 
 .layer-toggles input { accent-color: var(--cyan); }
 
+.filter-content .layer-toggles .early-report-toggle { color: #ffbf47; }
+.early-report-toggle input { accent-color: #ff9f1c; }
+.early-report-detail { display: grid; gap: 7px; }
+.early-report-detail .warning { color: #ffbf47; font-weight: 700; }
+.early-report-detail a { color: var(--cyan); overflow-wrap: anywhere; }
+
 select, .control-actions button, .mobile-panel-toggle {
     width: 100%;
     min-height: 42px;

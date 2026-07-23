@@ -1,0 +1,1 @@
+"""Sentinel Grid collectors."""
