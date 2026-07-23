@@ -54,7 +54,19 @@ frame-src 'self';
 
 
 
-<body>
+<body class="intro-active">
+
+    <div id="cinematic-background" class="orbital-intro" role="dialog" aria-label="Secure orbital connection sequence">
+        <canvas aria-hidden="true"></canvas>
+        <div class="intro-ui">
+            <div class="intro-vignette" aria-hidden="true"></div>
+            <div class="intro-reticle" aria-hidden="true"><i></i></div>
+            <div class="intro-status" aria-live="polite">
+                <span>INITIALIZING ORBITAL UPLINK</span>
+            </div>
+            <button class="intro-skip" type="button">SKIP INTRO</button>
+        </div>
+    </div>
 
 
     <div class="bg-layer" id="bg1"></div>
@@ -785,6 +797,8 @@ frame-src 'self';
         🛸
     </button>
 
+    <script src="assets/vendor/gsap/gsap.min.js"></script>
+    <script type="module" src="assets/js/intro/main.js"></script>
     <script src="assets/js/site.js"></script>
 
     <script src="assets/js/sentinel-data.js"></script>
