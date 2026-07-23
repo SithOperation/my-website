@@ -1,7 +1,7 @@
-import { runIntro } from "./intro.js";
-
 // Development switch: set false for normal once-per-session playback.
 const ALWAYS_PLAY_INTRO = true;
+// The generated 2D Earth-to-Vatican sequence is the preferred experience on all devices.
+const USE_STATIC_CINEMATIC = true;
 
 const failOpen = root => {
     root?.remove();
@@ -17,7 +17,11 @@ const start = async () => {
     }
     const alreadySeen = sessionStorage.getItem("orbital-intro-seen") === "true";
     try {
-        await runIntro(root, { playSequence: ALWAYS_PLAY_INTRO || !alreadySeen });
+        const module = USE_STATIC_CINEMATIC
+            ? await import("./fallback.js")
+            : await import("./intro.js");
+        const runner = USE_STATIC_CINEMATIC ? module.runStaticIntro : module.runIntro;
+        await runner(root, { playSequence: ALWAYS_PLAY_INTRO || !alreadySeen });
     } catch (error) {
         console.error("Orbital intro unavailable", error);
         failOpen(root);
