@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Sentinel URL Inspector performs passive URL reputation and structural analysis without visiting the submitted website.">
+    <meta property="og:title" content="Sentinel URL Inspector | Joseph Technologies">
+    <meta property="og:description" content="Passive URL reputation intelligence and local structural analysis without visiting the submitted website.">
+    <link rel="canonical" href="https://sithbusiness.com/url-inspector.html">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://sentinel-url-inspector.great-gs.workers.dev; font-src 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';">
+    <title>Sentinel URL Inspector | Joseph Technologies</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/css/sentinel-map.css">
+    <link rel="stylesheet" href="assets/css/url-inspector.css">
+</head>
+<body>
+    <a class="skip-link" href="#inspector-form">Skip to URL inspector</a>
+
+    <main class="ops-shell inspector-shell">
+        <header class="ops-header inspector-header">
+            <div>
+                <a class="back-link" href="index.html#sentinel-dashboard">← Sentinel dashboard</a>
+                <p class="eyebrow">DEFENSIVE CYBER INTELLIGENCE</p>
+                <h1>SENTINEL URL INSPECTOR</h1>
+                <p class="inspector-intro">Analyze a URL using reputation intelligence and local structural indicators without visiting the submitted website.</p>
+            </div>
+            <div class="passive-badge" role="status">
+                <span class="status-light" aria-hidden="true"></span>
+                Passive Reputation Analysis
+            </div>
+        </header>
+
+        <section class="inspector-layout" aria-label="URL analysis workspace">
+            <div class="inspector-primary">
+                <section class="inspector-panel submission-panel" aria-labelledby="submission-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">PASSIVE LOOKUP</p>
+                            <h2 id="submission-title">Inspect a URL</h2>
+                        </div>
+                        <span id="url-length" class="length-indicator">0 / 2,048</span>
+                    </div>
+
+                    <form id="inspector-form" novalidate>
+                        <label for="url-input">URL to analyze</label>
+                        <div class="url-entry">
+                            <input id="url-input" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="2048" placeholder="https://example.com" aria-describedby="url-help form-message">
+                            <button id="analyze-button" class="primary-action" type="submit">Analyze URL</button>
+                            <button id="clear-button" class="secondary-action" type="button">Clear</button>
+                        </div>
+                        <p id="url-help" class="field-help">Enter the complete URL beginning with http:// or https://. The protocol will not be added automatically.</p>
+                        <p id="form-message" class="form-message" role="alert"></p>
+                    </form>
+
+                    <aside class="scope-notice" aria-labelledby="scope-title">
+                        <h3 id="scope-title">Privacy and scope</h3>
+                        <ul>
+                            <li>The submitted site is not visited, rendered, executed, downloaded, or sandboxed by this tool.</li>
+                            <li>The URL is sent to the Sentinel Worker and Google Safe Browsing for reputation lookup.</li>
+                            <li>Do not submit private, authenticated, tokenized, internal, or confidential URLs.</li>
+                            <li>“No known threat detected” is not a guarantee that a URL is harmless.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section id="loading-panel" class="inspector-panel loading-panel" aria-labelledby="loading-title" hidden>
+                    <div class="scan-orbit" aria-hidden="true"><span></span></div>
+                    <div>
+                        <p class="eyebrow">ANALYSIS ACTIVE</p>
+                        <h2 id="loading-title">Inspecting submitted URL</h2>
+                        <p id="loading-message">Validating URL</p>
+                    </div>
+                </section>
+
+                <section id="result-panel" class="inspector-panel result-panel" aria-labelledby="result-title" hidden>
+                    <div class="result-heading">
+                        <div>
+                            <p class="eyebrow">ASSESSMENT</p>
+                            <h2 id="result-title">URL analysis result</h2>
+                        </div>
+                        <span id="result-status-badge" class="result-status">Awaiting result</span>
+                    </div>
+
+                    <div class="assessment-grid">
+                        <article>
+                            <span>OVERALL ASSESSMENT</span>
+                            <strong id="assessment-label">Unavailable</strong>
+                        </article>
+                        <article>
+                            <span>RISK SCORE</span>
+                            <strong id="risk-score">—</strong>
+                        </article>
+                        <article>
+                            <span>RISK CLASSIFICATION</span>
+                            <strong id="risk-classification">Unknown</strong>
+                        </article>
+                        <article>
+                            <span>PROVIDER STATUS</span>
+                            <strong id="provider-status">Unavailable</strong>
+                        </article>
+                    </div>
+
+                    <p id="result-explanation" class="result-explanation"></p>
+
+                    <div class="result-columns">
+                        <article class="provider-card">
+                            <p class="eyebrow">THREAT INTELLIGENCE PROVIDER</p>
+                            <h3>Google Safe Browsing</h3>
+                            <dl id="provider-details"></dl>
+                        </article>
+                        <article class="interpretation-card">
+                            <p class="eyebrow">ANALYST INTERPRETATION</p>
+                            <h3>Deterministic assessment</h3>
+                            <p id="analyst-interpretation"></p>
+                        </article>
+                    </div>
+
+                    <div class="details-stack">
+                        <details open>
+                            <summary>Reputation details</summary>
+                            <div id="reputation-details" class="details-content"></div>
+                        </details>
+                        <details open>
+                            <summary>Structural findings</summary>
+                            <div id="structural-findings" class="findings-list"></div>
+                        </details>
+                        <details>
+                            <summary>Technical metadata</summary>
+                            <dl id="technical-metadata" class="technical-list"></dl>
+                        </details>
+                        <details>
+                            <summary>Limitations</summary>
+                            <div class="details-content">
+                                <p>This is a point-in-time reputation lookup and passive string analysis. It does not establish that a URL is harmless or malicious.</p>
+                                <p>No website content, redirects, DNS, WHOIS, TLS certificates, ASN, hosting location, or domain age are inspected.</p>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="inspector-secondary">
+                <section class="inspector-panel session-panel" aria-labelledby="session-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">CURRENT TAB ONLY</p>
+                            <h2 id="session-title">Session history</h2>
+                        </div>
+                        <button id="clear-history-button" class="text-action" type="button">Clear history</button>
+                    </div>
+                    <p class="field-help">Up to five results are retained in memory. Submitted URLs are never stored.</p>
+                    <ol id="session-history" class="session-history">
+                        <li class="empty-history">No checks in this tab.</li>
+                    </ol>
+                </section>
+
+                <section class="inspector-panel future-panel" aria-labelledby="future-title">
+                    <p class="eyebrow">FUTURE INTELLIGENCE</p>
+                    <h2 id="future-title">Coming soon</h2>
+                    <div class="future-grid">
+                        <article><h3>VirusTotal</h3><span>Unavailable</span></article>
+                        <article><h3>URLhaus</h3><span>Unavailable</span></article>
+                        <article><h3>OpenPhish</h3><span>Unavailable</span></article>
+                        <article><h3>PhishTank</h3><span>Unavailable</span></article>
+                        <article><h3>ASN and hosting intelligence</h3><span>Unavailable</span></article>
+                    </div>
+                </section>
+            </aside>
+        </section>
+
+        <p id="request-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
+        <footer class="ops-footer">
+            <span>Sentinel URL Inspector</span>
+            <span>Passive reputation and structural analysis</span>
+            <span>No destination website request is performed</span>
+        </footer>
+    </main>
+
+    <script type="module" src="assets/js/url-inspector.js"></script>
+</body>
+</html>
