@@ -12,3 +12,81 @@ This is a static GitHub Pages site. `index.html` contains the portfolio and AI/c
 - `data/` — static data synchronized by `.github/workflows/sync-states.yml`
 
 No build step or paid service is required. Serve the repository with any static HTTP server for local testing; opening files directly can prevent browsers from fetching local JSON.
+
+## Data workflow architecture
+
+Each monitor publishes its own independent output. The website never generates or
+combines monitor intelligence:
+
+AI Cyber Daily Digest repository
+-> `AI & Cyber Daily Digest` generates and validates `data/ai_cyber_digest.json`
+-> commits only changed, non-empty output
+
+Other monitor repositories
+-> generate their own JSON files
+-> apply source-specific retention before publication
+-> commit valid output independently
+
+Website `Sync Monitor States`
+-> runs after the source windows
+-> checks out disaster and Sentinel sources independently
+-> validates every available file before atomic replacement
+-> preserves last-known-good website files after unavailable or invalid input
+-> commits only changed public website data
+
+Website `Sync AI & Cyber Daily Digest`
+-> runs after the standalone AI digest workflow
+-> copies only the completed public `data/ai_cyber_digest.json`
+-> validates non-empty output and preserves the last-known-good website copy
+
+`Deploy Website`
+-> publishes the website after repository updates
+
+The website continues fetching AI, Sentinel, disaster, environmental, and EWS
+JSON independently. Internal AI digest state and Markdown output are not copied
+by the website sync.
+
+## Schedule
+
+GitHub cron expressions use UTC. Each scheduled workflow includes both possible
+EST and EDT hours, then uses an `America/New_York` local-hour guard to prevent a
+duplicate run.
+
+- AI & Cyber Daily Digest: approximately 9:00 AM Eastern daily.
+- Sync AI & Cyber Daily Digest: approximately 9:10 AM Eastern daily.
+- Sync Monitor States: approximately 9:10 AM, 3:10 PM, and 9:10 PM Eastern.
+- Sync Early Warning System: repository-dispatch updates plus fallback runs at
+  approximately 9:10 AM, 3:10 PM, and 9:10 PM Eastern.
+- Deploy Website: every push to `main`.
+
+All sync workflows retain `workflow_dispatch` for manual runs. GitHub may delay
+a scheduled job; the sync always uses the newest valid source publication
+available when it starts.
+
+## Retention and last-known-good behavior
+
+Time-sensitive retention belongs in each source repository, before publication.
+The website sync does not rewrite intelligence records or apply a blanket cutoff.
+Map events, world events, environmental events, and recent timelines should use
+the source project's configured recent-event window. Trends, current dashboard
+snapshots, active events, and internal deduplication state must not be blindly
+limited to seven days.
+
+`scripts/sync-monitor-data.py` validates downloaded JSON and expected structures.
+Sentinel files are additionally checked against the publication manifest's byte
+counts and SHA-256 hashes. A missing, malformed, checksum-mismatched, or
+unexpectedly empty source is skipped without replacing the website's current
+copy. The workflow summary reports updated, unchanged, skipped, and failed files
+along with output sizes and freshness warnings.
+
+## Troubleshooting
+
+1. Run the relevant source workflow manually and confirm it committed valid
+   output.
+2. Run `Sync Monitor States` or `Sync Early Warning System` with
+   `workflow_dispatch`.
+3. Inspect the job summary for per-file validation failures or stale-source
+   warnings.
+4. Confirm `REPO_ACCESS_TOKEN` can read each private source repository.
+5. Run `python -m unittest discover -s tests -v` locally before changing sync
+   validation.

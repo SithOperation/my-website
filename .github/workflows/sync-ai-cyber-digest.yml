@@ -1,17 +1,12 @@
-name: Sync Early Warning System
+name: Sync AI & Cyber Daily Digest
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types: [ews-state-updated]
   schedule:
-    # Fallback sync at approximately 09:10, 15:10, and 21:10 Eastern.
-    - cron: "10 1 * * *"
-    - cron: "10 2 * * *"
+    # The source digest runs near 09:00 Eastern. These UTC candidates sync its
+    # completed public JSON about ten minutes later across EST and EDT.
     - cron: "10 13 * * *"
     - cron: "10 14 * * *"
-    - cron: "10 19 * * *"
-    - cron: "10 20 * * *"
 
 permissions:
   contents: write
@@ -21,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  sync-ews:
+  sync-ai-digest:
     runs-on: ubuntu-latest
     steps:
       - name: Check Eastern sync hour
@@ -33,11 +28,11 @@ jobs:
           eastern_offset="$(TZ=America/New_York date +%z)"
           scheduled_hour="$(awk '{print $2}' <<< "$schedule_expression")"
 
-          if [[ "$event_name" != "schedule" ]]; then
+          if [[ "$event_name" == "workflow_dispatch" ]]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Running EWS sync at $(TZ=America/New_York date '+%Y-%m-%d %H:%M:%S %Z')"
-          elif [[ "$eastern_offset" == "-0400" && ",1,13,19," == *",$scheduled_hour,"* ]] ||
-               [[ "$eastern_offset" == "-0500" && ",2,14,20," == *",$scheduled_hour,"* ]]; then
+            echo "Running manual AI digest sync"
+          elif [[ "$eastern_offset" == "-0400" && "$scheduled_hour" == "13" ]] ||
+               [[ "$eastern_offset" == "-0500" && "$scheduled_hour" == "14" ]]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
             echo "Running delayed-safe Eastern schedule $schedule_expression"
           else
@@ -51,32 +46,32 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout EWS
+      - name: Checkout completed AI digest
         if: steps.schedule.outputs.run == 'true'
         continue-on-error: true
         uses: actions/checkout@v4
         with:
-          repository: SithOperation/EWS-discord-monitor
+          repository: SithOperation/ai-cyber-daily-digest
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          path: external/ews
+          path: external/ai
 
-      - name: Validate and publish EWS state
+      - name: Validate and publish AI digest
         if: steps.schedule.outputs.run == 'true'
-        run: python3 scripts/sync-monitor-data.py --ews-only
+        run: python3 scripts/sync-monitor-data.py --ai-only
 
-      - name: Commit EWS update
+      - name: Commit AI digest update
         if: steps.schedule.outputs.run == 'true'
         shell: bash
         run: |
           git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ews_state.json
+          git add data/ai_cyber_digest.json
 
           if git diff --cached --quiet; then
-            echo "EWS state is already current"
+            echo "AI digest is already current"
             exit 0
           fi
 
-          git commit -m "Update early warning state"
+          git commit -m "Update AI Cyber Daily Digest"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"

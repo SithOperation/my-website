@@ -132,15 +132,21 @@
         const heading = document.createElement("h3");
         const source = document.createElement("p");
         const summary = document.createElement("p");
-        const score = document.createElement("p");
+        const metadata = document.createElement("p");
         article.className = "intel-item";
         heading.textContent = `${index + 1}. ${story.title || "Untitled report"}`;
         source.textContent = `Source: ${story.source || "Unknown"}`;
         summary.textContent = story.summary || "No summary available.";
-        score.textContent = `Score: ${story.score ?? "Unknown"}`;
-        article.append(heading, source, summary, score);
+        const score = story.importance_score ?? story.score;
+        metadata.textContent = [
+            story.severity,
+            story.category,
+            score === undefined || score === null ? null : `Score ${score}/100`
+        ].filter(Boolean).join(" · ");
+        article.append(heading, source, summary);
+        if (metadata.textContent) article.append(metadata);
 
-        const href = trustedHttpURL(story.link);
+        const href = trustedHttpURL(story.source_url || story.link);
         if (href) {
             const link = document.createElement("a");
             link.href = href;
@@ -160,7 +166,9 @@
             const data = await fetchJSON("data/ai_cyber_digest.json");
             const status = document.createElement("div");
             status.className = "intel-status";
-            status.textContent = "● AI CYBER DIGEST ONLINE";
+            const generated = new Date(data.generated_at || data.generated || "");
+            const freshness = Number.isNaN(generated.getTime()) ? "" : ` · Updated ${generated.toLocaleString()}`;
+            status.textContent = `● AI CYBER DIGEST ONLINE${freshness}`;
             const stories = Array.isArray(data.stories) ? data.stories.slice(0, 5) : [];
             const content = stories.length ? stories.map(storyElement) : [Object.assign(document.createElement("div"), { className: "intel-item", textContent: "No reports available." })];
             feed.replaceChildren(status, ...content);

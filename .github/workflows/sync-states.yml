@@ -1,325 +1,105 @@
 name: Sync Monitor States
 
-
 on:
-
   workflow_dispatch:
-
-
   schedule:
-
-    - cron: "*/10 * * * *"
-
-
+    # GitHub cron uses UTC. Separate candidates let the guard identify the
+    # intended slot even when GitHub starts a scheduled job late.
+    - cron: "10 1 * * *"
+    - cron: "10 2 * * *"
+    - cron: "10 13 * * *"
+    - cron: "10 14 * * *"
+    - cron: "10 19 * * *"
+    - cron: "10 20 * * *"
 
 permissions:
-
   contents: write
 
 concurrency:
   group: website-data-sync
   cancel-in-progress: false
 
-
-
 jobs:
-
-
   sync:
-
-
     runs-on: ubuntu-latest
-
-
-
     steps:
-
-
-      - name: Checkout Website
-
-        uses: actions/checkout@v4
-
-        with:
-
-          fetch-depth: 0
-
-
-
-      - name: Checkout Disaster
-
-        uses: actions/checkout@v4
-
-        with:
-
-          repository: SithOperation/earthquake-volcano-discord-monitor
-
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-
-          path: external/disaster
-
-
-
-      - name: Checkout AI Digest
-
-        uses: actions/checkout@v4
-
-        with:
-
-          repository: SithOperation/ai-cyber-daily-digest
-
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-
-          path: external/ai
-
-
-
-      - name: Checkout Sentinel Grid
-
-        uses: actions/checkout@v4
-
-        with:
-
-          repository: SithOperation/sentinel-grid-intelligence
-
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-
-          path: external/sentinel
-
-
-
-      - name: Verify source files
-
+      - name: Check Eastern sync hour
+        id: schedule
+        shell: bash
         run: |
-
-
-          echo "Checking Disaster State..."
-
-          test -f external/disaster/data/disaster_state.json
-
-
-
-          echo "Checking Disaster Map Files..."
-
-          test -f external/disaster/data/earthquakes.json
-
-          test -f external/disaster/data/volcanoes.json
-
-          test -f external/disaster/data/weather.json
-
-          test -f external/disaster/data/solar.json
-
-
-
-          echo "Checking AI Digest..."
-
-          test -f external/ai/data/ai_cyber_digest.json
-
-
-
-          echo "Checking Sentinel Grid..."
-
-          test -f external/sentinel/data/output/dashboard.json
-
-          test -f external/sentinel/data/output/intelligence_brief.json
-
-          test -f external/sentinel/data/output/map_events.json
-
-          test -f external/sentinel/data/output/timeline.json
-
-          test -f external/sentinel/data/output/trends.json
-
-          test -f external/sentinel/data/output/world_events.json
-
-          test -f external/sentinel/data/output/health.json
-
-          test -f external/sentinel/data/output/manifest.json
-
-
-
-          echo "All source files found"
-
-
-
-
-      - name: Copy dashboard data
-
-        run: |
-
-
-          mkdir -p data
-
-
-
-          # ==========================
-          # Disaster Intelligence
-          # ==========================
-
-          cp external/disaster/data/disaster_state.json \
-          data/disaster_state.json
-
-
-
-          cp external/disaster/data/earthquakes.json \
-          data/earthquakes.json
-
-
-
-          cp external/disaster/data/volcanoes.json \
-          data/volcanoes.json
-
-
-
-          cp external/disaster/data/weather.json \
-          data/weather.json
-
-
-
-          cp external/disaster/data/solar.json \
-          data/solar.json
-
-
-
-          # ==========================
-          # AI Cyber Digest
-          # ==========================
-
-          cp external/ai/data/ai_cyber_digest.json \
-          data/ai_cyber_digest.json
-
-
-
-          # ==========================
-          # Sentinel Grid Intelligence
-          # ==========================
-
-          cp external/sentinel/data/output/dashboard.json \
-          data/dashboard.json
-
-
-
-          cp external/sentinel/data/output/intelligence_brief.json \
-          data/intelligence_brief.json
-
-
-
-          cp external/sentinel/data/output/map_events.json \
-          data/map_events.json
-
-
-
-          cp external/sentinel/data/output/timeline.json \
-          data/timeline.json
-
-
-
-          cp external/sentinel/data/output/trends.json \
-          data/trends.json
-
-
-
-          cp external/sentinel/data/output/world_events.json \
-          data/world_events.json
-
-
-
-          cp external/sentinel/data/output/health.json \
-          data/health.json
-
-
-
-          # Publish the release marker last. The frontend only switches
-          # publications after this complete manifest becomes available.
-          cp external/sentinel/data/output/manifest.json \
-          data/manifest.json
-
-
-
-
-      - name: Verify copied files
-
-        run: |
-
-
-          python3 - <<'PY'
-          import hashlib
-          import json
-          from pathlib import Path
-
-          data_dir = Path("data")
-          manifest = json.loads((data_dir / "manifest.json").read_text(encoding="utf-8"))
-
-          if str(manifest.get("schema_version", "")).split(".", 1)[0] != "1":
-              raise SystemExit("Unsupported Sentinel manifest schema")
-
-          if not manifest.get("publication_id"):
-              raise SystemExit("Sentinel manifest is missing publication_id")
-
-          for filename, metadata in manifest.get("files", {}).items():
-              path = data_dir / filename
-              if not path.is_file():
-                  raise SystemExit(f"Manifest file missing after copy: {filename}")
-
-              payload = path.read_bytes()
-              if len(payload) != metadata.get("bytes"):
-                  raise SystemExit(f"Size mismatch for {filename}")
-
-              digest = hashlib.sha256(payload).hexdigest()
-              if digest != metadata.get("sha256"):
-                  raise SystemExit(f"SHA-256 mismatch for {filename}")
-
-          print(f"Validated Sentinel publication {manifest['publication_id']}")
-          PY
-
-
-          echo "Website dashboard data:"
-
-
-          ls -lh data/
-
-
-
-          echo "Sentinel Dashboard Sample:"
-
-
-          head -40 data/dashboard.json
-
-
-
-          echo "Sentinel Brief Sample:"
-
-
-          head -40 data/intelligence_brief.json
-
-
-
-
-      - name: Commit dashboard updates
-
-        run: |
-
-
-          git config user.name "github-actions"
-
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-
-
-          git add data/
-
-
-
-          if git diff --cached --quiet; then
-
-              echo "No updates"
-
-              exit 0
-
+          event_name="${{ github.event_name }}"
+          schedule_expression="${{ github.event.schedule }}"
+          eastern_offset="$(TZ=America/New_York date +%z)"
+          scheduled_hour="$(awk '{print $2}' <<< "$schedule_expression")"
+
+          if [[ "$event_name" == "workflow_dispatch" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Running website sync at $(TZ=America/New_York date '+%Y-%m-%d %H:%M:%S %Z')"
+          elif [[ "$eastern_offset" == "-0400" && ",1,13,19," == *",$scheduled_hour,"* ]] ||
+               [[ "$eastern_offset" == "-0500" && ",2,14,20," == *",$scheduled_hour,"* ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Running delayed-safe Eastern schedule $schedule_expression"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping inactive DST candidate $schedule_expression for offset $eastern_offset"
           fi
 
+      - name: Checkout website
+        if: steps.schedule.outputs.run == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
+      - name: Checkout disaster monitor
+        if: steps.schedule.outputs.run == 'true'
+        id: disaster
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: SithOperation/earthquake-volcano-discord-monitor
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          path: external/disaster
+
+      - name: Checkout Sentinel Grid
+        if: steps.schedule.outputs.run == 'true'
+        id: sentinel
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: SithOperation/sentinel-grid-intelligence
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          path: external/sentinel
+
+      - name: Validate and publish available monitor data
+        if: steps.schedule.outputs.run == 'true'
+        run: python3 scripts/sync-monitor-data.py
+
+      - name: Commit changed website data
+        if: steps.schedule.outputs.run == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/disaster_state.json \
+            data/earthquakes.json \
+            data/volcanoes.json \
+            data/weather.json \
+            data/solar.json \
+            data/dashboard.json \
+            data/intelligence_brief.json \
+            data/map_events.json \
+            data/timeline.json \
+            data/trends.json \
+            data/world_events.json \
+            data/health.json \
+            data/manifest.json
+
+          if git diff --cached --quiet; then
+            echo "No validated monitor updates"
+            exit 0
+          fi
 
           git commit -m "Update intelligence feeds"
-
-
-
-          git push
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
