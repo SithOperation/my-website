@@ -466,3 +466,121 @@ section[id] { scroll-margin-top:7rem; }
     .card,.source-card,.project,.inspector-panel { color:#111;background:#fff;border:1px solid #aaa;box-shadow:none; }
     h1,h2,h3,h4,p,li,td,th { color:#111!important; }
 }
+
+/* ============================================================
+   MOBILE FUNCTIONAL RECOVERY
+   Keep late visual overrides from changing map geometry or
+   covering the resume download target.
+   ============================================================ */
+.card::before,
+#sentinel-dashboard::before {
+    pointer-events:none;
+}
+
+#resume .project-link {
+    position:relative;
+    z-index:4;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:min(100%,240px);
+    min-height:48px;
+    margin:1rem auto 0;
+    padding:.85rem 1.25rem;
+    border:1px solid var(--site-red);
+    border-radius:var(--radius-small);
+    background:var(--site-red);
+    color:#fff;
+    pointer-events:auto;
+    touch-action:manipulation;
+}
+
+#resume .project-link:hover,
+#resume .project-link:focus-visible,
+#resume .project-link:active {
+    border-color:var(--site-red-bright);
+    background:var(--site-red-bright);
+    color:#fff;
+}
+
+@media(max-width:820px) {
+    body:not(.intro-active) { overflow-x:hidden; }
+
+    .ops-shell {
+        width:100%;
+        max-width:none;
+        padding:8px;
+    }
+
+    .operations-grid {
+        display:flex;
+        min-width:0;
+        min-height:0;
+        flex-direction:column;
+    }
+
+    .control-panel { order:1; }
+    .map-stage {
+        order:2;
+        display:grid;
+        min-width:0;
+        grid-template-rows:auto minmax(68vh,720px);
+    }
+    .event-panel { order:3; }
+
+    .map-frame {
+        position:relative;
+        width:100%;
+        min-width:0;
+        min-height:68vh;
+        overflow:hidden;
+        isolation:isolate;
+    }
+
+    #sentinel-map {
+        position:absolute;
+        z-index:1;
+        inset:0;
+        width:100%;
+        height:100%;
+        min-height:0;
+        pointer-events:auto;
+    }
+
+    #sentinel-map .maplibregl-canvas,
+    #sentinel-map .maplibregl-control-container,
+    #sentinel-map .leaflet-pane,
+    #sentinel-map .leaflet-control-container {
+        pointer-events:auto;
+    }
+
+    .scanline,
+    .fullscreen-map-help {
+        pointer-events:none;
+    }
+
+    .map-loading.is-hidden {
+        visibility:hidden;
+        pointer-events:none;
+    }
+
+    #resume {
+        position:relative;
+        isolation:isolate;
+        overflow:visible;
+    }
+
+    #resume .project-link {
+        width:min(100%,320px);
+    }
+}
+
+@media(max-width:520px) {
+    .map-stage {
+        grid-template-rows:auto minmax(62vh,650px);
+    }
+
+    .map-frame {
+        min-height:62vh;
+    }
+}
