@@ -144,7 +144,7 @@ nav a.is-current { background:linear-gradient(90deg,rgba(179,19,27,.16),rgba(179
 .gov-filters button { min-height:40px; }
 @media(max-width:850px) {
     .hero { min-height:70vh; }
-    nav { overflow-x:auto;justify-content:flex-start;scrollbar-width:thin; }
+    nav { overflow-x:visible;justify-content:center;scrollbar-width:thin; }
     nav a { flex:0 0 auto; }
     .project { grid-template-columns:90px 1fr; }
     .project p,.project-action { grid-column:2; }
