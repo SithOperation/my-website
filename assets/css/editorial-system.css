@@ -268,8 +268,19 @@ section[id] { scroll-margin-top:7rem; }
 .metric-strip article {
     text-align:center;
 }
-.project { align-items:center; }
-.project p,.source-card p { margin-inline:auto; }
+.project {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.9rem;
+    width:100%;
+    padding:2.25rem clamp(1rem,4vw,3rem);
+    text-align:center;
+}
+.project h3 { max-width:680px;margin:0 auto; }
+.project p,.source-card p { max-width:760px;margin-inline:auto; }
+.project:hover,.project:focus-visible { transform:translateY(-4px); }
 .project-action,.source-card button,.gov-action,.project-link { justify-self:center;align-self:center; }
 .source-card__top { justify-content:center;flex-wrap:wrap; }
 .source-card__authority { margin-top:auto; }
@@ -280,10 +291,26 @@ section[id] { scroll-margin-top:7rem; }
 }
 .expertise-card h3,.tool-tile,.sentinel-card h3,.sentinel-card div { text-align:center; }
 .tool-tile { justify-content:center; }
-.capability-unit>div,.capability-unit ul { text-align:center; }
+.capability-units { justify-items:center;width:100%; }
+.capability-unit {
+    grid-template-columns:1fr;
+    justify-items:center;
+    width:100%;
+    padding:2rem clamp(1rem,4vw,3rem);
+    text-align:center;
+}
+.capability-unit>div,.capability-unit ul { width:100%;text-align:center; }
 .capability-unit ul { justify-content:center; }
+.capability-unit.unit-primary { padding-left:clamp(1rem,4vw,3rem);border-left:0;border-top:2px solid var(--site-warm); }
+
+.expertise-block,.toolset-block { width:100%;text-align:center; }
+.expertise-grid,.tool-grid { justify-content:center; }
+.expertise-card { display:flex;flex-direction:column;align-items:center;justify-content:center; }
+.expertise-meter { width:100%; }
 
 /* Intelligence feed hierarchy and centered loading/empty states. */
+.intel-panel { margin-right:auto;margin-left:auto;text-align:center; }
+.intel-panel>h2,.intel-panel>.panel-description { text-align:center; }
 .intel-feed,.intel-item { width:100%;margin-inline:auto; }
 .intel-item { text-align:center; }
 .intel-item h3,.intel-item p { margin-right:auto;margin-left:auto; }
@@ -312,6 +339,28 @@ section[id] { scroll-margin-top:7rem; }
 .assessment-grid article,.result-columns article,.future-grid article { text-align:center; }
 .technical-list { margin-inline:auto; }
 
+/* Homepage Sentinel modules and viewer need centered geometry, not only centered type. */
+.sentinel-grid { justify-items:stretch; }
+.sentinel-card {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.sentinel-panel { text-align:center; }
+.sentinel-panel>h2,.sentinel-panel>.map-instructions { text-align:center; }
+.sentinel-launch-panel {
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+.sentinel-launch-panel>div { width:100%; }
+.sentinel-launch-panel p { margin-right:auto;margin-left:auto; }
+#viewer-content { width:100%;margin-inline:auto;text-align:center; }
+#viewer-content>* { margin-right:auto;margin-left:auto; }
+#resume,#contact { text-align:center; }
+#resume .project-link { display:inline-flex; }
+
 /* Resource detail and catalog content. */
 .gov-detail { margin-right:auto;margin-left:auto; }
 .gov-detail h2,.gov-detail h3,.gov-detail p { text-align:center; }
@@ -321,16 +370,14 @@ section[id] { scroll-margin-top:7rem; }
 
 @media(max-width:1024px) {
     .gov-detail__grid,.result-columns { grid-template-columns:1fr; }
-    .project { grid-template-columns:90px 1fr; }
-    .project p,.project-action { grid-column:2; }
+    .project { display:flex; }
 }
 
 @media(max-width:820px) {
     :root { --section-space:clamp(4rem,14vw,6rem); }
     .hero,nav,.card,#sentinel-dashboard,.ops-shell,.gov-shell { width:calc(100% - (var(--page-padding) * 2)); }
     .hero { min-height:760px; }
-    .project { grid-template-columns:1fr;gap:.85rem; }
-    .project p,.project-action { grid-column:auto; }
+    .project { gap:.85rem; }
     .sentinel-launch-panel,.url-entry { align-items:stretch;flex-direction:column; }
     .gov-detail__head { flex-direction:column; }
 }
