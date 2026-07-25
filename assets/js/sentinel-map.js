@@ -639,8 +639,9 @@
             throw new Error("The MapLibre renderer could not be loaded.");
         }
 
+        const mapContainer = element("sentinel-map");
         map = new window.maplibregl.Map({
-            container: "sentinel-map",
+            container: mapContainer,
             style: mapStyle(),
             center: INITIAL_CENTER,
             zoom: INITIAL_ZOOM,
@@ -655,6 +656,21 @@
         map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
         map.addControl(new window.maplibregl.FullscreenControl(), "top-right");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
+
+        const resizeMap = () => {
+            if (!map) return;
+            window.requestAnimationFrame(() => map?.resize());
+        };
+        const mapResizeObserver = "ResizeObserver" in window
+            ? new ResizeObserver(resizeMap)
+            : null;
+        mapResizeObserver?.observe(mapContainer);
+        window.addEventListener("load", resizeMap, { once: true });
+        window.addEventListener("orientationchange", () => {
+            window.setTimeout(resizeMap, 120);
+            window.setTimeout(resizeMap, 420);
+        });
+        window.visualViewport?.addEventListener("resize", resizeMap);
 
         const handleFullscreenChange = () => {
             const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
@@ -678,6 +694,7 @@
             addIntelligenceLayers();
             mapReady = true;
             element("sentinel-map").dataset.mapReady = "true";
+            resizeMap();
             updateMapData();
             loadEnvironmentalLayers().catch(error => console.warn("Environmental map layers unavailable", error));
             loadEarlyReportLayer().catch(error => console.warn("Social Media Early Reports layer unavailable", error));

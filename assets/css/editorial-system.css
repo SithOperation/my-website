@@ -524,15 +524,16 @@ section[id] { scroll-margin-top:7rem; }
         order:2;
         display:grid;
         min-width:0;
-        grid-template-rows:auto minmax(68vh,720px);
+        grid-template-rows:auto auto;
     }
     .event-panel { order:3; }
 
     .map-frame {
         position:relative;
         width:100%;
+        height:clamp(520px,68svh,720px);
         min-width:0;
-        min-height:68vh;
+        min-height:520px;
         overflow:hidden;
         isolation:isolate;
     }
@@ -547,10 +548,14 @@ section[id] { scroll-margin-top:7rem; }
         pointer-events:auto;
     }
 
+    #sentinel-map .maplibregl-map,
+    #sentinel-map .maplibregl-canvas-container,
     #sentinel-map .maplibregl-canvas,
     #sentinel-map .maplibregl-control-container,
     #sentinel-map .leaflet-pane,
     #sentinel-map .leaflet-control-container {
+        width:100%;
+        height:100%;
         pointer-events:auto;
     }
 
@@ -577,10 +582,11 @@ section[id] { scroll-margin-top:7rem; }
 
 @media(max-width:520px) {
     .map-stage {
-        grid-template-rows:auto minmax(62vh,650px);
+        grid-template-rows:auto auto;
     }
 
     .map-frame {
-        min-height:62vh;
+        height:clamp(500px,62svh,650px);
+        min-height:500px;
     }
 }
