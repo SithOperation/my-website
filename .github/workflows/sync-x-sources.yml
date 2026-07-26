@@ -1,0 +1,86 @@
+name: Sync X Early Reports
+
+on:
+  schedule:
+    # 08:00 America/Detroit during EDT and EST.
+    - cron: "0 12 * * *"
+    - cron: "0 13 * * *"
+    # 17:00 America/Detroit during EDT and EST.
+    - cron: "0 21 * * *"
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: website-x-sources-synchronization
+  cancel-in-progress: false
+
+jobs:
+  sync-x-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Detroit synchronization time
+        id: schedule
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "run_workflow=true" >> "$GITHUB_OUTPUT"
+            echo "Manual synchronization bypasses the Detroit time guard"
+            exit 0
+          fi
+
+          LOCAL_TIME="$(TZ=America/Detroit date +'%H:%M')"
+          case "$LOCAL_TIME" in
+            "08:00"|"17:00")
+              echo "run_workflow=true" >> "$GITHUB_OUTPUT"
+              echo "Running scheduled synchronization at $LOCAL_TIME America/Detroit"
+              ;;
+            *)
+              echo "run_workflow=false" >> "$GITHUB_OUTPUT"
+              echo "Skipping inactive UTC candidate at $LOCAL_TIME America/Detroit"
+              ;;
+          esac
+
+      - name: Checkout website
+        if: steps.schedule.outputs.run_workflow == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout private X sources
+        if: steps.schedule.outputs.run_workflow == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: SithOperation/x-sources
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          path: external/x-sources
+
+      - name: Validate and publish X sources
+        if: steps.schedule.outputs.run_workflow == 'true'
+        run: python3 scripts/sync-monitor-data.py --x-only
+
+      - name: Regenerate X report layers
+        if: steps.schedule.outputs.run_workflow == 'true'
+        run: python3 main.py
+
+      - name: Commit generated website data
+        if: steps.schedule.outputs.run_workflow == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/x_sources.json \
+            data/output/x_report_events.json \
+            data/output/x_report_pinpoints.geojson
+
+          if git diff --cached --quiet; then
+            echo "X early-report data is already current"
+            exit 0
+          fi
+
+          git commit -m "Update X early-report map data"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

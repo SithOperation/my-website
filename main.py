@@ -40,6 +40,7 @@ def main() -> int:
         build_x_report_layer()
     except Exception as error:
         logging.error("[X REPORTS] Layer build failed; existing Sentinel outputs were not affected: %s", error)
+        return 1
     return 0
 
 

@@ -78,6 +78,33 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(result.status, "updated")
             self.assertEqual(json.loads(destination.read_text())["stories"][0]["title"], "Report")
 
+    def test_empty_x_sources_feed_is_valid(self):
+        sync_monitor_data.validate_x_sources(
+            {"reports": []},
+            "x_sources.json",
+        )
+
+    def test_x_sources_requires_publication_timestamp(self):
+        report = {
+            "url": "https://x.com/example/status/123",
+            "account": "example",
+            "text": "Early report",
+            "published_at": None,
+            "source_class": "social_media_osint",
+            "location_name": "Example",
+            "latitude": 1.0,
+            "longitude": 2.0,
+            "location_precision": "city",
+            "event_type": "reported_strike",
+            "quoted_source": None,
+            "reposted_from": None,
+        }
+        with self.assertRaisesRegex(ValueError, "published_at"):
+            sync_monitor_data.validate_x_sources(
+                {"reports": [report]},
+                "x_sources.json",
+            )
+
     def test_invalid_download_preserves_last_known_good(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

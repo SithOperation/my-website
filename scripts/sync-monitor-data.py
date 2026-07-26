@@ -83,6 +83,73 @@ def validate_ews_state(value: object, label: str) -> None:
             raise ValueError(f"{label}.{field} must be an ISO 8601 timestamp")
 
 
+def validate_x_sources(value: object, label: str) -> None:
+    """Validate the complete website input contract for X reports."""
+    source = require_mapping(value, label)
+    reports = source.get("reports")
+    if not isinstance(reports, list):
+        raise ValueError(f"{label}.reports must be a JSON array")
+    required = {
+        "url",
+        "account",
+        "text",
+        "published_at",
+        "source_class",
+        "location_name",
+        "latitude",
+        "longitude",
+        "location_precision",
+        "event_type",
+        "quoted_source",
+        "reposted_from",
+    }
+    for index, report_value in enumerate(reports):
+        report = require_mapping(report_value, f"{label}.reports[{index}]")
+        missing = sorted(required.difference(report))
+        if missing:
+            raise ValueError(
+                f"{label}.reports[{index}] is missing: {', '.join(missing)}"
+            )
+        for field in (
+            "url",
+            "account",
+            "text",
+            "source_class",
+            "location_name",
+            "location_precision",
+            "event_type",
+        ):
+            if not isinstance(report[field], str) or not report[field].strip():
+                raise ValueError(
+                    f"{label}.reports[{index}].{field} must be a non-empty string"
+                )
+        if not str(report["url"]).startswith("https://x.com/"):
+            raise ValueError(
+                f"{label}.reports[{index}].url must be a canonical X URL"
+            )
+        if not isinstance(report["latitude"], (int, float)) or not (
+            -90 <= report["latitude"] <= 90
+        ):
+            raise ValueError(
+                f"{label}.reports[{index}].latitude is outside its valid range"
+            )
+        if not isinstance(report["longitude"], (int, float)) or not (
+            -180 <= report["longitude"] <= 180
+        ):
+            raise ValueError(
+                f"{label}.reports[{index}].longitude is outside its valid range"
+            )
+        if parse_generated(report["published_at"]) is None:
+            raise ValueError(
+                f"{label}.reports[{index}].published_at must be an ISO 8601 timestamp"
+            )
+        for field in ("quoted_source", "reposted_from"):
+            if report[field] is not None and not isinstance(report[field], str):
+                raise ValueError(
+                    f"{label}.reports[{index}].{field} must be a string or null"
+                )
+
+
 def sha256(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
 
@@ -334,6 +401,19 @@ def sync_ews(repository: Path) -> SyncResult:
     return result
 
 
+def sync_x_sources(repository: Path) -> SyncResult:
+    """Validate and publish the private X source repository's output."""
+    result = publish_file(
+        repository / "external" / "x-sources" / "output" / "x_sources.json",
+        repository / "data" / "x_sources.json",
+        validate_x_sources,
+    )
+    detail = f" - {result.detail}" if result.detail else ""
+    print(f"{result.status.upper()}: {result.name} ({result.size:,} bytes){detail}")
+    write_summary([result], [])
+    return result
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -352,12 +432,21 @@ def main() -> int:
         action="store_true",
         help="Synchronize only the Early Warning System state",
     )
+    parser.add_argument(
+        "--x-only",
+        action="store_true",
+        help="Synchronize only the private X early-report source",
+    )
     arguments = parser.parse_args()
     repository = arguments.repository.resolve()
     if arguments.ai_only:
         sync_ai(repository)
     elif arguments.ews_only:
         sync_ews(repository)
+    elif arguments.x_only:
+        result = sync_x_sources(repository)
+        if result.status in {"failed", "skipped"}:
+            return 1
     else:
         sync_all(repository)
     return 0

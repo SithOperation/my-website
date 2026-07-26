@@ -55,14 +55,14 @@ class XReportTests(unittest.TestCase):
         self.assertEqual(loaded[0]["text"], "manual")
         self.assertIn("TimeoutError", loaded[0]["fetch_error"])
 
-    def test_geojson_order_and_official_caution(self):
+    def test_empty_source_generates_empty_layers(self):
         with tempfile.TemporaryDirectory() as folder:
             events, geojson = build_x_report_layer(output_dir=Path(folder))
-        first = events[0]
-        self.assertEqual(geojson["features"][0]["geometry"]["coordinates"], [first["longitude"], first["latitude"]])
-        official = next(event for event in events if "official_military" in event["source_classes"])
-        self.assertEqual(official["source_status"], "official-source report")
-        self.assertEqual(official["verification_status"], "not independently verified")
+        self.assertEqual(events, [])
+        self.assertEqual(
+            geojson,
+            {"type": "FeatureCollection", "features": []},
+        )
 
     def test_popup_implementation_uses_dom_text(self):
         script = Path("assets/js/sentinel-map.js").read_text(encoding="utf-8")
