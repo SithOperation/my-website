@@ -185,8 +185,46 @@
         }
     }
 
+    class GenerationFeed {
+        constructor(client, options) {
+            this.client = client;
+            this.metadataFile = options.metadataFile;
+            this.dataFile = options.dataFile;
+            this.generationId = null;
+            this.snapshot = null;
+        }
+
+        async load() {
+            const metadata = await this.client.fetchJSON(this.metadataFile, null, true);
+            const generationId = metadata?.generation_id;
+            if (typeof generationId !== "string" || !generationId) {
+                throw new Error(`${this.metadataFile} is missing generation_id`);
+            }
+            if (generationId === this.generationId && this.snapshot) {
+                return { generationId, data: this.snapshot, unchanged: true };
+            }
+
+            let data = await this.client.fetchJSON(this.dataFile, generationId);
+            if (data?.generation_id !== generationId) {
+                data = await this.client.fetchJSON(this.dataFile, generationId, true);
+            }
+            if (
+                !data ||
+                data.type !== "FeatureCollection" ||
+                !Array.isArray(data.features) ||
+                data.generation_id !== generationId
+            ) {
+                throw new Error(`${this.dataFile} does not match generation ${generationId}`);
+            }
+            this.generationId = generationId;
+            this.snapshot = data;
+            return { generationId, data, unchanged: false };
+        }
+    }
+
     window.SentinelData = Object.freeze({
         Client,
+        GenerationFeed,
         normalizeEvent,
         cleanText,
         validCoordinate,

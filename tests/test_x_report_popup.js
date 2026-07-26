@@ -33,7 +33,10 @@ function allElements(node) {
 }
 
 const windowMock = {
-    SentinelData: { Client: class {} },
+    SentinelData: {
+        Client: class {},
+        GenerationFeed: class {}
+    },
     addEventListener() {}
 };
 const context = {

@@ -133,3 +133,11 @@ counts use source identities, never claim IDs. Events are graph-connected
 components, so bridge reports and input permutations produce the same groups.
 Every event preserves its deterministically ordered original report list, and
 `last_updated_at` derives from report metadata rather than regeneration time.
+
+Open Sentinel map sessions check the generation metadata in
+`data/output/x_report_events.json` every five minutes while visible. The
+GeoJSON is fetched only when `generation_id` changes, using that identifier as
+a cache-busting query parameter. A mismatched cached GeoJSON is retried with
+`no-store`; persistent mismatch preserves the prior map generation. Refresh
+calls `setData` on the existing clustered source, so deleted and expired points
+disappear without duplicating sources, layers, handlers, animations, or timers.

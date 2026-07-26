@@ -6,6 +6,10 @@
     const INITIAL_ZOOM = 2;
     const THREAT_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"];
     const client = new window.SentinelData.Client({ root: "data" });
+    const earlyReportFeed = new window.SentinelData.GenerationFeed(client, {
+        metadataFile: "output/x_report_events.json",
+        dataFile: "output/x_report_pinpoints.geojson"
+    });
 
     let map = null;
     let mapReady = false;
@@ -15,6 +19,9 @@
     let coordinateCounts = new Map();
     let disasterIndex = new Map();
     let earlyReportIndex = new Map();
+    let earlyReportCount = 0;
+    let earlyReportPopup = null;
+    let earlyReportPopupId = null;
     let environmentalCount = 0;
 
     const element = id => document.getElementById(id);
@@ -533,17 +540,43 @@
         safeOriginalXUrl
     });
 
-    async function loadEarlyReportLayer() {
-        const geojson = await client.fetchJSON("output/x_report_pinpoints.geojson");
-        const markerImage = await map.loadImage("assets/images/x-early-report-pinpoint.png");
-        if (!map.hasImage("x-early-report-pinpoint")) {
-            map.addImage("x-early-report-pinpoint", markerImage.data);
-        }
+    function indexEarlyReports(geojson) {
         earlyReportIndex = new Map();
         (geojson.features || []).forEach(feature => {
             const properties = feature.properties || {};
             earlyReportIndex.set(String(properties.id), properties);
         });
+        earlyReportCount = earlyReportIndex.size;
+        if (earlyReportPopupId && !earlyReportIndex.has(earlyReportPopupId)) {
+            earlyReportPopup?.remove();
+            earlyReportPopup = null;
+            earlyReportPopupId = null;
+        }
+        else if (earlyReportPopupId && earlyReportPopup) {
+            earlyReportPopup.setDOMContent(
+                buildEarlyReportDetail(earlyReportIndex.get(earlyReportPopupId))
+            );
+        }
+    }
+
+    async function refreshEarlyReportLayer() {
+        if (!mapReady || !map?.getSource("x-early-reports-source")) return;
+        const snapshot = await earlyReportFeed.load();
+        if (snapshot.unchanged) return;
+        indexEarlyReports(snapshot.data);
+        map.getSource("x-early-reports-source").setData(snapshot.data);
+        map.triggerRepaint();
+        updateMapCount();
+    }
+
+    async function loadEarlyReportLayer() {
+        const snapshot = await earlyReportFeed.load();
+        const geojson = snapshot.data;
+        const markerImage = await map.loadImage("assets/images/x-early-report-pinpoint.png");
+        if (!map.hasImage("x-early-report-pinpoint")) {
+            map.addImage("x-early-report-pinpoint", markerImage.data);
+        }
+        indexEarlyReports(geojson);
         map.addSource("x-early-reports-source", {
             type: "geojson",
             data: geojson,
@@ -611,7 +644,9 @@
             const feature = click.features?.[0];
             const properties = earlyReportIndex.get(String(feature?.properties?.id));
             if (!feature || !properties) return;
-            new window.maplibregl.Popup({ maxWidth: "390px", offset: 10 })
+            earlyReportPopup?.remove();
+            earlyReportPopupId = String(properties.id);
+            earlyReportPopup = new window.maplibregl.Popup({ maxWidth: "390px", offset: 10 })
                 .setLngLat(feature.geometry.coordinates)
                 .setDOMContent(buildEarlyReportDetail(properties))
                 .addTo(map);
@@ -621,6 +656,7 @@
             map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
         });
         applyLayerVisibility();
+        updateMapCount();
     }
 
     async function loadEnvironmentalLayers() {
@@ -798,9 +834,19 @@
         }
 
         element("ops-mapped").textContent = filteredEvents.length.toLocaleString();
-        element("map-count").textContent = filteredEvents.length || environmentalCount ?
-            `${filteredEvents.length.toLocaleString()} intelligence · ${environmentalCount.toLocaleString()} environmental` :
-            "No signals match the active filters";
+        updateMapCount();
+    }
+
+    function updateMapCount() {
+        const counts = [
+            `${filteredEvents.length.toLocaleString()} intelligence`,
+            `${environmentalCount.toLocaleString()} environmental`,
+            `${earlyReportCount.toLocaleString()} X reports`
+        ];
+        element("map-count").textContent =
+            filteredEvents.length || environmentalCount || earlyReportCount
+                ? counts.join(" · ")
+                : "No signals match the active filters";
     }
 
     function populateSelect(select, values, firstLabel, formatter = value => value) {
@@ -1081,12 +1127,18 @@
             if (document.visibilityState === "visible") {
                 refresh();
                 refreshEws();
+                refreshEarlyReportLayer().catch(error =>
+                    console.warn("X report refresh failed; prior generation retained", error)
+                );
             }
         }, DATA_REFRESH_MS);
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
                 map?.resize();
                 refresh();
+                refreshEarlyReportLayer().catch(error =>
+                    console.warn("X report refresh failed; prior generation retained", error)
+                );
             }
         });
     });
