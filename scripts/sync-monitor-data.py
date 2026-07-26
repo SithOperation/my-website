@@ -185,7 +185,9 @@ def validate_sentinel_publication(source_root: Path) -> tuple[dict, dict[str, by
     require_nonempty_list(json.loads(payloads["timeline.json"]), "timeline.json")
     require_mapping(json.loads(payloads["trends.json"]), "trends.json")
     require_mapping(json.loads(payloads["health.json"]), "health.json")
-    world = require_mapping(json.loads(payloads["world_events.json"]), "world_events.json")
+    world = require_mapping(
+        json.loads(payloads["world_events.json"]), "world_events.json"
+    )
     require_nonempty_list(world.get("events"), "world_events.json.events")
     return manifest, payloads
 
@@ -234,7 +236,7 @@ def parse_generated(value: object) -> datetime | None:
     except ValueError:
         return None
     if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
+        raise ValueError(f"{path.name} timestamp must include a timezone")
     return parsed.astimezone(timezone.utc)
 
 
@@ -288,7 +290,12 @@ def sync_all(repository: Path) -> list[SyncResult]:
             validate_disaster_state,
         ),
     ]
-    for filename in ("earthquakes.json", "volcanoes.json", "weather.json", "solar.json"):
+    for filename in (
+        "earthquakes.json",
+        "volcanoes.json",
+        "weather.json",
+        "solar.json",
+    ):
         results.append(
             publish_file(
                 external / "disaster" / "data" / filename,
@@ -296,9 +303,7 @@ def sync_all(repository: Path) -> list[SyncResult]:
                 validate_event_array,
             )
         )
-    results.extend(
-        publish_sentinel(external / "sentinel" / "data" / "output", data)
-    )
+    results.extend(publish_sentinel(external / "sentinel" / "data" / "output", data))
     warnings = [
         warning
         for warning in (
