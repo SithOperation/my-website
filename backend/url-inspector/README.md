@@ -1,4 +1,4 @@
-# Sentinel URL Inspector — Phase 1 Worker
+# Sentinel URL Inspector Worker
 
 Defensive Cloudflare Worker that checks a submitted HTTP(S) URL against Google
 Safe Browsing without visiting, rendering, downloading, or otherwise fetching
@@ -8,8 +8,8 @@ The provider adapter uses the Google Safe Browsing v5
 [`urls.search`](https://developers.google.com/safe-browsing/reference/rest/v5/urls/search)
 contract. It sends one normalized URL as a repeated `urls` query parameter in a
 bodyless server-side GET request. Provider cache durations are validated and
-retained as internal adapter metadata for future standards-compliant caching;
-Phase 1 does not persist provider results.
+retained as adapter metadata. The current worker does not persist provider
+results.
 
 ## Security behavior
 
@@ -21,6 +21,10 @@ Phase 1 does not persist provider results.
 - Fragments are removed before hashing and provider lookup.
 - Only Google Safe Browsing is contacted. Provider timeouts and failures return
   `unavailable`, never a clean result.
+- The current timeout uses promise racing and does not abort the underlying
+  provider subrequest. Migrating it to an `AbortController` signal is a
+  documented reliability improvement; Cloudflare Workers supports abortable
+  fetch requests.
 - URL and rate-limit identifiers use HMAC-SHA-256 with `APP_HASH_SECRET`.
 - CORS permits only `https://sithbusiness.com` and
   `https://www.sithbusiness.com`.
@@ -84,7 +88,8 @@ To deploy intentionally:
 npx wrangler deploy
 ```
 
-No deployment or frontend integration is performed by Phase 1.
+The Worker deploys separately from GitHub Pages. The static frontend must treat
+`unavailable` as an unknown result, never as safe.
 
 ## Response states
 

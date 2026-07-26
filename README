@@ -1,143 +1,118 @@
 # Personal website and Sentinel Grid frontend
 
-This is a static GitHub Pages site. `index.html` contains the portfolio and AI/cyber news center; `sentinel.html` contains the dedicated MapLibre intelligence map.
+Static GitHub Pages frontend for the portfolio, Sentinel MapLibre map, governance
+library, synchronized monitor data, and URL Inspector client.
 
-## Frontend structure
+## Architecture
 
-- `assets/js/site.js` — portfolio, project viewer, background rotation, and AI/cyber feed
-- `assets/js/sentinel-data.js` — Sentinel manifest/health publication client shared by both pages
-- `assets/js/sentinel-home.js` — Sentinel status summary on the homepage
-- `assets/js/sentinel-map.js` — dedicated map rendering, filters, layers, and event details
-- `assets/css/sentinel-map.css` — map-only styling
-- `data/` — static data synchronized by `.github/workflows/sync-states.yml`
+- `index.html` is the portfolio and digest homepage.
+- `sentinel.html` is the operational map.
+- `assets/` contains deployed CSS, JavaScript, images, fonts, and reviewed
+  vendor bundles.
+- `data/` contains public synchronized JSON and generated GeoJSON.
+- `scripts/stage-pages.py` creates the allowlisted `_site` artifact.
+- `scripts/production_gate.py` validates generated data, workflows, local links,
+  artifact contents, and the 100 MiB deployment ceiling.
+- `backend/url-inspector/` is the separately deployed Cloudflare Worker.
 
-No build step or paid service is required. Serve the repository with any static HTTP server for local testing; opening files directly can prevent browsers from fetching local JSON.
+See [responsibility ownership](docs/RESPONSIBILITIES.md), [security and token
+scope](docs/SECURITY.md), [performance measurements](docs/PERFORMANCE.md), and
+the [operations runbook](docs/OPERATIONS.md).
 
-## Data workflow architecture
+## X source synchronization
 
-Each monitor publishes its own independent output. The website never generates or
-combines monitor intelligence:
+`x-sources` owns official API collection, retention, and deduplication. After a
+successful Detroit slot is committed and pushed, it emits
+`x-sources-published`. `Sync X Early Reports` validates the dispatch, checks out
+the exact producer SHA, verifies `output/x_sources_manifest.json` and
+`output/x_sources.json`, and publishes:
 
-AI Cyber Daily Digest repository
--> `AI & Cyber Daily Digest` generates and validates `data/ai_cyber_digest.json`
--> commits only changed, non-empty output
+- `data/x_sources.json`
+- `data/output/x_report_events.json`
+- `data/output/x_report_pinpoints.geojson`
+- `data/x_source_sync_state.json`
 
-Other monitor repositories
--> generate their own JSON files
--> commit valid output independently
+One valid report always creates one GeoJSON feature and one X-image map point.
+Correlation independently creates intelligence events and never suppresses
+markers. Exact dispatch replays are no-ops; conflicting generations require an
+explicit forced recovery. Open map sessions check generation metadata every
+five minutes and update the existing clustered source only when it changes.
 
-Website `Sync Monitor States`
--> runs three times daily and pulls the newest valid source files available
--> checks out disaster and Sentinel sources independently
--> validates every available file before atomic replacement
--> preserves last-known-good website files after unavailable or invalid input
--> commits only changed public website data
+Producer slot IDs are `YYYY-MM-DD-morning` and `YYYY-MM-DD-evening` in
+`America/Detroit`. The producer accepts 07:45–09:00 and 16:45–18:00 local
+windows. Multiple UTC candidates cover EST and EDT; producer state prevents
+duplicate slot publication. The website has no independent X polling schedule.
 
-Website `Sync AI & Cyber Daily Digest`
--> runs after the standalone AI digest workflow
--> copies only the completed public `data/ai_cyber_digest.json`
--> validates non-empty output and preserves the last-known-good website copy
+## Repository secrets
 
-`Deploy Website`
--> publishes the website after repository updates
+All source tokens should be fine-grained, expiring credentials with Contents:
+read on exactly one private source repository:
 
-The website continues fetching AI, Sentinel, disaster, environmental, and EWS
-JSON independently. Internal AI digest state and Markdown output are not copied
-by the website sync.
+- `REPO_ACCESS_TOKEN`: `SithOperation/x-sources`
+- `DISASTER_REPO_TOKEN`: disaster monitor
+- `SENTINEL_REPO_TOKEN`: Sentinel Grid source
+- `EWS_REPO_TOKEN`: Early Warning System source
+- `AI_DIGEST_REPO_TOKEN`: AI digest source
 
-## Schedule
+No real value belongs in files or logs. See `docs/SECURITY.md` for rotation.
 
-GitHub cron expressions use UTC. The daily digest and monitor-state workflows
-include both possible EST and EDT hours, then use an `America/New_York` guard to
-prevent a duplicate run.
+## Other synchronization workflows
 
-- AI & Cyber Daily Digest: approximately 9:00 AM Eastern daily.
-- Sync AI & Cyber Daily Digest: approximately 9:10 AM Eastern daily.
-- Sync Monitor States: approximately 9:10 AM, 3:10 PM, and 9:10 PM Eastern.
-- Sync Early Warning System: every 10 minutes. Manual and repository-dispatch
-  triggers are supported, but the current EWS source does not emit that dispatch.
-- Sentinel Grid source collection: its existing `17 */6 * * *` UTC schedule;
-  it has not been changed to the requested 9:00 AM, 3:00 PM, and 9:00 PM
-  Eastern source windows.
-- Disaster monitor source collection: its existing frequent schedule. It has
-  not been changed or coordinated by this website repository.
-- Deploy Website: every push to `main`.
+`Sync Monitor States`, `Sync AI & Cyber Daily Digest`, and `Sync Early Warning
+System` retain their documented schedule/manual triggers. Required private
+checkouts fail visibly. `scripts/sync-monitor-data.py` validates before atomic
+replacement. An invalid or malformed source never overwrites a valid website
+file.
 
-All sync workflows retain `workflow_dispatch` for manual runs. GitHub may delay
-a scheduled job; the sync always uses the newest valid source publication
-available when it starts.
-The source-generation schedules are not yet fully aligned with the three daily
-website synchronization slots.
+## Pages deployment and CI
 
-## Retention and last-known-good behavior
+`Deploy Website` runs on `main` pushes or manually. Its `validate` job runs
+Python tests, frontend tests, Ruff, strict mypy, backend tests, TypeScript,
+JavaScript syntax, secret scanning, browser-profile rejection, staging, link
+checks, JSON/GeoJSON checks, schema/generation checks, and artifact-size checks.
+The `deploy` job has `needs: validate`.
 
-Time-sensitive retention belongs in each source repository, before publication.
-The website sync does not rewrite intelligence records or apply a blanket cutoff.
-Seven-day public event retention has not yet been implemented. It must be added
-later in Sentinel Grid, the disaster monitor, and any other source repository
-that produces recent-event data. Sentinel trends and internal history must
-remain longer than seven days, and this website must not delete source
-intelligence records. The standalone AI digest already applies its own story
-count and age limits.
+Run the local equivalents from the repository root:
 
-`scripts/sync-monitor-data.py` validates downloaded JSON and expected structures.
-Sentinel files are additionally checked against the publication manifest's byte
-counts and SHA-256 hashes. A missing, malformed, checksum-mismatched, or
-unexpectedly empty source is skipped without replacing the website's current
-copy. The workflow summary reports updated, unchanged, skipped, and failed files
-along with output sizes and freshness warnings.
+```powershell
+python -m pip install -r requirements-ci.txt
+python -m ruff check .
+python -m ruff format --check .
+python -m mypy
+python -m pytest
+node tests/test_x_generation_refresh.js
+node --test tests/test_x_report_popup.js
+Push-Location backend/url-inspector
+npm ci
+npm test
+npm run typecheck
+Pop-Location
+python scripts/stage-pages.py --stage _site
+python scripts/production_gate.py --stage _site
+```
 
-## Troubleshooting
+Serve locally rather than opening HTML directly:
 
-1. Run the relevant source workflow manually and confirm it committed valid
-   output.
-2. Run `Sync Monitor States` or `Sync Early Warning System` with
-   `workflow_dispatch`.
-3. Inspect the job summary for per-file validation failures or stale-source
-   warnings.
-4. Confirm `REPO_ACCESS_TOKEN` can read each private source repository.
-5. Run `python -m unittest discover -s tests -v` locally before changing sync
-   validation.
-## X report contract
+```powershell
+python -m http.server 8000
+```
 
-The shared X ingestion contract is documented in
-[`docs/X_SOURCES_SCHEMA.md`](docs/X_SOURCES_SCHEMA.md). The website validates
-the complete versioned document before replacing `data/x_sources.json`;
-invalid, expired, duplicate, or schema-incompatible reports are rejected
-without replacing the last known good feed.
-## X source publication workflow
+## Failure and degraded behavior
 
-The X map-data workflow is event-driven and does not independently poll the
-producer. A successful `x-sources` publication sends an
-`x-sources-published` event containing its immutable commit SHA, slot and
-generation identifiers, schema version, report count, and completion time.
+An empty X feed with `{"schema_version":"1.0","reports":[]}` is valid and
+produces zero markers. Missing credentials, failed checkouts, stale/mismatched
+manifests, malformed JSON, schema drift, generation mismatch, and failed output
+transactions are errors. The map retains its last loaded X generation when a
+browser refresh sees a cache mismatch or transient fetch failure.
 
-The website checks out that exact source commit, cross-checks the event against
-the source manifest and feed, regenerates the X event/GeoJSON pair, and records
-the completed generation in `data/x_source_sync_state.json`. Exact replays are
-harmless. A conflicting generation for a completed slot fails unless a manual
-recovery run explicitly sets `force`.
+Recovery and rollback procedures are in `docs/OPERATIONS.md`.
 
-Configure the website secret `REPO_ACCESS_TOKEN` with read access to the private
-`SithOperation/x-sources` repository. Manual recovery requires the same
-immutable metadata found in the producer manifest and commit history; it never
-follows the moving `main` branch.
+## Governance and licensing
 
-## X correlation identities
+Governance source records distinguish official sources from local companion
+material. NIST SP 800-18 Rev. 2 is the current catalog record; withdrawn Rev. 1
+is excluded. Missing licensed source publications remain link-only and are
+listed in the governance library documentation.
 
-Correlation is independent from report-marker generation. Account identity is
-the normalized X handle; source identity is that monitored publishing account;
-claim identity represents a quoted/reposted origin chain; event identity is a
-stable digest anchored to the event's earliest report. Independent-source
-counts use source identities, never claim IDs. Events are graph-connected
-components, so bridge reports and input permutations produce the same groups.
-Every event preserves its deterministically ordered original report list, and
-`last_updated_at` derives from report metadata rather than regeneration time.
-
-Open Sentinel map sessions check the generation metadata in
-`data/output/x_report_events.json` every five minutes while visible. The
-GeoJSON is fetched only when `generation_id` changes, using that identifier as
-a cache-busting query parameter. A mismatched cached GeoJSON is retried with
-`no-store`; persistent mismatch preserves the prior map generation. Refresh
-calls `setData` on the existing clustered source, so deleted and expired points
-disappear without duplicating sources, layers, handlers, animations, or timers.
+Repository-authored material is all-rights-reserved; see `LICENSE.md`. Bundled
+third-party components retain their own upstream licenses and notices.

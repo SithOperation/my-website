@@ -17,3 +17,9 @@ Codex must create new content only in each folder's `Companion/` directory. It m
 ## Binary-file note
 
 No document in this package is falsely represented as an official PDF binary. The package provides direct publisher PDF links where available.
+
+NIST SP 800-18 Rev. 2, published June 30, 2026, is the current system-planning
+record in this package. Withdrawn Rev. 1 is intentionally excluded. Licensed
+ISO and similar packages are not missing accidentally: their official
+publication bodies are link-only, with local original companion records rather
+than copied standards text.
