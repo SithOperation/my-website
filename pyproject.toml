@@ -2,6 +2,8 @@
 include = [
   "main.py",
   "scripts/demonstrate_x_output_transaction.py",
+  "scripts/process_x_dispatch.py",
+  "scheduling/**/*.py",
   "storage/**/*.py",
   "tests/test_x_output_transaction.py",
 ]
@@ -17,6 +19,8 @@ strict = true
 files = [
   "main.py",
   "scripts/demonstrate_x_output_transaction.py",
+  "scripts/process_x_dispatch.py",
+  "scheduling",
   "storage",
   "tests/test_x_output_transaction.py",
 ]

@@ -105,3 +105,20 @@ The shared X ingestion contract is documented in
 the complete versioned document before replacing `data/x_sources.json`;
 invalid, expired, duplicate, or schema-incompatible reports are rejected
 without replacing the last known good feed.
+## X source publication workflow
+
+The X map-data workflow is event-driven and does not independently poll the
+producer. A successful `x-sources` publication sends an
+`x-sources-published` event containing its immutable commit SHA, slot and
+generation identifiers, schema version, report count, and completion time.
+
+The website checks out that exact source commit, cross-checks the event against
+the source manifest and feed, regenerates the X event/GeoJSON pair, and records
+the completed generation in `data/x_source_sync_state.json`. Exact replays are
+harmless. A conflicting generation for a completed slot fails unless a manual
+recovery run explicitly sets `force`.
+
+Configure the website secret `REPO_ACCESS_TOKEN` with read access to the private
+`SithOperation/x-sources` repository. Manual recovery requires the same
+immutable metadata found in the producer manifest and commit history; it never
+follows the moving `main` branch.
