@@ -1,0 +1,10 @@
+title = "Sentinel Grid secret scanning"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Only known synthetic test values are allowed"
+paths = [
+  '''tests/fixtures/''',
+]

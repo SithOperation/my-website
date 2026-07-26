@@ -46,28 +46,26 @@ jobs:
 
       - name: Checkout website
         if: steps.schedule.outputs.run == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout disaster monitor
         if: steps.schedule.outputs.run == 'true'
         id: disaster
-        continue-on-error: true
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SithOperation/earthquake-volcano-discord-monitor
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.DISASTER_REPO_TOKEN }}
           path: external/disaster
 
       - name: Checkout Sentinel Grid
         if: steps.schedule.outputs.run == 'true'
         id: sentinel
-        continue-on-error: true
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SithOperation/sentinel-grid-intelligence
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.SENTINEL_REPO_TOKEN }}
           path: external/sentinel
 
       - name: Validate and publish available monitor data

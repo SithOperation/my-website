@@ -21,16 +21,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout website
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout EWS
-        continue-on-error: true
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SithOperation/EWS-discord-monitor
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.EWS_REPO_TOKEN }}
           path: external/ews
 
       - name: Validate and publish EWS state

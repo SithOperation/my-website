@@ -42,17 +42,16 @@ jobs:
 
       - name: Checkout website
         if: steps.schedule.outputs.run == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout completed AI digest
         if: steps.schedule.outputs.run == 'true'
-        continue-on-error: true
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SithOperation/ai-cyber-daily-digest
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.AI_DIGEST_REPO_TOKEN }}
           path: external/ai
 
       - name: Validate and publish AI digest
