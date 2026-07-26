@@ -2,39 +2,74 @@ name: Deploy Website
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: website-data-sync
+  cancel-in-progress: false
+
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install --requirement requirements-ci.txt
+      - name: Python quality and tests
+        run: |
+          python -m ruff check .
+          python -m ruff format --check .
+          python -m mypy
+          python -m pytest
+      - name: JavaScript syntax and behavior
+        run: |
+          find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
+          node tests/test_x_generation_refresh.js
+          node --test tests/test_x_report_popup.js
+      - name: Backend tests and strict TypeScript
+        working-directory: backend/url-inspector
+        run: |
+          npm ci
+          npm test
+          npm run typecheck
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Reject tracked browser profiles
+        shell: bash
+        run: |
+          if [[ -n "$(git ls-files | grep -E '(^|/)(edge-check-profile|browser-profile|user-data-dir)/')" ]]; then
+            echo "::error::Tracked browser profile data is forbidden"
+            exit 1
+          fi
+      - name: Build and validate Pages artifact
+        run: |
+          python scripts/stage-pages.py --stage _site
+          python scripts/production_gate.py --stage _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
   deploy:
+    needs: validate
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Build clean Pages artifact
-        run: python scripts/stage-pages.py --stage _site
-
-      - name: Verify Pages artifact
-        run: python scripts/stage-pages.py --stage _site --verify-only
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - name: Deploy
+      - name: Deploy validated artifact
         id: deployment
         uses: actions/deploy-pages@v4
