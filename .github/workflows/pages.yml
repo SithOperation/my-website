@@ -1,69 +1,40 @@
 name: Deploy Website
 
 on:
-
   push:
-
     branches:
-
       - main
 
-
 permissions:
-
   contents: read
-
   pages: write
-
   id-token: write
 
-
-
 jobs:
-
-
   deploy:
-
-
     environment:
-
       name: github-pages
-
       url: ${{ steps.deployment.outputs.page_url }}
-
-
-
     runs-on: ubuntu-latest
 
-
-
     steps:
-
-
       - name: Checkout
+        uses: actions/checkout@v6
 
-        uses: actions/checkout@v4
+      - name: Build clean Pages artifact
+        run: python scripts/stage-pages.py --stage _site
 
-
+      - name: Verify Pages artifact
+        run: python scripts/stage-pages.py --stage _site --verify-only
 
       - name: Setup Pages
-
         uses: actions/configure-pages@v5
 
-
-
       - name: Upload Artifact
-
         uses: actions/upload-pages-artifact@v3
-
         with:
-
-          path: .
-
-
+          path: _site
 
       - name: Deploy
-
         id: deployment
-
         uses: actions/deploy-pages@v4

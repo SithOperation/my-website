@@ -9,6 +9,13 @@ __pycache__/
 node_modules/
 dist/
 build/
+_site/
+
+# Browser automation profiles must never be tracked or deployed
+output/edge-check-profile/
+**/edge-check-profile/
+**/browser-profile/
+**/user-data-dir/
 
 # Temporary files and Office locks
 temp/
