@@ -445,11 +445,54 @@
     }
 
     function appendEarlyReportField(container, label, value) {
+        if (value === null || value === undefined || String(value).trim() === "") return;
         const row = document.createElement("div");
         const name = document.createElement("strong");
         name.textContent = `${label}: `;
-        row.append(name, document.createTextNode(String(value || "Unknown")));
+        row.append(name, document.createTextNode(String(value)));
         container.append(row);
+    }
+
+    function formatEarlyReportTimestamp(value) {
+        if (!value) return "";
+        const timestamp = new Date(value);
+        if (Number.isNaN(timestamp.getTime())) return "";
+        return timestamp.toLocaleString([], {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            timeZoneName: "short"
+        });
+    }
+
+    function formatEarlyReportConfidence(value) {
+        const confidence = Number(value);
+        if (!Number.isFinite(confidence) || confidence < 0 || confidence > 1) return "";
+        const percentage = confidence * 100;
+        return `${Number.isInteger(percentage) ? percentage : percentage.toFixed(1)}%`;
+    }
+
+    function formatEarlyReportAccount(value) {
+        const account = String(value || "").trim().replace(/^@+/, "");
+        return account ? `@${account}` : "";
+    }
+
+    function safeOriginalXUrl(value) {
+        try {
+            const url = new URL(String(value || ""));
+            if (
+                url.protocol !== "https:" ||
+                url.hostname !== "x.com" ||
+                !/^\/[A-Za-z0-9_]{1,15}\/status\/[0-9]+$/.test(url.pathname) ||
+                url.search ||
+                url.hash
+            ) return "";
+            return url.href;
+        } catch {
+            return "";
+        }
     }
 
     function buildEarlyReportDetail(properties) {
@@ -457,28 +500,38 @@
         content.className = "early-report-detail";
         const title = document.createElement("h3");
         const warning = document.createElement("p");
-        title.textContent = properties.title || "Social Media Early Report";
+        title.textContent = "Social Media Early Report";
         warning.className = "warning";
-        warning.textContent = "EARLY REPORT — not independently verified";
+        warning.textContent = "EARLY REPORT — verify against additional sources";
         content.append(title, warning);
-        appendEarlyReportField(content, "Status", displayType(properties.source_status));
-        appendEarlyReportField(content, "Verification", properties.verification_status);
+        appendEarlyReportField(content, "Account", formatEarlyReportAccount(properties.account));
+        appendEarlyReportField(content, "Summary", properties.summary);
+        appendEarlyReportField(content, "First reported", formatEarlyReportTimestamp(properties.published_at));
+        appendEarlyReportField(content, "Location", properties.location_name);
+        appendEarlyReportField(content, "Event type", displayType(properties.event_type));
+        appendEarlyReportField(content, "Source classification", displayType(properties.source_class));
+        appendEarlyReportField(content, "Verification", displayType(properties.verification_status));
+        appendEarlyReportField(content, "Confidence", formatEarlyReportConfidence(properties.confidence));
         appendEarlyReportField(content, "Location precision", displayType(properties.location_precision));
-        appendEarlyReportField(content, "Source", (properties.accounts || []).map(account => `@${account}`).join(", "));
-        appendEarlyReportField(content, "Collected", properties.last_updated_at);
-        const summary = document.createElement("p");
-        summary.textContent = properties.summary || "No report summary supplied.";
-        content.append(summary);
-        (properties.source_urls || []).forEach((url, index) => {
+        const originalUrl = safeOriginalXUrl(properties.source_url);
+        if (originalUrl) {
             const link = document.createElement("a");
-            link.href = url;
+            link.href = originalUrl;
             link.target = "_blank";
             link.rel = "noopener noreferrer";
-            link.textContent = `Open original X post${properties.source_urls.length > 1 ? ` ${index + 1}` : ""}`;
+            link.textContent = "View original report";
             content.append(link);
-        });
+        }
         return content;
     }
+
+    window.SentinelXReportPopup = Object.freeze({
+        buildEarlyReportDetail,
+        formatEarlyReportAccount,
+        formatEarlyReportConfidence,
+        formatEarlyReportTimestamp,
+        safeOriginalXUrl
+    });
 
     async function loadEarlyReportLayer() {
         const geojson = await client.fetchJSON("output/x_report_pinpoints.geojson");
