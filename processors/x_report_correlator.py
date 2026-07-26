@@ -67,7 +67,7 @@ def _build_event(reports: list[dict[str, Any]], updated_at: str) -> dict[str, An
     identifier = hashlib.sha256("|".join(sorted(r["id"] for r in reports)).encode()).hexdigest()[:20]
     return {
         "id": f"x-event-{identifier}", "layer": "Social Media Early Reports",
-        "title": f"Early report: {location}", "summary": reports[0]["text"],
+        "title": f"Early report: {location}", "summary": reports[0]["summary"],
         "source_status": status, "verification_status": VERIFICATION_STATUS,
         "independent_source_count": independent, "report_count": len(reports),
         "accounts": sorted({r["account"] for r in reports}),
@@ -76,5 +76,7 @@ def _build_event(reports: list[dict[str, Any]], updated_at: str) -> dict[str, An
         "longitude": sum(r["longitude"] for r in reports) / len(reports),
         "location_precision": reports[0]["location_precision"],
         "first_reported_at": min((r["published_at"] for r in reports if r["published_at"]), default=None),
-        "last_updated_at": updated_at, "source_urls": sorted({r["url"] for r in reports}), "reports": reports,
+        "last_updated_at": updated_at,
+        "source_urls": sorted({r["source_url"] for r in reports}),
+        "reports": reports,
     }

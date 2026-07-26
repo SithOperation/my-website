@@ -33,11 +33,23 @@ def _digest(prefix: str, values: list[Any]) -> str:
 
 
 def stable_report_id(report: dict[str, Any]) -> str:
-    return _digest("x-report", [report.get("url"), report.get("account"), report.get("text"), report.get("published_at")])
+    return _digest(
+        "x-report",
+        [
+            report.get("source_url"),
+            report.get("account"),
+            report.get("summary"),
+            report.get("published_at"),
+        ],
+    )
 
 
 def stable_claim_id(report: dict[str, Any]) -> str:
     # Reposts hash the referenced origin; direct reports hash their own URL. This
     # makes every explicit source chain converge on the same canonical claim.
-    origin = report.get("reposted_from") or report.get("quoted_source") or report.get("url")
+    origin = (
+        report.get("reposted_url")
+        or report.get("quoted_url")
+        or report.get("source_url")
+    )
     return _digest("x-claim", [str(origin).strip().lower()])

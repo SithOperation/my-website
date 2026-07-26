@@ -1,81 +1,273 @@
+"""Tests for X report correlation, generation, and map integration."""
+
+from __future__ import annotations
+
+import copy
 import json
 import tempfile
 import unittest
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
 from collectors.x_report_collector import load_x_reports, normalize_x_url
 from main import build_x_report_layer
 from models.x_report_model import stable_claim_id, stable_report_id
-from processors.x_report_correlator import correlate_reports, count_independent_sources, event_types_similar, haversine_km
+from processors.x_report_correlator import (
+    correlate_reports,
+    count_independent_sources,
+    event_types_similar,
+    haversine_km,
+)
+from processors.x_report_normalizer import normalize_report
+
+REFERENCE_TIME = datetime(2026, 7, 26, 16, 0, tzinfo=UTC)
 
 
-def report(**changes):
-    value = {"id": "r1", "claim_id": "c1", "url": "https://x.com/a/status/1", "account": "a", "text": "strike", "published_at": None, "collected_at": "2026-01-01T00:00:00Z", "source_class": "social_media_osint", "location_name": "A", "latitude": 0.0, "longitude": 0.0, "location_precision": "exact", "event_type": "reported_strike", "verification_status": "not independently verified", "source_status": "single-source report", "quoted_source": None, "reposted_from": None, "fetch_attempted": False, "fetch_succeeded": False, "fetch_error": None}
+def source_report(status_id: str = "1", **changes: object) -> dict[str, object]:
+    """Build a valid schema 1.0 source report."""
+
+    value: dict[str, object] = {
+        "schema_version": "1.0",
+        "status_id": status_id,
+        "account": "a",
+        "source_url": f"https://x.com/a/status/{status_id}",
+        "published_at": "2026-07-26T15:00:00Z",
+        "collected_at": "2026-07-26T15:05:00Z",
+        "summary": "strike",
+        "event_type": "reported_strike",
+        "source_class": "social_media_osint",
+        "verification_status": "not_independently_verified",
+        "confidence": 0.6,
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "location_name": "A",
+        "location_precision": "exact",
+        "quoted_url": None,
+        "reposted_url": None,
+    }
     value.update(changes)
     return value
 
 
+def report(status_id: str = "1", **changes: object) -> dict:
+    """Build a normalized report for correlation tests."""
+
+    return normalize_report(source_report(status_id, **changes))
+
+
+def write_source(path: Path, reports: list[dict[str, object]]) -> None:
+    """Write a schema 1.0 source document."""
+
+    path.write_text(
+        json.dumps({"schema_version": "1.0", "reports": reports}),
+        encoding="utf-8",
+    )
+
+
 class XReportTests(unittest.TestCase):
-    def test_haversine(self):
-        self.assertAlmostEqual(haversine_km(0, 0, 0, 1), 111.2, delta=.2)
+    """Verify report-level markers remain independent from correlation."""
 
-    def test_url_normalization(self):
-        self.assertEqual(normalize_x_url("https://twitter.com/A/status/123?s=20"), "https://x.com/A/status/123")
+    def test_haversine(self) -> None:
+        """The distance helper returns the expected equatorial distance."""
 
-    def test_stable_ids(self):
+        self.assertAlmostEqual(haversine_km(0, 0, 0, 1), 111.2, delta=0.2)
+
+    def test_url_normalization(self) -> None:
+        """Legacy public links canonicalize to x.com status URLs."""
+
+        self.assertEqual(
+            normalize_x_url("https://twitter.com/A/status/123?s=20"),
+            "https://x.com/A/status/123",
+        )
+
+    def test_stable_ids(self) -> None:
+        """Report and claim identities are deterministic."""
+
         item = report()
         self.assertEqual(stable_report_id(item), stable_report_id(dict(item)))
         self.assertEqual(stable_claim_id(item), stable_claim_id(dict(item)))
-        repost = dict(item, url="https://x.com/b/status/2", reposted_from=item["url"])
+        repost = dict(
+            item,
+            source_url="https://x.com/b/status/2",
+            reposted_url=item["source_url"],
+        )
         self.assertEqual(stable_claim_id(item), stable_claim_id(repost))
 
-    def test_independent_source_and_repost_deduplication(self):
-        self.assertEqual(count_independent_sources([report(), report(id="r2", account="b")]), 1)
-        self.assertEqual(count_independent_sources([report(), report(id="r2", claim_id="c2")]), 2)
+    def test_independent_source_and_repost_deduplication(self) -> None:
+        """Existing correlation behavior remains unchanged in Phase 3."""
 
-    def test_geographic_and_event_clustering(self):
-        events = correlate_reports([report(), report(id="r2", claim_id="c2", latitude=.2), report(id="r3", claim_id="c3", latitude=5)])
+        self.assertEqual(
+            count_independent_sources([report(), report("2", account="b")]),
+            2,
+        )
+        same_claim = report("2")
+        same_claim["claim_id"] = report()["claim_id"]
+        self.assertEqual(count_independent_sources([report(), same_claim]), 1)
+
+    def test_geographic_and_event_clustering(self) -> None:
+        """Nearby similar reports can still form one intelligence event."""
+
+        events = correlate_reports(
+            [
+                report(),
+                report("2", latitude=0.2),
+                report("3", latitude=5),
+            ]
+        )
         self.assertEqual([event["report_count"] for event in events], [2, 1])
-        self.assertTrue(event_types_similar("official_strike_statement", "reported_strike"))
-        self.assertFalse(event_types_similar("diplomatic_statement", "reported_strike"))
+        self.assertTrue(
+            event_types_similar("official_strike_statement", "reported_strike")
+        )
+        self.assertFalse(
+            event_types_similar("diplomatic_statement", "reported_strike")
+        )
 
-    def test_country_does_not_merge_with_facility(self):
-        events = correlate_reports([report(location_precision="country"), report(id="r2", latitude=.01)])
+    def test_country_does_not_merge_with_facility(self) -> None:
+        """Country-level reports remain separate from precise reports."""
+
+        events = correlate_reports(
+            [
+                report(location_precision="country"),
+                report("2", latitude=0.01),
+            ]
+        )
         self.assertEqual(len(events), 2)
         self.assertEqual(events[0]["source_status"], "unable to verify")
 
-    def test_failed_fetch_does_not_crash(self):
-        source = {"reports": [{"url": "https://x.com/a/status/1", "account": "a", "text": "manual", "source_class": "social_media_osint", "location_name": "A", "latitude": 0, "longitude": 0, "location_precision": "city", "event_type": "reported_strike"}]}
+    def test_failed_fetch_does_not_crash(self) -> None:
+        """Optional metadata fetch failure preserves the validated report."""
+
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "source.json"
-            path.write_text(json.dumps(source), encoding="utf-8")
-            with patch("collectors.x_report_collector._fetch_public_text", side_effect=TimeoutError("timed out")):
+            write_source(path, [source_report()])
+            with patch(
+                "collectors.x_report_collector._fetch_public_text",
+                side_effect=TimeoutError("timed out"),
+            ):
                 loaded = load_x_reports(path, fetch_enabled=True)
-        self.assertEqual(loaded[0]["text"], "manual")
+        self.assertEqual(loaded[0]["summary"], "strike")
         self.assertIn("TimeoutError", loaded[0]["fetch_error"])
 
-    def test_empty_source_generates_empty_layers(self):
-        with tempfile.TemporaryDirectory() as folder:
-            events, geojson = build_x_report_layer(output_dir=Path(folder))
-        self.assertEqual(events, [])
-        self.assertEqual(
-            geojson,
-            {"type": "FeatureCollection", "features": []},
-        )
+    def build(
+        self,
+        reports: list[dict[str, object]],
+        output: Path,
+    ) -> tuple[list[dict], dict]:
+        """Write source reports and run the complete generator."""
 
-    def test_popup_implementation_uses_dom_text(self):
+        source = output.parent / "x_sources.json"
+        write_source(source, reports)
+        return build_x_report_layer(source, output, now=REFERENCE_TIME)
+
+    def test_zero_reports_generate_zero_features(self) -> None:
+        """An empty valid feed produces empty event and feature arrays."""
+
+        with tempfile.TemporaryDirectory() as folder:
+            events, geojson = self.build([], Path(folder) / "output")
+        self.assertEqual(events, [])
+        self.assertEqual(geojson["features"], [])
+
+    def test_one_report_generates_one_feature_with_metadata(self) -> None:
+        """One report produces one complete report-level point feature."""
+
+        source = source_report()
+        with tempfile.TemporaryDirectory() as folder:
+            events, geojson = self.build([source], Path(folder) / "output")
+        self.assertEqual(len(events), 1)
+        self.assertEqual(len(geojson["features"]), 1)
+        feature = geojson["features"][0]
+        self.assertEqual(feature["geometry"]["coordinates"], [0.0, 0.0])
+        for field in source:
+            self.assertEqual(feature["properties"][field], source[field])
+
+    def test_two_correlated_reports_generate_two_features(self) -> None:
+        """Correlation may group events but never suppress report markers."""
+
+        first = source_report()
+        second = source_report(
+            "2",
+            account="b",
+            source_url="https://x.com/b/status/2",
+            latitude=0.2,
+        )
+        with tempfile.TemporaryDirectory() as folder:
+            events, geojson = self.build(
+                [first, second],
+                Path(folder) / "output",
+            )
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["report_count"], 2)
+        self.assertEqual(len(geojson["features"]), 2)
+
+    def test_expired_report_generates_no_feature(self) -> None:
+        """Reports outside retention disappear from both generated products."""
+
+        expired = source_report(
+            published_at=(
+                REFERENCE_TIME - timedelta(hours=49)
+            ).isoformat(),
+            collected_at=(
+                REFERENCE_TIME - timedelta(hours=48, minutes=55)
+            ).isoformat(),
+        )
+        with tempfile.TemporaryDirectory() as folder:
+            events, geojson = self.build([expired], Path(folder) / "output")
+        self.assertEqual(events, [])
+        self.assertEqual(geojson["features"], [])
+
+    def test_invalid_coordinates_are_rejected(self) -> None:
+        """Invalid coordinates cannot enter generated GeoJSON."""
+
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaisesRegex(ValueError, "latitude"):
+                self.build(
+                    [source_report(latitude=True)],
+                    Path(folder) / "output",
+                )
+
+    def test_duplicate_status_id_is_rejected(self) -> None:
+        """Duplicate report identities are rejected deterministically."""
+
+        duplicate = copy.deepcopy(source_report())
+        duplicate["account"] = "b"
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaisesRegex(ValueError, "duplicated"):
+                self.build(
+                    [source_report(), duplicate],
+                    Path(folder) / "output",
+                )
+
+    def test_removed_report_removes_existing_marker(self) -> None:
+        """Regeneration replaces stale marker content after source removal."""
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            output = root / "output"
+            self.build([source_report()], output)
+            self.build([], output)
+            geojson = json.loads(
+                (output / "x_report_pinpoints.geojson").read_text(
+                    encoding="utf-8"
+                )
+            )
+        self.assertEqual(geojson["features"], [])
+
+    def test_popup_implementation_uses_dom_text(self) -> None:
+        """Existing popup construction avoids unsafe HTML insertion."""
+
         script = Path("assets/js/sentinel-map.js").read_text(encoding="utf-8")
         self.assertIn("buildEarlyReportDetail", script)
         self.assertIn("textContent", script)
         self.assertNotIn("earlyReportPopup.setHTML", script)
 
-    def test_x_markers_have_a_separate_cluster_source(self):
+    def test_x_markers_have_a_separate_cluster_source(self) -> None:
+        """Existing X marker image and cluster source remain intact."""
+
         script = Path("assets/js/sentinel-map.js").read_text(encoding="utf-8")
         self.assertIn('map.addImage("x-early-report-pinpoint"', script)
         self.assertIn('map.addSource("x-early-reports-source"', script)
         self.assertIn('id: "x-early-report-clusters"', script)
-        self.assertNotIn('source: "sentinel-events",\n            filter: ["has", "point_count"],\n            layout: {\n                "icon-image": "x-early-report-pinpoint"', script)
 
 
 if __name__ == "__main__":

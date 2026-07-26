@@ -1,37 +1,55 @@
-"""Normalize collected X reports into the cautious Sentinel schema."""
+"""Normalize validated X reports and enforce the map retention window."""
 
 from __future__ import annotations
 
+import logging
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
-from models.x_report_model import LOCATION_PRECISIONS, SOURCE_CLASSES, VERIFICATION_STATUS, stable_claim_id, stable_report_id, utc_now
+from models.x_report_contract import RETENTION_HOURS
+from models.x_report_model import stable_claim_id, stable_report_id
+
+LOGGER = logging.getLogger(__name__)
 
 
-def normalize_report(source: dict[str, Any], collected_at: str | None = None) -> dict[str, Any]:
-    source_class = source.get("source_class")
-    precision = source.get("location_precision")
-    if source_class not in SOURCE_CLASSES:
-        raise ValueError(f"unsupported source_class: {source_class}")
-    if precision not in LOCATION_PRECISIONS:
-        raise ValueError(f"unsupported location_precision: {precision}")
-    latitude, longitude = float(source["latitude"]), float(source["longitude"])
-    if not -90 <= latitude <= 90 or not -180 <= longitude <= 180:
-        raise ValueError("coordinates are outside valid ranges")
-    report = {
-        "url": source["url"], "account": str(source["account"]).lstrip("@"),
-        "text": source.get("text") or source.get("fetched_text") or "Report text unavailable.",
-        "published_at": source.get("published_at"), "collected_at": collected_at or utc_now(),
-        "source_class": source_class, "location_name": source["location_name"],
-        "latitude": latitude, "longitude": longitude, "location_precision": precision,
-        "event_type": source["event_type"], "verification_status": VERIFICATION_STATUS,
-        "source_status": "single-source report", "quoted_source": source.get("quoted_source"),
-        "reposted_from": source.get("reposted_from"), "fetch_attempted": bool(source.get("fetch_attempted")),
-        "fetch_succeeded": bool(source.get("fetch_succeeded")), "fetch_error": source.get("fetch_error"),
-    }
+def _parse_timestamp(value: str) -> datetime:
+    """Parse a contract-validated timestamp as UTC."""
+
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(UTC)
+
+
+def normalize_report(source: dict[str, Any]) -> dict[str, Any]:
+    """Add stable internal identities without discarding contract metadata."""
+
+    report = dict(source)
     report["id"] = stable_report_id(report)
-    report["claim_id"] = source.get("claim_id") or stable_claim_id(report)
+    report["claim_id"] = stable_claim_id(report)
+    report["source_status"] = "single-source report"
     return report
 
 
-def normalize_reports(sources: list[dict[str, Any]], collected_at: str | None = None) -> list[dict[str, Any]]:
-    return [normalize_report(source, collected_at) for source in sources]
+def normalize_reports(
+    sources: list[dict[str, Any]],
+    *,
+    now: datetime | None = None,
+    retention_hours: int = RETENTION_HOURS,
+) -> list[dict[str, Any]]:
+    """Return deterministic normalized reports inside the retention window."""
+
+    reference = (now or datetime.now(UTC)).astimezone(UTC)
+    cutoff = reference - timedelta(hours=retention_hours)
+    retained = [
+        normalize_report(source)
+        for source in sources
+        if cutoff <= _parse_timestamp(source["published_at"]) <= reference
+    ]
+    retained.sort(
+        key=lambda report: (report["published_at"], report["status_id"]),
+        reverse=True,
+    )
+    LOGGER.info(
+        "[X REPORTS] Retained %d of %d reports for the map window",
+        len(retained),
+        len(sources),
+    )
+    return retained
