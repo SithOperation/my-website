@@ -9,6 +9,7 @@ import tempfile
 import unittest
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from typing import Any
 
 from collectors.x_report_collector import load_x_reports, normalize_x_url
 from main import build_x_report_layer
@@ -50,7 +51,7 @@ def source_report(status_id: str = "1", **changes: object) -> dict[str, object]:
     return value
 
 
-def report(status_id: str = "1", **changes: object) -> dict:
+def report(status_id: str = "1", **changes: object) -> dict[str, object]:
     """Build a normalized report for correlation tests."""
 
     return normalize_report(source_report(status_id, **changes))
@@ -228,7 +229,7 @@ class XReportTests(unittest.TestCase):
         self,
         reports: list[dict[str, object]],
         output: Path,
-    ) -> tuple[list[dict], dict]:
+    ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         """Write source reports and run the complete generator."""
 
         source = output.parent / "x_sources.json"

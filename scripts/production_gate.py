@@ -6,6 +6,8 @@ import argparse
 import importlib.util
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -17,6 +19,17 @@ LINK_PATTERN = re.compile(r"""(?:href|src)=["']([^"'#]+)["']""", re.IGNORECASE)
 
 class ProductionGateError(RuntimeError):
     """Raised when a production-readiness invariant fails."""
+
+
+def validate_python_types(repository: Path) -> None:
+    """Run the repository's canonical strict mypy command."""
+    result = subprocess.run(
+        [sys.executable, "-m", "mypy"],
+        cwd=repository,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise ProductionGateError("strict Python type checking failed")
 
 
 def verify_stage(stage: Path) -> None:
@@ -114,6 +127,7 @@ def run_gate(repository: Path, stage: Path) -> int:
     """Run every local production artifact validation."""
     repository = repository.resolve()
     stage = stage.resolve()
+    validate_python_types(repository)
     verify_stage(stage)
     validate_stage_size(stage)
     validate_generated_x(repository)

@@ -37,13 +37,13 @@ def read_json(path: Path) -> object:
         return json.load(stream)
 
 
-def require_mapping(value: object, label: str) -> dict:
+def require_mapping(value: object, label: str) -> dict[str, object]:
     if not isinstance(value, dict):
         raise ValueError(f"{label} must contain a JSON object")
     return value
 
 
-def require_nonempty_list(value: object, label: str) -> list:
+def require_nonempty_list(value: object, label: str) -> list[object]:
     if not isinstance(value, list) or not value:
         raise ValueError(f"{label} must contain a non-empty JSON array")
     return value
@@ -140,7 +140,9 @@ def publish_file(
     return SyncResult(label, "updated", len(payload))
 
 
-def validate_sentinel_publication(source_root: Path) -> tuple[dict, dict[str, bytes]]:
+def validate_sentinel_publication(
+    source_root: Path,
+) -> tuple[dict[str, object], dict[str, bytes]]:
     manifest_path = source_root / "manifest.json"
     manifest_payload = manifest_path.read_bytes()
     manifest = require_mapping(
@@ -236,7 +238,7 @@ def parse_generated(value: object) -> datetime | None:
     except ValueError:
         return None
     if parsed.tzinfo is None:
-        raise ValueError(f"{path.name} timestamp must include a timezone")
+        raise ValueError("timestamp must include a timezone")
     return parsed.astimezone(timezone.utc)
 
 

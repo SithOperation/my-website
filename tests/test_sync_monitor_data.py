@@ -1,5 +1,5 @@
-import importlib.util
 import hashlib
+import importlib.util
 import json
 import sys
 import tempfile
@@ -9,17 +9,22 @@ from pathlib import Path
 
 MODULE_PATH = Path(__file__).parents[1] / "scripts" / "sync-monitor-data.py"
 SPEC = importlib.util.spec_from_file_location("sync_monitor_data", MODULE_PATH)
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError(f"Unable to load synchronization module: {MODULE_PATH}")
 sync_monitor_data = importlib.util.module_from_spec(SPEC)
-assert SPEC.loader
 sys.modules[SPEC.name] = sync_monitor_data
 SPEC.loader.exec_module(sync_monitor_data)
 
+type JsonValue = (
+    str | int | float | bool | None | list["JsonValue"] | dict[str, "JsonValue"]
+)
+
 
 class SyncMonitorDataTests(unittest.TestCase):
-    def write_sentinel_publication(self, root):
+    def write_sentinel_publication(self, root: Path) -> Path:
         output = root / "source"
         output.mkdir()
-        values = {
+        values: dict[str, JsonValue] = {
             "dashboard.json": {"generated": "2026-07-23T13:49:32Z"},
             "intelligence_brief.json": {"title": "Brief"},
             "map_events.json": [{"event_id": "one"}],
@@ -28,7 +33,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             "world_events.json": {"events": [{"event_id": "one"}]},
             "health.json": {"status": "healthy"},
         }
-        files = {}
+        files: dict[str, JsonValue] = {}
         for filename, value in values.items():
             payload = (json.dumps(value) + "\n").encode()
             (output / filename).write_bytes(payload)
@@ -48,7 +53,7 @@ class SyncMonitorDataTests(unittest.TestCase):
         )
         return output
 
-    def test_valid_ai_digest_replaces_destination(self):
+    def test_valid_ai_digest_replaces_destination(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "source.json"
@@ -76,21 +81,21 @@ class SyncMonitorDataTests(unittest.TestCase):
             )
 
             self.assertEqual(result.status, "updated")
-            self.assertEqual(json.loads(destination.read_text())["stories"][0]["title"], "Report")
+            self.assertEqual(
+                json.loads(destination.read_text())["stories"][0]["title"], "Report"
+            )
 
-    def test_empty_x_sources_feed_is_valid(self):
+    def test_empty_x_sources_feed_is_valid(self) -> None:
         sync_monitor_data.validate_x_sources(
             {"schema_version": "1.0", "reports": []},
             "x_sources.json",
         )
 
-    def test_x_sources_requires_publication_timestamp(self):
+    def test_x_sources_requires_publication_timestamp(self) -> None:
         document = json.loads(
-            (
-                Path(__file__).parent
-                / "fixtures"
-                / "x_sources_valid.json"
-            ).read_text(encoding="utf-8")
+            (Path(__file__).parent / "fixtures" / "x_sources_valid.json").read_text(
+                encoding="utf-8"
+            )
         )
         document["reports"][0]["published_at"] = None
         with self.assertRaisesRegex(ValueError, "published_at"):
@@ -99,7 +104,7 @@ class SyncMonitorDataTests(unittest.TestCase):
                 "x_sources.json",
             )
 
-    def test_invalid_download_preserves_last_known_good(self):
+    def test_invalid_download_preserves_last_known_good(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "source.json"
@@ -116,7 +121,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(result.status, "failed")
             self.assertEqual(destination.read_text(encoding="utf-8"), '{"valid": true}')
 
-    def test_malformed_ai_json_preserves_last_known_good(self):
+    def test_malformed_ai_json_preserves_last_known_good(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "source.json"
@@ -133,7 +138,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(result.status, "failed")
             self.assertEqual(destination.read_text(encoding="utf-8"), '{"valid": true}')
 
-    def test_missing_source_preserves_destination(self):
+    def test_missing_source_preserves_destination(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             destination = root / "data.json"
@@ -148,20 +153,24 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(result.status, "skipped")
             self.assertEqual(destination.read_text(encoding="utf-8"), '{"valid": true}')
 
-    def test_z_and_offset_timestamps_parse(self):
+    def test_z_and_offset_timestamps_parse(self) -> None:
         utc = sync_monitor_data.parse_generated("2026-07-23T13:49:32Z")
         offset = sync_monitor_data.parse_generated("2026-07-23T09:49:32-04:00")
 
         self.assertEqual(utc, offset)
 
-    def test_malformed_timestamp_returns_none(self):
+    def test_naive_timestamp_is_rejected_explicitly(self) -> None:
+        with self.assertRaisesRegex(ValueError, "timezone"):
+            sync_monitor_data.parse_generated("2026-07-23T13:49:32")
+
+    def test_malformed_timestamp_returns_none(self) -> None:
         self.assertIsNone(sync_monitor_data.parse_generated("not-a-date"))
 
-    def test_empty_event_array_is_rejected(self):
+    def test_empty_event_array_is_rejected(self) -> None:
         with self.assertRaises(ValueError):
             sync_monitor_data.validate_event_array([], "events.json")
 
-    def test_valid_ews_state(self):
+    def test_valid_ews_state(self) -> None:
         sync_monitor_data.validate_ews_state(
             {
                 "level": 2,
@@ -173,7 +182,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             "ews_state.json",
         )
 
-    def test_ews_only_mode_preserves_last_known_good_then_updates(self):
+    def test_ews_only_mode_preserves_last_known_good_then_updates(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "external" / "ews" / "state.json"
@@ -205,7 +214,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(updated.status, "updated")
             self.assertEqual(json.loads(destination.read_text())["level"], 2)
 
-    def test_valid_sentinel_publication_is_published(self):
+    def test_valid_sentinel_publication_is_published(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = self.write_sentinel_publication(root)
@@ -215,11 +224,13 @@ class SyncMonitorDataTests(unittest.TestCase):
 
             self.assertTrue(all(result.status == "updated" for result in results))
             self.assertEqual(
-                json.loads((destination / "manifest.json").read_text())["publication_id"],
+                json.loads((destination / "manifest.json").read_text())[
+                    "publication_id"
+                ],
                 "test-publication",
             )
 
-    def test_bad_sentinel_checksum_preserves_last_known_good(self):
+    def test_bad_sentinel_checksum_preserves_last_known_good(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = self.write_sentinel_publication(root)

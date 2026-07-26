@@ -49,13 +49,13 @@ REQUIRED = {
 }
 
 
-def main():
+def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--root", type=Path, required=True)
     args = p.parse_args()
     root = args.root.resolve()
-    errors = []
-    warnings = []
+    errors: list[str] = []
+    warnings: list[str] = []
     catalog = json.loads(
         (root / "data/governance-library/sources.json").read_text(encoding="utf-8")
     )

@@ -12,6 +12,7 @@ from scripts.production_gate import (
     ProductionGateError,
     validate_generated_x,
     validate_geojson,
+    validate_python_types,
 )
 
 
@@ -54,3 +55,35 @@ def test_pages_deploy_requires_validation_job() -> None:
         Path(".github/workflows/pages.yml").read_text(encoding="utf-8")
     )
     assert workflow["jobs"]["deploy"]["needs"] == "validate"
+
+
+def test_production_gate_uses_canonical_mypy_command(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """The production gate invokes the same configured command as CI."""
+    invocation: dict[str, object] = {}
+
+    class Result:
+        """Minimal completed-process stand-in."""
+
+        returncode = 0
+
+    def run(
+        command: list[str],
+        *,
+        cwd: Path,
+        check: bool,
+    ) -> Result:
+        invocation.update(command=command, cwd=cwd, check=check)
+        return Result()
+
+    monkeypatch.setattr("scripts.production_gate.subprocess.run", run)
+
+    validate_python_types(tmp_path)
+
+    command = invocation["command"]
+    assert isinstance(command, list)
+    assert command[1:] == ["-m", "mypy"]
+    assert invocation["cwd"] == tmp_path
+    assert invocation["check"] is False

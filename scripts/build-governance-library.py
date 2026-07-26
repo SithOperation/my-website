@@ -270,12 +270,13 @@ Use the publication to research original system security, privacy, and cybersecu
         guide = guide_root / f"{record['source_id']}.md"
         if guide.exists():
             record["public_guide"] = guide.relative_to(root).as_posix()
+    categories = sorted({record["category"] for record in records})
     catalog = {
         "library_title": "Cybersecurity Governance Source Library",
         "version": "2.1-review",
         "built": "2026-07-18",
         "source_count": len(records),
-        "categories": sorted({x["category"] for x in records}),
+        "categories": categories,
         "sources": records,
         "featured_companion": {
             "title": "Cybersecurity Governance Framework",
@@ -289,7 +290,7 @@ Use the publication to research original system security, privacy, and cybersecu
     )
     print(
         json.dumps(
-            {"sources": len(records), "categories": len(catalog["categories"])},
+            {"sources": len(records), "categories": len(categories)},
             indent=2,
         )
     )
