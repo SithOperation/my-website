@@ -9,7 +9,6 @@ import tempfile
 import unittest
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from unittest.mock import patch
 
 from collectors.x_report_collector import load_x_reports, normalize_x_url
 from main import build_x_report_layer
@@ -164,9 +163,7 @@ class XReportTests(unittest.TestCase):
             ],
             updated_at="2026-07-26T17:00:00Z",
         )
-        existing = next(
-            event for event in second if event["report_count"] == 2
-        )
+        existing = next(event for event in second if event["report_count"] == 2)
         self.assertEqual(first[0]["id"], existing["id"])
         self.assertEqual(first[0]["last_updated_at"], existing["last_updated_at"])
 
@@ -204,9 +201,7 @@ class XReportTests(unittest.TestCase):
         self.assertTrue(
             event_types_similar("official_strike_statement", "reported_strike")
         )
-        self.assertFalse(
-            event_types_similar("diplomatic_statement", "reported_strike")
-        )
+        self.assertFalse(event_types_similar("diplomatic_statement", "reported_strike"))
 
     def test_country_does_not_merge_with_facility(self) -> None:
         """Country-level reports remain separate from precise reports."""
@@ -220,19 +215,14 @@ class XReportTests(unittest.TestCase):
         self.assertEqual(len(events), 2)
         self.assertEqual(events[0]["source_status"], "unable to verify")
 
-    def test_failed_fetch_does_not_crash(self) -> None:
-        """Optional metadata fetch failure preserves the validated report."""
+    def test_website_loader_performs_no_network_collection(self) -> None:
+        """The website only consumes the authoritative synchronized feed."""
 
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "source.json"
             write_source(path, [source_report()])
-            with patch(
-                "collectors.x_report_collector._fetch_public_text",
-                side_effect=TimeoutError("timed out"),
-            ):
-                loaded = load_x_reports(path, fetch_enabled=True)
+            loaded = load_x_reports(path)
         self.assertEqual(loaded[0]["summary"], "strike")
-        self.assertIn("TimeoutError", loaded[0]["fetch_error"])
 
     def build(
         self,
@@ -289,12 +279,8 @@ class XReportTests(unittest.TestCase):
         """Reports outside retention disappear from both generated products."""
 
         expired = source_report(
-            published_at=(
-                REFERENCE_TIME - timedelta(hours=49)
-            ).isoformat(),
-            collected_at=(
-                REFERENCE_TIME - timedelta(hours=48, minutes=55)
-            ).isoformat(),
+            published_at=(REFERENCE_TIME - timedelta(hours=49)).isoformat(),
+            collected_at=(REFERENCE_TIME - timedelta(hours=48, minutes=55)).isoformat(),
         )
         with tempfile.TemporaryDirectory() as folder:
             events, geojson = self.build([expired], Path(folder) / "output")
@@ -332,9 +318,7 @@ class XReportTests(unittest.TestCase):
             self.build([source_report()], output)
             self.build([], output)
             geojson = json.loads(
-                (output / "x_report_pinpoints.geojson").read_text(
-                    encoding="utf-8"
-                )
+                (output / "x_report_pinpoints.geojson").read_text(encoding="utf-8")
             )
         self.assertEqual(geojson["features"], [])
 
