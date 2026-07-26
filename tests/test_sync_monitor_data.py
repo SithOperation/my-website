@@ -80,28 +80,22 @@ class SyncMonitorDataTests(unittest.TestCase):
 
     def test_empty_x_sources_feed_is_valid(self):
         sync_monitor_data.validate_x_sources(
-            {"reports": []},
+            {"schema_version": "1.0", "reports": []},
             "x_sources.json",
         )
 
     def test_x_sources_requires_publication_timestamp(self):
-        report = {
-            "url": "https://x.com/example/status/123",
-            "account": "example",
-            "text": "Early report",
-            "published_at": None,
-            "source_class": "social_media_osint",
-            "location_name": "Example",
-            "latitude": 1.0,
-            "longitude": 2.0,
-            "location_precision": "city",
-            "event_type": "reported_strike",
-            "quoted_source": None,
-            "reposted_from": None,
-        }
+        document = json.loads(
+            (
+                Path(__file__).parent
+                / "fixtures"
+                / "x_sources_valid.json"
+            ).read_text(encoding="utf-8")
+        )
+        document["reports"][0]["published_at"] = None
         with self.assertRaisesRegex(ValueError, "published_at"):
             sync_monitor_data.validate_x_sources(
-                {"reports": [report]},
+                document,
                 "x_sources.json",
             )
 

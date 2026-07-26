@@ -98,3 +98,10 @@ along with output sizes and freshness warnings.
 4. Confirm `REPO_ACCESS_TOKEN` can read each private source repository.
 5. Run `python -m unittest discover -s tests -v` locally before changing sync
    validation.
+## X report contract
+
+The shared X ingestion contract is documented in
+[`docs/X_SOURCES_SCHEMA.md`](docs/X_SOURCES_SCHEMA.md). The website validates
+the complete versioned document before replacing `data/x_sources.json`;
+invalid, expired, duplicate, or schema-incompatible reports are rejected
+without replacing the last known good feed.

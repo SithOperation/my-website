@@ -1,0 +1,27 @@
+{
+  "expected_error": "x_sources.json.reports[0].latitude must be a finite number",
+  "document": {
+    "schema_version": "1.0",
+    "reports": [
+      {
+        "schema_version": "1.0",
+        "status_id": "1888888888888888888",
+        "account": "OSINTWarfare",
+        "source_url": "https://x.com/OSINTWarfare/status/1888888888888888888",
+        "published_at": "2026-07-26T14:00:00Z",
+        "collected_at": "2026-07-26T14:05:00Z",
+        "summary": "Invalid fixture with a Boolean coordinate.",
+        "event_type": "reported_military_activity",
+        "source_class": "social_media_osint",
+        "verification_status": "not_independently_verified",
+        "confidence": 0.65,
+        "latitude": false,
+        "longitude": -83.0458,
+        "location_name": "Example City",
+        "location_precision": "city",
+        "quoted_url": null,
+        "reposted_url": null
+      }
+    ]
+  }
+}
