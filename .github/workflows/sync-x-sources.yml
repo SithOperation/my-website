@@ -1,5 +1,7 @@
 name: Sync X Early Reports
 
+# After changing this file, push it and start a new workflow run. GitHub's
+# "Re-run jobs" action reuses the workflow definition from the original run.
 on:
   schedule:
     # 08:00 America/Detroit during EDT and EST.
@@ -43,17 +45,80 @@ jobs:
               ;;
           esac
 
+      - name: Diagnose private repository access
+        if: steps.schedule.outputs.run_workflow == 'true'
+        shell: bash
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          TARGET_OWNER: SithOperation
+          TARGET_REPOSITORY: x-sources
+          TARGET_BRANCH: main
+        run: |
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Target repository: $TARGET_OWNER/$TARGET_REPOSITORY"
+          echo "Target branch: $TARGET_BRANCH"
+
+          if [[ -z "$REPO_ACCESS_TOKEN" ]]; then
+            echo "REPO_ACCESS_TOKEN: missing"
+            echo "::error::REPO_ACCESS_TOKEN is missing from the website repository's Actions secrets."
+            exit 1
+          fi
+          echo "REPO_ACCESS_TOKEN: present"
+
+          HTTP_STATUS="$(
+            curl \
+              --silent \
+              --show-error \
+              --output "$RUNNER_TEMP/x-sources-repository-response.json" \
+              --write-out "%{http_code}" \
+              --header "Accept: application/vnd.github+json" \
+              --header "Authorization: Bearer $REPO_ACCESS_TOKEN" \
+              --header "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/$TARGET_OWNER/$TARGET_REPOSITORY"
+          )"
+
+          case "$HTTP_STATUS" in
+            "200")
+              DEFAULT_BRANCH="$(
+                jq --raw-output ".default_branch" \
+                  "$RUNNER_TEMP/x-sources-repository-response.json"
+              )"
+              if [[ "$DEFAULT_BRANCH" != "$TARGET_BRANCH" ]]; then
+                echo "::error::Target branch '$TARGET_BRANCH' does not match the repository default branch '$DEFAULT_BRANCH'."
+                exit 1
+              fi
+              echo "Private repository access: confirmed"
+              ;;
+            "401")
+              echo "::error::REPO_ACCESS_TOKEN is invalid, expired, or revoked."
+              exit 1
+              ;;
+            "403")
+              echo "::error::REPO_ACCESS_TOKEN was recognized but repository access was forbidden. Check token permissions, organization policy, and SSO authorization."
+              exit 1
+              ;;
+            "404")
+              echo "::error::GitHub returned 404 for $TARGET_OWNER/$TARGET_REPOSITORY. The configured path is exact; REPO_ACCESS_TOKEN cannot see the private repository. Grant it read access to this repository."
+              exit 1
+              ;;
+            *)
+              echo "::error::GitHub repository access check failed with HTTP $HTTP_STATUS."
+              exit 1
+              ;;
+          esac
+
       - name: Checkout website
         if: steps.schedule.outputs.run_workflow == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout private X sources
         if: steps.schedule.outputs.run_workflow == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SithOperation/x-sources
+          ref: main
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: external/x-sources
 
