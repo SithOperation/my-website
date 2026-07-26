@@ -1,0 +1,22 @@
+[tool.ruff]
+include = [
+  "main.py",
+  "scripts/demonstrate_x_output_transaction.py",
+  "storage/**/*.py",
+  "tests/test_x_output_transaction.py",
+]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = [
+  "main.py",
+  "scripts/demonstrate_x_output_transaction.py",
+  "storage",
+  "tests/test_x_output_transaction.py",
+]

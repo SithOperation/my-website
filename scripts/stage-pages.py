@@ -42,6 +42,7 @@ FORBIDDEN_DIRECTORY_NAMES = frozenset(
 FORBIDDEN_FILE_SUFFIXES = frozenset(
     {
         ".db",
+        ".bak",
         ".log",
         ".py",
         ".pyc",

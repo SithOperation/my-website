@@ -73,6 +73,18 @@ class StagePagesTests(unittest.TestCase):
             with self.assertRaises(STAGE_PAGES.DeploymentValidationError):
                 STAGE_PAGES.verify_stage(stage)
 
+    def test_verification_rejects_transaction_backups(self) -> None:
+        """Incomplete X output transactions cannot enter the Pages artifact."""
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            stage = Path(temporary_directory)
+            output = stage / "data" / "output"
+            output.mkdir(parents=True)
+            (output / ".x_report_events.generation.bak").write_bytes(b"backup")
+
+            with self.assertRaises(STAGE_PAGES.DeploymentValidationError):
+                STAGE_PAGES.verify_stage(stage)
+
     def test_failed_copy_removes_partial_stage(self) -> None:
         """A missing required public path leaves no partial artifact."""
 
