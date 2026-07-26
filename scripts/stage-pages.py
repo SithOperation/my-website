@@ -24,6 +24,14 @@ PUBLIC_FILES = (
     "style.css",
     "url-inspector.html",
 )
+PUBLIC_EXCLUDED_RELATIVE_PATHS = frozenset(
+    {
+        # Static cinematic mode uses WebP fallbacks. Keep the source-quality
+        # EXR in Git for the optional 3D mode, but do not deploy 23 MiB that
+        # current production JavaScript cannot request.
+        "assets/hdr",
+    }
+)
 FORBIDDEN_DIRECTORY_NAMES = frozenset(
     {
         ".git",
@@ -86,7 +94,25 @@ def _copy_public_path(source: Path, destination: Path) -> None:
     if source.is_symlink():
         raise DeploymentValidationError(f"Public path may not be a symlink: {source}")
     if source.is_dir():
-        shutil.copytree(source, destination, copy_function=shutil.copy2)
+        repository = source.parent if source.name == "assets" else None
+
+        def ignore(directory: str, names: list[str]) -> set[str]:
+            ignored: set[str] = set()
+            if repository is None:
+                return ignored
+            base = Path(directory)
+            for name in names:
+                relative = (base / name).relative_to(repository).as_posix()
+                if relative in PUBLIC_EXCLUDED_RELATIVE_PATHS:
+                    ignored.add(name)
+            return ignored
+
+        shutil.copytree(
+            source,
+            destination,
+            copy_function=shutil.copy2,
+            ignore=ignore,
+        )
         return
     if source.is_file():
         destination.parent.mkdir(parents=True, exist_ok=True)

@@ -52,6 +52,9 @@ class StagePagesTests(unittest.TestCase):
             (repository / "tests" / "test_app.py").write_text(
                 "private", encoding="utf-8"
             )
+            hdr = repository / "assets" / "hdr"
+            hdr.mkdir()
+            (hdr / "optional.exr").write_bytes(b"source quality")
             stage = repository / "_site"
 
             STAGE_PAGES.stage_pages(repository, stage)
@@ -60,6 +63,7 @@ class StagePagesTests(unittest.TestCase):
             self.assertTrue((stage / "assets" / "public.txt").is_file())
             self.assertFalse((stage / "main.py").exists())
             self.assertFalse((stage / "tests").exists())
+            self.assertFalse((stage / "assets" / "hdr").exists())
 
     def test_verification_rejects_browser_profile_data(self) -> None:
         """Browser profiles cause deployment validation to fail."""

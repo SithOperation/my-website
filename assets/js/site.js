@@ -64,8 +64,12 @@
     function initializeBackgrounds() {
         const layers = ["bg1", "bg2", "bg3"].map(id => document.getElementById(id));
         if (layers.some(layer => !layer)) return;
-        backgrounds.forEach(source => { const image = new Image(); image.src = source; });
-        layers.forEach((layer, index) => { layer.style.backgroundImage = `url("${backgrounds[index]}")`; });
+        // Load only the visible animation. Subsequent backgrounds are fetched
+        // when their rotation begins instead of transferring all ~55 MiB at
+        // initial page load.
+        layers.forEach(layer => {
+            layer.style.backgroundImage = `url("${backgrounds[0]}")`;
+        });
         layers[0].style.opacity = "1";
         let current = 0;
 
