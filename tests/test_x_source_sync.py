@@ -52,7 +52,11 @@ def test_manifest_and_empty_feed_match_dispatch(tmp_path: Path) -> None:
         "schema_version": request.schema_version,
         "completed_at": request.completed_at,
         "report_count": 0,
-        "collection_status": "success",
+        "collection_status": {
+            "status": "success",
+            "provider": "x_api_v2",
+            "accounts_attempted": 1,
+        },
     }
     write_json(tmp_path / "manifest.json", manifest)
     write_json(
@@ -64,7 +68,18 @@ def test_manifest_and_empty_feed_match_dispatch(tmp_path: Path) -> None:
 def test_manifest_mismatch_fails_closed(tmp_path: Path) -> None:
     """A dispatch cannot authorize a different producer generation."""
     request = payload()
-    write_json(tmp_path / "manifest.json", {"generation_id": "other"})
+    write_json(
+        tmp_path / "manifest.json",
+        {
+            "manifest_schema_version": "1.0",
+            "slot_id": request.slot_id,
+            "generation_id": "other",
+            "schema_version": request.schema_version,
+            "completed_at": request.completed_at,
+            "report_count": 0,
+            "collection_status": {"status": "success"},
+        },
+    )
     write_json(
         tmp_path / "feed.json", {"schema_version": "1.0", "reports": []}
     )
@@ -81,4 +96,3 @@ def test_consumer_replay_and_conflict_policy(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="different generation"):
         state.should_process(payload(generation_id="generation-2"))
     assert state.should_process(payload(generation_id="generation-2", force=True))
-

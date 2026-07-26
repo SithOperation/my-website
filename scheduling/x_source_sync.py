@@ -144,9 +144,15 @@ def validate_source(
         "schema_version": payload.schema_version,
         "completed_at": payload.completed_at,
         "report_count": payload.report_count,
-        "collection_status": "success",
+        "collection_status": manifest.get("collection_status"),
         "manifest_schema_version": "1.0",
     }
+    status = manifest.get("collection_status")
+    if not isinstance(status, dict) or status.get("status") not in {
+        "success",
+        "partial_success",
+    }:
+        raise ValueError("source collection status is not publishable")
     if manifest != expected:
         raise ValueError("source manifest does not match dispatch payload")
     validate_document(feed)
