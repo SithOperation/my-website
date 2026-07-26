@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import itertools
 import json
 import tempfile
 import unittest
@@ -95,7 +96,7 @@ class XReportTests(unittest.TestCase):
         self.assertEqual(stable_claim_id(item), stable_claim_id(repost))
 
     def test_independent_source_and_repost_deduplication(self) -> None:
-        """Existing correlation behavior remains unchanged in Phase 3."""
+        """Accounts, rather than claims or posts, define independent sources."""
 
         self.assertEqual(
             count_independent_sources([report(), report("2", account="b")]),
@@ -104,6 +105,87 @@ class XReportTests(unittest.TestCase):
         same_claim = report("2")
         same_claim["claim_id"] = report()["claim_id"]
         self.assertEqual(count_independent_sources([report(), same_claim]), 1)
+        different_account_same_claim = report(
+            "3",
+            account="b",
+            source_url="https://x.com/b/status/3",
+        )
+        different_account_same_claim["claim_id"] = report()["claim_id"]
+        self.assertEqual(
+            count_independent_sources([report(), different_account_same_claim]),
+            2,
+        )
+
+    def test_correlation_is_permutation_invariant_with_bridge_report(self) -> None:
+        """A bridge joins preexisting components regardless of input order."""
+
+        items = [
+            report("1", latitude=0.0),
+            report("2", account="b", latitude=1.8),
+            report("3", account="c", latitude=0.9),
+        ]
+        signatures = []
+        for permutation in itertools.permutations(items):
+            events = correlate_reports(list(permutation), radius_km=125)
+            signatures.append(
+                [
+                    (
+                        event["id"],
+                        [item["id"] for item in event["reports"]],
+                    )
+                    for event in events
+                ]
+            )
+        self.assertTrue(all(value == signatures[0] for value in signatures))
+        self.assertEqual(len(signatures[0]), 1)
+
+    def test_stable_event_identity_and_update_time(self) -> None:
+        """Unrelated input and regeneration time do not churn an event."""
+
+        related = [
+            report("1"),
+            report(
+                "2",
+                account="b",
+                source_url="https://x.com/b/status/2",
+                latitude=0.2,
+            ),
+        ]
+        first = correlate_reports(related, updated_at="2026-07-26T16:00:00Z")
+        second = correlate_reports(
+            [
+                *related,
+                report(
+                    "9",
+                    account="z",
+                    source_url="https://x.com/z/status/9",
+                    latitude=20.0,
+                ),
+            ],
+            updated_at="2026-07-26T17:00:00Z",
+        )
+        existing = next(
+            event for event in second if event["report_count"] == 2
+        )
+        self.assertEqual(first[0]["id"], existing["id"])
+        self.assertEqual(first[0]["last_updated_at"], existing["last_updated_at"])
+
+    def test_nearby_unrelated_event_types_remain_separate(self) -> None:
+        """Proximity alone cannot correlate semantically unrelated reports."""
+
+        events = correlate_reports(
+            [
+                report("1", event_type="reported_strike"),
+                report(
+                    "2",
+                    account="b",
+                    source_url="https://x.com/b/status/2",
+                    event_type="diplomatic_statement",
+                    latitude=0.01,
+                ),
+            ]
+        )
+        self.assertEqual(len(events), 2)
 
     def test_geographic_and_event_clustering(self) -> None:
         """Nearby similar reports can still form one intelligence event."""
@@ -115,7 +197,10 @@ class XReportTests(unittest.TestCase):
                 report("3", latitude=5),
             ]
         )
-        self.assertEqual([event["report_count"] for event in events], [2, 1])
+        self.assertEqual(
+            sorted(event["report_count"] for event in events),
+            [1, 2],
+        )
         self.assertTrue(
             event_types_similar("official_strike_statement", "reported_strike")
         )

@@ -122,3 +122,14 @@ Configure the website secret `REPO_ACCESS_TOKEN` with read access to the private
 `SithOperation/x-sources` repository. Manual recovery requires the same
 immutable metadata found in the producer manifest and commit history; it never
 follows the moving `main` branch.
+
+## X correlation identities
+
+Correlation is independent from report-marker generation. Account identity is
+the normalized X handle; source identity is that monitored publishing account;
+claim identity represents a quoted/reposted origin chain; event identity is a
+stable digest anchored to the event's earliest report. Independent-source
+counts use source identities, never claim IDs. Events are graph-connected
+components, so bridge reports and input permutations produce the same groups.
+Every event preserves its deterministically ordered original report list, and
+`last_updated_at` derives from report metadata rather than regeneration time.
