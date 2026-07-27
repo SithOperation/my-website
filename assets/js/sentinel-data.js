@@ -2,6 +2,7 @@
     "use strict";
 
     const SUPPORTED_SCHEMA_MAJOR = 1;
+    const MAP_RETENTION_MS = 48 * 60 * 60 * 1000;
 
     function schemaMajor(value) {
         const match = String(value || "").match(/^(\d+)/);
@@ -11,6 +12,11 @@
     function validCoordinate(value, limit) {
         const number = Number(value);
         return Number.isFinite(number) && Math.abs(number) <= limit;
+    }
+
+    function isWithinRetentionWindow(value, now = Date.now()) {
+        const timestamp = Date.parse(String(value || ""));
+        return Number.isFinite(timestamp) && timestamp >= now - MAP_RETENTION_MS;
     }
 
     function cleanText(value, maximumLength = 700) {
@@ -228,6 +234,8 @@
         normalizeEvent,
         cleanText,
         validCoordinate,
+        isWithinRetentionWindow,
+        mapRetentionHours: 48,
         supportedSchemaMajor: SUPPORTED_SCHEMA_MAJOR
     });
 }());

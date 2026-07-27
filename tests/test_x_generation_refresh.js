@@ -14,7 +14,8 @@ vm.runInNewContext(
     { window: windowMock, console, DOMParser: class {} }
 );
 
-const { GenerationFeed } = windowMock.SentinelData;
+const { GenerationFeed, isWithinRetentionWindow, mapRetentionHours } =
+    windowMock.SentinelData;
 
 function geojson(generationId, ids) {
     return {
@@ -25,6 +26,20 @@ function geojson(generationId, ids) {
 }
 
 async function run() {
+    {
+        const now = Date.parse("2026-07-27T12:00:00Z");
+        assert.equal(mapRetentionHours, 48);
+        assert.equal(
+            isWithinRetentionWindow("2026-07-25T12:00:00Z", now),
+            true
+        );
+        assert.equal(
+            isWithinRetentionWindow("2026-07-25T11:59:59Z", now),
+            false
+        );
+        assert.equal(isWithinRetentionWindow("invalid", now), false);
+    }
+
     {
         const calls = [];
         const responses = [
@@ -104,6 +119,14 @@ async function run() {
     );
     assert.match(mapSource, /getSource\("x-early-reports-source"\)\.setData/);
     assert.match(mapSource, /document\.visibilityState === "visible"/);
+    assert.match(mapSource, /retainRecentEvents/);
+    assert.match(mapSource, /retainedEarlyReportGeojson/);
+    const mapPage = fs.readFileSync(
+        path.join(__dirname, "..", "sentinel.html"),
+        "utf8"
+    );
+    assert.doesNotMatch(mapPage, /value="72"/);
+    assert.doesNotMatch(mapPage, /value="168"/);
 
     console.log("X generation refresh tests passed");
 }

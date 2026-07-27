@@ -23,6 +23,7 @@
     let earlyReportPopup = null;
     let earlyReportPopupId = null;
     let environmentalCount = 0;
+    let environmentalEvents = { earthquakes: [], volcanoes: [], weather: [] };
 
     const element = id => document.getElementById(id);
 
@@ -385,7 +386,8 @@
         const latitude = Number(event.coordinates?.lat);
         const longitude = Number(event.coordinates?.lon);
         const details = event.details || {};
-        const timestamp = details.time || details.published || null;
+        const timestamp = details.published || details.time || details.sent ||
+            details.effective || details.expires || null;
         return {
             ...event,
             event_id: String(event.id || ""),
@@ -420,6 +422,23 @@
         if (!geometry || !["Polygon", "MultiPolygon"].includes(geometry.type) || !Array.isArray(geometry.polygon)) return null;
         const coordinates = geometry.polygon;
         return { type: geometry.type, coordinates };
+    }
+
+    function retainRecentEvents(events) {
+        return events.filter(event =>
+            window.SentinelData.isWithinRetentionWindow(event.timestamp)
+        );
+    }
+
+    function retainedEarlyReportGeojson(geojson) {
+        return {
+            ...geojson,
+            features: (geojson.features || []).filter(feature =>
+                window.SentinelData.isWithinRetentionWindow(
+                    feature.properties?.published_at
+                )
+            )
+        };
     }
 
     function addEnvironmentalPointLayer(sourceId, layerId, events, icon, clustered) {
@@ -562,16 +581,16 @@
     async function refreshEarlyReportLayer() {
         if (!mapReady || !map?.getSource("x-early-reports-source")) return;
         const snapshot = await earlyReportFeed.load();
-        if (snapshot.unchanged) return;
-        indexEarlyReports(snapshot.data);
-        map.getSource("x-early-reports-source").setData(snapshot.data);
+        const retained = retainedEarlyReportGeojson(snapshot.data);
+        indexEarlyReports(retained);
+        map.getSource("x-early-reports-source").setData(retained);
         map.triggerRepaint();
         updateMapCount();
     }
 
     async function loadEarlyReportLayer() {
         const snapshot = await earlyReportFeed.load();
-        const geojson = snapshot.data;
+        const geojson = retainedEarlyReportGeojson(snapshot.data);
         const markerImage = await map.loadImage("assets/images/x-early-report-pinpoint.png");
         if (!map.hasImage("x-early-report-pinpoint")) {
             map.addImage("x-early-report-pinpoint", markerImage.data);
@@ -663,18 +682,22 @@
         const files = ["earthquakes.json", "volcanoes.json", "weather.json"];
         const results = await Promise.allSettled(files.map(file => client.fetchJSON(file)));
         const [earthquakes, volcanoes, weather] = results.map(result => result.status === "fulfilled" && Array.isArray(result.value) ? result.value.map(normalizeDisasterEvent) : []);
+        environmentalEvents = { earthquakes, volcanoes, weather };
+        const recentEarthquakes = retainRecentEvents(earthquakes);
+        const recentVolcanoes = retainRecentEvents(volcanoes);
+        const recentWeather = retainRecentEvents(weather);
 
-        addEnvironmentalPointLayer("earthquake-source", "earthquakes", earthquakes, "marker-earthquake", true);
-        addEnvironmentalPointLayer("volcano-source", "volcanoes", volcanoes, "marker-volcano", false);
+        addEnvironmentalPointLayer("earthquake-source", "earthquakes", recentEarthquakes, "marker-earthquake", true);
+        addEnvironmentalPointLayer("volcano-source", "volcanoes", recentVolcanoes, "marker-volcano", false);
 
-        const weatherFeatures = weather.map(event => {
+        const weatherFeatures = recentWeather.map(event => {
             const geometry = validPolygonGeometry(event);
             if (!geometry) return null;
             disasterIndex.set(event.event_id, event);
             return { type: "Feature", geometry, properties: { map_id: event.event_id, title: event.title } };
         }).filter(Boolean);
-        environmentalCount = earthquakes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length +
-            volcanoes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length + weatherFeatures.length;
+        environmentalCount = recentEarthquakes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length +
+            recentVolcanoes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length + weatherFeatures.length;
         map.addSource("weather-source", { type: "geojson", data: { type: "FeatureCollection", features: weatherFeatures } });
         map.addLayer({ id: "weather-fill", type: "fill", source: "weather-source", paint: { "fill-color": "#44bfff", "fill-opacity": 0.13 } });
         map.addLayer({ id: "weather-line", type: "line", source: "weather-source", paint: { "line-color": "#44bfff", "line-width": 1.5, "line-dasharray": [2, 2] } });
@@ -704,6 +727,39 @@
         });
         applyLayerVisibility();
         updateMapData();
+    }
+
+    function refreshEnvironmentalRetention() {
+        if (!mapReady) return;
+        disasterIndex = new Map();
+        const earthquakes = retainRecentEvents(environmentalEvents.earthquakes);
+        const volcanoes = retainRecentEvents(environmentalEvents.volcanoes);
+        const weather = retainRecentEvents(environmentalEvents.weather);
+        const weatherFeatures = weather.map(event => {
+            const geometry = validPolygonGeometry(event);
+            if (!geometry) return null;
+            disasterIndex.set(event.event_id, event);
+            return {
+                type: "Feature",
+                geometry,
+                properties: { map_id: event.event_id, title: event.title }
+            };
+        }).filter(Boolean);
+        map.getSource("earthquake-source")?.setData(pointFeatures(earthquakes));
+        map.getSource("volcano-source")?.setData(pointFeatures(volcanoes));
+        map.getSource("weather-source")?.setData({
+            type: "FeatureCollection",
+            features: weatherFeatures
+        });
+        environmentalCount =
+            earthquakes.filter(event =>
+                Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
+            ).length +
+            volcanoes.filter(event =>
+                Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
+            ).length +
+            weatherFeatures.length;
+        updateMapCount();
     }
 
     function setLayersVisible(ids, visible) {
@@ -799,16 +855,17 @@
         const threat = element("filter-threat").value;
         const minimumConfidence = Number(element("filter-confidence").value);
         const hours = element("filter-time").value;
-        const threshold = hours === "all" ? null : Date.now() - Number(hours) * 60 * 60 * 1000;
+        const selectedHours = hours === "all"
+            ? window.SentinelData.mapRetentionHours
+            : Math.min(Number(hours), window.SentinelData.mapRetentionHours);
+        const threshold = Date.now() - selectedHours * 60 * 60 * 1000;
 
         filteredEvents = allEvents.filter(event => {
             if (type !== "all" && event.type !== type) return false;
             if (threat !== "all" && event.threat_level !== threat) return false;
             if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
-            if (threshold) {
-                const timestamp = Date.parse(event.timestamp || "");
-                if (!Number.isFinite(timestamp) || timestamp < threshold) return false;
-            }
+            const timestamp = Date.parse(event.timestamp || "");
+            if (!Number.isFinite(timestamp) || timestamp < threshold) return false;
             return true;
         });
     }
@@ -1127,6 +1184,8 @@
             if (document.visibilityState === "visible") {
                 refresh();
                 refreshEws();
+                updateMapData();
+                refreshEnvironmentalRetention();
                 refreshEarlyReportLayer().catch(error =>
                     console.warn("X report refresh failed; prior generation retained", error)
                 );
