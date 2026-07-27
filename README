@@ -21,36 +21,25 @@ the [operations runbook](docs/OPERATIONS.md).
 
 ## X source synchronization
 
-`x-sources` owns official API collection, retention, and deduplication. After a
-successful Detroit slot is committed and pushed, it emits
-`x-sources-published`. `Sync X Early Reports` validates the dispatch, checks out
-the exact producer SHA, verifies `output/x_sources_manifest.json` and
-`output/x_sources.json`, and publishes:
+Sentinel Grid owns official X API collection, retention, deduplication, and
+publication. The normal monitor-state sync validates Sentinel's manifest and
+publishes:
 
 - `data/x_sources.json`
 - `data/output/x_report_events.json`
 - `data/output/x_report_pinpoints.geojson`
-- `data/x_source_sync_state.json`
 
-One valid report always creates one GeoJSON feature and one X-image map point.
-Correlation independently creates intelligence events and never suppresses
-markers. Exact dispatch replays are no-ops; conflicting generations require an
-explicit forced recovery. Open map sessions check generation metadata every
-five minutes and update the existing clustered source only when it changes.
-
-Producer slot IDs are `YYYY-MM-DD-morning` and `YYYY-MM-DD-evening` in
-`America/Detroit`. The producer accepts 07:45–09:00 and 16:45–18:00 local
-windows. Multiple UTC candidates cover EST and EDT; producer state prevents
-duplicate slot publication. The website has no independent X polling schedule.
+One valid report creates one GeoJSON feature and one first-class Sentinel map
+event. Open map sessions check generation metadata every five minutes and
+update the existing clustered source only when it changes.
 
 ## Repository secrets
 
-`REPO_ACCESS_TOKEN` is the shared private-source credential used by every
-website synchronization workflow. It must have Contents: read access to:
+`REPO_ACCESS_TOKEN` remains required only by workflows that read private source
+repositories. It is not used for Sentinel or X data. Existing private
+consumers may require Contents: read access to:
 
-- `SithOperation/x-sources`
 - `SithOperation/earthquake-volcano-discord-monitor`
-- `SithOperation/sentinel-grid-intelligence`
 - `SithOperation/EWS-discord-monitor`
 - `SithOperation/ai-cyber-daily-digest`
 

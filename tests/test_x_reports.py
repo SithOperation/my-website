@@ -302,7 +302,6 @@ class XReportTests(unittest.TestCase):
         """Duplicate report identities are rejected deterministically."""
 
         duplicate = copy.deepcopy(source_report())
-        duplicate["account"] = "b"
         with tempfile.TemporaryDirectory() as folder:
             with self.assertRaisesRegex(ValueError, "duplicated"):
                 self.build(

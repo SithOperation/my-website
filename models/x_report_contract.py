@@ -160,7 +160,11 @@ def validate_report(
     account = _require_string(value["account"], f"{label}.account")
     if _HANDLE.fullmatch(account) is None:
         raise ValueError(f"{label}.account must be a normalized X handle without @")
-    _, url_status_id = canonical_x_url(value["source_url"], f"{label}.source_url")
+    url_account, url_status_id = canonical_x_url(
+        value["source_url"], f"{label}.source_url"
+    )
+    if url_account.casefold() != account.casefold():
+        raise ValueError(f"{label}.source_url account must match account")
     if url_status_id != status_id:
         raise ValueError(f"{label}.status_id must match source_url")
 

@@ -65,7 +65,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: SithOperation/sentinel-grid-intelligence
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: external/sentinel
 
       - name: Validate and publish available monitor data
@@ -91,7 +90,10 @@ jobs:
             data/trends.json \
             data/world_events.json \
             data/health.json \
-            data/manifest.json
+            data/manifest.json \
+            data/x_sources.json \
+            data/output/x_report_events.json \
+            data/output/x_report_pinpoints.geojson
 
           if git diff --cached --quiet; then
             echo "No validated monitor updates"

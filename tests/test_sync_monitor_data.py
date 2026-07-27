@@ -32,6 +32,20 @@ class SyncMonitorDataTests(unittest.TestCase):
             "trends.json": {"total_events": 1},
             "world_events.json": {"events": [{"event_id": "one"}]},
             "health.json": {"status": "healthy"},
+            "x_reports.json": {"schema_version": "1.0", "reports": []},
+            "x_report_events.json": {
+                "schema_version": "1.0",
+                "generation_id": "sentinel-test",
+                "generated_at": "2026-07-23T13:49:32Z",
+                "events": [],
+            },
+            "x_report_pinpoints.geojson": {
+                "schema_version": "1.0",
+                "generation_id": "sentinel-test",
+                "generated_at": "2026-07-23T13:49:32Z",
+                "type": "FeatureCollection",
+                "features": [],
+            },
         }
         files: dict[str, JsonValue] = {}
         for filename, value in values.items():
@@ -46,6 +60,7 @@ class SyncMonitorDataTests(unittest.TestCase):
                 {
                     "schema_version": "1.0",
                     "publication_id": "test-publication",
+                    "generated": "2026-07-23T13:49:32Z",
                     "files": files,
                 }
             ),
@@ -228,6 +243,10 @@ class SyncMonitorDataTests(unittest.TestCase):
                     "publication_id"
                 ],
                 "test-publication",
+            )
+            self.assertTrue((destination / "x_sources.json").is_file())
+            self.assertTrue(
+                (destination / "output" / "x_report_pinpoints.geojson").is_file()
             )
 
     def test_bad_sentinel_checksum_preserves_last_known_good(self) -> None:

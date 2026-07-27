@@ -93,6 +93,12 @@ class XReportContractTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "duplicated|must match"):
                     validate_document(document, now=REFERENCE_TIME)
 
+    def test_source_url_account_must_match_report_account(self) -> None:
+        document = self.valid_document()
+        document["reports"][0]["account"] = "OtherAccount"
+        with self.assertRaisesRegex(ValueError, "must match account"):
+            validate_document(document, now=REFERENCE_TIME)
+
 
 if __name__ == "__main__":
     unittest.main()

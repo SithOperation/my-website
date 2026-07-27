@@ -2,24 +2,18 @@
 
 ## X pipeline incidents
 
-- **Failed collection:** inspect the producer account results and provider
-  status; do not dispatch or publish an invented empty feed.
-- **Failed checkout:** verify the shared source token, expiry, SSO
-  authorization, and Contents: read scope; start a new workflow run.
-- **Stale/missing manifest:** do not fall back to producer `main`; rerun the
-  producer slot or manually supply the exact known-good generation metadata.
+- **Failed collection:** inspect Sentinel's X source health and provider status;
+  do not publish an invented empty feed.
+- **Failed checkout:** rerun the normal monitor sync after confirming the public
+  Sentinel repository and its manifest are available.
+- **Stale/missing manifest:** preserve the last website generation and rerun
+  Sentinel's normal collection workflow.
 - **Malformed JSON/schema mismatch:** preserve the current website generation,
-  correct the producer, and retry the same slot.
+  correct Sentinel, and rerun collection.
 - **Empty valid feed:** accept it; regeneration intentionally removes all X
   markers.
-- **Dispatch failure after push:** rerun the completed producer slot. It
-  re-dispatches the immutable generation and the website replay guard is safe.
-- **Duplicate slot:** leave it skipped. Use `force` only for an intentional
-  replacement and record the reason.
-- **Delayed schedule:** starts within 07:45–09:00 or 16:45–18:00 Detroit remain
-  eligible; outside-window runs publish nothing.
-- **Token expiration:** replace the encrypted secret, manually verify, then
-  revoke the old token.
+- **X token expiration:** replace `X_API_BEARER_TOKEN` in Sentinel, manually
+  verify collection, then revoke the old token.
 
 ## Deployment incidents
 
@@ -39,7 +33,6 @@
 
 | Workflow | Trigger | Secret | Writes |
 |---|---|---|---|
-| Sync X Early Reports | repository/manual dispatch | `REPO_ACCESS_TOKEN` | X feed, events, GeoJSON, sync state |
 | Sync Monitor States | UTC candidates/manual | `REPO_ACCESS_TOKEN` | monitor JSON |
 | Sync EWS | ten-minute fallback/dispatch/manual | `REPO_ACCESS_TOKEN` | EWS JSON |
 | Sync AI Digest | UTC candidates/manual | `REPO_ACCESS_TOKEN` | digest JSON |

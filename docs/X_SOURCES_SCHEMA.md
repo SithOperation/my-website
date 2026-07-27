@@ -1,7 +1,7 @@
 # X Sources Data Contract
 
 Schema version `1.0` is the shared producer/consumer contract between the
-private `x-sources` service and the Sentinel Grid website. Its normative JSON
+Sentinel Grid backend and the Sentinel Grid website. Its normative JSON
 Schema is `schema/x_sources.schema.json`; runtime rules that JSON Schema cannot
 express are enforced by `models/x_report_contract.py`.
 

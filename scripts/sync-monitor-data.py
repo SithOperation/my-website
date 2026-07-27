@@ -152,6 +152,9 @@ def validate_sentinel_publication(
         raise ValueError("manifest.json has an unsupported schema version")
     if not manifest.get("publication_id"):
         raise ValueError("manifest.json is missing publication_id")
+    reference_time = parse_generated(manifest.get("generated"))
+    if reference_time is None:
+        raise ValueError("manifest.json is missing a valid generated timestamp")
     files = require_mapping(manifest.get("files"), "manifest.json.files")
 
     expected = {
@@ -162,6 +165,9 @@ def validate_sentinel_publication(
         "trends.json",
         "world_events.json",
         "health.json",
+        "x_reports.json",
+        "x_report_events.json",
+        "x_report_pinpoints.geojson",
     }
     missing = sorted(expected.difference(files))
     if missing:
@@ -187,6 +193,22 @@ def validate_sentinel_publication(
     require_nonempty_list(json.loads(payloads["timeline.json"]), "timeline.json")
     require_mapping(json.loads(payloads["trends.json"]), "trends.json")
     require_mapping(json.loads(payloads["health.json"]), "health.json")
+    validate_document(
+        json.loads(payloads["x_reports.json"]),
+        "x_reports.json",
+        now=reference_time,
+    )
+    require_mapping(
+        json.loads(payloads["x_report_events.json"]), "x_report_events.json"
+    )
+    x_geojson = require_mapping(
+        json.loads(payloads["x_report_pinpoints.geojson"]),
+        "x_report_pinpoints.geojson",
+    )
+    if x_geojson.get("type") != "FeatureCollection" or not isinstance(
+        x_geojson.get("features"), list
+    ):
+        raise ValueError("x_report_pinpoints.geojson is not a FeatureCollection")
     world = require_mapping(
         json.loads(payloads["world_events.json"]), "world_events.json"
     )
@@ -195,38 +217,41 @@ def validate_sentinel_publication(
 
 
 def publish_sentinel(source_root: Path, destination_root: Path) -> list[SyncResult]:
-    filenames = [
-        "dashboard.json",
-        "intelligence_brief.json",
-        "map_events.json",
-        "timeline.json",
-        "trends.json",
-        "world_events.json",
-        "health.json",
-        "manifest.json",
-    ]
+    destinations = {
+        "dashboard.json": "dashboard.json",
+        "intelligence_brief.json": "intelligence_brief.json",
+        "map_events.json": "map_events.json",
+        "timeline.json": "timeline.json",
+        "trends.json": "trends.json",
+        "world_events.json": "world_events.json",
+        "health.json": "health.json",
+        "manifest.json": "manifest.json",
+        "x_reports.json": "x_sources.json",
+        "x_report_events.json": "output/x_report_events.json",
+        "x_report_pinpoints.geojson": "output/x_report_pinpoints.geojson",
+    }
     if not source_root.is_dir():
         return [
-            SyncResult(filename, "skipped", detail="Sentinel source unavailable")
-            for filename in filenames
+            SyncResult(destination, "skipped", detail="Sentinel source unavailable")
+            for destination in destinations.values()
         ]
     try:
         _manifest, payloads = validate_sentinel_publication(source_root)
     except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
         return [
-            SyncResult(filename, "failed", detail=f"publication rejected: {error}")
-            for filename in filenames
+            SyncResult(destination, "failed", detail=f"publication rejected: {error}")
+            for destination in destinations.values()
         ]
 
     results: list[SyncResult] = []
-    for filename in filenames:
-        payload = payloads[filename]
-        destination = destination_root / filename
+    for source, target in destinations.items():
+        payload = payloads[source]
+        destination = destination_root / target
         if destination.is_file() and destination.read_bytes() == payload:
-            results.append(SyncResult(filename, "unchanged", len(payload)))
+            results.append(SyncResult(target, "unchanged", len(payload)))
             continue
         atomic_replace(destination, payload)
-        results.append(SyncResult(filename, "updated", len(payload)))
+        results.append(SyncResult(target, "updated", len(payload)))
     return results
 
 
@@ -353,19 +378,6 @@ def sync_ews(repository: Path) -> SyncResult:
     return result
 
 
-def sync_x_sources(repository: Path) -> SyncResult:
-    """Validate and publish the private X source repository's output."""
-    result = publish_file(
-        repository / "external" / "x-sources" / "output" / "x_sources.json",
-        repository / "data" / "x_sources.json",
-        validate_x_sources,
-    )
-    detail = f" - {result.detail}" if result.detail else ""
-    print(f"{result.status.upper()}: {result.name} ({result.size:,} bytes){detail}")
-    write_summary([result], [])
-    return result
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -384,21 +396,12 @@ def main() -> int:
         action="store_true",
         help="Synchronize only the Early Warning System state",
     )
-    parser.add_argument(
-        "--x-only",
-        action="store_true",
-        help="Synchronize only the private X early-report source",
-    )
     arguments = parser.parse_args()
     repository = arguments.repository.resolve()
     if arguments.ai_only:
         sync_ai(repository)
     elif arguments.ews_only:
         sync_ews(repository)
-    elif arguments.x_only:
-        result = sync_x_sources(repository)
-        if result.status in {"failed", "skipped"}:
-            return 1
     else:
         sync_all(repository)
     return 0

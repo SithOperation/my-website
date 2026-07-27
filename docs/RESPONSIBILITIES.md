@@ -4,13 +4,13 @@
 
 | Responsibility | Owner |
 |---|---|
-| Official X API collection | `x-sources` |
-| Source schema validation | Both repositories at their trust boundary |
-| Retention and candidate deduplication | `x-sources` |
-| Report normalization | Website |
-| Intelligence-event correlation | Website |
-| Report-level GeoJSON generation | Website |
-| Exact-commit synchronization | Website workflow |
+| Official X API collection | Sentinel Grid |
+| Source schema validation | Sentinel Grid and website sync boundary |
+| Retention and candidate deduplication | Sentinel Grid shared pipeline |
+| Report normalization | Sentinel Grid |
+| Intelligence-event integration | Sentinel Grid |
+| Report-level GeoJSON generation | Sentinel Grid |
+| Manifest synchronization | Normal website monitor sync |
 | Marker rendering and generation refresh | Website frontend |
 
 ## Phase 17 dependency review
@@ -26,12 +26,6 @@ Its sole dependency, `gsap-core.js`, was likewise reachable only through that
 unused broken entry point. Both were removed. The actually loaded,
 self-contained `gsap.min.js` remains and includes CSSPlugin.
 
-In `x-sources`, `ConfidenceScorer`, `Geocoder`, and `JsonCache` remain explicit
-extension boundaries from the intended ingestion architecture. The active
-collector uses `EventClassifier`; its result is not dead. Removing these
-boundaries would not reduce duplicate production responsibility and is
-deferred until their future provider interfaces are designed.
-
-URL canonicalization remains implemented independently at each repository
-trust boundary. Sharing code across private repositories would couple
-deployments; matching contract fixtures enforce equivalent behavior instead.
+The standalone `x-sources` producer and dispatch workflow are no longer part of
+the production path. URL validation remains at the website trust boundary for
+defense in depth.

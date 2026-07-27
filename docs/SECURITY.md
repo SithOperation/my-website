@@ -8,13 +8,11 @@ shared source credential:
 
 | Secret | Repository access | Required permission |
 |---|---|---|
-| `REPO_ACCESS_TOKEN` | X sources, disaster monitor, Sentinel Grid, EWS, and AI digest repositories | Contents: read |
+| `REPO_ACCESS_TOKEN` | Remaining private disaster, EWS, and AI digest repositories | Contents: read |
 
-The producer-side `WEBSITE_DISPATCH_TOKEN` is stored only in `x-sources`,
-limited to `SithOperation/my-website`, and requires Contents: read/write to
-create repository dispatches. `X_API_BEARER_TOKEN` is stored only in
-`x-sources`. Rotate expiring tokens before expiry, replace the repository
-secret, run the affected workflow manually, then revoke the old credential.
+Sentinel and X outputs are read from the public Sentinel repository without a
+cross-repository token. `X_API_BEARER_TOKEN` is stored only in Sentinel Grid.
+No website workflow requires `WEBSITE_DISPATCH_TOKEN` or an X-source token.
 
 Checkout failures are required failures. Tokens are passed through action
 inputs or authorization headers and must never appear in command arguments,
