@@ -45,14 +45,14 @@ duplicate slot publication. The website has no independent X polling schedule.
 
 ## Repository secrets
 
-All source tokens should be fine-grained, expiring credentials with Contents:
-read on exactly one private source repository:
+`REPO_ACCESS_TOKEN` is the shared private-source credential used by every
+website synchronization workflow. It must have Contents: read access to:
 
-- `REPO_ACCESS_TOKEN`: `SithOperation/x-sources`
-- `DISASTER_REPO_TOKEN`: disaster monitor
-- `SENTINEL_REPO_TOKEN`: Sentinel Grid source
-- `EWS_REPO_TOKEN`: Early Warning System source
-- `AI_DIGEST_REPO_TOKEN`: AI digest source
+- `SithOperation/x-sources`
+- `SithOperation/earthquake-volcano-discord-monitor`
+- `SithOperation/sentinel-grid-intelligence`
+- `SithOperation/EWS-discord-monitor`
+- `SithOperation/ai-cyber-daily-digest`
 
 No real value belongs in files or logs. See `docs/SECURITY.md` for rotation.
 

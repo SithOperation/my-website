@@ -2,16 +2,13 @@
 
 ## Repository credentials
 
-Use fine-grained, expiring personal access tokens or a GitHub App installation
-limited to the named source repository. Each website secret is separate:
+Use a fine-grained, expiring personal access token or GitHub App installation
+limited to the five named private source repositories. The website uses one
+shared source credential:
 
 | Secret | Repository access | Required permission |
 |---|---|---|
-| `REPO_ACCESS_TOKEN` | `SithOperation/x-sources` | Contents: read |
-| `DISASTER_REPO_TOKEN` | `SithOperation/earthquake-volcano-discord-monitor` | Contents: read |
-| `SENTINEL_REPO_TOKEN` | `SithOperation/sentinel-grid-intelligence` | Contents: read |
-| `EWS_REPO_TOKEN` | `SithOperation/EWS-discord-monitor` | Contents: read |
-| `AI_DIGEST_REPO_TOKEN` | `SithOperation/ai-cyber-daily-digest` | Contents: read |
+| `REPO_ACCESS_TOKEN` | X sources, disaster monitor, Sentinel Grid, EWS, and AI digest repositories | Contents: read |
 
 The producer-side `WEBSITE_DISPATCH_TOKEN` is stored only in `x-sources`,
 limited to `SithOperation/my-website`, and requires Contents: read/write to

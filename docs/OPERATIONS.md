@@ -4,7 +4,7 @@
 
 - **Failed collection:** inspect the producer account results and provider
   status; do not dispatch or publish an invented empty feed.
-- **Failed checkout:** verify the exact repository-specific token, expiry, SSO
+- **Failed checkout:** verify the shared source token, expiry, SSO
   authorization, and Contents: read scope; start a new workflow run.
 - **Stale/missing manifest:** do not fall back to producer `main`; rerun the
   producer slot or manually supply the exact known-good generation metadata.
@@ -40,9 +40,9 @@
 | Workflow | Trigger | Secret | Writes |
 |---|---|---|---|
 | Sync X Early Reports | repository/manual dispatch | `REPO_ACCESS_TOKEN` | X feed, events, GeoJSON, sync state |
-| Sync Monitor States | UTC candidates/manual | disaster and Sentinel tokens | monitor JSON |
-| Sync EWS | ten-minute fallback/dispatch/manual | `EWS_REPO_TOKEN` | EWS JSON |
-| Sync AI Digest | UTC candidates/manual | `AI_DIGEST_REPO_TOKEN` | digest JSON |
+| Sync Monitor States | UTC candidates/manual | `REPO_ACCESS_TOKEN` | monitor JSON |
+| Sync EWS | ten-minute fallback/dispatch/manual | `REPO_ACCESS_TOKEN` | EWS JSON |
+| Sync AI Digest | UTC candidates/manual | `REPO_ACCESS_TOKEN` | digest JSON |
 | Deploy Website | main push/manual | none | GitHub Pages artifact |
 | Secret Scan | push/PR/manual | automatic `GITHUB_TOKEN` | none |
 

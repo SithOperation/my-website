@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: SithOperation/ai-cyber-daily-digest
-          token: ${{ secrets.AI_DIGEST_REPO_TOKEN }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: external/ai
 
       - name: Validate and publish AI digest
