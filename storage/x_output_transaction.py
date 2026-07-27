@@ -123,7 +123,7 @@ def _require_metadata(document: dict[str, Any], label: str) -> tuple[str, str, s
 def _require_finite_coordinate(value: object, label: str) -> float:
     """Return a finite coordinate without accepting Boolean values."""
 
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
+    if isinstance(value, bool) or not isinstance(value, int | float):
         raise OutputValidationError(f"{label} must be a finite number")
     coordinate = float(value)
     if not math.isfinite(coordinate):
