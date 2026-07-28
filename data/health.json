@@ -1,96 +1,124 @@
 {
   "schema_version": "1.0",
-  "generated": "2026-07-27T19:53:28.287307+00:00",
+  "generated": "2026-07-28T05:53:28.938339+00:00",
   "status": "degraded",
   "degraded": true,
   "stale": false,
   "stale_after_minutes": 390,
-  "published_event_count": 347,
+  "published_event_count": 436,
   "freshness": {
-    "oldest_event": "2026-07-26T00:54:06+00:00",
-    "newest_event": "2026-07-27T19:53:16+00:00",
-    "age_minutes": 0.2
+    "oldest_event": "2026-07-25T10:13:00+00:00",
+    "newest_event": "2026-07-28T05:53:28.938339+00:00",
+    "age_minutes": 0.0
   },
   "sources": [
-    {
-      "source": "news",
-      "enabled": true,
-      "status": "ok",
-      "event_count": 30,
-      "duration_ms": 1071,
-      "checked_at": "2026-07-27T19:53:29.358698+00:00",
-      "last_success": "2026-07-27T19:53:29.358698+00:00",
-      "error": null
-    },
     {
       "source": "conflict",
       "enabled": true,
       "status": "ok",
-      "event_count": 24,
+      "event_count": 23,
       "duration_ms": 2,
-      "checked_at": "2026-07-27T19:53:29.360282+00:00",
-      "last_success": "2026-07-27T19:53:29.360282+00:00",
+      "checked_at": "2026-07-28T05:53:30.139712+00:00",
+      "last_success": "2026-07-28T05:53:30.139712+00:00",
       "error": null
     },
     {
-      "source": "opensky",
+      "source": "nasa_eonet_natural_events",
       "enabled": true,
       "status": "ok",
-      "event_count": 50,
-      "duration_ms": 1651,
-      "checked_at": "2026-07-27T19:53:31.011654+00:00",
-      "last_success": "2026-07-27T19:53:31.011654+00:00",
-      "error": null
+      "event_count": 22,
+      "duration_ms": 2451,
+      "checked_at": "2026-07-28T05:53:32.590748+00:00",
+      "last_success": "2026-07-28T05:53:32.590748+00:00",
+      "error": null,
+      "metrics": {
+        "records_received": 200,
+        "records_accepted": 22,
+        "records_rejected": 178,
+        "missing_geometry": 0,
+        "response_size_bytes": 150508
+      }
     },
     {
-      "source": "aisstream",
+      "source": "nasa_eonet_volcanoes",
       "enabled": true,
       "status": "no_data",
       "event_count": 0,
-      "duration_ms": 0,
-      "checked_at": "2026-07-27T19:53:31.011684+00:00",
+      "duration_ms": 2451,
+      "checked_at": "2026-07-28T05:53:32.591019+00:00",
       "last_success": null,
-      "error": null
+      "error": null,
+      "metrics": {
+        "records_received": 200,
+        "records_accepted": 0,
+        "records_rejected": 200,
+        "missing_geometry": 0,
+        "response_size_bytes": 150508
+      }
     },
     {
-      "source": "nasa_eonet",
+      "source": "usgs_earthquakes",
       "enabled": true,
       "status": "ok",
-      "event_count": 25,
-      "duration_ms": 14075,
-      "checked_at": "2026-07-27T19:53:45.086181+00:00",
-      "last_success": "2026-07-27T19:53:45.086181+00:00",
-      "error": null
+      "event_count": 59,
+      "duration_ms": 162,
+      "checked_at": "2026-07-28T05:53:32.753245+00:00",
+      "last_success": "2026-07-28T05:53:32.753245+00:00",
+      "error": null,
+      "metrics": {
+        "records_received": 59,
+        "records_accepted": 59,
+        "records_rejected": 0,
+        "response_size_bytes": 42342,
+        "provider_generated": "2026-07-28T05:52:49+00:00"
+      }
     },
     {
-      "source": "cisa",
+      "source": "nws_weather_alerts",
       "enabled": true,
       "status": "ok",
-      "event_count": 25,
-      "duration_ms": 106,
-      "checked_at": "2026-07-27T19:53:45.192567+00:00",
-      "last_success": "2026-07-27T19:53:45.192567+00:00",
-      "error": null
+      "event_count": 327,
+      "duration_ms": 225,
+      "checked_at": "2026-07-28T05:53:32.978589+00:00",
+      "last_success": "2026-07-28T05:53:32.978589+00:00",
+      "error": null,
+      "metrics": {
+        "records_received": 327,
+        "records_accepted": 327,
+        "records_rejected": 0,
+        "missing_geometry": 296,
+        "expired_alerts": 0,
+        "response_size_bytes": 1648170
+      }
     },
     {
       "source": "gdacs",
       "enabled": true,
       "status": "ok",
       "event_count": 10,
-      "duration_ms": 1986,
-      "checked_at": "2026-07-27T19:53:47.178576+00:00",
-      "last_success": "2026-07-27T19:53:47.178576+00:00",
+      "duration_ms": 2502,
+      "checked_at": "2026-07-28T05:53:35.481060+00:00",
+      "last_success": "2026-07-28T05:53:35.481060+00:00",
       "error": null
     },
     {
       "source": "x",
       "enabled": true,
-      "status": "error",
+      "status": "no_data",
       "event_count": 0,
       "duration_ms": 0,
-      "checked_at": "2026-07-27T19:53:47.179015+00:00",
+      "checked_at": "2026-07-28T05:53:35.481395+00:00",
       "last_success": null,
-      "error": "X_API_BEARER_TOKEN is required for X collection"
+      "error": null,
+      "metrics": {
+        "configured_url_count": 0,
+        "fetched_count": 0,
+        "accepted_count": 0,
+        "rejected_count": 0,
+        "unavailable_count": 0,
+        "cached_count": 0,
+        "failure_reasons": {}
+      }
     }
   ]
 }
