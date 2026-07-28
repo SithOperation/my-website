@@ -402,6 +402,7 @@ class SyncMonitorDataTests(unittest.TestCase):
         self.assertIn("PRODUCTION_PUBLICATION", resolve_job)
         self.assertIn("needs.resolve-deployment.outputs.commit_sha", deploy_job)
         self.assertNotIn("github.sha", deploy_job)
+        self.assertNotIn("if", jobs["deploy"])
         self.assertIn("inputs.commit_sha || github.sha", pages_text)
         revision_step = pages_workflow["jobs"]["validate"]["steps"][1]
         self.assertIn('test "$(git rev-parse HEAD)"', revision_step["run"])
