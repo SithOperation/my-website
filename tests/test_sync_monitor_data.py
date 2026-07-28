@@ -491,6 +491,39 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertIn(field, summary)
         self.assertIn("GITHUB_STEP_SUMMARY", summary)
 
+    def test_sentinel_artifact_preserves_source_manifest_layout_between_jobs(
+        self,
+    ) -> None:
+        workflow_path = (
+            Path(__file__).parents[1] / ".github" / "workflows" / "sync-states.yml"
+        )
+        jobs = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))["jobs"]
+        sentinel = jobs["sync-sentinel"]
+        prepare = jobs["prepare-publication"]
+        commit = jobs["commit-data"]
+
+        sentinel_upload = next(
+            step
+            for step in sentinel["steps"]
+            if step.get("name") == "Upload validated Sentinel publication"
+        )
+        prepared_upload = next(
+            step
+            for step in prepare["steps"]
+            if step.get("name") == "Upload prepared publication"
+        )
+        apply_step = next(
+            step
+            for step in commit["steps"]
+            if step.get("name") == "Apply validated source publications"
+        )
+        self.assertEqual(
+            sentinel_upload["with"]["path"],
+            "external/sentinel/data/output",
+        )
+        self.assertEqual(prepared_upload["with"]["path"], "candidate")
+        self.assertIn("--source-root prepared/sentinel", apply_step["run"])
+
 
 if __name__ == "__main__":
     unittest.main()

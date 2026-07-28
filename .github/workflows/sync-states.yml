@@ -89,7 +89,7 @@ jobs:
           import subprocess
           from pathlib import Path
 
-          root = Path("staged/sentinel")
+          root = Path("external/sentinel/data/output")
           manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
           events = json.loads((root / "map_events.json").read_text(encoding="utf-8"))
           if os.environ["EVENT_NAME"] == "repository_dispatch":
@@ -120,7 +120,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: validated-sentinel
-          path: staged/sentinel
+          path: external/sentinel/data/output
           if-no-files-found: error
           retention-days: 1
 
@@ -204,18 +204,18 @@ jobs:
           python3 scripts/sync-monitor-data.py \
             --sentinel-only \
             --source-root candidate/sentinel \
-            --destination-root prepared/sentinel
+            --destination-root validation/sentinel
           if [[ -d candidate/disaster ]]; then
             python3 scripts/sync-monitor-data.py \
               --disaster-only \
               --source-root candidate/disaster \
-              --destination-root prepared/disaster
+              --destination-root validation/disaster
           fi
       - name: Upload prepared publication
         uses: actions/upload-artifact@v4
         with:
           name: prepared-monitor-publication
-          path: prepared
+          path: candidate
           if-no-files-found: error
           retention-days: 1
 
