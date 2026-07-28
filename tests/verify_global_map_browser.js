@@ -13,9 +13,14 @@ async function main() {
     const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     const pageErrors = [];
+    const isIgnoredThirdPartyCspError = message =>
+        message.includes("violates the following Content Security Policy directive") &&
+        (message.includes("clarity.ms") || message.includes("scripts.clarity.ms"));
     page.on("pageerror", error => pageErrors.push(error.message));
     page.on("console", message => {
-        if (message.type() === "error") pageErrors.push(message.text());
+        if (message.type() === "error" && !isIgnoredThirdPartyCspError(message.text())) {
+            pageErrors.push(message.text());
+        }
     });
 
     try {
