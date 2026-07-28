@@ -48,6 +48,14 @@ class SyncMonitorDataTests(unittest.TestCase):
                 "type": "FeatureCollection",
                 "features": [],
             },
+            "source_feed.json": {
+                "schema_version": "1.0",
+                "publication_id": "test-publication",
+                "generated_at": "2026-07-23T13:49:32Z",
+                "count": 0,
+                "health": {"status": "unavailable", "sources": []},
+                "items": [],
+            },
         }
         files: dict[str, JsonValue] = {}
         for filename, value in values.items():
@@ -247,6 +255,7 @@ class SyncMonitorDataTests(unittest.TestCase):
                 "test-publication",
             )
             self.assertTrue((destination / "x_sources.json").is_file())
+            self.assertTrue((destination / "source_feed.json").is_file())
             self.assertTrue(
                 (destination / "output" / "x_report_pinpoints.geojson").is_file()
             )
@@ -260,6 +269,23 @@ class SyncMonitorDataTests(unittest.TestCase):
             marker = destination / "map_events.json"
             marker.write_text('[{"event_id": "last-known-good"}]', encoding="utf-8")
             (source / "map_events.json").write_text("[]", encoding="utf-8")
+
+            results = sync_monitor_data.publish_sentinel(source, destination)
+
+            self.assertTrue(all(result.status == "failed" for result in results))
+            self.assertEqual(
+                json.loads(marker.read_text())[0]["event_id"], "last-known-good"
+            )
+
+    def test_missing_source_feed_rejects_complete_release(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = self.write_sentinel_publication(root)
+            destination = root / "destination"
+            destination.mkdir()
+            marker = destination / "map_events.json"
+            marker.write_text('[{"event_id": "last-known-good"}]', encoding="utf-8")
+            (source / "source_feed.json").unlink()
 
             results = sync_monitor_data.publish_sentinel(source, destination)
 
@@ -305,9 +331,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             results = sync_monitor_data.sync_sentinel(source, stage)
 
             self.assertFalse(sync_monitor_data.source_sync_succeeded(results))
-            self.assertEqual(
-                json.loads(marker.read_text())[0]["event_id"], "preserved"
-            )
+            self.assertEqual(json.loads(marker.read_text())[0]["event_id"], "preserved")
 
     def test_older_sentinel_publication_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -447,6 +471,7 @@ class SyncMonitorDataTests(unittest.TestCase):
         self.assertIn("github.event.client_payload.source_commit", sentinel_job)
         self.assertIn("repository dispatch metadata mismatch", sentinel_job)
         self.assertIn("older than origin/main", commit_job)
+        self.assertIn("data/source_feed.json", commit_job)
         for filename in (
             "sync-states.yml",
             "sync-ai-cyber-digest.yml",
@@ -467,9 +492,9 @@ class SyncMonitorDataTests(unittest.TestCase):
         workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
         verification = json.dumps(workflow["jobs"]["verify-production"])
         browser_test = (
-            Path(__file__).with_name("verify_global_map_browser.js").read_text(
-                encoding="utf-8"
-            )
+            Path(__file__)
+            .with_name("verify_global_map_browser.js")
+            .read_text(encoding="utf-8")
         )
 
         self.assertIn("playwright@1.62.0", verification)

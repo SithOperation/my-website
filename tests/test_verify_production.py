@@ -2,6 +2,7 @@ import importlib.util
 import sys
 from collections.abc import Callable
 from pathlib import Path
+from typing import Any, cast
 
 import pytest
 
@@ -19,6 +20,12 @@ def production_documents() -> dict[str, object]:
         "manifest.json": {
             "publication_id": "expected",
             "generated": "2026-07-28T05:09:57+00:00",
+            "files": {
+                "source_feed.json": {
+                    "bytes": 100,
+                    "sha256": "a" * 64,
+                }
+            },
         },
         "map_events.json": [
             {
@@ -32,6 +39,14 @@ def production_documents() -> dict[str, object]:
         "health.json": {
             "generated": "2026-07-28T05:09:57+00:00",
             "status": "degraded",
+        },
+        "source_feed.json": {
+            "schema_version": "1.0",
+            "publication_id": "expected",
+            "generated_at": "2026-07-28T05:09:57+00:00",
+            "count": 0,
+            "health": {"status": "unavailable", "sources": []},
+            "items": [],
         },
     }
 
@@ -53,6 +68,35 @@ def test_valid_production_publication() -> None:
     assert result.publication_id == "expected"
     assert result.map_event_count == 1
     assert result.health_status == "degraded"
+    assert result.source_feed_count == 0
+    assert result.source_feed_status == "unavailable"
+
+
+def test_mixed_source_feed_is_rejected() -> None:
+    documents = production_documents()
+    cast(dict[str, Any], documents["source_feed.json"])["publication_id"] = "different"
+    with pytest.raises(
+        verify_production.ProductionVerificationError,
+        match="publication ID",
+    ):
+        verify_production.verify_production(
+            "https://example.test/data",
+            "expected",
+            fetcher=make_fetcher(documents),
+        )
+
+
+def test_source_feed_checksum_mismatch_is_rejected() -> None:
+    with pytest.raises(
+        verify_production.ProductionVerificationError,
+        match="size does not match",
+    ):
+        verify_production.verify_production(
+            "https://example.test/data",
+            "expected",
+            fetcher=make_fetcher(production_documents()),
+            raw_fetcher=lambda _url: b"wrong",
+        )
 
 
 def test_publication_mismatch_is_rejected() -> None:

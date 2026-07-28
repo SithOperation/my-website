@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import time
 import urllib.error
@@ -39,9 +40,12 @@ class VerificationResult:
     generated: str
     map_event_count: int
     health_status: str
+    source_feed_count: int
+    source_feed_status: str
 
 
 JsonFetcher = Callable[[str], object]
+RawFetcher = Callable[[str], bytes]
 
 
 def fetch_json(url: str) -> object:
@@ -58,10 +62,26 @@ def fetch_json(url: str) -> object:
     )
     with urllib.request.urlopen(request, timeout=15) as response:
         if response.status != 200:
-            raise ProductionVerificationError(
-                f"{url} returned HTTP {response.status}"
-            )
+            raise ProductionVerificationError(f"{url} returned HTTP {response.status}")
         return json.loads(response.read().decode("utf-8"))
+
+
+def fetch_bytes(url: str) -> bytes:
+    """Fetch one cache-busted resource exactly as production serves it."""
+    separator = "&" if "?" in url else "?"
+    cache_busted = f"{url}{separator}audit={time.time_ns()}"
+    request = urllib.request.Request(
+        cache_busted,
+        headers={
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "User-Agent": "Sentinel-Production-Verifier/1.0",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=15) as response:
+        if response.status != 200:
+            raise ProductionVerificationError(f"{url} returned HTTP {response.status}")
+        return bytes(response.read())
 
 
 def require_mapping(value: object, label: str) -> dict[str, Any]:
@@ -120,6 +140,7 @@ def verify_production(
     expected_publication_id: str,
     minimum_count: int = 1,
     fetcher: JsonFetcher = fetch_json,
+    raw_fetcher: RawFetcher | None = None,
 ) -> VerificationResult:
     """Verify manifest, map, and health documents for one publication."""
     root = base_url.rstrip("/")
@@ -143,11 +164,67 @@ def verify_production(
         raise ProductionVerificationError(
             "health.json and manifest.json generation timestamps differ"
         )
+    manifest_files = require_mapping(manifest.get("files"), "manifest.json.files")
+    source_metadata = require_mapping(
+        manifest_files.get("source_feed.json"),
+        "manifest.json.files.source_feed.json",
+    )
+    if (
+        not isinstance(source_metadata.get("bytes"), int)
+        or source_metadata["bytes"] < 1
+        or not isinstance(source_metadata.get("sha256"), str)
+        or len(source_metadata["sha256"]) != 64
+    ):
+        raise ProductionVerificationError(
+            "manifest source_feed.json metadata is invalid"
+        )
+    if raw_fetcher is None and fetcher is fetch_json:
+        raw_fetcher = fetch_bytes
+    if raw_fetcher is not None:
+        source_payload = raw_fetcher(f"{root}/source_feed.json")
+        if len(source_payload) != source_metadata["bytes"]:
+            raise ProductionVerificationError(
+                "production source_feed.json size does not match the manifest"
+            )
+        if hashlib.sha256(source_payload).hexdigest() != source_metadata["sha256"]:
+            raise ProductionVerificationError(
+                "production source_feed.json checksum does not match the manifest"
+            )
+    source_feed = require_mapping(
+        fetcher(f"{root}/source_feed.json"), "source_feed.json"
+    )
+    if source_feed.get("publication_id") != actual_publication_id:
+        raise ProductionVerificationError(
+            "source_feed.json publication ID does not match the manifest"
+        )
+    if source_feed.get("generated_at") != generated:
+        raise ProductionVerificationError(
+            "source_feed.json and manifest.json generation timestamps differ"
+        )
+    source_items = source_feed.get("items")
+    if (
+        source_feed.get("schema_version") != "1.0"
+        or not isinstance(source_items, list)
+        or source_feed.get("count") != len(source_items)
+    ):
+        raise ProductionVerificationError("source_feed.json contract is invalid")
+    source_health = require_mapping(
+        source_feed.get("health"), "source_feed.json.health"
+    )
+    if source_health.get("status") not in {
+        "fresh",
+        "stale",
+        "partial",
+        "unavailable",
+    }:
+        raise ProductionVerificationError("source_feed.json health is invalid")
     return VerificationResult(
         publication_id=actual_publication_id,
         generated=generated,
         map_event_count=len(events),
         health_status=str(health.get("status") or "unknown"),
+        source_feed_count=len(source_items),
+        source_feed_status=str(source_health["status"]),
     )
 
 
@@ -197,6 +274,8 @@ def main() -> int:
             f"generated={result.generated} "
             f"map_events={result.map_event_count} "
             f"health={result.health_status}"
+            f" source_feed={result.source_feed_count}"
+            f" source_feed_health={result.source_feed_status}"
         )
         return 0
     return 1

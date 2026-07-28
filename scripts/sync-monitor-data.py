@@ -18,6 +18,9 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
+from models.source_feed_contract import (  # noqa: E402
+    validate_document as validate_source_feed,
+)
 from models.x_report_contract import validate_document  # noqa: E402
 
 Validator = Callable[[object, str], None]
@@ -167,6 +170,7 @@ def validate_sentinel_publication(
         "x_reports.json",
         "x_report_events.json",
         "x_report_pinpoints.geojson",
+        "source_feed.json",
     }
     missing = sorted(expected.difference(files))
     if missing:
@@ -208,6 +212,12 @@ def validate_sentinel_publication(
         x_geojson.get("features"), list
     ):
         raise ValueError("x_report_pinpoints.geojson is not a FeatureCollection")
+    validate_source_feed(
+        json.loads(payloads["source_feed.json"]),
+        "source_feed.json",
+        publication_id=str(manifest["publication_id"]),
+        now=reference_time,
+    )
     world = require_mapping(
         json.loads(payloads["world_events.json"]), "world_events.json"
     )
@@ -228,6 +238,7 @@ def publish_sentinel(source_root: Path, destination_root: Path) -> list[SyncResu
         "x_reports.json": "x_sources.json",
         "x_report_events.json": "output/x_report_events.json",
         "x_report_pinpoints.geojson": "output/x_report_pinpoints.geojson",
+        "source_feed.json": "source_feed.json",
     }
     if not source_root.is_dir():
         return [
