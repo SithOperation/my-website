@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
-    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20260728-source-viewer">
+    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20260728-source-feed-visibility">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
     <script type="text/javascript">
 (function(c,l,a,r,i,t,y){
@@ -162,8 +162,12 @@
                         <p id="map-count" aria-live="polite">Preparing map layers...</p>
                         <button id="source-viewer-open" class="source-viewer-open" type="button"
                             aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">
-                            Source feed
-                            <span id="source-feed-count" aria-hidden="true">—</span>
+                            <span class="source-viewer-open-icon" aria-hidden="true">◎</span>
+                            <span class="source-viewer-open-label">
+                                <strong>Source feed</strong>
+                                <small>Live public reports</small>
+                            </span>
+                            <span id="source-feed-count" class="source-viewer-open-count" aria-hidden="true">—</span>
                         </button>
                     </div>
                 </div>
@@ -229,9 +233,9 @@
             </button>
             <div id="source-viewer-content" class="source-viewer-content"></div>
             <nav id="source-viewer-nav" class="source-viewer-nav" aria-label="Source report navigation" hidden>
-                <button id="source-viewer-previous" type="button">Previous</button>
+                <button id="source-viewer-previous" type="button">← Previous</button>
                 <span id="source-viewer-position" aria-live="polite"></span>
-                <button id="source-viewer-next" type="button">Next</button>
+                <button id="source-viewer-next" type="button">Next →</button>
             </nav>
         </aside>
         <div id="source-viewer-backdrop" class="source-viewer-backdrop" hidden></div>
@@ -246,6 +250,6 @@
     <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
     <script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script>
     <script src="assets/js/sentinel-map.js?v=20260725-mobile-map"></script>
-    <script src="assets/js/sentinel-source-viewer.js?v=20260728-source-viewer"></script>
+    <script src="assets/js/sentinel-source-viewer.js?v=20260728-source-feed-visibility"></script>
 </body>
 </html>

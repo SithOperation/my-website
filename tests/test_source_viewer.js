@@ -85,6 +85,16 @@ assert.equal(viewer.normalizeItem({
 }).canLocate, false);
 assert.equal(viewer.normalizeItem({
     feed_eligible: true,
+    source_url: "https://reddit.com/r/example/comments/123/report",
+    published_at: "2026-07-28T05:30:00Z",
+    event_id: "SG-123",
+    association_status: "confirmed",
+    map_eligible: true,
+    latitude: 49.99,
+    longitude: 36.23
+}).canLocate, true);
+assert.equal(viewer.normalizeItem({
+    feed_eligible: true,
     source_url: "https://example.com/invalid-coordinate",
     published_at: "2026-07-28T05:30:00Z",
     event_id: "evt_1",

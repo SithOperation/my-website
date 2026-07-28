@@ -3,7 +3,7 @@
 
     const VALID_HEALTH = new Set(["fresh", "stale", "partial", "unavailable"]);
     const SUPPORTED_SCHEMA_MAJOR = 1;
-    const MAPPABLE_ASSOCIATIONS = new Set(["", "associated", "verified", "corroborated"]);
+    const MAPPABLE_ASSOCIATIONS = new Set(["", "associated", "confirmed", "verified", "corroborated"]);
 
     function schemaMajor(value) {
         const match = String(value || "").match(/^(\d+)/);
@@ -85,12 +85,15 @@
         return health === "fresh" ? "available" : health;
     }
 
-    function stateMessage(state, count = 0) {
+    function stateMessage(state, count = 0, sourceCount = 0) {
+        const coverage = sourceCount
+            ? `${count} report${count === 1 ? "" : "s"} from ${sourceCount} active source${sourceCount === 1 ? "" : "s"}.`
+            : `${count} source report${count === 1 ? "" : "s"}.`;
         const messages = {
             loading: "Loading source reports…",
-            available: `${count} current source report${count === 1 ? "" : "s"}.`,
-            partial: `${count} source report${count === 1 ? "" : "s"} available. Some sources are temporarily unavailable.`,
-            stale: `${count} retained source report${count === 1 ? "" : "s"}. Updates are delayed.`,
+            available: `${coverage} Use Previous and Next to browse every report.`,
+            partial: `${coverage} Some monitored sources have no current matching report or are temporarily unavailable. Use Previous and Next to browse.`,
+            stale: `${coverage} Updates are delayed. Use Previous and Next to browse retained reports.`,
             empty: "No current source reports are available.",
             unavailable: "Source discovery is temporarily unavailable. The verified map remains operational.",
             invalid: "The source feed failed integrity checks and was not displayed."
@@ -232,8 +235,13 @@
 
         render() {
             const elements = this.elements();
+            const sourceCount = new Set(this.visibleItems.map(item => item.sourceName)).size;
             elements.viewer.dataset.feedState = this.state;
-            elements.status.textContent = stateMessage(this.state, this.visibleItems.length);
+            elements.status.textContent = stateMessage(
+                this.state,
+                this.visibleItems.length,
+                sourceCount
+            );
             elements.count.textContent = this.items.length ? String(this.items.length) : "0";
             elements.content.replaceChildren();
             if (this.visibleItems.length) {
