@@ -64,7 +64,7 @@ async function main() {
             throw new Error("Unavailable source feed state was not explained");
         }
         await page.keyboard.press("Escape");
-        await page.locator("#source-viewer[hidden]").waitFor();
+        await page.locator("#source-viewer").waitFor({ state: "hidden" });
         if (await page.evaluate(() => document.activeElement?.id) !== "source-viewer-open") {
             throw new Error("Source viewer did not restore trigger focus");
         }
