@@ -23,7 +23,8 @@ const context = {
     window: windowMock
 };
 const scriptPath = path.join(__dirname, "..", "assets", "js", "sentinel-source-viewer.js");
-vm.runInNewContext(fs.readFileSync(scriptPath, "utf8"), context, { filename: scriptPath });
+const sourceViewerScript = fs.readFileSync(scriptPath, "utf8");
+vm.runInNewContext(sourceViewerScript, context, { filename: scriptPath });
 
 const viewer = windowMock.SentinelSourceViewer;
 assert.ok(viewer, "source viewer helpers must be exposed");
@@ -38,6 +39,8 @@ assert.equal(viewer.classifyFeed({ health: { status: "unexpected" }, items: [] }
 
 assert.equal(viewer.safeSourceUrl("javascript:alert(1)"), "");
 assert.equal(viewer.safeSourceUrl("http://example.com/report"), "");
+assert.equal(viewer.safeSourceUrl("https://user:secret@example.com/report"), "");
+assert.equal(viewer.safeSourceUrl("data:text/html,unsafe"), "");
 assert.equal(viewer.safeSourceUrl("https://example.com/report"), "https://example.com/report");
 
 const normalized = viewer.normalizeItem({
@@ -54,16 +57,50 @@ const normalized = viewer.normalizeItem({
     location_status: "source_reported",
     location_confidence: 0.91,
     claim_status: "unverified",
-    claim_confidence: 0.38
+    claim_confidence: 0.38,
+    event_id: "evt_1",
+    association_status: "associated",
+    association_method: "location_time_similarity",
+    association_confidence: 0.77,
+    map_eligible: true
 });
 assert.equal(normalized.sourceName, "Example Source");
 assert.equal(normalized.locationStatus, "Source Reported");
 assert.equal(normalized.locationConfidence, "91%");
 assert.equal(normalized.claimStatus, "Unverified");
 assert.equal(normalized.claimConfidence, "38%");
+assert.equal(normalized.eventId, "evt_1");
+assert.equal(normalized.associationStatus, "Associated");
+assert.equal(normalized.associationConfidence, "77%");
+assert.equal(normalized.canLocate, true);
 assert.equal(normalized.title, "<script>text only</script>");
 assert.equal(viewer.normalizeItem({ feed_eligible: false }), null);
 assert.equal(viewer.normalizeItem({ feed_eligible: true, source_url: "javascript:alert(1)" }), null);
+assert.equal(viewer.normalizeItem({
+    feed_eligible: true,
+    source_url: "https://example.com/feed-only",
+    published_at: "2026-07-28T05:30:00Z",
+    event_id: "evt_1",
+    map_eligible: false
+}).canLocate, false);
+assert.equal(viewer.normalizeItem({
+    feed_eligible: true,
+    source_url: "https://example.com/invalid-coordinate",
+    published_at: "2026-07-28T05:30:00Z",
+    event_id: "evt_1",
+    association_status: "associated",
+    map_eligible: true,
+    latitude: 120,
+    longitude: 30
+}).canLocate, false);
+assert.equal(viewer.normalizeItem({
+    feed_eligible: true,
+    source_url: "https://example.com/candidate",
+    published_at: "2026-07-28T05:30:00Z",
+    event_id: "evt_1",
+    association_status: "candidate",
+    map_eligible: true
+}).canLocate, false);
 
 [
     "loading",
@@ -74,5 +111,24 @@ assert.equal(viewer.normalizeItem({ feed_eligible: true, source_url: "javascript
     "unavailable",
     "invalid"
 ].forEach(state => assert.ok(viewer.stateMessage(state, 2), `missing state message for ${state}`));
+
+const largeFeedStart = Date.now();
+const largeFeed = Array.from({ length: 2000 }, (_, index) => viewer.normalizeItem({
+    id: `src_${index}`,
+    platform: "rss",
+    source_url: `https://example.com/reports/${index}`,
+    published_at: "2026-07-28T05:30:00Z",
+    title: "A".repeat(5000),
+    text: "B".repeat(10000),
+    feed_eligible: true,
+    map_eligible: false
+}));
+assert.equal(largeFeed.filter(Boolean).length, 2000);
+assert.equal(largeFeed[0].title.length, 4000);
+assert.equal(largeFeed[0].text.length, 4000);
+assert.ok(Date.now() - largeFeedStart < 2000, "large feed normalization must remain responsive");
+assert.ok(!sourceViewerScript.includes(".innerHTML"), "source viewer must not use innerHTML");
+assert.ok(!sourceViewerScript.includes("document.write"), "source viewer must not use document.write");
+assert.ok(!/<(?:img|video|audio|iframe)\b/i.test(sourceViewerScript), "viewer must not create remote media elements");
 
 console.log("Source viewer tests passed");

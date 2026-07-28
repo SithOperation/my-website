@@ -24,6 +24,7 @@
     let earlyReportPopupId = null;
     let environmentalCount = 0;
     let environmentalEvents = { earthquakes: [], volcanoes: [], weather: [] };
+    let highlightedEventId = null;
 
     const element = id => document.getElementById(id);
 
@@ -40,6 +41,11 @@
             .replace(/\b\w/g, letter => letter.toUpperCase());
     }
 
+    function isSourceReportedEvent(event) {
+        return String(event?.location_status || "").toLowerCase() === "source_reported" ||
+            ["source_reported", "unverified"].includes(String(event?.claim_status || "").toLowerCase());
+    }
+
     function setStatus(message, state) {
         const status = element("ops-status");
         element("ops-status-text").textContent = message;
@@ -53,6 +59,7 @@
     }
 
     function featureCollection(events) {
+        eventIndex.clear();
         return {
             type: "FeatureCollection",
             features: events.map((event, index) => {
@@ -72,7 +79,8 @@
                         threat_level: event.threat_level,
                         confidence: event.confidence ?? 0,
                         timestamp: event.timestamp || "",
-                        heading: Number(aircraftValue(event, "heading", "track")) || 0
+                        heading: Number(aircraftValue(event, "heading", "track")) || 0,
+                        source_reported: isSourceReportedEvent(event)
                     }
                 };
             })
@@ -292,6 +300,38 @@
                 "circle-color": threatColorExpression(),
                 "circle-opacity": 0.2,
                 "circle-blur": 0.7
+            }
+        });
+
+        map.addLayer({
+            id: "source-reported-halo",
+            type: "circle",
+            source: "sentinel-events",
+            filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "source_reported"], true]],
+            paint: {
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 12, 8, 20],
+                "circle-color": "rgba(0,0,0,0)",
+                "circle-stroke-color": "#ffffff",
+                "circle-stroke-width": 2,
+                "circle-stroke-opacity": 0.72
+            }
+        });
+
+        map.addLayer({
+            id: "association-highlight",
+            type: "circle",
+            source: "sentinel-events",
+            filter: ["!", ["has", "point_count"]],
+            paint: {
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 17, 8, 28],
+                "circle-color": "rgba(0,0,0,0)",
+                "circle-stroke-color": "#ffffff",
+                "circle-stroke-width": [
+                    "case", ["boolean", ["feature-state", "sourceHighlight"], false], 4, 0
+                ],
+                "circle-stroke-opacity": [
+                    "case", ["boolean", ["feature-state", "sourceHighlight"], false], 1, 0
+                ]
             }
         });
 
@@ -1007,8 +1047,22 @@
             appendDefinition(details, "Heading", heading === null ? "Not reported" : `${heading}°`);
         }
         if (event.event_id) appendDefinition(details, "Event ID", event.event_id);
+        if (isSourceReportedEvent(event)) {
+            appendDefinition(details, "Verification status", "Source reported — not independently verified");
+        }
 
-        panel.replaceChildren(heading, summary, interpretation, details);
+        const sourceAction = document.createElement("button");
+        sourceAction.type = "button";
+        sourceAction.className = "event-source-action";
+        sourceAction.textContent = "View associated sources";
+        sourceAction.dataset.eventId = event.event_id;
+        sourceAction.hidden = !event.event_id ||
+            !window.SentinelSourceViewerController?.hasSourcesForEvent(event.event_id);
+        sourceAction.addEventListener("click", () =>
+            window.SentinelSourceViewerController?.openForEvent(event.event_id)
+        );
+
+        panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
         syncFullscreenDetail(panel);
     }
 
@@ -1016,6 +1070,11 @@
         const fullscreenDetail = element("fullscreen-event-detail");
         if (!fullscreenDetail) return;
         fullscreenDetail.replaceChildren(...[...source.children].map(child => child.cloneNode(true)));
+        fullscreenDetail.querySelectorAll(".event-source-action").forEach(button => {
+            button.addEventListener("click", () =>
+                window.SentinelSourceViewerController?.openForEvent(button.dataset.eventId)
+            );
+        });
         fullscreenDetail.closest(".fullscreen-event-panel")?.classList.add("has-selection");
     }
 
@@ -1166,6 +1225,62 @@
             event.currentTarget.setAttribute("aria-expanded", String(open));
         });
     }
+
+    function clearSourceHighlight(mapInstance = map, ready = mapReady) {
+        if (!mapInstance || !ready || !highlightedEventId) return;
+        try {
+            mapInstance.setFeatureState(
+                { source: "sentinel-events", id: highlightedEventId },
+                { sourceHighlight: false }
+            );
+        }
+        catch {
+            // The source may have been replaced during a publication refresh.
+        }
+        highlightedEventId = null;
+    }
+
+    function locateSourceEvent(
+        eventId,
+        mapInstance = map,
+        index = eventIndex,
+        ready = mapReady,
+        render = true
+    ) {
+        const safeId = String(eventId || "");
+        const event = index.get(safeId);
+        if (!mapInstance || !ready || !event) return false;
+        clearSourceHighlight(mapInstance, ready);
+        highlightedEventId = safeId;
+        mapInstance.setFeatureState(
+            { source: "sentinel-events", id: safeId },
+            { sourceHighlight: true }
+        );
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        mapInstance.easeTo({
+            center: [event.longitude, event.latitude],
+            zoom: Math.max(mapInstance.getZoom(), 8),
+            duration: reducedMotion ? 0 : 450
+        });
+        if (render) renderEventDetail(event);
+        return true;
+    }
+
+    window.SentinelMapBridge = Object.freeze({
+        hasEvent(eventId) {
+            return eventIndex.has(String(eventId || ""));
+        },
+        locateEvent: locateSourceEvent,
+        clearHighlight: clearSourceHighlight,
+        diagnostics() {
+            return { mapReady, eventCount: eventIndex.size, highlightedEventId };
+        }
+    });
+    window.SentinelMapAssociation = Object.freeze({
+        locateSourceEvent,
+        clearSourceHighlight,
+        isSourceReported: isSourceReportedEvent
+    });
 
     document.addEventListener("DOMContentLoaded", () => {
         bindControls();

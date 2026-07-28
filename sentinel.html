@@ -210,7 +210,7 @@
             </aside>
         </section>
 
-        <aside id="source-viewer" class="source-viewer" role="dialog" aria-modal="false"
+        <aside id="source-viewer" class="source-viewer" role="dialog"
             aria-labelledby="source-viewer-title" aria-describedby="source-viewer-status" hidden>
             <div class="source-viewer-header">
                 <div>
@@ -223,6 +223,10 @@
             <p id="source-viewer-status" class="source-viewer-status" role="status" aria-live="polite">
                 Loading source reports…
             </p>
+            <p id="source-viewer-announcement" class="visually-hidden" role="status" aria-live="polite"></p>
+            <button id="source-viewer-show-all" class="source-viewer-show-all" type="button" hidden>
+                Return to complete feed
+            </button>
             <div id="source-viewer-content" class="source-viewer-content"></div>
             <nav id="source-viewer-nav" class="source-viewer-nav" aria-label="Source report navigation" hidden>
                 <button id="source-viewer-previous" type="button">Previous</button>

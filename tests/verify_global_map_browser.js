@@ -57,7 +57,7 @@ async function main() {
         );
         await page.locator("#source-viewer-open").click();
         await page.locator("#source-viewer:not([hidden])").waitFor();
-        if (await page.locator("#source-viewer").getAttribute("aria-modal") !== "false") {
+        if (await page.locator("#source-viewer").getAttribute("aria-modal") !== null) {
             throw new Error("Desktop source viewer must be a non-modal dock");
         }
         if (!await page.locator("#source-viewer-status").textContent().then(text => text.includes("temporarily unavailable"))) {

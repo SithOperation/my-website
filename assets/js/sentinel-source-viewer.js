@@ -3,6 +3,7 @@
 
     const VALID_HEALTH = new Set(["fresh", "stale", "partial", "unavailable"]);
     const SUPPORTED_SCHEMA_MAJOR = 1;
+    const MAPPABLE_ASSOCIATIONS = new Set(["", "associated", "verified", "corroborated"]);
 
     function schemaMajor(value) {
         const match = String(value || "").match(/^(\d+)/);
@@ -12,7 +13,9 @@
     function safeSourceUrl(value) {
         try {
             const url = new URL(String(value || ""));
-            return url.protocol === "https:" ? url.href : "";
+            return url.protocol === "https:" && !url.username && !url.password && url.hostname
+                ? url.href
+                : "";
         }
         catch {
             return "";
@@ -20,7 +23,7 @@
     }
 
     function cleanText(value, fallback = "") {
-        const text = String(value || "").replace(/\s+/g, " ").trim();
+        const text = String(value || "").replace(/\s+/g, " ").trim().slice(0, 4000);
         return text || fallback;
     }
 
@@ -42,6 +45,11 @@
         if (!sourceUrl || item.feed_eligible !== true) return null;
         const publishedTimestamp = Date.parse(String(item.published_at || ""));
         if (!Number.isFinite(publishedTimestamp)) return null;
+        const hasPublishedCoordinates = item.latitude !== null && item.latitude !== undefined ||
+            item.longitude !== null && item.longitude !== undefined;
+        const validPublishedCoordinates = !hasPublishedCoordinates ||
+            Number.isFinite(Number(item.latitude)) && Math.abs(Number(item.latitude)) <= 90 &&
+            Number.isFinite(Number(item.longitude)) && Math.abs(Number(item.longitude)) <= 180;
         return {
             id: cleanText(item.id),
             platform: displayLabel(item.platform),
@@ -55,7 +63,16 @@
             locationStatus: displayLabel(item.location_status || "missing"),
             locationConfidence: confidenceLabel(item.location_confidence),
             claimStatus: displayLabel(item.claim_status || "unverified"),
-            claimConfidence: confidenceLabel(item.claim_confidence)
+            claimConfidence: confidenceLabel(item.claim_confidence),
+            eventId: cleanText(item.event_id).slice(0, 180),
+            associationStatus: displayLabel(item.association_status || (item.event_id ? "associated" : "unassociated")),
+            associationMethod: displayLabel(item.association_method || "not_reported"),
+            associationConfidence: confidenceLabel(item.association_confidence),
+            mapEligible: item.map_eligible === true,
+            mapExclusionReason: cleanText(item.map_exclusion_reason),
+            canLocate: item.map_eligible === true && Boolean(item.event_id) &&
+                validPublishedCoordinates &&
+                MAPPABLE_ASSOCIATIONS.has(String(item.association_status || "").toLowerCase())
         };
     }
 
@@ -154,7 +171,10 @@
         metadata.append(
             createField("Location", item.locationLabel),
             createField("Location status", `${item.locationStatus}${item.locationConfidence ? ` · ${item.locationConfidence}` : ""}`),
-            createField("Claim status", `${item.claimStatus}${item.claimConfidence ? ` · ${item.claimConfidence}` : ""}`)
+            createField("Claim status", `${item.claimStatus}${item.claimConfidence ? ` · ${item.claimConfidence}` : ""}`),
+            createField("Association", `${item.associationStatus}${item.associationConfidence ? ` · ${item.associationConfidence}` : ""}`),
+            createField("Association method", item.associationMethod),
+            createField("Map status", item.mapEligible ? "Eligible" : item.mapExclusionReason || "Feed only")
         );
         const link = document.createElement("a");
         link.className = "source-original-link";
@@ -162,7 +182,22 @@
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         link.textContent = "Open original source";
-        article.append(kicker, heading, timestamp, text, metadata, link);
+        const locate = document.createElement("button");
+        locate.type = "button";
+        locate.className = "source-locate-action";
+        locate.textContent = "Locate on map";
+        locate.disabled = !item.canLocate || !window.SentinelMapBridge?.hasEvent(item.eventId);
+        locate.hidden = !item.canLocate;
+        locate.addEventListener("click", () => {
+            const found = window.SentinelMapBridge?.locateEvent(item.eventId);
+            const live = document.getElementById("source-viewer-announcement");
+            if (live) {
+                live.textContent = found
+                    ? "Located associated event on the map."
+                    : "The associated map event is no longer available.";
+            }
+        });
+        article.append(kicker, heading, timestamp, text, metadata, locate, link);
         return article;
     }
 
@@ -170,6 +205,7 @@
         constructor(client = new SourceFeedClient()) {
             this.client = client;
             this.items = [];
+            this.visibleItems = [];
             this.index = 0;
             this.state = "loading";
             this.returnFocus = null;
@@ -184,6 +220,8 @@
                 close: document.getElementById("source-viewer-close"),
                 content: document.getElementById("source-viewer-content"),
                 status: document.getElementById("source-viewer-status"),
+                announcement: document.getElementById("source-viewer-announcement"),
+                showAll: document.getElementById("source-viewer-show-all"),
                 count: document.getElementById("source-feed-count"),
                 nav: document.getElementById("source-viewer-nav"),
                 previous: document.getElementById("source-viewer-previous"),
@@ -195,15 +233,15 @@
         render() {
             const elements = this.elements();
             elements.viewer.dataset.feedState = this.state;
-            elements.status.textContent = stateMessage(this.state, this.items.length);
+            elements.status.textContent = stateMessage(this.state, this.visibleItems.length);
             elements.count.textContent = this.items.length ? String(this.items.length) : "0";
             elements.content.replaceChildren();
-            if (this.items.length) {
-                elements.content.append(buildCard(this.items[this.index]));
+            if (this.visibleItems.length) {
+                elements.content.append(buildCard(this.visibleItems[this.index]));
                 elements.nav.hidden = false;
-                elements.position.textContent = `${this.index + 1} of ${this.items.length}`;
+                elements.position.textContent = `${this.index + 1} of ${this.visibleItems.length}`;
                 elements.previous.disabled = this.index === 0;
-                elements.next.disabled = this.index === this.items.length - 1;
+                elements.next.disabled = this.index === this.visibleItems.length - 1;
             }
             else {
                 const empty = document.createElement("div");
@@ -224,6 +262,7 @@
             try {
                 const result = await this.client.load();
                 this.items = result.items;
+                this.visibleItems = this.items;
                 this.state = result.items.length === result.feed.items.length ? result.state : "invalid";
                 if (this.items.length === 0 && ["available", "partial", "stale"].includes(this.state)) {
                     this.state = "empty";
@@ -232,6 +271,7 @@
             catch (error) {
                 console.error("Sentinel source feed rejected", error);
                 this.items = [];
+                this.visibleItems = [];
                 this.state = "invalid";
             }
             this.loaded = true;
@@ -242,10 +282,9 @@
             const elements = this.elements();
             this.returnFocus = document.activeElement;
             elements.viewer.hidden = false;
-            elements.backdrop.hidden = false;
-            elements.viewer.setAttribute("aria-modal", window.matchMedia("(max-width: 820px)").matches ? "true" : "false");
+            this.updatePresentation();
             elements.open.setAttribute("aria-expanded", "true");
-            document.body.classList.add("source-viewer-active");
+            this.render();
             elements.close.focus();
             if (!this.loaded) this.load();
         }
@@ -254,14 +293,63 @@
             const elements = this.elements();
             elements.viewer.hidden = true;
             elements.backdrop.hidden = true;
+            elements.viewer.removeAttribute("aria-modal");
             elements.open.setAttribute("aria-expanded", "false");
             document.body.classList.remove("source-viewer-active");
+            this.setBackgroundInert(false);
+            window.SentinelMapBridge?.clearHighlight();
             if (this.returnFocus?.focus) this.returnFocus.focus();
         }
 
         move(offset) {
-            this.index = Math.max(0, Math.min(this.items.length - 1, this.index + offset));
+            const previousEventId = this.visibleItems[this.index]?.eventId;
+            this.index = Math.max(0, Math.min(this.visibleItems.length - 1, this.index + offset));
+            if (this.visibleItems[this.index]?.eventId !== previousEventId) {
+                window.SentinelMapBridge?.clearHighlight();
+            }
             this.render();
+        }
+
+        hasSourcesForEvent(eventId) {
+            return this.items.some(item => item.eventId === eventId);
+        }
+
+        selectEventSources(eventId, openViewer = true) {
+            const associated = this.items.filter(item => item.eventId === eventId);
+            if (!associated.length) return false;
+            this.visibleItems = associated;
+            this.index = 0;
+            this.elements().showAll.hidden = this.visibleItems.length === this.items.length;
+            this.render();
+            if (openViewer) this.open();
+            return true;
+        }
+
+        showAll() {
+            window.SentinelMapBridge?.clearHighlight();
+            this.visibleItems = this.items;
+            this.index = 0;
+            this.elements().showAll.hidden = true;
+            this.render();
+        }
+
+        openForEvent(eventId) {
+            this.selectEventSources(eventId, true);
+        }
+
+        setBackgroundInert(inert) {
+            document.querySelectorAll(".ops-shell > :not(#source-viewer):not(#source-viewer-backdrop)")
+                .forEach(node => { node.inert = inert; });
+        }
+
+        updatePresentation() {
+            const elements = this.elements();
+            const mobile = window.matchMedia("(max-width: 820px)").matches;
+            if (mobile) elements.viewer.setAttribute("aria-modal", "true");
+            else elements.viewer.removeAttribute("aria-modal");
+            elements.backdrop.hidden = true;
+            document.body.classList.toggle("source-viewer-active", mobile);
+            this.setBackgroundInert(mobile);
         }
 
         bind() {
@@ -272,6 +360,7 @@
             elements.backdrop.addEventListener("click", () => this.close());
             elements.previous.addEventListener("click", () => this.move(-1));
             elements.next.addEventListener("click", () => this.move(1));
+            elements.showAll.addEventListener("click", () => this.showAll());
             document.addEventListener("keydown", event => {
                 if (elements.viewer.hidden) return;
                 if (event.key === "Escape") {
@@ -280,7 +369,7 @@
                 }
                 else if (event.key === "ArrowLeft") this.move(-1);
                 else if (event.key === "ArrowRight") this.move(1);
-                else if (event.key === "Tab") {
+                else if (event.key === "Tab" && elements.viewer.getAttribute("aria-modal") === "true") {
                     const focusable = Array.from(elements.viewer.querySelectorAll("button:not([disabled]), a[href]"));
                     if (!focusable.length) return;
                     const first = focusable[0];
@@ -295,7 +384,11 @@
                     }
                 }
             });
+            window.addEventListener("orientationchange", () => {
+                if (!elements.viewer.hidden) this.updatePresentation();
+            });
             this.load();
+            window.SentinelSourceViewerController = this;
         }
     }
 

@@ -255,6 +255,7 @@ h2 {
     position: fixed;
     z-index: 8999;
     inset: 0;
+    display: none;
     background: rgba(0, 0, 0, .48);
 }
 
@@ -363,6 +364,33 @@ h2 {
 .source-viewer-position { color: var(--muted); font-size: 11px; }
 
 body.source-viewer-active { overflow: hidden; }
+
+.source-locate-action,
+.source-viewer-show-all,
+.event-source-action {
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 1px solid var(--cyan);
+    background: rgba(200, 185, 143, .08);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.source-locate-action { margin-right: 12px; }
+.source-locate-action:disabled { cursor: not-allowed; opacity: .5; }
+.source-viewer-show-all { margin-bottom: 12px; }
+.event-source-action { width: 100%; margin-top: 14px; }
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
 
 .filter-content label {
     display: grid;
@@ -831,4 +859,18 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
     }
+}
+
+@media (forced-colors: active) {
+    .source-viewer,
+    .source-card,
+    .source-feed-empty,
+    .source-locate-action,
+    .source-viewer-show-all,
+    .event-source-action {
+        border: 1px solid CanvasText;
+        forced-color-adjust: auto;
+    }
+
+    .source-viewer-open span { border: 1px solid CanvasText; }
 }
