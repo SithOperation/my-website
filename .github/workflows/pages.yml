@@ -71,6 +71,7 @@ jobs:
           node --check tests/verify_global_map_browser.js
           node tests/test_x_generation_refresh.js
           node --test tests/test_x_report_popup.js
+          node --test tests/test_source_viewer.js
       - name: Backend tests and strict TypeScript
         working-directory: backend/url-inspector
         run: |

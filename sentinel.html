@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
-    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20260725-mobile-map">
+    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20260728-source-viewer">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
     <script type="text/javascript">
 (function(c,l,a,r,i,t,y){
@@ -158,7 +158,14 @@
                         <h2 id="map-heading">Global intelligence map</h2>
                         <p class="map-guidance">Clusters separate by regional zoom. Select a remaining group to inspect its reports. Aircraft appear only when explicitly classified as military.</p>
                     </div>
-                    <p id="map-count" aria-live="polite">Preparing map layers...</p>
+                    <div class="map-stage-actions">
+                        <p id="map-count" aria-live="polite">Preparing map layers...</p>
+                        <button id="source-viewer-open" class="source-viewer-open" type="button"
+                            aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">
+                            Source feed
+                            <span id="source-feed-count" aria-hidden="true">—</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="map-frame">
@@ -203,6 +210,28 @@
             </aside>
         </section>
 
+        <aside id="source-viewer" class="source-viewer" role="dialog" aria-modal="false"
+            aria-labelledby="source-viewer-title" aria-describedby="source-viewer-status" hidden>
+            <div class="source-viewer-header">
+                <div>
+                    <p class="eyebrow">SOURCE INTELLIGENCE</p>
+                    <h2 id="source-viewer-title">Source feed</h2>
+                </div>
+                <button id="source-viewer-close" class="source-viewer-close" type="button"
+                    aria-label="Close source feed">×</button>
+            </div>
+            <p id="source-viewer-status" class="source-viewer-status" role="status" aria-live="polite">
+                Loading source reports…
+            </p>
+            <div id="source-viewer-content" class="source-viewer-content"></div>
+            <nav id="source-viewer-nav" class="source-viewer-nav" aria-label="Source report navigation" hidden>
+                <button id="source-viewer-previous" type="button">Previous</button>
+                <span id="source-viewer-position" aria-live="polite"></span>
+                <button id="source-viewer-next" type="button">Next</button>
+            </nav>
+        </aside>
+        <div id="source-viewer-backdrop" class="source-viewer-backdrop" hidden></div>
+
         <footer class="ops-footer">
             <span>Sentinel Grid Intelligence</span>
             <span>Public-source situational awareness</span>
@@ -213,5 +242,6 @@
     <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
     <script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script>
     <script src="assets/js/sentinel-map.js?v=20260725-mobile-map"></script>
+    <script src="assets/js/sentinel-source-viewer.js?v=20260728-source-viewer"></script>
 </body>
 </html>
