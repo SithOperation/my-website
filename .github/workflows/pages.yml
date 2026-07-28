@@ -4,6 +4,18 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      commit_sha:
+        description: Exact website commit to deploy
+        required: false
+        type: string
+        default: ""
+      publication_id:
+        description: Expected Sentinel publication ID
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: read
@@ -11,7 +23,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: website-data-sync
+  group: pages-production
   cancel-in-progress: false
 
 jobs:
@@ -21,6 +33,27 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          ref: ${{ inputs.commit_sha || github.sha }}
+      - name: Verify requested deployment revision
+        if: inputs.commit_sha != ''
+        shell: bash
+        env:
+          EXPECTED_COMMIT_SHA: ${{ inputs.commit_sha }}
+          EXPECTED_PUBLICATION_ID: ${{ inputs.publication_id }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_COMMIT_SHA"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          manifest = json.loads(Path("data/manifest.json").read_text(encoding="utf-8"))
+          expected = os.environ["EXPECTED_PUBLICATION_ID"]
+          if expected and manifest.get("publication_id") != expected:
+              raise SystemExit(
+                  f"publication mismatch: {manifest.get('publication_id')} != {expected}"
+              )
+          PY
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
@@ -35,6 +68,7 @@ jobs:
       - name: JavaScript syntax and behavior
         run: |
           find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
+          node --check tests/verify_global_map_browser.js
           node tests/test_x_generation_refresh.js
           node --test tests/test_x_report_popup.js
       - name: Backend tests and strict TypeScript

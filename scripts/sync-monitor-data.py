@@ -9,17 +9,16 @@ import json
 import os
 import sys
 import tempfile
+from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Callable
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
-from models.x_report_contract import validate_document
-
+from models.x_report_contract import validate_document  # noqa: E402
 
 Validator = Callable[[object, str], None]
 
@@ -236,22 +235,90 @@ def publish_sentinel(source_root: Path, destination_root: Path) -> list[SyncResu
             for destination in destinations.values()
         ]
     try:
-        _manifest, payloads = validate_sentinel_publication(source_root)
+        manifest, payloads = validate_sentinel_publication(source_root)
     except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
         return [
             SyncResult(destination, "failed", detail=f"publication rejected: {error}")
             for destination in destinations.values()
         ]
 
-    results: list[SyncResult] = []
+    current_manifest_path = destination_root / "manifest.json"
+    try:
+        current_manifest = (
+            require_mapping(read_json(current_manifest_path), "current manifest.json")
+            if current_manifest_path.is_file()
+            else None
+        )
+        candidate_generated = parse_generated(manifest.get("generated"))
+        current_generated = (
+            parse_generated(current_manifest.get("generated"))
+            if current_manifest is not None
+            else None
+        )
+    except (OSError, json.JSONDecodeError, ValueError) as error:
+        return [
+            SyncResult(
+                destination,
+                "failed",
+                detail=f"current publication is unreadable: {error}",
+            )
+            for destination in destinations.values()
+        ]
+    if (
+        candidate_generated is not None
+        and current_generated is not None
+        and candidate_generated < current_generated
+    ):
+        detail = (
+            f"candidate publication {manifest['publication_id']} generated "
+            f"{candidate_generated.isoformat()} is older than the current publication "
+            f"generated {current_generated.isoformat()}"
+        )
+        return [
+            SyncResult(destination, "failed", detail=detail)
+            for destination in destinations.values()
+        ]
+
+    changes: list[tuple[str, Path, bytes, bytes | None]] = []
     for source, target in destinations.items():
         payload = payloads[source]
         destination = destination_root / target
         if destination.is_file() and destination.read_bytes() == payload:
-            results.append(SyncResult(target, "unchanged", len(payload)))
             continue
-        atomic_replace(destination, payload)
-        results.append(SyncResult(target, "updated", len(payload)))
+        previous = destination.read_bytes() if destination.is_file() else None
+        changes.append((target, destination, payload, previous))
+
+    try:
+        for _target, destination, payload, _previous in changes:
+            atomic_replace(destination, payload)
+    except OSError as error:
+        rollback_errors: list[str] = []
+        for _target, destination, _payload, previous in reversed(changes):
+            try:
+                if previous is None:
+                    destination.unlink(missing_ok=True)
+                else:
+                    atomic_replace(destination, previous)
+            except OSError as rollback_error:
+                rollback_errors.append(str(rollback_error))
+        detail = f"atomic publication failed and was rolled back: {error}"
+        if rollback_errors:
+            detail += f"; rollback errors: {'; '.join(rollback_errors)}"
+        return [
+            SyncResult(destination, "failed", detail=detail)
+            for destination in destinations.values()
+        ]
+
+    changed_targets = {target for target, _destination, _payload, _previous in changes}
+    results: list[SyncResult] = []
+    for source, target in destinations.items():
+        results.append(
+            SyncResult(
+                target,
+                "updated" if target in changed_targets else "unchanged",
+                len(payloads[source]),
+            )
+        )
     return results
 
 
@@ -264,7 +331,7 @@ def parse_generated(value: object) -> datetime | None:
         return None
     if parsed.tzinfo is None:
         raise ValueError("timestamp must include a timezone")
-    return parsed.astimezone(timezone.utc)
+    return parsed.astimezone(UTC)
 
 
 def freshness_warning(path: Path, maximum_age_hours: int) -> str | None:
@@ -279,7 +346,7 @@ def freshness_warning(path: Path, maximum_age_hours: int) -> str | None:
     )
     if not generated:
         return f"{path.name} has no parseable generation timestamp"
-    age_hours = (datetime.now(timezone.utc) - generated).total_seconds() / 3600
+    age_hours = (datetime.now(UTC) - generated).total_seconds() / 3600
     if age_hours > maximum_age_hours:
         return f"{path.name} is {age_hours:.1f} hours old"
     return None
@@ -347,6 +414,52 @@ def sync_all(repository: Path) -> list[SyncResult]:
     return results
 
 
+def sync_sentinel(source_root: Path, destination_root: Path) -> list[SyncResult]:
+    """Validate and stage one complete Sentinel publication."""
+    results = publish_sentinel(source_root, destination_root)
+    for result in results:
+        detail = f" - {result.detail}" if result.detail else ""
+        print(f"{result.status.upper()}: {result.name} ({result.size:,} bytes){detail}")
+    write_summary(results, [])
+    return results
+
+
+def sync_disaster(source_root: Path, destination_root: Path) -> list[SyncResult]:
+    """Validate and stage the legacy disaster-monitor publication."""
+    results = [
+        publish_file(
+            source_root / "disaster_state.json",
+            destination_root / "disaster_state.json",
+            validate_disaster_state,
+        )
+    ]
+    for filename in (
+        "earthquakes.json",
+        "volcanoes.json",
+        "weather.json",
+        "solar.json",
+    ):
+        results.append(
+            publish_file(
+                source_root / filename,
+                destination_root / filename,
+                validate_event_array,
+            )
+        )
+    for result in results:
+        detail = f" - {result.detail}" if result.detail else ""
+        print(f"{result.status.upper()}: {result.name} ({result.size:,} bytes){detail}")
+    write_summary(results, [])
+    return results
+
+
+def source_sync_succeeded(results: list[SyncResult]) -> bool:
+    """Return whether every required source artifact validated."""
+    return bool(results) and all(
+        result.status in {"updated", "unchanged"} for result in results
+    )
+
+
 def sync_ai(repository: Path) -> SyncResult:
     result = publish_file(
         repository / "external" / "ai" / "data" / "ai_cyber_digest.json",
@@ -386,22 +499,55 @@ def main() -> int:
         default=Path.cwd(),
         help="Website repository root",
     )
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--ai-only",
         action="store_true",
         help="Synchronize only the completed AI Cyber Daily Digest",
     )
-    parser.add_argument(
+    mode.add_argument(
         "--ews-only",
         action="store_true",
         help="Synchronize only the Early Warning System state",
     )
+    mode.add_argument(
+        "--sentinel-only",
+        action="store_true",
+        help="Validate and stage only one complete Sentinel publication",
+    )
+    mode.add_argument(
+        "--disaster-only",
+        action="store_true",
+        help="Validate and stage only the legacy disaster-monitor publication",
+    )
+    parser.add_argument(
+        "--source-root",
+        type=Path,
+        help="Explicit source directory for a source-only staging mode",
+    )
+    parser.add_argument(
+        "--destination-root",
+        type=Path,
+        help="Explicit destination directory for a source-only staging mode",
+    )
     arguments = parser.parse_args()
     repository = arguments.repository.resolve()
     if arguments.ai_only:
-        sync_ai(repository)
+        return 0 if sync_ai(repository).status in {"updated", "unchanged"} else 1
     elif arguments.ews_only:
-        sync_ews(repository)
+        return 0 if sync_ews(repository).status in {"updated", "unchanged"} else 1
+    elif arguments.sentinel_only:
+        source = arguments.source_root or (
+            repository / "external" / "sentinel" / "data" / "output"
+        )
+        destination = arguments.destination_root or repository / "staged" / "sentinel"
+        return 0 if source_sync_succeeded(sync_sentinel(source, destination)) else 1
+    elif arguments.disaster_only:
+        source = arguments.source_root or (
+            repository / "external" / "disaster" / "data"
+        )
+        destination = arguments.destination_root or repository / "staged" / "disaster"
+        return 0 if source_sync_succeeded(sync_disaster(source, destination)) else 1
     else:
         sync_all(repository)
     return 0

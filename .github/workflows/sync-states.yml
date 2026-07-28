@@ -2,6 +2,8 @@ name: Sync Monitor States
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [sentinel-publication-updated]
   schedule:
     # GitHub cron uses UTC. Separate candidates let the guard identify the
     # intended slot even when GitHub starts a scheduled job late.
@@ -14,14 +16,18 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: website-data-sync
+  group: website-data-updates
   cancel-in-progress: false
 
 jobs:
-  sync:
+  gate:
     runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.schedule.outputs.run }}
     steps:
       - name: Check Eastern sync hour
         id: schedule
@@ -32,9 +38,9 @@ jobs:
           eastern_offset="$(TZ=America/New_York date +%z)"
           scheduled_hour="$(awk '{print $2}' <<< "$schedule_expression")"
 
-          if [[ "$event_name" == "workflow_dispatch" ]]; then
+          if [[ "$event_name" == "workflow_dispatch" || "$event_name" == "repository_dispatch" ]]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Running website sync at $(TZ=America/New_York date '+%Y-%m-%d %H:%M:%S %Z')"
+            echo "Running event-driven website sync"
           elif [[ "$eastern_offset" == "-0400" && ",1,13,19," == *",$scheduled_hour,"* ]] ||
                [[ "$eastern_offset" == "-0500" && ",2,14,20," == *",$scheduled_hour,"* ]]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
@@ -44,36 +50,222 @@ jobs:
             echo "Skipping inactive DST candidate $schedule_expression for offset $eastern_offset"
           fi
 
-      - name: Checkout website
-        if: steps.schedule.outputs.run == 'true'
+  sync-sentinel:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      publication_id: ${{ steps.metadata.outputs.publication_id }}
+      generated: ${{ steps.metadata.outputs.generated }}
+      event_count: ${{ steps.metadata.outputs.event_count }}
+    steps:
+      - name: Checkout website tooling
+        uses: actions/checkout@v6
+      - name: Checkout Sentinel Grid
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          repository: SithOperation/sentinel-grid-intelligence
+          ref: ${{ github.event.client_payload.source_commit || 'main' }}
+          path: external/sentinel
+      - name: Validate and stage Sentinel publication
+        run: >-
+          python3 scripts/sync-monitor-data.py
+          --sentinel-only
+          --source-root external/sentinel/data/output
+          --destination-root staged/sentinel
+      - name: Record Sentinel metadata
+        id: metadata
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EXPECTED_PUBLICATION_ID: ${{ github.event.client_payload.publication_id }}
+          EXPECTED_SOURCE_COMMIT: ${{ github.event.client_payload.source_commit }}
+          EXPECTED_GENERATED: ${{ github.event.client_payload.generated }}
+          EXPECTED_MAP_EVENT_COUNT: ${{ github.event.client_payload.map_event_count }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
 
+          root = Path("staged/sentinel")
+          manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+          events = json.loads((root / "map_events.json").read_text(encoding="utf-8"))
+          if os.environ["EVENT_NAME"] == "repository_dispatch":
+              actual = {
+                  "publication_id": manifest["publication_id"],
+                  "source_commit": subprocess.check_output(
+                      ["git", "-C", "external/sentinel", "rev-parse", "HEAD"],
+                      text=True,
+                  ).strip(),
+                  "generated": manifest["generated"],
+                  "map_event_count": str(len(events)),
+              }
+              expected = {
+                  "publication_id": os.environ["EXPECTED_PUBLICATION_ID"],
+                  "source_commit": os.environ["EXPECTED_SOURCE_COMMIT"],
+                  "generated": os.environ["EXPECTED_GENERATED"],
+                  "map_event_count": os.environ["EXPECTED_MAP_EVENT_COUNT"],
+              }
+              if actual != expected:
+                  raise SystemExit(
+                      f"repository dispatch metadata mismatch: {actual!r} != {expected!r}"
+                  )
+          print(f"publication_id={manifest['publication_id']}")
+          print(f"generated={manifest['generated']}")
+          print(f"event_count={len(events)}")
+          PY
+      - name: Upload validated Sentinel publication
+        uses: actions/upload-artifact@v4
+        with:
+          name: validated-sentinel
+          path: staged/sentinel
+          if-no-files-found: error
+          retention-days: 1
+
+  sync-disaster:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website tooling
+        uses: actions/checkout@v6
+      - name: Verify private disaster-monitor access
+        shell: bash
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        run: |
+          set +x
+          if [[ -z "$REPO_ACCESS_TOKEN" ]]; then
+            echo "::error::REPO_ACCESS_TOKEN is not configured"
+            exit 1
+          fi
+          status="$(
+            curl \
+              --silent \
+              --output /dev/null \
+              --write-out "%{http_code}" \
+              --header "Authorization: Bearer $REPO_ACCESS_TOKEN" \
+              --header "Accept: application/vnd.github+json" \
+              https://api.github.com/repos/SithOperation/earthquake-volcano-discord-monitor
+          )"
+          if [[ "$status" != "200" ]]; then
+            echo "::error::Repository access failed for SithOperation/earthquake-volcano-discord-monitor; HTTP $status"
+            exit 1
+          fi
       - name: Checkout disaster monitor
-        if: steps.schedule.outputs.run == 'true'
-        id: disaster
         uses: actions/checkout@v6
         with:
           repository: SithOperation/earthquake-volcano-discord-monitor
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: external/disaster
+      - name: Validate and stage disaster publication
+        run: >-
+          python3 scripts/sync-monitor-data.py
+          --disaster-only
+          --source-root external/disaster/data
+          --destination-root staged/disaster
+      - name: Upload validated disaster publication
+        uses: actions/upload-artifact@v4
+        with:
+          name: validated-disaster
+          path: staged/disaster
+          if-no-files-found: error
+          retention-days: 1
 
-      - name: Checkout Sentinel Grid
-        if: steps.schedule.outputs.run == 'true'
-        id: sentinel
+  prepare-publication:
+    needs:
+      - gate
+      - sync-sentinel
+      - sync-disaster
+    if: >-
+      always() &&
+      needs.gate.outputs.run == 'true' &&
+      needs.sync-sentinel.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website tooling
+        uses: actions/checkout@v6
+      - name: Download validated Sentinel publication
+        uses: actions/download-artifact@v5
+        with:
+          name: validated-sentinel
+          path: candidate/sentinel
+      - name: Download validated disaster publication
+        if: needs.sync-disaster.result == 'success'
+        uses: actions/download-artifact@v5
+        with:
+          name: validated-disaster
+          path: candidate/disaster
+      - name: Revalidate complete publication artifact
+        shell: bash
+        run: |
+          python3 scripts/sync-monitor-data.py \
+            --sentinel-only \
+            --source-root candidate/sentinel \
+            --destination-root prepared/sentinel
+          if [[ -d candidate/disaster ]]; then
+            python3 scripts/sync-monitor-data.py \
+              --disaster-only \
+              --source-root candidate/disaster \
+              --destination-root prepared/disaster
+          fi
+      - name: Upload prepared publication
+        uses: actions/upload-artifact@v4
+        with:
+          name: prepared-monitor-publication
+          path: prepared
+          if-no-files-found: error
+          retention-days: 1
+
+  commit-data:
+    needs:
+      - gate
+      - sync-sentinel
+      - sync-disaster
+      - prepare-publication
+    if: >-
+      always() &&
+      needs.gate.outputs.run == 'true' &&
+      needs.sync-sentinel.result == 'success' &&
+      needs.prepare-publication.result == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
+      publication_id: ${{ needs.sync-sentinel.outputs.publication_id }}
+    steps:
+      - name: Checkout latest website branch
         uses: actions/checkout@v6
         with:
-          repository: SithOperation/sentinel-grid-intelligence
-          path: external/sentinel
-
-      - name: Validate and publish available monitor data
-        if: steps.schedule.outputs.run == 'true'
-        run: python3 scripts/sync-monitor-data.py
-
-      - name: Commit changed website data
-        if: steps.schedule.outputs.run == 'true'
+          fetch-depth: 0
+      - name: Download prepared publication
+        uses: actions/download-artifact@v5
+        with:
+          name: prepared-monitor-publication
+          path: prepared
+      - name: Apply validated source publications
         shell: bash
+        run: |
+          git pull --ff-only origin "$GITHUB_REF_NAME"
+          python3 scripts/sync-monitor-data.py \
+            --sentinel-only \
+            --source-root prepared/sentinel \
+            --destination-root data
+          if [[ -d prepared/disaster ]]; then
+            python3 scripts/sync-monitor-data.py \
+              --disaster-only \
+              --source-root prepared/disaster \
+              --destination-root data
+          else
+            echo "::warning::Disaster publication unavailable; preserving last-known-good files"
+          fi
+      - name: Commit exact publication
+        id: commit
+        shell: bash
+        env:
+          PUBLICATION_ID: ${{ needs.sync-sentinel.outputs.publication_id }}
         run: |
           git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -96,10 +288,197 @@ jobs:
             data/output/x_report_pinpoints.geojson
 
           if git diff --cached --quiet; then
-            echo "No validated monitor updates"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            echo "Website repository already contains Sentinel publication $PUBLICATION_ID"
             exit 0
           fi
 
-          git commit -m "Update intelligence feeds"
+          git commit -m "Sync Sentinel publication $PUBLICATION_ID"
+          git fetch origin "$GITHUB_REF_NAME"
+          python3 - <<'PY'
+          import datetime
+          import json
+          import subprocess
+          from pathlib import Path
+
+          candidate = json.loads(Path("data/manifest.json").read_text(encoding="utf-8"))
+          remote_bytes = subprocess.check_output(
+              ["git", "show", "origin/main:data/manifest.json"]
+          )
+          remote = json.loads(remote_bytes)
+          parse = lambda value: datetime.datetime.fromisoformat(
+              str(value).replace("Z", "+00:00")
+          )
+          if parse(candidate["generated"]) < parse(remote["generated"]):
+              raise SystemExit(
+                  "refusing to push a Sentinel publication older than origin/main"
+              )
+          PY
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  inspect-production:
+    needs:
+      - gate
+      - sync-sentinel
+    if: >-
+      always() &&
+      needs.gate.outputs.run == 'true' &&
+      needs.sync-sentinel.result == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      publication_id: ${{ steps.production.outputs.publication_id }}
+    steps:
+      - name: Read production publication
+        id: production
+        shell: bash
+        run: |
+          publication_id="$(
+            curl \
+              --fail \
+              --silent \
+              --show-error \
+              --header "Cache-Control: no-cache" \
+              "https://sithbusiness.com/data/manifest.json?audit=${GITHUB_RUN_ID}" |
+              python3 -c 'import json,sys; print(json.load(sys.stdin).get("publication_id", ""))'
+          )"
+          echo "publication_id=$publication_id" >> "$GITHUB_OUTPUT"
+
+  resolve-deployment:
+    needs:
+      - gate
+      - sync-sentinel
+      - commit-data
+      - inspect-production
+    if: >-
+      always() &&
+      needs.gate.outputs.run == 'true' &&
+      needs.sync-sentinel.result == 'success' &&
+      needs.commit-data.result == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.resolve.outputs.deploy }}
+      commit_sha: ${{ steps.resolve.outputs.commit_sha }}
+    steps:
+      - name: Resolve deployment requirement
+        id: resolve
+        shell: bash
+        env:
+          CHANGED: ${{ needs.commit-data.outputs.changed }}
+          COMMIT_SHA: ${{ needs.commit-data.outputs.commit_sha }}
+          EXPECTED_PUBLICATION: ${{ needs.sync-sentinel.outputs.publication_id }}
+          PRODUCTION_PUBLICATION: ${{ needs.inspect-production.outputs.publication_id }}
+        run: |
+          echo "commit_sha=$COMMIT_SHA" >> "$GITHUB_OUTPUT"
+          if [[ "$CHANGED" == "true" || "$PRODUCTION_PUBLICATION" != "$EXPECTED_PUBLICATION" ]]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Deploying $COMMIT_SHA for Sentinel publication $EXPECTED_PUBLICATION"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "Production already serves Sentinel publication $EXPECTED_PUBLICATION"
+          fi
+
+  deploy:
+    needs:
+      - sync-sentinel
+      - resolve-deployment
+    if: needs.resolve-deployment.outputs.deploy == 'true'
+    uses: ./.github/workflows/pages.yml
+    with:
+      commit_sha: ${{ needs.resolve-deployment.outputs.commit_sha }}
+      publication_id: ${{ needs.sync-sentinel.outputs.publication_id }}
+    secrets: inherit
+
+  verify-production:
+    needs:
+      - gate
+      - sync-sentinel
+      - resolve-deployment
+      - deploy
+    if: >-
+      always() &&
+      needs.gate.outputs.run == 'true' &&
+      needs.sync-sentinel.result == 'success' &&
+      needs.resolve-deployment.result == 'success' &&
+      (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website verification tooling
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.resolve-deployment.outputs.commit_sha }}
+      - name: Verify production Sentinel publication
+        run: >-
+          python3 scripts/verify-production.py
+          --base-url https://sithbusiness.com/data
+          --publication-id "${{ needs.sync-sentinel.outputs.publication_id }}"
+          --minimum-map-events 1
+          --attempts 12
+          --retry-delay-seconds 5
+      - name: Install pinned browser verifier
+        run: |
+          npm install --no-save --no-package-lock playwright@1.62.0
+          npx playwright install --with-deps chromium
+      - name: Verify production global-map rendering
+        env:
+          PRODUCTION_BASE_URL: https://sithbusiness.com
+          EXPECTED_PUBLICATION_ID: ${{ needs.sync-sentinel.outputs.publication_id }}
+        run: node tests/verify_global_map_browser.js
+
+  publication-summary:
+    needs:
+      - gate
+      - sync-sentinel
+      - sync-disaster
+      - prepare-publication
+      - commit-data
+      - inspect-production
+      - resolve-deployment
+      - deploy
+      - verify-production
+    if: always() && needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write end-to-end publication summary
+        shell: bash
+        env:
+          SENTINEL_RESULT: ${{ needs.sync-sentinel.result }}
+          DISASTER_RESULT: ${{ needs.sync-disaster.result }}
+          PREPARE_RESULT: ${{ needs.prepare-publication.result }}
+          COMMIT_RESULT: ${{ needs.commit-data.result }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+          VERIFY_RESULT: ${{ needs.verify-production.result }}
+          PUBLICATION_ID: ${{ needs.sync-sentinel.outputs.publication_id }}
+          GENERATED: ${{ needs.sync-sentinel.outputs.generated }}
+          MAP_EVENT_COUNT: ${{ needs.sync-sentinel.outputs.event_count }}
+          WEBSITE_COMMIT: ${{ needs.commit-data.outputs.commit_sha }}
+          DATA_CHANGED: ${{ needs.commit-data.outputs.changed }}
+          PREVIOUS_PRODUCTION_ID: ${{ needs.inspect-production.outputs.publication_id }}
+          DEPLOY_REQUIRED: ${{ needs.resolve-deployment.outputs.deploy }}
+        run: |
+          {
+            echo "## Sentinel website publication"
+            echo
+            echo "| Field | Value |"
+            echo "|---|---|"
+            echo "| Publication ID | \`${PUBLICATION_ID:-unavailable}\` |"
+            echo "| Generated | ${GENERATED:-unavailable} |"
+            echo "| Map events | ${MAP_EVENT_COUNT:-unavailable} |"
+            echo "| Website commit | \`${WEBSITE_COMMIT:-unavailable}\` |"
+            echo "| Repository data changed | ${DATA_CHANGED:-unknown} |"
+            echo "| Previous production publication | \`${PREVIOUS_PRODUCTION_ID:-unavailable}\` |"
+            echo "| Deployment required | ${DEPLOY_REQUIRED:-unknown} |"
+            echo "| Sentinel source | $SENTINEL_RESULT |"
+            echo "| Disaster source | $DISASTER_RESULT |"
+            echo "| Publication preparation | $PREPARE_RESULT |"
+            echo "| Commit | $COMMIT_RESULT |"
+            echo "| Pages deployment | $DEPLOY_RESULT |"
+            echo "| Production verification | $VERIFY_RESULT |"
+            echo
+            if [[ "$DISASTER_RESULT" != "success" ]]; then
+              echo "> Disaster source failed or was unavailable. Sentinel publication was evaluated independently and last-known-good disaster files were preserved."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
