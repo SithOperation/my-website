@@ -41,6 +41,27 @@
             .replace(/\b\w/g, letter => letter.toUpperCase());
     }
 
+    function symbolType(value) {
+        const type = String(value || "news").toLowerCase();
+        const aliases = {
+            conflict: "conflict",
+            earthquake: "earthquake",
+            humanitarian: "news",
+            military_exercise: "military_exercise",
+            news: "news",
+            prescribed_fire: "prescribed_fire",
+            reddit_report: "news",
+            satellite: "satellite",
+            tropical_cyclone: "weather",
+            volcano: "volcano",
+            weather: "weather",
+            weather_alert: "weather",
+            wildfire: "wildfire",
+            x_report: "news"
+        };
+        return aliases[type] || "news";
+    }
+
     function isSourceReportedEvent(event) {
         return String(event?.location_status || "").toLowerCase() === "source_reported" ||
             ["source_reported", "unverified"].includes(String(event?.claim_status || "").toLowerCase());
@@ -76,6 +97,7 @@
                         map_id: mapId,
                         title: event.title,
                         type: event.type,
+                        symbol_type: symbolType(event.type),
                         threat_level: event.threat_level,
                         confidence: event.confidence ?? 0,
                         timestamp: event.timestamp || "",
@@ -341,7 +363,7 @@
             source: "sentinel-events",
             filter: ["all", ["!", ["has", "point_count"]], ["!=", ["get", "type"], "aircraft"]],
             layout: {
-                "icon-image": ["match", ["get", "type"], "conflict", "marker-conflict", "news", "marker-news", "satellite", "marker-satellite", "wildfire", "marker-wildfire", "prescribed_fire", "marker-prescribed_fire", "military_exercise", "marker-military_exercise", "marker-news"],
+                "icon-image": ["concat", "marker-", ["get", "symbol_type"]],
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.55, 8, 0.85],
                 "icon-allow-overlap": false,
                 "icon-padding": 2
