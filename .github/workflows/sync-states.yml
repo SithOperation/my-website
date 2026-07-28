@@ -385,6 +385,11 @@ jobs:
     needs:
       - sync-sentinel
       - resolve-deployment
+    if: >-
+      always() &&
+      needs.sync-sentinel.result == 'success' &&
+      needs.resolve-deployment.result == 'success' &&
+      needs.resolve-deployment.outputs.deploy == 'true'
     uses: ./.github/workflows/pages.yml
     with:
       commit_sha: ${{ needs.resolve-deployment.outputs.commit_sha }}
@@ -402,7 +407,7 @@ jobs:
       needs.gate.outputs.run == 'true' &&
       needs.sync-sentinel.result == 'success' &&
       needs.resolve-deployment.result == 'success' &&
-      needs.deploy.result == 'success'
+      (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout website verification tooling
