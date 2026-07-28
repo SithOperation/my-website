@@ -423,6 +423,11 @@ body.source-viewer-active { overflow: hidden; }
     to { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes sourceViewerFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @keyframes sourceCardReveal {
     from { opacity: 0; transform: translateY(7px); }
     to { opacity: 1; transform: translateY(0); }
@@ -903,6 +908,7 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
         width: 100%;
         border-left: 0;
         border-top: 3px solid var(--cyan);
+        animation-name: sourceViewerFade;
     }
     .source-viewer-backdrop { display: none; }
 }
