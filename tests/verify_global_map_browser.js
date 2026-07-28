@@ -52,7 +52,9 @@ async function main() {
         );
 
         await page.waitForFunction(
-            () => document.querySelector("#source-viewer")?.dataset.feedState === "unavailable",
+            () => ["available", "partial", "stale"].includes(
+                document.querySelector("#source-viewer")?.dataset.feedState
+            ) && Number(document.querySelector("#source-feed-count")?.textContent) > 0,
             { timeout: 30000 }
         );
         await page.locator("#source-viewer-open").click();
@@ -60,8 +62,8 @@ async function main() {
         if (await page.locator("#source-viewer").getAttribute("aria-modal") !== null) {
             throw new Error("Desktop source viewer must be a non-modal dock");
         }
-        if (!await page.locator("#source-viewer-status").textContent().then(text => text.includes("temporarily unavailable"))) {
-            throw new Error("Unavailable source feed state was not explained");
+        if (await page.locator(".source-card").count() !== 1) {
+            throw new Error("Populated source feed did not render a source card");
         }
         await page.keyboard.press("Escape");
         await page.locator("#source-viewer").waitFor({ state: "hidden" });
