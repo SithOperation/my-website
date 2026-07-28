@@ -72,6 +72,20 @@ def test_valid_production_publication() -> None:
     assert result.source_feed_status == "unavailable"
 
 
+def test_reddit_report_map_event_is_supported() -> None:
+    documents = production_documents()
+    events = cast(list[dict[str, Any]], documents["map_events.json"])
+    events[0]["type"] = "reddit_report"
+
+    result = verify_production.verify_production(
+        "https://example.test/data",
+        "expected",
+        fetcher=make_fetcher(documents),
+    )
+
+    assert result.map_event_count == 1
+
+
 def test_mixed_source_feed_is_rejected() -> None:
     documents = production_documents()
     cast(dict[str, Any], documents["source_feed.json"])["publication_id"] = "different"

@@ -21,6 +21,7 @@ SUPPORTED_EVENT_TYPES = frozenset(
         "flood",
         "humanitarian",
         "natural_hazard",
+        "reddit_report",
         "tropical_cyclone",
         "volcano",
         "weather_alert",
