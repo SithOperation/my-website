@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-07-27T17:06:30.734925+00:00",
+  "generated_at": "2026-08-08T13:36:27.272578+00:00",
   "source_count": 8,
-  "sources_succeeded": 5,
-  "articles_collected": 51,
-  "articles_after_deduplication": 50,
+  "sources_succeeded": 7,
+  "articles_collected": 64,
+  "articles_after_deduplication": 61,
   "stories_published": 20,
-  "critical_count": 0,
+  "critical_count": 2,
   "high_count": 0,
-  "medium_count": 2,
-  "low_count": 18,
+  "medium_count": 8,
+  "low_count": 10,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 24
+      "articles": 25
     },
     {
       "source": "BleepingComputer",
@@ -25,8 +25,8 @@
     {
       "source": "Krebs on Security",
       "url": "https://krebsonsecurity.com/feed/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 1
     },
     {
       "source": "SecurityWeek",
@@ -37,8 +37,8 @@
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 6
     },
     {
       "source": "MIT News AI",
@@ -56,20 +56,287 @@
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 1
+      "articles": 6
     }
   ],
   "stories": [
     {
-      "id": "6d85941f139ee717",
-      "title": "Kimi K3 Agents Found Redis Zero-Days and Built RCE Exploit, Researchers Say",
+      "id": "0a643ade91da917d",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/05/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "published_at": "2026-08-05T12:00:00+00:00",
+      "collected_at": "2026-08-08T13:36:26.196856+00:00",
+      "category": "Active Exploitation",
+      "severity": "Critical",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-63077"
+      ],
+      "cvss_score": null,
+      "known_exploited": true,
+      "active_exploitation": true,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 61,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "CISA KEV",
+          "points": 20
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/07/cisa-adds-one-known-exploited-vulnerability-catalog"
+        }
+      ]
+    },
+    {
+      "id": "ecc4777c9ae87466",
+      "title": "Metabase Zero-Day Exploited in Wild Allows Admin Access Without Authentication",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/kimi-k3-agents-found-redis-zero-days.html",
-      "published_at": "2026-07-24T06:58:27+00:00",
-      "collected_at": "2026-07-27T17:06:28.854344+00:00",
+      "source_url": "https://thehackernews.com/2026/08/metabase-zero-day-exploited-in-wild.html",
+      "published_at": "2026-08-08T06:58:31+00:00",
+      "collected_at": "2026-08-08T13:36:24.595147+00:00",
+      "category": "Active Exploitation",
+      "severity": "Critical",
+      "summary": "Metabase has warned that a maximum-severity security flaw impacting its business intelligence and data visualization software package has been exploited in the wild as a zero-day.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": 10.0,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 61,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "e64d0f8a5b6f328f",
+      "title": "CPDLC over ATN-B1 Vulnerabilities",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-219-01",
+      "published_at": "2026-08-07T12:00:00+00:00",
+      "collected_at": "2026-08-08T13:36:26.194499+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary ATN-B1 CPDLC relies on legacy clear text unauthenticated radio frequency links.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2025-71409",
+        "CVE-2025-71410",
+        "CVE-2025-71411",
+        "CVE-2025-71412",
+        "CVE-2025-71413"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "4564cb12550c35ad",
+      "title": "ABB Ability Zenon",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-218-01",
+      "published_at": "2026-08-06T12:00:00+00:00",
+      "collected_at": "2026-08-08T13:36:26.196008+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow attackers to bypass security, crash systems, execute unauthorized actions, or compromise data.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2025-14847"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "6070b129b2b8c72e",
+      "title": "Medixant RadiAnt DICOM",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-218-01",
+      "published_at": "2026-08-06T12:00:00+00:00",
+      "collected_at": "2026-08-08T13:36:26.196315+00:00",
+      "category": "Privacy",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to cause the application to crash if a maliciously crafted DICOM file is opened.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-17264"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "cb34740f702f767c",
+      "title": "Johnson Controls Inc. TL280",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-218-02",
+      "published_at": "2026-08-06T12:00:00+00:00",
+      "collected_at": "2026-08-08T13:36:26.196663+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to access sensitive information on the device.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-27871"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ab513bf86405d81c",
+      "title": "Metabase SQLi zero-day exploited in customer data-theft attacks",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/framework-tally-disclose-metabase-data-theft-attacks/",
+      "published_at": "2026-08-07T20:14:46+00:00",
+      "collected_at": "2026-08-08T13:36:24.653387+00:00",
       "category": "Active Exploitation",
       "severity": "Medium",
-      "summary": "Redis shipped seven security releases on July 23 after researchers published authenticated RCE PoCs for stock Redis 6.2.22, 7.4.9, 8.6.4, and 8.8.0.",
+      "summary": "A critical Metabase SQL injection vulnerability was exploited in zero-day attacks to breach customer instances in data theft attacks, known to impact Framework and Tally.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -93,15 +360,15 @@
       "related_sources": []
     },
     {
-      "id": "5518fb6b7eb971cc",
-      "title": "Russian Espionage Group Exploited Zimbra Zero-Day to Steal Mail and 2FA Codes",
+      "id": "862642bee841f026",
+      "title": "AI-Assisted HTTP Terminator Finds Novel HTTP Desync Techniques and Apache Zero-Day",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/russian-espionage-group-exploited.html",
-      "published_at": "2026-07-23T18:36:08+00:00",
-      "collected_at": "2026-07-27T17:06:28.854576+00:00",
+      "source_url": "https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html",
+      "published_at": "2026-08-07T10:09:54+00:00",
+      "collected_at": "2026-08-08T13:36:24.596593+00:00",
       "category": "Active Exploitation",
       "severity": "Medium",
-      "summary": "A Russian state-supported espionage group spent months reading Western mailboxes through a then-unknown flaw in Zimbra's webmail client.",
+      "summary": "PortSwigger says HTTP Terminator, an artificial intelligence (AI)-assisted research system built by James Kettle, generated and proved new HTTP desynchronization techniques after exploring 30,000 candidate desync vectors.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -113,6 +380,7 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
+        "AI",
         "Zero-Day"
       ],
       "importance_score": 18,
@@ -125,15 +393,207 @@
       "related_sources": []
     },
     {
-      "id": "8032ec6029deb639",
-      "title": "Coca-Cola Confirms Data Breach After Fairlife Ransomware Attack",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/coca-cola-confirms-data-breach-after-fairlife-ransomware-attack/",
-      "published_at": "2026-07-27T11:29:03+00:00",
-      "collected_at": "2026-07-27T17:06:29.252010+00:00",
+      "id": "376accbc001ddf74",
+      "title": "AI Recommendation Poisoning: How \"Ask AI\" Buttons Silently Alter LLM Memory",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/ai-recommendation-poisoning-how-ask-ai.html",
+      "published_at": "2026-08-06T11:30:00+00:00",
+      "collected_at": "2026-08-08T13:36:24.597881+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "A new class of prompt injection is spreading across commercial websites.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "AI",
+        "Malware",
+        "Zero-Day"
+      ],
+      "importance_score": 18,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "38709a9cedbfb550",
+      "title": "New WordPress Pre-Auth XSS Could Lead to PHP Code Execution - Patch ASAP",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html",
+      "published_at": "2026-08-07T12:56:23+00:00",
+      "collected_at": "2026-08-08T13:36:24.595969+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "WordPress has fixed a pre-authentication reflected cross-site scripting (XSS) flaw in its login screen that affects every version of the content management system.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-64638"
+      ],
+      "cvss_score": 8.9,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 14,
+      "score_breakdown": [
+        {
+          "signal": "High CVSS",
+          "points": 10
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "37859bd4cd5d193a",
+      "title": "UNC6671 Vishing Attacks Target Personal Phones to Steal SaaS Data",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/unc6671-vishing-attacks-target-personal.html",
+      "published_at": "2026-08-07T18:16:13+00:00",
+      "collected_at": "2026-08-08T13:36:24.595840+00:00",
       "category": "Ransomware",
       "severity": "Low",
-      "summary": "The Anubis cybercrime group has taken credit for the attack and is threatening to leak data.",
+      "summary": "A recent wave of cyber attacks targeting financial services, private equity, and professional services has been attributed to a data extortion group known as UNC6671.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "7c6beb5d2ba8e71c",
+      "title": "Vishing Extortion Group UNC6671 Rebrands After Making Millions",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/vishing-extortion-group-unc6671-rebrands-after-making-millions/",
+      "published_at": "2026-08-07T11:06:01+00:00",
+      "collected_at": "2026-08-08T13:36:25.165073+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "Initially calling itself BlackFile, the group has expanded operations to the Redact, Pink, Helix, and Falcon brands.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "cc3545b0d1d0cecc",
+      "title": "Hedge fund cyberattacks tied to BlackFile-linked UNC6671 extortion group",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hedge-fund-cyberattacks-tied-to-blackfile-linked-unc6671-extortion-group/",
+      "published_at": "2026-08-06T20:07:24+00:00",
+      "collected_at": "2026-08-08T13:36:24.654304+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "A recent wave of cyberattacks targeting hedge funds, private-equity firms, and other financial organizations has been linked to UNC6671, an extortion group reportedly associated with the BlackFile threat actors.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "58eb3ce5569a189e",
+      "title": "Canadian Man Pleads Guilty in Snowflake Extortions",
+      "source": "Krebs on Security",
+      "source_url": "https://krebsonsecurity.com/2026/08/canadian-man-pleads-guilty-in-snowflake-extortions/",
+      "published_at": "2026-08-06T17:00:56+00:00",
+      "collected_at": "2026-08-08T13:36:24.847425+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "A 26-year-old Canadian man once described as one of the most consequential cybercrime threat actors of 2024 has pleaded guilty to computer fraud and conspiracy to hack and extort more than 165 organizations that used the cloud data storage provider Snowflake.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "0426f429b00fdb6e",
+      "title": "Ransom Cartel ransomware creator sentenced to 16 years in prison",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/ransom-cartel-ransomware-creator-sentenced-to-16-years-in-prison/",
+      "published_at": "2026-08-05T23:00:50+00:00",
+      "collected_at": "2026-08-08T13:36:24.654870+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "Maksim Silnikau, the creator and administrator of the Ransom Cartel ransomware operation, was sentenced to 16 years in prison for his role in ransomware attacks against at least 18 companies worldwide.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -145,7 +605,6 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "Data Breach",
         "Ransomware"
       ],
       "importance_score": 12,
@@ -153,345 +612,57 @@
         {
           "signal": "Ransomware",
           "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ccbc9a4c08a3b29c",
+      "title": "3.8 Million Impacted by Unlimited Technology Systems Data Breach",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/3-8-million-impacted-by-unlimited-technology-systems-data-breach/",
+      "published_at": "2026-08-07T07:22:05+00:00",
+      "collected_at": "2026-08-08T13:36:25.165591+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Hackers stole personal, medical, and health insurance information from a company’s data center.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
         }
       ],
       "related_sources": [
         {
           "source": "BleepingComputer",
-          "source_url": "https://www.bleepingcomputer.com/news/security/coca-cola-confirms-data-theft-in-fairlife-ransomware-attack/"
+          "source_url": "https://www.bleepingcomputer.com/news/security/unlimited-technology-systems-breach-impacts-38-million-people/"
         }
       ]
     },
     {
-      "id": "c9d9f99a67fd8241",
-      "title": "Ernst & Young data breach claimed by ShinyHunters extortion gang",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ernst-and-young-data-breach-claimed-by-shinyhunters-extortion-gang/",
-      "published_at": "2026-07-27T15:12:27+00:00",
-      "collected_at": "2026-07-27T17:06:28.917212+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "The ShinyHunters extortion gang has claimed responsibility for a recently disclosed Ernst & Young data breach, saying it obtained credentials for some of the company's systems via a supply-chain attack.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "10f16505becdd0c8",
-      "title": "PTC Windchill Vulnerability Exploited in Ransomware Campaign",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/ptc-windchill-vulnerability-exploited-in-ransomware-campaign/",
-      "published_at": "2026-07-27T13:19:30+00:00",
-      "collected_at": "2026-07-27T17:06:29.251618+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "The critical unsafe deserialization flaw allows attackers to execute arbitrary code remotely, without authentication.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "7c7cdda876d9d947",
-      "title": "Cruciferra Crypter Uses BYOVD and Process Ghosting to Hide Windows Malware",
+      "id": "ab2cf02445d4050e",
+      "title": "Atlassian Rovo Can Be Tricked Into Sending Jira and Confluence Data to Attackers",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/cruciferra-crypter-uses-byovd-and.html",
-      "published_at": "2026-07-27T10:51:45+00:00",
-      "collected_at": "2026-07-27T17:06:28.852275+00:00",
-      "category": "Nation-State Activity",
-      "severity": "Low",
-      "summary": "The China-linked cybercrime group behind the use of income tax-related phishing lures targeting Indian taxpayers, tax professionals, and corporate finance teams has been observed using a sophisticated crypter service called Cruciferra.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Malware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Nation-state activity",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "761b2a971cb2b357",
-      "title": "ShinyHunters data leaks fuel $2,000 sextortion email scam",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-data-leaks-fuel-2-000-sextortion-email-scam/",
-      "published_at": "2026-07-25T14:16:26+00:00",
-      "collected_at": "2026-07-27T17:06:28.917841+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "Threat actors are using email addresses exposed in data breaches leaked by the ShinyHunters extortion group to send sextortion emails demanding $2,000 in Bitcoin.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "2771e2dd44890caa",
-      "title": "Cl0p Affiliates Target Internet-Exposed PTC Windchill and FlexPLM with Unauthenticated RCE",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/cl0p-affiliates-target-internet-exposed.html",
-      "published_at": "2026-07-25T10:14:03+00:00",
-      "collected_at": "2026-07-27T17:06:28.853167+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "Threat actors linked to the Cl0p (aka Chubby Scorpius, FIN11, Graceful Spider, and Lace Tempest) ransomware campaign are exploiting flaws in internet-exposed PTC Windmill and FlexPLM deployments as part of a new data extortion campaign.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "6fdd8513ac9daf93",
-      "title": "DevMan RaaS Portal Centralizes Payload Builds, Victim Management, and Affiliate Payouts",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/devman-raas-portal-centralizes-payload.html",
-      "published_at": "2026-07-25T09:53:41+00:00",
-      "collected_at": "2026-07-27T17:06:28.853286+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "The operators of the DevMan ransomware-as-a-service (RaaS) scheme are maintaining a dedicated web platform that offers affiliates the ability to build payloads, oversee earnings, and manage various aspects related to victims.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "33203de2679af613",
-      "title": "BlueNoroff Zoom Phishing Kit Profiles Crypto Wallets Before Malware Delivery",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/bluenoroff-zoom-phishing-kit-profiles.html",
-      "published_at": "2026-07-24T15:12:35+00:00",
-      "collected_at": "2026-07-27T17:06:28.853404+00:00",
-      "category": "Nation-State Activity",
-      "severity": "Low",
-      "summary": "The North Korean threat actors behind the ClickFix-style campaigns that employ typosquatted Zoom and Microsoft Teams domains have been found to operate an active phishing kit to impersonate the videoconferencing platforms in social engineering campaigns designed to deliver malware.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Malware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Nation-state activity",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "c5f0ec26ac7de834",
-      "title": "DentaQuest Data Breach Potentially Impacts Over 23 Million People",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/dentaquest-data-breach-potentially-impacts-over-23-million-people/",
-      "published_at": "2026-07-27T09:34:12+00:00",
-      "collected_at": "2026-07-27T17:06:29.252638+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "In May 2026, hackers stole personal and dental health information from DentaQuest’s computer network.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "ce229faccda08040",
-      "title": "OnTrac notifies customers of data breach after network hack",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ontrac-notifies-customers-of-data-breach-after-network-hack/",
-      "published_at": "2026-07-24T19:55:01+00:00",
-      "collected_at": "2026-07-27T17:06:28.918087+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "OnTrac parcel delivery company is informing that hackers breached its corporate network and may have accessed personal details belonging to its customers.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "8bba9e0e00948187",
-      "title": "Chick-fil-A data breach affects more than 13,000 customers",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/chick-fil-a-data-breach-affects-more-than-13-000-customers/",
-      "published_at": "2026-07-24T14:04:29+00:00",
-      "collected_at": "2026-07-27T17:06:28.918525+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "Chick-fil-A has confirmed that over 13,000 customers had their accounts breached in a wave of credential stuffing attacks targeting its website and mobile app between June 17 and June 19.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "2e4d9efc06b4e7df",
-      "title": "Nvidia and Tech Giants Launch AI Security Alliance",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/nvidia-and-tech-giants-launch-ai-security-alliance/",
-      "published_at": "2026-07-27T12:25:43+00:00",
-      "collected_at": "2026-07-27T17:06:29.251872+00:00",
+      "source_url": "https://thehackernews.com/2026/08/atlassian-rovo-can-be-tricked-into.html",
+      "published_at": "2026-08-08T08:54:50+00:00",
+      "collected_at": "2026-08-08T13:36:24.594806+00:00",
       "category": "AI Security",
       "severity": "Low",
-      "summary": "The Nvidia-led coalition aims to give defenders more open tools for testing, auditing and protecting AI models and agents.",
+      "summary": "Attacker-controlled instructions can make Atlassian's Rovo assistant collect Jira or Confluence data that a signed-in user can access, then send it to an outside server.",
       "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
       "affected_products": [],
       "affected_vendors": [],
@@ -502,9 +673,7 @@
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [
-        "AI"
-      ],
+      "tags": [],
       "importance_score": 8,
       "score_breakdown": [
         {
@@ -515,117 +684,15 @@
       "related_sources": []
     },
     {
-      "id": "a95dd26365a570d9",
-      "title": "n8n Sandbox Escape Lets Workflow Editors Run OS Commands as the n8n Process",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/n8n-sandbox-escape-lets-workflow.html",
-      "published_at": "2026-07-27T13:05:15+00:00",
-      "collected_at": "2026-07-27T17:06:28.851979+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "n8n has patched a high-severity expression-sandbox escape that could let an authenticated workflow editor execute operating-system commands on the server running the automation platform.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-27577"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "8083b86f8749ba30",
-      "title": "Fastjson 1.x RCE Vulnerability Targeted in Attacks With No Patched Available",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/fastjson-1x-rce-vulnerability-targeted.html",
-      "published_at": "2026-07-25T12:52:43+00:00",
-      "collected_at": "2026-07-27T17:06:28.852773+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "Security firms ThreatBook and Imperva say attackers are targeting a critical flaw in Fastjson, Alibaba's JSON library for Java.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-16723"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "3f283ad957ed4a4e",
-      "title": "Bing Images Flaws Let Crafted SVGs Run Commands as SYSTEM on Microsoft's Servers",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/bing-images-flaws-let-crafted-svgs-run.html",
-      "published_at": "2026-07-24T11:45:17+00:00",
-      "collected_at": "2026-07-27T17:06:28.853750+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "A crafted SVG submitted to Bing's image search ran commands as NT AUTHORITY\\SYSTEM on Microsoft's production image-processing workers, and as root on the Linux machines in the same fleet.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-32194"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "5937bd850a8b331f",
-      "title": "Public Exploit Released for Patched vBulletin Pre-Auth Code Execution Flaw",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/public-exploit-released-for-patched.html",
-      "published_at": "2026-07-27T14:40:00+00:00",
-      "collected_at": "2026-07-27T17:06:28.851615+00:00",
+      "id": "2280a505042b8f5c",
+      "title": "Microsoft, Apple Release Fresh Security Updates",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/microsoft-apple-release-fresh-security-updates/",
+      "published_at": "2026-08-07T09:09:54+00:00",
+      "collected_at": "2026-08-08T13:36:25.165473+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Public exploit details released on July 27 show how an unauthenticated request can reach PHP's eval() function inside vBulletin and execute code on an unpatched forum server.",
+      "summary": "Microsoft fixed critical vulnerabilities across Azure, Entra, and SharePoint, while Apple patched a high-severity authentication bypass.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -633,49 +700,63 @@
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
-      "patch_available": false,
+      "patch_available": true,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "7123e6e4e876c71a",
-      "title": "New GitHub, PyPI Policies Boost Supply Chain Security",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/new-github-pypi-policies-boost-supply-chain-security/",
-      "published_at": "2026-07-27T14:26:00+00:00",
-      "collected_at": "2026-07-27T17:06:29.251469+00:00",
-      "category": "Supply Chain",
-      "severity": "Low",
-      "summary": "Dependabot gets a three-day cooldown window before opening pull requests, and PyPI rejects file uploads to releases older than 14 days.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "cfc6397c37eceb5f",
-      "title": "⚡ Weekly Recap: Rogue AI Agents, Check Point Exploit, Slopsquatting, ClickFix Lures and More",
+      "id": "76d72c59e4a3096d",
+      "title": "New Zapscape KVM Flaw Could Let Privileged L1 Guest Code Escape to Linux Hosts",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/07/weekly-recap-rogue-ai-agents-check.html",
-      "published_at": "2026-07-27T14:10:54+00:00",
-      "collected_at": "2026-07-27T17:06:28.851817+00:00",
-      "category": "Cloud Security",
+      "source_url": "https://thehackernews.com/2026/08/new-zapscape-kvm-flaw-could-let.html",
+      "published_at": "2026-08-06T17:58:30+00:00",
+      "collected_at": "2026-08-08T13:36:24.597056+00:00",
+      "category": "Critical Vulnerabilities",
       "severity": "Low",
-      "summary": "Monday starts with the usual promise that everything is under control.",
+      "summary": "Zapscape, a new Linux kernel vulnerability, could allow an attacker with kernel privileges inside an L1 guest virtual machine (VM) to escape KVM isolation and execute code on the host.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-64561"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "8ce9e4d219e1f1cc",
+      "title": "Critical One-Click Vulnerability in Atlassian’s Rovo AI Exposed Enterprise Data",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/critical-one-click-vulnerability-in-atlassians-rovo-ai-exposed-enterprise-data/",
+      "published_at": "2026-08-08T11:30:00+00:00",
+      "collected_at": "2026-08-08T13:36:25.164788+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "The RovoBlast attack method identified by Varonis researchers could have been exploited to steal Confluence, Jira and SharePoint data.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
