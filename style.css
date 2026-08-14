@@ -1852,6 +1852,66 @@ nav a.is-current::before {
     font: 700 12px monospace;
 }
 
+.toolkit-layout {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.toolkit-summary,
+.toolkit-warning {
+    padding: clamp(20px, 3vw, 30px);
+    border: 1px solid var(--site-line);
+    background: rgba(0,0,0,.25);
+}
+
+.toolkit-badge,
+.warning-label {
+    color: var(--site-warm);
+    font: 700 11px monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.toolkit-summary h3,
+.toolkit-warning h3 { margin: 18px 0 12px; }
+.toolkit-summary > p,
+.toolkit-warning > p { color: var(--site-muted); line-height: 1.7; }
+.toolkit-meta { margin: 28px 0 0; }
+.toolkit-meta div { padding: 13px 0; border-top: 1px solid var(--site-line); }
+.toolkit-meta dt { color: var(--site-muted); font: 700 10px monospace; letter-spacing: .12em; text-transform: uppercase; }
+.toolkit-meta dd { margin: 7px 0 0; color: var(--site-text); }
+.toolkit-meta code { overflow-wrap: anywhere; color: var(--site-warm); font-size: 11px; }
+
+.toolkit-warning {
+    border-color: rgba(200,185,143,.55);
+    background: linear-gradient(135deg, rgba(200,185,143,.09), rgba(0,0,0,.3));
+}
+
+.toolkit-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 13px 18px;
+    border: 1px solid var(--site-warm);
+    background: var(--site-warm);
+    color: #111;
+    font: 700 12px monospace;
+    letter-spacing: .08em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.toolkit-download:hover,
+.toolkit-download:focus-visible { background: transparent; color: var(--site-warm); }
+.toolkit-warning .download-consent { margin: 12px 0 0; font-size: 11px; }
+
+@media (max-width: 760px) {
+    .toolkit-layout { grid-template-columns: 1fr; }
+}
+
 .legacy-skills { display: none; }
 .capabilities-heading { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-bottom: 42px; }
 .capabilities-heading h2 { max-width: 680px; margin: 8px 0 0; }
