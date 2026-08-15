@@ -1,44 +1,44 @@
 {
-  "generated_at": "2026-08-09T13:38:49.670900+00:00",
+  "generated_at": "2026-08-15T13:20:43.692734+00:00",
   "source_count": 8,
-  "sources_succeeded": 1,
-  "articles_collected": 1,
-  "articles_after_deduplication": 1,
-  "stories_published": 1,
+  "sources_succeeded": 7,
+  "articles_collected": 66,
+  "articles_after_deduplication": 61,
+  "stories_published": 20,
   "critical_count": 0,
-  "high_count": 0,
-  "medium_count": 0,
-  "low_count": 1,
+  "high_count": 3,
+  "medium_count": 17,
+  "low_count": 0,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 17
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 1
+      "articles": 15
     },
     {
       "source": "Krebs on Security",
       "url": "https://krebsonsecurity.com/feed/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 2
     },
     {
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 10
     },
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 15
     },
     {
       "source": "MIT News AI",
@@ -49,31 +49,368 @@
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 2
     },
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 5
     }
   ],
   "stories": [
     {
-      "id": "efca8e4dba84b569",
-      "title": "Hackers breach TrueConf to trojanize client installers with backdoors",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-breach-trueconf-to-trojanize-client-installers-with-backdoors/",
-      "published_at": "2026-08-08T14:16:23+00:00",
-      "collected_at": "2026-08-09T13:38:47.946192+00:00",
-      "category": "Malware",
-      "severity": "Low",
-      "summary": "The Head Mare hacktivist group has been exploiting vulnerabilities in unpatched TrueConf video conferencing servers to replace client installers with malicious versions that deliver backdoors.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "id": "1fa2facc3f30d0ff",
+      "title": "Cisco ASA and FTD Flaw Exploited in the Wild Can Trigger Remote DoS",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/cisco-asa-and-ftd-flaw-exploited-in.html",
+      "published_at": "2026-08-12T06:15:58+00:00",
+      "collected_at": "2026-08-15T13:20:41.478295+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "Cisco has warned that a new vulnerability impacting Secure Firewall Adaptive Security Appliance (ASA) Software and Secure Firewall Threat Defense (FTD) Software has been exploited in the wild.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-20349"
+      ],
+      "cvss_score": 8.6,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 39,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "High CVSS",
+          "points": 10
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "36069f37dfa6017d",
+      "title": "Microsoft Patches 398 Flaws Including a Windows Driver Zero-Day Under Active Attack",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/microsoft-patches-398-flaws-including.html",
+      "published_at": "2026-08-11T20:10:55+00:00",
+      "collected_at": "2026-08-15T13:20:41.478403+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "Microsoft released its monthly security updates on Tuesday, and one of the flaws it closed is already being used in attacks.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-68820"
+      ],
+      "cvss_score": 7.0,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE",
+        "Zero-Day"
+      ],
+      "importance_score": 36,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "High CVSS",
+          "points": 10
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "b5ba4ab6c3715e14",
+      "title": "ShieldBreak Zero-Day PoC Claims Microsoft Defender Patch Bypass With SYSTEM Access",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/shieldbreak-zero-day-poc-claims.html",
+      "published_at": "2026-08-12T06:41:38+00:00",
+      "collected_at": "2026-08-15T13:20:41.478191+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "The security researcher going by the name Chaotic Eclipse (aka INFINITE NIGHTMARE, MSNightmare, and Nightmare-Eclipse) has released a proof-of-concept (PoC) for a new Microsoft zero-day called ShieldBreak.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-50656"
+      ],
+      "cvss_score": 7.8,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE",
+        "Zero-Day"
+      ],
+      "importance_score": 32,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "High CVSS",
+          "points": 10
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "0da9a6c77f5f218b",
+      "title": "AVEVA Enterprise SCADA",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-01",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.408530+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to tamper with serialized data, potentially resulting in code execution during deserialization.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2025-7639"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 28,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "215b91448d4dcac6",
+      "title": "Microsoft Plugs Nearly 400 Security Holes",
+      "source": "Krebs on Security",
+      "source_url": "https://krebsonsecurity.com/2026/08/microsoft-plugs-nearly-400-security-holes/",
+      "published_at": "2026-08-11T21:28:35+00:00",
+      "collected_at": "2026-08-15T13:20:41.814375+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "Microsoft today released updates to remedy at least 398 security vulnerabilities in its Windows operating systems and supported software, including one weakness that is already being actively exploited and two others that were publicly detailed prior to today.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 25,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "130edd7317c8254d",
+      "title": "Siemens Parasolid",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-10",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.404709+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Parasolid is affected by an out of bounds read vulnerability that could be triggered when the application reads files in X_T format.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-64629"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "5a2939616f1d23c7",
+      "title": "Siemens License Server (SLS)",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-07",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.405016+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Siemens License Server is affected by multiple vulnerabilities which could allow an attacker to elevate its privileges and read arbitrary files on the system.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-69108",
+        "CVE-2026-69109"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ae84b1aab0beb676",
+      "title": "Siemens Desigo DXR and PXC Controllers",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-08",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.405311+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary A vulnerability in Desigo DXR and PXC controllers has been identified that could allow an attacker to cause denial of service conditions by sending malformed BACnet packets.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-59693"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "b465bfbdf6853985",
+      "title": "Johnson Controls Inc. Airwall",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-03",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.405710+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to decrypt sensitive data, bypass authentication controls, gaining unauthorized access to read arbitrary files on the system, or gain unauthorized access to protected system resources.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-64887"
+      ],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
@@ -81,11 +418,493 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "Malware"
+        "CVE"
       ],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
       "related_sources": []
+    },
+    {
+      "id": "2d703033b3495ce1",
+      "title": "Johnson Controls Metasys",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-14",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.406066+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow a low-privilege user or attacker to inject a persistent malicious payload via a crafted URL that executes in the context of other users' sessions, including administrators, potentially leading to session hijacking and unauthorized access.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-34491"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "e757c46b684327f4",
+      "title": "Siemens Siveillance Video",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-09",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.406369+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Siveillance Video Management Servers contains a vulnerability that could allow a Remote Code Execution attack.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-3014"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "cf3bb9f4d022e023",
+      "title": "Flow Neuroscience FL-100",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-225-01",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.406623+00:00",
+      "category": "Privacy",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker within Bluetooth range to manipulate brain stimulation parameters and override safety limits.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-18164"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "3264c8ab3a0b5253",
+      "title": "Siemens LOGO! Soft Comfort",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-13",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.406925+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Siemens LOGO! Soft Comfort contains multiple vulnerabilities in its project-file encryption and password handling mechanisms.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-57262",
+        "CVE-2026-57263"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "a8ad91edb2bea185",
+      "title": "ANDRITZ HIPASE-250 and 250 SCALA",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-05",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.407265+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to read data from the device or gain access to affected workstations.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-65309",
+        "CVE-2026-65310"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "a716bf6f256f5a8c",
+      "title": "Siemens Solid Edge",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-12",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.407697+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Solid Edge is affected by multiple file parsing vulnerabilities that could be triggered when the application reads specially crafted files in PAR, PSM or DFT format.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-50058",
+        "CVE-2026-50059"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "19f8b89d63131631",
+      "title": "Siemens Simcenter Femap",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-11",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.407980+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Simcenter Femap contains two file parsing vulnerabilities that could be triggered when the application reads files in BMP file format.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-59700",
+        "CVE-2026-59701"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "10341ae0af0fff16",
+      "title": "Haiwell IoT Cloud HMI Gateway",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-02",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.408213+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability may allow an attacker to inject and execute arbitrary OS commands with root privileges.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-19188"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "fa65f8b39404bbfc",
+      "title": "Hitachi Energy APM Edge Product",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-04",
+      "published_at": "2026-08-13T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.408940+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Hitachi Energy is aware of Dirty Frag vulnerabilities that affect APM Edge product versions listed in this document.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-43284",
+        "CVE-2026-43500"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "3cad1793fe024598",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-225-06",
+      "published_at": "2026-08-12T12:00:00+00:00",
+      "collected_at": "2026-08-15T13:20:42.409241+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Fortinet has published information on vulnerabilities in FortiOS.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-23573",
+        "CVE-2026-59839"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "3c5ef5fa5324c56d",
+      "title": "Attackers Exploit SharePoint Authentication Bypass After Public PoC Release",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/attackers-exploit-sharepoint.html",
+      "published_at": "2026-08-13T06:09:48+00:00",
+      "collected_at": "2026-08-15T13:20:41.477145+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "Threat actors have begun to exploit a newly disclosed Microsoft SharePoint vulnerability following the release of a proof-of-concept (PoC) code.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-55040"
+      ],
+      "cvss_score": 9.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 22,
+      "score_breakdown": [
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "The Hacker News",
+          "source_url": "https://thehackernews.com/2026/08/researchers-disclose-ai-assisted.html"
+        }
+      ]
     }
   ]
 }
