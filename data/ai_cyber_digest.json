@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-08-16T13:21:56.982021+00:00",
+  "generated_at": "2026-08-17T13:30:11.425411+00:00",
   "source_count": 8,
-  "sources_succeeded": 1,
-  "articles_collected": 1,
-  "articles_after_deduplication": 1,
-  "stories_published": 1,
+  "sources_succeeded": 5,
+  "articles_collected": 36,
+  "articles_after_deduplication": 35,
+  "stories_published": 20,
   "critical_count": 0,
-  "high_count": 0,
-  "medium_count": 0,
-  "low_count": 1,
+  "high_count": 3,
+  "medium_count": 2,
+  "low_count": 15,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 18
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 1
+      "articles": 8
     },
     {
       "source": "Krebs on Security",
@@ -31,8 +31,8 @@
     {
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 6
     },
     {
       "source": "CISA Cybersecurity Advisories",
@@ -49,27 +49,292 @@
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 1
     },
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 3
     }
   ],
   "stories": [
     {
-      "id": "2ef1bbe49955c9fa",
-      "title": "New Evooo1Bot Linux botnet turns routers into traffic relay nodes",
+      "id": "b90ffb4f7f9bbf82",
+      "title": "Apple macOS Screen Sharing Flaw Exploited on Internet-Exposed Macs to Install Monero Miner",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/apple-macos-screen-sharing-flaw.html",
+      "published_at": "2026-08-15T07:24:04+00:00",
+      "collected_at": "2026-08-17T13:30:09.283955+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "A recently patched security flaw in Apple macOS has come under active exploitation in the wild to deploy a cryptocurrency miner, the Netherlands National Cyber Security Centre (NCSC) has warned.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-65400"
+      ],
+      "cvss_score": 9.8,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 47,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "92db34388e895270",
+      "title": "GeoServer Zero-Day Targeted in Active Exploitation Attempts, Can Lead to RCE",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/unpatched-geoserver-zero-day-targeted.html",
+      "published_at": "2026-08-13T18:45:12+00:00",
+      "collected_at": "2026-08-17T13:30:09.285496+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "A newly disclosed zero-day flaw in GeoServer is seeing active exploitation efforts, per watchTowr.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 43,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "Zero-day",
+          "points": 18
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "f632e57bed8cc4fc",
+      "title": "Suspected China-Nexus Actor Exploits VMware vCenter Flaw, Deploys Babuk-Derived Ransomware",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/suspected-china-nexus-actor-exploits.html",
+      "published_at": "2026-08-17T07:36:19+00:00",
+      "collected_at": "2026-08-17T13:30:09.283625+00:00",
+      "category": "Ransomware",
+      "severity": "High",
+      "summary": "Cybersecurity researchers have attributed the exploitation of a newly patched security flaw in Broadcom VMware vCenter to a suspected China-nexus advanced persistent threat (APT).",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-59310"
+      ],
+      "cvss_score": 9.8,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE",
+        "Ransomware"
+      ],
+      "importance_score": 34,
+      "score_breakdown": [
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "Ransomware",
+          "points": 12
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "32f4f04d99f80d44",
+      "title": "SAP Commerce Cloud CVE-2026-58231 Targeted in Exploitation Attempts Days After Patch",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/sap-commerce-cloud-cve-2026-58231.html",
+      "published_at": "2026-08-15T08:38:46+00:00",
+      "collected_at": "2026-08-17T13:30:09.283793+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "A maximum-severity security vulnerability impacting SAP Commerce Cloud is witnessing active exploitation efforts.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-58231"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 29,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "SecurityWeek",
+          "source_url": "https://www.securityweek.com/critical-sap-commerce-cloud-vulnerability-exploited-3-days-after-disclosure/"
+        }
+      ]
+    },
+    {
+      "id": "9da7db7cc2a65cda",
+      "title": "Microsoft working on Defender patch for ShieldBreak zero-day",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/new-evooo1bot-linux-botnet-turns-routers-into-traffic-relay-nodes/",
-      "published_at": "2026-08-15T14:14:38+00:00",
-      "collected_at": "2026-08-16T13:21:55.390866+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/microsoft-working-on-defender-patch-for-shieldbreak-zero-day/",
+      "published_at": "2026-08-17T09:05:33+00:00",
+      "collected_at": "2026-08-17T13:30:09.329762+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "Microsoft is working on a security patch for the \"ShieldBreak\" zero-day vulnerability disclosed last week by security researcher \"Nightmare Eclipse\" and now tracked as CVE-2026-69414.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-69414"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE",
+        "Zero-Day"
+      ],
+      "importance_score": 22,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "1982bb8549d62c4e",
+      "title": "Philips and GE investigating Clop ransomware data theft claims",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/philips-and-ge-investigating-clop-ransomware-data-theft-claims/",
+      "published_at": "2026-08-17T11:25:02+00:00",
+      "collected_at": "2026-08-17T13:30:09.329414+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "Tech giants General Electric (GE) and Philips have also confirmed they're investigating claims that the Clop ransomware gang breached their systems and stole data.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Ransomware"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "8fdaa82dbfebac00",
+      "title": "China-Linked Jewelbug Uses XG-Web for Government Espionage and Crypto Fraud",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/china-linked-jewelbug-uses-xg-web-for.html",
+      "published_at": "2026-08-14T07:54:18+00:00",
+      "collected_at": "2026-08-17T13:30:09.285278+00:00",
+      "category": "Nation-State Activity",
+      "severity": "Low",
+      "summary": "The China-linked threat actor known as Jewelbug has been observed carrying out cyber espionage operations targeting governments and militaries, while simultaneously engaging in cryptocurrency fraud.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Nation-state activity",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "e478dc0032594e36",
+      "title": "New PATCHCORD Backdoor Targets Afghan Telecom and Indian Critical Infrastructure",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/new-patchcord-backdoor-targets-afghan.html",
+      "published_at": "2026-08-13T15:00:29+00:00",
+      "collected_at": "2026-08-17T13:30:09.285828+00:00",
       "category": "Malware",
       "severity": "Low",
-      "summary": "A new Mirai-based modular Linux botnet malware called Evooo1Bot has been targeting internet-facing gateway devices, turning them into SOCKS5 traffic relay nodes.",
+      "summary": "Afghan telecom providers and South Asian critical infrastructure organizations have emerged as the target of a new ongoing campaign that delivers a previously undocumented backdoor called PATCHCORD.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -83,6 +348,356 @@
       "tags": [
         "Malware"
       ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "651dff2e0053b34f",
+      "title": "French tax authority data breach affects 678,000 individuals",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/french-tax-authority-data-breach-affects-678-000-individuals/",
+      "published_at": "2026-08-17T10:09:48+00:00",
+      "collected_at": "2026-08-17T13:30:09.329603+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "The French Ministry of the Economy and Finance has disclosed a data breach after an attacker accessed the General Directorate of Public Finances (DGFiP) systems and stole data belonging to 678,000 individuals.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "2444e8256b11b6e0",
+      "title": "40,000 Impacted by SafePal Data Breach",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/40000-impacted-by-safepal-data-breach/",
+      "published_at": "2026-08-17T09:37:06+00:00",
+      "collected_at": "2026-08-17T13:30:09.610715+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Hackers exploited a vulnerability in the order-tracking function of a plugin to access SafePal customer information.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "847da71208bc87c8",
+      "title": "SafePal data breach impacts 39,798 customers, stolen info for sale",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/safepal-data-breach-impacts-39-798-customers-stolen-info-for-sale/",
+      "published_at": "2026-08-16T23:47:06+00:00",
+      "collected_at": "2026-08-17T13:30:09.329920+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Cryptocurrency hardware wallet provider SafePal is warning of a data breach affecting about 39,798 customers after a flaw was exploited to steal customer order information, and a threat actor is now claiming to be selling the stolen data.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "fb164264aae8e9e0",
+      "title": "ThreatsDay: GhostJacking AI Attacks, EtherHiding ClickFix, Cursor CLI Flaw + 17 More Stories",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/threatsday-ghostjacking-ai-attacks.html",
+      "published_at": "2026-08-13T18:17:10+00:00",
+      "collected_at": "2026-08-17T13:30:09.285668+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Some weeks have one big security story.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach",
+        "Malware"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "5016d2d7a952351f",
+      "title": "Irregular Details How a Naming Error Let AI Models Attack a Real Company",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/irregular-details-how-a-naming-error-let-ai-models-attack-a-real-company/",
+      "published_at": "2026-08-17T12:11:00+00:00",
+      "collected_at": "2026-08-17T13:30:09.610355+00:00",
+      "category": "AI Security",
+      "severity": "Low",
+      "summary": "The AI security testing firm has shared information on a recently disclosed incident involving Anthropic AI models.",
+      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "AI"
+      ],
+      "importance_score": 8,
+      "score_breakdown": [
+        {
+          "signal": "AI security relevance",
+          "points": 8
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "5ab36643acff495f",
+      "title": "How MCP Servers Can Expose Enterprise Secrets",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/how-mcp-servers-can-expose-enterprise.html",
+      "published_at": "2026-08-17T11:58:00+00:00",
+      "collected_at": "2026-08-17T13:30:09.283014+00:00",
+      "category": "AI Security",
+      "severity": "Low",
+      "summary": "MCP servers can expose enterprise secrets through plaintext configuration files, over-permissioned access and prompt injection, often before security teams even know the server is running.",
+      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 8,
+      "score_breakdown": [
+        {
+          "signal": "AI security relevance",
+          "points": 8
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "47cc0c0a32769532",
+      "title": "Windows Server 2022 reaches end of mainstream support in 60 days",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/microsoft/windows-server-2022-reaches-end-of-mainstream-support-in-60-days/",
+      "published_at": "2026-08-17T12:33:11+00:00",
+      "collected_at": "2026-08-17T13:30:09.329199+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Microsoft has reminded IT administrators that Windows Server 2022 is rapidly approaching its mainstream end date of October 2026, when it will switch to extended support.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "bdee59cb8a423c87",
+      "title": "Conflicting Test Goals Pushed Claude Agents to Deploy Self-Replicating Malware",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/conflicting-test-goals-pushed-claude-agents-to-deploy-self-replicating-malware/",
+      "published_at": "2026-08-17T11:09:57+00:00",
+      "collected_at": "2026-08-17T13:30:09.610557+00:00",
+      "category": "Malware",
+      "severity": "Low",
+      "summary": "Anthropic has been conducting tests to identify issues in how AI agents interact with each other.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Malware"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "7979468895335d50",
+      "title": "Unisoc VoLTE Video Call Exploit Chain Can Give Attackers Full Android Kernel Access",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/unisoc-volte-video-call-exploit-chain.html",
+      "published_at": "2026-08-17T10:52:34+00:00",
+      "collected_at": "2026-08-17T13:30:09.283237+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "Security researchers at SSD Secure Disclosure have published a two-stage exploit chain that achieves full Android kernel access on devices running Unisoc modem firmware through a VoLTE video call, with no fix from the chipset maker.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "7637e999c6441646",
+      "title": "Evooo1Bot Linux Botnet Exploits Known Flaws to Turn Edge Devices Into SOCKS5 Proxies",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/evooo1bot-linux-botnet-exploits-known.html",
+      "published_at": "2026-08-17T09:29:55+00:00",
+      "collected_at": "2026-08-17T13:30:09.283451+00:00",
+      "category": "Cloud Security",
+      "severity": "Low",
+      "summary": "Cybersecurity researchers have flagged a previously undocumented Linux botnet family dubbed Evooo1Bot that derives its core functionality from the Mirai botnet source code and is equipped to turn internet-facing devices into SOCKS proxies.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Malware"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "cb007e6bc04e44c8",
+      "title": "Recent macOS Screen Sharing Vulnerability Exploited in Attacks",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/recent-macos-screen-sharing-vulnerability-exploited-in-attacks/",
+      "published_at": "2026-08-17T08:47:38+00:00",
+      "collected_at": "2026-08-17T13:30:09.610868+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Threat actors gained root access to the vulnerable systems and deployed a Monero miner.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "4001c007c7b53144",
+      "title": "Get closer to the game with Gemini and Pixel",
+      "source": "Google AI",
+      "source_url": "https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships/",
+      "published_at": "2026-08-17T08:00:00+00:00",
+      "collected_at": "2026-08-17T13:30:10.868870+00:00",
+      "category": "Artificial Intelligence",
+      "severity": "Low",
+      "summary": "Low-angle view of a soccer player kicking a ball mid-air against a bright blue sky, with grass flying from their cleats.",
+      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
       "importance_score": 0,
       "score_breakdown": [],
       "related_sources": []
