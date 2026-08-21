@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-08-20T13:36:46.094440+00:00",
+  "generated_at": "2026-08-21T13:35:27.470087+00:00",
   "source_count": 8,
   "sources_succeeded": 6,
-  "articles_collected": 38,
-  "articles_after_deduplication": 38,
+  "articles_collected": 31,
+  "articles_after_deduplication": 30,
   "stories_published": 20,
   "critical_count": 1,
-  "high_count": 0,
-  "medium_count": 2,
-  "low_count": 17,
+  "high_count": 3,
+  "medium_count": 4,
+  "low_count": 12,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 10
+      "articles": 12
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 13
+      "articles": 7
     },
     {
       "source": "Krebs on Security",
@@ -32,7 +32,7 @@
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 10
+      "articles": 7
     },
     {
       "source": "CISA Cybersecurity Advisories",
@@ -43,14 +43,14 @@
     {
       "source": "MIT News AI",
       "url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 1
     },
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
-      "status": "success",
-      "articles": 1
+      "status": "no_new_articles",
+      "articles": 0
     },
     {
       "source": "OpenAI News",
@@ -61,20 +61,21 @@
   ],
   "stories": [
     {
-      "id": "a8ddc227e8620486",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "id": "1dec6f2989c01b15",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
       "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/19/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "published_at": "2026-08-19T12:00:00+00:00",
-      "collected_at": "2026-08-20T13:36:44.995845+00:00",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/20/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "published_at": "2026-08-20T12:00:00+00:00",
+      "collected_at": "2026-08-21T13:35:26.310470+00:00",
       "category": "Active Exploitation",
       "severity": "Critical",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
       "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-64849"
+        "CVE-2026-72529",
+        "CVE-2026-72530"
       ],
       "cvss_score": null,
       "known_exploited": true,
@@ -111,15 +112,146 @@
       "related_sources": []
     },
     {
-      "id": "3a6e3831490d70d1",
-      "title": "Critical Zimbra RCE flaw now actively exploited in attacks",
+      "id": "7850fb529146db3c",
+      "title": "GitLab CVE-2026-19478 Comes Under Active Exploitation Within Days of Disclosure",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/gitlab-cve-2026-19478-comes-under.html",
+      "published_at": "2026-08-21T07:04:25+00:00",
+      "collected_at": "2026-08-21T13:35:25.305619+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "A newly disclosed security flaw in GitLab has come under active exploitation within days of public disclosure, according to watchTowr.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-19478"
+      ],
+      "cvss_score": 9.4,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 47,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "630ad3fed036364e",
+      "title": "Microsoft Entra ID Flaw (CVSS 10.0) Exploited in Wild, Allows Remote Code Execution",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/microsoft-entra-id-flaw-cvss-100.html",
+      "published_at": "2026-08-21T06:06:11+00:00",
+      "collected_at": "2026-08-21T13:35:25.305788+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "Microsoft on Thursday warned of a maximum-severity security flaw in Entra ID that it said has been exploited in the wild, but noted that no customer action is required.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-69836"
+      ],
+      "cvss_score": 10.0,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 47,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "572e047ecd00903a",
+      "title": "Attackers Exploit Zimbra SNMP Flaw for Unauthenticated Remote Code Execution",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/attackers-exploit-zimbra-snmp-flaw-for.html",
+      "published_at": "2026-08-20T13:24:28+00:00",
+      "collected_at": "2026-08-21T13:35:25.307094+00:00",
+      "category": "Active Exploitation",
+      "severity": "High",
+      "summary": "A now-patched security flaw impacting Zimbra Collaboration (ZCS) has come under active exploitation in the wild, according to the Polish Computer Emergency Response Team (CERT Polska).",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-73570"
+      ],
+      "cvss_score": 8.9,
+      "known_exploited": false,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 39,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "High CVSS",
+          "points": 10
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "SecurityWeek",
+          "source_url": "https://www.securityweek.com/hackers-target-zimbra-servers-in-active-exploitation-campaign/"
+        }
+      ]
+    },
+    {
+      "id": "7cc11dd0cff08b09",
+      "title": "CISA orders feds to patch actively exploited TrueConf Server flaws",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/critical-zimbra-rce-flaw-now-actively-exploited-in-attacks/",
-      "published_at": "2026-08-20T09:46:54+00:00",
-      "collected_at": "2026-08-20T13:36:44.298150+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-actively-exploited-trueconf-server-flaws/",
+      "published_at": "2026-08-21T12:25:33+00:00",
+      "collected_at": "2026-08-21T13:35:25.403137+00:00",
       "category": "Active Exploitation",
       "severity": "Medium",
-      "summary": "CERT Polska, the Polish Computer Emergency Response Team (CERT), warned that attackers have begun exploiting a critical vulnerability in Zimbra Collaboration Suite (ZCS).",
+      "summary": "The U.S.",
       "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
@@ -141,27 +273,31 @@
       "related_sources": []
     },
     {
-      "id": "95cffd3568d060e4",
-      "title": "Defending Against an Active Threat to Siemens S7 Series PLCs",
+      "id": "70f2277fb6a228ef",
+      "title": "Johnson Controls Simplex Incident Manager",
       "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-231a",
-      "published_at": "2026-08-19T12:00:00+00:00",
-      "collected_at": "2026-08-20T13:36:44.996960+00:00",
-      "category": "Government Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-232-01",
+      "published_at": "2026-08-20T12:00:00+00:00",
+      "collected_at": "2026-08-21T13:35:26.310834+00:00",
+      "category": "Critical Vulnerabilities",
       "severity": "Medium",
-      "summary": "Executive summary Note: This advisory relates to an active threat to Siemens S7 Series programmable logic controllers (PLCs).",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow a local attacker with low privileges to extract user credentials (passwords and authentication tokens) from system memory, potentially leading to unauthorized access to the application and connected systems.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
+      "cves": [
+        "CVE-2026-27875"
+      ],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 20,
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
       "score_breakdown": [
         {
           "signal": "Critical infrastructure",
@@ -170,82 +306,24 @@
         {
           "signal": "Government advisory",
           "points": 8
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "2b2f8778b75699ef",
-      "title": "Rogue ransomware affiliate poses as recovery firm to steal payments",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/rogue-ransomware-affiliate-ransom-busters-poses-as-recovery-firm/",
-      "published_at": "2026-08-19T20:59:58+00:00",
-      "collected_at": "2026-08-20T13:36:44.298655+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "A suspected ransomware affiliate is posing as a ransomware recovery service called \"Ransom Busters,\" contacting the victims before the attacks become public and claiming to be able to provide decryption keys and delete stolen data for a fee.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
+        },
         {
-          "signal": "Ransomware",
-          "points": 12
+          "signal": "CVE cited",
+          "points": 4
         }
       ],
       "related_sources": []
     },
     {
-      "id": "71fc6995d69ed28f",
-      "title": "US warns of AI-powered attacks on Siemens PLCs in critical infrastructure",
+      "id": "c28837178a4227a5",
+      "title": "SickKids data breach exposes employee and job applicant info",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/us-warns-of-ai-powered-attacks-on-siemens-plcs-in-critical-infrastructure/",
-      "published_at": "2026-08-19T17:50:01+00:00",
-      "collected_at": "2026-08-20T13:36:44.299269+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "U.S.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "fd9aa5790c84cee2",
-      "title": "Healthtech firm CareCloud data breach impacts 3.7 million patients",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/healthtech-firm-carecloud-data-breach-impacts-37-million-patients/",
-      "published_at": "2026-08-19T20:07:12+00:00",
-      "collected_at": "2026-08-20T13:36:44.298945+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/sickkids-data-breach-exposes-employee-and-job-applicant-info/",
+      "published_at": "2026-08-21T10:10:42+00:00",
+      "collected_at": "2026-08-21T13:35:25.403646+00:00",
       "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "U.S.",
+      "severity": "Medium",
+      "summary": "Toronto's Hospital for Sick Children (SickKids) says a cybersecurity incident exposed the personal information of some current and former employees and job applicants, stemming from a flaw in third-party software.",
       "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
       "affected_products": [],
       "affected_vendors": [],
@@ -259,8 +337,12 @@
       "tags": [
         "Data Breach"
       ],
-      "importance_score": 10,
+      "importance_score": 22,
       "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
         {
           "signal": "Major data exposure",
           "points": 10
@@ -269,293 +351,111 @@
       "related_sources": []
     },
     {
-      "id": "e9af320d90c544ae",
-      "title": "CISA warns of hackers exploiting critical MLflow vulnerability",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-exploiting-critical-mlflow-vulnerability/",
-      "published_at": "2026-08-20T11:06:14+00:00",
-      "collected_at": "2026-08-20T13:36:44.297828+00:00",
-      "category": "Government Advisories",
-      "severity": "Low",
-      "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) warned federal agencies that threat actors are now exploiting a critical vulnerability in the MLflow open-source AI engineering platform.",
+      "id": "51c8d451f6eb936f",
+      "title": "Cisco Patches Nine Crosswork and Secure Workload Flaws, Five Scoring CVSS 10.0",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/cisco-patches-nine-crosswork-and-secure.html",
+      "published_at": "2026-08-21T10:03:11+00:00",
+      "collected_at": "2026-08-21T13:35:25.305434+00:00",
+      "category": "Cloud Security",
+      "severity": "Medium",
+      "summary": "Cisco has published another round of security updates for Crosswork platforms and Secure Workload Software as part of a continued comprehensive internal security review.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
-      "cvss_score": null,
+      "cvss_score": 10.0,
       "known_exploited": false,
       "active_exploitation": false,
-      "patch_available": false,
+      "patch_available": true,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [],
-      "importance_score": 8,
+      "importance_score": 22,
       "score_breakdown": [
         {
-          "signal": "Government advisory",
-          "points": 8
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "e47f737af38eb916",
-      "title": "Hackers Using AI to Target Siemens PLCs in Critical US Sectors",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/hackers-using-ai-to-target-siemens-plcs-in-critical-us-sectors/",
-      "published_at": "2026-08-20T07:02:02+00:00",
-      "collected_at": "2026-08-20T13:36:44.593873+00:00",
-      "category": "Government Advisories",
-      "severity": "Low",
-      "summary": "A cybersecurity advisory with technical details and recommendations has been written by the NSA, CISA and other agencies.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 8,
-      "score_breakdown": [
+          "signal": "Critical CVSS",
+          "points": 18
+        },
         {
-          "signal": "Government advisory",
-          "points": 8
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "e5821c833a2f64b3",
-      "title": "Critical GitLab Flaw Exploited Shortly After Disclosure",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/critical-gitlab-flaw-exploited-shortly-after-disclosure/",
-      "published_at": "2026-08-20T07:48:24+00:00",
-      "collected_at": "2026-08-20T13:36:44.593731+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "CVE-2026-19478 can be exploited without authentication to modify or delete public projects and user data.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-19478"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
+          "signal": "Patch available",
           "points": 4
         }
       ],
       "related_sources": []
     },
     {
-      "id": "b1da55ba01341c88",
-      "title": "Elementor Pro Flaw Could Let Unauthenticated Attackers Upload PHP and Execute Code",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/elementor-pro-flaw-could-let.html",
-      "published_at": "2026-08-20T06:04:34+00:00",
-      "collected_at": "2026-08-20T13:36:44.245421+00:00",
-      "category": "Critical Vulnerabilities",
+      "id": "5c4e2cd6076c559a",
+      "title": "Rust Supply Chain Attack Linked to North Korean Hackers",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/rust-supply-chain-attack-linked-to-north-korean-hackers/",
+      "published_at": "2026-08-21T09:23:18+00:00",
+      "collected_at": "2026-08-21T13:35:25.756508+00:00",
+      "category": "Nation-State Activity",
       "severity": "Low",
-      "summary": "Cybersecurity researchers have disclosed details of a critical flaw in the Elementor Pro WordPress plugin that, if successfully exploited, could lead to remote code execution.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "summary": "Hackers pushed a poisoned arrayref version that added a dependency to fetch a malicious payload from a remote server.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [
-        "CVE-2026-32475"
-      ],
+      "cves": [],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
+      "tags": [],
+      "importance_score": 12,
       "score_breakdown": [
         {
-          "signal": "CVE cited",
-          "points": 4
+          "signal": "Nation-state activity",
+          "points": 12
         }
       ],
       "related_sources": []
     },
     {
-      "id": "7c35278befa7606b",
-      "title": "Threat Actor Hacks 14,000 IP Cameras in Ukraine and Russia",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/threat-actor-hacks-14000-ip-cameras-in-ukraine-and-russia/",
-      "published_at": "2026-08-20T13:16:35+00:00",
-      "collected_at": "2026-08-20T13:36:44.592639+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Operation CameraSwarm targeted Dahua cameras across multiple countries, focusing on Russian and CIS telecom netblocks.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "2e61538784a463f0",
-      "title": "Atlassian, Splunk Patch Dozens of Critical, High-Severity Vulnerabilities",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/atlassian-splunk-patch-dozens-of-critical-high-severity-vulnerabilities/",
-      "published_at": "2026-08-20T12:24:53+00:00",
-      "collected_at": "2026-08-20T13:36:44.592802+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "The flaws could be exploited to execute arbitrary code, access sensitive information, and elevate privileges.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "1c6b6eea4c8b2950",
-      "title": "Citrix urges admins to patch new NetScaler flaws as soon as possible",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/citrix-urges-admins-to-patch-new-netscaler-flaws-as-soon-as-possible/",
-      "published_at": "2026-08-20T12:14:38+00:00",
-      "collected_at": "2026-08-20T13:36:44.297651+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "Citrix has warned customers to immediately secure their systems against two vulnerabilities affecting NetScaler Gateway secure remote access solutions and NetScaler ADC networking appliances.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "b437cbcc9c57d0b4",
-      "title": "MLflow Vulnerability Exploited for Cloud Credential Theft",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/mlflow-vulnerability-exploited-for-cloud-credential-theft/",
-      "published_at": "2026-08-20T12:05:55+00:00",
-      "collected_at": "2026-08-20T13:36:44.592955+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "The critical-severity flaw allows attackers to send HTTP requests to internal endpoints and extract sensitive information.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "b398c07080514782",
-      "title": "Zombie Card Attack Can Revive Expired Visa Cards for Contactless Payments",
+      "id": "827ef3b45efd4e47",
+      "title": "AI-Generated Exploit Scripts Target Siemens S7 PLCs in U.S. Critical Infrastructure",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/zombie-card-attack-can-revive-expired.html",
-      "published_at": "2026-08-20T12:01:24+00:00",
-      "collected_at": "2026-08-20T13:36:44.244180+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Researchers at the University of Massachusetts Amherst have demonstrated an attack that revives expired Visa contactless credit cards for real in-store purchases by rewriting the expiration date a point-of-sale (POS) terminal reads over near-field communication (NFC), without breaking any of the card's cryptography.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "d693b23125095cb1",
-      "title": "Cisco Patches Critical Crosswork, Secure Workload Vulnerabilities",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/cisco-patches-critical-crosswork-secure-workload-vulnerabilities/",
-      "published_at": "2026-08-20T11:46:04+00:00",
-      "collected_at": "2026-08-20T13:36:44.593102+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "The flaws could lead to remote code execution, authentication bypasses, and path traversal attacks.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "64fb72e4f152cc75",
-      "title": "Why \"Shady AI\" is Security's Next Big Governance Problem",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/why-shady-ai-is-securitys-next-big.html",
-      "published_at": "2026-08-20T11:45:00+00:00",
-      "collected_at": "2026-08-20T13:36:44.244424+00:00",
+      "source_url": "https://thehackernews.com/2026/08/ai-generated-exploit-scripts-target.html",
+      "published_at": "2026-08-20T16:59:44+00:00",
+      "collected_at": "2026-08-21T13:35:25.306479+00:00",
       "category": "Artificial Intelligence",
       "severity": "Low",
-      "summary": "In March 2026, an internal AI agent at Meta triggered a “Sev 1” incident after sensitive company and user data was exposed to employees who weren’t authorized to access it.",
+      "summary": "The U.S.",
+      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "AI"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "eaaed4290b794f92",
+      "title": "New Cryptographic Context Injection Attack Could Let Web Pages Steal Grok Chat Data",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/new-cryptographic-context-injection.html",
+      "published_at": "2026-08-20T14:36:27+00:00",
+      "collected_at": "2026-08-21T13:35:25.306635+00:00",
+      "category": "AI Security",
+      "severity": "Low",
+      "summary": "Adversa AI has disclosed an attack technique that it says can cause xAI's Grok chatbot to send a user's name, approximate location, subscription tier, and the prompts from the ongoing conversation to an attacker-controlled server after the user asks it to summarize an ordinary web page.",
       "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
       "affected_products": [],
       "affected_vendors": [],
@@ -567,20 +467,25 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "importance_score": 8,
+      "score_breakdown": [
+        {
+          "signal": "AI security relevance",
+          "points": 8
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "6740d03ebc5ee612",
-      "title": "CDN Tsunami Attack Abuses HTTP/3 Translation for Up to 350x DoS Amplification",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/cdn-tsunami-attack-abuses-http3.html",
-      "published_at": "2026-08-20T11:39:35+00:00",
-      "collected_at": "2026-08-20T13:36:44.244597+00:00",
-      "category": "General Cybersecurity",
+      "id": "ba35d7fbce4df709",
+      "title": "Critical Isolated-vm Vulnerability Leads to RCE on Host",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/critical-isolated-vm-vulnerability-leads-to-rce-on-host/",
+      "published_at": "2026-08-21T12:26:07+00:00",
+      "collected_at": "2026-08-21T13:35:25.756342+00:00",
+      "category": "Critical Vulnerabilities",
       "severity": "Low",
-      "summary": "Cybersecurity researchers have disclosed two denial-of-service (DoS) attacks that exploit how major content delivery networks (CDNs) convert client-facing HTTP/3 traffic into HTTP/1.1 requests to the websites they front, amplifying a low-bandwidth request stream by up to 350x against the origin server.",
+      "summary": "The type confusion bug can lead to V8 sandbox escape and control-flow hijacking of the host process.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -597,15 +502,67 @@
       "related_sources": []
     },
     {
-      "id": "cde593dd7ab80cde",
-      "title": "Manic Android Malware Exfiltrates Data From Offline Phones via Nearby Infected Devices",
+      "id": "315a7872c69345e6",
+      "title": "Wazuh and AI For Enhanced SOC Workflows",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/manic-android-malware-exfiltrates-data.html",
-      "published_at": "2026-08-20T11:26:08+00:00",
-      "collected_at": "2026-08-20T13:36:44.244764+00:00",
+      "source_url": "https://thehackernews.com/2026/08/wazuh-and-ai-for-enhanced-soc-workflows.html",
+      "published_at": "2026-08-21T11:21:39+00:00",
+      "collected_at": "2026-08-21T13:35:25.305220+00:00",
+      "category": "Artificial Intelligence",
+      "severity": "Low",
+      "summary": "Artificial Intelligence (AI) has become one of this decade's defining technologies.",
+      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "AI"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "4afb6e3d2eca76f5",
+      "title": "Microsoft warns of max severity Entra ID flaw exploited in attacks",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-warns-of-max-severity-entra-id-flaw-exploited-in-attacks/",
+      "published_at": "2026-08-21T11:04:10+00:00",
+      "collected_at": "2026-08-21T13:35:25.403333+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Microsoft has patched a maximum-severity vulnerability in the Entra ID identity and access management (IAM) platform that has been exploited in attacks.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "24de1cffcbc07dae",
+      "title": "Hackers abuse FTP server banners to deliver new Windows malware",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-abuse-ftp-server-banners-to-deliver-new-windows-malware/",
+      "published_at": "2026-08-21T11:00:00+00:00",
+      "collected_at": "2026-08-21T13:35:25.403490+00:00",
       "category": "Malware",
       "severity": "Low",
-      "summary": "A new Android threat codenamed Manic has been observed actively targeting Ukrainian banks, government and identity services, and messaging applications, as well as Russian and European financial institutions, global fintech and cryptocurrency services, and military-focused communications.",
+      "summary": "Threat actors are abusing FTP banners to hide commands that deliver two previously undocumented remote access trojans named E4del and PINHOLE.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -624,15 +581,119 @@
       "related_sources": []
     },
     {
-      "id": "3ff4a07f9778cadd",
-      "title": "AI-Assisted Tool Helped Secure Satellite Communication System After 2022 Russian Hacking",
+      "id": "abb668445ad6749a",
+      "title": "Contractors’ CMMC Confidence Rises as Ability to Prove It Falls Behind",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/ai-assisted-tool-helped-secure-satellite-communication-system-after-2022-russian-hacking/",
-      "published_at": "2026-08-20T11:08:00+00:00",
-      "collected_at": "2026-08-20T13:36:44.593281+00:00",
+      "source_url": "https://www.securityweek.com/contractors-cmmc-confidence-rises-as-ability-to-prove-it-falls-behind/",
+      "published_at": "2026-08-21T08:41:06+00:00",
+      "collected_at": "2026-08-21T13:35:25.756675+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Atalanta's Argo product is now being used to prove the resilience of Viasat’s satellite communications network.",
+      "summary": "Two industry surveys released this week by Kiteworks and CyberSheath paint a consistent picture of the defense industrial base.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "881dd1c96ee4dfa2",
+      "title": "Microsoft Patches Exploited Entra ID Vulnerability",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/microsoft-rolls-out-22-fresh-security-patches/",
+      "published_at": "2026-08-21T08:12:19+00:00",
+      "collected_at": "2026-08-21T13:35:25.756825+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "A total of 22 patches were releaased, a majority for code execution, privilege escalation, and information disclosure vulnerabilities.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "be976adb7e03a07d",
+      "title": "CISA Urges Immediate Patching of Exploited TrueConf Vulnerabilities",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/cisa-urges-immediate-patching-of-exploited-trueconf-vulnerabilities/",
+      "published_at": "2026-08-21T07:25:50+00:00",
+      "collected_at": "2026-08-21T13:35:25.756970+00:00",
+      "category": "Malware",
+      "severity": "Low",
+      "summary": "The Head Mare hacktivist group has been exploiting the bugs to deploy the PhantomCore malware.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Malware"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "41850b0deaa2721c",
+      "title": "Rust Supply Chain Attack Puts Build-Time Malware in Crates with 245 Million Downloads",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/rust-supply-chain-attack-puts-build.html",
+      "published_at": "2026-08-20T20:22:35+00:00",
+      "collected_at": "2026-08-21T13:35:25.305954+00:00",
+      "category": "Supply Chain",
+      "severity": "Low",
+      "summary": "The Rust Project has deleted malicious versions of three widely used Rust crates from crates.io after a compromised maintainer account published releases that added a typosquatted dependency whose build script downloaded and executed a remote payload during compilation.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Malware"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "42c3afc04079c9f5",
+      "title": "Suspected Russian Hackers Abuse Google OAuth and WhatsApp Linking to Hijack Accounts",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/suspected-russian-hackers-abuse-google.html",
+      "published_at": "2026-08-20T19:59:19+00:00",
+      "collected_at": "2026-08-21T13:35:25.306117+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Three distinct suspected Russian cyber espionage threat clusters have been observed leveraging legitimate authentication flows to single out individuals working in academia, aerospace and defense, governments, and think tanks across Europe, as well as academia and think tanks within the U.S.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
