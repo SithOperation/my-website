@@ -13,7 +13,10 @@ from urllib.parse import unquote, urlsplit
 
 import yaml
 
-MAX_PAGES_BYTES = 100 * 1024 * 1024
+# The published rapid-defense toolkit is a 54 MiB download.  Keep a hard
+# deployment budget, while allowing the current 137 MiB staged site and a
+# small amount of routine data growth.
+MAX_PAGES_BYTES = 160 * 1024 * 1024
 LINK_PATTERN = re.compile(r"""(?:href|src)=["']([^"'#]+)["']""", re.IGNORECASE)
 
 
