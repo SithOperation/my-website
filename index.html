@@ -812,14 +812,38 @@ frame-src 'self';
 
 
 
-            <a href="assets/projects/resume2026.pdf?v=20260823" target="_blank" rel="noopener noreferrer" type="application/pdf" class="project-link">
+            <a href="#resume-viewer" class="project-link" aria-label="View resume in this website">
 
-                Open Resume (PDF)
+                View Resume (PDF)
 
             </a>
 
 
 
+        </section>
+
+        <section id="resume-viewer" class="resume-viewer" role="dialog" aria-modal="true" aria-labelledby="resume-viewer-title">
+            <div class="resume-viewer__panel">
+                <div class="resume-viewer__header">
+                    <div>
+                        <p class="editorial-kicker">Resume / PDF Viewer</p>
+                        <h2 id="resume-viewer-title">Joseph Technologies Resume</h2>
+                    </div>
+                    <a class="resume-viewer__back" href="#resume" aria-label="Close resume viewer and return to the website">Back to Website</a>
+                </div>
+
+                <iframe
+                    class="resume-viewer__document"
+                    src="assets/projects/resume2026.pdf?v=20260823"
+                    title="Joseph Technologies resume PDF">
+                    <a href="assets/projects/resume2026.pdf?v=20260823">Open the resume PDF</a>
+                </iframe>
+
+                <div class="resume-viewer__footer">
+                    <a class="resume-viewer__back" href="#resume">Back to Website</a>
+                    <a class="resume-viewer__download" href="assets/projects/resume2026.pdf?v=20260823" download="resume2026.pdf">Download PDF</a>
+                </div>
+            </div>
         </section>
 
 
