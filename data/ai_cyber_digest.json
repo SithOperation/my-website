@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-08-25T13:38:42.299468+00:00",
+  "generated_at": "2026-08-26T13:43:14.495077+00:00",
   "source_count": 8,
-  "sources_succeeded": 6,
-  "articles_collected": 31,
-  "articles_after_deduplication": 28,
+  "sources_succeeded": 7,
+  "articles_collected": 45,
+  "articles_after_deduplication": 43,
   "stories_published": 20,
   "critical_count": 1,
   "high_count": 0,
-  "medium_count": 1,
-  "low_count": 18,
+  "medium_count": 10,
+  "low_count": 9,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 9
+      "articles": 12
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 9
+      "articles": 10
     },
     {
       "source": "Krebs on Security",
@@ -32,13 +32,13 @@
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 9
+      "articles": 8
     },
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "success",
-      "articles": 1
+      "articles": 9
     },
     {
       "source": "MIT News AI",
@@ -49,24 +49,24 @@
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 1
     },
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 2
+      "articles": 4
     }
   ],
   "stories": [
     {
-      "id": "7cdfd185bcfa807b",
+      "id": "bdf3c3b943da6a2d",
       "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
       "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/24/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "published_at": "2026-08-24T12:00:00+00:00",
-      "collected_at": "2026-08-25T13:38:41.364882+00:00",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.303497+00:00",
       "category": "Active Exploitation",
       "severity": "Critical",
       "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
@@ -74,7 +74,7 @@
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-21962"
+        "CVE-2026-60004"
       ],
       "cvss_score": null,
       "known_exploited": true,
@@ -111,31 +111,65 @@
       "related_sources": [
         {
           "source": "The Hacker News",
-          "source_url": "https://thehackernews.com/2026/08/actively-exploited-oracle-weblogic-flaw.html"
+          "source_url": "https://thehackernews.com/2026/08/critical-gitea-rce-actively-exploited.html"
         },
         {
           "source": "SecurityWeek",
-          "source_url": "https://www.securityweek.com/cisa-warns-of-exploited-oracle-weblogic-vulnerability/"
+          "source_url": "https://www.securityweek.com/cisa-warns-of-exploited-gitea-vulnerability/"
         }
       ]
     },
     {
-      "id": "91c61774da1356e2",
-      "title": "Attackers Target miniOrange SAML Flaws That Can Grant WordPress Admin Access",
+      "id": "5fe735c75f0cbaf4",
+      "title": "U.S. Sanctions Iran-Linked Hackers Behind Critical Infrastructure Breaches",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/attackers-target-miniorange-saml-flaws.html",
-      "published_at": "2026-08-25T08:34:07+00:00",
-      "collected_at": "2026-08-25T13:38:40.657765+00:00",
-      "category": "Cloud Security",
+      "source_url": "https://thehackernews.com/2026/08/us-sanctions-iran-linked-hackers-behind.html",
+      "published_at": "2026-08-25T18:17:17+00:00",
+      "collected_at": "2026-08-26T13:43:12.521174+00:00",
+      "category": "Nation-State Activity",
       "severity": "Medium",
-      "summary": "Bad actors are attempting to exploit two severe unauthenticated authentication bypasses in the Xecurify miniOrange SAML 2.0 Single Sign On plugin that make it possible for an attacker to sign in as any WordPress user, including administrators.",
+      "summary": "The U.S.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Nation-state activity",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "cd40aa1600f62ae4",
+      "title": "Ebyte NE2-D11",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-06",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.300313+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain unauthorized administrative access, disclose sensitive information, modify device configuration, hijack authenticated sessions, and disrupt device operation.",
       "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-61979"
+        "CVE-2026-73125"
       ],
-      "cvss_score": 8.1,
+      "cvss_score": 3.1,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
@@ -144,333 +178,322 @@
       "tags": [
         "CVE"
       ],
-      "importance_score": 14,
+      "importance_score": 24,
       "score_breakdown": [
         {
-          "signal": "High CVSS",
-          "points": 10
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
         },
         {
           "signal": "CVE cited",
           "points": 4
         }
       ],
-      "related_sources": [
-        {
-          "source": "SecurityWeek",
-          "source_url": "https://www.securityweek.com/wordpress-websites-targeted-via-miniorange-plugin-vulnerabilities/"
-        }
-      ]
-    },
-    {
-      "id": "d9b6e80ff3477f59",
-      "title": "Generating scenarios for extreme events, without extreme data",
-      "source": "MIT News AI",
-      "source_url": "https://news.mit.edu/2026/generating-scenarios-extreme-events-without-extreme-data-0824",
-      "published_at": "2026-08-24T18:00:00+00:00",
-      "collected_at": "2026-08-25T13:38:41.577877+00:00",
-      "category": "Supply Chain",
-      "severity": "Low",
-      "summary": "A new algorithm learns to anticipate the unprecedented scenarios that critical infrastructure and global supply chains are least prepared for.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        }
-      ],
       "related_sources": []
     },
     {
-      "id": "eef5e5ff1cf8c96d",
-      "title": "WordlistLoader Delivers Amatera via ClickFix, SynkLoader Phishes Windows Passwords",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/wordlistloader-delivers-amatera-via.html",
-      "published_at": "2026-08-24T12:35:36+00:00",
-      "collected_at": "2026-08-25T13:38:40.658348+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "Cybersecurity researchers have flagged two new malware families called WordlistLoader and SynkLoader that's used to deliver next-stage payloads and likely sell access to ransomware groups.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "id": "1cc65a359cf90782",
+      "title": "Rently Smart Home",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-01",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.303270+00:00",
+      "category": "Privacy",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to access sensitive information and override user permissions.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
+      "cves": [
+        "CVE-2026-75960"
+      ],
+      "cvss_score": 3.1,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "Malware",
-        "Ransomware"
+        "CVE"
       ],
-      "importance_score": 12,
+      "importance_score": 24,
       "score_breakdown": [
         {
-          "signal": "Ransomware",
+          "signal": "Critical infrastructure",
           "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "57a28c747508a066",
-      "title": "WhatsApp Adds Multiple Passkeys and Stronger 2SV in Account Security Update",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/whatsapp-adds-multiple-passkeys-and-stronger-2sv-in-account-security-update/",
-      "published_at": "2026-08-25T13:00:00+00:00",
-      "collected_at": "2026-08-25T13:38:41.054016+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "When Android users get a call from a non-contact, they will see more information about the caller, including their country.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 4,
-      "score_breakdown": [
+        },
         {
-          "signal": "Patch available",
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
           "points": 4
         }
       ],
       "related_sources": []
     },
     {
-      "id": "96ee145e40ff15e7",
-      "title": "WhatsApp adds stronger two-step verification, multiple passkeys",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/whatsapp-adds-stronger-two-step-verification-multiple-passkeys/",
-      "published_at": "2026-08-25T13:00:00+00:00",
-      "collected_at": "2026-08-25T13:38:40.759809+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "WhatsApp has started rolling out several new account security features, including support for multiple passkeys and stronger two-step verification.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "id": "131f46a89b408b74",
+      "title": "PayRange API",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-04",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.303807+00:00",
+      "category": "Privacy",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow a remote, authenticated or unauthenticated attacker to disclose sensitive information, arbitrarily modify the device to cause a denial of service, or alter a devices displayed image.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
+      "cves": [
+        "CVE-2026-18965"
+      ],
+      "cvss_score": 3.1,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "98b1dbb709e40185",
-      "title": "Hands-On Cyber-Physical Systems Training Returns to ICS Cybersecurity Conference",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/hands-on-cyber-physical-systems-training-returns-to-ics-cybersecurity-conference/",
-      "published_at": "2026-08-25T12:57:59+00:00",
-      "collected_at": "2026-08-25T13:38:41.054152+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Hands-on Cyber Attack Methods course returns to SecurityWeek’s ICS Cybersecurity Conference, October 6–8 at the W Nashville.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "id": "4be6e7b5f38a0bbf",
+      "title": "Zoneminder",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-02",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.304163+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could result in full Remote Code Execution (RCE) as the web server user.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
+      "cves": [
+        "CVE-2026-76060"
+      ],
+      "cvss_score": 3.1,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "2f69a5761f47aee3",
-      "title": "Hackers breached over 270 Zimbra servers in ongoing attacks",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-breached-over-270-zimbra-servers-in-ongoing-attacks/",
-      "published_at": "2026-08-25T12:04:02+00:00",
-      "collected_at": "2026-08-25T13:38:40.759953+00:00",
+      "id": "93d0549b2e7ec508",
+      "title": "Siemens SIMATIC IoT2050 Advanced",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-03",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.304523+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary SIMATIC IoT2050 Advanced devices running Industrial OS with Node-RED installed contain a missing authentication vulnerability in the Node-RED HTTP interface that could allow an unauthenticated remote attacker to create malicious flows and execute arbitrary code on the underlying server with maximum privileges.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-58115"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "63e36d843533dec6",
+      "title": "FURUNO FA-50 Class B AIS Transponder",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-07",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.304865+00:00",
       "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "Threat actors have already compromised over 270 Zimbra instances in remote code execution attacks targeting a high-severity Zimbra Collaboration Suite (ZCS) vulnerability.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to alter device settings.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "99cf59e09495b7a8",
-      "title": "Mirage2FA Surge Hits 4,500 US and EU Companies, Abusing Microsoft 365 Login Flows",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/mirage2fa-surge-hits-4500-us-and-eu.html",
-      "published_at": "2026-08-25T11:56:15+00:00",
-      "collected_at": "2026-08-25T13:38:40.657149+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Thousands of companies have been affected by the Mirage2FA campaign from 2024 to 2026.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "56d9611be3038104",
-      "title": "24 npm Packages Abuse unpkg Mirrors to Host Fake Cloudflare CAPTCHA Pages",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/24-npm-packages-abuse-unpkg-mirrors-to.html",
-      "published_at": "2026-08-25T11:52:43+00:00",
-      "collected_at": "2026-08-25T13:38:40.657338+00:00",
-      "category": "Malware",
-      "severity": "Low",
-      "summary": "Cybersecurity researchers have disclosed details of a new campaign that uses a cluster of 24 npm packages as free phishing infrastructure for redirecting to ClickFix-style fake CAPTCHA pages.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
+      "cves": [
+        "CVE-2026-59769",
+        "CVE-2026-67578"
+      ],
+      "cvss_score": 3.1,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "Malware"
+        "CVE"
       ],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "806c3e84fa629cee",
-      "title": "E4del and PINHOLE RATs Turn FTP Banners Into Dead Drops for Malware Commands",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/e4del-and-pinhole-rats-turn-ftp-banners.html",
-      "published_at": "2026-08-25T11:33:44+00:00",
-      "collected_at": "2026-08-25T13:38:40.657486+00:00",
-      "category": "Malware",
-      "severity": "Low",
-      "summary": "Cybersecurity researchers are calling attention to a new campaign that employs FTP banners as dead drop resolvers (DDRs) to deliver two previously unreported remote access trojans (RATs) tracked as E4del and PINHOLE.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Malware"
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
       ],
-      "importance_score": 0,
-      "score_breakdown": [],
       "related_sources": []
     },
     {
-      "id": "79beceb61f23ba3c",
-      "title": "First Malware Built Specifically for Car Head Units Fuels Botnet",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/first-malware-built-specifically-for-car-head-units-fuels-botnet/",
-      "published_at": "2026-08-25T11:18:22+00:00",
-      "collected_at": "2026-08-25T13:38:41.054274+00:00",
-      "category": "Malware",
-      "severity": "Low",
-      "summary": "Kaspersky researchers have linked the malware to the BadBox botnet, which has ensnared millions of devices.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Malware"
-      ],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "8e54ac02ed0d70ef",
-      "title": "Frontier AI: Vulnerability Management's Systemic Revolution",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/frontier-ai-vulnerability-managements.html",
-      "published_at": "2026-08-25T11:14:07+00:00",
-      "collected_at": "2026-08-25T13:38:40.657622+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Vulnerability management has been a staple of security programs since the dawn of the cybersecurity discipline.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "9ee8520601580a32",
-      "title": "Police arrests dozens of suspects in global cybercrime crackdown",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/police-arrests-dozens-of-suspects-in-global-cybercrime-crackdown/",
-      "published_at": "2026-08-25T10:53:20+00:00",
-      "collected_at": "2026-08-25T13:38:40.760104+00:00",
+      "id": "13529dec89f48bf2",
+      "title": "Bendix EC80 Brake ECU",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-05",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.305463+00:00",
       "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "Law enforcement agencies from 22 countries helped identify 263 suspects and arrested 58 individuals linked to cybercrime networks coordinated by African crime groups.",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to cause the loss of ABS functions, steering assist, speedometer, shifting capabilities, or disable automatic traction control.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-67560"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "6390d9c4dbeda298",
+      "title": "Hospital operator Nutex Health says data stolen in cyberattack",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hospital-operator-nutex-health-says-data-stolen-in-cyberattack/",
+      "published_at": "2026-08-25T14:44:16+00:00",
+      "collected_at": "2026-08-26T13:43:12.608340+00:00",
+      "category": "Data Breaches",
+      "severity": "Medium",
+      "summary": "Healthcare and services provider Nutex is investigating a data breach incident where an unauthorized third party exfiltrated information from company servers.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 22,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "f728a38d182fe151",
+      "title": "A Tale of Two SOCs: Insights From Two Red Team Assessments",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-237a",
+      "published_at": "2026-08-25T12:00:00+00:00",
+      "collected_at": "2026-08-26T13:43:13.302940+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "Advisory at a Glance Title A Tale of Two SOCs: Insights From Two Red Team Assessments Original Publication August 25, 2026 Executive Summary The Cybersecurity and Infrastructure Security Agency (CISA) conducted simultaneous red team assessments at two organizations and observed different defensive outcomes.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -482,20 +505,29 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "importance_score": 20,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "4c2689d83dee119c",
-      "title": "Silent Patches Don’t Stop Attackers – They Blind Defenders",
+      "id": "af99c459418ac83a",
+      "title": "CISA: Over 100 Internet-Exposed Water Systems Targeted in July Cyberattacks",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/silent-patches-dont-stop-attackers-they-blind-defenders/",
-      "published_at": "2026-08-25T10:00:00+00:00",
-      "collected_at": "2026-08-25T13:38:41.054407+00:00",
-      "category": "General Cybersecurity",
+      "source_url": "https://www.securityweek.com/cisa-over-100-internet-exposed-water-systems-targeted-in-july-cyberattacks/",
+      "published_at": "2026-08-26T11:29:50+00:00",
+      "collected_at": "2026-08-26T13:43:12.949232+00:00",
+      "category": "Nation-State Activity",
       "severity": "Low",
-      "summary": "Silent patches can become exploit intelligence for attackers while leaving defenders without the context needed to prioritize risk.",
+      "summary": "The agency has released guidance on reducing internet exposure in the wake of the recent Iran-linked hacker attacks.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -507,20 +539,154 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Nation-state activity",
+          "points": 12
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "3219746e78a81997",
-      "title": "Taiwan Charges 9 Over Illegal AI Server Exports to China, Including Nvidia and Super Micro Staff",
+      "id": "0ce3a336bce600ef",
+      "title": "Sensitive Information Exposed in Nutex Health Data Breach",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/taiwan-charges-9-over-illegal-ai-server-exports-to-china-including-nvidia-and-super-micro-staff/",
-      "published_at": "2026-08-25T08:30:00+00:00",
-      "collected_at": "2026-08-25T13:38:41.054531+00:00",
+      "source_url": "https://www.securityweek.com/sensitive-information-exposed-in-nutex-health-data-breach/",
+      "published_at": "2026-08-26T07:41:50+00:00",
+      "collected_at": "2026-08-26T13:43:12.949675+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Nutex Health has informed the SEC that it recently detected unauthorized access and data exfiltration.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "2e7f77b49688cca8",
+      "title": "LACMA data breach last year exposed social security and medical data",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/lacma-data-breach-last-year-exposed-social-security-and-medical-data/",
+      "published_at": "2026-08-25T21:58:14+00:00",
+      "collected_at": "2026-08-26T13:43:12.607728+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "The Los Angeles County Museum of Art (LACMA) has announced that a breach last year exposed customer and employee information.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ea2647337858e2f5",
+      "title": "Hackers now exploit critical Gitea flaw in code injection attacks",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-gitea-flaw-in-code-injection-attacks/",
+      "published_at": "2026-08-26T11:07:48+00:00",
+      "collected_at": "2026-08-26T13:43:12.607580+00:00",
+      "category": "Government Advisories",
+      "severity": "Low",
+      "summary": "Attackers are now exploiting a critical-severity vulnerability in the Gitea self-hosted Git service, according to the U.S.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 8,
+      "score_breakdown": [
+        {
+          "signal": "Government advisory",
+          "points": 8
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "f601fe4cfa27db52",
+      "title": "Unpatched Kaltura mwEmbed Flaws Could Let Remote Attackers Read Files and Run Code",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/unpatched-kaltura-mwembed-flaws-could.html",
+      "published_at": "2026-08-26T11:55:00+00:00",
+      "collected_at": "2026-08-26T13:43:12.519785+00:00",
+      "category": "Cloud Security",
+      "severity": "Low",
+      "summary": "The CERT Coordination Center (CERT/CC) has disclosed two unpatched vulnerabilities in Kaltura's HTML5 video player library that allow a remote, unauthenticated attacker to read arbitrary files from a server and execute code on it.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-19912",
+        "CVE-2026-19913"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "1a063d0cbf2700ee",
+      "title": "Ubiquiti patches three max severity security vulnerabilities",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/ubiquiti-patches-three-max-severity-security-vulnerabilities/",
+      "published_at": "2026-08-26T13:17:54+00:00",
+      "collected_at": "2026-08-26T13:43:12.607252+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "AI infrastructure, including advanced semiconductors mostly made in Taiwan, has become a key point of competition between the U.S.",
+      "summary": "Ubiquiti has released security patches for three new maximum-severity vulnerabilities that threat actors can exploit remotely without privileges.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -537,40 +703,15 @@
       "related_sources": []
     },
     {
-      "id": "62003111f3b592c5",
-      "title": "Disrupting a new covert influence campaign from Russia",
-      "source": "OpenAI News",
-      "source_url": "https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia",
-      "published_at": "2026-08-25T00:00:00+00:00",
-      "collected_at": "2026-08-25T13:38:42.232923+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "OpenAI banned Russia-origin accounts using AI to promote a fake Israel-based think tank and a “sovereignty” index praising Russia and criticizing the West.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "7bfe97eb7dc88b94",
-      "title": "Unpatched Calix flaw lets hackers bypass NAT to expose internal devices",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/unpatched-calix-flaw-lets-hackers-bypass-nat-to-expose-internal-devices/",
-      "published_at": "2026-08-24T21:14:30+00:00",
-      "collected_at": "2026-08-25T13:38:40.760234+00:00",
+      "id": "4232e7171ba5e931",
+      "title": "Adobe and Nvidia Patch Dozens of Vulnerabilities",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/adobe-and-nvidia-patch-dozens-of-vulnerabilities/",
+      "published_at": "2026-08-26T12:39:38+00:00",
+      "collected_at": "2026-08-26T13:43:12.949068+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "An unpatched vulnerability in Calix GS7 XGS (GS5239XG) residential routers used by multiple U.S.",
+      "summary": "Adobe and Nvidia each published several advisories, including ones that address critical vulnerabilities in their products.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -587,40 +728,40 @@
       "related_sources": []
     },
     {
-      "id": "ab19b111baf20bee",
-      "title": "Hackers target WordPress sites in miniOrange auth bypass attacks",
+      "id": "3b13dddb2c0ce406",
+      "title": "Microsoft tests new privacy controls for Windows 11 desktop apps",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-target-wordpress-sites-in-miniorange-auth-bypass-attacks/",
-      "published_at": "2026-08-24T19:26:32+00:00",
-      "collected_at": "2026-08-25T13:38:40.760358+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Hackers are attempting to exploit two critical authentication bypass vulnerabilities in the miniOrange SAML 2.0 Single Sign On plugin for WordPress that can be used to forge SAML responses and log in as administrators.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "a00e8a598a61ff7f",
-      "title": "TikTok reaches $400M settlement with US over COPPA violations",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/legal/tiktok-reaches-400m-settlement-with-us-over-coppa-violations/",
-      "published_at": "2026-08-24T17:56:24+00:00",
-      "collected_at": "2026-08-25T13:38:40.760478+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-tests-new-privacy-controls-for-windows-11-desktop-apps/",
+      "published_at": "2026-08-26T12:06:28+00:00",
+      "collected_at": "2026-08-26T13:43:12.607425+00:00",
       "category": "Privacy",
       "severity": "Low",
-      "summary": "The U.S.",
+      "summary": "Microsoft has begun testing new privacy controls that will let Windows 11 users choose which desktop applications can access their camera, microphone, and precise location.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "ca41f16130462278",
+      "title": "Imagine the SOC Without a Queue: From Alert Backlog to AI Hypothesis Engine",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/08/imagine-soc-without-queue-from-alert.html",
+      "published_at": "2026-08-26T11:36:49+00:00",
+      "collected_at": "2026-08-26T13:43:12.520018+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "The SOC we've always known was built around a model that guarantees most of the alert queue will never receive analyst review.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
