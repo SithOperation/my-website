@@ -592,7 +592,7 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 }
 
 .legend b {
-    min-width: 14px;
+    min-width: 22px;
     color: var(--cyan);
     font-size: 15px;
     text-align: center;
@@ -665,6 +665,38 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     opacity: .72;
     filter: drop-shadow(0 0 5px rgba(0, 221, 255, .65));
 }
+
+.legend .legend-glyph {
+    position: relative;
+    display: inline-grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    border: 1px solid rgba(0, 240, 255, .38);
+    border-radius: 50%;
+    background: rgba(0, 240, 255, .07);
+    font-family: "Segoe UI Symbol", "Segoe UI Emoji", sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    text-shadow: 0 0 7px currentColor;
+}
+
+.legend .legend-glyph.cyber { font-family: ui-monospace, monospace; font-size: 9px; }
+.legend .legend-glyph.aircraft { transform: rotate(-20deg); }
+.legend .legend-glyph.wildfire, .legend .legend-glyph.prescribed { color: #ff8200; }
+.legend .legend-glyph.prescribed small {
+    position: absolute;
+    right: -3px;
+    bottom: -4px;
+    padding: 1px 2px;
+    border-radius: 2px;
+    background: #061012;
+    color: #ffe2a6;
+    font: 700 7px/1 ui-monospace, monospace;
+}
+.legend .legend-glyph.earthquake { color: var(--yellow); }
+.legend .legend-glyph.volcano { color: var(--orange); }
+.legend .legend-glyph.weather { color: #44bfff; }
 
 .map-reticle { position: absolute; z-index: 4; top: 50%; left: 50%; width: 42px; height: 42px; border: 1px solid rgba(0, 221, 255, .35); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
 .map-reticle::before, .map-reticle::after { content: ""; position: absolute; background: rgba(0, 221, 255, .5); }

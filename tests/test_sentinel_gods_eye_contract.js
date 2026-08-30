@@ -20,5 +20,16 @@ assert.ok(mapScript.includes("if (!visibleCategories.has(category)) return false
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
 assert.ok(!page.toLowerCase().includes("tap a pinpoint or cluster"), "Instructions must describe individual markers");
+assert.ok(mapScript.includes("weatherColorExpression"), "Weather polygons must be styled by severity");
+assert.ok(mapScript.includes("isExpiredWeatherEvent"), "Expired weather alerts must be removed client-side");
+assert.ok(mapScript.includes("isWeatherTestMessage"), "Administrative weather tests must not be rendered");
+assert.ok(mapScript.includes("loadEnvironmentalLayers({ refreshOnly: true })"), "Weather data must be refetched during live refresh");
+assert.ok(page.includes('id="layer-europe-nato"') && page.includes('id="layer-europe-reddit"'), "European security map controls must be present");
+assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");
+assert.ok(adapterScript.includes('rawType || "").toLowerCase() === "europe_security"'), "Europe security classifications must survive adaptation");
+assert.match(mapScript, /id: "events",\s*type: "circle"[\s\S]*?"circle-color": threatColorExpression\(\)/, "The complete threat dot must use its threat-level color");
+assert.ok(mapScript.includes('id: "event-glyphs"'), "Threat dots must retain category glyph overlays");
+assert.ok(page.includes('&#128293;') && page.includes('&#9992;') && page.includes('&#9875;'), "Legend emoji and symbols must use encoding-safe numeric entities");
+assert.ok(!page.includes("ðŸ") && !page.includes("âŒ"), "Legend must not contain mojibake glyphs");
 
 console.log("Sentinel Gods Eye contract tests passed");

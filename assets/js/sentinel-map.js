@@ -56,14 +56,27 @@
         const aliases = {
             conflict: "conflict",
             cyber: "cyber",
+            cyber_activity: "cyber",
             earthquake: "earthquake",
             humanitarian: "news",
             intelligence: "news",
             internet_outage: "internet_outage",
             gps_jamming: "gps_jamming",
             maritime: "maritime",
+            naval_activity: "maritime",
             military_aircraft: "aircraft",
             military_exercise: "military_exercise",
+            air_activity: "news",
+            airspace_incident: "news",
+            border_incident: "conflict",
+            drone_activity: "conflict",
+            missile_activity: "conflict",
+            military_deployment: "military_exercise",
+            mobilization: "military_exercise",
+            nato_activity: "military_exercise",
+            polish_military_activity: "military_exercise",
+            russian_activity: "military_exercise",
+            security_warning: "news",
             news: "news",
             prescribed_fire: "prescribed_fire",
             reddit_report: "news",
@@ -249,8 +262,8 @@
         context.lineCap = "round";
         context.lineJoin = "round";
         context.strokeStyle = "#e9fbff";
-        context.fillStyle = ({ conflict: "#ff174f", news: "#00f0ff", satellite: "#9b7bff", wildfire: "#ff5a1f", prescribed_fire: "#d99a4e", military_exercise: "#b8c4cc", earthquake: "#ffd400", volcano: "#ff8200", weather: "#44bfff" })[type] || "#8ca6ad";
-        context.shadowColor = context.fillStyle;
+        context.fillStyle = "rgba(6, 16, 18, 0)";
+        context.shadowColor = "#e9fbff";
         context.shadowBlur = 7;
         context.beginPath();
 
@@ -259,7 +272,7 @@
             context.textAlign = "center";
             context.textBaseline = "middle";
             context.shadowBlur = 4;
-            context.fillText("🔥", 0, -1);
+            context.fillText(String.fromCodePoint(0x1f525), 0, -1);
             if (type === "prescribed_fire") {
                 context.shadowBlur = 0;
                 context.fillStyle = "#16110a";
@@ -279,6 +292,37 @@
             context.arc(0, 0, 12, 0, Math.PI * 2);
             context.moveTo(0, -6); context.lineTo(0, 3);
             context.moveTo(0, 8); context.lineTo(0, 8.5);
+        }
+        else if (type === "cyber") {
+            context.moveTo(-5, -13); context.lineTo(-14, 0); context.lineTo(-5, 13);
+            context.moveTo(5, -13); context.lineTo(14, 0); context.lineTo(5, 13);
+            context.moveTo(4, -16); context.lineTo(-4, 16);
+        }
+        else if (type === "maritime") {
+            context.arc(0, -10, 3, 0, Math.PI * 2);
+            context.moveTo(0, -7); context.lineTo(0, 14);
+            context.moveTo(-12, -1); context.lineTo(12, -1);
+            context.moveTo(-15, 5); context.quadraticCurveTo(-11, 16, 0, 16);
+            context.quadraticCurveTo(11, 16, 15, 5);
+        }
+        else if (type === "gps_jamming") {
+            context.arc(0, 0, 13, 0, Math.PI * 2);
+            context.arc(0, 0, 5, 0, Math.PI * 2);
+            context.moveTo(-17, 0); context.lineTo(17, 0);
+            context.moveTo(0, -17); context.lineTo(0, 17);
+            context.moveTo(-13, -13); context.lineTo(13, 13);
+        }
+        else if (type === "internet_outage") {
+            context.arc(-12, -8, 4, 0, Math.PI * 2);
+            context.arc(12, -8, 4, 0, Math.PI * 2);
+            context.arc(0, 13, 4, 0, Math.PI * 2);
+            context.moveTo(-8, -6); context.lineTo(-2, 9);
+            context.moveTo(8, -6); context.lineTo(2, 9);
+            context.moveTo(-5, 0); context.lineTo(5, 0);
+        }
+        else if (type === "military_exercise") {
+            context.moveTo(-15, 8); context.lineTo(0, -12); context.lineTo(15, 8);
+            context.moveTo(-10, 14); context.lineTo(0, 1); context.lineTo(10, 14);
         }
         else if (type === "satellite") {
             context.rect(-7, -7, 14, 14);
@@ -371,12 +415,27 @@
 
         map.addLayer({
             id: "events",
+            type: "circle",
+            source: "sentinel-events",
+            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            paint: {
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 5.5, 8, 9],
+                "circle-color": threatColorExpression(),
+                "circle-opacity": 0.96,
+                "circle-stroke-color": "#061012",
+                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 2, 1.25, 8, 2],
+                "circle-stroke-opacity": 0.95
+            }
+        });
+
+        map.addLayer({
+            id: "event-glyphs",
             type: "symbol",
             source: "sentinel-events",
             filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             layout: {
                 "icon-image": ["concat", "marker-", ["get", "symbol_type"]],
-                "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.55, 8, 0.85],
+                "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.28, 8, 0.46],
                 "icon-allow-overlap": true,
                 "icon-ignore-placement": true,
                 "icon-padding": 0
@@ -418,7 +477,7 @@
             const nearbyFeatures = map.queryRenderedFeatures([
                 [point.x - 7, point.y - 7],
                 [point.x + 7, point.y + 7]
-            ], { layers: ["events", "military-aircraft"] });
+            ], { layers: ["events", "event-glyphs", "military-aircraft"] });
             const events = Array.from(new Set(nearbyFeatures.map(item => String(item.properties.map_id))))
                 .map(id => eventIndex.get(id))
                 .filter(Boolean);
@@ -427,9 +486,10 @@
         };
 
         map.on("click", "events", selectRenderedEvent);
+        map.on("click", "event-glyphs", selectRenderedEvent);
         map.on("click", "military-aircraft", selectRenderedEvent);
 
-        ["events", "military-aircraft"].forEach(layer => {
+        ["events", "event-glyphs", "military-aircraft"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
@@ -479,8 +539,33 @@
 
     function retainRecentEvents(events) {
         return events.filter(event =>
-            window.SentinelData.isWithinRetentionWindow(event.timestamp)
+            window.SentinelData.isWithinRetentionWindow(event.timestamp) &&
+            !isExpiredWeatherEvent(event) &&
+            !isWeatherTestMessage(event)
         );
+    }
+
+    function isExpiredWeatherEvent(event, now = Date.now()) {
+        if (event.type !== "weather") return false;
+        const expiration = Date.parse(event.details?.ends || event.details?.expires || "");
+        return Number.isFinite(expiration) && expiration <= now;
+    }
+
+    function isWeatherTestMessage(event) {
+        if (event.type !== "weather") return false;
+        const title = String(event.title || "").trim().toLowerCase();
+        return ["test message", "required weekly test", "required monthly test"].includes(title);
+    }
+
+    function weatherColorExpression() {
+        return [
+            "match", ["get", "severity"],
+            "CRITICAL", "#ff174f",
+            "HIGH", "#ff6b35",
+            "MEDIUM", "#ffd400",
+            "LOW", "#00ddff",
+            "#7f98a0"
+        ];
     }
 
     function retainedEarlyReportGeojson(geojson) {
@@ -672,11 +757,20 @@
         updateMapCount();
     }
 
-    async function loadEnvironmentalLayers() {
+    async function loadEnvironmentalLayers(options = {}) {
         const files = ["earthquakes.json", "volcanoes.json", "weather.json"];
-        const results = await Promise.allSettled(files.map(file => client.fetchJSON(file)));
+        const results = await Promise.allSettled(files.map(file => client.fetchJSON(file, null, Boolean(options.refreshOnly))));
         const [earthquakes, volcanoes, weather] = results.map(result => result.status === "fulfilled" && Array.isArray(result.value) ? result.value.map(normalizeDisasterEvent) : []);
+        if (options.refreshOnly) {
+            if (results[0].status === "fulfilled") environmentalEvents.earthquakes = earthquakes;
+            if (results[1].status === "fulfilled") environmentalEvents.volcanoes = volcanoes;
+            if (results[2].status === "fulfilled") environmentalEvents.weather = weather;
+            refreshEnvironmentalRetention();
+            element("sentinel-map").dataset.weatherRefreshedAt = new Date().toISOString();
+            return;
+        }
         environmentalEvents = { earthquakes, volcanoes, weather };
+        element("sentinel-map").dataset.weatherRefreshedAt = new Date().toISOString();
         const recentEarthquakes = retainRecentEvents(earthquakes);
         const recentVolcanoes = retainRecentEvents(volcanoes);
         const recentWeather = retainRecentEvents(weather);
@@ -688,13 +782,13 @@
             const geometry = validPolygonGeometry(event);
             if (!geometry) return null;
             disasterIndex.set(event.event_id, event);
-            return { type: "Feature", geometry, properties: { map_id: event.event_id, title: event.title } };
+            return { type: "Feature", geometry, properties: { map_id: event.event_id, title: event.title, severity: event.threat_level, expires: event.details?.ends || event.details?.expires || "" } };
         }).filter(Boolean);
         environmentalCount = recentEarthquakes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length +
             recentVolcanoes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length + weatherFeatures.length;
         map.addSource("weather-source", { type: "geojson", data: { type: "FeatureCollection", features: weatherFeatures } });
-        map.addLayer({ id: "weather-fill", type: "fill", source: "weather-source", paint: { "fill-color": "#44bfff", "fill-opacity": 0.13 } });
-        map.addLayer({ id: "weather-line", type: "line", source: "weather-source", paint: { "line-color": "#44bfff", "line-width": 1.5, "line-dasharray": [2, 2] } });
+        map.addLayer({ id: "weather-fill", type: "fill", source: "weather-source", paint: { "fill-color": weatherColorExpression(), "fill-opacity": ["match", ["get", "severity"], "CRITICAL", 0.28, "HIGH", 0.22, "MEDIUM", 0.17, 0.12] } });
+        map.addLayer({ id: "weather-line", type: "line", source: "weather-source", paint: { "line-color": weatherColorExpression(), "line-width": ["match", ["get", "severity"], "CRITICAL", 3, "HIGH", 2.5, 2], "line-dasharray": [2, 2] } });
         map.on("click", "weather-fill", click => {
             const selected = disasterIndex.get(String(click.features?.[0]?.properties?.map_id));
             if (selected) renderEventDetail(selected);
@@ -708,7 +802,9 @@
             const location = document.createElement("span");
             const summary = document.createElement("p");
             heading.textContent = selected.title;
-            location.textContent = `${selected.threat_level} · ${selected.location || "Weather alert area"}`;
+            const expires = Date.parse(selected.details?.ends || selected.details?.expires || "");
+            const remaining = Number.isFinite(expires) ? Math.max(0, Math.ceil((expires - Date.now()) / 60000)) : null;
+            location.textContent = `${selected.threat_level} · ${selected.location || "Weather alert area"}${remaining === null ? "" : ` · ${remaining} min remaining`}`;
             summary.textContent = selected.description.length > 220 ? `${selected.description.slice(0, 219)}…` : selected.description;
             content.className = "weather-hover-card";
             content.append(heading, location, summary);
@@ -736,7 +832,7 @@
             return {
                 type: "Feature",
                 geometry,
-                properties: { map_id: event.event_id, title: event.title }
+                properties: { map_id: event.event_id, title: event.title, severity: event.threat_level, expires: event.details?.ends || event.details?.expires || "" }
             };
         }).filter(Boolean);
         map.getSource("earthquake-source")?.setData(pointFeatures(earthquakes));
@@ -787,7 +883,7 @@
     }
 
     function applyLayerVisibility() {
-        setLayersVisible(["event-glow", "events", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
+        setLayersVisible(["event-glow", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
         setLayersVisible(["earthquakes"], element("layer-earthquakes").checked);
         setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
         setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
@@ -920,10 +1016,27 @@
             : Math.min(Number(hours), window.SentinelData.mapRetentionHours);
         const threshold = Date.now() - selectedHours * 60 * 60 * 1000;
         const visibleCategories = getVisibleCategorySet();
+        const europeLayerChecks = [
+            ["layer-europe-nato", "nato_activity"],
+            ["layer-europe-russia", "russian_activity"],
+            ["layer-europe-flank", "eastern_flank"],
+            ["layer-europe-ukraine", "ukraine_war"],
+            ["layer-europe-air", "air_activity"],
+            ["layer-europe-naval", "naval_activity"],
+            ["layer-europe-missile", "missile_drone"],
+            ["layer-europe-exercises", "military_exercise"],
+            ["layer-europe-warnings", "security_warning"],
+            ["layer-europe-reddit", "reddit_osint"]
+        ];
+        const enabledEuropeLayers = new Set(europeLayerChecks.filter(([id]) => element(id)?.checked).map(([, layer]) => layer));
 
         filteredEvents = allEvents.filter(event => {
             const category = getEventCategory(event);
-            if (!visibleCategories.has(category)) return false;
+            const raw = adapter?.normalizeEvent(event)?.metadata?.raw || event;
+            const europeLayers = Array.isArray(raw.europe_layers) ? raw.europe_layers : [];
+            if (europeLayers.length) {
+                if (!europeLayers.some(layer => enabledEuropeLayers.has(layer))) return false;
+            } else if (!visibleCategories.has(category)) return false;
             if (type !== "all" && category !== type) return false;
             if (threat !== "all" && (event.threat_level || "UNKNOWN") !== threat) return false;
             if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
@@ -1068,6 +1181,12 @@
             appendDefinition(details, "Altitude", altitude === null ? "Not reported" : `${altitude} m`);
             appendDefinition(details, "Speed", velocity === null ? "Not reported" : `${velocity} m/s`);
             appendDefinition(details, "Heading", heading === null ? "Not reported" : `${heading}°`);
+        }
+        if (event.type === "weather") {
+            const weather = event.details || {};
+            appendDefinition(details, "Alert area", event.location || "Not reported");
+            appendDefinition(details, "Expires", formatDate(weather.ends || weather.expires));
+            if (weather.instruction) appendDefinition(details, "Protective action", window.SentinelData.cleanText(weather.instruction, 700));
         }
         if (event.event_id) appendDefinition(details, "Event ID", event.event_id);
         if (isSourceReportedEvent(event)) {
@@ -1242,7 +1361,17 @@
             "layer-humanitarian",
             "layer-gps-jamming",
             "layer-internet-outages",
-            "layer-x-reports"
+            "layer-x-reports",
+            "layer-europe-nato",
+            "layer-europe-russia",
+            "layer-europe-flank",
+            "layer-europe-ukraine",
+            "layer-europe-air",
+            "layer-europe-naval",
+            "layer-europe-missile",
+            "layer-europe-exercises",
+            "layer-europe-warnings",
+            "layer-europe-reddit"
         ].forEach(id => {
             element(id).addEventListener("change", applyLayerVisibility);
         });
@@ -1339,7 +1468,9 @@
                 refresh();
                 refreshEws();
                 updateMapData();
-                refreshEnvironmentalRetention();
+                loadEnvironmentalLayers({ refreshOnly: true }).catch(error =>
+                    console.warn("Environmental refresh failed; prior data retained", error)
+                );
                 refreshEarlyReportLayer().catch(error =>
                     console.warn("X report refresh failed; prior generation retained", error)
                 );

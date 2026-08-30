@@ -102,6 +102,8 @@ Key points:
 
 The compatibility adapter is loaded before `assets/js/sentinel-map.js`. To add a category, map its source names in `normalizeCategory`, add a layer checkbox in `sentinel.html`, and include the category in `getVisibleCategorySet`. New live feeds should continue to be collected and cached by Sentinel rather than polled aggressively by the browser.
 
+Weather uses free public sources. Sentinel collects official NWS alerts on a 15-minute schedule and dispatches validated publications to the website. While the Sentinel page is open, environmental JSON is rechecked every five minutes with cache bypass; failed requests retain the last valid in-memory layer. Weather polygons are colored by severity, expired alerts and administrative test messages are hidden, and alert details include expiration and protective instructions when supplied.
+
 If the globe is blank, serve the repository over HTTP, confirm `assets/vendor/maplibre/maplibre-gl.js` loads, and check that `data/manifest.json` references the current `data/map_events.json` publication. The OpenStreetMap base layer requires network access; Sentinel event overlays still load from local JSON.
 
 Layer categories supported by the compatibility adapter include:

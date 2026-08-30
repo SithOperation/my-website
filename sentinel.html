@@ -97,6 +97,16 @@
                         <label><input id="layer-gps-jamming" type="checkbox" checked> GPS interference</label>
                         <label><input id="layer-internet-outages" type="checkbox" checked> Internet outages</label>
                         <label class="early-report-toggle"><input id="layer-x-reports" type="checkbox" checked> Social Media Early Reports</label>
+                        <label><input id="layer-europe-nato" type="checkbox" checked> NATO activity</label>
+                        <label><input id="layer-europe-russia" type="checkbox" checked> Russian activity</label>
+                        <label><input id="layer-europe-flank" type="checkbox" checked> Poland / eastern flank</label>
+                        <label><input id="layer-europe-ukraine" type="checkbox" checked> Ukraine war</label>
+                        <label><input id="layer-europe-air" type="checkbox" checked> Air activity</label>
+                        <label><input id="layer-europe-naval" type="checkbox" checked> Naval activity</label>
+                        <label><input id="layer-europe-missile" type="checkbox" checked> Missile / drone events</label>
+                        <label><input id="layer-europe-exercises" type="checkbox" checked> Military exercises</label>
+                        <label><input id="layer-europe-warnings" type="checkbox" checked> Security warnings</label>
+                        <label class="early-report-toggle"><input id="layer-europe-reddit" type="checkbox" checked> Reddit OSINT</label>
                     </fieldset>
 
                     <label>
@@ -143,14 +153,18 @@
                         <span><i class="medium"></i> Medium</span>
                         <span><i class="low"></i> Low</span>
                         <h3 class="symbol-heading">Symbol key</h3>
-                        <span><b>⌖</b> Conflict</span>
-                        <span><b>!</b> News</span>
-                        <span><b>🔥</b> Wildfire</span>
-                        <span><b>🔥<small>RX</small></b> Prescribed burn</span>
-                        <span><b>◇</b> Satellite</span>
-                        <span><b>〽</b> Earthquake</span>
-                        <span><b>▲</b> Volcano</span>
-                        <span><b>▧</b> Weather area</span>
+                        <span><b class="legend-glyph conflict" aria-hidden="true">&#8982;</b> Conflict</span>
+                        <span><b class="legend-glyph news" aria-hidden="true">!</b> News / OSINT</span>
+                        <span><b class="legend-glyph cyber" aria-hidden="true">&#9001;/&#9002;</b> Cyber</span>
+                        <span><b class="legend-glyph aircraft" aria-hidden="true">&#9992;</b> Aircraft</span>
+                        <span><b class="legend-glyph maritime" aria-hidden="true">&#9875;</b> Maritime</span>
+                        <span><b class="legend-glyph satellite" aria-hidden="true">&#9671;</b> Satellite</span>
+                        <span><b class="legend-glyph wildfire" aria-hidden="true">&#128293;</b> Wildfire</span>
+                        <span><b class="legend-glyph prescribed" aria-hidden="true">&#128293;<small>RX</small></b> Prescribed burn</span>
+                        <span><b class="legend-glyph exercise" aria-hidden="true">&#9737;</b> Exercise</span>
+                        <span><b class="legend-glyph earthquake" aria-hidden="true">&#12336;</b> Earthquake</span>
+                        <span><b class="legend-glyph volcano" aria-hidden="true">&#9650;</b> Volcano</span>
+                        <span><b class="legend-glyph weather" aria-hidden="true">&#9729;</b> Weather area</span>
                     </div>
 
                     <div class="coverage-block">

@@ -20,6 +20,16 @@
 
     function normalizeCategory(rawType, rawCategory, rawClassification, titleText, descriptionText) {
         const text = `${titleText || ""} ${descriptionText || ""}`.toLowerCase();
+        const europeCategories = new Set([
+            "nato_activity", "russian_activity", "polish_military_activity",
+            "air_activity", "naval_activity", "ground_activity",
+            "missile_activity", "drone_activity", "military_exercise",
+            "border_incident", "airspace_incident", "military_deployment",
+            "mobilization", "military_statement", "security_warning", "cyber_activity"
+        ]);
+        if (String(rawType || "").toLowerCase() === "europe_security" && europeCategories.has(String(rawClassification || "").toLowerCase())) {
+            return String(rawClassification).toLowerCase();
+        }
         const candidates = [
             rawType,
             rawCategory,
