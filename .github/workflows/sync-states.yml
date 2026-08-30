@@ -124,61 +124,10 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
-  sync-disaster:
-    needs: gate
-    if: needs.gate.outputs.run == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout website tooling
-        uses: actions/checkout@v6
-      - name: Verify private disaster-monitor access
-        shell: bash
-        env:
-          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-        run: |
-          set +x
-          if [[ -z "$REPO_ACCESS_TOKEN" ]]; then
-            echo "::error::REPO_ACCESS_TOKEN is not configured"
-            exit 1
-          fi
-          status="$(
-            curl \
-              --silent \
-              --output /dev/null \
-              --write-out "%{http_code}" \
-              --header "Authorization: Bearer $REPO_ACCESS_TOKEN" \
-              --header "Accept: application/vnd.github+json" \
-              https://api.github.com/repos/SithOperation/earthquake-volcano-discord-monitor
-          )"
-          if [[ "$status" != "200" ]]; then
-            echo "::error::Repository access failed for SithOperation/earthquake-volcano-discord-monitor; HTTP $status"
-            exit 1
-          fi
-      - name: Checkout disaster monitor
-        uses: actions/checkout@v6
-        with:
-          repository: SithOperation/earthquake-volcano-discord-monitor
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          path: external/disaster
-      - name: Validate and stage disaster publication
-        run: >-
-          python3 scripts/sync-monitor-data.py
-          --disaster-only
-          --source-root external/disaster/data
-          --destination-root staged/disaster
-      - name: Upload validated disaster publication
-        uses: actions/upload-artifact@v4
-        with:
-          name: validated-disaster
-          path: staged/disaster
-          if-no-files-found: error
-          retention-days: 1
-
   prepare-publication:
     needs:
       - gate
       - sync-sentinel
-      - sync-disaster
     if: >-
       always() &&
       needs.gate.outputs.run == 'true' &&
@@ -192,12 +141,6 @@ jobs:
         with:
           name: validated-sentinel
           path: candidate/sentinel
-      - name: Download validated disaster publication
-        if: needs.sync-disaster.result == 'success'
-        uses: actions/download-artifact@v5
-        with:
-          name: validated-disaster
-          path: candidate/disaster
       - name: Revalidate complete publication artifact
         shell: bash
         run: |
@@ -205,12 +148,6 @@ jobs:
             --sentinel-only \
             --source-root candidate/sentinel \
             --destination-root validation/sentinel
-          if [[ -d candidate/disaster ]]; then
-            python3 scripts/sync-monitor-data.py \
-              --disaster-only \
-              --source-root candidate/disaster \
-              --destination-root validation/disaster
-          fi
       - name: Upload prepared publication
         uses: actions/upload-artifact@v4
         with:
@@ -223,7 +160,6 @@ jobs:
     needs:
       - gate
       - sync-sentinel
-      - sync-disaster
       - prepare-publication
     if: >-
       always() &&
@@ -253,14 +189,6 @@ jobs:
             --sentinel-only \
             --source-root prepared/sentinel \
             --destination-root data
-          if [[ -d prepared/disaster ]]; then
-            python3 scripts/sync-monitor-data.py \
-              --disaster-only \
-              --source-root prepared/disaster \
-              --destination-root data
-          else
-            echo "::warning::Disaster publication unavailable; preserving last-known-good files"
-          fi
       - name: Commit exact publication
         id: commit
         shell: bash
@@ -270,11 +198,6 @@ jobs:
           git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            data/disaster_state.json \
-            data/earthquakes.json \
-            data/volcanoes.json \
-            data/weather.json \
-            data/solar.json \
             data/dashboard.json \
             data/intelligence_brief.json \
             data/map_events.json \
@@ -437,7 +360,6 @@ jobs:
     needs:
       - gate
       - sync-sentinel
-      - sync-disaster
       - prepare-publication
       - commit-data
       - inspect-production
@@ -451,7 +373,6 @@ jobs:
         shell: bash
         env:
           SENTINEL_RESULT: ${{ needs.sync-sentinel.result }}
-          DISASTER_RESULT: ${{ needs.sync-disaster.result }}
           PREPARE_RESULT: ${{ needs.prepare-publication.result }}
           COMMIT_RESULT: ${{ needs.commit-data.result }}
           DEPLOY_RESULT: ${{ needs.deploy.result }}
@@ -477,13 +398,8 @@ jobs:
             echo "| Previous production publication | \`${PREVIOUS_PRODUCTION_ID:-unavailable}\` |"
             echo "| Deployment required | ${DEPLOY_REQUIRED:-unknown} |"
             echo "| Sentinel source | $SENTINEL_RESULT |"
-            echo "| Disaster source | $DISASTER_RESULT |"
             echo "| Publication preparation | $PREPARE_RESULT |"
             echo "| Commit | $COMMIT_RESULT |"
             echo "| Pages deployment | $DEPLOY_RESULT |"
             echo "| Production verification | $VERIFY_RESULT |"
-            echo
-            if [[ "$DISASTER_RESULT" != "success" ]]; then
-              echo "> Disaster source failed or was unavailable. Sentinel publication was evaluated independently and last-known-good disaster files were preserved."
-            fi
           } >> "$GITHUB_STEP_SUMMARY"

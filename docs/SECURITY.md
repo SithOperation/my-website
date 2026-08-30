@@ -3,12 +3,12 @@
 ## Repository credentials
 
 Use a fine-grained, expiring personal access token or GitHub App installation
-limited to the five named private source repositories. The website uses one
+limited to the remaining named private source repositories. The website uses one
 shared source credential:
 
 | Secret | Repository access | Required permission |
 |---|---|---|
-| `REPO_ACCESS_TOKEN` | Remaining private disaster, EWS, and AI digest repositories | Contents: read |
+| `REPO_ACCESS_TOKEN` | Private EWS and AI digest repositories | Contents: read |
 
 Sentinel and X outputs are read from the public Sentinel repository without a
 cross-repository token. `X_API_BEARER_TOKEN` is stored only in Sentinel Grid.

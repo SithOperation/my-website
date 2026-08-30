@@ -389,7 +389,7 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertEqual(json.loads(brief.read_text())["release"], "old")
             self.assertFalse((destination / "map_events.json").exists())
 
-    def test_sync_workflow_isolates_sentinel_from_disaster_authentication(self) -> None:
+    def test_sync_workflow_has_no_deleted_disaster_repository_dependency(self) -> None:
         workflow_path = (
             Path(__file__).parents[1] / ".github" / "workflows" / "sync-states.yml"
         )
@@ -397,15 +397,13 @@ class SyncMonitorDataTests(unittest.TestCase):
         jobs = workflow["jobs"]
 
         self.assertIn("sync-sentinel", jobs)
-        self.assertIn("sync-disaster", jobs)
+        self.assertNotIn("sync-disaster", jobs)
         self.assertEqual(jobs["sync-sentinel"]["needs"], "gate")
-        self.assertEqual(jobs["sync-disaster"]["needs"], "gate")
-        sentinel_text = json.dumps(jobs["sync-sentinel"])
-        disaster_text = json.dumps(jobs["sync-disaster"])
-        self.assertNotIn("REPO_ACCESS_TOKEN", sentinel_text)
-        self.assertIn("REPO_ACCESS_TOKEN", disaster_text)
-        self.assertIn("validated-sentinel", sentinel_text)
-        self.assertIn("validated-disaster", disaster_text)
+        workflow_text = json.dumps(workflow)
+        self.assertNotIn("earthquake-volcano-discord-monitor", workflow_text)
+        self.assertNotIn("validated-disaster", workflow_text)
+        self.assertNotIn("--disaster-only", workflow_text)
+        self.assertIn("validated-sentinel", workflow_text)
 
     def test_sync_workflow_deploys_the_commit_created_by_the_sync(self) -> None:
         workflows = Path(__file__).parents[1] / ".github" / "workflows"
@@ -435,7 +433,7 @@ class SyncMonitorDataTests(unittest.TestCase):
         revision_step = pages_workflow["jobs"]["validate"]["steps"][1]
         self.assertIn('test "$(git rev-parse HEAD)"', revision_step["run"])
 
-    def test_commit_continues_when_optional_disaster_job_fails(self) -> None:
+    def test_commit_depends_only_on_validated_sentinel_publication(self) -> None:
         workflow_path = (
             Path(__file__).parents[1] / ".github" / "workflows" / "sync-states.yml"
         )
@@ -445,9 +443,9 @@ class SyncMonitorDataTests(unittest.TestCase):
 
         self.assertIn("always()", prepare_condition)
         self.assertIn("needs.sync-sentinel.result == 'success'", prepare_condition)
-        self.assertNotIn("needs.sync-disaster.result == 'success'", prepare_condition)
         self.assertIn("always()", commit_condition)
-        self.assertNotIn("needs.sync-disaster.result == 'success'", commit_condition)
+        self.assertNotIn("disaster", json.dumps(jobs["prepare-publication"]))
+        self.assertNotIn("disaster", json.dumps(jobs["commit-data"]))
 
     def test_sync_workflow_accepts_sentinel_repository_dispatch(self) -> None:
         workflow_path = (

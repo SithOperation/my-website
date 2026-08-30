@@ -24,7 +24,7 @@ Sentinel collection and validation
   publication.
 - Invalid or incomplete source data does not replace last-known-good website
   files.
-- A failed private disaster-monitor checkout does not block Sentinel.
+- The website has no dependency on the retired disaster-monitor repository.
 - A candidate older than the website publication is rejected.
 - The website commit SHA created by synchronization is passed explicitly to
   Pages. The initiating workflow SHA is not used as a substitute.
@@ -41,20 +41,6 @@ that complete publication. The interactive map displays the most recent
 events.
 
 ## Required credentials
-
-### Website `REPO_ACCESS_TOKEN`
-
-Used only to read the private
-`SithOperation/earthquake-volcano-discord-monitor` repository.
-
-Required access:
-
-- Repository selection limited to the disaster-monitor repository.
-- Repository contents: read-only.
-- No administration, secrets, workflow, or write permission.
-
-If this token is missing or lacks access, the disaster job fails visibly.
-Sentinel continues and last-known-good disaster files remain unchanged.
 
 ### Sentinel `WEBSITE_DISPATCH_TOKEN`
 
@@ -79,12 +65,10 @@ and rotate before expiration.
 1. Open **Sync Monitor States** in the website repository.
 2. Run `workflow_dispatch`.
 3. Confirm `sync-sentinel` succeeds.
-4. A disaster failure may remain visible; it must not skip
-   `prepare-publication` or `commit-data`.
-5. Confirm the summary lists the expected publication ID, website commit, and
+4. Confirm the summary lists the expected publication ID, website commit, and
    map-event count.
-6. Confirm `verify-production` succeeds.
-7. Open the production map with a cache-busting query string and confirm its
+5. Confirm `verify-production` succeeds.
+6. Open the production map with a cache-busting query string and confirm its
    displayed publication status.
 
 ## Diagnosing failures
@@ -92,7 +76,6 @@ and rotate before expiration.
 | Stage | Meaning | Response |
 |---|---|---|
 | `sync-sentinel` | Sentinel checkout, contract, or checksum failure | Preserve production; inspect the Sentinel manifest and source workflow |
-| `sync-disaster` | Private access or disaster contract failure | Repair least-privilege access; Sentinel may continue |
 | `prepare-publication` | Downloaded artifact failed revalidation | Do not commit or deploy |
 | `commit-data` | Stale candidate, transaction, rebase, or push failure | Compare `origin/main` and candidate generation timestamps |
 | `deploy` | Exact-SHA validation, test, build, or Pages failure | Production remains on its previous deployment |
