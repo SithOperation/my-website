@@ -330,13 +330,15 @@ class XReportTests(unittest.TestCase):
         self.assertIn("textContent", script)
         self.assertNotIn("earlyReportPopup.setHTML", script)
 
-    def test_x_markers_have_a_separate_cluster_source(self) -> None:
-        """Existing X marker image and cluster source remain intact."""
+    def test_x_markers_remain_individual_at_global_zoom(self) -> None:
+        """X reports use their own source without numbered clustering."""
 
         script = Path("assets/js/sentinel-map.js").read_text(encoding="utf-8")
         self.assertIn('map.addImage("x-early-report-pinpoint"', script)
         self.assertIn('map.addSource("x-early-reports-source"', script)
-        self.assertIn('id: "x-early-report-clusters"', script)
+        self.assertNotIn('id: "x-early-report-clusters"', script)
+        self.assertNotIn('id: "x-early-report-cluster-count"', script)
+        self.assertIn('"icon-allow-overlap": true', script)
 
 
 if __name__ == "__main__":
