@@ -5,6 +5,7 @@
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
     const THREAT_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"];
+    const adapter = window.SentinelGodsEyeAdapter || null;
     const client = new window.SentinelData.Client({ root: "data" });
     const earlyReportFeed = new window.SentinelData.GenerationFeed(client, {
         metadataFile: "output/x_report_events.json",
@@ -39,6 +40,15 @@
         return String(value || "unknown")
             .replace(/_/g, " ")
             .replace(/\b\w/g, letter => letter.toUpperCase());
+    }
+
+    function getEventCategory(event) {
+        if (!event) return "intelligence";
+        if (adapter) {
+            const normalized = adapter.normalizeEvent(event);
+            if (normalized && normalized.category) return normalized.category;
+        }
+        return String(event.category || event.type || "intelligence").toLowerCase();
     }
 
     function symbolType(value) {
@@ -839,6 +849,7 @@
             "x-early-report-cluster-count",
             "x-early-reports"
         ], element("layer-x-reports").checked);
+        updateMapData();
     }
 
     function initializeMap() {
@@ -912,6 +923,34 @@
         });
     }
 
+    function getVisibleCategorySet() {
+        const categorySet = new Set();
+        const layerChecks = [
+            ["layer-intelligence", ["conflict", "cyber", "aircraft", "maritime", "satellite", "earthquake", "volcano", "weather", "solar", "humanitarian", "intelligence", "news", "wildfire", "prescribed_fire", "military_exercise", "weather_alert", "reddit_report", "x_report"]],
+            ["layer-conflict", ["conflict", "military_exercise"]],
+            ["layer-cyber", ["cyber"]],
+            ["layer-aircraft", ["aircraft"]],
+            ["layer-military-aircraft", ["aircraft", "military_exercise"]],
+            ["layer-maritime", ["maritime"]],
+            ["layer-satellites", ["satellite", "solar"]],
+            ["layer-earthquakes", ["earthquake"]],
+            ["layer-volcanoes", ["volcano"]],
+            ["layer-weather", ["weather", "weather_alert", "wildfire", "prescribed_fire"]],
+            ["layer-solar", ["solar"]],
+            ["layer-humanitarian", ["humanitarian"]],
+            ["layer-gps-jamming", ["gps_jamming"]],
+            ["layer-internet-outages", ["internet_outage"]]
+        ];
+
+        layerChecks.forEach(([id, categories]) => {
+            if (element(id)?.checked) {
+                categories.forEach(category => categorySet.add(category));
+            }
+        });
+
+        return categorySet;
+    }
+
     function filterEvents() {
         const type = element("filter-type").value;
         const threat = element("filter-threat").value;
@@ -921,10 +960,13 @@
             ? window.SentinelData.mapRetentionHours
             : Math.min(Number(hours), window.SentinelData.mapRetentionHours);
         const threshold = Date.now() - selectedHours * 60 * 60 * 1000;
+        const visibleCategories = getVisibleCategorySet();
 
         filteredEvents = allEvents.filter(event => {
-            if (type !== "all" && event.type !== type) return false;
-            if (threat !== "all" && event.threat_level !== threat) return false;
+            const category = getEventCategory(event);
+            if (visibleCategories.size > 0 && !visibleCategories.has(category)) return false;
+            if (type !== "all" && category !== type) return false;
+            if (threat !== "all" && (event.threat_level || "UNKNOWN") !== threat) return false;
             if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
             const timestamp = Date.parse(event.timestamp || "");
             if (!Number.isFinite(timestamp) || timestamp < threshold) return false;
@@ -976,8 +1018,8 @@
     }
 
     function populateFilters() {
-        const types = Array.from(new Set(allEvents.map(event => event.type))).sort();
-        const threats = Array.from(new Set(allEvents.map(event => event.threat_level)))
+        const types = Array.from(new Set(allEvents.map(event => getEventCategory(event)))).sort();
+        const threats = Array.from(new Set(allEvents.map(event => String(event.threat_level || "UNKNOWN").toUpperCase())))
             .sort((a, b) => THREAT_ORDER.indexOf(a) - THREAT_ORDER.indexOf(b));
         populateSelect(element("filter-type"), types, "All event types", displayType);
         populateSelect(element("filter-threat"), threats, "All threat levels");
@@ -1226,7 +1268,23 @@
             element(id).addEventListener("change", updateMapData);
         });
 
-        ["layer-intelligence", "layer-earthquakes", "layer-volcanoes", "layer-weather", "layer-x-reports"].forEach(id => {
+        [
+            "layer-intelligence",
+            "layer-conflict",
+            "layer-cyber",
+            "layer-aircraft",
+            "layer-military-aircraft",
+            "layer-maritime",
+            "layer-satellites",
+            "layer-earthquakes",
+            "layer-volcanoes",
+            "layer-weather",
+            "layer-solar",
+            "layer-humanitarian",
+            "layer-gps-jamming",
+            "layer-internet-outages",
+            "layer-x-reports"
+        ].forEach(id => {
             element(id).addEventListener("change", applyLayerVisibility);
         });
 

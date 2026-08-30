@@ -82,10 +82,20 @@
                 <div id="filter-content" class="filter-content">
                     <fieldset class="layer-toggles">
                         <legend>Map layers</legend>
-                        <label><input id="layer-intelligence" type="checkbox" checked> Intelligence</label>
+                        <label><input id="layer-intelligence" type="checkbox" checked> Global intelligence</label>
+                        <label><input id="layer-conflict" type="checkbox" checked> Conflict</label>
+                        <label><input id="layer-cyber" type="checkbox" checked> Cyber</label>
+                        <label><input id="layer-aircraft" type="checkbox" checked> Aircraft</label>
+                        <label><input id="layer-military-aircraft" type="checkbox" checked> Military aircraft</label>
+                        <label><input id="layer-maritime" type="checkbox" checked> Maritime</label>
+                        <label><input id="layer-satellites" type="checkbox" checked> Satellites</label>
                         <label><input id="layer-earthquakes" type="checkbox" checked> Earthquakes</label>
                         <label><input id="layer-volcanoes" type="checkbox" checked> Volcanoes</label>
-                        <label><input id="layer-weather" type="checkbox" checked> Weather areas</label>
+                        <label><input id="layer-weather" type="checkbox" checked> Weather / severe weather</label>
+                        <label><input id="layer-solar" type="checkbox" checked> Solar / space weather</label>
+                        <label><input id="layer-humanitarian" type="checkbox" checked> Humanitarian</label>
+                        <label><input id="layer-gps-jamming" type="checkbox" checked> GPS interference</label>
+                        <label><input id="layer-internet-outages" type="checkbox" checked> Internet outages</label>
                         <label class="early-report-toggle"><input id="layer-x-reports" type="checkbox" checked> Social Media Early Reports</label>
                     </fieldset>
 
@@ -249,7 +259,8 @@
 
     <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
     <script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script>
-    <script src="assets/js/sentinel-map.js?v=20260728-symbol-key"></script>
+    <script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-compat"></script>
+    <script src="assets/js/sentinel-map.js?v=20260830-gods-eye-compat"></script>
     <script src="assets/js/sentinel-source-viewer.js?v=20260728-source-feed-visibility"></script>
 </body>
 </html>

@@ -86,6 +86,35 @@ Serve locally rather than opening HTML directly:
 python -m http.server 8000
 ```
 
+## Gods Eye compatibility layer
+
+This repository keeps Sentinel Grid as the intelligence engine and uses a compatibility adapter to normalize Sentinel data into a Gods Eye-style layer model without replacing the backend.
+
+Key points:
+
+- Sentinel JSON remains the canonical source for operational events.
+- `assets/js/sentinel-gods-eye-adapter.js` converts raw Sentinel records into a consistent normalized shape.
+- The map UI continues to use existing MapLibre rendering and public OSM tiles.
+- Paid APIs are excluded. Free/public layers remain the default path.
+- Optional integrations can be added later behind a graceful fallback policy.
+
+Layer categories supported by the compatibility adapter include:
+
+- global intelligence
+- conflict
+- cyber
+- aircraft
+- military aircraft
+- maritime
+- satellites
+- earthquakes
+- volcanoes
+- weather/severe weather
+- solar/space weather
+- humanitarian events
+- GPS interference
+- internet outages
+
 ## Failure and degraded behavior
 
 An empty X feed with `{"schema_version":"1.0","reports":[]}` is valid and
