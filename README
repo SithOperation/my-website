@@ -86,17 +86,23 @@ Serve locally rather than opening HTML directly:
 python -m http.server 8000
 ```
 
-## Gods Eye compatibility layer
+## Gods Eye-inspired Sentinel globe
 
-This repository keeps Sentinel Grid as the intelligence engine and uses a compatibility adapter to normalize Sentinel data into a Gods Eye-style layer model without replacing the backend.
+This repository keeps Sentinel Grid as the intelligence engine and uses a compatibility adapter to normalize Sentinel data into a Gods Eye-style layer model without replacing the backend. The public Sentinel page uses MapLibre's globe projection so it remains deployable as a static GitHub Pages site with no build step or paid map service.
 
 Key points:
 
 - Sentinel JSON remains the canonical source for operational events.
 - `assets/js/sentinel-gods-eye-adapter.js` converts raw Sentinel records into a consistent normalized shape.
-- The map UI continues to use existing MapLibre rendering and public OSM tiles.
+- The map UI uses MapLibre globe rendering and public OpenStreetMap tiles.
+- Sentinel, environmental, and social-report pinpoints are intentionally unclustered. Every record is rendered individually at global zoom, including records that share a location.
+- Normal, CRT, night-vision, and FLIR-inspired presentation modes are local display filters and require no external service.
 - Paid APIs are excluded. Free/public layers remain the default path.
 - Optional integrations can be added later behind a graceful fallback policy.
+
+The compatibility adapter is loaded before `assets/js/sentinel-map.js`. To add a category, map its source names in `normalizeCategory`, add a layer checkbox in `sentinel.html`, and include the category in `getVisibleCategorySet`. New live feeds should continue to be collected and cached by Sentinel rather than polled aggressively by the browser.
+
+If the globe is blank, serve the repository over HTTP, confirm `assets/vendor/maplibre/maplibre-gl.js` loads, and check that `data/manifest.json` references the current `data/map_events.json` publication. The OpenStreetMap base layer requires network access; Sentinel event overlays still load from local JSON.
 
 Layer categories supported by the compatibility adapter include:
 

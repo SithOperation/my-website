@@ -32,23 +32,27 @@
             .find(value => value && value !== "null");
 
         if (category) {
-            if (["aircraft", "military_aircraft", "aviation", "flight"].includes(category)) return "aircraft";
+            if (["aircraft", "aviation", "flight"].includes(category)) return "aircraft";
+            if (["military_aircraft", "military-aviation"].includes(category)) return "military_aircraft";
             if (["conflict", "war", "armed_conflict", "insurgent", "battle"].includes(category)) return "conflict";
             if (["cyber", "cyber_event", "malware", "ransomware", "phishing", "threat"].includes(category)) return "cyber";
-            if (["humanitarian", "disaster", "aid", "relief"].includes(category)) return "humanitarian";
+            if (["humanitarian", "disaster", "disaster_alert", "aid", "relief"].includes(category)) return "humanitarian";
             if (["maritime", "ship", "vessel", "naval", "sea"].includes(category)) return "maritime";
             if (["satellite", "space", "orbital", "space_weather"].includes(category)) return "satellite";
             if (["earthquake", "seismic"].includes(category)) return "earthquake";
             if (["volcano", "eruption"].includes(category)) return "volcano";
-            if (["weather", "weather_alert", "storm", "flood", "hurricane"].includes(category)) return "weather";
+            if (["weather", "weather_alert", "tropical_cyclone", "storm", "flood", "hurricane"].includes(category)) return "weather";
             if (["solar", "space_weather", "geomagnetic"].includes(category)) return "solar";
             if (["outage", "internet_outage", "network_outage", "ioda"].includes(category)) return "internet_outage";
             if (["gps_jamming", "gpsjam", "jamming", "interference"].includes(category)) return "gps_jamming";
+            if (["conflict_report"].includes(category)) return "conflict";
+            if (["reddit_report", "x_report", "news", "breaking_news", "intelligence"].includes(category)) return "intelligence";
         }
 
         if (/(cyber|malware|ransomware|phishing|ddos|botnet|exploit)/i.test(text)) return "cyber";
         if (/(armed|conflict|rocket|shelling|drone|strike|battle|combat)/i.test(text)) return "conflict";
-        if (/(aircraft|plane|flight|helicopter|jet|military)/i.test(text)) return "aircraft";
+        if (/(military aircraft|fighter jet|air force|military aviation)/i.test(text)) return "military_aircraft";
+        if (/(aircraft|plane|flight|helicopter|jet)/i.test(text)) return "aircraft";
         if (/(ship|maritime|naval|vessel|cargo|pirate|fishing)/i.test(text)) return "maritime";
         if (/(satellite|orbital|space|launch|debris)/i.test(text)) return "satellite";
         if (/(earthquake|seismic|quake)/i.test(text)) return "earthquake";

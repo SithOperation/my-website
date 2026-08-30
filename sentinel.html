@@ -166,7 +166,7 @@
                     <div>
                         <p class="eyebrow">LIVE GEOSPATIAL PICTURE</p>
                         <h2 id="map-heading">Global intelligence map</h2>
-                        <p class="map-guidance">Clusters separate by regional zoom. Select a remaining group to inspect its reports. Aircraft appear only when explicitly classified as military.</p>
+                        <p class="map-guidance">Every signal remains individually rendered at global zoom. Select any pinpoint to inspect its intelligence record.</p>
                     </div>
                     <div class="map-stage-actions">
                         <p id="map-count" aria-live="polite">Preparing map layers...</p>
@@ -183,6 +183,20 @@
                 </div>
 
                 <div class="map-frame">
+                    <div class="tactical-corners" aria-hidden="true"></div>
+                    <div class="map-reticle" aria-hidden="true"><span></span></div>
+                    <div class="map-telemetry" aria-label="Map camera telemetry">
+                        <span>LAT <b id="camera-lat">20.0000</b></span>
+                        <span>LON <b id="camera-lon">0.0000</b></span>
+                        <span>ALT <b id="camera-alt">GLOBAL</b></span>
+                        <span>HDG <b id="camera-heading">000</b></span>
+                    </div>
+                    <div class="visual-mode-switcher" role="group" aria-label="Map visual mode">
+                        <button type="button" class="is-active" data-map-mode="normal" aria-pressed="true">NORMAL</button>
+                        <button type="button" data-map-mode="crt" aria-pressed="false">CRT</button>
+                        <button type="button" data-map-mode="nvg" aria-pressed="false">NVG</button>
+                        <button type="button" data-map-mode="flir" aria-pressed="false">FLIR</button>
+                    </div>
                     <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map">
                         <div class="fullscreen-map-help" aria-live="polite">
                             <strong>MAP NAVIGATION</strong>
@@ -197,7 +211,7 @@
                             </div>
                             <div id="fullscreen-event-detail" class="event-detail">
                                 <p class="empty-kicker">NO SIGNAL SELECTED</p>
-                                <p>Tap a pinpoint or cluster to inspect its intelligence record without leaving the map.</p>
+                                <p>Tap an individual pinpoint to inspect its intelligence record without leaving the map.</p>
                             </div>
                         </aside>
                     </div>
@@ -219,7 +233,7 @@
 
                 <div id="event-detail" class="event-detail">
                     <p class="empty-kicker">NO SIGNAL SELECTED</p>
-                    <p>Select a point or cluster on the map to inspect its intelligence record.</p>
+                    <p>Select an individual point on the map to inspect its intelligence record.</p>
                 </div>
             </aside>
         </section>
@@ -259,8 +273,8 @@
 
     <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
     <script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script>
-    <script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-compat"></script>
-    <script src="assets/js/sentinel-map.js?v=20260830-gods-eye-compat"></script>
+    <script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-globe"></script>
+    <script src="assets/js/sentinel-map.js?v=20260830-gods-eye-globe"></script>
     <script src="assets/js/sentinel-source-viewer.js?v=20260728-source-feed-visibility"></script>
 </body>
 </html>

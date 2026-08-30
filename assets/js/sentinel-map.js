@@ -55,8 +55,14 @@
         const type = String(value || "news").toLowerCase();
         const aliases = {
             conflict: "conflict",
+            cyber: "cyber",
             earthquake: "earthquake",
             humanitarian: "news",
+            intelligence: "news",
+            internet_outage: "internet_outage",
+            gps_jamming: "gps_jamming",
+            maritime: "maritime",
+            military_aircraft: "aircraft",
             military_exercise: "military_exercise",
             news: "news",
             prescribed_fire: "prescribed_fire",
@@ -91,23 +97,32 @@
 
     function featureCollection(events) {
         eventIndex.clear();
+        const positions = new Map();
         return {
             type: "FeatureCollection",
             features: events.map((event, index) => {
                 const mapId = event.event_id || `sentinel-${index}-${event.latitude}-${event.longitude}`;
+                const positionKey = `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
+                const positionIndex = positions.get(positionKey) || 0;
+                positions.set(positionKey, positionIndex + 1);
+                const ring = Math.floor(positionIndex / 8) + 1;
+                const angle = (positionIndex % 8) * (Math.PI / 4);
+                const spread = positionIndex ? Math.min(1.2, 0.18 * ring) : 0;
+                const latitude = Math.max(-85, Math.min(85, Number(event.latitude) + Math.sin(angle) * spread));
+                const longitude = Number(event.longitude) + Math.cos(angle) * spread;
                 eventIndex.set(mapId, event);
                 return {
                     type: "Feature",
                     id: mapId,
                     geometry: {
                         type: "Point",
-                        coordinates: [event.longitude, event.latitude]
+                        coordinates: [longitude, latitude]
                     },
                     properties: {
                         map_id: mapId,
                         title: event.title,
-                        type: event.type,
-                        symbol_type: symbolType(event.type),
+                        type: getEventCategory(event),
+                        symbol_type: symbolType(getEventCategory(event)),
                         threat_level: event.threat_level,
                         confidence: event.confidence ?? 0,
                         timestamp: event.timestamp || "",
@@ -119,9 +134,39 @@
         };
     }
 
+    function spreadCoincidentPoints(geojson, spacing = 0.18) {
+        const positions = new Map();
+        return {
+            ...geojson,
+            features: (geojson.features || []).map(feature => {
+                if (feature.geometry?.type !== "Point" || !Array.isArray(feature.geometry.coordinates)) return feature;
+                const [longitude, latitude] = feature.geometry.coordinates.map(Number);
+                if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return feature;
+                const key = `${latitude.toFixed(4)},${longitude.toFixed(4)}`;
+                const index = positions.get(key) || 0;
+                positions.set(key, index + 1);
+                if (!index) return feature;
+                const ring = Math.floor(index / 8) + 1;
+                const angle = (index % 8) * (Math.PI / 4);
+                const spread = Math.min(1.2, spacing * ring);
+                return {
+                    ...feature,
+                    geometry: {
+                        ...feature.geometry,
+                        coordinates: [
+                            longitude + Math.cos(angle) * spread,
+                            Math.max(-85, Math.min(85, latitude + Math.sin(angle) * spread))
+                        ]
+                    }
+                };
+            })
+        };
+    }
+
     function mapStyle() {
         return {
             version: 8,
+            projection: { type: "globe" },
             glyphs: "assets/map-fonts/{fontstack}/{range}.pbf",
             sources: {
                 osm: {
@@ -270,63 +315,21 @@
         if (!map.hasImage("military-aircraft")) {
             map.addImage("military-aircraft", createAircraftIcon(), { pixelRatio: 2 });
         }
-        ["conflict", "news", "satellite", "wildfire", "prescribed_fire", "military_exercise", "earthquake", "volcano", "weather"].forEach(type => {
+        ["conflict", "cyber", "news", "satellite", "maritime", "gps_jamming", "internet_outage", "wildfire", "prescribed_fire", "military_exercise", "earthquake", "volcano", "weather"].forEach(type => {
             if (!map.hasImage(`marker-${type}`)) map.addImage(`marker-${type}`, createCategoryIcon(type), { pixelRatio: 2 });
         });
 
         map.addSource("sentinel-events", {
             type: "geojson",
             data: featureCollection([]),
-            cluster: true,
-            clusterMaxZoom: 5,
-            clusterRadius: 45,
-            clusterMinPoints: 2
-        });
-
-        map.addLayer({
-            id: "cluster-glow",
-            type: "circle",
-            source: "sentinel-events",
-            filter: ["has", "point_count"],
-            paint: {
-                "circle-color": "#00f0ff",
-                "circle-radius": ["step", ["get", "point_count"], 23, 20, 31, 100, 42],
-                "circle-opacity": 0.12,
-                "circle-blur": 0.65
-            }
-        });
-
-        map.addLayer({
-            id: "clusters",
-            type: "circle",
-            source: "sentinel-events",
-            filter: ["has", "point_count"],
-            paint: {
-                "circle-color": ["step", ["get", "point_count"], "#07343b", 20, "#14454a", 100, "#5a2735"],
-                "circle-radius": ["step", ["get", "point_count"], 16, 20, 22, 100, 29],
-                "circle-stroke-width": 2,
-                "circle-stroke-color": ["step", ["get", "point_count"], "#00f0ff", 100, "#ff174f"]
-            }
-        });
-
-        map.addLayer({
-            id: "cluster-count",
-            type: "symbol",
-            source: "sentinel-events",
-            filter: ["has", "point_count"],
-            layout: {
-                "text-field": ["get", "point_count_abbreviated"],
-                "text-size": 12,
-                "text-font": ["Noto Sans Regular"]
-            },
-            paint: { "text-color": "#e9fbff" }
+            cluster: false
         });
 
         map.addLayer({
             id: "event-glow",
             type: "circle",
             source: "sentinel-events",
-            filter: ["all", ["!", ["has", "point_count"]], ["!=", ["get", "type"], "aircraft"]],
+            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 10, 8, 17],
                 "circle-color": threatColorExpression(),
@@ -339,7 +342,7 @@
             id: "source-reported-halo",
             type: "circle",
             source: "sentinel-events",
-            filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "source_reported"], true]],
+            filter: ["==", ["get", "source_reported"], true],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 12, 8, 20],
                 "circle-color": "rgba(0,0,0,0)",
@@ -353,7 +356,6 @@
             id: "association-highlight",
             type: "circle",
             source: "sentinel-events",
-            filter: ["!", ["has", "point_count"]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 17, 8, 28],
                 "circle-color": "rgba(0,0,0,0)",
@@ -371,12 +373,13 @@
             id: "events",
             type: "symbol",
             source: "sentinel-events",
-            filter: ["all", ["!", ["has", "point_count"]], ["!=", ["get", "type"], "aircraft"]],
+            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             layout: {
                 "icon-image": ["concat", "marker-", ["get", "symbol_type"]],
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.55, 8, 0.85],
-                "icon-allow-overlap": false,
-                "icon-padding": 2
+                "icon-allow-overlap": true,
+                "icon-ignore-placement": true,
+                "icon-padding": 0
             }
         });
 
@@ -384,7 +387,7 @@
             id: "military-aircraft-glow",
             type: "circle",
             source: "sentinel-events",
-            filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "type"], "aircraft"]],
+            filter: ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]],
             paint: {
                 "circle-radius": 16,
                 "circle-color": "#00f0ff",
@@ -397,35 +400,14 @@
             id: "military-aircraft",
             type: "symbol",
             source: "sentinel-events",
-            filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "type"], "aircraft"]],
+            filter: ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]],
             layout: {
                 "icon-image": "military-aircraft",
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.45, 8, 0.7],
                 "icon-rotate": ["coalesce", ["to-number", ["get", "heading"]], 0],
                 "icon-rotation-alignment": "map",
-                "icon-allow-overlap": true
-            }
-        });
-
-        map.on("click", "clusters", async event => {
-            const feature = event.features?.[0];
-            if (!feature) return;
-            const source = map.getSource("sentinel-events");
-            try {
-                const zoom = await source.getClusterExpansionZoom(feature.properties.cluster_id);
-                if (map.getZoom() < 4 && zoom <= 5) {
-                    map.easeTo({ center: feature.geometry.coordinates, zoom, duration: 450 });
-                    return;
-                }
-
-                const leaves = await source.getClusterLeaves(feature.properties.cluster_id, 50, 0);
-                const events = leaves
-                    .map(leaf => eventIndex.get(String(leaf.properties.map_id)))
-                    .filter(Boolean);
-                renderEventGroup(events, Number(feature.properties.point_count));
-            }
-            catch (error) {
-                console.warn("Unable to expand Sentinel cluster", error);
+                "icon-allow-overlap": true,
+                "icon-ignore-placement": true
             }
         });
 
@@ -441,14 +423,13 @@
                 .map(id => eventIndex.get(id))
                 .filter(Boolean);
 
-            if (events.length > 1) renderEventGroup(events, events.length);
-            else if (events[0]) renderEventDetail(events[0]);
+            if (events[0]) renderEventDetail(events[0]);
         };
 
         map.on("click", "events", selectRenderedEvent);
         map.on("click", "military-aircraft", selectRenderedEvent);
 
-        ["clusters", "events", "military-aircraft"].forEach(layer => {
+        ["events", "military-aircraft"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
@@ -476,7 +457,7 @@
     }
 
     function pointFeatures(events) {
-        return {
+        return spreadCoincidentPoints({
             type: "FeatureCollection",
             features: events.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).map(event => {
                 disasterIndex.set(event.event_id, event);
@@ -486,7 +467,7 @@
                     properties: { map_id: event.event_id, type: event.type, title: event.title }
                 };
             })
-        };
+        });
     }
 
     function validPolygonGeometry(event) {
@@ -513,26 +494,13 @@
         };
     }
 
-    function addEnvironmentalPointLayer(sourceId, layerId, events, icon, clustered) {
+    function addEnvironmentalPointLayer(sourceId, layerId, events, icon) {
         map.addSource(sourceId, {
             type: "geojson",
             data: pointFeatures(events),
-            cluster: clustered,
-            clusterMaxZoom: 5,
-            clusterRadius: 36
+            cluster: false
         });
-        if (clustered) {
-            map.addLayer({ id: `${layerId}-clusters`, type: "circle", source: sourceId, filter: ["has", "point_count"], paint: { "circle-radius": ["step", ["get", "point_count"], 13, 20, 19], "circle-color": "#3d3510", "circle-stroke-color": "#ffd400", "circle-stroke-width": 2 } });
-            map.addLayer({ id: `${layerId}-count`, type: "symbol", source: sourceId, filter: ["has", "point_count"], layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Noto Sans Regular"], "text-size": 10 }, paint: { "text-color": "#ffffff" } });
-            map.on("click", `${layerId}-clusters`, async click => {
-                const feature = click.features?.[0];
-                if (!feature) return;
-                const zoom = await map.getSource(sourceId).getClusterExpansionZoom(feature.properties.cluster_id);
-                map.easeTo({ center: feature.geometry.coordinates, zoom: Math.min(6, zoom), duration: 400 });
-            });
-        }
-        const pointLayer = { id: layerId, type: "symbol", source: sourceId, layout: { "icon-image": icon, "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.55, 8, 0.85], "icon-allow-overlap": false } };
-        if (clustered) pointLayer.filter = ["!", ["has", "point_count"]];
+        const pointLayer = { id: layerId, type: "symbol", source: sourceId, layout: { "icon-image": icon, "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.48, 8, 0.85], "icon-allow-overlap": true, "icon-ignore-placement": true, "icon-padding": 0 } };
         map.addLayer(pointLayer);
         map.on("click", layerId, click => {
             const selected = disasterIndex.get(String(click.features?.[0]?.properties?.map_id));
@@ -655,7 +623,7 @@
         const snapshot = await earlyReportFeed.load();
         const retained = retainedEarlyReportGeojson(snapshot.data);
         indexEarlyReports(retained);
-        map.getSource("x-early-reports-source").setData(retained);
+        map.getSource("x-early-reports-source").setData(spreadCoincidentPoints(retained, 0.14));
         map.triggerRepaint();
         updateMapCount();
     }
@@ -670,66 +638,20 @@
         indexEarlyReports(geojson);
         map.addSource("x-early-reports-source", {
             type: "geojson",
-            data: geojson,
-            cluster: true,
-            clusterMaxZoom: 7,
-            clusterRadius: 38,
-            clusterMinPoints: 2
-        });
-        map.addLayer({
-            id: "x-early-report-cluster-glow",
-            type: "circle",
-            source: "x-early-reports-source",
-            filter: ["has", "point_count"],
-            paint: {
-                "circle-radius": ["step", ["get", "point_count"], 22, 10, 29],
-                "circle-color": "#ff9f1c",
-                "circle-opacity": 0.16,
-                "circle-blur": 0.55
-            }
-        });
-        map.addLayer({
-            id: "x-early-report-clusters",
-            type: "circle",
-            source: "x-early-reports-source",
-            filter: ["has", "point_count"],
-            paint: {
-                "circle-radius": ["step", ["get", "point_count"], 16, 10, 21],
-                "circle-color": "#161616",
-                "circle-stroke-color": "#ffbf47",
-                "circle-stroke-width": 2
-            }
-        });
-        map.addLayer({
-            id: "x-early-report-cluster-count",
-            type: "symbol",
-            source: "x-early-reports-source",
-            filter: ["has", "point_count"],
-            layout: {
-                "text-field": ["get", "point_count_abbreviated"],
-                "text-font": ["Noto Sans Regular"],
-                "text-size": 11
-            },
-            paint: { "text-color": "#ffffff" }
+            data: spreadCoincidentPoints(geojson, 0.14),
+            cluster: false
         });
         map.addLayer({
             id: "x-early-reports",
             type: "symbol",
             source: "x-early-reports-source",
-            filter: ["!", ["has", "point_count"]],
             layout: {
                 "icon-image": "x-early-report-pinpoint",
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.16, 8, 0.25],
-                "icon-allow-overlap": false,
-                "icon-padding": 3
+                "icon-allow-overlap": true,
+                "icon-ignore-placement": true,
+                "icon-padding": 0
             }
-        });
-        map.on("click", "x-early-report-clusters", async click => {
-            const feature = click.features?.[0];
-            if (!feature) return;
-            const zoom = await map.getSource("x-early-reports-source")
-                .getClusterExpansionZoom(feature.properties.cluster_id);
-            map.easeTo({ center: feature.geometry.coordinates, zoom: Math.min(9, zoom), duration: 450 });
         });
         map.on("click", "x-early-reports", click => {
             const feature = click.features?.[0];
@@ -742,7 +664,7 @@
                 .setDOMContent(buildEarlyReportDetail(properties))
                 .addTo(map);
         });
-        ["x-early-report-clusters", "x-early-reports"].forEach(layerId => {
+        ["x-early-reports"].forEach(layerId => {
             map.on("mouseenter", layerId, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
         });
@@ -759,8 +681,8 @@
         const recentVolcanoes = retainRecentEvents(volcanoes);
         const recentWeather = retainRecentEvents(weather);
 
-        addEnvironmentalPointLayer("earthquake-source", "earthquakes", recentEarthquakes, "marker-earthquake", true);
-        addEnvironmentalPointLayer("volcano-source", "volcanoes", recentVolcanoes, "marker-volcano", false);
+        addEnvironmentalPointLayer("earthquake-source", "earthquakes", recentEarthquakes, "marker-earthquake");
+        addEnvironmentalPointLayer("volcano-source", "volcanoes", recentVolcanoes, "marker-volcano");
 
         const weatherFeatures = recentWeather.map(event => {
             const geometry = validPolygonGeometry(event);
@@ -838,15 +760,38 @@
         ids.forEach(id => { if (map?.getLayer(id)) map.setLayoutProperty(id, "visibility", visible ? "visible" : "none"); });
     }
 
+    function updateCameraTelemetry() {
+        if (!map) return;
+        const center = map.getCenter();
+        const zoom = map.getZoom();
+        const heading = ((map.getBearing() % 360) + 360) % 360;
+        element("camera-lat").textContent = center.lat.toFixed(4);
+        element("camera-lon").textContent = center.lng.toFixed(4);
+        element("camera-alt").textContent = zoom < 2.4 ? "GLOBAL" : `Z${zoom.toFixed(1)}`;
+        element("camera-heading").textContent = String(Math.round(heading)).padStart(3, "0");
+    }
+
+    function bindVisualModes() {
+        const frame = document.querySelector(".map-frame");
+        document.querySelectorAll("[data-map-mode]").forEach(button => {
+            button.addEventListener("click", () => {
+                const mode = button.dataset.mapMode || "normal";
+                frame.dataset.visualMode = mode;
+                document.querySelectorAll("[data-map-mode]").forEach(item => {
+                    const active = item === button;
+                    item.classList.toggle("is-active", active);
+                    item.setAttribute("aria-pressed", String(active));
+                });
+            });
+        });
+    }
+
     function applyLayerVisibility() {
-        setLayersVisible(["cluster-glow", "clusters", "cluster-count", "event-glow", "events", "military-aircraft-glow", "military-aircraft"], element("layer-intelligence").checked);
-        setLayersVisible(["earthquakes-clusters", "earthquakes-count", "earthquakes"], element("layer-earthquakes").checked);
+        setLayersVisible(["event-glow", "events", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
+        setLayersVisible(["earthquakes"], element("layer-earthquakes").checked);
         setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
         setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
         setLayersVisible([
-            "x-early-report-cluster-glow",
-            "x-early-report-clusters",
-            "x-early-report-cluster-count",
             "x-early-reports"
         ], element("layer-x-reports").checked);
         updateMapData();
@@ -863,6 +808,8 @@
             style: mapStyle(),
             center: INITIAL_CENTER,
             zoom: INITIAL_ZOOM,
+            pitch: 18,
+            bearing: 0,
             minZoom: 1.5,
             maxZoom: 16,
             renderWorldCopies: true,
@@ -874,6 +821,9 @@
         map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
         map.addControl(new window.maplibregl.FullscreenControl(), "top-right");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
+        bindVisualModes();
+        map.on("move", updateCameraTelemetry);
+        updateCameraTelemetry();
 
         const resizeMap = () => {
             if (!map) return;
@@ -909,6 +859,15 @@
         });
 
         map.on("load", () => {
+            map.setProjection?.({ type: "globe" });
+            map.setSky?.({
+                "sky-color": "#030708",
+                "horizon-color": "#08191c",
+                "fog-color": "#061012",
+                "sky-horizon-blend": 0.35,
+                "horizon-fog-blend": 0.45,
+                "fog-ground-blend": 0.7
+            });
             addIntelligenceLayers();
             mapReady = true;
             element("sentinel-map").dataset.mapReady = "true";
@@ -926,13 +885,13 @@
     function getVisibleCategorySet() {
         const categorySet = new Set();
         const layerChecks = [
-            ["layer-intelligence", ["conflict", "cyber", "aircraft", "maritime", "satellite", "earthquake", "volcano", "weather", "solar", "humanitarian", "intelligence", "news", "wildfire", "prescribed_fire", "military_exercise", "weather_alert", "reddit_report", "x_report"]],
+            ["layer-intelligence", ["intelligence", "news", "reddit_report", "x_report"]],
             ["layer-conflict", ["conflict", "military_exercise"]],
             ["layer-cyber", ["cyber"]],
             ["layer-aircraft", ["aircraft"]],
-            ["layer-military-aircraft", ["aircraft", "military_exercise"]],
+            ["layer-military-aircraft", ["military_aircraft", "military_exercise"]],
             ["layer-maritime", ["maritime"]],
-            ["layer-satellites", ["satellite", "solar"]],
+            ["layer-satellites", ["satellite"]],
             ["layer-earthquakes", ["earthquake"]],
             ["layer-volcanoes", ["volcano"]],
             ["layer-weather", ["weather", "weather_alert", "wildfire", "prescribed_fire"]],
@@ -964,7 +923,7 @@
 
         filteredEvents = allEvents.filter(event => {
             const category = getEventCategory(event);
-            if (visibleCategories.size > 0 && !visibleCategories.has(category)) return false;
+            if (!visibleCategories.has(category)) return false;
             if (type !== "all" && category !== type) return false;
             if (threat !== "all" && (event.threat_level || "UNKNOWN") !== threat) return false;
             if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
@@ -1203,7 +1162,7 @@
         element("ops-critical").textContent = criticalEvents.length.toLocaleString();
         element("ops-generated").textContent = formatDate(generated);
 
-        allEvents = snapshot.events.filter(isMilitaryAircraft);
+        allEvents = snapshot.events;
         populateFilters();
         renderHealth(snapshot);
         updateMapData();

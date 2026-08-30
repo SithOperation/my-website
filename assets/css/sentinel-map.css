@@ -646,7 +646,45 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     box-shadow: inset 0 0 80px rgba(0, 221, 255, .1), 0 0 40px rgba(0, 221, 255, .2);
 }
 
-#sentinel-map { position: absolute; inset: 0; }
+#sentinel-map { position: absolute; z-index: 1; inset: 0; }
+
+.tactical-corners {
+    position: absolute;
+    z-index: 4;
+    inset: 12px;
+    pointer-events: none;
+    background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 34px 1px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 1px 34px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 34px 1px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 1px 34px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 34px 1px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 1px 34px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 34px 1px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 1px 34px no-repeat;
+    opacity: .72;
+    filter: drop-shadow(0 0 5px rgba(0, 221, 255, .65));
+}
+
+.map-reticle { position: absolute; z-index: 4; top: 50%; left: 50%; width: 42px; height: 42px; border: 1px solid rgba(0, 221, 255, .35); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.map-reticle::before, .map-reticle::after { content: ""; position: absolute; background: rgba(0, 221, 255, .5); }
+.map-reticle::before { top: 20px; left: -12px; width: 64px; height: 1px; }
+.map-reticle::after { top: -12px; left: 20px; width: 1px; height: 64px; }
+.map-reticle span { position: absolute; inset: 17px; border: 1px solid var(--cyan); border-radius: 50%; }
+
+.map-telemetry { position: absolute; z-index: 5; top: 18px; left: 18px; display: grid; grid-template-columns: repeat(2, auto); gap: 3px 16px; padding: 8px 10px; border-left: 2px solid var(--green); background: rgba(2, 8, 8, .76); color: var(--muted); font-size: 9px; letter-spacing: .1em; pointer-events: none; backdrop-filter: blur(5px); }
+.map-telemetry b { color: var(--green); font-weight: 500; }
+
+.visual-mode-switcher { position: absolute; z-index: 5; right: 52px; bottom: 24px; display: flex; gap: 2px; padding: 3px; border: 1px solid rgba(0, 221, 255, .35); background: rgba(2, 8, 8, .82); backdrop-filter: blur(5px); }
+.visual-mode-switcher button { min-height: 27px; padding: 4px 7px; border: 0; background: transparent; color: var(--muted); font: 9px/1 "Courier New", monospace; letter-spacing: .08em; cursor: pointer; }
+.visual-mode-switcher button:hover, .visual-mode-switcher button.is-active { background: rgba(0, 255, 136, .13); color: var(--green); }
+
+.map-frame[data-visual-mode="nvg"] #sentinel-map { filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(4) brightness(.82) contrast(1.25); }
+.map-frame[data-visual-mode="flir"] #sentinel-map { filter: grayscale(1) invert(.9) contrast(1.75) brightness(.8); }
+.map-frame[data-visual-mode="crt"] #sentinel-map { filter: saturate(.72) contrast(1.22) brightness(.82); }
+.map-frame[data-visual-mode="crt"] .scanline { opacity: .3; animation: crt-flicker 4s steps(2, end) infinite; }
+
+@keyframes crt-flicker { 0%, 96%, 100% { opacity: .3; } 97% { opacity: .12; } 98% { opacity: .38; } }
 
 .scanline {
     position: absolute;
@@ -944,6 +982,9 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     .map-stage-heading > p { text-align: left; }
     .map-stage { grid-template-rows: auto minmax(62vh, 650px); }
     .map-frame { min-height: 62vh; }
+    .map-telemetry { grid-template-columns: 1fr; gap: 2px; }
+    .visual-mode-switcher { right: 12px; bottom: 38px; }
+    .visual-mode-switcher button { padding-inline: 5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
