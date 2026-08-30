@@ -1020,7 +1020,7 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 }
 
 /* Desktop operations-console shell. Mobile and narrow-tablet layouts retain
-   normal document scrolling in the existing responsive rules below. */
+   normal document scrolling in the existing responsive rules above. */
 @media (min-width: 1181px) {
     html,
     body {
@@ -1033,11 +1033,7 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 
     .ops-shell {
         display: grid;
-        grid-template-rows:
-            clamp(52px, 6vh, 76px)
-            clamp(42px, 5vh, 62px)
-            minmax(0, 1fr)
-            clamp(24px, 3.5vh, 40px);
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
         gap: clamp(4px, .55vh, 8px);
         width: 100vw;
         height: 100vh;
@@ -1052,7 +1048,6 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     .ops-header {
         min-width: 0;
         min-height: 0;
-        height: 100%;
         gap: clamp(10px, 1.2vw, 24px);
         padding: clamp(6px, .6vw, 12px) clamp(10px, 1vw, 20px);
     }
@@ -1068,13 +1063,16 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     .ops-header .eyebrow,
     .ops-header h1,
     .ops-header .back-link { margin: 0; }
-    .ops-header h1 { font-size: clamp(20px, 2vw, 34px); line-height: 1; }
+    .ops-header h1 {
+        font-size: clamp(20px, 1.8vw, 32px);
+        line-height: 1;
+        letter-spacing: clamp(.08em, .7vw, .14em);
+    }
     .ops-status { max-height: 100%; padding: 6px 10px; font-size: clamp(9px, .65vw, 12px); }
 
     .metric-strip {
         min-width: 0;
         min-height: 0;
-        height: 100%;
         margin: 0;
         overflow: hidden;
     }
@@ -1088,9 +1086,9 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
 
     .operations-grid {
         grid-template-columns:
-            minmax(210px, 16fr)
-            minmax(0, 65fr)
-            minmax(240px, 19fr);
+            clamp(230px, 14vw, 290px)
+            minmax(0, 1fr)
+            clamp(250px, 16vw, 320px);
         width: 100%;
         height: 100%;
         min-width: 0;
@@ -1158,9 +1156,8 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     .ops-footer {
         min-width: 0;
         min-height: 0;
-        height: 100%;
         align-items: center;
-        padding: 0 4px;
+        padding: 3px 4px;
         overflow: hidden;
         white-space: nowrap;
     }
