@@ -1,48 +1,49 @@
 {
-  "total_events": 661,
+  "total_events": 620,
   "event_types": {
-    "earthquake": 92,
-    "humanitarian": 12,
-    "reddit_report": 12,
+    "earthquake": 87,
+    "conflict": 9,
     "europe_security": 4,
-    "wildfire": 8,
-    "conflict": 7,
-    "weather_alert": 522,
-    "tropical_cyclone": 4
+    "wildfire": 7,
+    "reddit_report": 14,
+    "tropical_cyclone": 5,
+    "weather_alert": 482,
+    "humanitarian": 12
   },
   "threat_levels": {
-    "MEDIUM": 583,
+    "MEDIUM": 548,
+    "CRITICAL": 13,
     "LOW": 14,
-    "CRITICAL": 12,
-    "HIGH": 52
+    "HIGH": 45
   },
   "priority_levels": {
-    "medium": 583,
-    "high": 76,
-    "critical": 2
+    "medium": 549,
+    "high": 65,
+    "critical": 6
   },
   "sources": {
-    "USGS Earthquake Hazards Program": 92,
-    "GDACS": 14,
-    "Reddit reddit_lebanon": 2,
+    "USGS Earthquake Hazards Program": 87,
+    "BBC World News": 7,
     "POLITICO Europe Defence": 4,
-    "Reddit reddit_ukrainian_conflict": 5,
-    "Reddit reddit_worldnews": 2,
     "NASA EONET": 12,
-    "BBC World News": 5,
-    "National Weather Service": 522,
-    "Reddit reddit_israel": 1,
+    "Reddit reddit_worldnews": 1,
+    "GDACS": 15,
+    "Reddit reddit_israel": 2,
+    "Reddit reddit_lebanon": 1,
     "Reddit reddit_israel_palestine": 2,
+    "National Weather Service": 482,
     "UN News": 2,
-    "Reddit reddit_osint_ukraine": 1
+    "Reddit reddit_osint_ukraine": 4,
+    "Reddit reddit_ukrainian_conflict": 8
   },
   "regions": {
-    "Unknown": 131,
+    "Unknown": 128,
     "Ukraine": 4,
-    "United States": 522,
-    "Russia": 1,
+    "Russia": 2,
+    "United States": 482,
     "Iran": 2,
-    "Finland": 1
+    "Finland": 1,
+    "Israel": 1
   },
-  "average_confidence": 98.84
+  "average_confidence": 98.71
 }
