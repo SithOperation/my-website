@@ -34,7 +34,7 @@ assert.ok(page.includes('&#128293;') && page.includes('&#9992;') && page.include
 assert.ok(!page.includes("ðŸ") && !page.includes("âŒ"), "Legend must not contain mojibake glyphs");
 assert.ok(mapStyles.includes("@media (min-width: 1181px)"), "Desktop Sentinel must have a dedicated viewport layout");
 assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100vw"), "Desktop Sentinel must fill the browser viewport");
-assert.match(mapStyles, /grid-template-columns:\s*minmax\(210px, 16fr\)\s*minmax\(0, 65fr\)\s*minmax\(240px, 19fr\)/, "Desktop workspace must prioritize the center map");
+assert.match(mapStyles, /grid-template-columns:\s*clamp\(230px, 14vw, 290px\)\s*minmax\(0, 1fr\)\s*clamp\(250px, 16vw, 320px\)/, "Desktop workspace must prioritize the center map");
 assert.ok(mapStyles.includes("overflow: hidden") && mapStyles.includes("overflow-y: auto"), "Desktop page must lock outer scrolling while panels scroll internally");
 assert.ok(mapScript.includes("new ResizeObserver(resizeMap)"), "MapLibre must resize when its grid area changes");
 

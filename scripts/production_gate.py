@@ -24,6 +24,46 @@ class ProductionGateError(RuntimeError):
     """Raised when a production-readiness invariant fails."""
 
 
+class UniqueKeyLoader(yaml.SafeLoader):
+    """Safe YAML loader that rejects duplicate mapping keys."""
+
+
+def _construct_unique_mapping(
+    loader: UniqueKeyLoader,
+    node: yaml.nodes.MappingNode,
+    deep: bool = False,
+) -> dict[object, object]:
+    mapping: dict[object, object] = {}
+    for key_node, value_node in node.value:
+        key = loader.construct_object(key_node, deep=deep)  # type: ignore[no-untyped-call]
+        try:
+            duplicate = key in mapping
+        except TypeError as error:
+            raise yaml.constructor.ConstructorError(
+                "while constructing a mapping",
+                node.start_mark,
+                "found an unhashable mapping key",
+                key_node.start_mark,
+            ) from error
+        if duplicate:
+            raise yaml.constructor.ConstructorError(
+                "while constructing a mapping",
+                node.start_mark,
+                f"found duplicate key {key!r}",
+                key_node.start_mark,
+            )
+        mapping[key] = loader.construct_object(  # type: ignore[no-untyped-call]
+            value_node, deep=deep
+        )
+    return mapping
+
+
+UniqueKeyLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+    _construct_unique_mapping,
+)
+
+
 def validate_python_types(repository: Path) -> None:
     """Run the repository's canonical strict mypy command."""
     result = subprocess.run(
@@ -94,11 +134,21 @@ def validate_generated_x(repository: Path) -> None:
 
 
 def validate_workflows(repository: Path) -> None:
-    """Parse every GitHub Actions workflow as YAML."""
-    for path in sorted((repository / ".github/workflows").glob("*.yml")):
-        with path.open("r", encoding="utf-8") as stream:
-            if not isinstance(yaml.safe_load(stream), dict):
-                raise ProductionGateError(f"workflow is not a mapping: {path}")
+    """Parse every GitHub Actions workflow and reject duplicate YAML keys."""
+    workflow_root = repository / ".github/workflows"
+    paths = sorted({*workflow_root.glob("*.yml"), *workflow_root.glob("*.yaml")})
+    if not paths:
+        raise ProductionGateError("no GitHub Actions workflows were found")
+    for path in paths:
+        try:
+            with path.open("r", encoding="utf-8") as stream:
+                workflow = yaml.load(stream, Loader=UniqueKeyLoader)
+        except yaml.YAMLError as error:
+            raise ProductionGateError(
+                f"invalid workflow YAML in {path}: {error}"
+            ) from error
+        if not isinstance(workflow, dict):
+            raise ProductionGateError(f"workflow is not a mapping: {path}")
 
 
 def validate_local_links(stage: Path) -> None:

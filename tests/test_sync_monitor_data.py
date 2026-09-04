@@ -23,6 +23,19 @@ type JsonValue = (
 
 
 class SyncMonitorDataTests(unittest.TestCase):
+    def test_default_sync_returns_failure_when_any_required_source_fails(self) -> None:
+        """The aggregate command cannot report success for a partial publication."""
+
+        results = [
+            sync_monitor_data.SyncResult("healthy.json", "unchanged", 2),
+            sync_monitor_data.SyncResult("missing.json", "skipped"),
+        ]
+        with (
+            mock.patch.object(sys, "argv", [str(MODULE_PATH)]),
+            mock.patch.object(sync_monitor_data, "sync_all", return_value=results),
+        ):
+            self.assertEqual(sync_monitor_data.main(), 1)
+
     def write_sentinel_publication(self, root: Path) -> Path:
         output = root / "source"
         output.mkdir()

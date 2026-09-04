@@ -161,3 +161,20 @@ def test_invalid_coordinates_are_rejected() -> None:
             "expected",
             fetcher=make_fetcher(documents),
         )
+
+
+def test_europe_security_events_are_supported() -> None:
+    """Production verification accepts a category rendered by the map adapter."""
+    documents = production_documents()
+    events = documents["map_events.json"]
+    assert isinstance(events, list)
+    assert isinstance(events[0], dict)
+    events[0]["type"] = "europe_security"
+
+    result = verify_production.verify_production(
+        "https://example.test/data",
+        "expected",
+        fetcher=make_fetcher(documents),
+    )
+
+    assert result.map_event_count == 1

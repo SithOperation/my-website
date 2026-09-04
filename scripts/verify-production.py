@@ -18,6 +18,7 @@ SUPPORTED_EVENT_TYPES = frozenset(
     {
         "conflict",
         "earthquake",
+        "europe_security",
         "flood",
         "humanitarian",
         "natural_hazard",

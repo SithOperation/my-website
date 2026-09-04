@@ -13,6 +13,7 @@ from scripts.production_gate import (
     validate_generated_x,
     validate_geojson,
     validate_python_types,
+    validate_workflows,
 )
 
 
@@ -55,6 +56,31 @@ def test_pages_deploy_requires_validation_job() -> None:
         Path(".github/workflows/pages.yml").read_text(encoding="utf-8")
     )
     assert workflow["jobs"]["deploy"]["needs"] == "validate"
+
+
+def test_workflow_validation_rejects_duplicate_keys(tmp_path: Path) -> None:
+    """Duplicate workflow keys cannot be silently accepted by the release gate."""
+    workflows = tmp_path / ".github" / "workflows"
+    workflows.mkdir(parents=True)
+    (workflows / "duplicate.yaml").write_text(
+        "name: first\nname: second\njobs: {}\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ProductionGateError, match="duplicate key"):
+        validate_workflows(tmp_path)
+
+
+def test_workflow_validation_accepts_yaml_extension(tmp_path: Path) -> None:
+    """Both supported GitHub Actions workflow extensions are validated."""
+    workflows = tmp_path / ".github" / "workflows"
+    workflows.mkdir(parents=True)
+    (workflows / "workflow.yaml").write_text(
+        "name: test\non: workflow_dispatch\njobs: {}\n",
+        encoding="utf-8",
+    )
+
+    validate_workflows(tmp_path)
 
 
 def test_production_gate_uses_canonical_mypy_command(

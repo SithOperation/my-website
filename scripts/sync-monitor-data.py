@@ -560,8 +560,7 @@ def main() -> int:
         destination = arguments.destination_root or repository / "staged" / "disaster"
         return 0 if source_sync_succeeded(sync_disaster(source, destination)) else 1
     else:
-        sync_all(repository)
-    return 0
+        return 0 if source_sync_succeeded(sync_all(repository)) else 1
 
 
 if __name__ == "__main__":

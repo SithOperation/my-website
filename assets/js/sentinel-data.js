@@ -3,6 +3,7 @@
 
     const SUPPORTED_SCHEMA_MAJOR = 1;
     const MAP_RETENTION_MS = 48 * 60 * 60 * 1000;
+    const REQUEST_TIMEOUT_MS = 12_000;
 
     function schemaMajor(value) {
         const match = String(value || "").match(/^(\d+)/);
@@ -118,12 +119,26 @@
 
         async fetchJSON(filename, publicationId = null, noStore = false) {
             const version = publicationId ? `?publication=${encodeURIComponent(publicationId)}` : "";
-            const response = await fetch(`${this.root}/${filename}${version}`, {
-                cache: noStore ? "no-store" : "default",
-                headers: { Accept: "application/json" }
-            });
-            if (!response.ok) throw new Error(`${filename} unavailable (${response.status})`);
-            return response.json();
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(`${this.root}/${filename}${version}`, {
+                    cache: noStore ? "no-store" : "default",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`${filename} unavailable (${response.status})`);
+                return await response.json();
+            }
+            catch (error) {
+                if (error?.name === "AbortError") {
+                    throw new Error(`${filename} request timed out`);
+                }
+                throw error;
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
         }
 
         validateManifest(manifest) {

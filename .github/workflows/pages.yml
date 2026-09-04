@@ -28,6 +28,8 @@ concurrency:
 
 jobs:
   validate:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -69,6 +71,7 @@ jobs:
         run: |
           find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
           node --check tests/verify_global_map_browser.js
+          node tests/test_sentinel_gods_eye_contract.js
           node tests/test_x_generation_refresh.js
           node --test tests/test_x_report_popup.js
           node --test tests/test_source_viewer.js
@@ -101,6 +104,9 @@ jobs:
 
   deploy:
     needs: validate
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
