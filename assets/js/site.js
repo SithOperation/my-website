@@ -133,6 +133,7 @@
         const project = projects[key];
         const viewer = document.getElementById("viewer-content");
         if (!project || !viewer) return;
+        viewer.classList.toggle("case-study", Boolean(project.summary));
 
         const heading = document.createElement("h2");
         heading.textContent = project.title;
