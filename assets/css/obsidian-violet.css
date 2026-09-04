@@ -1,0 +1,400 @@
+/* Obsidian Violet — homepage portfolio theme only. */
+.portfolio-page {
+    color-scheme: dark;
+    --obsidian-bg: #111015;
+    --obsidian-section: #17151d;
+    --obsidian-card: #201d27;
+    --obsidian-glass: rgba(48, 39, 62, .72);
+    --obsidian-nav: rgba(24, 20, 31, .88);
+    --obsidian-text: #f0edf3;
+    --obsidian-text-secondary: #b5aebb;
+    --obsidian-text-muted: #8d8693;
+    --obsidian-violet: #8d72a8;
+    --obsidian-violet-hover: #aa91c0;
+    --obsidian-border: rgba(174, 145, 196, .20);
+    --obsidian-border-active: rgba(174, 145, 196, .38);
+    --obsidian-shadow: 0 24px 60px rgba(4, 3, 6, .32);
+
+    /* Compatibility aliases for the existing portfolio architecture. */
+    --site-bg: var(--obsidian-bg);
+    --site-bg-soft: var(--obsidian-section);
+    --site-bg-raised: var(--obsidian-card);
+    --site-panel: rgba(32, 29, 39, .96);
+    --site-panel-solid: var(--obsidian-card);
+    --site-panel-alt: #26222e;
+    --site-panel-strong: rgba(32, 29, 39, .98);
+    --site-text: var(--obsidian-text);
+    --site-text-strong: var(--obsidian-text);
+    --site-text-soft: var(--obsidian-text-secondary);
+    --site-muted: var(--obsidian-text-secondary);
+    --site-faint: var(--obsidian-text-muted);
+    --site-line: var(--obsidian-border);
+    --site-line-medium: rgba(174, 145, 196, .28);
+    --site-line-strong: var(--obsidian-border-active);
+    --site-steel: var(--obsidian-violet);
+    --site-accent: var(--obsidian-violet);
+    --site-accent-bright: var(--obsidian-violet-hover);
+    --site-accent-dark: #69537d;
+    --site-warm: var(--obsidian-violet-hover);
+    --site-red: var(--obsidian-violet);
+    --site-red-bright: var(--obsidian-violet-hover);
+    --site-red-dark: #69537d;
+    --site-red-soft: rgba(141, 114, 168, .16);
+    --shadow-red: 0 0 36px rgba(141, 114, 168, .09);
+
+    background:
+        radial-gradient(circle at 70% 18%, rgba(126, 91, 153, .10), transparent 34rem),
+        radial-gradient(circle at 12% 62%, rgba(126, 91, 153, .055), transparent 30rem),
+        var(--obsidian-bg);
+    color: var(--obsidian-text);
+}
+
+.portfolio-page .overlay {
+    background: linear-gradient(rgba(17, 16, 21, .74), rgba(17, 16, 21, .96));
+}
+
+.portfolio-page ::selection {
+    color: var(--obsidian-text);
+    background: #69537d;
+}
+
+.portfolio-page * {
+    scrollbar-color: #69537d var(--obsidian-section);
+}
+
+.portfolio-page *::-webkit-scrollbar-track { background: var(--obsidian-section); }
+.portfolio-page *::-webkit-scrollbar-thumb { background: #69537d; }
+.portfolio-page *::-webkit-scrollbar-thumb:hover { background: var(--obsidian-violet); }
+
+.portfolio-page :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 2px solid var(--obsidian-violet-hover);
+    outline-offset: 4px;
+}
+
+.portfolio-page .hero {
+    min-height: min(78vh, 820px);
+}
+
+.portfolio-page .hero .brand-wordmark__primary,
+.portfolio-page .hero .brand-wordmark__secondary,
+.portfolio-page .glitch-title,
+.portfolio-page .sentinel-title,
+.portfolio-page .card > h2,
+.portfolio-page .capabilities-heading h2 {
+    color: var(--obsidian-text);
+}
+
+.portfolio-page .hero .brand-wordmark__divider {
+    background: linear-gradient(90deg, transparent, var(--obsidian-violet) 20%, var(--obsidian-violet-hover) 50%, var(--obsidian-violet) 80%, transparent);
+}
+
+.portfolio-page .hero-subtitle,
+.portfolio-page .intel-subtitle,
+.portfolio-page .editorial-kicker,
+.portfolio-page .section-kicker,
+.portfolio-page .section-label,
+.portfolio-page .eyebrow,
+.portfolio-page .unit-code,
+.portfolio-page .project-index,
+.portfolio-page .project-action,
+.portfolio-page .sentinel-launch-kicker {
+    color: var(--obsidian-violet-hover);
+}
+
+.portfolio-page .hero-statement,
+.portfolio-page .card p,
+.portfolio-page .panel-description,
+.portfolio-page .map-instructions,
+.portfolio-page .capabilities-heading p {
+    color: var(--obsidian-text-secondary);
+}
+
+.portfolio-page .hero-status,
+.portfolio-page .terminal {
+    color: var(--obsidian-text-muted);
+}
+
+.portfolio-page nav {
+    border-color: rgba(174, 145, 196, .18);
+    background: var(--obsidian-nav);
+    box-shadow: 0 14px 38px rgba(4, 3, 6, .30);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.portfolio-page nav a {
+    border: 1px solid transparent;
+    border-radius: 7px;
+    color: var(--obsidian-text-secondary);
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+.portfolio-page nav a::after { background: #625b68; }
+.portfolio-page nav a::before { background: var(--obsidian-violet); }
+.portfolio-page nav a:hover,
+.portfolio-page nav a:focus-visible,
+.portfolio-page nav a.is-current {
+    color: var(--obsidian-text);
+    border: 1px solid rgba(210, 190, 228, .28);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .025) 42%),
+        linear-gradient(110deg, rgba(170, 145, 192, .20), rgba(48, 39, 62, .48));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .16),
+        inset 0 0 18px rgba(170, 145, 192, .07),
+        0 7px 18px rgba(4, 3, 6, .22);
+    backdrop-filter: blur(12px) saturate(1.12);
+    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+    transform: translateY(-1px);
+}
+.portfolio-page nav a:hover::after,
+.portfolio-page nav a:focus-visible::after,
+.portfolio-page nav a.is-current::after {
+    background: var(--obsidian-violet-hover);
+    box-shadow: 0 0 10px rgba(170, 145, 192, .42);
+}
+.portfolio-page nav a.is-current {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .02) 42%),
+        linear-gradient(90deg, rgba(141, 114, 168, .22), rgba(48, 39, 62, .42));
+}
+
+.portfolio-page .card,
+.portfolio-page #sentinel-dashboard {
+    border-top-color: var(--obsidian-border);
+}
+.portfolio-page .card::before,
+.portfolio-page #sentinel-dashboard::before {
+    background: var(--obsidian-violet);
+}
+
+.portfolio-page .intel-panel,
+.portfolio-page .toolkit-summary,
+.portfolio-page .toolkit-warning,
+.portfolio-page .case-study-notice {
+    border-color: var(--obsidian-border);
+    background: rgba(32, 29, 39, .94);
+}
+.portfolio-page .intel-panel,
+.portfolio-page .case-study-notice {
+    border-left-color: var(--obsidian-violet);
+}
+
+.portfolio-page .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.portfolio-page .project {
+    display: flex;
+    min-height: 290px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--obsidian-border);
+    border-radius: 10px;
+    background:
+        linear-gradient(145deg, rgba(141, 114, 168, .06), transparent 42%),
+        var(--obsidian-card);
+    box-shadow: 0 16px 42px rgba(4, 3, 6, .22);
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+.portfolio-page .project:last-child { border-bottom: 1px solid var(--obsidian-border); }
+.portfolio-page .project h3 {
+    margin: 2rem 0 1rem;
+    color: var(--obsidian-text);
+}
+.portfolio-page .project p { color: var(--obsidian-text-secondary); }
+.portfolio-page .project-action { margin-top: auto; padding-top: 1.5rem; }
+.portfolio-page .project-index,
+.portfolio-page .project-action,
+.portfolio-page .project-status {
+    transition: color 180ms ease, border-color 180ms ease, background 180ms ease, text-shadow 180ms ease;
+}
+.portfolio-page .project:hover,
+.portfolio-page .project:focus-visible {
+    border-color: var(--obsidian-border-active);
+    background:
+        linear-gradient(145deg, rgba(141, 114, 168, .10), transparent 46%),
+        #25212c;
+    box-shadow: 0 22px 52px rgba(4, 3, 6, .34);
+    transform: translateY(-3px);
+}
+.portfolio-page .project:hover .project-index,
+.portfolio-page .project:hover .project-action,
+.portfolio-page .project:focus-visible .project-index,
+.portfolio-page .project:focus-visible .project-action {
+    color: #cfb5e4;
+    text-shadow: 0 0 12px rgba(170, 145, 192, .34);
+}
+.portfolio-page .project--proprietary:hover .project-status,
+.portfolio-page .project--proprietary:focus-visible .project-status {
+    border-color: rgba(207, 181, 228, .58);
+    background: rgba(170, 145, 192, .20);
+    color: #dcc8ec;
+}
+
+.portfolio-page .project--proprietary {
+    border-color: rgba(174, 145, 196, .34);
+}
+.portfolio-page .project-status,
+.portfolio-page .case-study-badge {
+    margin-top: .85rem;
+    border-color: var(--obsidian-border-active);
+    border-radius: 999px;
+    background: rgba(141, 114, 168, .12);
+    color: var(--obsidian-violet-hover);
+}
+.portfolio-page .project--proprietary h3 { margin-top: 1.25rem; }
+
+.portfolio-page .case-study-tags li,
+.portfolio-page .case-study-flow li,
+.portfolio-page .expertise-card,
+.portfolio-page .tool-tile,
+.portfolio-page .capability-unit li {
+    border-color: var(--obsidian-border);
+    background: var(--obsidian-card);
+    color: var(--obsidian-text-secondary);
+}
+.portfolio-page .expertise-card.expertise-primary {
+    border-color: var(--obsidian-border-active);
+    background: linear-gradient(135deg, rgba(141, 114, 168, .12), var(--obsidian-card));
+}
+.portfolio-page .expertise-meter { background: rgba(240, 237, 243, .09); }
+.portfolio-page .expertise-meter i {
+    background: var(--obsidian-violet);
+    transition: background 180ms ease, box-shadow 180ms ease;
+}
+.portfolio-page .capability-unit.unit-primary { border-left-color: var(--obsidian-violet); }
+.portfolio-page .tool-tile b {
+    border-color: var(--obsidian-border-active);
+    color: var(--obsidian-violet-hover);
+}
+.portfolio-page .expertise-card:hover,
+.portfolio-page .tool-tile:hover {
+    border-color: var(--obsidian-border-active);
+    box-shadow: 0 16px 36px rgba(4, 3, 6, .28);
+    transform: translateY(-2px);
+}
+.portfolio-page .expertise-card:hover .expertise-meter i,
+.portfolio-page .expertise-card:focus-within .expertise-meter i {
+    background: #c3a7d9;
+    box-shadow: 0 0 10px rgba(170, 145, 192, .46);
+}
+.portfolio-page .tool-tile b,
+.portfolio-page .capability-unit .unit-code,
+.portfolio-page .sentinel-card div {
+    transition: color 180ms ease, border-color 180ms ease, text-shadow 180ms ease;
+}
+.portfolio-page .tool-tile:hover b,
+.portfolio-page .capability-unit:hover .unit-code,
+.portfolio-page .sentinel-card:hover div {
+    border-color: rgba(207, 181, 228, .58);
+    color: #cfb5e4;
+    text-shadow: 0 0 11px rgba(170, 145, 192, .30);
+}
+
+/* Sentinel's portfolio container adopts the theme; sentinel.html remains untouched. */
+.portfolio-page .sentinel-card,
+.portfolio-page .sentinel-panel {
+    border-color: var(--obsidian-border);
+    background: var(--obsidian-card);
+    box-shadow: none;
+}
+.portfolio-page .sentinel-card { border-top-color: var(--obsidian-violet); }
+.portfolio-page .sentinel-card h3 { color: var(--obsidian-text-secondary); }
+.portfolio-page .sentinel-card div { color: var(--obsidian-violet-hover); }
+.portfolio-page .sentinel-status {
+    border-color: var(--obsidian-border);
+    background: var(--obsidian-card);
+    color: var(--obsidian-text);
+}
+.portfolio-page .sentinel-launch-panel {
+    border-color: var(--obsidian-border);
+    border-left-color: var(--obsidian-violet);
+    background: var(--obsidian-glass);
+    box-shadow: var(--obsidian-shadow);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+.portfolio-page .sentinel-map-launch,
+.portfolio-page .project-link,
+.portfolio-page .toolkit-download,
+.portfolio-page .resume-viewer__back,
+.portfolio-page .resume-viewer__download {
+    border: 1px solid var(--obsidian-violet);
+    background: #1c1922;
+    color: var(--obsidian-text);
+}
+.portfolio-page .sentinel-map-launch:hover,
+.portfolio-page .sentinel-map-launch:focus-visible,
+.portfolio-page .project-link:hover,
+.portfolio-page .project-link:focus-visible,
+.portfolio-page .toolkit-download:hover,
+.portfolio-page .toolkit-download:focus-visible,
+.portfolio-page .resume-viewer__back:hover,
+.portfolio-page .resume-viewer__back:focus-visible,
+.portfolio-page .resume-viewer__download:hover,
+.portfolio-page .resume-viewer__download:focus-visible {
+    border-color: var(--obsidian-violet-hover);
+    background: rgba(141, 114, 168, .18);
+    color: var(--obsidian-text);
+    box-shadow: 0 10px 28px rgba(4, 3, 6, .24);
+}
+
+.portfolio-page #resume,
+.portfolio-page #contact {
+    padding: clamp(2rem, 5vw, 4rem);
+    border: 1px solid var(--obsidian-border);
+    border-radius: 10px;
+    background: var(--obsidian-card);
+    box-shadow: var(--obsidian-shadow);
+}
+.portfolio-page #resume::before,
+.portfolio-page #contact::before { display: none; }
+.portfolio-page .contact-link { color: var(--obsidian-text); }
+.portfolio-page .contact-link__icon {
+    border-color: var(--obsidian-violet);
+    border-radius: 6px;
+    color: var(--obsidian-violet-hover);
+}
+.portfolio-page .contact-link:hover { color: var(--obsidian-violet-hover); }
+
+.portfolio-page .resume-viewer { background: rgba(10, 8, 13, .90); }
+.portfolio-page .resume-viewer__panel {
+    border-color: var(--obsidian-border-active);
+    background: var(--obsidian-section);
+    box-shadow: var(--obsidian-shadow);
+}
+
+@media (max-width: 850px) {
+    .portfolio-page .grid { grid-template-columns: 1fr; }
+    .portfolio-page .project { min-height: 240px; }
+}
+
+@media (max-width: 560px) {
+    .portfolio-page .hero .brand-wordmark__secondary {
+        font-size: clamp(1.55rem, 8.2vw, 2.3rem);
+        letter-spacing: -.04em;
+    }
+    .portfolio-page nav {
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
+    .portfolio-page .project { padding: 1.4rem; }
+    .portfolio-page .project h3 { margin: 1.35rem 0 .85rem; }
+    .portfolio-page #resume,
+    .portfolio-page #contact { padding: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portfolio-page .project,
+    .portfolio-page .expertise-card,
+    .portfolio-page .tool-tile { transition: none; }
+}
