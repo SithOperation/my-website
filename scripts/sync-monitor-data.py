@@ -472,20 +472,20 @@ def source_sync_succeeded(results: list[SyncResult]) -> bool:
 
 
 def sync_ai(repository: Path) -> SyncResult:
-    result = publish_file(
-        repository / "external" / "ai" / "data" / "ai_cyber_digest.json",
-        repository / "data" / "ai_cyber_digest.json",
-        validate_ai_digest,
-    )
+    source = repository / "external" / "ai" / "data" / "ai_cyber_digest.json"
+    destination = repository / "data" / "ai_cyber_digest.json"
+    source_warning = freshness_warning(source, 36)
+    if source_warning:
+        result = SyncResult(
+            "ai_cyber_digest.json",
+            "failed",
+            detail=f"refusing to publish stale source: {source_warning}",
+        )
+    else:
+        result = publish_file(source, destination, validate_ai_digest)
     detail = f" - {result.detail}" if result.detail else ""
     print(f"{result.status.upper()}: {result.name} ({result.size:,} bytes){detail}")
-    warnings = [
-        warning
-        for warning in (
-            freshness_warning(repository / "data" / "ai_cyber_digest.json", 36),
-        )
-        if warning
-    ]
+    warnings = [source_warning] if source_warning else []
     write_summary([result], warnings)
     return result
 

@@ -23,6 +23,38 @@ type JsonValue = (
 
 
 class SyncMonitorDataTests(unittest.TestCase):
+    def test_ai_only_rejects_stale_source_and_preserves_last_known_good(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "external" / "ai" / "data" / "ai_cyber_digest.json"
+            destination = root / "data" / "ai_cyber_digest.json"
+            source.parent.mkdir(parents=True)
+            destination.parent.mkdir(parents=True)
+            source.write_text(
+                json.dumps(
+                    {
+                        "generated_at": "2000-01-01T00:00:00Z",
+                        "stories": [
+                            {
+                                "title": "Old",
+                                "source": "Publisher",
+                                "source_url": "https://example.test",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            destination.write_text('{"known_good": true}', encoding="utf-8")
+
+            result = sync_monitor_data.sync_ai(root)
+
+            self.assertEqual(result.status, "failed")
+            self.assertIn("stale source", result.detail)
+            self.assertEqual(
+                destination.read_text(encoding="utf-8"), '{"known_good": true}'
+            )
+
     def test_default_sync_returns_failure_when_any_required_source_fails(self) -> None:
         """The aggregate command cannot report success for a partial publication."""
 

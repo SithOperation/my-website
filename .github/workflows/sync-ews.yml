@@ -29,7 +29,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: SithOperation/EWS-discord-monitor
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: external/ews
 
       - name: Validate and publish EWS state
