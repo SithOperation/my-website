@@ -113,6 +113,7 @@
 
     function plotClass(event) {
         const category = getEventCategory(event);
+        if (category === "earthquake") return "earthquake";
         const rawSignals = [event?.type, event?.category, event?.classification, category]
             .filter(Boolean).join(" ").toLowerCase();
         const text = `${event?.title || ""} ${event?.description || ""}`;
@@ -435,7 +436,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 4, 8, 9],
-                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", "#31d48a"],
+                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", ["==", ["get", "plot_class"], "earthquake"], "#b56cff", "#31d48a"],
                 "circle-opacity": 0.09,
                 "circle-blur": 0.7
             }
@@ -479,7 +480,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1, 4, 3.1, 8, 5.5],
-                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", "#31d48a"],
+                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", ["==", ["get", "plot_class"], "earthquake"], "#b56cff", "#31d48a"],
                 "circle-opacity": 0.96,
                 "circle-stroke-color": "#061012",
                 "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 1.5, 0.75, 8, 2],
