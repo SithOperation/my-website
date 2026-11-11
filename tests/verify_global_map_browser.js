@@ -56,6 +56,37 @@ async function main() {
             { timeout: 30000 }
         );
 
+        const plottedFeedCheck = await page.evaluate(async () => {
+            const response = await fetch("data/map_events.json", { cache: "no-store" });
+            const publishedEvents = await response.json();
+            const target = publishedEvents.find(event => event.event_id &&
+                Number.isFinite(Number(event.latitude)) &&
+                Number.isFinite(Number(event.longitude)) &&
+                !(Number(event.latitude) === 0 && Number(event.longitude) === 0));
+            const diagnostics = window.SentinelMapBridge?.diagnostics();
+            const plotted = diagnostics?.eventCoordinates?.find(item => item.eventId === target?.event_id);
+            return {
+                target,
+                plotted,
+                located: target ? window.SentinelMapBridge?.locateEvent(target.event_id) : false
+            };
+        });
+        if (!plottedFeedCheck.target || !plottedFeedCheck.plotted) {
+            throw new Error("Published map event was not indexed by the map");
+        }
+        if (Number(plottedFeedCheck.plotted.latitude) !== Number(plottedFeedCheck.target.latitude) ||
+            Number(plottedFeedCheck.plotted.longitude) !== Number(plottedFeedCheck.target.longitude)) {
+            throw new Error("Map event coordinates differ from the published feed");
+        }
+        if (!plottedFeedCheck.located) throw new Error("Published map event could not be located");
+        await page.locator(".maplibregl-popup").waitFor({ state: "visible", timeout: 5000 });
+        if (await page.locator(".sentinel-popup").count() !== 1) {
+            throw new Error("Located map event did not render an event popup");
+        }
+        if (!(await page.locator(".sentinel-popup").textContent()).includes("Source:")) {
+            throw new Error("Event popup did not include source attribution");
+        }
+
         await page.waitForFunction(
             () => ["available", "partial", "stale"].includes(
                 document.querySelector("#source-viewer")?.dataset.feedState

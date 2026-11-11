@@ -50,5 +50,6 @@ assert.ok(mapScript.includes("coordinates: [Number(event.longitude), Number(even
 assert.ok(!mapScript.includes("spreadCoincidentPoints"), "Map layers must not fabricate display coordinates for coincident events");
 assert.ok(dataScript.includes("Number(latitude) === 0 && Number(longitude) === 0"), "Client normalization must reject placeholder coordinates");
 assert.ok(dataScript.includes("if (!eventId) return null"), "Client normalization must reject events without stable IDs");
+assert.ok(mapScript.includes("eventCoordinates"), "Map diagnostics must expose indexed event coordinates for browser regression checks");
 
 console.log("Sentinel Gods Eye contract tests passed");

@@ -1550,7 +1550,10 @@
             zoom: Math.max(mapInstance.getZoom(), 8),
             duration: reducedMotion ? 0 : 450
         });
-        if (render) renderEventDetail(event);
+        if (render) {
+            showEventPopup(event, [event.longitude, event.latitude]);
+            renderEventDetail(event);
+        }
         return true;
     }
 
@@ -1561,7 +1564,16 @@
         locateEvent: locateSourceEvent,
         clearHighlight: clearSourceHighlight,
         diagnostics() {
-            return { mapReady, eventCount: eventIndex.size, highlightedEventId };
+            return {
+                mapReady,
+                eventCount: eventIndex.size,
+                highlightedEventId,
+                eventCoordinates: Array.from(eventIndex, ([eventId, event]) => ({
+                    eventId,
+                    latitude: event.latitude,
+                    longitude: event.longitude
+                }))
+            };
         }
     });
     window.SentinelMapAssociation = Object.freeze({
