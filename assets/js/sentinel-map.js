@@ -1582,7 +1582,7 @@
                     longitude: event.longitude
                 }))
             };
-        }
+        },
         firstClusterPoint() {
             if (!map || !mapReady) return null;
             const feature = map.queryRenderedFeatures({ layers: ["event-clusters"] })[0];
@@ -1593,7 +1593,7 @@
                 y: point.y,
                 count: Number(feature.properties?.point_count || 0)
             };
-        }
+        },
         projectEvent(eventId) {
             const event = eventIndex.get(String(eventId || ""));
             if (!map || !event) return null;
