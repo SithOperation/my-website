@@ -7,6 +7,7 @@ const path = require("node:path");
 const root = path.join(__dirname, "..");
 const mapScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-map.js"), "utf8");
 const dataScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-data.js"), "utf8");
+const publishedMapEvents = JSON.parse(fs.readFileSync(path.join(root, "data", "map_events.json"), "utf8"));
 const adapterScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-gods-eye-adapter.js"), "utf8");
 const page = fs.readFileSync(path.join(root, "sentinel.html"), "utf8");
 const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map.css"), "utf8");
@@ -53,5 +54,14 @@ assert.ok(dataScript.includes("Number(latitude) === 0 && Number(longitude) === 0
 assert.ok(dataScript.includes("if (!eventId) return null"), "Client normalization must reject events without stable IDs");
 assert.ok(mapScript.includes("eventCoordinates"), "Map diagnostics must expose indexed event coordinates for browser regression checks");
 assert.ok(mapScript.includes("if (events.length > 1)"), "Coincident markers must open a grouped event detail instead of moving coordinates");
+assert.ok(Array.isArray(publishedMapEvents) && publishedMapEvents.length > 0, "Published map data must contain events");
+const publishedIds = new Set();
+publishedMapEvents.forEach((event, index) => {
+    assert.ok(event.event_id && !publishedIds.has(event.event_id), `Published map event ${index} must have a unique ID`);
+    assert.ok(Number.isFinite(event.latitude) && event.latitude >= -90 && event.latitude <= 90, `Published map event ${index} has invalid latitude`);
+    assert.ok(Number.isFinite(event.longitude) && event.longitude >= -180 && event.longitude <= 180, `Published map event ${index} has invalid longitude`);
+    assert.ok(!(event.latitude === 0 && event.longitude === 0), `Published map event ${index} uses placeholder coordinates`);
+    publishedIds.add(event.event_id);
+});
 
 console.log("Sentinel Gods Eye contract tests passed");
