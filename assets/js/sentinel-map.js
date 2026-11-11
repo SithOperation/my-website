@@ -491,7 +491,10 @@
                 .map(id => eventIndex.get(id))
                 .filter(Boolean);
 
-            if (events[0]) {
+            if (events.length > 1) {
+                renderEventGroup(events, events.length);
+            }
+            else if (events[0]) {
                 showEventPopup(events[0], event.lngLat);
                 renderEventDetail(events[0]);
             }
