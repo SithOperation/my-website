@@ -114,26 +114,17 @@
 
     function featureCollection(events) {
         eventIndex.clear();
-        const positions = new Map();
         return {
             type: "FeatureCollection",
             features: events.map((event, index) => {
                 const mapId = event.event_id || `sentinel-${index}-${event.latitude}-${event.longitude}`;
-                const positionKey = `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
-                const positionIndex = positions.get(positionKey) || 0;
-                positions.set(positionKey, positionIndex + 1);
-                const ring = Math.floor(positionIndex / 8) + 1;
-                const angle = (positionIndex % 8) * (Math.PI / 4);
-                const spread = positionIndex ? Math.min(1.2, 0.18 * ring) : 0;
-                const latitude = Math.max(-85, Math.min(85, Number(event.latitude) + Math.sin(angle) * spread));
-                const longitude = Number(event.longitude) + Math.cos(angle) * spread;
                 eventIndex.set(mapId, event);
                 return {
                     type: "Feature",
                     id: mapId,
                     geometry: {
                         type: "Point",
-                        coordinates: [longitude, latitude]
+                        coordinates: [Number(event.longitude), Number(event.latitude)]
                     },
                     properties: {
                         map_id: mapId,
@@ -146,35 +137,6 @@
                         historical: isHistoricalEvent(event),
                         heading: Number(aircraftValue(event, "heading", "track")) || 0,
                         source_reported: isSourceReportedEvent(event)
-                    }
-                };
-            })
-        };
-    }
-
-    function spreadCoincidentPoints(geojson, spacing = 0.18) {
-        const positions = new Map();
-        return {
-            ...geojson,
-            features: (geojson.features || []).map(feature => {
-                if (feature.geometry?.type !== "Point" || !Array.isArray(feature.geometry.coordinates)) return feature;
-                const [longitude, latitude] = feature.geometry.coordinates.map(Number);
-                if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return feature;
-                const key = `${latitude.toFixed(4)},${longitude.toFixed(4)}`;
-                const index = positions.get(key) || 0;
-                positions.set(key, index + 1);
-                if (!index) return feature;
-                const ring = Math.floor(index / 8) + 1;
-                const angle = (index % 8) * (Math.PI / 4);
-                const spread = Math.min(1.2, spacing * ring);
-                return {
-                    ...feature,
-                    geometry: {
-                        ...feature.geometry,
-                        coordinates: [
-                            longitude + Math.cos(angle) * spread,
-                            Math.max(-85, Math.min(85, latitude + Math.sin(angle) * spread))
-                        ]
                     }
                 };
             })
@@ -577,7 +539,7 @@
     }
 
     function pointFeatures(events) {
-        return spreadCoincidentPoints({
+        return {
             type: "FeatureCollection",
             features: events.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).map(event => {
                 disasterIndex.set(event.event_id, event);
@@ -587,7 +549,7 @@
                     properties: { map_id: event.event_id, type: event.type, title: event.title }
                 };
             })
-        });
+        };
     }
 
     function validPolygonGeometry(event) {
@@ -771,7 +733,7 @@
         const snapshot = await earlyReportFeed.load();
         const retained = retainedEarlyReportGeojson(snapshot.data);
         indexEarlyReports(retained);
-        map.getSource("x-early-reports-source").setData(spreadCoincidentPoints(retained, 0.14));
+        map.getSource("x-early-reports-source").setData(retained);
         map.triggerRepaint();
         updateMapCount();
     }
@@ -786,7 +748,7 @@
         indexEarlyReports(geojson);
         map.addSource("x-early-reports-source", {
             type: "geojson",
-            data: spreadCoincidentPoints(geojson, 0.14),
+            data: geojson,
             cluster: false
         });
         map.addLayer({
