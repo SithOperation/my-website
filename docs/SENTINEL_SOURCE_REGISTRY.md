@@ -19,6 +19,12 @@ publication. It is intentionally separate from the authoritative
 | Deutsche Welle | Global, Germany | `https://rss.dw.com/xml/rss-en-all` | RSS | Yes, HTTP 200 | None | Yes | Headlines/summaries/links only |
 | The Guardian | Global | `https://www.theguardian.com/world/rss` | RSS | Yes, HTTP 200 | None | Yes | Headlines/summaries/links only |
 | Al Jazeera | Global | `https://www.aljazeera.com/xml/rss/all.xml` | RSS | Yes, HTTP 200 | None | Yes | Headlines/summaries/links only |
+| Meduza | Russia / Eastern Europe | `https://meduza.io/rss/en/all` | RSS | Yes, HTTP 200 | None | Yes | Independent publisher; claims attributed |
+| 38 North | North Korea | `https://www.38north.org/feed/` | RSS | Yes, HTTP 200 | None | Yes | Specialist analysis, not event confirmation |
+| ERR News | Estonia | `https://news.err.ee/rss` | RSS | Yes, HTTP 200 | None | Yes | Public broadcaster feed |
+| Yonhap News Agency | South Korea | `https://en.yna.co.kr/RSS/news.xml` | RSS | Yes, HTTP 200 | None | Yes | National news agency feed |
+| NHK | Japan | `https://www3.nhk.or.jp/rss/news/cat0.xml` | RSS | Yes, HTTP 200 | None | Yes | Japanese-language feed |
+| IRNA English | Iran | `https://en.irna.ir/rss` | RSS | Yes, HTTP 200 | None | Yes | State news agency; claims attributed |
 | CISA advisories | Global infrastructure | `https://www.cisa.gov/cybersecurity-advisories/all.xml` | RSS | Yes, HTTP 200 | None | Yes | Official advisory metadata and links |
 | USGS earthquakes | Global | `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson` | GeoJSON | Yes, HTTP 200 | None | Yes | Source coordinates are preserved |
 | NOAA SWPC | Global space weather | `https://services.swpc.noaa.gov/products/summary/solar-wind-speed.json` | JSON | Yes, HTTP 200 | None | Yes | Telemetry; not treated as news |

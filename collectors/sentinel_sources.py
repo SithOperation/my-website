@@ -75,6 +75,7 @@ class SourceSpec:
     usage_restrictions: str
     reliability: str
     enabled: bool
+    coverage_countries: tuple[str, ...] = ()
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any], index: int) -> "SourceSpec":
@@ -123,6 +124,10 @@ class SourceSpec:
             usage_restrictions=str(value["usage_restrictions"]).strip(),
             reliability=str(value["reliability"]).strip(),
             enabled=bool(value["enabled"]),
+            coverage_countries=tuple(
+                str(item).strip() for item in value.get("coverage_countries", [])
+                if str(item).strip()
+            ),
         )
 
 
@@ -318,7 +323,10 @@ def _make_item(
     latitude: object = None,
     longitude: object = None,
 ) -> dict[str, Any]:
-    countries = classify_countries(f"{title} {summary}")
+    countries = list(dict.fromkeys([
+        *source.coverage_countries,
+        *classify_countries(f"{title} {summary}"),
+    ]))
     categories = classify_categories(f"{title} {summary}", source.categories)
     identity = f"{source.id}|{url}|{title.casefold()}"
     coordinates = _coordinate_pair(latitude, longitude)
