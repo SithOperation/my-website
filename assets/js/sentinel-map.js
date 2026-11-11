@@ -111,6 +111,16 @@
         return aliases[type] || "news";
     }
 
+    function plotClass(event) {
+        const category = getEventCategory(event);
+        const rawSignals = [event?.type, event?.category, event?.classification, category]
+            .filter(Boolean).join(" ").toLowerCase();
+        const text = `${event?.title || ""} ${event?.description || ""}`;
+        const warCategory = /(conflict|war|armed_conflict|insurgent|battle|military|europe_security|border_incident|drone_activity|missile_activity|military_deployment|mobilization|nato_activity|russian_activity|ground_activity)/i.test(rawSignals);
+        const warText = /(armed conflict|war zone|military operation|military strike|airstrike|shelling|drone strike|missile strike|rocket attack|troops|invasion|frontline|combat|battlefield)/i.test(text);
+        return warCategory || warText ? "war" : "news";
+    }
+
     function isSourceReportedEvent(event) {
         return String(event?.location_status || "").toLowerCase() === "source_reported" ||
             ["source_reported", "unverified"].includes(String(event?.claim_status || "").toLowerCase());
@@ -154,6 +164,7 @@
                         map_id: mapId,
                         title: event.title,
                         type: getEventCategory(event),
+                        plot_class: plotClass(event),
                         symbol_type: symbolType(getEventCategory(event)),
                         threat_level: event.threat_level,
                         confidence: event.confidence ?? 0,
@@ -424,7 +435,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 4, 8, 9],
-                "circle-color": ["case", ["==", ["get", "type"], "conflict"], "#ff294d", "#31d48a"],
+                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", "#31d48a"],
                 "circle-opacity": 0.09,
                 "circle-blur": 0.7
             }
@@ -468,7 +479,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1, 4, 3.1, 8, 5.5],
-                "circle-color": ["case", ["==", ["get", "type"], "conflict"], "#ff294d", "#31d48a"],
+                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", "#31d48a"],
                 "circle-opacity": 0.96,
                 "circle-stroke-color": "#061012",
                 "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 1.5, 0.75, 8, 2],
