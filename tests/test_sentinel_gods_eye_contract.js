@@ -14,13 +14,10 @@ const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map
 
 assert.ok(mapScript.includes('projection: { type: "mercator" }'), "Sentinel must request fullscreen mercator projection");
 assert.ok(!mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must not force the 3D globe projection");
-assert.ok(mapScript.includes("cluster: true"), "Primary events should cluster at global zoom");
-assert.ok(mapScript.includes('id: "event-clusters"'), "Primary event clusters must have a dedicated layer");
+assert.ok(mapScript.includes("cluster: false"), "Primary events must remain individual normal-sized points");
+assert.ok(!mapScript.includes('id: "event-clusters"'), "Oversized notification bubbles must not be rendered");
 assert.ok(mapScript.includes('id: "event-hit"'), "Individual events must have a dedicated touch hit layer");
 assert.ok(mapScript.includes('map.on("click", "event-hit"'), "Individual event hit targets must open event details");
-assert.ok(mapScript.includes('id: "event-cluster-hit"'), "Clusters must have a dedicated touch hit layer");
-assert.ok(mapScript.includes('map.on("click", "event-cluster-hit"'), "Cluster hit targets must expand clusters");
-assert.ok(mapScript.includes("getClusterExpansionZoom"), "Primary event clusters must expand on click");
 assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-report cluster labels must not exist");
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");
 assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event symbols must not be hidden by collision placement");
@@ -60,7 +57,7 @@ assert.ok(dataScript.includes("if (!eventId) return null"), "Client normalizatio
 assert.ok(mapScript.includes('dataset.feedState = "error"') && mapScript.includes('"empty"'), "Map diagnostics must distinguish empty data from failed loading");
 assert.ok(mapScript.includes("eventCoordinates"), "Map diagnostics must expose indexed event coordinates for browser regression checks");
 assert.ok(mapScript.includes("projectEvent"), "Browser regression checks must be able to exercise a real projected marker click");
-assert.ok(mapScript.includes("firstClusterPoint"), "Browser regression checks must be able to exercise cluster expansion");
+assert.ok(mapScript.includes("firstEventPoint"), "Browser regression checks must be able to exercise normal event points");
 assert.ok(mapScript.includes("firstCityPoint"), "Browser regression checks must be able to exercise city-light clicks");
 assert.ok(mapScript.includes("if (events.length > 1)"), "Coincident markers must open a grouped event detail instead of moving coordinates");
 assert.ok(mapScript.includes("selectEventById(feature.properties?.map_id)"), "Individual marker selection must focus the map on the selected event");

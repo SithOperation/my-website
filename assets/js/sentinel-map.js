@@ -412,55 +412,9 @@
         map.addSource("sentinel-events", {
             type: "geojson",
             data: featureCollection([]),
-            cluster: true,
-            clusterMaxZoom: 4,
-            clusterRadius: 48,
-            clusterProperties: {
-                critical_count: ["+", ["case", ["==", ["get", "threat_level"], "CRITICAL"], 1, 0]],
-                high_count: ["+", ["case", ["==", ["get", "threat_level"], "HIGH"], 1, 0]]
-            }
-        });
-
-        map.addLayer({
-            id: "event-clusters",
-            type: "circle",
-            source: "sentinel-events",
-            filter: ["has", "point_count"],
-            paint: {
-                "circle-color": "#ff294d",
-                "circle-radius": 18,
-                "circle-stroke-color": "#061012",
-                "circle-stroke-width": 2,
-                "circle-opacity": 0.9
-            }
-        });
-
-        map.addLayer({
-            id: "event-cluster-count",
-            type: "symbol",
-            source: "sentinel-events",
-            filter: ["has", "point_count"],
-            layout: {
-                "text-field": ["to-string", ["get", "point_count"]],
-                "text-size": 11,
-                "text-font": ["Noto Sans Regular"],
-                "text-allow-overlap": true
-            },
-            paint: { "text-color": "#061012" }
-        });
-
-        // Cluster labels are compact at global zoom, so give them their own
-        // generous hit area before individual event targets are added.
-        map.addLayer({
-            id: "event-cluster-hit",
-            type: "circle",
-            source: "sentinel-events",
-            filter: ["has", "point_count"],
-            paint: {
-                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 24, 4, 30],
-                "circle-color": "rgba(0,0,0,0)",
-                "circle-opacity": 0
-            }
+            // Every published event stays an individual normal-sized point.
+            // Coincident records are grouped in the drawer after selection.
+            cluster: false
         });
 
         map.addLayer({
@@ -592,26 +546,7 @@
         map.on("click", "military-aircraft", selectRenderedEvent);
         map.on("click", "event-hit", selectRenderedEvent);
 
-        const expandEventCluster = event => {
-            const cluster = event.features?.[0];
-            const source = map.getSource("sentinel-events");
-            if (!cluster || !source?.getClusterExpansionZoom) return;
-            source.getClusterLeaves(cluster.properties.cluster_id, 100, 0, (error, leaves) => {
-                if (!error) {
-                    const events = leaves.map(leaf => eventIndex.get(String(leaf.properties?.map_id))).filter(Boolean);
-                    renderEventGroup(events, Number(cluster.properties.point_count) || events.length);
-                }
-                source.getClusterExpansionZoom(cluster.properties.cluster_id, (zoomError, zoom) => {
-                    if (zoomError) return;
-                    map.easeTo({ center: cluster.geometry.coordinates, zoom, duration: 420 });
-                });
-            });
-        };
-
-        map.on("click", "event-clusters", expandEventCluster);
-        map.on("click", "event-cluster-hit", expandEventCluster);
-
-        ["event-clusters", "event-cluster-hit", "event-hit", "events", "event-glyphs", "military-aircraft"].forEach(layer => {
+        ["event-hit", "events", "event-glyphs", "military-aircraft"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
@@ -1057,7 +992,7 @@
     }
 
     function applyLayerVisibility() {
-        setLayersVisible(["event-glow", "event-cluster-hit", "event-hit", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
+        setLayersVisible(["event-glow", "event-hit", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
         setLayersVisible(["earthquakes"], element("layer-earthquakes").checked);
         setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
         setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
@@ -1239,7 +1174,7 @@
                 );
                 const visibleIds = new Set();
                 let clusteredVisible = 0;
-                map.queryRenderedFeatures({ layers: ["event-clusters", "event-cluster-hit", "event-hit", "events", "event-glyphs", "military-aircraft"] })
+                map.queryRenderedFeatures({ layers: ["event-hit", "events", "event-glyphs", "military-aircraft"] })
                     .forEach(feature => {
                         const count = Number(feature.properties?.point_count);
                         if (Number.isFinite(count) && count > 0) clusteredVisible += count;
@@ -1740,16 +1675,16 @@
                 }))
             };
         },
-        firstClusterPoint() {
+        firstEventPoint() {
             if (!map || !mapReady) return null;
-            const feature = map.queryRenderedFeatures({ layers: ["event-clusters"] })[0];
-            if (!feature?.geometry?.coordinates) return null;
-            const point = map.project(feature.geometry.coordinates);
-            return {
-                x: point.x,
-                y: point.y,
-                count: Number(feature.properties?.point_count || 0)
-            };
+            for (const [eventId, event] of eventIndex) {
+                const point = map.project([event.longitude, event.latitude]);
+                if (point.x >= 0 && point.x <= map.getContainer().clientWidth &&
+                    point.y >= 0 && point.y <= map.getContainer().clientHeight) {
+                    return { x: point.x, y: point.y, eventId };
+                }
+            }
+            return null;
         },
         firstCityPoint() {
             if (!map || !mapReady) return null;

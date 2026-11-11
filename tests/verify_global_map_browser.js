@@ -67,19 +67,14 @@ async function main() {
         }
         await page.locator("#event-panel-close").click();
 
-        const clusterPoint = await page.evaluate(() => window.SentinelMapBridge?.firstClusterPoint());
-        if (!clusterPoint || clusterPoint.count < 2) {
-            throw new Error("Global map did not render an expandable event cluster");
-        }
-        await page.mouse.click(clusterPoint.x, clusterPoint.y);
-        await page.waitForFunction(
-            () => Number(window.SentinelMapBridge?.diagnostics()?.zoom) > 2,
-            { timeout: 5000 }
-        );
+        const eventPoint = await page.evaluate(() => window.SentinelMapBridge?.firstEventPoint());
+        if (!eventPoint) throw new Error("Global map did not render an individual clickable event point");
+        await page.mouse.click(eventPoint.x, eventPoint.y);
         await page.locator("#event-panel.is-open").waitFor({ state: "visible", timeout: 5000 });
-        if (await page.locator("#event-detail .cluster-list button").count() < 1) {
-            throw new Error("Cluster click did not open the scrollable event list");
+        if (await page.locator("#event-detail").count() !== 1) {
+            throw new Error("Individual event point did not open event details");
         }
+        await page.locator("#event-panel-close").click();
 
         const plottedFeedCheck = await page.evaluate(async () => {
             const response = await fetch("data/map_events.json", { cache: "no-store" });
