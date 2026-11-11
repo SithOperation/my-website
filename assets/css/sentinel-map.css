@@ -1391,6 +1391,31 @@ body::before { display: none; }
 .maplibregl-ctrl-group button { min-width: 44px; min-height: 44px; }
 .maplibregl-ctrl-bottom-right { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); }
 .maplibregl-ctrl-bottom-left { bottom: max(8px, env(safe-area-inset-bottom)); }
+.map-dock {
+    position: absolute;
+    z-index: 7;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: max(12px, env(safe-area-inset-left));
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1px;
+    pointer-events: none;
+}
+.map-dock-button {
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 221, 255, .3);
+    background: rgba(4, 12, 15, .9);
+    color: #c6d4d6;
+    cursor: pointer;
+    font: 10px/1 "JetBrains Mono", "Courier New", monospace;
+    pointer-events: auto;
+}
+.map-dock-button:hover,
+.map-dock-button:focus-visible,
+.map-dock-button[aria-expanded="true"] { border-color: var(--cyan); color: #fff; }
 .maplibregl-popup { max-width: min(390px, calc(100vw - 24px)) !important; }
 .maplibregl-popup-content { max-width: min(360px, calc(100vw - 32px)); }
 .sentinel-popup { min-width: min(230px, calc(100vw - 52px)); max-width: min(350px, calc(100vw - 52px)); padding: 13px 15px; color: var(--text); font: 12px/1.45 Arial, sans-serif; }
@@ -1411,8 +1436,10 @@ body::before { display: none; }
     .map-stage-heading h1 { font-size: 11px; }
     .map-stage-heading p { max-width: 46vw; overflow: hidden; text-overflow: ellipsis; }
     .map-telemetry { display: none; }
-    .visual-mode-switcher { right: 8px; }
+    .visual-mode-switcher { right: 8px; bottom: max(58px, calc(env(safe-area-inset-bottom) + 48px)); }
     .visual-mode-switcher button { padding-inline: 6px; }
+    .map-dock { justify-content: stretch; gap: 0; }
+    .map-dock-button { flex: 1 1 0; padding-inline: 7px; }
     .event-panel { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); left: max(8px, env(safe-area-inset-left)); width: auto; max-height: min(55dvh, 440px); }
     .event-panel > .event-detail { max-height: calc(min(55dvh, 440px) - 66px); }
     .source-viewer { top: 0; right: 0; bottom: 0; left: 0; width: 100%; border: 0; border-top: 3px solid var(--cyan); }

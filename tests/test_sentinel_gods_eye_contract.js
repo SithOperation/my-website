@@ -6,6 +6,8 @@ const path = require("node:path");
 
 const root = path.join(__dirname, "..");
 const mapScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-map.js"), "utf8");
+const dataScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-data.js"), "utf8");
+const publishedMapEvents = JSON.parse(fs.readFileSync(path.join(root, "data", "map_events.json"), "utf8"));
 const adapterScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-gods-eye-adapter.js"), "utf8");
 const page = fs.readFileSync(path.join(root, "sentinel.html"), "utf8");
 const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map.css"), "utf8");
@@ -22,7 +24,9 @@ assert.ok(mapScript.includes("if (!visibleCategories.has(category)) return false
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
 assert.ok(page.includes('value="168">Last 7 days') && page.includes("All available records"), "Time filters must expose supported historical views");
+assert.ok(page.includes('value="all" selected>All available records'), "Sentinel must show the complete published record set by default");
 assert.ok(page.includes('id="mobile-detail-toggle"'), "Mobile event details must have a drawer toggle");
+assert.ok(page.includes('class="map-dock"') && page.includes('id="layers-toggle"') && page.includes('id="event-dock-toggle"'), "Minimal map controls must use the overlay dock");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");
 assert.ok(!page.includes('class="metric-strip"') && !page.includes('class="ops-footer"'), "The public map must not render dashboard panels or a permanent footer");
 assert.ok(!page.toLowerCase().includes("tap a pinpoint or cluster"), "Instructions must describe individual markers");
@@ -43,6 +47,25 @@ assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100
 assert.ok(mapStyles.includes(".ops-shell.sentinel-app") && mapStyles.includes(".map-frame"), "Sentinel must use the full-screen map shell");
 assert.ok(mapStyles.includes("env(safe-area-inset-top)") && mapStyles.includes("env(safe-area-inset-bottom)"), "Map overlays must respect display safe areas");
 assert.ok(mapStyles.includes("overflow: hidden") && mapStyles.includes("overflow: auto"), "Full-screen map must prevent page overflow while drawers remain scrollable");
+assert.ok(page.indexOf("editorial-system.css") < page.indexOf("sentinel-map.css"), "Sentinel layout CSS must load after shared editorial CSS");
 assert.ok(mapScript.includes("new ResizeObserver(resizeMap)"), "MapLibre must resize when its grid area changes");
+assert.ok(mapScript.includes("coordinates: [Number(event.longitude), Number(event.latitude)]"), "Primary event geometry must use the published coordinates");
+assert.ok(!mapScript.includes("spreadCoincidentPoints"), "Map layers must not fabricate display coordinates for coincident events");
+assert.ok(dataScript.includes("Number(latitude) === 0 && Number(longitude) === 0"), "Client normalization must reject placeholder coordinates");
+assert.ok(dataScript.includes("if (!eventId) return null"), "Client normalization must reject events without stable IDs");
+assert.ok(mapScript.includes('dataset.feedState = "error"') && mapScript.includes('"empty"'), "Map diagnostics must distinguish empty data from failed loading");
+assert.ok(mapScript.includes("eventCoordinates"), "Map diagnostics must expose indexed event coordinates for browser regression checks");
+assert.ok(mapScript.includes("projectEvent"), "Browser regression checks must be able to exercise a real projected marker click");
+assert.ok(mapScript.includes("firstClusterPoint"), "Browser regression checks must be able to exercise cluster expansion");
+assert.ok(mapScript.includes("if (events.length > 1)"), "Coincident markers must open a grouped event detail instead of moving coordinates");
+assert.ok(Array.isArray(publishedMapEvents) && publishedMapEvents.length > 0, "Published map data must contain events");
+const publishedIds = new Set();
+publishedMapEvents.forEach((event, index) => {
+    assert.ok(event.event_id && !publishedIds.has(event.event_id), `Published map event ${index} must have a unique ID`);
+    assert.ok(Number.isFinite(event.latitude) && event.latitude >= -90 && event.latitude <= 90, `Published map event ${index} has invalid latitude`);
+    assert.ok(Number.isFinite(event.longitude) && event.longitude >= -180 && event.longitude <= 180, `Published map event ${index} has invalid longitude`);
+    assert.ok(!(event.latitude === 0 && event.longitude === 0), `Published map event ${index} uses placeholder coordinates`);
+    publishedIds.add(event.event_id);
+});
 
 console.log("Sentinel Gods Eye contract tests passed");

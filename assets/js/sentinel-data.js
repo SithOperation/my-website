@@ -48,6 +48,7 @@
         const latitude = event.latitude ?? event.location?.latitude ?? event.coordinates?.lat;
         const longitude = event.longitude ?? event.location?.longitude ?? event.coordinates?.lon;
         if (!validCoordinate(latitude, 90) || !validCoordinate(longitude, 180)) return null;
+        if (Number(latitude) === 0 && Number(longitude) === 0) return null;
 
         const title = cleanText(event.title || "Untitled intelligence event", 180);
         const description = cleanText(event.description || "No summary is available.", 700);
@@ -58,9 +59,12 @@
         else if (/\b(wildfire|wild fire|bushfire)\b/.test(classificationText)) type = "wildfire";
         else if (/\b(military|training|live[- ]fire)\s+exercise\b/.test(classificationText)) type = "military_exercise";
 
+        const eventId = String(event.event_id || event.id || "").trim();
+        if (!eventId) return null;
+
         return {
             ...event,
-            event_id: String(event.event_id || event.id || ""),
+            event_id: eventId,
             title,
             description,
             latitude: Number(latitude),
@@ -183,7 +187,8 @@
             if (!dashboard || typeof dashboard !== "object") throw new Error("Invalid dashboard data.");
             if (!Array.isArray(mapEvents)) throw new Error("Invalid map event data.");
 
-            const events = mapEvents.map(normalizeEvent).filter(Boolean);
+            const normalizedEvents = mapEvents.map(normalizeEvent);
+            const events = normalizedEvents.filter(Boolean);
             const generated = manifest?.generated || dashboard.generated || null;
             const effectiveManifest = manifest || {
                 publication_id: `legacy-${generated || "current"}`,
@@ -197,6 +202,7 @@
                 manifest: effectiveManifest,
                 dashboard,
                 events,
+                invalidEventCount: normalizedEvents.length - events.length,
                 health,
                 healthState: healthState(health, generated),
                 legacy,

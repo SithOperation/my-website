@@ -163,6 +163,22 @@ def test_invalid_coordinates_are_rejected() -> None:
         )
 
 
+def test_duplicate_event_ids_are_rejected() -> None:
+    documents = production_documents()
+    events = cast(list[dict[str, Any]], documents["map_events.json"])
+    events.append(dict(events[0]))
+
+    with pytest.raises(
+        verify_production.ProductionVerificationError,
+        match="duplicates event ID",
+    ):
+        verify_production.verify_production(
+            "https://example.test/data",
+            "expected",
+            fetcher=make_fetcher(documents),
+        )
+
+
 def test_europe_security_events_are_supported() -> None:
     """Production verification accepts a category rendered by the map adapter."""
     documents = production_documents()

@@ -70,6 +70,7 @@ async function main() {
                 const mapFrame = box(".map-frame");
                 const map = box("#sentinel-map");
                 const canvas = box(".maplibregl-canvas");
+                const dock = box(".map-dock");
                 return {
                     viewport: { width: innerWidth, height: innerHeight },
                     visualViewport: window.visualViewport ? {
@@ -94,6 +95,7 @@ async function main() {
                     mapFrame,
                     map,
                     canvas,
+                    dock,
                     styles: {
                         mapFrame: styles(".map-frame"),
                         map: styles("#sentinel-map"),
@@ -107,21 +109,20 @@ async function main() {
             const label = `${viewport.width}x${viewport.height}`;
             const geometry = JSON.stringify(result);
             assert.ok(result.document.width <= viewport.width, `${label}: horizontal page scrollbar ${geometry}`);
-            if (!viewport.mobile) {
-                assert.equal(result.document.height, viewport.height, `${label}: vertical page scrollbar ${geometry}`);
-                assert.equal(result.bodyOverflow, "hidden", `${label}: desktop body must not scroll ${geometry}`);
-            }
+            assert.ok(result.document.height <= viewport.height + 1, `${label}: vertical page scrollbar ${geometry}`);
+            assert.equal(result.bodyOverflow, "hidden", `${label}: page must not scroll ${geometry}`);
             for (const [name, box] of Object.entries({
                 shell: result.shell,
                 mapStage: result.mapStage,
                 mapFrame: result.mapFrame,
-                map: result.map
+                map: result.map,
+                dock: result.dock
             })) {
                 assert.ok(box, `${label}: ${name} is missing ${geometry}`);
                 assert.ok(box.width > 0 && box.height > 0, `${label}: ${name} has no rendered area ${geometry}`);
                 assert.ok(box.left >= -1 && box.top >= -1, `${label}: ${name} starts outside viewport ${geometry}`);
                 assert.ok(box.right <= viewport.width + 1, `${label}: ${name} exceeds viewport width ${geometry}`);
-                if (!viewport.mobile) assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height ${geometry}`);
+                assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height ${geometry}`);
             }
             assert.ok(Math.abs(result.mapFrame.x) <= 1, `${label}: map frame has a horizontal inset ${geometry}`);
             assert.ok(Math.abs(result.mapFrame.y) <= 1, `${label}: map frame has a vertical inset ${geometry}`);

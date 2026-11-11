@@ -100,6 +100,7 @@ def validate_map_events(value: object, minimum_count: int) -> list[dict[str, Any
             f"map_events.json has {actual} events; expected at least {minimum_count}"
         )
     events: list[dict[str, Any]] = []
+    event_ids: set[str] = set()
     for index, value_event in enumerate(value):
         event = require_mapping(value_event, f"map_events[{index}]")
         latitude = event.get("latitude")
@@ -129,10 +130,16 @@ def validate_map_events(value: object, minimum_count: int) -> list[dict[str, Any
             raise ProductionVerificationError(
                 f"map_events[{index}] has unsupported type {event_type!r}"
             )
-        if not event.get("event_id") or not event.get("timestamp"):
+        event_id = str(event.get("event_id") or "").strip()
+        if not event_id or not event.get("timestamp"):
             raise ProductionVerificationError(
                 f"map_events[{index}] lacks an event ID or timestamp"
             )
+        if event_id in event_ids:
+            raise ProductionVerificationError(
+                f"map_events[{index}] duplicates event ID {event_id!r}"
+            )
+        event_ids.add(event_id)
         events.append(event)
     return events
 

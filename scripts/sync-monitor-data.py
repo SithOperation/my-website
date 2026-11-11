@@ -25,6 +25,23 @@ from models.x_report_contract import validate_document  # noqa: E402
 
 Validator = Callable[[object, str], None]
 
+SUPPORTED_SENTINEL_EVENT_TYPES = frozenset(
+    {
+        "conflict",
+        "earthquake",
+        "europe_security",
+        "flood",
+        "humanitarian",
+        "natural_hazard",
+        "reddit_report",
+        "tropical_cyclone",
+        "volcano",
+        "weather_alert",
+        "wildfire",
+        "x_report",
+    }
+)
+
 
 @dataclass(frozen=True)
 class SyncResult:
@@ -73,6 +90,35 @@ def validate_disaster_state(value: object, label: str) -> None:
 
 def validate_event_array(value: object, label: str) -> None:
     require_nonempty_list(value, label)
+
+
+def validate_sentinel_map_events(value: object, label: str) -> None:
+    """Validate the geographic identity contract before staging a publication."""
+    records = require_nonempty_list(value, label)
+    event_ids: set[str] = set()
+    for index, raw_record in enumerate(records):
+        record = require_mapping(raw_record, f"{label}[{index}]")
+        latitude = record.get("latitude")
+        longitude = record.get("longitude")
+        if (
+            not isinstance(latitude, (int, float))
+            or isinstance(latitude, bool)
+            or not -90 <= latitude <= 90
+            or not isinstance(longitude, (int, float))
+            or isinstance(longitude, bool)
+            or not -180 <= longitude <= 180
+        ):
+            raise ValueError(f"{label}[{index}] has invalid coordinates")
+        if latitude == 0 and longitude == 0:
+            raise ValueError(f"{label}[{index}] uses placeholder coordinates")
+        event_id = str(record.get("event_id") or "").strip()
+        if not event_id or parse_generated(record.get("timestamp")) is None:
+            raise ValueError(f"{label}[{index}] lacks an event ID or timestamp")
+        if event_id in event_ids:
+            raise ValueError(f"{label}[{index}] duplicates event ID {event_id!r}")
+        event_ids.add(event_id)
+        if record.get("type") not in SUPPORTED_SENTINEL_EVENT_TYPES:
+            raise ValueError(f"{label}[{index}] has unsupported type")
 
 
 def validate_ews_state(value: object, label: str) -> None:
@@ -192,7 +238,9 @@ def validate_sentinel_publication(
     require_mapping(
         json.loads(payloads["intelligence_brief.json"]), "intelligence_brief.json"
     )
-    require_nonempty_list(json.loads(payloads["map_events.json"]), "map_events.json")
+    validate_sentinel_map_events(
+        json.loads(payloads["map_events.json"]), "map_events.json"
+    )
     require_nonempty_list(json.loads(payloads["timeline.json"]), "timeline.json")
     require_mapping(json.loads(payloads["trends.json"]), "trends.json")
     require_mapping(json.loads(payloads["health.json"]), "health.json")

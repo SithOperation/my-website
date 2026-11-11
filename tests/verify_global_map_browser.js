@@ -46,6 +46,9 @@ async function main() {
             () => Number(document.querySelector("#sentinel-map")?.dataset.loadedEvents) > 0,
             { timeout: 30000 }
         );
+        if (await page.locator("#sentinel-map").getAttribute("data-feed-state") !== "available") {
+            throw new Error("Loaded Sentinel publication did not report an available feed state");
+        }
         await page.locator("#filter-time").selectOption("all");
         await page.waitForFunction(
             () => Number(document.querySelector("#ops-mapped")?.textContent?.replaceAll(",", "")) > 0,
@@ -55,6 +58,72 @@ async function main() {
             () => Number(document.querySelector("#sentinel-map")?.dataset.visibleEvents) > 0,
             { timeout: 30000 }
         );
+
+        const clusterPoint = await page.evaluate(() => window.SentinelMapBridge?.firstClusterPoint());
+        if (!clusterPoint || clusterPoint.count < 2) {
+            throw new Error("Global map did not render an expandable event cluster");
+        }
+        await page.mouse.click(clusterPoint.x, clusterPoint.y);
+        await page.waitForFunction(
+            () => Number(window.SentinelMapBridge?.diagnostics()?.zoom) > 2,
+            { timeout: 5000 }
+        );
+
+        const plottedFeedCheck = await page.evaluate(async () => {
+            const response = await fetch("data/map_events.json", { cache: "no-store" });
+            const publishedEvents = await response.json();
+            const target = publishedEvents.find(event => event.event_id &&
+                Number.isFinite(Number(event.latitude)) &&
+                Number.isFinite(Number(event.longitude)) &&
+                !(Number(event.latitude) === 0 && Number(event.longitude) === 0));
+            const diagnostics = window.SentinelMapBridge?.diagnostics();
+            const plotted = diagnostics?.eventCoordinates?.find(item => item.eventId === target?.event_id);
+            return {
+                target,
+                plotted,
+                located: target ? window.SentinelMapBridge?.locateEvent(target.event_id, false) : false
+            };
+        });
+        if (!plottedFeedCheck.target || !plottedFeedCheck.plotted) {
+            throw new Error("Published map event was not indexed by the map");
+        }
+        if (Number(plottedFeedCheck.plotted.latitude) !== Number(plottedFeedCheck.target.latitude) ||
+            Number(plottedFeedCheck.plotted.longitude) !== Number(plottedFeedCheck.target.longitude)) {
+            throw new Error("Map event coordinates differ from the published feed");
+        }
+        if (!plottedFeedCheck.located) throw new Error("Published map event could not be located");
+        await page.waitForTimeout(700);
+        const point = await page.evaluate(eventId => window.SentinelMapBridge?.projectEvent(eventId), plottedFeedCheck.target.event_id);
+        if (!point || point.x < 0 || point.y < 0 || point.x > 1440 || point.y > 1000) {
+            throw new Error("Published map event did not project inside the map viewport");
+        }
+        await page.mouse.click(point.x, point.y);
+        await page.locator(".maplibregl-popup").waitFor({ state: "visible", timeout: 5000 });
+        if (await page.locator(".sentinel-popup").count() !== 1) {
+            throw new Error("Located map event did not render an event popup");
+        }
+        if (!(await page.locator(".sentinel-popup").textContent()).includes("Source:")) {
+            throw new Error("Event popup did not include source attribution");
+        }
+        const eventDetail = await page.locator("#event-detail").textContent();
+        if (!eventDetail.includes("Historical publication record") && !eventDetail.includes("Recent publication record")) {
+            throw new Error("Selected event did not expose its temporal status");
+        }
+        const popupLink = page.locator(".sentinel-popup a");
+        if (await popupLink.count() !== 1 || !(await popupLink.getAttribute("href"))?.startsWith("https://")) {
+            throw new Error("Event popup did not include a safe original-report link");
+        }
+        const filteredBeforeLayerToggle = await page.locator("#sentinel-map").getAttribute("data-filtered-events");
+        await page.locator("#mobile-panel-toggle").click();
+        await page.locator(".control-panel.is-open").waitFor({ state: "visible" });
+        await page.locator("#layer-earthquakes").uncheck();
+        await page.waitForFunction(
+            before => Number(document.querySelector("#sentinel-map")?.dataset.filteredEvents) < Number(before),
+            filteredBeforeLayerToggle,
+            { timeout: 5000 }
+        );
+        await page.locator("#layer-earthquakes").check();
+        await page.locator("#mobile-panel-close").click();
 
         await page.waitForFunction(
             () => ["available", "partial", "stale"].includes(
@@ -86,6 +155,11 @@ async function main() {
             throw new Error("Mobile source viewer did not fill the viewport");
         }
         await page.keyboard.press("Escape");
+
+        await page.locator("#mobile-panel-toggle").click();
+        await page.locator(".control-panel.is-open").waitFor({ state: "visible" });
+        await page.locator("#mobile-panel-close").click();
+        await page.locator(".control-panel.is-open").waitFor({ state: "hidden" });
 
         const result = await page.evaluate(() => ({
             mapped: document.querySelector("#ops-mapped")?.textContent?.trim(),

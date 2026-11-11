@@ -74,7 +74,15 @@ class SyncMonitorDataTests(unittest.TestCase):
         values: dict[str, JsonValue] = {
             "dashboard.json": {"generated": "2026-07-23T13:49:32Z"},
             "intelligence_brief.json": {"title": "Brief"},
-            "map_events.json": [{"event_id": "one"}],
+            "map_events.json": [
+                {
+                    "event_id": "one",
+                    "type": "earthquake",
+                    "latitude": 34.5,
+                    "longitude": -117.2,
+                    "timestamp": "2026-07-23T13:00:00Z",
+                }
+            ],
             "timeline.json": [{"event_id": "one"}],
             "trends.json": {"total_events": 1},
             "world_events.json": {"events": [{"event_id": "one"}]},
@@ -303,6 +311,34 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertTrue((destination / "source_feed.json").is_file())
             self.assertTrue(
                 (destination / "output" / "x_report_pinpoints.geojson").is_file()
+            )
+
+    def test_sentinel_map_contract_rejects_placeholder_coordinates(self) -> None:
+        with self.assertRaisesRegex(ValueError, "placeholder coordinates"):
+            sync_monitor_data.validate_sentinel_map_events(
+                [
+                    {
+                        "event_id": "one",
+                        "type": "earthquake",
+                        "latitude": 0,
+                        "longitude": 0,
+                        "timestamp": "2026-07-23T13:00:00Z",
+                    }
+                ],
+                "map_events.json",
+            )
+
+    def test_sentinel_map_contract_rejects_duplicate_ids(self) -> None:
+        record = {
+            "event_id": "one",
+            "type": "earthquake",
+            "latitude": 34.5,
+            "longitude": -117.2,
+            "timestamp": "2026-07-23T13:00:00Z",
+        }
+        with self.assertRaisesRegex(ValueError, "duplicates event ID"):
+            sync_monitor_data.validate_sentinel_map_events(
+                [record, dict(record)], "map_events.json"
             )
 
     def test_bad_sentinel_checksum_preserves_last_known_good(self) -> None:

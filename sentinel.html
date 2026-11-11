@@ -12,8 +12,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
-    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-minimal-map">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
+    <!-- Sentinel layout rules load last so shared editorial responsive rules
+         cannot reintroduce a padded dashboard map frame. -->
+    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-minimal-map">
 </head>
 <body>
     <a class="skip-link" href="#sentinel-map">Skip to intelligence map</a>
@@ -22,8 +24,6 @@
             <a class="back-link" href="index.html#sentinel-dashboard">Joseph Technologies</a>
             <div class="sentinel-brand" aria-label="Sentinel Grid">SENTINEL <span>GRID</span></div>
             <div id="ops-status" class="ops-status is-loading" role="status" aria-live="polite"><span class="status-light" aria-hidden="true"></span><span id="ops-status-text">Establishing intelligence feed...</span></div>
-            <button id="mobile-panel-toggle" class="map-button" type="button" aria-expanded="false" aria-controls="filter-content">Filters</button>
-            <button id="source-viewer-open" class="map-button" type="button" aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">Sources <span id="source-feed-count" aria-hidden="true">—</span></button>
         </header>
 
         <section class="operations-grid" aria-label="Sentinel Grid map">
@@ -35,6 +35,12 @@
                     <div class="visual-mode-switcher" role="group" aria-label="Map visual mode"><button type="button" class="is-active" data-map-mode="normal" aria-pressed="true">Normal</button><button type="button" data-map-mode="crt" aria-pressed="false">CRT</button><button type="button" data-map-mode="nvg" aria-pressed="false">NVG</button><button type="button" data-map-mode="flir" aria-pressed="false">FLIR</button></div>
                     <div id="map-loading" class="map-loading" role="status"><span></span>Building map...</div>
                 </div>
+                <nav class="map-dock" aria-label="Map tools">
+                    <button id="mobile-panel-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="filter-content">Filters</button>
+                    <button id="layers-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="filter-content">Layers</button>
+                    <button id="event-dock-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="event-detail">Events</button>
+                    <button id="source-viewer-open" class="map-dock-button" type="button" aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">Sources <span id="source-feed-count" aria-hidden="true">—</span></button>
+                </nav>
             </section>
 
             <aside class="control-panel" aria-label="Intelligence filters">
@@ -43,7 +49,7 @@
                     <fieldset class="layer-toggles"><legend>Layers</legend>
                         <label><input id="layer-intelligence" type="checkbox" checked> Intelligence</label><label><input id="layer-conflict" type="checkbox" checked> Conflict</label><label><input id="layer-cyber" type="checkbox" checked> Cyber</label><label><input id="layer-aircraft" type="checkbox" checked> Aircraft</label><label><input id="layer-military-aircraft" type="checkbox" checked> Military aircraft</label><label><input id="layer-maritime" type="checkbox" checked> Maritime</label><label><input id="layer-satellites" type="checkbox" checked> Satellites</label><label><input id="layer-earthquakes" type="checkbox" checked> Earthquakes</label><label><input id="layer-volcanoes" type="checkbox" checked> Volcanoes</label><label><input id="layer-weather" type="checkbox" checked> Weather</label><label><input id="layer-solar" type="checkbox" checked> Solar / space weather</label><label><input id="layer-humanitarian" type="checkbox" checked> Humanitarian</label><label><input id="layer-gps-jamming" type="checkbox" checked> GPS interference</label><label><input id="layer-internet-outages" type="checkbox" checked> Internet outages</label><label><input id="layer-x-reports" type="checkbox" checked> Social media reports</label><label><input id="layer-europe-nato" type="checkbox" checked> NATO activity</label><label><input id="layer-europe-russia" type="checkbox" checked> Russian activity</label><label><input id="layer-europe-flank" type="checkbox" checked> Eastern flank</label><label><input id="layer-europe-ukraine" type="checkbox" checked> Ukraine war</label><label><input id="layer-europe-air" type="checkbox" checked> Air activity</label><label><input id="layer-europe-naval" type="checkbox" checked> Naval activity</label><label><input id="layer-europe-missile" type="checkbox" checked> Missile / drone</label><label><input id="layer-europe-exercises" type="checkbox" checked> Military exercises</label><label><input id="layer-europe-warnings" type="checkbox" checked> Security warnings</label><label><input id="layer-europe-reddit" type="checkbox" checked> Reddit OSINT</label>
                     </fieldset>
-                    <label>Event type<select id="filter-type"><option value="all">All event types</option></select></label><label>Threat level<select id="filter-threat"><option value="all">All threat levels</option></select></label><label>Minimum confidence<select id="filter-confidence"><option value="0">Any confidence</option><option value="50">50% or higher</option><option value="70">70% or higher</option><option value="90">90% or higher</option></select></label><label>Time window<select id="filter-time"><option value="24">Live / recent (24h)</option><option value="48">Last 48 hours</option><option value="168">Last 7 days</option><option value="all">All available records</option></select></label>
+                    <label>Event type<select id="filter-type"><option value="all">All event types</option></select></label><label>Threat level<select id="filter-threat"><option value="all">All threat levels</option></select></label><label>Minimum confidence<select id="filter-confidence"><option value="0">Any confidence</option><option value="50">50% or higher</option><option value="70">70% or higher</option><option value="90">90% or higher</option></select></label><label>Time window<select id="filter-time"><option value="all" selected>All available records</option><option value="24">Live / recent (24h)</option><option value="48">Last 48 hours</option><option value="168">Last 7 days</option></select></label>
                     <div class="control-actions"><button id="reset-filters" type="button">Clear filters</button><button id="reset-view" type="button">Reset view</button></div>
                     <div class="legend" aria-label="Threat legend"><h3>Threat</h3><span><i class="critical"></i> Critical</span><span><i class="high"></i> High</span><span><i class="medium"></i> Medium</span><span><i class="low"></i> Low</span><h3>Symbols</h3><span><b class="legend-glyph conflict" aria-hidden="true">&#8982;</b> Conflict</span><span><b class="legend-glyph aircraft" aria-hidden="true">&#9992;</b> Aircraft</span><span><b class="legend-glyph maritime" aria-hidden="true">&#9875;</b> Maritime</span><span><b class="legend-glyph wildfire" aria-hidden="true">&#128293;</b> Wildfire</span></div>
                     <div class="coverage-block"><h3>Publication health</h3><p id="coverage-message">Waiting for source health...</p><ul id="coverage-sources"></ul></div>

@@ -114,26 +114,17 @@
 
     function featureCollection(events) {
         eventIndex.clear();
-        const positions = new Map();
         return {
             type: "FeatureCollection",
             features: events.map((event, index) => {
                 const mapId = event.event_id || `sentinel-${index}-${event.latitude}-${event.longitude}`;
-                const positionKey = `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
-                const positionIndex = positions.get(positionKey) || 0;
-                positions.set(positionKey, positionIndex + 1);
-                const ring = Math.floor(positionIndex / 8) + 1;
-                const angle = (positionIndex % 8) * (Math.PI / 4);
-                const spread = positionIndex ? Math.min(1.2, 0.18 * ring) : 0;
-                const latitude = Math.max(-85, Math.min(85, Number(event.latitude) + Math.sin(angle) * spread));
-                const longitude = Number(event.longitude) + Math.cos(angle) * spread;
                 eventIndex.set(mapId, event);
                 return {
                     type: "Feature",
                     id: mapId,
                     geometry: {
                         type: "Point",
-                        coordinates: [longitude, latitude]
+                        coordinates: [Number(event.longitude), Number(event.latitude)]
                     },
                     properties: {
                         map_id: mapId,
@@ -146,35 +137,6 @@
                         historical: isHistoricalEvent(event),
                         heading: Number(aircraftValue(event, "heading", "track")) || 0,
                         source_reported: isSourceReportedEvent(event)
-                    }
-                };
-            })
-        };
-    }
-
-    function spreadCoincidentPoints(geojson, spacing = 0.18) {
-        const positions = new Map();
-        return {
-            ...geojson,
-            features: (geojson.features || []).map(feature => {
-                if (feature.geometry?.type !== "Point" || !Array.isArray(feature.geometry.coordinates)) return feature;
-                const [longitude, latitude] = feature.geometry.coordinates.map(Number);
-                if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return feature;
-                const key = `${latitude.toFixed(4)},${longitude.toFixed(4)}`;
-                const index = positions.get(key) || 0;
-                positions.set(key, index + 1);
-                if (!index) return feature;
-                const ring = Math.floor(index / 8) + 1;
-                const angle = (index % 8) * (Math.PI / 4);
-                const spread = Math.min(1.2, spacing * ring);
-                return {
-                    ...feature,
-                    geometry: {
-                        ...feature.geometry,
-                        coordinates: [
-                            longitude + Math.cos(angle) * spread,
-                            Math.max(-85, Math.min(85, latitude + Math.sin(angle) * spread))
-                        ]
                     }
                 };
             })
@@ -529,7 +491,10 @@
                 .map(id => eventIndex.get(id))
                 .filter(Boolean);
 
-            if (events[0]) {
+            if (events.length > 1) {
+                renderEventGroup(events, events.length);
+            }
+            else if (events[0]) {
                 showEventPopup(events[0], event.lngLat);
                 renderEventDetail(events[0]);
             }
@@ -577,7 +542,7 @@
     }
 
     function pointFeatures(events) {
-        return spreadCoincidentPoints({
+        return {
             type: "FeatureCollection",
             features: events.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).map(event => {
                 disasterIndex.set(event.event_id, event);
@@ -587,7 +552,7 @@
                     properties: { map_id: event.event_id, type: event.type, title: event.title }
                 };
             })
-        });
+        };
     }
 
     function validPolygonGeometry(event) {
@@ -771,7 +736,7 @@
         const snapshot = await earlyReportFeed.load();
         const retained = retainedEarlyReportGeojson(snapshot.data);
         indexEarlyReports(retained);
-        map.getSource("x-early-reports-source").setData(spreadCoincidentPoints(retained, 0.14));
+        map.getSource("x-early-reports-source").setData(retained);
         map.triggerRepaint();
         updateMapCount();
     }
@@ -786,7 +751,7 @@
         indexEarlyReports(geojson);
         map.addSource("x-early-reports-source", {
             type: "geojson",
-            data: spreadCoincidentPoints(geojson, 0.14),
+            data: geojson,
             cluster: false
         });
         map.addLayer({
@@ -1329,6 +1294,7 @@
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
         element("event-panel")?.classList.add("is-open");
         element("mobile-detail-toggle")?.setAttribute("aria-expanded", "true");
+        element("event-dock-toggle")?.setAttribute("aria-expanded", "true");
         syncFullscreenDetail(panel);
     }
 
@@ -1371,6 +1337,7 @@
         panel.replaceChildren(heading, explanation, list);
         element("event-panel")?.classList.add("is-open");
         element("mobile-detail-toggle")?.setAttribute("aria-expanded", "true");
+        element("event-dock-toggle")?.setAttribute("aria-expanded", "true");
         syncFullscreenDetail(panel);
         element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
             button.addEventListener("click", () => renderEventDetail(events[index]));
@@ -1409,15 +1376,22 @@
 
         allEvents = snapshot.events;
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
+        element("sentinel-map").dataset.rejectedEvents = String(snapshot.invalidEventCount || 0);
+        element("sentinel-map").dataset.feedState = snapshot.invalidEventCount
+            ? "degraded"
+            : snapshot.events.length ? "available" : "empty";
         element("sentinel-map").dataset.visibleEvents = "0";
         populateFilters();
         renderHealth(snapshot);
         updateMapData();
 
-        const state = snapshot.legacy ? "degraded" : snapshot.healthState.state;
+        const rejectedMessage = snapshot.invalidEventCount
+            ? ` ${snapshot.invalidEventCount} records were rejected because they lacked valid map coordinates or IDs.`
+            : "";
+        const state = snapshot.legacy || snapshot.invalidEventCount ? "degraded" : snapshot.healthState.state;
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
-            `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}`;
+            `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
         setStatus(message, state);
     }
 
@@ -1462,6 +1436,7 @@
         catch (error) {
             console.error("Sentinel publication failed", error);
             setStatus(error.message || "Sentinel publication unavailable", "error");
+            element("sentinel-map").dataset.feedState = "error";
             if (!allEvents.length) {
                 setLoading(false);
                 element("map-count").textContent = "Intelligence data unavailable";
@@ -1516,22 +1491,33 @@
             map?.easeTo({ center: INITIAL_CENTER, zoom: INITIAL_ZOOM, pitch: 0, bearing: 0, duration: 500 });
         });
 
-        element("mobile-panel-toggle").addEventListener("click", event => {
-            const open = element("filter-content").classList.toggle("is-open");
+        const setFilterDrawer = open => {
+            element("filter-content").classList.toggle("is-open", open);
             document.querySelector(".control-panel")?.classList.toggle("is-open", open);
-            event.currentTarget.setAttribute("aria-expanded", String(open));
+            element("mobile-panel-toggle")?.setAttribute("aria-expanded", String(open));
+            element("layers-toggle")?.setAttribute("aria-expanded", String(open));
+        };
+
+        element("mobile-panel-toggle").addEventListener("click", () => {
+            setFilterDrawer(!element("filter-content").classList.contains("is-open"));
+        });
+        element("layers-toggle")?.addEventListener("click", () => {
+            setFilterDrawer(!element("filter-content").classList.contains("is-open"));
         });
 
         element("mobile-panel-close")?.addEventListener("click", () => {
-            element("filter-content").classList.remove("is-open");
-            element("control-panel")?.classList.remove("is-open");
-            element("mobile-panel-toggle")?.setAttribute("aria-expanded", "false");
-            document.querySelector(".control-panel")?.classList.remove("is-open");
+            setFilterDrawer(false);
         });
 
         element("mobile-detail-toggle").addEventListener("click", event => {
             const open = element("event-panel").classList.toggle("is-open");
             event.currentTarget.setAttribute("aria-expanded", String(open));
+            element("event-dock-toggle")?.setAttribute("aria-expanded", String(open));
+        });
+        element("event-dock-toggle")?.addEventListener("click", () => {
+            const open = element("event-panel").classList.toggle("is-open");
+            element("mobile-detail-toggle")?.setAttribute("aria-expanded", String(open));
+            element("event-dock-toggle")?.setAttribute("aria-expanded", String(open));
         });
     }
 
@@ -1571,7 +1557,10 @@
             zoom: Math.max(mapInstance.getZoom(), 8),
             duration: reducedMotion ? 0 : 450
         });
-        if (render) renderEventDetail(event);
+        if (render) {
+            showEventPopup(event, [event.longitude, event.latitude]);
+            renderEventDetail(event);
+        }
         return true;
     }
 
@@ -1582,7 +1571,34 @@
         locateEvent: locateSourceEvent,
         clearHighlight: clearSourceHighlight,
         diagnostics() {
-            return { mapReady, eventCount: eventIndex.size, highlightedEventId };
+            return {
+                mapReady,
+                eventCount: eventIndex.size,
+                highlightedEventId,
+                zoom: map?.getZoom() ?? null,
+                eventCoordinates: Array.from(eventIndex, ([eventId, event]) => ({
+                    eventId,
+                    latitude: event.latitude,
+                    longitude: event.longitude
+                }))
+            };
+        },
+        firstClusterPoint() {
+            if (!map || !mapReady) return null;
+            const feature = map.queryRenderedFeatures({ layers: ["event-clusters"] })[0];
+            if (!feature?.geometry?.coordinates) return null;
+            const point = map.project(feature.geometry.coordinates);
+            return {
+                x: point.x,
+                y: point.y,
+                count: Number(feature.properties?.point_count || 0)
+            };
+        },
+        projectEvent(eventId) {
+            const event = eventIndex.get(String(eventId || ""));
+            if (!map || !event) return null;
+            const point = map.project([event.longitude, event.latitude]);
+            return { x: point.x, y: point.y };
         }
     });
     window.SentinelMapAssociation = Object.freeze({
