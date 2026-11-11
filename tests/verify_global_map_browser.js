@@ -113,6 +113,17 @@ async function main() {
         if (await popupLink.count() !== 1 || !(await popupLink.getAttribute("href"))?.startsWith("https://")) {
             throw new Error("Event popup did not include a safe original-report link");
         }
+        const filteredBeforeLayerToggle = await page.locator("#sentinel-map").getAttribute("data-filtered-events");
+        await page.locator("#mobile-panel-toggle").click();
+        await page.locator(".control-panel.is-open").waitFor({ state: "visible" });
+        await page.locator("#layer-earthquakes").uncheck();
+        await page.waitForFunction(
+            before => Number(document.querySelector("#sentinel-map")?.dataset.filteredEvents) < Number(before),
+            filteredBeforeLayerToggle,
+            { timeout: 5000 }
+        );
+        await page.locator("#layer-earthquakes").check();
+        await page.locator("#mobile-panel-close").click();
 
         await page.waitForFunction(
             () => ["available", "partial", "stale"].includes(
