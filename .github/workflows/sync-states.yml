@@ -343,7 +343,7 @@ jobs:
       (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout website verification tooling
         uses: actions/checkout@v6
@@ -360,7 +360,9 @@ jobs:
       - name: Install pinned browser verifier
         run: |
           npm install --no-save --no-package-lock playwright@1.62.0
-          npx playwright install --with-deps chromium
+          # ubuntu-24.04 hosted runners already provide Chromium's native OS dependencies.
+          # Install only the pinned browser binary; do not invoke apt repeatedly.
+          npx playwright install chromium
       - name: Verify production global-map rendering
         env:
           PRODUCTION_BASE_URL: https://sithbusiness.com
