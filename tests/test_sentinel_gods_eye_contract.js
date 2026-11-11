@@ -24,6 +24,7 @@ assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and ci
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
 assert.ok(page.includes('value="168">Last 7 days') && page.includes("All available records"), "Time filters must expose supported historical views");
 assert.ok(page.includes('id="mobile-detail-toggle"'), "Mobile event details must have a drawer toggle");
+assert.ok(page.includes('class="map-dock"') && page.includes('id="layers-toggle"') && page.includes('id="event-dock-toggle"'), "Minimal map controls must use the overlay dock");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");
 assert.ok(!page.includes('class="metric-strip"') && !page.includes('class="ops-footer"'), "The public map must not render dashboard panels or a permanent footer");
 assert.ok(!page.toLowerCase().includes("tap a pinpoint or cluster"), "Instructions must describe individual markers");

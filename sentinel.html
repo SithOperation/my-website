@@ -12,8 +12,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
-    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-minimal-map">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
+    <!-- Sentinel layout rules load last so shared editorial responsive rules
+         cannot reintroduce a padded dashboard map frame. -->
+    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-minimal-map">
 </head>
 <body>
     <a class="skip-link" href="#sentinel-map">Skip to intelligence map</a>
@@ -22,8 +24,6 @@
             <a class="back-link" href="index.html#sentinel-dashboard">Joseph Technologies</a>
             <div class="sentinel-brand" aria-label="Sentinel Grid">SENTINEL <span>GRID</span></div>
             <div id="ops-status" class="ops-status is-loading" role="status" aria-live="polite"><span class="status-light" aria-hidden="true"></span><span id="ops-status-text">Establishing intelligence feed...</span></div>
-            <button id="mobile-panel-toggle" class="map-button" type="button" aria-expanded="false" aria-controls="filter-content">Filters</button>
-            <button id="source-viewer-open" class="map-button" type="button" aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">Sources <span id="source-feed-count" aria-hidden="true">—</span></button>
         </header>
 
         <section class="operations-grid" aria-label="Sentinel Grid map">
@@ -35,6 +35,12 @@
                     <div class="visual-mode-switcher" role="group" aria-label="Map visual mode"><button type="button" class="is-active" data-map-mode="normal" aria-pressed="true">Normal</button><button type="button" data-map-mode="crt" aria-pressed="false">CRT</button><button type="button" data-map-mode="nvg" aria-pressed="false">NVG</button><button type="button" data-map-mode="flir" aria-pressed="false">FLIR</button></div>
                     <div id="map-loading" class="map-loading" role="status"><span></span>Building map...</div>
                 </div>
+                <nav class="map-dock" aria-label="Map tools">
+                    <button id="mobile-panel-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="filter-content">Filters</button>
+                    <button id="layers-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="filter-content">Layers</button>
+                    <button id="event-dock-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="event-detail">Events</button>
+                    <button id="source-viewer-open" class="map-dock-button" type="button" aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">Sources <span id="source-feed-count" aria-hidden="true">—</span></button>
+                </nav>
             </section>
 
             <aside class="control-panel" aria-label="Intelligence filters">

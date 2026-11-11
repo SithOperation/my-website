@@ -1291,6 +1291,7 @@
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
         element("event-panel")?.classList.add("is-open");
         element("mobile-detail-toggle")?.setAttribute("aria-expanded", "true");
+        element("event-dock-toggle")?.setAttribute("aria-expanded", "true");
         syncFullscreenDetail(panel);
     }
 
@@ -1333,6 +1334,7 @@
         panel.replaceChildren(heading, explanation, list);
         element("event-panel")?.classList.add("is-open");
         element("mobile-detail-toggle")?.setAttribute("aria-expanded", "true");
+        element("event-dock-toggle")?.setAttribute("aria-expanded", "true");
         syncFullscreenDetail(panel);
         element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
             button.addEventListener("click", () => renderEventDetail(events[index]));
@@ -1482,22 +1484,33 @@
             map?.easeTo({ center: INITIAL_CENTER, zoom: INITIAL_ZOOM, pitch: 0, bearing: 0, duration: 500 });
         });
 
-        element("mobile-panel-toggle").addEventListener("click", event => {
-            const open = element("filter-content").classList.toggle("is-open");
+        const setFilterDrawer = open => {
+            element("filter-content").classList.toggle("is-open", open);
             document.querySelector(".control-panel")?.classList.toggle("is-open", open);
-            event.currentTarget.setAttribute("aria-expanded", String(open));
+            element("mobile-panel-toggle")?.setAttribute("aria-expanded", String(open));
+            element("layers-toggle")?.setAttribute("aria-expanded", String(open));
+        };
+
+        element("mobile-panel-toggle").addEventListener("click", () => {
+            setFilterDrawer(!element("filter-content").classList.contains("is-open"));
+        });
+        element("layers-toggle")?.addEventListener("click", () => {
+            setFilterDrawer(!element("filter-content").classList.contains("is-open"));
         });
 
         element("mobile-panel-close")?.addEventListener("click", () => {
-            element("filter-content").classList.remove("is-open");
-            element("control-panel")?.classList.remove("is-open");
-            element("mobile-panel-toggle")?.setAttribute("aria-expanded", "false");
-            document.querySelector(".control-panel")?.classList.remove("is-open");
+            setFilterDrawer(false);
         });
 
         element("mobile-detail-toggle").addEventListener("click", event => {
             const open = element("event-panel").classList.toggle("is-open");
             event.currentTarget.setAttribute("aria-expanded", String(open));
+            element("event-dock-toggle")?.setAttribute("aria-expanded", String(open));
+        });
+        element("event-dock-toggle")?.addEventListener("click", () => {
+            const open = element("event-panel").classList.toggle("is-open");
+            element("mobile-detail-toggle")?.setAttribute("aria-expanded", String(open));
+            element("event-dock-toggle")?.setAttribute("aria-expanded", String(open));
         });
     }
 
