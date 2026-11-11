@@ -529,7 +529,10 @@
                 .map(id => eventIndex.get(id))
                 .filter(Boolean);
 
-            if (events[0]) renderEventDetail(events[0]);
+            if (events[0]) {
+                showEventPopup(events[0], event.lngLat);
+                renderEventDetail(events[0]);
+            }
         };
 
         map.on("click", "events", selectRenderedEvent);
@@ -646,7 +649,10 @@
         map.addLayer(pointLayer);
         map.on("click", layerId, click => {
             const selected = disasterIndex.get(String(click.features?.[0]?.properties?.map_id));
-            if (selected) renderEventDetail(selected);
+            if (selected) {
+                showEventPopup(selected, click.lngLat);
+                renderEventDetail(selected);
+            }
         });
         map.on("mouseenter", layerId, () => { map.getCanvas().style.cursor = "pointer"; });
         map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
@@ -937,6 +943,38 @@
                 });
             });
         });
+    }
+
+    function showEventPopup(event, lngLat) {
+        if (!window.maplibregl?.Popup || !map || !event || !lngLat) return;
+        const content = document.createElement("article");
+        content.className = "sentinel-popup";
+        const title = document.createElement("h3");
+        title.textContent = event.title || "Intelligence event";
+        const meta = document.createElement("p");
+        meta.className = "sentinel-popup-meta";
+        meta.textContent = [displayType(getEventCategory(event)), event.threat_level || "UNKNOWN", formatDate(event.timestamp)]
+            .filter(Boolean).join(" · ");
+        const location = document.createElement("p");
+        location.textContent = event.location || (Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
+            ? `${event.latitude.toFixed(4)}, ${event.longitude.toFixed(4)}` : "Location not reported");
+        const source = document.createElement("p");
+        source.textContent = `Source: ${sourceText(event)}`;
+        content.append(title, meta, location, source);
+        const link = event.source_url || event.url || event.link;
+        if (link) {
+            const anchor = document.createElement("a");
+            anchor.href = link;
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+            anchor.textContent = "Open original report";
+            content.append(anchor);
+        }
+        map.popup?.remove();
+        map.popup = new window.maplibregl.Popup({ closeButton: true, closeOnClick: true, offset: 12, maxWidth: "390px" })
+            .setLngLat(lngLat)
+            .setDOMContent(content)
+            .addTo(map);
     }
 
     function applyLayerVisibility() {
@@ -1480,7 +1518,15 @@
 
         element("mobile-panel-toggle").addEventListener("click", event => {
             const open = element("filter-content").classList.toggle("is-open");
+            document.querySelector(".control-panel")?.classList.toggle("is-open", open);
             event.currentTarget.setAttribute("aria-expanded", String(open));
+        });
+
+        element("mobile-panel-close")?.addEventListener("click", () => {
+            element("filter-content").classList.remove("is-open");
+            element("control-panel")?.classList.remove("is-open");
+            element("mobile-panel-toggle")?.setAttribute("aria-expanded", "false");
+            document.querySelector(".control-panel")?.classList.remove("is-open");
         });
 
         element("mobile-detail-toggle").addEventListener("click", event => {

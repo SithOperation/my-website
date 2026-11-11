@@ -646,7 +646,10 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     min-height: 500px;
     min-width: 0;
     overflow: hidden;
-    border: 2px solid rgba(0, 221, 255, .6);
+    /* Keep the tactical frame stroke out of the layout box so the map can
+       occupy the full responsive width, including on narrow phones. */
+    outline: 2px solid rgba(0, 221, 255, .6);
+    outline-offset: -2px;
     background: #0a0a0a;
     box-shadow: inset 0 0 80px rgba(0, 221, 255, .1), 0 0 40px rgba(0, 221, 255, .2);
 }
@@ -1226,4 +1229,193 @@ select:focus-visible, button:focus-visible, .maplibregl-canvas:focus-visible {
     }
 
     .source-viewer-open-count { border: 1px solid CanvasText; }
+}
+
+/* Full-screen map presentation. The map is the page; the remaining controls
+   are compact overlays or transient drawers rather than dashboard columns. */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #071014;
+}
+
+body::before { display: none; }
+
+.ops-shell.sentinel-app {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.operations-grid {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+}
+
+.map-stage {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: #071014;
+    box-shadow: none;
+}
+
+.map-stage-heading {
+    position: absolute;
+    z-index: 4;
+    top: max(12px, env(safe-area-inset-top));
+    left: max(12px, env(safe-area-inset-left));
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: calc(100% - 24px);
+    padding: 8px 10px;
+    border-left: 2px solid var(--cyan);
+    background: rgba(4, 12, 15, .82);
+    color: var(--text);
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+}
+
+.map-stage-heading h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(12px, 1.5vw, 18px);
+    letter-spacing: .1em;
+    line-height: 1;
+    text-shadow: none;
+}
+
+.map-stage-heading p { margin: 0; color: var(--muted); font-size: 10px; white-space: nowrap; }
+
+.map-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    outline: 0;
+    background: #071014;
+    box-shadow: none;
+}
+
+#sentinel-map {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+.ops-header {
+    position: absolute;
+    z-index: 6;
+    top: max(10px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.back-link { order: 5; padding: 8px; color: #b2c1c4; font-size: 10px; background: rgba(4, 12, 15, .78); }
+.sentinel-brand { margin-right: 4px; color: var(--text); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.sentinel-brand span { color: var(--cyan); }
+.ops-status { max-width: 220px; padding: 7px 9px; border: 1px solid rgba(0, 255, 136, .25); background: rgba(4, 12, 15, .82); font-size: 9px; }
+.map-button { min-height: 38px; padding: 7px 10px; border: 1px solid rgba(0, 221, 255, .38); background: rgba(4, 12, 15, .88); color: var(--text); cursor: pointer; font-size: 10px; }
+.map-button:hover, .map-button:focus-visible { border-color: var(--cyan); color: #fff; }
+
+.control-panel,
+.event-panel {
+    position: fixed;
+    z-index: 10;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    border: 1px solid rgba(0, 221, 255, .45);
+    background: rgba(5, 13, 16, .96);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .5);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+.control-panel { top: max(64px, calc(env(safe-area-inset-top) + 54px)); left: max(10px, env(safe-area-inset-left)); width: min(320px, calc(100vw - 20px)); max-height: calc(100dvh - 80px); transform: translateY(-8px); overflow: auto; }
+.event-panel { right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); width: min(390px, calc(100vw - 20px)); max-height: min(58dvh, 560px); transform: translateY(8px); overflow: auto; }
+.control-panel.is-open, .event-panel.is-open { visibility: visible; opacity: 1; pointer-events: auto; transform: translateY(0); }
+.control-panel .panel-heading, .event-panel .panel-heading { padding: 12px; border-bottom: 1px solid var(--line); }
+.control-panel .panel-heading h2, .event-panel .panel-heading h2 { margin: 0; font-size: 12px; }
+.filter-content { display: block; padding: 12px; }
+.event-panel > .event-detail { max-height: calc(min(58dvh, 560px) - 66px); margin: 0; padding: 14px; overflow: auto; }
+.mobile-panel-toggle { display: inline-block; }
+
+.map-metrics { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ops-footer, .tactical-corners, .map-reticle, .scanline { display: none !important; }
+.map-telemetry { top: auto; right: 12px; bottom: max(58px, calc(env(safe-area-inset-bottom) + 44px)); left: auto; grid-template-columns: repeat(2, auto); padding: 6px 8px; opacity: .8; font-size: 8px; }
+.visual-mode-switcher { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
+.visual-mode-switcher button { min-height: 34px; }
+.maplibregl-ctrl-group button { min-width: 44px; min-height: 44px; }
+.maplibregl-ctrl-bottom-right { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); }
+.maplibregl-ctrl-bottom-left { bottom: max(8px, env(safe-area-inset-bottom)); }
+.maplibregl-popup { max-width: min(390px, calc(100vw - 24px)) !important; }
+.maplibregl-popup-content { max-width: min(360px, calc(100vw - 32px)); }
+.sentinel-popup { min-width: min(230px, calc(100vw - 52px)); max-width: min(350px, calc(100vw - 52px)); padding: 13px 15px; color: var(--text); font: 12px/1.45 Arial, sans-serif; }
+.sentinel-popup h3 { margin: 0 0 7px; color: #fff; font: 700 13px/1.25 "JetBrains Mono", "Courier New", monospace; }
+.sentinel-popup p { margin: 4px 0; color: #c7d2d3; }
+.sentinel-popup .sentinel-popup-meta { color: var(--yellow); font-size: 10px; text-transform: uppercase; }
+.sentinel-popup a { display: inline-block; margin-top: 8px; color: var(--cyan); }
+
+.source-viewer { z-index: 20; top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); width: min(430px, calc(100vw - 20px)); }
+.source-viewer-backdrop { z-index: 19; }
+
+@media (max-width: 620px) {
+    .ops-header { top: max(8px, env(safe-area-inset-top)); right: max(8px, env(safe-area-inset-right)); left: max(8px, env(safe-area-inset-left)); flex-wrap: wrap; justify-content: flex-end; }
+    .sentinel-brand { margin-right: auto; }
+    .ops-status { order: 6; width: 100%; max-width: none; }
+    .back-link { display: none; }
+    .map-stage-heading { top: max(112px, calc(env(safe-area-inset-top) + 104px)); left: max(8px, env(safe-area-inset-left)); }
+    .map-stage-heading h1 { font-size: 11px; }
+    .map-stage-heading p { max-width: 46vw; overflow: hidden; text-overflow: ellipsis; }
+    .map-telemetry { display: none; }
+    .visual-mode-switcher { right: 8px; }
+    .visual-mode-switcher button { padding-inline: 6px; }
+    .event-panel { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); left: max(8px, env(safe-area-inset-left)); width: auto; max-height: min(55dvh, 440px); }
+    .event-panel > .event-detail { max-height: calc(min(55dvh, 440px) - 66px); }
+    .source-viewer { top: 0; right: 0; bottom: 0; left: 0; width: 100%; border: 0; border-top: 3px solid var(--cyan); }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+    .ops-header { flex-wrap: nowrap; }
+    .ops-status { order: initial; width: auto; }
+    .map-stage-heading { top: max(56px, calc(env(safe-area-inset-top) + 48px)); }
 }
