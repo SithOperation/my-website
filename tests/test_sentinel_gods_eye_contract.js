@@ -6,6 +6,7 @@ const path = require("node:path");
 
 const root = path.join(__dirname, "..");
 const mapScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-map.js"), "utf8");
+const dataScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-data.js"), "utf8");
 const adapterScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-gods-eye-adapter.js"), "utf8");
 const page = fs.readFileSync(path.join(root, "sentinel.html"), "utf8");
 const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map.css"), "utf8");
@@ -46,5 +47,7 @@ assert.ok(mapStyles.includes("overflow: hidden") && mapStyles.includes("overflow
 assert.ok(mapScript.includes("new ResizeObserver(resizeMap)"), "MapLibre must resize when its grid area changes");
 assert.ok(mapScript.includes("coordinates: [Number(event.longitude), Number(event.latitude)]"), "Primary event geometry must use the published coordinates");
 assert.ok(!mapScript.includes("spreadCoincidentPoints"), "Map layers must not fabricate display coordinates for coincident events");
+assert.ok(dataScript.includes("Number(latitude) === 0 && Number(longitude) === 0"), "Client normalization must reject placeholder coordinates");
+assert.ok(dataScript.includes("if (!eventId) return null"), "Client normalization must reject events without stable IDs");
 
 console.log("Sentinel Gods Eye contract tests passed");
