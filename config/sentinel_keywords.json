@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "description": "Configurable Sentinel candidate-event rules. Matches are evidence candidates, not confirmation.",
+  "rules": {
+    "nuclear": {
+      "primary": ["nuclear detonation", "radiation release", "radioactive release", "fallout", "reactor accident", "radiological emergency"],
+      "related": ["nuclear plant", "nuclear power plant", "reactor", "radiation", "radiological", "radioactive"],
+      "exclusions": ["nuclear negotiations", "nuclear talks", "nuclear deal", "nuclear policy", "nuclear energy conference", "nuclear exercise"],
+      "contexts": ["emergency", "release", "leak", "accident", "detonation", "explosion", "evacuation", "radiation"],
+      "subcategory": "radiological_emergency"
+    },
+    "military_conflict": {
+      "primary": ["airstrike", "air strike", "missile attack", "artillery", "armed clashes", "military offensive", "bombardment", "ground offensive", "shelling"],
+      "related": ["war", "combat", "fighting", "troops", "frontline", "hostilities", "battle"],
+      "exclusions": ["military exercise", "training exercise", "war game", "historical battle", "opinion", "predicted war", "could lead to war"],
+      "contexts": ["attack", "strike", "clash", "fighting", "combat", "offensive", "shelling", "killed", "wounded"],
+      "subcategory": "armed_conflict"
+    },
+    "missile_activity": {
+      "primary": ["ballistic missile", "cruise missile", "missile launch", "missile interception", "missile impact"],
+      "related": ["missile", "rocket launch", "rocket attack", "intercepted"],
+      "exclusions": ["missile defense exercise", "missile test planned", "missile negotiation", "missile model", "video game missile"],
+      "contexts": ["launch", "launched", "fired", "intercepted", "impact", "attack", "strike", "test"],
+      "subcategory": "missile_activity"
+    },
+    "cybersecurity": {
+      "primary": ["ransomware", "data breach", "ddos", "malware", "cyberattack", "cyber attack", "intrusion", "critical vulnerability"],
+      "related": ["phishing", "exploit", "hacked", "breach", "botnet", "denial of service"],
+      "exclusions": ["cybersecurity conference", "cybersecurity training", "cyber exercise", "security awareness", "simulated attack", "fictional"],
+      "contexts": ["victim", "compromised", "stolen", "encrypted", "disrupted", "exploited", "attack", "incident", "advisory"],
+      "subcategory": "cyber_incident"
+    },
+    "emp_space": {
+      "primary": ["electromagnetic pulse", "geomagnetic storm", "satellite outage", "solar flare", "space weather"],
+      "related": ["solar storm", "solar wind", "geomagnetic activity", "satellite disruption", "ionospheric"],
+      "exclusions": ["space weather conference", "fictional solar flare", "space weather exercise"],
+      "contexts": ["observed", "warning", "alert", "storm", "outage", "disruption", "forecast"],
+      "subcategory": "space_weather"
+    },
+    "power_infrastructure": {
+      "primary": ["blackout", "grid failure", "substation outage", "power disruption", "transmission failure"],
+      "related": ["power outage", "electricity outage", "utility failure", "grid collapse"],
+      "exclusions": ["power outage simulation", "blackout drill", "planned outage", "fictional blackout"],
+      "contexts": ["outage", "without power", "restored", "utility", "customers", "operator", "emergency"],
+      "subcategory": "power_outage"
+    },
+    "communications": {
+      "primary": ["internet outage", "cable cut", "telecommunications failure", "network disruption"],
+      "related": ["connectivity outage", "communications outage", "undersea cable", "mobile network"],
+      "exclusions": ["network simulation", "outage drill", "planned maintenance", "fictional outage"],
+      "contexts": ["outage", "disconnected", "offline", "service disruption", "restored", "operator"],
+      "subcategory": "communications_outage"
+    },
+    "earthquakes": {
+      "primary": ["earthquake", "seismic event", "magnitude", "aftershock", "tsunami warning"],
+      "related": ["seismic", "quake", "epicenter", "felt"],
+      "exclusions": ["earthquake drill", "earthquake simulation", "historical earthquake", "earthquake preparedness"],
+      "contexts": ["struck", "hit", "depth", "epicenter", "magnitude", "warning", "aftershock"],
+      "subcategory": "earthquake"
+    },
+    "severe_weather": {
+      "primary": ["tornado", "hurricane", "typhoon", "blizzard", "extreme rainfall", "severe storm"],
+      "related": ["cyclone", "tropical storm", "thunderstorm", "wind warning", "weather warning"],
+      "exclusions": ["weather exercise", "weather simulation", "historical storm", "weather forecast model"],
+      "contexts": ["warning", "alert", "landfall", "damage", "evacuation", "forecast", "emergency"],
+      "subcategory": "severe_weather"
+    },
+    "flooding": {
+      "primary": ["flash flood", "river flooding", "dam failure", "storm surge"],
+      "related": ["flood", "flooding", "inundation", "overflow"],
+      "exclusions": ["flood simulation", "flood insurance", "historical flood"],
+      "contexts": ["warning", "evacuation", "submerged", "overflow", "rescue", "damage"],
+      "subcategory": "flood"
+    },
+    "wildfires": {
+      "primary": ["wildfire", "forest fire", "evacuation order", "uncontrolled fire"],
+      "related": ["brush fire", "bushfire", "flames", "burning"],
+      "exclusions": ["prescribed fire", "controlled burn", "fire drill", "fire exercise", "historical wildfire"],
+      "contexts": ["burning", "evacuation", "containment", "firefighters", "smoke", "acres"],
+      "subcategory": "wildfire"
+    },
+    "public_health": {
+      "primary": ["disease outbreak", "epidemic", "pandemic", "contamination", "public health emergency"],
+      "related": ["infectious disease", "pathogen", "cases", "outbreak"],
+      "exclusions": ["outbreak simulation", "pandemic exercise", "health conference", "fictional outbreak"],
+      "contexts": ["cases", "patients", "confirmed", "tested", "quarantine", "health authority"],
+      "subcategory": "disease_outbreak"
+    },
+    "water_infrastructure": {
+      "primary": ["water contamination", "treatment plant failure", "boil-water advisory"],
+      "related": ["water outage", "unsafe drinking water", "water supply disruption"],
+      "exclusions": ["water quality exercise", "planned maintenance", "historical contamination"],
+      "contexts": ["advisory", "contaminated", "utility", "samples", "residents", "testing"],
+      "subcategory": "water_contamination"
+    },
+    "transportation": {
+      "primary": ["aviation accident", "railway derailment", "bridge collapse", "shipping disruption"],
+      "related": ["plane crash", "train derailment", "collision", "port closure"],
+      "exclusions": ["transportation exercise", "accident simulation", "historical accident", "film set"],
+      "contexts": ["crash", "derailed", "collapsed", "collision", "rescue", "closed"],
+      "subcategory": "transportation_incident"
+    },
+    "civil_unrest": {
+      "primary": ["protest", "riot", "demonstration", "civil disturbance", "curfew"],
+      "related": ["unrest", "rally", "clashes", "crowd"],
+      "exclusions": ["peaceful protest planned", "protest song", "historical protest", "opinion protest"],
+      "contexts": ["police", "arrested", "clashes", "crowd", "curfew", "protesters"],
+      "subcategory": "civil_unrest"
+    },
+    "government": {
+      "primary": ["state of emergency", "government shutdown", "constitutional crisis", "leadership transition"],
+      "related": ["cabinet resignation", "presidential resignation", "parliament dissolved", "martial law"],
+      "exclusions": ["government collapse predicted", "could collapse", "fictional government", "opinion government"],
+      "contexts": ["declared", "announced", "resigned", "appointed", "official", "parliament"],
+      "subcategory": "government_action"
+    },
+    "economic": {
+      "primary": ["banking disruption", "financial crisis", "supply shortage", "market suspension"],
+      "related": ["bank failure", "bank run", "credit freeze", "market halted", "shortage"],
+      "exclusions": ["economic forecast", "financial crisis movie", "market simulation", "opinion"],
+      "contexts": ["closed", "suspended", "failed", "halted", "shortage", "regulator"],
+      "subcategory": "economic_disruption"
+    },
+    "humanitarian": {
+      "primary": ["mass displacement", "refugee emergency", "food insecurity", "aid disruption"],
+      "related": ["displaced people", "humanitarian crisis", "relief supplies", "famine"],
+      "exclusions": ["humanitarian exercise", "historical crisis", "opinion"],
+      "contexts": ["displaced", "refugees", "aid", "relief", "shelter", "food"],
+      "subcategory": "humanitarian_emergency"
+    },
+    "industrial": {
+      "primary": ["chemical spill", "industrial explosion", "hazardous material release"],
+      "related": ["factory fire", "toxic leak", "industrial accident", "hazmat"],
+      "exclusions": ["industrial exercise", "safety drill", "historical accident"],
+      "contexts": ["spill", "explosion", "leak", "evacuation", "hazardous", "emergency"],
+      "subcategory": "industrial_accident"
+    },
+    "volcanic": {
+      "primary": ["volcanic eruption", "ash plume", "lava flow", "volcanic alert"],
+      "related": ["volcano", "ash cloud", "volcanic activity"],
+      "exclusions": ["volcano simulation", "historical eruption", "volcanic exercise"],
+      "contexts": ["eruption", "ash", "lava", "alert", "evacuation", "ashfall"],
+      "subcategory": "volcanic_eruption"
+    }
+  },
+  "multilingual": {
+    "nuclear": ["ядерный", "радиация", "авария реактора", "هسته‌ای", "تشعشع", "核事故", "辐射", "原発事故", "放射線", "방사능", "Kernreaktor", "Strahlung", "promieniowanie", "branduolinė avarija"],
+    "military_conflict": ["авиаудар", "ракетный удар", "обстрел", "военное наступление", "حمله موشکی", "حمله هوایی", "空爆", "ミサイル攻撃", "공습", "미사일 공격", "Luftangriff", "ostrzał", "oro ants", "bombardement"],
+    "cybersecurity": ["кибератака", "вымогатель", "утечка данных", "هک", "حمله سایبری", "サイバー攻撃", "サイバー", "사이버 공격", "cyberangriff", "cyberatak"],
+    "earthquakes": ["землетрясение", "رسانه زلزله", "زلزله", "地震", "지진", "地震警報", "Erdbeben", "trzęsienie ziemi", "žemės drebėjimas"],
+    "severe_weather": ["ураган", "шторм", "طوفان", "台風", "暴風雨", "태풍", "Taifun", "huragan", "uraganas"],
+    "volcanic": ["извержение вулкана", "вулкан", "فوران آتشفشان", "噴火", "화산 폭발", "Vulkanausbruch", "erupcja wulkanu"]
+  }
+}

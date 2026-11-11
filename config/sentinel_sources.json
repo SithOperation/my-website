@@ -260,6 +260,8 @@
     {
       "id": "cisa-advisories-rss",
       "publisher": "Cybersecurity and Infrastructure Security Agency",
+      "official_source": true,
+      "independence_group": "cisa",
       "country_or_region": "United States / Global infrastructure",
       "official_website": "https://www.cisa.gov/cybersecurity-advisories",
       "endpoint": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
@@ -278,6 +280,8 @@
     {
       "id": "usgs-earthquakes-geojson",
       "publisher": "United States Geological Survey",
+      "official_source": true,
+      "independence_group": "usgs",
       "country_or_region": "Global",
       "official_website": "https://earthquake.usgs.gov/earthquakes/feed/",
       "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
@@ -296,6 +300,8 @@
     {
       "id": "noaa-space-weather-json",
       "publisher": "NOAA Space Weather Prediction Center",
+      "official_source": true,
+      "independence_group": "noaa-swpc",
       "country_or_region": "Global",
       "official_website": "https://www.swpc.noaa.gov/",
       "endpoint": "https://services.swpc.noaa.gov/products/summary/solar-wind-speed.json",

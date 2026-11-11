@@ -1130,11 +1130,20 @@
         heading.textContent = item.title;
         summary.textContent = item.summary || "No summary is available.";
         appendDefinition(details, "Publisher", item.publisher);
-        appendDefinition(details, "Category", displayType(item.categories?.[0] || "news"));
+        appendDefinition(details, "Category", displayType(item.category || item.categories?.[0] || "news"));
+        if (item.subcategory) appendDefinition(details, "Subcategory", displayType(item.subcategory));
         appendDefinition(details, "Severity", item.severity || "UNKNOWN");
         appendDefinition(details, "Published", formatDate(item.published_at));
         appendDefinition(details, "Countries", item.countries?.join(", ") || "Not classified");
-        appendDefinition(details, "Claim status", displayType(item.claim_status || "published_source_report"));
+        const verification = item.verification || {};
+        appendDefinition(details, "Verification", displayType(verification.status || item.claim_status || "unverified"));
+        appendDefinition(details, "Confidence score", verification.confidence_score === null || verification.confidence_score === undefined ? "Not available" : `${verification.confidence_score}/100`);
+        appendDefinition(details, "Independent sources", String(verification.independent_source_count ?? 0));
+        appendDefinition(details, "Official confirmation", verification.official_confirmation ? "Yes" : "No");
+        if (item.detected_keywords?.length) appendDefinition(details, "Detected keywords", item.detected_keywords.join(", "));
+        if (verification.explanation) appendDefinition(details, "Evidence explanation", verification.explanation);
+        if (verification.contradictions?.length) appendDefinition(details, "Contradictions", `${verification.contradictions.length} source reference(s)`);
+        if (verification.last_checked) appendDefinition(details, "Last checked", formatDate(verification.last_checked));
         const link = document.createElement("a");
         link.href = item.url;
         link.target = "_blank";
@@ -1269,8 +1278,17 @@
         interpretationBody.textContent = interpretationText(event);
         interpretation.append(interpretationHeading, interpretationBody);
         appendDefinition(details, "Threat level", event.threat_level, `threat-${event.threat_level.toLowerCase()}`);
-        appendDefinition(details, "Category", displayType(event.type));
+        appendDefinition(details, "Category", displayType(event.category || event.type));
+        if (event.subcategory) appendDefinition(details, "Subcategory", displayType(event.subcategory));
         appendDefinition(details, "Confidence", event.confidence === null ? "Not reported" : `${event.confidence}%`);
+        const verification = event.verification && typeof event.verification === "object" ? event.verification : null;
+        if (verification) {
+            appendDefinition(details, "Verification status", displayType(verification.status || "unverified"));
+            appendDefinition(details, "Confidence score", verification.confidence_score === null || verification.confidence_score === undefined ? "Not available" : `${verification.confidence_score}/100`);
+            appendDefinition(details, "Independent sources", String(verification.independent_source_count ?? 0));
+            if (verification.explanation) appendDefinition(details, "Evidence explanation", verification.explanation);
+            if (verification.contradictions?.length) appendDefinition(details, "Contradictions", `${verification.contradictions.length} source reference(s)`);
+        }
         appendDefinition(details, "Observed", formatDate(event.timestamp));
         appendDefinition(details, "Temporal status", isHistoricalEvent(event) ? "Historical publication record" : "Recent publication record");
         appendDefinition(details, "Source", sourceText(event));

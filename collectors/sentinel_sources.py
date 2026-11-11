@@ -23,6 +23,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
 
+from .sentinel_verification import classify_text, load_keyword_rules, verify_items
+
 SCHEMA_VERSION = "1.0"
 USER_AGENT = "SentinelGrid/1.0 (+https://sithbusiness.com/sentinel.html)"
 DEFAULT_TIMEOUT_SECONDS = 20
@@ -52,6 +54,9 @@ CATEGORY_KEYWORDS: dict[str, tuple[str, ...]] = {
     "natural_hazard": ("earthquake", "flood", "volcano", "wildfire", "storm"),
     "space_weather": ("solar wind", "geomagnetic", "space weather"),
 }
+KEYWORD_RULES_PATH = Path(__file__).resolve().parents[1] / "config" / "sentinel_keywords.json"
+KEYWORD_RULES = load_keyword_rules(KEYWORD_RULES_PATH)
+KEYWORD_MULTILINGUAL = json.loads(KEYWORD_RULES_PATH.read_text(encoding="utf-8")).get("multilingual", {})
 
 
 class SourceCollectionError(RuntimeError):
@@ -76,6 +81,8 @@ class SourceSpec:
     reliability: str
     enabled: bool
     coverage_countries: tuple[str, ...] = ()
+    independence_group: str = ""
+    official_source: bool = False
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any], index: int) -> "SourceSpec":
@@ -128,6 +135,8 @@ class SourceSpec:
                 str(item).strip() for item in value.get("coverage_countries", [])
                 if str(item).strip()
             ),
+            independence_group=str(value.get("independence_group", "")).strip(),
+            official_source=bool(value.get("official_source", False)),
         )
 
 
@@ -257,7 +266,6 @@ def _feed_items(source: SourceSpec, body: bytes, collected_at: str) -> list[dict
             values.get("pubdate") or values.get("published") or values.get("updated")
         )
         summary = clean_text(values.get("description") or values.get("summary"), MAX_SUMMARY_LENGTH)
-        text = f"{title} {summary}"
         items.append(_make_item(
             source=source,
             title=title,
@@ -328,6 +336,12 @@ def _make_item(
         *classify_countries(f"{title} {summary}"),
     ]))
     categories = classify_categories(f"{title} {summary}", source.categories)
+    classification_matches = classify_text(title, summary, KEYWORD_RULES, KEYWORD_MULTILINGUAL)
+    categories = list(dict.fromkeys([
+        *categories,
+        *(str(match["category"]) for match in classification_matches),
+    ]))
+    primary_classification = classification_matches[0] if classification_matches else {}
     identity = f"{source.id}|{url}|{title.casefold()}"
     coordinates = _coordinate_pair(latitude, longitude)
     return {
@@ -343,11 +357,17 @@ def _make_item(
         "collected_at": collected_at,
         "countries": countries,
         "categories": categories,
+        "category": primary_classification.get("category", categories[0] if categories else "news"),
+        "subcategory": primary_classification.get("subcategory"),
+        "detected_keywords": list(primary_classification.get("detected_keywords", [])),
+        "classification": primary_classification,
         "severity": "UNKNOWN",
         "latitude": coordinates[0] if coordinates else None,
         "longitude": coordinates[1] if coordinates else None,
         "geolocation_confidence": "source_supplied" if coordinates else None,
         "claim_status": "published_source_report",
+        "independence_group": source.independence_group or source.id,
+        "official_source": source.official_source,
         "feed_eligible": True,
     }
 
@@ -472,7 +492,7 @@ def collect_sources(
                 health.append({"source_id": source.id, "publisher": source.publisher, **result})
                 next_state[source.id] = {key: value for key, value in result.items() if key in {"etag", "last_modified"}}
     health.sort(key=lambda item: item["source_id"])
-    return deduplicate_items(items), health, next_state
+    return verify_items(deduplicate_items(items), checked_at=timestamp), health, next_state
 
 
 def build_publication(
