@@ -227,17 +227,6 @@
         };
     }
 
-    function threatColorExpression() {
-        return [
-            "match", ["get", "threat_level"],
-            "CRITICAL", "#ff174f",
-            "HIGH", "#ff8200",
-            "MEDIUM", "#ffd400",
-            "LOW", "#00f0ff",
-            "#8ca6ad"
-        ];
-    }
-
     function createAircraftIcon() {
         const canvas = document.createElement("canvas");
         canvas.width = 64;
@@ -368,13 +357,6 @@
         context.fill();
         context.stroke();
         return context.getImageData(0, 0, 48, 48);
-    }
-
-    function isMilitaryAircraft(event) {
-        if (event.type !== "aircraft") return true;
-        const classification = String(event.classification || event.aircraft?.classification || "").toLowerCase();
-        return event.is_military === true || event.military === true || event.aircraft?.is_military === true ||
-            ["military", "military_aircraft", "military-aviation"].includes(classification);
     }
 
     function addIntelligenceLayers() {
@@ -945,32 +927,6 @@
         ids.forEach(id => { if (map?.getLayer(id)) map.setLayoutProperty(id, "visibility", visible ? "visible" : "none"); });
     }
 
-    function updateCameraTelemetry() {
-        if (!map) return;
-        const center = map.getCenter();
-        const zoom = map.getZoom();
-        const heading = ((map.getBearing() % 360) + 360) % 360;
-        setText("camera-lat", center.lat.toFixed(4));
-        setText("camera-lon", center.lng.toFixed(4));
-        setText("camera-alt", zoom < 2.4 ? "GLOBAL" : `Z${zoom.toFixed(1)}`);
-        setText("camera-heading", String(Math.round(heading)).padStart(3, "0"));
-    }
-
-    function bindVisualModes() {
-        const frame = document.querySelector(".map-frame");
-        document.querySelectorAll("[data-map-mode]").forEach(button => {
-            button.addEventListener("click", () => {
-                const mode = button.dataset.mapMode || "normal";
-                frame.dataset.visualMode = mode;
-                document.querySelectorAll("[data-map-mode]").forEach(item => {
-                    const active = item === button;
-                    item.classList.toggle("is-active", active);
-                    item.setAttribute("aria-pressed", String(active));
-                });
-            });
-        });
-    }
-
     function showEventPopup(event, lngLat) {
         if (!window.maplibregl?.Popup || !map || !event || !lngLat) return;
         const content = document.createElement("article");
@@ -1005,12 +961,7 @@
 
     function applyLayerVisibility() {
         setLayersVisible(["event-glow", "event-hit", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
-        setLayersVisible(["earthquakes"], element("layer-earthquakes").checked);
-        setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
-        setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
-        setLayersVisible([
-            "x-early-reports"
-        ], element("layer-x-reports").checked);
+        setLayersVisible(["earthquakes", "volcanoes", "weather-fill", "weather-line", "x-early-reports"], true);
         updateMapData();
     }
 
@@ -1038,12 +989,10 @@
         map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: false }), "top-left");
         map.addControl(new window.maplibregl.FullscreenControl(), "top-left");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
-        map.on("move", updateCameraTelemetry);
         map.on("move", syncEventHitOverlay);
         map.on("zoom", syncEventHitOverlay);
         map.on("rotate", syncEventHitOverlay);
         map.on("resize", syncEventHitOverlay);
-        updateCameraTelemetry();
 
         const resizeMap = () => {
             if (!map) return;
@@ -1068,13 +1017,6 @@
         };
         document.addEventListener("fullscreenchange", handleFullscreenChange);
         document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
-
-        element("fullscreen-detail-toggle")?.addEventListener("click", event => {
-            const panel = event.currentTarget.closest(".fullscreen-event-panel");
-            const collapsed = panel.classList.toggle("is-collapsed");
-            event.currentTarget.textContent = collapsed ? "Expand" : "Minimize";
-            event.currentTarget.setAttribute("aria-expanded", String(!collapsed));
-        });
 
         map.on("load", () => {
             addIntelligenceLayers();
