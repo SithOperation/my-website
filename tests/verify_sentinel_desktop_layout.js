@@ -63,14 +63,14 @@ async function main() {
                         inset: style.inset
                     };
                 };
-                const shell = box(".ops-shell");
+                const shell = box(".sentinel-app");
                 const html = box("html");
                 const body = box("body");
-                const mapStage = box(".map-stage");
-                const mapFrame = box(".map-frame");
+                const mapStage = box(".sentinel-map-stage");
+                const mapFrame = box(".sentinel-map-stage");
                 const map = box("#sentinel-map");
                 const canvas = box(".maplibregl-canvas");
-                const dock = box(".map-dock");
+                const drawer = box(".event-drawer");
                 return {
                     viewport: { width: innerWidth, height: innerHeight },
                     visualViewport: window.visualViewport ? {
@@ -95,7 +95,7 @@ async function main() {
                     mapFrame,
                     map,
                     canvas,
-                    dock,
+                    drawer,
                     styles: {
                         mapFrame: styles(".map-frame"),
                         map: styles("#sentinel-map"),
@@ -116,7 +116,7 @@ async function main() {
                 mapStage: result.mapStage,
                 mapFrame: result.mapFrame,
                 map: result.map,
-                dock: result.dock
+                drawer: result.drawer
             })) {
                 assert.ok(box, `${label}: ${name} is missing ${geometry}`);
                 assert.ok(box.width > 0 && box.height > 0, `${label}: ${name} has no rendered area ${geometry}`);

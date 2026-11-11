@@ -13,59 +13,31 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
-    <!-- Sentinel layout rules load last so shared editorial responsive rules
-         cannot reintroduce a padded dashboard map frame. -->
     <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-minimal-map">
 </head>
 <body>
     <a class="skip-link" href="#sentinel-map">Skip to intelligence map</a>
-    <main class="ops-shell sentinel-app">
-        <header class="ops-header" aria-label="Sentinel Grid map controls">
-            <a class="back-link" href="index.html#sentinel-dashboard">Joseph Technologies</a>
-            <div class="sentinel-brand" aria-label="Sentinel Grid">SENTINEL <span>GRID</span></div>
-            <div id="ops-status" class="ops-status is-loading" role="status" aria-live="polite"><span class="status-light" aria-hidden="true"></span><span id="ops-status-text">Establishing intelligence feed...</span></div>
+    <main class="sentinel-app" aria-label="Sentinel Grid">
+        <header class="sentinel-topbar" aria-label="Sentinel Grid controls">
+            <a class="sentinel-back" href="index.html#sentinel-dashboard" aria-label="Back to Joseph Technologies">← Joseph Technologies</a>
+            <div class="sentinel-wordmark" aria-label="Sentinel Grid">SENTINEL <span>GRID</span></div>
+            <div id="ops-status" class="sentinel-status is-loading" role="status" aria-live="polite"><span class="status-light" aria-hidden="true"></span><span id="ops-status-text">Connecting</span></div>
+            <button id="event-list-toggle" class="sentinel-tool" type="button" aria-expanded="false" aria-controls="event-panel">Events <span id="event-feed-count">—</span></button>
         </header>
-
-        <section class="operations-grid" aria-label="Sentinel Grid map">
-            <section class="map-stage" aria-labelledby="map-heading">
-                <div class="map-stage-heading"><h1 id="map-heading">Global intelligence map</h1><p id="map-count" aria-live="polite">Preparing map layers...</p></div>
-                <div class="map-frame">
-                    <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map"></div>
-                    <div class="map-telemetry" aria-label="Map camera telemetry"><span>LAT <b id="camera-lat">20.0000</b></span><span>LON <b id="camera-lon">0.0000</b></span><span>ALT <b id="camera-alt">GLOBAL</b></span><span>HDG <b id="camera-heading">000</b></span></div>
-                    <div class="visual-mode-switcher" role="group" aria-label="Map visual mode"><button type="button" class="is-active" data-map-mode="normal" aria-pressed="true">Normal</button><button type="button" data-map-mode="crt" aria-pressed="false">CRT</button><button type="button" data-map-mode="nvg" aria-pressed="false">NVG</button><button type="button" data-map-mode="flir" aria-pressed="false">FLIR</button></div>
-                    <div id="map-loading" class="map-loading" role="status"><span></span>Building map...</div>
-                </div>
-                <nav class="map-dock" aria-label="Map tools">
-                    <button id="mobile-panel-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="filter-content">Filters</button>
-                    <button id="layers-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="filter-content">Layers</button>
-                    <button id="event-dock-toggle" class="map-dock-button" type="button" aria-expanded="false" aria-controls="event-detail">Events</button>
-                    <button id="source-viewer-open" class="map-dock-button" type="button" aria-haspopup="dialog" aria-controls="source-viewer" aria-expanded="false">Sources <span id="source-feed-count" aria-hidden="true">—</span></button>
-                </nav>
-            </section>
-
-            <aside class="control-panel" aria-label="Intelligence filters">
-                <div class="panel-heading"><h2>Filters</h2><button id="mobile-panel-close" class="map-button" type="button">Close</button></div>
-                <div id="filter-content" class="filter-content">
-                    <fieldset class="layer-toggles"><legend>Layers</legend>
-                        <label><input id="layer-intelligence" type="checkbox" checked> Intelligence</label><label><input id="layer-conflict" type="checkbox" checked> Conflict</label><label><input id="layer-cyber" type="checkbox" checked> Cyber</label><label><input id="layer-aircraft" type="checkbox" checked> Aircraft</label><label><input id="layer-military-aircraft" type="checkbox" checked> Military aircraft</label><label><input id="layer-maritime" type="checkbox" checked> Maritime</label><label><input id="layer-satellites" type="checkbox" checked> Satellites</label><label><input id="layer-earthquakes" type="checkbox" checked> Earthquakes</label><label><input id="layer-volcanoes" type="checkbox" checked> Volcanoes</label><label><input id="layer-weather" type="checkbox" checked> Weather</label><label><input id="layer-solar" type="checkbox" checked> Solar / space weather</label><label><input id="layer-humanitarian" type="checkbox" checked> Humanitarian</label><label><input id="layer-gps-jamming" type="checkbox" checked> GPS interference</label><label><input id="layer-internet-outages" type="checkbox" checked> Internet outages</label><label><input id="layer-x-reports" type="checkbox" checked> Social media reports</label><label><input id="layer-europe-nato" type="checkbox" checked> NATO activity</label><label><input id="layer-europe-russia" type="checkbox" checked> Russian activity</label><label><input id="layer-europe-flank" type="checkbox" checked> Eastern flank</label><label><input id="layer-europe-ukraine" type="checkbox" checked> Ukraine war</label><label><input id="layer-europe-air" type="checkbox" checked> Air activity</label><label><input id="layer-europe-naval" type="checkbox" checked> Naval activity</label><label><input id="layer-europe-missile" type="checkbox" checked> Missile / drone</label><label><input id="layer-europe-exercises" type="checkbox" checked> Military exercises</label><label><input id="layer-europe-warnings" type="checkbox" checked> Security warnings</label><label><input id="layer-europe-reddit" type="checkbox" checked> Reddit OSINT</label>
-                    </fieldset>
-                    <label>Event type<select id="filter-type"><option value="all">All event types</option></select></label><label>Threat level<select id="filter-threat"><option value="all">All threat levels</option></select></label><label>Minimum confidence<select id="filter-confidence"><option value="0">Any confidence</option><option value="50">50% or higher</option><option value="70">70% or higher</option><option value="90">90% or higher</option></select></label><label>Time window<select id="filter-time"><option value="all" selected>All available records</option><option value="24">Live / recent (24h)</option><option value="48">Last 48 hours</option><option value="168">Last 7 days</option></select></label>
-                    <div class="control-actions"><button id="reset-filters" type="button">Clear filters</button><button id="reset-view" type="button">Reset view</button></div>
-                    <div class="legend" aria-label="Threat legend"><h3>Threat</h3><span><i class="critical"></i> Critical</span><span><i class="high"></i> High</span><span><i class="medium"></i> Medium</span><span><i class="low"></i> Low</span><h3>Symbols</h3><span><b class="legend-glyph conflict" aria-hidden="true">&#8982;</b> Conflict</span><span><b class="legend-glyph aircraft" aria-hidden="true">&#9992;</b> Aircraft</span><span><b class="legend-glyph maritime" aria-hidden="true">&#9875;</b> Maritime</span><span><b class="legend-glyph wildfire" aria-hidden="true">&#128293;</b> Wildfire</span></div>
-                    <div class="coverage-block"><h3>Publication health</h3><p id="coverage-message">Waiting for source health...</p><ul id="coverage-sources"></ul></div>
-                </div>
-            </aside>
-
-            <aside id="event-panel" class="event-panel" aria-label="Selected intelligence event"><div class="panel-heading"><h2>Selected signal</h2><button id="mobile-detail-toggle" class="map-button" type="button" aria-expanded="false" aria-controls="event-detail">Details</button></div><div id="event-detail" class="event-detail"><p class="empty-kicker">NO SIGNAL SELECTED</p><p>Select a point to inspect its intelligence record.</p></div></aside>
+        <section class="sentinel-map-stage" aria-label="Global intelligence map">
+            <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map"></div>
+            <div id="map-loading" class="map-loading" role="status"><span></span>Building map...</div>
+            <div class="sentinel-map-label"><strong>GLOBAL SIGNAL MAP</strong><span id="map-count" aria-live="polite">Preparing map...</span></div>
+            <div class="sentinel-legend" aria-label="Map legend"><span><i class="city-light"></i> Major city</span><span><i class="event-light"></i> Published event</span></div>
         </section>
-
-        <div class="map-metrics" aria-hidden="true"><span id="ops-threat">UNKNOWN</span><span id="ops-total">0</span><span id="ops-critical">0</span><span id="ops-mapped">0</span><span id="ops-generated">AWAITING DATA</span><span id="ews-widget"><span id="ews-level">LOADING</span><span id="ews-context">Checking activity baseline...</span></span></div>
-
-        <aside id="source-viewer" class="source-viewer" role="dialog" aria-labelledby="source-viewer-title" aria-describedby="source-viewer-status" hidden>
-            <div class="source-viewer-header"><div><p class="eyebrow">SOURCE RECORDS</p><h2 id="source-viewer-title">Source feed</h2></div><button id="source-viewer-close" class="source-viewer-close" type="button" aria-label="Close source feed">×</button></div>
-            <p id="source-viewer-status" class="source-viewer-status" role="status" aria-live="polite">Loading source reports…</p><p id="source-viewer-announcement" class="visually-hidden" role="status" aria-live="polite"></p><button id="source-viewer-show-all" class="source-viewer-show-all" type="button" hidden>Return to complete feed</button><div id="source-viewer-content" class="source-viewer-content"></div><nav id="source-viewer-nav" class="source-viewer-nav" aria-label="Source report navigation" hidden><button id="source-viewer-previous" type="button">← Previous</button><span id="source-viewer-position" aria-live="polite"></span><button id="source-viewer-next" type="button">Next →</button></nav>
-        </aside><div id="source-viewer-backdrop" class="source-viewer-backdrop" hidden></div>
+        <aside id="event-panel" class="event-drawer" aria-label="Published events" aria-hidden="true">
+            <div class="event-drawer-heading"><div><span class="eyebrow">PUBLISHED SIGNALS</span><h2>Events at this map point</h2></div><button id="event-panel-close" class="drawer-close" type="button" aria-label="Close events">×</button></div>
+            <div id="event-detail" class="event-detail"><p class="empty-kicker">SELECT A RED LIGHT</p><p>Click a plotted event or city light to inspect published records.</p></div>
+        </aside>
     </main>
-    <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script><script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script><script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-globe"></script><script src="assets/js/sentinel-map.js?v=20261111-minimal-map"></script><script src="assets/js/sentinel-source-viewer.js?v=20260728-source-feed-visibility"></script>
+    <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
+    <script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script>
+    <script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-globe"></script>
+    <script src="assets/js/sentinel-map.js?v=20261111-minimal-map"></script>
 </body>
 </html>

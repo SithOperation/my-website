@@ -580,7 +580,7 @@ class SyncMonitorDataTests(unittest.TestCase):
         self.assertIn("verify_global_map_browser.js", verification)
         self.assertIn("dataset.renderedFeatures", browser_test)
         self.assertIn("EXPECTED_PUBLICATION_ID", browser_test)
-        self.assertIn("#ops-generated", browser_test)
+        self.assertIn("#event-feed-count", browser_test)
 
     def test_playwright_validation_uses_pinned_ubuntu_and_chromium_only(self) -> None:
         workflows = Path(__file__).parents[1] / ".github" / "workflows"

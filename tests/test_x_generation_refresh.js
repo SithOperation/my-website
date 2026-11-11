@@ -126,8 +126,7 @@ async function run() {
         "utf8"
     );
     assert.doesNotMatch(mapPage, /value="72"/);
-    assert.match(mapPage, /value="168"/);
-    assert.match(mapPage, /value="all" selected/);
+    assert.doesNotMatch(mapPage, /id="filter-time"/);
 
     console.log("X generation refresh tests passed");
 }
