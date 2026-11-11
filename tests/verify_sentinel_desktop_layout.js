@@ -31,7 +31,35 @@ async function main() {
             await page.waitForTimeout(500);
 
             const result = await page.evaluate(() => {
-                const box = selector => document.querySelector(selector)?.getBoundingClientRect();
+                const box = selector => {
+                    const rect = document.querySelector(selector)?.getBoundingClientRect();
+                    return rect ? {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height,
+                        right: rect.right,
+                        bottom: rect.bottom
+                    } : null;
+                };
+                const styles = selector => {
+                    const node = document.querySelector(selector);
+                    if (!node) return null;
+                    const style = getComputedStyle(node);
+                    return {
+                        display: style.display,
+                        position: style.position,
+                        boxSizing: style.boxSizing,
+                        width: style.width,
+                        height: style.height,
+                        minWidth: style.minWidth,
+                        minHeight: style.minHeight,
+                        padding: style.padding,
+                        border: style.border,
+                        outline: style.outline,
+                        inset: style.inset
+                    };
+                };
                 const shell = box(".ops-shell");
                 const controls = box(".control-panel");
                 const mapStage = box(".map-stage");
@@ -52,6 +80,11 @@ async function main() {
                     mapFrame,
                     map,
                     canvas,
+                    styles: {
+                        mapFrame: styles(".map-frame"),
+                        map: styles("#sentinel-map"),
+                        canvas: styles(".maplibregl-canvas")
+                    },
                     intelligence
                 };
             });
@@ -81,11 +114,18 @@ async function main() {
                 assert.ok(result.mapStage.right <= result.intelligence.left, `${label}: map overlaps intelligence`);
                 assert.ok(result.mapStage.width > result.controls.width * 3, `${label}: map is not dominant`);
             }
-            assert.ok(Math.abs(result.map.width - result.mapFrame.width) <= 1, `${label}: map width gap`);
-            assert.ok(Math.abs(result.map.height - result.mapFrame.height) <= 1, `${label}: map height gap`);
+            const geometry = JSON.stringify({
+                viewport: result.viewport,
+                mapFrame: result.mapFrame,
+                map: result.map,
+                canvas: result.canvas,
+                styles: result.styles
+            });
+            assert.ok(Math.abs(result.map.width - result.mapFrame.width) <= 1, `${label}: map width gap ${geometry}`);
+            assert.ok(Math.abs(result.map.height - result.mapFrame.height) <= 1, `${label}: map height gap ${geometry}`);
             if (result.canvas) {
-                assert.ok(Math.abs(result.canvas.width - result.map.width) <= 2, `${label}: canvas width gap`);
-                assert.ok(Math.abs(result.canvas.height - result.map.height) <= 2, `${label}: canvas height gap`);
+                assert.ok(Math.abs(result.canvas.width - result.map.width) <= 2, `${label}: canvas width gap ${geometry}`);
+                assert.ok(Math.abs(result.canvas.height - result.map.height) <= 2, `${label}: canvas height gap ${geometry}`);
             }
         }
     } finally {
