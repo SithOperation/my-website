@@ -69,9 +69,17 @@ jobs:
           python -m pytest
       - name: JavaScript syntax and behavior
         run: |
+          npm install --no-save --no-package-lock playwright@1.62.0
+          npx playwright install --with-deps chromium
           find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
           node --check tests/verify_global_map_browser.js
+          node --check tests/verify_sentinel_desktop_layout.js
           node tests/test_sentinel_gods_eye_contract.js
+          python -m http.server 8765 --directory . > /tmp/sentinel-map-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          sleep 1
+          LOCAL_BASE_URL=http://127.0.0.1:8765 node tests/verify_sentinel_desktop_layout.js
           node tests/test_x_generation_refresh.js
           node --test tests/test_x_report_popup.js
           node --test tests/test_source_viewer.js

@@ -46,13 +46,15 @@ async function main() {
             () => Number(document.querySelector("#sentinel-map")?.dataset.loadedEvents) > 0,
             { timeout: 30000 }
         );
-        const mappedEvents = await page.locator("#ops-mapped").textContent();
-        if (Number(mappedEvents?.replaceAll(",", "")) > 0) {
-            await page.waitForFunction(
-                () => Number(document.querySelector("#sentinel-map")?.dataset.renderedFeatures) > 0,
-                { timeout: 30000 }
-            );
-        }
+        await page.locator("#filter-time").selectOption("all");
+        await page.waitForFunction(
+            () => Number(document.querySelector("#ops-mapped")?.textContent?.replaceAll(",", "")) > 0,
+            { timeout: 30000 }
+        );
+        await page.waitForFunction(
+            () => Number(document.querySelector("#sentinel-map")?.dataset.visibleEvents) > 0,
+            { timeout: 30000 }
+        );
 
         await page.waitForFunction(
             () => ["available", "partial", "stale"].includes(

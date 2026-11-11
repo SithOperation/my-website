@@ -5,9 +5,14 @@ const { chromium } = require("playwright");
 
 const baseUrl = String(process.env.LOCAL_BASE_URL || "http://127.0.0.1:8765").replace(/\/+$/, "");
 const viewports = [
+    { width: 360, height: 740, mobile: true },
+    { width: 390, height: 844, mobile: true },
+    { width: 430, height: 932, mobile: true },
+    { width: 768, height: 1024, mobile: true },
     { width: 1366, height: 768 },
     { width: 1920, height: 1080 },
-    { width: 2560, height: 1440 }
+    { width: 3840, height: 2160 },
+    { width: 844, height: 390, mobile: true, landscape: true }
 ];
 
 async function main() {
@@ -32,6 +37,7 @@ async function main() {
                 const mapStage = box(".map-stage");
                 const mapFrame = box(".map-frame");
                 const map = box("#sentinel-map");
+                const canvas = box(".maplibregl-canvas");
                 const intelligence = box(".event-panel");
                 return {
                     viewport: { width: innerWidth, height: innerHeight },
@@ -45,14 +51,17 @@ async function main() {
                     mapStage,
                     mapFrame,
                     map,
+                    canvas,
                     intelligence
                 };
             });
 
             const label = `${viewport.width}x${viewport.height}`;
-            assert.equal(result.document.width, viewport.width, `${label}: horizontal page scrollbar`);
-            assert.equal(result.document.height, viewport.height, `${label}: vertical page scrollbar`);
-            assert.equal(result.bodyOverflow, "hidden", `${label}: desktop body must not scroll`);
+            assert.ok(result.document.width <= viewport.width, `${label}: horizontal page scrollbar`);
+            if (!viewport.mobile) {
+                assert.equal(result.document.height, viewport.height, `${label}: vertical page scrollbar`);
+                assert.equal(result.bodyOverflow, "hidden", `${label}: desktop body must not scroll`);
+            }
             for (const [name, box] of Object.entries({
                 shell: result.shell,
                 controls: result.controls,
@@ -65,13 +74,19 @@ async function main() {
                 assert.ok(box.width > 0 && box.height > 0, `${label}: ${name} has no rendered area`);
                 assert.ok(box.left >= -1 && box.top >= -1, `${label}: ${name} starts outside viewport`);
                 assert.ok(box.right <= viewport.width + 1, `${label}: ${name} exceeds viewport width`);
-                assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height`);
+                if (!viewport.mobile) assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height`);
             }
-            assert.ok(result.controls.right <= result.mapStage.left, `${label}: controls overlap map`);
-            assert.ok(result.mapStage.right <= result.intelligence.left, `${label}: map overlaps intelligence`);
-            assert.ok(result.mapStage.width > result.controls.width * 3, `${label}: map is not dominant`);
+            if (!viewport.mobile) {
+                assert.ok(result.controls.right <= result.mapStage.left, `${label}: controls overlap map`);
+                assert.ok(result.mapStage.right <= result.intelligence.left, `${label}: map overlaps intelligence`);
+                assert.ok(result.mapStage.width > result.controls.width * 3, `${label}: map is not dominant`);
+            }
             assert.ok(Math.abs(result.map.width - result.mapFrame.width) <= 1, `${label}: map width gap`);
             assert.ok(Math.abs(result.map.height - result.mapFrame.height) <= 1, `${label}: map height gap`);
+            if (result.canvas) {
+                assert.ok(Math.abs(result.canvas.width - result.map.width) <= 2, `${label}: canvas width gap`);
+                assert.ok(Math.abs(result.canvas.height - result.map.height) <= 2, `${label}: canvas height gap`);
+            }
         }
     } finally {
         await browser.close();
@@ -79,7 +94,7 @@ async function main() {
 }
 
 main().then(
-    () => console.log("Sentinel desktop layout verified at 1366x768, 1920x1080, and 2560x1440"),
+    () => console.log("Sentinel responsive layout verified across phone, tablet, desktop, 4K, and landscape viewports"),
     error => {
         console.error(error);
         process.exitCode = 1;

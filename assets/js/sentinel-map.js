@@ -366,14 +366,54 @@
         map.addSource("sentinel-events", {
             type: "geojson",
             data: featureCollection([]),
-            cluster: false
+            cluster: true,
+            clusterMaxZoom: 4,
+            clusterRadius: 48,
+            clusterProperties: {
+                critical_count: ["+", ["case", ["==", ["get", "threat_level"], "CRITICAL"], 1, 0]],
+                high_count: ["+", ["case", ["==", ["get", "threat_level"], "HIGH"], 1, 0]]
+            }
+        });
+
+        map.addLayer({
+            id: "event-clusters",
+            type: "circle",
+            source: "sentinel-events",
+            filter: ["has", "point_count"],
+            paint: {
+                "circle-color": [
+                    "step", ["get", "point_count"],
+                    "#00f0ff", 10, "#ffd400", 50, "#ff8200", 150, "#ff174f"
+                ],
+                "circle-radius": [
+                    "step", ["get", "point_count"],
+                    17, 10, 22, 50, 28, 150, 34
+                ],
+                "circle-stroke-color": "#061012",
+                "circle-stroke-width": 2,
+                "circle-opacity": 0.9
+            }
+        });
+
+        map.addLayer({
+            id: "event-cluster-count",
+            type: "symbol",
+            source: "sentinel-events",
+            filter: ["has", "point_count"],
+            layout: {
+                "text-field": ["to-string", ["get", "point_count"]],
+                "text-size": 11,
+                "text-font": ["Noto Sans Regular"],
+                "text-allow-overlap": true
+            },
+            paint: { "text-color": "#061012" }
         });
 
         map.addLayer({
             id: "event-glow",
             type: "circle",
             source: "sentinel-events",
-            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 10, 8, 17],
                 "circle-color": threatColorExpression(),
@@ -386,7 +426,7 @@
             id: "source-reported-halo",
             type: "circle",
             source: "sentinel-events",
-            filter: ["==", ["get", "source_reported"], true],
+            filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "source_reported"], true]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 12, 8, 20],
                 "circle-color": "rgba(0,0,0,0)",
@@ -417,7 +457,7 @@
             id: "events",
             type: "circle",
             source: "sentinel-events",
-            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 5.5, 8, 9],
                 "circle-color": threatColorExpression(),
@@ -432,7 +472,7 @@
             id: "event-glyphs",
             type: "symbol",
             source: "sentinel-events",
-            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             layout: {
                 "icon-image": ["concat", "marker-", ["get", "symbol_type"]],
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.28, 8, 0.46],
@@ -446,7 +486,7 @@
             id: "military-aircraft-glow",
             type: "circle",
             source: "sentinel-events",
-            filter: ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             paint: {
                 "circle-radius": 16,
                 "circle-color": "#00f0ff",
@@ -489,7 +529,17 @@
         map.on("click", "event-glyphs", selectRenderedEvent);
         map.on("click", "military-aircraft", selectRenderedEvent);
 
-        ["events", "event-glyphs", "military-aircraft"].forEach(layer => {
+        map.on("click", "event-clusters", event => {
+            const cluster = event.features?.[0];
+            const source = map.getSource("sentinel-events");
+            if (!cluster || !source?.getClusterExpansionZoom) return;
+            source.getClusterExpansionZoom(cluster.properties.cluster_id, (error, zoom) => {
+                if (error) return;
+                map.easeTo({ center: cluster.geometry.coordinates, zoom, duration: 420 });
+            });
+        });
+
+        ["event-clusters", "events", "event-glyphs", "military-aircraft"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
@@ -894,6 +944,7 @@
     }
 
     function initializeMap() {
+        if (map) return;
         if (!window.maplibregl?.Map) {
             throw new Error("The MapLibre renderer could not be loaded.");
         }
@@ -1011,10 +1062,8 @@
         const threat = element("filter-threat").value;
         const minimumConfidence = Number(element("filter-confidence").value);
         const hours = element("filter-time").value;
-        const selectedHours = hours === "all"
-            ? window.SentinelData.mapRetentionHours
-            : Math.min(Number(hours), window.SentinelData.mapRetentionHours);
-        const threshold = Date.now() - selectedHours * 60 * 60 * 1000;
+        const selectedHours = hours === "all" ? null : Number(hours);
+        const threshold = Number.isFinite(selectedHours) ? Date.now() - selectedHours * 60 * 60 * 1000 : null;
         const visibleCategories = getVisibleCategorySet();
         const europeLayerChecks = [
             ["layer-europe-nato", "nato_activity"],
@@ -1041,9 +1090,10 @@
             if (threat !== "all" && (event.threat_level || "UNKNOWN") !== threat) return false;
             if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
             const timestamp = Date.parse(event.timestamp || "");
-            if (!Number.isFinite(timestamp) || timestamp < threshold) return false;
+            if (!Number.isFinite(timestamp) || (threshold !== null && timestamp < threshold)) return false;
             return true;
         });
+        element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);
     }
 
     function updateMapData() {
@@ -1054,6 +1104,7 @@
             const key = `${event.latitude.toFixed(4)},${event.longitude.toFixed(4)}`;
             coordinateCounts.set(key, (coordinateCounts.get(key) || 0) + 1);
         });
+        element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);
 
         if (mapReady) {
             map.getSource("sentinel-events").setData(featureCollection(filteredEvents));
@@ -1062,6 +1113,15 @@
                 element("sentinel-map").dataset.renderedFeatures = String(
                     map.querySourceFeatures("sentinel-events").length
                 );
+                const visibleIds = new Set();
+                let clusteredVisible = 0;
+                map.queryRenderedFeatures({ layers: ["event-clusters", "events", "event-glyphs", "military-aircraft"] })
+                    .forEach(feature => {
+                        const count = Number(feature.properties?.point_count);
+                        if (Number.isFinite(count) && count > 0) clusteredVisible += count;
+                        else if (feature.properties?.map_id) visibleIds.add(String(feature.properties.map_id));
+                    });
+                element("sentinel-map").dataset.visibleEvents = String(visibleIds.size + clusteredVisible);
                 setLoading(false);
             }, 350);
         }
@@ -1095,6 +1155,22 @@
             .sort((a, b) => THREAT_ORDER.indexOf(a) - THREAT_ORDER.indexOf(b));
         populateSelect(element("filter-type"), types, "All event types", displayType);
         populateSelect(element("filter-threat"), threats, "All threat levels");
+        updateTimeFilterOptions();
+    }
+
+    function updateTimeFilterOptions() {
+        const select = element("filter-time");
+        const timestamps = allEvents
+            .map(event => Date.parse(event.timestamp || ""))
+            .filter(timestamp => Number.isFinite(timestamp));
+        const oldest = Math.min(...timestamps);
+        Array.from(select.options).forEach(option => {
+            const hours = Number(option.value);
+            const supported = option.value === "all" || option.value === "24" || option.value === "48" ||
+                (option.value === "168" && Number.isFinite(oldest) && oldest <= Date.now() - 168 * 60 * 60 * 1000);
+            option.hidden = !supported;
+        });
+        if (select.selectedOptions[0]?.hidden) select.value = "all";
     }
 
     function appendDefinition(list, label, value, className = "") {
@@ -1205,6 +1281,8 @@
         );
 
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
+        element("event-panel")?.classList.add("is-open");
+        element("mobile-detail-toggle")?.setAttribute("aria-expanded", "true");
         syncFullscreenDetail(panel);
     }
 
@@ -1245,6 +1323,8 @@
         });
 
         panel.replaceChildren(heading, explanation, list);
+        element("event-panel")?.classList.add("is-open");
+        element("mobile-detail-toggle")?.setAttribute("aria-expanded", "true");
         syncFullscreenDetail(panel);
         element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
             button.addEventListener("click", () => renderEventDetail(events[index]));
@@ -1283,6 +1363,7 @@
 
         allEvents = snapshot.events;
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
+        element("sentinel-map").dataset.visibleEvents = "0";
         populateFilters();
         renderHealth(snapshot);
         updateMapData();
@@ -1391,6 +1472,11 @@
 
         element("mobile-panel-toggle").addEventListener("click", event => {
             const open = element("filter-content").classList.toggle("is-open");
+            event.currentTarget.setAttribute("aria-expanded", String(open));
+        });
+
+        element("mobile-detail-toggle").addEventListener("click", event => {
+            const open = element("event-panel").classList.toggle("is-open");
             event.currentTarget.setAttribute("aria-expanded", String(open));
         });
     }

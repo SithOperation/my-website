@@ -136,8 +136,10 @@
                     <label>
                         Time window
                         <select id="filter-time">
-                            <option value="all">Last 48 hours</option>
-                            <option value="24">Last 24 hours</option>
+                            <option value="24">Live / recent (24h)</option>
+                            <option value="48">Last 48 hours</option>
+                            <option value="168">Last 7 days</option>
+                            <option value="all">All available records</option>
                         </select>
                     </label>
 
@@ -237,12 +239,15 @@
                 </div>
             </section>
 
-            <aside class="event-panel" aria-label="Selected intelligence event">
+            <aside id="event-panel" class="event-panel" aria-label="Selected intelligence event">
                 <div class="panel-heading">
                     <div>
                         <p class="eyebrow">INTELLIGENCE DETAIL</p>
                         <h2>Selected signal</h2>
                     </div>
+                    <button id="mobile-detail-toggle" class="mobile-panel-toggle" type="button" aria-expanded="false" aria-controls="event-detail">
+                        Details
+                    </button>
                 </div>
 
                 <div id="event-detail" class="event-detail">
