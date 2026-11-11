@@ -185,8 +185,8 @@ def valid_coordinates(latitude: object, longitude: object) -> bool:
     """Accept only explicit geographic coordinates; reject the null island placeholder."""
 
     try:
-        lat = float(latitude)
-        lon = float(longitude)
+        lat = float(str(latitude))
+        lon = float(str(longitude))
     except (TypeError, ValueError):
         return False
     return -90 <= lat <= 90 and -180 <= lon <= 180 and not (lat == 0 and lon == 0)
