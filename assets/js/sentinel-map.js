@@ -1282,6 +1282,7 @@
         element("ops-generated").textContent = formatDate(generated);
 
         allEvents = snapshot.events;
+        element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
         populateFilters();
         renderHealth(snapshot);
         updateMapData();
