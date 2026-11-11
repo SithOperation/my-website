@@ -43,11 +43,16 @@ async function main() {
             { timeout: 30000 }
         );
         await page.waitForFunction(
+            () => Number(document.querySelector("#sentinel-map")?.dataset.loadedEvents) > 0,
+            { timeout: 30000 }
+        );
+        await page.locator("#filter-time").selectOption("all");
+        await page.waitForFunction(
             () => Number(document.querySelector("#ops-mapped")?.textContent?.replaceAll(",", "")) > 0,
             { timeout: 30000 }
         );
         await page.waitForFunction(
-            () => Number(document.querySelector("#sentinel-map")?.dataset.renderedFeatures) > 0,
+            () => Number(document.querySelector("#sentinel-map")?.dataset.visibleEvents) > 0,
             { timeout: 30000 }
         );
 

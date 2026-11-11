@@ -12,18 +12,23 @@ const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map
 
 assert.ok(mapScript.includes('projection: { type: "globe" }'), "Sentinel must request globe projection");
 assert.ok(mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must enforce globe projection after load");
-assert.ok(!mapScript.includes("cluster: true"), "No point source may group events into numbered clusters");
-assert.ok(!mapScript.includes('id: "cluster-count"'), "Primary event cluster labels must not exist");
+assert.ok(mapScript.includes("cluster: true"), "Primary events should cluster at global zoom");
+assert.ok(mapScript.includes('id: "event-clusters"'), "Primary event clusters must have a dedicated layer");
+assert.ok(mapScript.includes("getClusterExpansionZoom"), "Primary event clusters must expand on click");
 assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-report cluster labels must not exist");
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");
 assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event symbols must not be hidden by collision placement");
 assert.ok(mapScript.includes("if (!visibleCategories.has(category)) return false;"), "Clearing all category toggles must show no events");
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
+assert.ok(page.includes('value="168">Last 7 days') && page.includes("All available records"), "Time filters must expose supported historical views");
+assert.ok(page.includes('id="mobile-detail-toggle"'), "Mobile event details must have a drawer toggle");
 assert.ok(!page.toLowerCase().includes("tap a pinpoint or cluster"), "Instructions must describe individual markers");
 assert.ok(mapScript.includes("weatherColorExpression"), "Weather polygons must be styled by severity");
 assert.ok(mapScript.includes("isExpiredWeatherEvent"), "Expired weather alerts must be removed client-side");
 assert.ok(mapScript.includes("isWeatherTestMessage"), "Administrative weather tests must not be rendered");
+assert.ok(mapScript.includes("dataset.loadedEvents") && mapScript.includes("dataset.visibleEvents"), "Map diagnostics must distinguish loaded and visible events");
+assert.ok(mapScript.includes("Historical publication record") && mapScript.includes("historical"), "Historical records must be visibly distinguished from recent signals");
 assert.ok(mapScript.includes("loadEnvironmentalLayers({ refreshOnly: true })"), "Weather data must be refetched during live refresh");
 assert.ok(page.includes('id="layer-europe-nato"') && page.includes('id="layer-europe-reddit"'), "European security map controls must be present");
 assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");
