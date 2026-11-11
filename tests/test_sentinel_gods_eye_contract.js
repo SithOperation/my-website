@@ -57,6 +57,7 @@ assert.ok(mapScript.includes('dataset.feedState = "error"') && mapScript.include
 assert.ok(mapScript.includes("eventCoordinates"), "Map diagnostics must expose indexed event coordinates for browser regression checks");
 assert.ok(mapScript.includes("projectEvent"), "Browser regression checks must be able to exercise a real projected marker click");
 assert.ok(mapScript.includes("firstClusterPoint"), "Browser regression checks must be able to exercise cluster expansion");
+assert.ok(mapScript.includes("firstCityPoint"), "Browser regression checks must be able to exercise city-light clicks");
 assert.ok(mapScript.includes("if (events.length > 1)"), "Coincident markers must open a grouped event detail instead of moving coordinates");
 assert.ok(Array.isArray(publishedMapEvents) && publishedMapEvents.length > 0, "Published map data must contain events");
 const publishedIds = new Set();
