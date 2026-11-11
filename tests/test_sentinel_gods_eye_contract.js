@@ -28,6 +28,7 @@ assert.ok(mapScript.includes("weatherColorExpression"), "Weather polygons must b
 assert.ok(mapScript.includes("isExpiredWeatherEvent"), "Expired weather alerts must be removed client-side");
 assert.ok(mapScript.includes("isWeatherTestMessage"), "Administrative weather tests must not be rendered");
 assert.ok(mapScript.includes("dataset.loadedEvents") && mapScript.includes("dataset.visibleEvents"), "Map diagnostics must distinguish loaded and visible events");
+assert.ok(mapScript.includes("Historical publication record") && mapScript.includes("historical"), "Historical records must be visibly distinguished from recent signals");
 assert.ok(mapScript.includes("loadEnvironmentalLayers({ refreshOnly: true })"), "Weather data must be refetched during live refresh");
 assert.ok(page.includes('id="layer-europe-nato"') && page.includes('id="layer-europe-reddit"'), "European security map controls must be present");
 assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");

@@ -96,6 +96,10 @@
             ["source_reported", "unverified"].includes(String(event?.claim_status || "").toLowerCase());
     }
 
+    function isHistoricalEvent(event) {
+        return Boolean(event?.timestamp) && !window.SentinelData.isWithinRetentionWindow(event.timestamp);
+    }
+
     function setStatus(message, state) {
         const status = element("ops-status");
         element("ops-status-text").textContent = message;
@@ -139,6 +143,7 @@
                         threat_level: event.threat_level,
                         confidence: event.confidence ?? 0,
                         timestamp: event.timestamp || "",
+                        historical: isHistoricalEvent(event),
                         heading: Number(aircraftValue(event, "heading", "track")) || 0,
                         source_reported: isSourceReportedEvent(event)
                     }
@@ -417,7 +422,7 @@
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 10, 8, 17],
                 "circle-color": threatColorExpression(),
-                "circle-opacity": 0.2,
+                "circle-opacity": ["case", ["boolean", ["get", "historical"], false], 0.08, 0.2],
                 "circle-blur": 0.7
             }
         });
@@ -461,7 +466,7 @@
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 5.5, 8, 9],
                 "circle-color": threatColorExpression(),
-                "circle-opacity": 0.96,
+                "circle-opacity": ["case", ["boolean", ["get", "historical"], false], 0.42, 0.96],
                 "circle-stroke-color": "#061012",
                 "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 2, 1.25, 8, 2],
                 "circle-stroke-opacity": 0.95
@@ -478,7 +483,8 @@
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.28, 8, 0.46],
                 "icon-allow-overlap": true,
                 "icon-ignore-placement": true,
-                "icon-padding": 0
+                "icon-padding": 0,
+                "icon-opacity": ["case", ["boolean", ["get", "historical"], false], 0.46, 1]
             }
         });
 
@@ -490,7 +496,7 @@
             paint: {
                 "circle-radius": 16,
                 "circle-color": "#00f0ff",
-                "circle-opacity": 0.16,
+                "circle-opacity": ["case", ["boolean", ["get", "historical"], false], 0.06, 0.16],
                 "circle-blur": 0.7
             }
         });
@@ -506,7 +512,8 @@
                 "icon-rotate": ["coalesce", ["to-number", ["get", "heading"]], 0],
                 "icon-rotation-alignment": "map",
                 "icon-allow-overlap": true,
-                "icon-ignore-placement": true
+                "icon-ignore-placement": true,
+                "icon-opacity": ["case", ["boolean", ["get", "historical"], false], 0.46, 1]
             }
         });
 
@@ -1239,6 +1246,7 @@
         appendDefinition(details, "Category", displayType(event.type));
         appendDefinition(details, "Confidence", event.confidence === null ? "Not reported" : `${event.confidence}%`);
         appendDefinition(details, "Observed", formatDate(event.timestamp));
+        appendDefinition(details, "Temporal status", isHistoricalEvent(event) ? "Historical publication record" : "Recent publication record");
         appendDefinition(details, "Source", sourceText(event));
         if (Number.isFinite(event.latitude) && Number.isFinite(event.longitude)) {
             appendDefinition(details, "Coordinates", `${event.latitude.toFixed(4)}, ${event.longitude.toFixed(4)}`);
