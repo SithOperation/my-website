@@ -30,7 +30,7 @@ jobs:
   validate:
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
         with:
@@ -70,7 +70,9 @@ jobs:
       - name: JavaScript syntax and behavior
         run: |
           npm install --no-save --no-package-lock playwright@1.62.0
-          npx playwright install --with-deps chromium
+          # ubuntu-24.04 hosted runners already provide Chromium's native OS dependencies.
+          # Install only the pinned browser binary; do not invoke apt repeatedly.
+          npx playwright install chromium
           find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
           node --check tests/verify_global_map_browser.js
           node --check tests/verify_sentinel_desktop_layout.js

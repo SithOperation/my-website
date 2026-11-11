@@ -546,6 +546,19 @@ class SyncMonitorDataTests(unittest.TestCase):
         self.assertIn("EXPECTED_PUBLICATION_ID", browser_test)
         self.assertIn("#ops-generated", browser_test)
 
+    def test_playwright_validation_uses_pinned_ubuntu_and_chromium_only(self) -> None:
+        workflows = Path(__file__).parents[1] / ".github" / "workflows"
+        pages = yaml.safe_load((workflows / "pages.yml").read_text(encoding="utf-8"))
+        sync = yaml.safe_load((workflows / "sync-states.yml").read_text(encoding="utf-8"))
+
+        self.assertEqual(pages["jobs"]["validate"]["runs-on"], "ubuntu-24.04")
+        self.assertEqual(sync["jobs"]["verify-production"]["runs-on"], "ubuntu-24.04")
+        for workflow in (pages, sync):
+            text = json.dumps(workflow)
+            self.assertIn("playwright@1.62.0", text)
+            self.assertIn("playwright install chromium", text)
+            self.assertNotIn("playwright install --with-deps", text)
+
     def test_workflow_reports_end_to_end_publication_telemetry(self) -> None:
         workflow_path = (
             Path(__file__).parents[1] / ".github" / "workflows" / "sync-states.yml"
