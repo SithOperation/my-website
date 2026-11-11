@@ -4,7 +4,6 @@
     const DATA_REFRESH_MS = 5 * 60 * 1000;
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
-    const THREAT_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"];
     const MAJOR_CITIES = [
         ["New York", -74.006, 40.7128], ["Los Angeles", -118.2437, 34.0522], ["Mexico City", -99.1332, 19.4326],
         ["São Paulo", -46.6333, -23.5505], ["Buenos Aires", -58.3816, -34.6037], ["London", -0.1276, 51.5072],
@@ -1033,74 +1032,11 @@
         });
     }
 
-    function getVisibleCategorySet() {
-        const categorySet = new Set();
-        if (!element("layer-intelligence")) {
-            allEvents.forEach(event => categorySet.add(getEventCategory(event)));
-            return categorySet;
-        }
-        const layerChecks = [
-            ["layer-intelligence", ["intelligence", "news", "reddit_report", "x_report"]],
-            ["layer-conflict", ["conflict", "military_exercise"]],
-            ["layer-cyber", ["cyber"]],
-            ["layer-aircraft", ["aircraft"]],
-            ["layer-military-aircraft", ["military_aircraft", "military_exercise"]],
-            ["layer-maritime", ["maritime"]],
-            ["layer-satellites", ["satellite"]],
-            ["layer-earthquakes", ["earthquake"]],
-            ["layer-volcanoes", ["volcano"]],
-            ["layer-weather", ["weather", "weather_alert", "wildfire", "prescribed_fire"]],
-            ["layer-solar", ["solar"]],
-            ["layer-humanitarian", ["humanitarian"]],
-            ["layer-gps-jamming", ["gps_jamming"]],
-            ["layer-internet-outages", ["internet_outage"]]
-        ];
-
-        layerChecks.forEach(([id, categories]) => {
-            if (element(id)?.checked) {
-                categories.forEach(category => categorySet.add(category));
-            }
-        });
-
-        return categorySet;
-    }
-
     function filterEvents() {
-        const type = element("filter-type")?.value || "all";
-        const threat = element("filter-threat")?.value || "all";
-        const minimumConfidence = Number(element("filter-confidence")?.value || 0);
-        const hours = element("filter-time")?.value || "all";
-        const selectedHours = hours === "all" ? null : Number(hours);
-        const threshold = Number.isFinite(selectedHours) ? Date.now() - selectedHours * 60 * 60 * 1000 : null;
-        const visibleCategories = getVisibleCategorySet();
-        const europeLayerChecks = [
-            ["layer-europe-nato", "nato_activity"],
-            ["layer-europe-russia", "russian_activity"],
-            ["layer-europe-flank", "eastern_flank"],
-            ["layer-europe-ukraine", "ukraine_war"],
-            ["layer-europe-air", "air_activity"],
-            ["layer-europe-naval", "naval_activity"],
-            ["layer-europe-missile", "missile_drone"],
-            ["layer-europe-exercises", "military_exercise"],
-            ["layer-europe-warnings", "security_warning"],
-            ["layer-europe-reddit", "reddit_osint"]
-        ];
-        const enabledEuropeLayers = new Set(europeLayerChecks.filter(([id]) => element(id)?.checked).map(([, layer]) => layer));
-
-        filteredEvents = allEvents.filter(event => {
-            const category = getEventCategory(event);
-            const raw = adapter?.normalizeEvent(event)?.metadata?.raw || event;
-            const europeLayers = Array.isArray(raw.europe_layers) ? raw.europe_layers : [];
-            if (europeLayers.length && element("layer-europe-nato")) {
-                if (!europeLayers.some(layer => enabledEuropeLayers.has(layer))) return false;
-            } else if (!visibleCategories.has(category)) return false;
-            if (type !== "all" && category !== type) return false;
-            if (threat !== "all" && (event.threat_level || "UNKNOWN") !== threat) return false;
-            if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
-            const timestamp = Date.parse(event.timestamp || "");
-            if (!Number.isFinite(timestamp) || (threshold !== null && timestamp < threshold)) return false;
-            return true;
-        });
+        // The public map has no hidden dashboard filters. The publication
+        // pipeline is the source of truth, so historical records remain
+        // visible instead of disappearing behind an absent time selector.
+        filteredEvents = allEvents.slice();
         element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);
     }
 
@@ -1151,39 +1087,6 @@
             filteredEvents.length || environmentalCount || earlyReportCount
                 ? counts.join(" · ")
                 : "No signals match the active filters";
-    }
-
-    function populateSelect(select, values, firstLabel, formatter = value => value) {
-        const previous = select.value;
-        select.replaceChildren(new Option(firstLabel, "all"));
-        values.forEach(value => select.add(new Option(formatter(value), value)));
-        select.value = values.includes(previous) ? previous : "all";
-    }
-
-    function populateFilters() {
-        if (!element("filter-type")) return;
-        const types = Array.from(new Set(allEvents.map(event => getEventCategory(event)))).sort();
-        const threats = Array.from(new Set(allEvents.map(event => String(event.threat_level || "UNKNOWN").toUpperCase())))
-            .sort((a, b) => THREAT_ORDER.indexOf(a) - THREAT_ORDER.indexOf(b));
-        populateSelect(element("filter-type"), types, "All event types", displayType);
-        populateSelect(element("filter-threat"), threats, "All threat levels");
-        updateTimeFilterOptions();
-    }
-
-    function updateTimeFilterOptions() {
-        const select = element("filter-time");
-        if (!select) return;
-        const timestamps = allEvents
-            .map(event => Date.parse(event.timestamp || ""))
-            .filter(timestamp => Number.isFinite(timestamp));
-        const oldest = Math.min(...timestamps);
-        Array.from(select.options).forEach(option => {
-            const hours = Number(option.value);
-            const supported = option.value === "all" || option.value === "24" || option.value === "48" ||
-                (option.value === "168" && Number.isFinite(oldest) && oldest <= Date.now() - 168 * 60 * 60 * 1000);
-            option.hidden = !supported;
-        });
-        if (select.selectedOptions[0]?.hidden) select.value = "all";
     }
 
     function appendDefinition(list, label, value, className = "") {
@@ -1304,19 +1207,6 @@
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
         setText("event-drawer-title", "Selected event");
         openEventDrawer();
-        syncFullscreenDetail(panel);
-    }
-
-    function syncFullscreenDetail(source) {
-        const fullscreenDetail = element("fullscreen-event-detail");
-        if (!fullscreenDetail) return;
-        fullscreenDetail.replaceChildren(...[...source.children].map(child => child.cloneNode(true)));
-        fullscreenDetail.querySelectorAll(".event-source-action").forEach(button => {
-            button.addEventListener("click", () =>
-                window.SentinelSourceViewerController?.openForEvent(button.dataset.eventId)
-            );
-        });
-        fullscreenDetail.closest(".fullscreen-event-panel")?.classList.add("has-selection");
     }
 
     function selectEventById(eventId) {
@@ -1429,43 +1319,9 @@
         panel.replaceChildren(heading, explanation, list);
         setText("event-drawer-title", locationLabel);
         openEventDrawer();
-        syncFullscreenDetail(panel);
-        element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
-            button.addEventListener("click", () => renderEventDetail(events[index]));
-        });
-    }
-
-    function renderHealth(snapshot) {
-        const coverage = element("coverage-message");
-        const sources = element("coverage-sources");
-        if (!coverage || !sources) return;
-        const healthState = snapshot.healthState;
-        coverage.textContent = healthState.message;
-        sources.replaceChildren();
-
-        healthState.failedSources.slice(0, 6).forEach(source => {
-            const item = document.createElement("li");
-            item.textContent = `${source.name || source.source || "Source"}: ${source.status || "degraded"}`;
-            sources.appendChild(item);
-        });
-
-        if (snapshot.legacy) {
-            const item = document.createElement("li");
-            item.textContent = "Manifest metadata unavailable; displaying validated legacy files.";
-            sources.appendChild(item);
-        }
     }
 
     function applySnapshot(snapshot) {
-        const summary = snapshot.dashboard.summary || {};
-        const criticalEvents = Array.isArray(snapshot.dashboard.critical_events) ? snapshot.dashboard.critical_events : [];
-        const generated = snapshot.manifest.generated || snapshot.dashboard.generated;
-
-        setText("ops-threat", String(summary.global_threat_level || summary.threat_level || "UNKNOWN"));
-        setText("ops-total", Number(summary.total_events || snapshot.events.length).toLocaleString());
-        setText("ops-critical", criticalEvents.length.toLocaleString());
-        setText("ops-generated", formatDate(generated));
-
         allEvents = snapshot.events;
         element("event-feed-count").textContent = snapshot.events.length.toLocaleString();
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
@@ -1474,8 +1330,6 @@
             ? "degraded"
             : snapshot.events.length ? "available" : "empty";
         element("sentinel-map").dataset.visibleEvents = "0";
-        populateFilters();
-        renderHealth(snapshot);
         updateMapData();
 
         const rejectedMessage = snapshot.invalidEventCount
@@ -1496,39 +1350,6 @@
             "Operational with legacy publication metadata" :
             `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
         setStatus(message, state);
-    }
-
-    function ewsBaselineLabel(zScore) {
-        if (zScore >= 2) return "Significantly above baseline";
-        if (zScore >= 1) return "Above activity baseline";
-        if (zScore <= -2) return "Significantly below baseline";
-        if (zScore <= -1) return "Below activity baseline";
-        return "Near activity baseline";
-    }
-
-    async function refreshEws() {
-        const widget = element("ews-widget");
-        if (!widget) return;
-        try {
-            const state = await client.fetchJSON("ews_state.json");
-            const level = Number(state.level);
-            const count = Number(state.concurrent_count);
-            const zScore = Number(state.z_score);
-            if (!Number.isInteger(level) || level < 0 || level > 4 || !Number.isFinite(count) || !Number.isFinite(zScore)) {
-                throw new Error("Invalid EWS state");
-            }
-
-            widget.className = `metric-ews ews-level-${level}`;
-            element("ews-level").textContent = `LEVEL ${level}`;
-            element("ews-context").textContent = `${count.toLocaleString()} concurrent · ${ewsBaselineLabel(zScore)}`;
-            widget.title = `Early Warning System: level ${level}; z-score ${zScore.toFixed(2)}; updated ${formatDate(state.as_of || state.last_checked)}. Supporting anomaly indicator only.`;
-        }
-        catch (error) {
-            console.warn("EWS state unavailable", error);
-            widget.className = "metric-ews is-error";
-            element("ews-level").textContent = "UNAVAILABLE";
-            element("ews-context").textContent = "Sentinel map remains operational";
-        }
     }
 
     async function refresh(options = {}) {
@@ -1671,11 +1492,9 @@
         }
 
         refresh();
-        refreshEws();
         window.setInterval(() => {
             if (document.visibilityState === "visible") {
                 refresh();
-                refreshEws();
                 updateMapData();
                 loadEnvironmentalLayers({ refreshOnly: true }).catch(error =>
                     console.warn("Environmental refresh failed; prior data retained", error)
