@@ -584,31 +584,7 @@
         const selectRenderedEvent = event => {
             const feature = event.features?.[0];
             if (!feature) return;
-            const selectedId = String(feature.properties?.map_id || "");
-            const selectedEvent = eventIndex.get(selectedId);
-            if (!selectedEvent) return;
-
-            // Use the stable source ID and published coordinates instead of a
-            // small screen-space query. Screen queries can omit overlapping
-            // features when several records share one plotted location.
-            const selectedCoordinate = eventCoordinateKey(selectedEvent);
-            const events = Array.from(eventIndex.entries())
-                .filter(([, item]) => eventCoordinateKey(item) === selectedCoordinate)
-                .map(([, item]) => item);
-            const eventIds = events.map(item => String(item.event_id || selectedId));
-
-            if (events.length > 1) {
-                renderEventGroup(events, events.length);
-                const first = events[0];
-                map.easeTo({
-                    center: [first.longitude, first.latitude],
-                    zoom: Math.min(8, Math.max(map.getZoom() + 2, 6)),
-                    duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420
-                });
-            }
-            else if (events[0]) {
-                locateSourceEvent(eventIds[0]);
-            }
+            selectEventById(feature.properties?.map_id);
         };
 
         map.on("click", "events", selectRenderedEvent);
@@ -654,6 +630,8 @@
             });
             renderEventGroup(events, events.length, city.properties?.name || "Selected city");
         });
+
+        syncEventHitOverlay();
     }
 
     function normalizeDisasterEvent(event) {
@@ -1115,6 +1093,10 @@
         map.addControl(new window.maplibregl.FullscreenControl(), "top-left");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
         map.on("move", updateCameraTelemetry);
+        map.on("move", syncEventHitOverlay);
+        map.on("zoom", syncEventHitOverlay);
+        map.on("rotate", syncEventHitOverlay);
+        map.on("resize", syncEventHitOverlay);
         updateCameraTelemetry();
 
         const resizeMap = () => {
@@ -1250,6 +1232,7 @@
             map.getSource("sentinel-events").setData(featureCollection(filteredEvents));
             map.getSource("sentinel-cities")?.setData(cityFeatureCollection(filteredEvents));
             map.triggerRepaint();
+            syncEventHitOverlay();
             window.setTimeout(() => {
                 element("sentinel-map").dataset.renderedFeatures = String(
                     map.querySourceFeatures("sentinel-events").length
@@ -1264,6 +1247,7 @@
                     });
                 element("sentinel-map").dataset.visibleEvents = String(visibleIds.size + clusteredVisible);
                 setLoading(false);
+                syncEventHitOverlay();
             }, 350);
         }
 
@@ -1447,6 +1431,88 @@
             );
         });
         fullscreenDetail.closest(".fullscreen-event-panel")?.classList.add("has-selection");
+    }
+
+    function selectEventById(eventId) {
+        const selectedId = String(eventId || "");
+        const selectedEvent = eventIndex.get(selectedId);
+        if (!selectedEvent) return false;
+
+        // Group from the verified publication index rather than rendered
+        // pixels, so overlapping records can never be lost to draw order.
+        const selectedCoordinate = eventCoordinateKey(selectedEvent);
+        const events = Array.from(eventIndex.values())
+            .filter(item => eventCoordinateKey(item) === selectedCoordinate);
+
+        if (events.length > 1) {
+            renderEventGroup(events, events.length);
+            const first = events[0];
+            map.easeTo({
+                center: [first.longitude, first.latitude],
+                zoom: Math.min(8, Math.max(map.getZoom() + 2, 6)),
+                duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420
+            });
+        }
+        else {
+            locateSourceEvent(selectedId);
+        }
+        return true;
+    }
+
+    function syncEventHitOverlay() {
+        const overlay = element("sentinel-event-hit-overlay");
+        if (!overlay || !map || !mapReady) return;
+
+        const width = map.getContainer().clientWidth;
+        const height = map.getContainer().clientHeight;
+        const visibleUnclusteredIds = new Set();
+        try {
+            map.querySourceFeatures("sentinel-events")
+                .filter(feature => !feature.properties?.point_count)
+                .forEach(feature => {
+                    const id = feature.properties?.map_id;
+                    if (id) visibleUnclusteredIds.add(String(id));
+                });
+        }
+        catch {
+            // Source tiles can be unavailable briefly during a publication refresh.
+        }
+        const sourceReadyForIndividualEvents = visibleUnclusteredIds.size > 0;
+        const activeIds = new Set();
+
+        eventIndex.forEach((event, eventId) => {
+            let button = overlay.querySelector(`[data-event-id="${CSS.escape(String(eventId))}"]`);
+            if (!button) {
+                button = document.createElement("button");
+                button.type = "button";
+                button.className = "sentinel-event-hit";
+                button.dataset.eventId = String(eventId);
+                button.addEventListener("click", click => {
+                    click.preventDefault();
+                    click.stopPropagation();
+                    selectEventById(eventId);
+                });
+                overlay.appendChild(button);
+            }
+
+            button.setAttribute("aria-label", `Open event: ${event.title || "Published intelligence event"}`);
+            button.title = event.title || "Published intelligence event";
+            const point = map.project([event.longitude, event.latitude]);
+            const visible = (sourceReadyForIndividualEvents
+                ? visibleUnclusteredIds.has(String(eventId))
+                : map.getZoom() > 4.05) &&
+                point.x >= -20 && point.x <= width + 20 &&
+                point.y >= -20 && point.y <= height + 20;
+            button.hidden = !visible;
+            if (visible) {
+                button.style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`;
+                activeIds.add(String(eventId));
+            }
+        });
+
+        overlay.querySelectorAll(".sentinel-event-hit").forEach(button => {
+            if (!activeIds.has(button.dataset.eventId || "")) button.hidden = true;
+        });
     }
 
     function renderEventGroup(events, totalCount, locationLabel = "Events at this map point") {

@@ -109,7 +109,17 @@ async function main() {
         if (!point || point.x < 0 || point.y < 0 || point.x > 1440 || point.y > 1000) {
             throw new Error("Published map event did not project inside the map viewport");
         }
-        await page.mouse.click(point.x, point.y);
+        await page.waitForFunction(
+            eventId => [...document.querySelectorAll("#sentinel-event-hit-overlay button")]
+                .some(button => button.dataset.eventId === eventId && !button.hidden),
+            plottedFeedCheck.target.event_id,
+            { timeout: 5000 }
+        );
+        await page.evaluate(eventId => {
+            const button = [...document.querySelectorAll("#sentinel-event-hit-overlay button")]
+                .find(item => item.dataset.eventId === eventId);
+            button?.click();
+        }, plottedFeedCheck.target.event_id);
         await page.locator(".maplibregl-popup").waitFor({ state: "visible", timeout: 5000 });
         if (await page.locator(".sentinel-popup").count() !== 1) {
             throw new Error("Located map event did not render an event popup");

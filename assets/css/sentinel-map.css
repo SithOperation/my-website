@@ -1485,6 +1485,35 @@ body:has(.sentinel-app) {
     touch-action: none;
 }
 
+#sentinel-event-hit-overlay {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sentinel-event-hit {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+    transform: translate(-50%, -50%);
+}
+
+.sentinel-event-hit:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    background: rgba(255, 41, 77, .18);
+}
+
 .sentinel-topbar {
     position: absolute;
     z-index: 12;
