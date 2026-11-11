@@ -124,9 +124,9 @@
         if (category === "earthquake") return "earthquake";
         const rawSignals = [event?.type, event?.category, event?.classification, category]
             .filter(Boolean).join(" ").toLowerCase();
-        const text = `${event?.title || ""} ${event?.description || ""}`;
-        const warCategory = /(conflict|war|armed_conflict|insurgent|battle|military|europe_security|border_incident|drone_activity|missile_activity|military_deployment|mobilization|nato_activity|russian_activity|ground_activity)/i.test(rawSignals);
-        const warText = /(armed conflict|war zone|military operation|military strike|airstrike|shelling|drone strike|missile strike|rocket attack|troops|invasion|frontline|combat|battlefield)/i.test(text);
+        const text = `${event?.title || ""} ${event?.description || ""}`.toLowerCase();
+        const warCategory = /(conflict|war|armed[_ -]?conflict|insurgent|battle|military|europe[_ -]?security|border[_ -]?incident|drone[_ -]?activity|missile[_ -]?activity|military[_ -]?deployment|mobilization|nato[_ -]?activity|russian[_ -]?activity|ground[_ -]?activity|hostilities|offensive|occupation|ceasefire|air[_ -]?strike)/i.test(rawSignals);
+        const warText = /(armed conflict|war zone|military operation|military strike|airstrike|air strike|shelling|drone strike|missile strike|rocket attack|troops|invasion|frontline|combat|battlefield|hostilities|offensive|occupation|ceasefire|fighting|fighters|air raid|ground offensive|missile launch)/i.test(text);
         return warCategory || warText ? "war" : "news";
     }
 
@@ -1005,6 +1005,12 @@
         map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: false }), "top-left");
         map.addControl(new window.maplibregl.FullscreenControl(), "top-left");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
+        // Keep direct wheel zoom and touch gestures available. MapLibre's
+        // cooperative gesture mode is intentionally not enabled: users must
+        // never need Ctrl/Cmd to zoom the intelligence map.
+        map.scrollZoom.enable();
+        map.dragPan.enable();
+        map.touchZoomRotate.enable();
         map.on("move", syncEventHitOverlay);
         map.on("zoom", syncEventHitOverlay);
         map.on("rotate", syncEventHitOverlay);
