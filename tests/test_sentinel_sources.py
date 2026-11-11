@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from email.message import Message
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError
@@ -160,7 +161,9 @@ def test_fetch_uses_conditional_headers_and_retries_rate_limits() -> None:
     def opener(request: Any, timeout: int) -> Response:
         calls.append(dict(request.header_items()))
         if len(calls) == 1:
-            raise HTTPError(request.full_url, 429, "rate limited", {"Retry-After": "0"}, None)
+            headers = Message()
+            headers["Retry-After"] = "0"
+            raise HTTPError(request.full_url, 429, "rate limited", headers, None)
         return RetryResponse(b"<rss/>", {"ETag": "next"})
 
     document, state = fetch_document(

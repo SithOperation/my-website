@@ -192,6 +192,12 @@ def valid_coordinates(latitude: object, longitude: object) -> bool:
     return -90 <= lat <= 90 and -180 <= lon <= 180 and not (lat == 0 and lon == 0)
 
 
+def _coordinate_pair(latitude: object, longitude: object) -> tuple[float, float] | None:
+    if not valid_coordinates(latitude, longitude):
+        return None
+    return float(str(latitude)), float(str(longitude))
+
+
 def classify_countries(text: str) -> list[str]:
     """Classify country mentions for feed filtering without creating coordinates."""
 
@@ -307,6 +313,7 @@ def _make_item(
     countries = classify_countries(f"{title} {summary}")
     categories = classify_categories(f"{title} {summary}", source.categories)
     identity = f"{source.id}|{url}|{title.casefold()}"
+    coordinates = _coordinate_pair(latitude, longitude)
     return {
         "id": hashlib.sha256(identity.encode("utf-8")).hexdigest()[:24],
         "title": title,
@@ -320,9 +327,9 @@ def _make_item(
         "collected_at": collected_at,
         "countries": countries,
         "categories": categories,
-        "latitude": float(latitude) if valid_coordinates(latitude, longitude) else None,
-        "longitude": float(longitude) if valid_coordinates(latitude, longitude) else None,
-        "geolocation_confidence": "source_supplied" if valid_coordinates(latitude, longitude) else None,
+        "latitude": coordinates[0] if coordinates else None,
+        "longitude": coordinates[1] if coordinates else None,
+        "geolocation_confidence": "source_supplied" if coordinates else None,
         "claim_status": "published_source_report",
         "feed_eligible": True,
     }
