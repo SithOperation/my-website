@@ -16,6 +16,8 @@ assert.ok(mapScript.includes('projection: { type: "mercator" }'), "Sentinel must
 assert.ok(!mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must not force the 3D globe projection");
 assert.ok(mapScript.includes("cluster: true"), "Primary events should cluster at global zoom");
 assert.ok(mapScript.includes('id: "event-clusters"'), "Primary event clusters must have a dedicated layer");
+assert.ok(mapScript.includes('id: "event-hit"'), "Individual events must have a dedicated touch hit layer");
+assert.ok(mapScript.includes('map.on("click", "event-hit"'), "Individual event hit targets must open event details");
 assert.ok(mapScript.includes("getClusterExpansionZoom"), "Primary event clusters must expand on click");
 assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-report cluster labels must not exist");
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");

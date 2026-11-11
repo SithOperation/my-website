@@ -548,6 +548,21 @@
             }
         });
 
+        // Keep the visual signal compact, but give mouse and touch users a
+        // dependable target. This layer is intentionally transparent and sits
+        // above the rendered event layers; it does not change event geometry.
+        map.addLayer({
+            id: "event-hit",
+            type: "circle",
+            source: "sentinel-events",
+            filter: ["!", ["has", "point_count"]],
+            paint: {
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 12, 8, 16],
+                "circle-color": "rgba(0,0,0,0)",
+                "circle-opacity": 0
+            }
+        });
+
         const selectRenderedEvent = event => {
             const feature = event.features?.[0];
             if (!feature) return;
@@ -555,7 +570,7 @@
             const nearbyFeatures = map.queryRenderedFeatures([
                 [point.x - 7, point.y - 7],
                 [point.x + 7, point.y + 7]
-            ], { layers: ["events", "event-glyphs", "military-aircraft"] });
+            ], { layers: ["event-hit", "events", "event-glyphs", "military-aircraft"] });
             const events = Array.from(new Set(nearbyFeatures.map(item => String(item.properties.map_id))))
                 .map(id => eventIndex.get(id))
                 .filter(Boolean);
@@ -572,6 +587,7 @@
         map.on("click", "events", selectRenderedEvent);
         map.on("click", "event-glyphs", selectRenderedEvent);
         map.on("click", "military-aircraft", selectRenderedEvent);
+        map.on("click", "event-hit", selectRenderedEvent);
 
         map.on("click", "event-clusters", event => {
             const cluster = event.features?.[0];
@@ -589,7 +605,7 @@
             });
         });
 
-        ["event-clusters", "events", "event-glyphs", "military-aircraft"].forEach(layer => {
+        ["event-clusters", "event-hit", "events", "event-glyphs", "military-aircraft"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
@@ -1033,7 +1049,7 @@
     }
 
     function applyLayerVisibility() {
-        setLayersVisible(["event-glow", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
+        setLayersVisible(["event-glow", "event-hit", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
         setLayersVisible(["earthquakes"], element("layer-earthquakes").checked);
         setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
         setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
@@ -1210,7 +1226,7 @@
                 );
                 const visibleIds = new Set();
                 let clusteredVisible = 0;
-                map.queryRenderedFeatures({ layers: ["event-clusters", "events", "event-glyphs", "military-aircraft"] })
+                map.queryRenderedFeatures({ layers: ["event-clusters", "event-hit", "events", "event-glyphs", "military-aircraft"] })
                     .forEach(feature => {
                         const count = Number(feature.properties?.point_count);
                         if (Number.isFinite(count) && count > 0) clusteredVisible += count;
