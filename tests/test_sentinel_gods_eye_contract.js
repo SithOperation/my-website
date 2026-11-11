@@ -23,6 +23,8 @@ assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and ci
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
 assert.ok(page.includes('value="168">Last 7 days') && page.includes("All available records"), "Time filters must expose supported historical views");
 assert.ok(page.includes('id="mobile-detail-toggle"'), "Mobile event details must have a drawer toggle");
+assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");
+assert.ok(!page.includes('class="metric-strip"') && !page.includes('class="ops-footer"'), "The public map must not render dashboard panels or a permanent footer");
 assert.ok(!page.toLowerCase().includes("tap a pinpoint or cluster"), "Instructions must describe individual markers");
 assert.ok(mapScript.includes("weatherColorExpression"), "Weather polygons must be styled by severity");
 assert.ok(mapScript.includes("isExpiredWeatherEvent"), "Expired weather alerts must be removed client-side");
@@ -37,10 +39,10 @@ assert.match(mapScript, /id: "events",\s*type: "circle"[\s\S]*?"circle-color": t
 assert.ok(mapScript.includes('id: "event-glyphs"'), "Threat dots must retain category glyph overlays");
 assert.ok(page.includes('&#128293;') && page.includes('&#9992;') && page.includes('&#9875;'), "Legend emoji and symbols must use encoding-safe numeric entities");
 assert.ok(!page.includes("ðŸ") && !page.includes("âŒ"), "Legend must not contain mojibake glyphs");
-assert.ok(mapStyles.includes("@media (min-width: 1181px)"), "Desktop Sentinel must have a dedicated viewport layout");
-assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100vw"), "Desktop Sentinel must fill the browser viewport");
-assert.match(mapStyles, /grid-template-columns:\s*clamp\(230px, 14vw, 290px\)\s*minmax\(0, 1fr\)\s*clamp\(250px, 16vw, 320px\)/, "Desktop workspace must prioritize the center map");
-assert.ok(mapStyles.includes("overflow: hidden") && mapStyles.includes("overflow-y: auto"), "Desktop page must lock outer scrolling while panels scroll internally");
+assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100%"), "Sentinel must fill the browser viewport");
+assert.ok(mapStyles.includes(".ops-shell.sentinel-app") && mapStyles.includes(".map-frame"), "Sentinel must use the full-screen map shell");
+assert.ok(mapStyles.includes("env(safe-area-inset-top)") && mapStyles.includes("env(safe-area-inset-bottom)"), "Map overlays must respect display safe areas");
+assert.ok(mapStyles.includes("overflow: hidden") && mapStyles.includes("overflow: auto"), "Full-screen map must prevent page overflow while drawers remain scrollable");
 assert.ok(mapScript.includes("new ResizeObserver(resizeMap)"), "MapLibre must resize when its grid area changes");
 
 console.log("Sentinel Gods Eye contract tests passed");

@@ -36,6 +36,8 @@ async function main() {
                     return rect ? {
                         x: rect.x,
                         y: rect.y,
+                        left: rect.left,
+                        top: rect.top,
                         width: rect.width,
                         height: rect.height,
                         right: rect.right,
@@ -61,12 +63,10 @@ async function main() {
                     };
                 };
                 const shell = box(".ops-shell");
-                const controls = box(".control-panel");
                 const mapStage = box(".map-stage");
                 const mapFrame = box(".map-frame");
                 const map = box("#sentinel-map");
                 const canvas = box(".maplibregl-canvas");
-                const intelligence = box(".event-panel");
                 return {
                     viewport: { width: innerWidth, height: innerHeight },
                     document: {
@@ -75,7 +75,6 @@ async function main() {
                     },
                     bodyOverflow: getComputedStyle(document.body).overflow,
                     shell,
-                    controls,
                     mapStage,
                     mapFrame,
                     map,
@@ -85,7 +84,6 @@ async function main() {
                         map: styles("#sentinel-map"),
                         canvas: styles(".maplibregl-canvas")
                     },
-                    intelligence
                 };
             });
 
@@ -97,11 +95,9 @@ async function main() {
             }
             for (const [name, box] of Object.entries({
                 shell: result.shell,
-                controls: result.controls,
                 mapStage: result.mapStage,
                 mapFrame: result.mapFrame,
-                map: result.map,
-                intelligence: result.intelligence
+                map: result.map
             })) {
                 assert.ok(box, `${label}: ${name} is missing`);
                 assert.ok(box.width > 0 && box.height > 0, `${label}: ${name} has no rendered area`);
@@ -109,11 +105,10 @@ async function main() {
                 assert.ok(box.right <= viewport.width + 1, `${label}: ${name} exceeds viewport width`);
                 if (!viewport.mobile) assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height`);
             }
-            if (!viewport.mobile) {
-                assert.ok(result.controls.right <= result.mapStage.left, `${label}: controls overlap map`);
-                assert.ok(result.mapStage.right <= result.intelligence.left, `${label}: map overlaps intelligence`);
-                assert.ok(result.mapStage.width > result.controls.width * 3, `${label}: map is not dominant`);
-            }
+            assert.ok(Math.abs(result.mapFrame.x) <= 1, `${label}: map frame has a horizontal inset`);
+            assert.ok(Math.abs(result.mapFrame.y) <= 1, `${label}: map frame has a vertical inset`);
+            assert.ok(Math.abs(result.mapFrame.width - viewport.width) <= 1, `${label}: map frame does not fill viewport width`);
+            assert.ok(Math.abs(result.mapFrame.height - viewport.height) <= 1, `${label}: map frame does not fill viewport height`);
             const geometry = JSON.stringify({
                 viewport: result.viewport,
                 mapFrame: result.mapFrame,
