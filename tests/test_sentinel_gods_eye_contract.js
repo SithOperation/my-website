@@ -20,7 +20,7 @@ assert.ok(mapScript.includes("getClusterExpansionZoom"), "Primary event clusters
 assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-report cluster labels must not exist");
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");
 assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event symbols must not be hidden by collision placement");
-assert.ok(mapScript.includes('id: "sentinel-cities"'), "Sentinel must render the major-city light layer");
+assert.ok(mapScript.includes('map.addSource("sentinel-cities"'), "Sentinel must render the major-city light layer");
 assert.ok(mapScript.includes('"#37a7ff"') && mapScript.includes('"#ff294d"'), "City lights must switch from blue to red when events are nearby");
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
