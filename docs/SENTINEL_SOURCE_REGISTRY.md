@@ -14,6 +14,7 @@ publication. It is intentionally separate from the authoritative
 
 | Source | Coverage | Endpoint | Format | Access verified | Auth | Enabled | Notes |
 |---|---|---|---|---|---|---|---|
+| GDELT Project | Global | `https://api.gdeltproject.org/api/v2/doc/doc?query=world&mode=artlist&format=json&maxrecords=50` | JSON | Yes, HTTP 200 | None | Yes | Metadata index; original links only |
 | BBC News | Global, including priority-country mentions | `https://feeds.bbci.co.uk/news/world/rss.xml` | RSS | Yes, HTTP 200 | None | Yes | Headlines/summaries/links only |
 | Deutsche Welle | Global, Germany | `https://rss.dw.com/xml/rss-en-all` | RSS | Yes, HTTP 200 | None | Yes | Headlines/summaries/links only |
 | The Guardian | Global | `https://www.theguardian.com/world/rss` | RSS | Yes, HTTP 200 | None | Yes | Headlines/summaries/links only |

@@ -16,6 +16,24 @@
   ],
   "sources": [
     {
+      "id": "gdelt-global-news-json",
+      "publisher": "GDELT Project",
+      "country_or_region": "Global",
+      "official_website": "https://www.gdeltproject.org/",
+      "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc?query=world&mode=artlist&format=json&maxrecords=50",
+      "source_type": "json",
+      "categories": ["news", "international"],
+      "language": "en",
+      "polling_interval_minutes": 30,
+      "authentication": "none",
+      "usage_restrictions": "Use metadata and original links; do not republish article bodies. Respect provider limits.",
+      "reliability": "open news metadata index; source claims remain attributed",
+      "enabled": true,
+      "endpoint_verified_at": "2026-11-11T00:00:00Z",
+      "last_successful_fetch": null,
+      "last_error": null
+    },
+    {
       "id": "bbc-world-rss",
       "publisher": "BBC News",
       "country_or_region": "Global",

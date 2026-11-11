@@ -164,7 +164,10 @@ def parse_timestamp(value: object) -> str | None:
         try:
             parsed = parsedate_to_datetime(text)
         except (TypeError, ValueError, OverflowError):
-            return None
+            try:
+                parsed = datetime.strptime(text, "%Y%m%d%H%M%S").replace(tzinfo=UTC)
+            except ValueError:
+                return None
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         return None
     return parsed.astimezone(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
@@ -270,6 +273,8 @@ def _json_items(source: SourceSpec, body: bytes, collected_at: str) -> list[dict
         records = [record for record in document if isinstance(record, dict)]
     elif isinstance(document, dict) and isinstance(document.get("items"), list):
         records = [record for record in document["items"] if isinstance(record, dict)]
+    elif isinstance(document, dict) and isinstance(document.get("articles"), list):
+        records = [record for record in document["articles"] if isinstance(record, dict)]
     else:
         records = [document] if isinstance(document, dict) else []
 
@@ -291,7 +296,10 @@ def _json_items(source: SourceSpec, body: bytes, collected_at: str) -> list[dict
             title=title,
             summary=clean_text(properties.get("description") or properties.get("summary")),
             url=url if url.startswith("https://") else source.official_website,
-            published_at=parse_timestamp(properties.get("time") or properties.get("published") or properties.get("pubDate")),
+            published_at=parse_timestamp(
+                properties.get("time") or properties.get("published") or
+                properties.get("pubDate") or properties.get("seendate")
+            ),
             collected_at=collected_at,
             latitude=latitude if valid_coordinates(latitude, longitude) else None,
             longitude=longitude if valid_coordinates(latitude, longitude) else None,

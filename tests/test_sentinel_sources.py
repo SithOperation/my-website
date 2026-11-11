@@ -137,6 +137,20 @@ def test_geojson_parser_preserves_only_source_coordinates() -> None:
     assert items[1]["geolocation_confidence"] is None
 
 
+def test_gdelt_json_article_shape_is_supported() -> None:
+    body = json.dumps({
+        "articles": [{
+            "title": "Lithuania publishes a security update",
+            "url": "https://example.test/gdelt-story",
+            "seendate": "20261111120000",
+            "domain": "example.test",
+        }]
+    }).encode()
+    items = parse_document(source("json"), body, "2026-11-11T12:01:00Z")
+    assert items[0]["published_at"] == "2026-11-11T12:00:00Z"
+    assert items[0]["countries"] == ["Lithuania"]
+
+
 def test_timestamp_and_classifiers_are_conservative() -> None:
     assert parse_timestamp("Tue, 11 Nov 2026 12:00:00 GMT") == "2026-11-11T12:00:00Z"
     assert parse_timestamp("2026-11-11T12:00:00-05:00") == "2026-11-11T17:00:00Z"
