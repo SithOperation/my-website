@@ -327,6 +327,7 @@ def _make_item(
         "collected_at": collected_at,
         "countries": countries,
         "categories": categories,
+        "severity": "UNKNOWN",
         "latitude": coordinates[0] if coordinates else None,
         "longitude": coordinates[1] if coordinates else None,
         "geolocation_confidence": "source_supplied" if coordinates else None,

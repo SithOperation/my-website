@@ -48,6 +48,8 @@
     let environmentalCount = 0;
     let environmentalEvents = { earthquakes: [], volcanoes: [], weather: [] };
     let highlightedEventId = null;
+    let newsItems = [];
+    let newsHealth = { status: "unavailable", sources: [] };
 
     const element = id => document.getElementById(id);
     const setText = (id, value) => {
@@ -1104,6 +1106,93 @@
                 : "No signals match the active filters";
     }
 
+    function populateNewsFilter(id, values) {
+        const select = element(id);
+        if (!select) return;
+        const previous = select.value;
+        select.replaceChildren(new Option("All", "all"));
+        values.forEach(value => select.add(new Option(value, value)));
+        select.value = values.includes(previous) ? previous : "all";
+    }
+
+    function renderNewsDetail(item) {
+        const panel = element("event-detail");
+        if (!panel) return;
+        const heading = document.createElement("h3");
+        const summary = document.createElement("p");
+        const details = document.createElement("dl");
+        heading.textContent = item.title;
+        summary.textContent = item.summary || "No summary is available.";
+        appendDefinition(details, "Publisher", item.publisher);
+        appendDefinition(details, "Category", displayType(item.categories?.[0] || "news"));
+        appendDefinition(details, "Severity", item.severity || "UNKNOWN");
+        appendDefinition(details, "Published", formatDate(item.published_at));
+        appendDefinition(details, "Countries", item.countries?.join(", ") || "Not classified");
+        appendDefinition(details, "Claim status", displayType(item.claim_status || "published_source_report"));
+        const link = document.createElement("a");
+        link.href = item.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Open original report";
+        panel.replaceChildren(heading, summary, details, link);
+        panel.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
+        setText("event-drawer-title", "News report");
+        openEventDrawer();
+    }
+
+    function renderNewsFeed() {
+        const feed = element("news-feed");
+        if (!feed) return;
+        const country = element("news-filter-country")?.value || "all";
+        const category = element("news-filter-category")?.value || "all";
+        const severity = element("news-filter-severity")?.value || "all";
+        const filtered = newsItems.filter(item =>
+            (country === "all" || item.countries.includes(country)) &&
+            (category === "all" || item.categories.includes(category)) &&
+            (severity === "all" || (item.severity || "UNKNOWN") === severity)
+        );
+        feed.replaceChildren();
+        feed.hidden = false;
+        element("event-detail")?.setAttribute("hidden", "");
+        if (!newsItems.length) {
+            const empty = document.createElement("p");
+            empty.className = "news-feed-empty";
+            empty.textContent = newsHealth.status === "unavailable"
+                ? "News publication unavailable; map publication remains available."
+                : "No news records are currently published.";
+            feed.appendChild(empty);
+            return;
+        }
+        if (!filtered.length) {
+            const empty = document.createElement("p");
+            empty.className = "news-feed-empty";
+            empty.textContent = "No reports match the selected filters.";
+            feed.appendChild(empty);
+            return;
+        }
+        filtered.slice(0, 60).forEach(item => {
+            const button = document.createElement("button");
+            const title = document.createElement("strong");
+            const metadata = document.createElement("small");
+            button.type = "button";
+            title.textContent = item.title;
+            metadata.textContent = `${item.publisher} · ${formatDate(item.published_at)} · ${item.severity || "UNKNOWN"}`;
+            button.append(title, metadata);
+            button.addEventListener("click", () => renderNewsDetail(item));
+            feed.appendChild(button);
+        });
+    }
+
+    function applyNewsSnapshot(snapshot) {
+        newsItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
+        newsHealth = snapshot?.health || { status: "unavailable", sources: [] };
+        populateNewsFilter("news-filter-country", Array.from(new Set(newsItems.flatMap(item => item.countries))).sort());
+        populateNewsFilter("news-filter-category", Array.from(new Set(newsItems.flatMap(item => item.categories))).sort());
+        populateNewsFilter("news-filter-severity", Array.from(new Set(newsItems.map(item => item.severity || "UNKNOWN"))).sort());
+        renderNewsFeed();
+    }
+
     function appendDefinition(list, label, value, className = "") {
         const term = document.createElement("dt");
         const definition = document.createElement("dd");
@@ -1220,6 +1309,8 @@
         );
 
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
+        panel.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
         setText("event-drawer-title", "Selected event");
         openEventDrawer();
     }
@@ -1332,12 +1423,15 @@
         });
 
         panel.replaceChildren(heading, explanation, list);
+        panel.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
         setText("event-drawer-title", locationLabel);
         openEventDrawer();
     }
 
     function applySnapshot(snapshot) {
         allEvents = snapshot.events;
+        applyNewsSnapshot(snapshot);
         element("event-feed-count").textContent = snapshot.events.length.toLocaleString();
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
         element("sentinel-map").dataset.rejectedEvents = String(snapshot.invalidEventCount || 0);
@@ -1371,7 +1465,10 @@
         try {
             const snapshot = await client.load(options);
             if (!snapshot.unchanged || !allEvents.length) applySnapshot(snapshot);
-            else if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
+            else {
+                applyNewsSnapshot(snapshot);
+                if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
+            }
         }
         catch (error) {
             console.error("Sentinel publication failed", error);
@@ -1392,12 +1489,20 @@
             element("event-list-toggle")?.setAttribute("aria-expanded", String(open));
         };
         element("event-list-toggle")?.addEventListener("click", () => {
-            setEventDrawer(!element("event-panel")?.classList.contains("is-open"));
+            const open = !element("event-panel")?.classList.contains("is-open");
+            if (open) {
+                renderNewsFeed();
+                setText("event-drawer-title", "Latest news");
+            }
+            setEventDrawer(open);
         });
         element("event-panel-close")?.addEventListener("click", () => setEventDrawer(false));
         element("event-panel")?.addEventListener("click", event => {
             if (event.target === element("event-panel")) setEventDrawer(false);
         });
+        ["news-filter-country", "news-filter-category", "news-filter-severity"].forEach(id =>
+            element(id)?.addEventListener("change", renderNewsFeed)
+        );
     }
 
     function clearSourceHighlight(mapInstance = map, ready = mapReady) {

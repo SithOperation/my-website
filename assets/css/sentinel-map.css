@@ -1623,6 +1623,15 @@ body:has(.sentinel-app) {
 .event-drawer .cluster-list button { display: grid; gap: 4px; width: 100%; padding: 10px; border: 1px solid rgba(102, 164, 206, .22); border-radius: 8px; background: rgba(13, 28, 44, .8); color: #e6f5ff; text-align: left; cursor: pointer; }
 .event-drawer .cluster-list button:hover, .event-drawer .cluster-list button:focus-visible { border-color: #ff294d; background: rgba(73, 20, 35, .72); }
 .event-drawer .cluster-list small { color: #91abc0; }
+.news-filter-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 10px 16px; border-bottom: 1px solid rgba(102, 164, 206, .2); }
+.news-filter-bar label { display: grid; gap: 4px; color: #91abc0; font: 9px/1.1 ui-monospace, SFMono-Regular, Consolas, monospace; text-transform: uppercase; }
+.news-filter-bar select { min-width: 0; min-height: 30px; padding: 5px 6px; border: 1px solid rgba(102, 164, 206, .28); border-radius: 5px; background: #0d1c2c; color: #e6f5ff; font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; }
+.news-feed { min-height: 0; margin: 0; padding: 10px 16px 16px; overflow: auto; }
+.news-feed button { display: grid; gap: 5px; width: 100%; margin: 0 0 7px; padding: 10px; border: 1px solid rgba(102, 164, 206, .22); border-radius: 8px; background: rgba(13, 28, 44, .8); color: #e6f5ff; text-align: left; cursor: pointer; }
+.news-feed button:hover, .news-feed button:focus-visible { border-color: #37a7ff; background: rgba(20, 47, 72, .9); }
+.news-feed button strong { font-size: 12px; line-height: 1.35; }
+.news-feed button small, .news-feed-empty { color: #91abc0; font-size: 10px; line-height: 1.35; }
+.event-detail[hidden], .news-feed[hidden] { display: none; }
 .maplibregl-ctrl-top-right { top: 62px; right: max(12px, env(safe-area-inset-right)); }
 .maplibregl-ctrl button { min-width: 32px; min-height: 32px; }
 
@@ -1636,6 +1645,8 @@ body:has(.sentinel-app) {
     .sentinel-legend { display: none; }
     .event-drawer { top: auto; right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); left: max(8px, env(safe-area-inset-left)); width: auto; max-height: min(65dvh, 520px); }
     .maplibregl-ctrl-top-right { top: 112px; right: max(8px, env(safe-area-inset-right)); }
+    .news-filter-bar { padding-inline: 12px; }
+    .event-drawer .event-detail { padding-inline: 12px; }
 }
 
 @media (orientation: landscape) and (max-width: 900px) {
