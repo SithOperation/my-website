@@ -14,7 +14,7 @@ import unicodedata
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Iterable, Mapping, Sequence, cast
 
 SCHEMA_VERSION = "1.0"
 VERIFICATION_STATUSES = frozenset({
@@ -232,7 +232,8 @@ def verify_items(items: Iterable[Mapping[str, Any]], *, checked_at: str) -> list
     for group in groups:
         verification = _status_for_group(group, checked_at)
         for item in group:
-            classification: Mapping[str, Any] = item.get("classification") if isinstance(item.get("classification"), Mapping) else {}
+            classification_value = item.get("classification")
+            classification = cast(Mapping[str, Any], classification_value) if isinstance(classification_value, Mapping) else {}
             item["verification"] = {**verification, **{key: classification[key] for key in ("detected_keywords", "classification_explanation") if key in classification}}
             item["claim_status"] = item["verification"]["status"]
             result.append(item)
