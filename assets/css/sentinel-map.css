@@ -1443,6 +1443,7 @@ body::before { display: none; }
     .event-panel { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); left: max(8px, env(safe-area-inset-left)); width: auto; max-height: min(55dvh, 440px); }
     .event-panel > .event-detail { max-height: calc(min(55dvh, 440px) - 66px); }
     .source-viewer { top: 0; right: 0; bottom: 0; left: 0; width: 100%; border: 0; border-top: 3px solid var(--cyan); }
+}
 
 /* Sentinel map-only interaction layer. Legacy dashboard rules remain available
    to other pages, but this page exposes one coherent map and event drawer. */
@@ -1604,7 +1605,6 @@ body:has(.sentinel-app) {
     .sentinel-legend { display: none; }
     .event-drawer { top: auto; right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); left: max(8px, env(safe-area-inset-left)); width: auto; max-height: min(65dvh, 520px); }
     .maplibregl-ctrl-top-right { top: 112px; right: max(8px, env(safe-area-inset-right)); }
-}
 }
 
 @media (orientation: landscape) and (max-width: 900px) {
