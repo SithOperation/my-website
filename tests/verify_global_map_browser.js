@@ -49,9 +49,8 @@ async function main() {
         if (await page.locator("#sentinel-map").getAttribute("data-feed-state") !== "available") {
             throw new Error("Loaded Sentinel publication did not report an available feed state");
         }
-        await page.locator("#filter-time").selectOption("all");
         await page.waitForFunction(
-            () => Number(document.querySelector("#ops-mapped")?.textContent?.replaceAll(",", "")) > 0,
+            () => Number(document.querySelector("#sentinel-map")?.dataset.filteredEvents) > 0,
             { timeout: 30000 }
         );
         await page.waitForFunction(
@@ -68,6 +67,10 @@ async function main() {
             () => Number(window.SentinelMapBridge?.diagnostics()?.zoom) > 2,
             { timeout: 5000 }
         );
+        await page.locator("#event-panel.is-open").waitFor({ state: "visible", timeout: 5000 });
+        if (await page.locator("#event-detail .cluster-list button").count() < 1) {
+            throw new Error("Cluster click did not open the scrollable event list");
+        }
 
         const plottedFeedCheck = await page.evaluate(async () => {
             const response = await fetch("data/map_events.json", { cache: "no-store" });
@@ -113,65 +116,19 @@ async function main() {
         if (await popupLink.count() !== 1 || !(await popupLink.getAttribute("href"))?.startsWith("https://")) {
             throw new Error("Event popup did not include a safe original-report link");
         }
-        const filteredBeforeLayerToggle = await page.locator("#sentinel-map").getAttribute("data-filtered-events");
-        await page.locator("#mobile-panel-toggle").click();
-        await page.locator(".control-panel.is-open").waitFor({ state: "visible" });
-        await page.locator("#layer-earthquakes").uncheck();
-        await page.waitForFunction(
-            before => Number(document.querySelector("#sentinel-map")?.dataset.filteredEvents) < Number(before),
-            filteredBeforeLayerToggle,
-            { timeout: 5000 }
-        );
-        await page.locator("#layer-earthquakes").check();
-        await page.locator("#mobile-panel-close").click();
-
-        await page.waitForFunction(
-            () => ["available", "partial", "stale"].includes(
-                document.querySelector("#source-viewer")?.dataset.feedState
-            ) && Number(document.querySelector("#source-feed-count")?.textContent) > 0,
-            { timeout: 30000 }
-        );
-        await page.locator("#source-viewer-open").click();
-        await page.locator("#source-viewer:not([hidden])").waitFor();
-        if (await page.locator("#source-viewer").getAttribute("aria-modal") !== null) {
-            throw new Error("Desktop source viewer must be a non-modal dock");
-        }
-        if (await page.locator(".source-card").count() !== 1) {
-            throw new Error("Populated source feed did not render a source card");
-        }
-        await page.keyboard.press("Escape");
-        await page.locator("#source-viewer").waitFor({ state: "hidden" });
-        if (await page.evaluate(() => document.activeElement?.id) !== "source-viewer-open") {
-            throw new Error("Source viewer did not restore trigger focus");
-        }
-
         await page.setViewportSize({ width: 390, height: 844 });
-        await page.locator("#source-viewer-open").click();
-        if (await page.locator("#source-viewer").getAttribute("aria-modal") !== "true") {
-            throw new Error("Mobile source viewer must be modal");
-        }
-        const mobileBox = await page.locator("#source-viewer").boundingBox();
-        if (!mobileBox || mobileBox.x > 1 || mobileBox.width < 389) {
-            throw new Error("Mobile source viewer did not fill the viewport");
-        }
-        await page.keyboard.press("Escape");
-
-        await page.locator("#mobile-panel-toggle").click();
-        await page.locator(".control-panel.is-open").waitFor({ state: "visible" });
-        await page.locator("#mobile-panel-close").click();
-        await page.locator(".control-panel.is-open").waitFor({ state: "hidden" });
+        await page.locator("#event-list-toggle").click();
+        await page.locator("#event-panel.is-open").waitFor({ state: "visible" });
+        await page.locator("#event-panel-close").click();
+        await page.locator("#event-panel.is-open").waitFor({ state: "hidden" });
 
         const result = await page.evaluate(() => ({
-            mapped: document.querySelector("#ops-mapped")?.textContent?.trim(),
-            generated: document.querySelector("#ops-generated")?.textContent?.trim(),
+            mapped: document.querySelector("#sentinel-map")?.dataset.filteredEvents,
             status: document.querySelector("#ops-status-text")?.textContent?.trim(),
             renderedFeatures: document.querySelector("#sentinel-map")?.dataset.renderedFeatures,
-            sourceFeedState: document.querySelector("#source-viewer")?.dataset.feedState,
-            sourceFeedCount: document.querySelector("#source-feed-count")?.textContent?.trim()
+            eventCount: document.querySelector("#event-feed-count")?.textContent?.trim()
         }));
-        if (!result.generated || result.generated === "Unknown") {
-            throw new Error("Global map did not display a publication timestamp");
-        }
+        if (!Number(result.mapped) || !Number(result.eventCount)) throw new Error("Event drawer did not expose the published event count");
         if (pageErrors.length) {
             throw new Error(`Global map emitted browser errors: ${pageErrors.join("; ")}`);
         }

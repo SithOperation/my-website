@@ -12,21 +12,21 @@ const adapterScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-
 const page = fs.readFileSync(path.join(root, "sentinel.html"), "utf8");
 const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map.css"), "utf8");
 
-assert.ok(mapScript.includes('projection: { type: "globe" }'), "Sentinel must request globe projection");
-assert.ok(mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must enforce globe projection after load");
+assert.ok(mapScript.includes('projection: { type: "mercator" }'), "Sentinel must request fullscreen mercator projection");
+assert.ok(!mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must not force the 3D globe projection");
 assert.ok(mapScript.includes("cluster: true"), "Primary events should cluster at global zoom");
 assert.ok(mapScript.includes('id: "event-clusters"'), "Primary event clusters must have a dedicated layer");
 assert.ok(mapScript.includes("getClusterExpansionZoom"), "Primary event clusters must expand on click");
 assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-report cluster labels must not exist");
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");
 assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event symbols must not be hidden by collision placement");
-assert.ok(mapScript.includes("if (!visibleCategories.has(category)) return false;"), "Clearing all category toggles must show no events");
+assert.ok(mapScript.includes('id: "sentinel-cities"'), "Sentinel must render the major-city light layer");
+assert.ok(mapScript.includes('"#37a7ff"') && mapScript.includes('"#ff294d"'), "City lights must switch from blue to red when events are nearby");
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
-assert.ok(page.includes('value="168">Last 7 days') && page.includes("All available records"), "Time filters must expose supported historical views");
-assert.ok(page.includes('value="all" selected>All available records'), "Sentinel must show the complete published record set by default");
-assert.ok(page.includes('id="mobile-detail-toggle"'), "Mobile event details must have a drawer toggle");
-assert.ok(page.includes('class="map-dock"') && page.includes('id="layers-toggle"') && page.includes('id="event-dock-toggle"'), "Minimal map controls must use the overlay dock");
+assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
+assert.ok(!page.includes('id="mobile-panel-toggle"') && !page.includes('id="layers-toggle"') && !page.includes('id="source-viewer"'), "Legacy filter, layer, and source tabs must be removed from the public map");
+assert.ok(page.includes('class="sentinel-back"'), "The return link must be positioned within the map overlay");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");
 assert.ok(!page.includes('class="metric-strip"') && !page.includes('class="ops-footer"'), "The public map must not render dashboard panels or a permanent footer");
 assert.ok(!page.toLowerCase().includes("tap a pinpoint or cluster"), "Instructions must describe individual markers");
