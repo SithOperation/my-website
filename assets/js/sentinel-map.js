@@ -132,6 +132,10 @@
         loading.classList.toggle("is-hidden", !visible);
     }
 
+    function eventCoordinateKey(event) {
+        return `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
+    }
+
     function featureCollection(events) {
         eventIndex.clear();
         return {
@@ -580,15 +584,18 @@
         const selectRenderedEvent = event => {
             const feature = event.features?.[0];
             if (!feature) return;
-            const point = event.point;
-            const nearbyFeatures = map.queryRenderedFeatures([
-                [point.x - 7, point.y - 7],
-                [point.x + 7, point.y + 7]
-            ], { layers: ["event-hit", "events", "event-glyphs", "military-aircraft"] });
-            const eventIds = Array.from(new Set(nearbyFeatures.map(item => String(item.properties.map_id))));
-            const events = eventIds
-                .map(id => eventIndex.get(id))
-                .filter(Boolean);
+            const selectedId = String(feature.properties?.map_id || "");
+            const selectedEvent = eventIndex.get(selectedId);
+            if (!selectedEvent) return;
+
+            // Use the stable source ID and published coordinates instead of a
+            // small screen-space query. Screen queries can omit overlapping
+            // features when several records share one plotted location.
+            const selectedCoordinate = eventCoordinateKey(selectedEvent);
+            const events = Array.from(eventIndex.entries())
+                .filter(([, item]) => eventCoordinateKey(item) === selectedCoordinate)
+                .map(([, item]) => item);
+            const eventIds = events.map(item => String(item.event_id || selectedId));
 
             if (events.length > 1) {
                 renderEventGroup(events, events.length);
@@ -1234,7 +1241,7 @@
         eventIndex = new Map();
         coordinateCounts = new Map();
         filteredEvents.forEach(event => {
-            const key = `${event.latitude.toFixed(4)},${event.longitude.toFixed(4)}`;
+            const key = eventCoordinateKey(event);
             coordinateCounts.set(key, (coordinateCounts.get(key) || 0) + 1);
         });
         element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);

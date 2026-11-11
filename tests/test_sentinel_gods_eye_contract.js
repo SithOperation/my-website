@@ -64,6 +64,7 @@ assert.ok(mapScript.includes("firstClusterPoint"), "Browser regression checks mu
 assert.ok(mapScript.includes("firstCityPoint"), "Browser regression checks must be able to exercise city-light clicks");
 assert.ok(mapScript.includes("if (events.length > 1)"), "Coincident markers must open a grouped event detail instead of moving coordinates");
 assert.ok(mapScript.includes("locateSourceEvent(eventIds[0])"), "Individual marker selection must focus the map on the selected event");
+assert.ok(mapScript.includes("eventCoordinateKey(selectedEvent)"), "Coincident marker selection must use published coordinates");
 assert.ok(Array.isArray(publishedMapEvents) && publishedMapEvents.length > 0, "Published map data must contain events");
 const publishedIds = new Set();
 publishedMapEvents.forEach((event, index) => {
