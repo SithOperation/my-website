@@ -4,6 +4,13 @@
     const DATA_REFRESH_MS = 5 * 60 * 1000;
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
+    // Keep publication classifications available to diagnostics and future
+    // non-dashboard consumers without bringing legacy filter controls back.
+    const EUROPE_SECURITY_LAYERS = Object.freeze([
+        "nato_activity", "russian_activity", "eastern_flank", "ukraine_war",
+        "air_activity", "naval_activity", "missile_drone", "military_exercise",
+        "security_warning", "reddit_osint"
+    ]);
     const MAJOR_CITIES = [
         ["New York", -74.006, 40.7128], ["Los Angeles", -118.2437, 34.0522], ["Mexico City", -99.1332, 19.4326],
         ["São Paulo", -46.6333, -23.5505], ["Buenos Aires", -58.3816, -34.6037], ["London", -0.1276, 51.5072],
@@ -130,6 +137,13 @@
         return Boolean(event?.timestamp) && !window.SentinelData.isWithinRetentionWindow(event.timestamp);
     }
 
+    function europeSecurityLayers(event) {
+        const raw = adapter?.normalizeEvent(event)?.metadata?.raw || event || {};
+        return Array.isArray(raw.europe_layers)
+            ? raw.europe_layers.filter(layer => EUROPE_SECURITY_LAYERS.includes(String(layer)))
+            : [];
+    }
+
     function setStatus(message, state) {
         const status = element("ops-status");
         element("ops-status-text").textContent = message;
@@ -171,7 +185,8 @@
                         timestamp: event.timestamp || "",
                         historical: isHistoricalEvent(event),
                         heading: Number(aircraftValue(event, "heading", "track")) || 0,
-                        source_reported: isSourceReportedEvent(event)
+                        source_reported: isSourceReportedEvent(event),
+                        europe_layers: europeSecurityLayers(event)
                     }
                 };
             })
