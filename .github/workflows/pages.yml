@@ -2,7 +2,7 @@ name: Deploy Website
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'feature/**']
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -115,7 +115,9 @@ jobs:
           path: _site
 
   deploy:
-    if: github.event_name != 'pull_request'
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
     needs: validate
     permissions:
       pages: write
