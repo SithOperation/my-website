@@ -1582,6 +1582,12 @@
                 }))
             };
         }
+        projectEvent(eventId) {
+            const event = eventIndex.get(String(eventId || ""));
+            if (!map || !event) return null;
+            const point = map.project([event.longitude, event.latitude]);
+            return { x: point.x, y: point.y };
+        }
     });
     window.SentinelMapAssociation = Object.freeze({
         locateSourceEvent,

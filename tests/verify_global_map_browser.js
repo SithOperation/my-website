@@ -71,7 +71,7 @@ async function main() {
             return {
                 target,
                 plotted,
-                located: target ? window.SentinelMapBridge?.locateEvent(target.event_id) : false
+                located: target ? window.SentinelMapBridge?.locateEvent(target.event_id, false) : false
             };
         });
         if (!plottedFeedCheck.target || !plottedFeedCheck.plotted) {
@@ -82,6 +82,12 @@ async function main() {
             throw new Error("Map event coordinates differ from the published feed");
         }
         if (!plottedFeedCheck.located) throw new Error("Published map event could not be located");
+        await page.waitForTimeout(700);
+        const point = await page.evaluate(eventId => window.SentinelMapBridge?.projectEvent(eventId), plottedFeedCheck.target.event_id);
+        if (!point || point.x < 0 || point.y < 0 || point.x > 1440 || point.y > 1000) {
+            throw new Error("Published map event did not project inside the map viewport");
+        }
+        await page.mouse.click(point.x, point.y);
         await page.locator(".maplibregl-popup").waitFor({ state: "visible", timeout: 5000 });
         if (await page.locator(".sentinel-popup").count() !== 1) {
             throw new Error("Located map event did not render an event popup");
