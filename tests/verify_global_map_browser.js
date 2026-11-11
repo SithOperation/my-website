@@ -46,6 +46,9 @@ async function main() {
             () => Number(document.querySelector("#sentinel-map")?.dataset.loadedEvents) > 0,
             { timeout: 30000 }
         );
+        if (await page.locator("#sentinel-map").getAttribute("data-feed-state") !== "available") {
+            throw new Error("Loaded Sentinel publication did not report an available feed state");
+        }
         await page.locator("#filter-time").selectOption("all");
         await page.waitForFunction(
             () => Number(document.querySelector("#ops-mapped")?.textContent?.replaceAll(",", "")) > 0,

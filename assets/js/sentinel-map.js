@@ -1377,6 +1377,9 @@
         allEvents = snapshot.events;
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
         element("sentinel-map").dataset.rejectedEvents = String(snapshot.invalidEventCount || 0);
+        element("sentinel-map").dataset.feedState = snapshot.invalidEventCount
+            ? "degraded"
+            : snapshot.events.length ? "available" : "empty";
         element("sentinel-map").dataset.visibleEvents = "0";
         populateFilters();
         renderHealth(snapshot);
@@ -1433,6 +1436,7 @@
         catch (error) {
             console.error("Sentinel publication failed", error);
             setStatus(error.message || "Sentinel publication unavailable", "error");
+            element("sentinel-map").dataset.feedState = "error";
             if (!allEvents.length) {
                 setLoading(false);
                 element("map-count").textContent = "Intelligence data unavailable";
