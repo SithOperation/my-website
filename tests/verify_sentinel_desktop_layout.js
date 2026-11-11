@@ -56,6 +56,7 @@ async function main() {
                         height: style.height,
                         minWidth: style.minWidth,
                         minHeight: style.minHeight,
+                        margin: style.margin,
                         padding: style.padding,
                         border: style.border,
                         outline: style.outline,
@@ -63,17 +64,31 @@ async function main() {
                     };
                 };
                 const shell = box(".ops-shell");
+                const html = box("html");
+                const body = box("body");
                 const mapStage = box(".map-stage");
                 const mapFrame = box(".map-frame");
                 const map = box("#sentinel-map");
                 const canvas = box(".maplibregl-canvas");
                 return {
                     viewport: { width: innerWidth, height: innerHeight },
+                    visualViewport: window.visualViewport ? {
+                        width: visualViewport.width,
+                        height: visualViewport.height,
+                        offsetTop: visualViewport.offsetTop,
+                        offsetLeft: visualViewport.offsetLeft
+                    } : null,
+                    client: {
+                        width: document.documentElement.clientWidth,
+                        height: document.documentElement.clientHeight
+                    },
                     document: {
                         width: document.documentElement.scrollWidth,
                         height: document.documentElement.scrollHeight
                     },
                     bodyOverflow: getComputedStyle(document.body).overflow,
+                    html,
+                    body,
                     shell,
                     mapStage,
                     mapFrame,
@@ -82,16 +97,19 @@ async function main() {
                     styles: {
                         mapFrame: styles(".map-frame"),
                         map: styles("#sentinel-map"),
-                        canvas: styles(".maplibregl-canvas")
+                        canvas: styles(".maplibregl-canvas"),
+                        html: styles("html"),
+                        body: styles("body")
                     },
                 };
             });
 
             const label = `${viewport.width}x${viewport.height}`;
-            assert.ok(result.document.width <= viewport.width, `${label}: horizontal page scrollbar`);
+            const geometry = JSON.stringify(result);
+            assert.ok(result.document.width <= viewport.width, `${label}: horizontal page scrollbar ${geometry}`);
             if (!viewport.mobile) {
-                assert.equal(result.document.height, viewport.height, `${label}: vertical page scrollbar`);
-                assert.equal(result.bodyOverflow, "hidden", `${label}: desktop body must not scroll`);
+                assert.equal(result.document.height, viewport.height, `${label}: vertical page scrollbar ${geometry}`);
+                assert.equal(result.bodyOverflow, "hidden", `${label}: desktop body must not scroll ${geometry}`);
             }
             for (const [name, box] of Object.entries({
                 shell: result.shell,
@@ -99,23 +117,16 @@ async function main() {
                 mapFrame: result.mapFrame,
                 map: result.map
             })) {
-                assert.ok(box, `${label}: ${name} is missing`);
-                assert.ok(box.width > 0 && box.height > 0, `${label}: ${name} has no rendered area`);
-                assert.ok(box.left >= -1 && box.top >= -1, `${label}: ${name} starts outside viewport`);
-                assert.ok(box.right <= viewport.width + 1, `${label}: ${name} exceeds viewport width`);
-                if (!viewport.mobile) assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height`);
+                assert.ok(box, `${label}: ${name} is missing ${geometry}`);
+                assert.ok(box.width > 0 && box.height > 0, `${label}: ${name} has no rendered area ${geometry}`);
+                assert.ok(box.left >= -1 && box.top >= -1, `${label}: ${name} starts outside viewport ${geometry}`);
+                assert.ok(box.right <= viewport.width + 1, `${label}: ${name} exceeds viewport width ${geometry}`);
+                if (!viewport.mobile) assert.ok(box.bottom <= viewport.height + 1, `${label}: ${name} exceeds viewport height ${geometry}`);
             }
-            assert.ok(Math.abs(result.mapFrame.x) <= 1, `${label}: map frame has a horizontal inset`);
-            assert.ok(Math.abs(result.mapFrame.y) <= 1, `${label}: map frame has a vertical inset`);
-            assert.ok(Math.abs(result.mapFrame.width - viewport.width) <= 1, `${label}: map frame does not fill viewport width`);
-            assert.ok(Math.abs(result.mapFrame.height - viewport.height) <= 1, `${label}: map frame does not fill viewport height`);
-            const geometry = JSON.stringify({
-                viewport: result.viewport,
-                mapFrame: result.mapFrame,
-                map: result.map,
-                canvas: result.canvas,
-                styles: result.styles
-            });
+            assert.ok(Math.abs(result.mapFrame.x) <= 1, `${label}: map frame has a horizontal inset ${geometry}`);
+            assert.ok(Math.abs(result.mapFrame.y) <= 1, `${label}: map frame has a vertical inset ${geometry}`);
+            assert.ok(Math.abs(result.mapFrame.width - viewport.width) <= 1, `${label}: map frame does not fill viewport width ${geometry}`);
+            assert.ok(Math.abs(result.mapFrame.height - viewport.height) <= 1, `${label}: map frame does not fill viewport height ${geometry}`);
             assert.ok(Math.abs(result.map.width - result.mapFrame.width) <= 1, `${label}: map width gap ${geometry}`);
             assert.ok(Math.abs(result.map.height - result.mapFrame.height) <= 1, `${label}: map height gap ${geometry}`);
             if (result.canvas) {

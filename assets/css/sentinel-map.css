@@ -1312,10 +1312,14 @@ body::before { display: none; }
 .map-stage-heading p { margin: 0; color: var(--muted); font-size: 10px; white-space: nowrap; }
 
 .map-frame {
-    position: absolute;
+    /* Anchor the rendered map directly to the visual viewport. The map must
+       not inherit spacing from the shell, grid, or mobile safe-area padding. */
+    position: fixed;
     inset: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     min-width: 0;
     min-height: 0;
     border: 0;
