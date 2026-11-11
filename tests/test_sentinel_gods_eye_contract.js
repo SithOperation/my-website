@@ -23,7 +23,7 @@ assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event
 assert.ok(mapScript.includes('map.addSource("sentinel-cities"'), "Sentinel must render the major-city light layer");
 assert.ok(mapScript.includes('"#37a7ff"') && mapScript.includes('"#ff294d"'), "City lights must switch from blue to red when events are nearby");
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
-assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
+assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenControl'), "The map must use fullscreen controls instead of visual-mode tabs");
 assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
 assert.ok(!page.includes('id="mobile-panel-toggle"') && !page.includes('id="layers-toggle"') && !page.includes('id="source-viewer"'), "Legacy filter, layer, and source tabs must be removed from the public map");
 assert.ok(page.includes('class="sentinel-back"'), "The return link must be positioned within the map overlay");
@@ -36,12 +36,12 @@ assert.ok(mapScript.includes("isWeatherTestMessage"), "Administrative weather te
 assert.ok(mapScript.includes("dataset.loadedEvents") && mapScript.includes("dataset.visibleEvents"), "Map diagnostics must distinguish loaded and visible events");
 assert.ok(mapScript.includes("Historical publication record") && mapScript.includes("historical"), "Historical records must be visibly distinguished from recent signals");
 assert.ok(mapScript.includes("loadEnvironmentalLayers({ refreshOnly: true })"), "Weather data must be refetched during live refresh");
-assert.ok(page.includes('id="layer-europe-nato"') && page.includes('id="layer-europe-reddit"'), "European security map controls must be present");
+assert.ok(!page.includes('id="layer-europe-nato"') && !page.includes('id="layer-europe-reddit"'), "Legacy layer controls must not return to the public map");
 assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");
 assert.ok(adapterScript.includes('rawType || "").toLowerCase() === "europe_security"'), "Europe security classifications must survive adaptation");
-assert.match(mapScript, /id: "events",\s*type: "circle"[\s\S]*?"circle-color": threatColorExpression\(\)/, "The complete threat dot must use its threat-level color");
+assert.match(mapScript, /id: "events",\s*type: "circle"[\s\S]*?"circle-color": "#ff294d"/, "Published event dots must use one fixed red signal color");
 assert.ok(mapScript.includes('id: "event-glyphs"'), "Threat dots must retain category glyph overlays");
-assert.ok(page.includes('&#128293;') && page.includes('&#9992;') && page.includes('&#9875;'), "Legend emoji and symbols must use encoding-safe numeric entities");
+assert.ok(page.includes('class="city-light"') && page.includes('class="event-light"'), "The public legend must describe city and event lights");
 assert.ok(!page.includes("ðŸ") && !page.includes("âŒ"), "Legend must not contain mojibake glyphs");
 assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100%"), "Sentinel must fill the browser viewport");
 assert.ok(mapStyles.includes(".ops-shell.sentinel-app") && mapStyles.includes(".map-frame"), "Sentinel must use the full-screen map shell");
