@@ -105,6 +105,10 @@ async function main() {
         if (!(await page.locator(".sentinel-popup").textContent()).includes("Source:")) {
             throw new Error("Event popup did not include source attribution");
         }
+        const eventDetail = await page.locator("#event-detail").textContent();
+        if (!eventDetail.includes("Historical publication record") && !eventDetail.includes("Recent publication record")) {
+            throw new Error("Selected event did not expose its temporal status");
+        }
         const popupLink = page.locator(".sentinel-popup a");
         if (await popupLink.count() !== 1 || !(await popupLink.getAttribute("href"))?.startsWith("https://")) {
             throw new Error("Event popup did not include a safe original-report link");
