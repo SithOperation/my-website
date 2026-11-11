@@ -388,6 +388,16 @@
                 "circle-stroke-width": 1
             }
         });
+        map.addLayer({
+            id: "major-city-hit",
+            type: "circle",
+            source: "sentinel-cities",
+            paint: {
+                "circle-radius": 14,
+                "circle-color": "rgba(0,0,0,0)",
+                "circle-opacity": 0
+            }
+        });
         if (!map.hasImage("military-aircraft")) {
             map.addImage("military-aircraft", createAircraftIcon(), { pixelRatio: 2 });
         }
@@ -583,11 +593,11 @@
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
-        ["major-city-lights", "major-city-glow"].forEach(layer => {
+        ["major-city-hit", "major-city-lights", "major-city-glow"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
-        map.on("click", "major-city-lights", event => {
+        map.on("click", "major-city-hit", event => {
             const city = event.features?.[0];
             if (!city) return;
             const [longitude, latitude] = city.geometry.coordinates;
@@ -596,7 +606,7 @@
                 const lonDistance = (Number(item.longitude) - longitude) * Math.cos(latitude * Math.PI / 180);
                 return Math.hypot(latDistance, lonDistance) <= 3.2;
             });
-            renderEventGroup(events, events.length);
+            renderEventGroup(events, events.length, city.properties?.name || "Selected city");
         });
     }
 
@@ -1055,8 +1065,8 @@
             fadeDuration: 0
         });
 
-        map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: false }), "top-right");
-        map.addControl(new window.maplibregl.FullscreenControl(), "top-right");
+        map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: false }), "top-left");
+        map.addControl(new window.maplibregl.FullscreenControl(), "top-left");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
         map.on("move", updateCameraTelemetry);
         updateCameraTelemetry();
@@ -1376,6 +1386,7 @@
         );
 
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
+        setText("event-drawer-title", "Selected event");
         openEventDrawer();
         syncFullscreenDetail(panel);
     }
@@ -1392,14 +1403,15 @@
         fullscreenDetail.closest(".fullscreen-event-panel")?.classList.add("has-selection");
     }
 
-    function renderEventGroup(events, totalCount) {
+    function renderEventGroup(events, totalCount, locationLabel = "Events at this map point") {
         const panel = element("event-detail");
         const heading = document.createElement("h3");
         const explanation = document.createElement("p");
         const list = document.createElement("div");
 
         heading.textContent = `${totalCount} signals in this group`;
-        explanation.textContent = totalCount > events.length ?
+        explanation.textContent = !events.length ?
+            `${locationLabel} has no published event records in the current publication.` : totalCount > events.length ?
             `Showing the first ${events.length} signals. Select one to inspect it.` :
             "Select a signal to inspect its source record and location context.";
         list.className = "cluster-list";
@@ -1417,6 +1429,7 @@
         });
 
         panel.replaceChildren(heading, explanation, list);
+        setText("event-drawer-title", locationLabel);
         openEventDrawer();
         syncFullscreenDetail(panel);
         element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
@@ -1471,6 +1484,16 @@
             ? ` ${snapshot.invalidEventCount} records were rejected because they lacked valid map coordinates or IDs.`
             : "";
         const state = snapshot.legacy || snapshot.invalidEventCount ? "degraded" : snapshot.healthState.state;
+        const healthReasons = snapshot.healthState.failedSources
+            .slice(0, 4)
+            .map(source => `${source.name || source.source || "source"}: ${source.status || "limited"}`)
+            .join("; ");
+        const statusNode = element("ops-status");
+        if (statusNode) {
+            statusNode.title = healthReasons
+                ? `Coverage detail: ${healthReasons}`
+                : "Coverage detail unavailable.";
+        }
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
             `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
@@ -1615,6 +1638,15 @@
                 y: point.y,
                 count: Number(feature.properties?.point_count || 0)
             };
+        },
+        firstCityPoint() {
+            if (!map || !mapReady) return null;
+            const feature = map.queryRenderedFeatures({ layers: ["major-city-hit"] })
+                .find(item => Number(item.properties?.event_count || 0) === 0) ||
+                map.queryRenderedFeatures({ layers: ["major-city-hit"] })[0];
+            if (!feature?.geometry?.coordinates) return null;
+            const point = map.project(feature.geometry.coordinates);
+            return { x: point.x, y: point.y, name: feature.properties?.name || "City" };
         },
         projectEvent(eventId) {
             const event = eventIndex.get(String(eventId || ""));

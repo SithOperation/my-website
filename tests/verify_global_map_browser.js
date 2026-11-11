@@ -58,6 +58,15 @@ async function main() {
             { timeout: 30000 }
         );
 
+        const cityPoint = await page.evaluate(() => window.SentinelMapBridge?.firstCityPoint());
+        if (!cityPoint) throw new Error("Global map did not render a clickable major-city light");
+        await page.mouse.click(cityPoint.x, cityPoint.y);
+        await page.locator("#event-panel.is-open").waitFor({ state: "visible", timeout: 5000 });
+        if (!(await page.locator("#event-drawer-title").textContent()).includes(cityPoint.name)) {
+            throw new Error("Major-city light did not open the event drawer");
+        }
+        await page.locator("#event-panel-close").click();
+
         const clusterPoint = await page.evaluate(() => window.SentinelMapBridge?.firstClusterPoint());
         if (!clusterPoint || clusterPoint.count < 2) {
             throw new Error("Global map did not render an expandable event cluster");
