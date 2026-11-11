@@ -1371,15 +1371,19 @@
 
         allEvents = snapshot.events;
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
+        element("sentinel-map").dataset.rejectedEvents = String(snapshot.invalidEventCount || 0);
         element("sentinel-map").dataset.visibleEvents = "0";
         populateFilters();
         renderHealth(snapshot);
         updateMapData();
 
-        const state = snapshot.legacy ? "degraded" : snapshot.healthState.state;
+        const rejectedMessage = snapshot.invalidEventCount
+            ? ` ${snapshot.invalidEventCount} records were rejected because they lacked valid map coordinates or IDs.`
+            : "";
+        const state = snapshot.legacy || snapshot.invalidEventCount ? "degraded" : snapshot.healthState.state;
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
-            `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}`;
+            `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
         setStatus(message, state);
     }
 

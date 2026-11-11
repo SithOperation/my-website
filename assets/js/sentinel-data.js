@@ -187,7 +187,8 @@
             if (!dashboard || typeof dashboard !== "object") throw new Error("Invalid dashboard data.");
             if (!Array.isArray(mapEvents)) throw new Error("Invalid map event data.");
 
-            const events = mapEvents.map(normalizeEvent).filter(Boolean);
+            const normalizedEvents = mapEvents.map(normalizeEvent);
+            const events = normalizedEvents.filter(Boolean);
             const generated = manifest?.generated || dashboard.generated || null;
             const effectiveManifest = manifest || {
                 publication_id: `legacy-${generated || "current"}`,
@@ -201,6 +202,7 @@
                 manifest: effectiveManifest,
                 dashboard,
                 events,
+                invalidEventCount: normalizedEvents.length - events.length,
                 health,
                 healthState: healthState(health, generated),
                 legacy,
