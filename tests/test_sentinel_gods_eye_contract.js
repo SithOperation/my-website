@@ -24,6 +24,7 @@ assert.ok(mapScript.includes("if (!visibleCategories.has(category)) return false
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(page.includes('data-map-mode="nvg"') && page.includes('data-map-mode="flir"'), "Gods Eye-inspired visual modes must be present");
 assert.ok(page.includes('value="168">Last 7 days') && page.includes("All available records"), "Time filters must expose supported historical views");
+assert.ok(page.includes('value="all" selected>All available records'), "Sentinel must show the complete published record set by default");
 assert.ok(page.includes('id="mobile-detail-toggle"'), "Mobile event details must have a drawer toggle");
 assert.ok(page.includes('class="map-dock"') && page.includes('id="layers-toggle"') && page.includes('id="event-dock-toggle"'), "Minimal map controls must use the overlay dock");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");
