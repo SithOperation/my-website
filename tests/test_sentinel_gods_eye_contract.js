@@ -40,9 +40,10 @@ assert.ok(mapScript.includes("loadEnvironmentalLayers({ refreshOnly: true })"), 
 assert.ok(!page.includes('id="layer-europe-nato"') && !page.includes('id="layer-europe-reddit"'), "Legacy layer controls must not return to the public map");
 assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");
 assert.ok(adapterScript.includes('rawType || "").toLowerCase() === "europe_security"'), "Europe security classifications must survive adaptation");
-assert.match(mapScript, /id: "events",\s*type: "circle"[\s\S]*?"circle-color": "#ff294d"/, "Published event dots must use one fixed red signal color");
+assert.match(mapScript, /id: "events",\s*type: "circle"[\s\S]*?"circle-color": \["case", \["==", \["get", "type"\], "conflict"\], "#ff294d", "#31d48a"\]/, "Published event dots must use war-red and news-green colors");
+assert.ok(mapScript.includes('"circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1'), "Published event dots must be smaller at global zoom");
 assert.ok(mapScript.includes('id: "event-glyphs"'), "Threat dots must retain category glyph overlays");
-assert.ok(page.includes('class="city-light"') && page.includes('class="event-light"'), "The public legend must describe city and event lights");
+assert.ok(page.includes('class="city-light"') && page.includes('class="news-light"') && page.includes('class="war-light"'), "The public legend must describe city, news, and war lights");
 assert.ok(!page.includes("ðŸ") && !page.includes("âŒ"), "Legend must not contain mojibake glyphs");
 assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100%"), "Sentinel must fill the browser viewport");
 assert.ok(mapStyles.includes(".ops-shell.sentinel-app") && mapStyles.includes(".map-frame"), "Sentinel must use the full-screen map shell");

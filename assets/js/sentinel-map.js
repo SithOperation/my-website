@@ -423,9 +423,9 @@
             source: "sentinel-events",
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
-                "circle-radius": 10,
-                "circle-color": "#ff294d",
-                "circle-opacity": 0.2,
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 4, 8, 9],
+                "circle-color": ["case", ["==", ["get", "type"], "conflict"], "#ff294d", "#31d48a"],
+                "circle-opacity": 0.09,
                 "circle-blur": 0.7
             }
         });
@@ -467,11 +467,11 @@
             source: "sentinel-events",
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
-                "circle-radius": 5.5,
-                "circle-color": "#ff294d",
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1, 4, 3.1, 8, 5.5],
+                "circle-color": ["case", ["==", ["get", "type"], "conflict"], "#ff294d", "#31d48a"],
                 "circle-opacity": 0.96,
                 "circle-stroke-color": "#061012",
-                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 2, 1.25, 8, 2],
+                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 1.5, 0.75, 8, 2],
                 "circle-stroke-opacity": 0.95
             }
         });
@@ -497,9 +497,9 @@
             source: "sentinel-events",
             filter: ["all", ["!", ["has", "point_count"]], ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             paint: {
-                "circle-radius": 16,
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 5, 8, 10],
                 "circle-color": "#ff294d",
-                "circle-opacity": 0.2,
+                "circle-opacity": 0.1,
                 "circle-blur": 0.7
             }
         });
