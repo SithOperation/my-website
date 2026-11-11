@@ -118,6 +118,11 @@ async function main() {
         }
         await page.keyboard.press("Escape");
 
+        await page.locator("#mobile-panel-toggle").click();
+        await page.locator(".control-panel.is-open").waitFor({ state: "visible" });
+        await page.locator("#mobile-panel-close").click();
+        await page.locator(".control-panel.is-open").waitFor({ state: "hidden" });
+
         const result = await page.evaluate(() => ({
             mapped: document.querySelector("#ops-mapped")?.textContent?.trim(),
             generated: document.querySelector("#ops-generated")?.textContent?.trim(),

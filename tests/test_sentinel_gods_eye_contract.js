@@ -45,6 +45,7 @@ assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100
 assert.ok(mapStyles.includes(".ops-shell.sentinel-app") && mapStyles.includes(".map-frame"), "Sentinel must use the full-screen map shell");
 assert.ok(mapStyles.includes("env(safe-area-inset-top)") && mapStyles.includes("env(safe-area-inset-bottom)"), "Map overlays must respect display safe areas");
 assert.ok(mapStyles.includes("overflow: hidden") && mapStyles.includes("overflow: auto"), "Full-screen map must prevent page overflow while drawers remain scrollable");
+assert.ok(page.indexOf("editorial-system.css") < page.indexOf("sentinel-map.css"), "Sentinel layout CSS must load after shared editorial CSS");
 assert.ok(mapScript.includes("new ResizeObserver(resizeMap)"), "MapLibre must resize when its grid area changes");
 assert.ok(mapScript.includes("coordinates: [Number(event.longitude), Number(event.latitude)]"), "Primary event geometry must use the published coordinates");
 assert.ok(!mapScript.includes("spreadCoincidentPoints"), "Map layers must not fabricate display coordinates for coincident events");
