@@ -77,6 +77,49 @@
         };
     }
 
+    function normalizeNewsItem(item) {
+        if (!item || typeof item !== "object") return null;
+        const title = cleanText(item.title || "", 220);
+        const url = String(item.url || "").trim();
+        if (!title || !/^https:\/\//i.test(url)) return null;
+        const coordinates = validCoordinate(item.latitude, 90) && validCoordinate(item.longitude, 180) &&
+            !(Number(item.latitude) === 0 && Number(item.longitude) === 0)
+            ? { latitude: Number(item.latitude), longitude: Number(item.longitude) }
+            : { latitude: null, longitude: null };
+        return {
+            ...item,
+            id: String(item.id || `${item.source_id || "source"}-${url}`),
+            title,
+            summary: cleanText(item.summary || "No summary is available.", 500),
+            url,
+            publisher: cleanText(item.publisher || item.source_id || "Published source", 120),
+            source_id: String(item.source_id || "unknown"),
+            source_type: String(item.source_type || "unknown"),
+            published_at: item.published_at ? String(item.published_at) : null,
+            collected_at: item.collected_at ? String(item.collected_at) : null,
+            countries: Array.isArray(item.countries) ? item.countries.map(String) : [],
+            categories: Array.isArray(item.categories) ? item.categories.map(String) : [],
+            severity: String(item.severity || item.threat_level || "UNKNOWN").toUpperCase(),
+            latitude: coordinates.latitude,
+            longitude: coordinates.longitude,
+            geolocation_confidence: coordinates.latitude === null ? null : String(item.geolocation_confidence || "source_supplied"),
+            claim_status: String(item.claim_status || "published_source_report")
+        };
+    }
+
+    function normalizeNewsPublication(value) {
+        if (!value || typeof value !== "object" || value.schema_version !== "1.0" || !Array.isArray(value.items)) {
+            return { items: [], health: { status: "unavailable", sources: [] }, generated_at: null, error: true };
+        }
+        const normalized = value.items.map(normalizeNewsItem).filter(Boolean);
+        return {
+            items: normalized,
+            health: value.health && typeof value.health === "object" ? value.health : { status: "unavailable", sources: [] },
+            generated_at: value.generated_at || null,
+            error: false
+        };
+    }
+
     function sourceEntries(health) {
         if (!health || typeof health !== "object") return [];
         if (Array.isArray(health.sources)) return health.sources;
@@ -173,8 +216,12 @@
                 legacy = true;
             }
 
+            const newsResult = await this.fetchJSON("sentinel_news.json", null, true)
+                .then(normalizeNewsPublication)
+                .catch(() => normalizeNewsPublication(null));
+
             if (!legacy && !force && manifest.publication_id === this.activePublicationId && this.snapshot) {
-                return { ...this.snapshot, unchanged: true };
+                return { ...this.snapshot, ...newsResult, unchanged: true };
             }
 
             const publicationId = legacy ? null : manifest.publication_id;
@@ -205,6 +252,7 @@
                 invalidEventCount: normalizedEvents.length - events.length,
                 health,
                 healthState: healthState(health, generated),
+                ...newsResult,
                 legacy,
                 unchanged: false
             };
@@ -253,6 +301,8 @@
         Client,
         GenerationFeed,
         normalizeEvent,
+        normalizeNewsItem,
+        normalizeNewsPublication,
         cleanText,
         validCoordinate,
         isWithinRetentionWindow,

@@ -15,6 +15,7 @@ const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map
 assert.ok(mapScript.includes('projection: { type: "mercator" }'), "Sentinel must request fullscreen mercator projection");
 assert.ok(!mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must not force the 3D globe projection");
 assert.ok(!mapScript.includes("cooperativeGestures: true") && !mapScript.includes("enableCooperativeGestures"), "Map zoom must not require Ctrl or Cmd");
+assert.ok(mapScript.includes("map.scrollZoom.enable()") && mapScript.includes("map.touchZoomRotate.enable()"), "MapLibre wheel and touch zoom must remain enabled");
 assert.ok(mapScript.includes("cluster: false"), "Primary events must remain individual normal-sized points");
 assert.ok(!mapScript.includes('id: "event-clusters"'), "Oversized notification bubbles must not be rendered");
 assert.ok(mapScript.includes('id: "event-hit"'), "Individual events must have a dedicated touch hit layer");
@@ -43,6 +44,7 @@ assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_
 assert.ok(adapterScript.includes('rawType || "").toLowerCase() === "europe_security"'), "Europe security classifications must survive adaptation");
 assert.ok(mapScript.includes('"circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", ["==", ["get", "plot_class"], "earthquake"], "#b56cff", "#31d48a"]'), "Published event dots must use war-red, earthquake-purple, and news-green colors");
 assert.ok(mapScript.includes("function plotClass(event)") && mapScript.includes("plot_class: plotClass(event)"), "Published event plots must use normalized war/news classification");
+assert.ok(mapScript.includes("hostilities|offensive|occupation|ceasefire"), "Conflict wording must not fall through to the news color");
 assert.ok(mapScript.includes('category === "earthquake"') && mapScript.includes('"#b56cff"'), "Earthquake plots must use purple");
 assert.ok(mapScript.includes('"circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1'), "Published event dots must be smaller at global zoom");
 assert.ok(mapScript.includes('id: "event-glyphs"'), "Threat dots must retain category glyph overlays");

@@ -13,7 +13,7 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
-    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-minimal-map">
+    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261111-free-news">
 </head>
 <body>
     <a class="skip-link" href="#sentinel-map">Skip to intelligence map</a>
@@ -33,12 +33,18 @@
         </section>
         <aside id="event-panel" class="event-drawer" aria-label="Published events" aria-hidden="true">
             <div class="event-drawer-heading"><div><span class="eyebrow">PUBLISHED SIGNALS</span><h2 id="event-drawer-title">Events at this map point</h2></div><button id="event-panel-close" class="drawer-close" type="button" aria-label="Close events">×</button></div>
-            <div id="event-detail" class="event-detail"><p class="empty-kicker">SELECT A RED LIGHT</p><p>Click a plotted event or city light to inspect published records.</p></div>
+            <div class="news-filter-bar" aria-label="News filters">
+                <label>Country <select id="news-filter-country"><option value="all">All</option></select></label>
+                <label>Category <select id="news-filter-category"><option value="all">All</option></select></label>
+                <label>Severity <select id="news-filter-severity"><option value="all">All</option></select></label>
+            </div>
+            <div id="news-feed" class="news-feed" aria-live="polite"></div>
+            <div id="event-detail" class="event-detail" hidden><p class="empty-kicker">SELECT A RED LIGHT</p><p>Click a plotted event or city light to inspect published records.</p></div>
         </aside>
     </main>
     <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
-    <script src="assets/js/sentinel-data.js?v=20260725-mobile-map"></script>
+    <script src="assets/js/sentinel-data.js?v=20261111-free-news"></script>
     <script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-globe"></script>
-    <script src="assets/js/sentinel-map.js?v=20261111-sentinel-clean"></script>
+    <script src="assets/js/sentinel-map.js?v=20261111-free-news"></script>
 </body>
 </html>
