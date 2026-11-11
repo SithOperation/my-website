@@ -1031,7 +1031,6 @@
             maxZoom: 16,
             renderWorldCopies: true,
             attributionControl: true,
-            cooperativeGestures: true,
             fadeDuration: 0
         });
 
@@ -1064,8 +1063,6 @@
             const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
             const fullscreen = fullscreenElement === element("sentinel-map");
             element("sentinel-map").classList.toggle("is-map-fullscreen", fullscreen);
-            if (fullscreen) map.disableCooperativeGestures?.();
-            else map.enableCooperativeGestures?.();
             window.setTimeout(() => map.resize(), 80);
         };
         document.addEventListener("fullscreenchange", handleFullscreenChange);

@@ -14,6 +14,7 @@ const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map
 
 assert.ok(mapScript.includes('projection: { type: "mercator" }'), "Sentinel must request fullscreen mercator projection");
 assert.ok(!mapScript.includes('map.setProjection?.({ type: "globe" })'), "Sentinel must not force the 3D globe projection");
+assert.ok(!mapScript.includes("cooperativeGestures: true") && !mapScript.includes("enableCooperativeGestures"), "Map zoom must not require Ctrl or Cmd");
 assert.ok(mapScript.includes("cluster: false"), "Primary events must remain individual normal-sized points");
 assert.ok(!mapScript.includes('id: "event-clusters"'), "Oversized notification bubbles must not be rendered");
 assert.ok(mapScript.includes('id: "event-hit"'), "Individual events must have a dedicated touch hit layer");
