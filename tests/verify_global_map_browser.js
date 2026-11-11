@@ -59,6 +59,16 @@ async function main() {
             { timeout: 30000 }
         );
 
+        const clusterPoint = await page.evaluate(() => window.SentinelMapBridge?.firstClusterPoint());
+        if (!clusterPoint || clusterPoint.count < 2) {
+            throw new Error("Global map did not render an expandable event cluster");
+        }
+        await page.mouse.click(clusterPoint.x, clusterPoint.y);
+        await page.waitForFunction(
+            () => Number(window.SentinelMapBridge?.diagnostics()?.zoom) > 2,
+            { timeout: 5000 }
+        );
+
         const plottedFeedCheck = await page.evaluate(async () => {
             const response = await fetch("data/map_events.json", { cache: "no-store" });
             const publishedEvents = await response.json();

@@ -1575,11 +1575,23 @@
                 mapReady,
                 eventCount: eventIndex.size,
                 highlightedEventId,
+                zoom: map?.getZoom() ?? null,
                 eventCoordinates: Array.from(eventIndex, ([eventId, event]) => ({
                     eventId,
                     latitude: event.latitude,
                     longitude: event.longitude
                 }))
+            };
+        }
+        firstClusterPoint() {
+            if (!map || !mapReady) return null;
+            const feature = map.queryRenderedFeatures({ layers: ["event-clusters"] })[0];
+            if (!feature?.geometry?.coordinates) return null;
+            const point = map.project(feature.geometry.coordinates);
+            return {
+                x: point.x,
+                y: point.y,
+                count: Number(feature.properties?.point_count || 0)
             };
         }
         projectEvent(eventId) {
