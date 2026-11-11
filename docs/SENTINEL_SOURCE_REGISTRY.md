@@ -25,6 +25,8 @@ publication. It is intentionally separate from the authoritative
 | Yonhap News Agency | South Korea | `https://en.yna.co.kr/RSS/news.xml` | RSS | Yes, HTTP 200 | None | Yes | National news agency feed |
 | NHK | Japan | `https://www3.nhk.or.jp/rss/news/cat0.xml` | RSS | Yes, HTTP 200 | None | Yes | Japanese-language feed |
 | IRNA English | Iran | `https://en.irna.ir/rss` | RSS | Yes, HTTP 200 | None | Yes | State news agency; claims attributed |
+| Mehr News English | Iran | `https://en.mehrnews.com/rss` | RSS | Yes, HTTP 200 | None | Yes | State-linked agency; claims attributed |
+| Radio Farda | Iran | `https://www.radiofarda.com/api/` | RSS/XML | Yes, HTTP 200 | None | Yes | International broadcaster; claims attributed |
 | CISA advisories | Global infrastructure | `https://www.cisa.gov/cybersecurity-advisories/all.xml` | RSS | Yes, HTTP 200 | None | Yes | Official advisory metadata and links |
 | USGS earthquakes | Global | `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson` | GeoJSON | Yes, HTTP 200 | None | Yes | Source coordinates are preserved |
 | NOAA SWPC | Global space weather | `https://services.swpc.noaa.gov/products/summary/solar-wind-speed.json` | JSON | Yes, HTTP 200 | None | Yes | Telemetry; not treated as news |
