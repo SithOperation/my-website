@@ -1,0 +1,67 @@
+name: Sync Sentinel News Sources
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17,47 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sentinel-news-publication
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Collect verified free sources
+        run: >-
+          python3 scripts/collect-sentinel-news.py
+          --registry config/sentinel_sources.json
+          --output data/sentinel_news.json
+          --state data/sentinel_news_state.json
+
+      - name: Validate publication shape
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("data/sentinel_news.json")
+          document = json.loads(path.read_text(encoding="utf-8"))
+          if document.get("schema_version") != "1.0":
+              raise SystemExit("news publication schema mismatch")
+          if document.get("count") != len(document.get("items", [])):
+              raise SystemExit("news publication count mismatch")
+          if not isinstance(document.get("health", {}).get("sources"), list):
+              raise SystemExit("news publication health is invalid")
+          ids = [item.get("id") for item in document["items"]]
+          if any(not item for item in ids) or len(ids) != len(set(ids)):
+              raise SystemExit("news publication contains invalid or duplicate IDs")
+          for item in document["items"]:
+              if item.get("latitude") is None and item.get("longitude") is not None:
+                  raise SystemExit("news item has partial coordinates")
+              if item.get("latitude") is not None and item.get("longitude") is None:
+                  raise SystemExit("news item has partial coordinates")
+          PY
+
+      - name: Commit changed publication only
+        shell: bash
+        run: |
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sentinel_news.json data/sentinel_news_state.json
+          if git diff --cached --quiet; then
+            echo "No Sentinel news publication changes"
+            exit 0
+          fi
+          git commit -m "Sync Sentinel free news publication"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
