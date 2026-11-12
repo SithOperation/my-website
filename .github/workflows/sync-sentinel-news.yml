@@ -23,7 +23,7 @@ jobs:
 
       - name: Collect verified free sources
         run: >-
-          python3 scripts/collect-sentinel-news.py
+          PYTHONPATH=. python3 scripts/collect-sentinel-news.py
           --registry config/sentinel_sources.json
           --output data/sentinel_news.json
           --state data/sentinel_news_state.json
