@@ -76,10 +76,12 @@ jobs:
           # Install only the pinned browser binary; do not invoke apt repeatedly.
           npx playwright install chromium
           find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
+          node --check cloudflare/sentinel-api.js
           node --check tests/verify_global_map_browser.js
           node --check tests/verify_sentinel_desktop_layout.js
           node tests/test_sentinel_gods_eye_contract.js
           node tests/test_sentinel_cesium_contract.js
+          node tests/test_sentinel_worker_contract.js
           python -m http.server 8765 --directory . > /tmp/sentinel-map-preview.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
