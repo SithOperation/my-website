@@ -261,9 +261,13 @@
             const liveFeedState = liveResult.error
                 ? (previousLive.length ? "degraded" : "unavailable")
                 : "available";
+            const latestUpdate = liveEvents.reduce((latest, event) => {
+                const timestamp = Date.parse(String(event?.updated_at || ""));
+                return Number.isFinite(timestamp) && timestamp > latest ? timestamp : latest;
+            }, 0);
             const liveRevision = liveResult.error
                 ? (this.snapshot?.liveRevision || `error:${liveFeedState}`)
-                : `${liveResult.generatedAt || "live"}:${liveEvents.length}`;
+                : `${latestUpdate || liveResult.generatedAt || "live"}:${liveEvents.length}`;
             return {
                 events: mergeEvents(staticEvents, liveEvents),
                 liveEvents,
