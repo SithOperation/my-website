@@ -260,22 +260,49 @@
 
     function storyElement(story, index) {
         const article = document.createElement("article");
-        const heading = document.createElement("h3");
+        const heading = document.createElement(index === 0 ? "h2" : "h3");
         const source = document.createElement("p");
         const summary = document.createElement("p");
         const metadata = document.createElement("p");
-        article.className = "intel-item";
-        heading.textContent = `${index + 1}. ${story.title || "Untitled report"}`;
-        source.textContent = `Source: ${story.source || "Unknown"}`;
+        article.className = index === 0 ? "digest-lead" : "digest-story";
+        heading.textContent = story.title || "Untitled report";
+        source.className = "digest-source";
+        source.textContent = `${story.source || "Unknown"} · ${story.severity || "Unrated"}`;
+        summary.className = "digest-summary";
         summary.textContent = story.summary || "No summary available.";
+        article.append(heading, source, summary);
+
+        if (story.why_it_matters && index === 0) {
+            const why = document.createElement("p");
+            why.className = "digest-why";
+            why.textContent = story.why_it_matters;
+            article.append(why);
+        }
+
         const score = story.importance_score ?? story.score;
         metadata.textContent = [
-            story.severity,
             story.category,
             score === undefined || score === null ? null : `Score ${score}/100`
         ].filter(Boolean).join(" · ");
-        article.append(heading, source, summary);
+        metadata.className = "digest-meta";
         if (metadata.textContent) article.append(metadata);
+
+        const evidence = [
+            ...(Array.isArray(story.cves) ? story.cves : []),
+            story.known_exploited ? "CISA KEV" : null,
+            story.active_exploitation ? "ACTIVE EXPLOITATION" : null,
+            story.patch_available ? "PATCH AVAILABLE" : null
+        ].filter(Boolean);
+        if (evidence.length) {
+            const chips = document.createElement("div");
+            chips.className = "digest-evidence";
+            evidence.slice(0, 5).forEach(value => {
+                const chip = document.createElement("span");
+                chip.textContent = value;
+                chips.appendChild(chip);
+            });
+            article.appendChild(chips);
+        }
 
         const href = trustedHttpURL(story.source_url || story.link);
         if (href) {
@@ -283,8 +310,8 @@
             link.href = href;
             link.target = "_blank";
             link.rel = "noopener noreferrer";
-            link.className = "project-link";
-            link.textContent = "Read Report →";
+            link.className = "digest-link";
+            link.textContent = "Read original reporting →";
             article.appendChild(link);
         }
         return article;
@@ -296,18 +323,29 @@
         try {
             const data = await fetchJSON("data/ai_cyber_digest.json");
             const status = document.createElement("div");
-            status.className = "intel-status";
+            status.className = "digest-status";
             const generated = new Date(data.generated_at || data.generated || "");
             const freshness = Number.isNaN(generated.getTime()) ? "" : ` · Updated ${generated.toLocaleString()}`;
             status.textContent = `● AI CYBER DIGEST ONLINE${freshness}`;
-            const stories = Array.isArray(data.stories) ? data.stories.slice(0, 5) : [];
-            const content = stories.length ? stories.map(storyElement) : [Object.assign(document.createElement("div"), { className: "intel-item", textContent: "No reports available." })];
+            const stories = Array.isArray(data.stories) ? data.stories.slice(0, 7) : [];
+            const metrics = {
+                "digest-collected": data.articles_collected,
+                "digest-published": data.stories_published ?? stories.length,
+                "digest-critical": data.critical_count,
+                "digest-high": data.high_count,
+                "digest-sources": data.source_count ?? data.sources_succeeded
+            };
+            Object.entries(metrics).forEach(([id, value]) => {
+                const target = document.getElementById(id);
+                if (target) target.textContent = value ?? "—";
+            });
+            const content = stories.length ? stories.map(storyElement) : [Object.assign(document.createElement("div"), { className: "digest-empty", textContent: "No reports available." })];
             feed.replaceChildren(status, ...content);
         }
         catch (error) {
             console.error("AI cyber digest failed", error);
             const status = document.createElement("div");
-            status.className = "status-alert";
+            status.className = "digest-status digest-status--error";
             status.textContent = "● AI INTELLIGENCE OFFLINE";
             feed.replaceChildren(status);
         }

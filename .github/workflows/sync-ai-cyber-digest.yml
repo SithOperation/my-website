@@ -3,9 +3,8 @@ name: Sync AI & Cyber Daily Digest
 on:
   workflow_dispatch:
   schedule:
-    # The source digest runs near 09:00 Eastern. These UTC candidates sync its
-    # completed public JSON about ten minutes later across EST and EDT.
-    - cron: "10 13 * * *"
+    # GitHub may delay scheduled jobs, so this workflow intentionally does not
+    # gate execution on the runner's exact local hour.
     - cron: "10 14 * * *"
 
 permissions:
@@ -19,46 +18,21 @@ jobs:
   sync-ai-digest:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Eastern sync hour
-        id: schedule
-        shell: bash
-        run: |
-          event_name="${{ github.event_name }}"
-          schedule_expression="${{ github.event.schedule }}"
-          eastern_offset="$(TZ=America/New_York date +%z)"
-          scheduled_hour="$(awk '{print $2}' <<< "$schedule_expression")"
-
-          if [[ "$event_name" == "workflow_dispatch" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Running manual AI digest sync"
-          elif [[ "$eastern_offset" == "-0400" && "$scheduled_hour" == "13" ]] ||
-               [[ "$eastern_offset" == "-0500" && "$scheduled_hour" == "14" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Running delayed-safe Eastern schedule $schedule_expression"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping inactive DST candidate $schedule_expression for offset $eastern_offset"
-          fi
-
       - name: Checkout website
-        if: steps.schedule.outputs.run == 'true'
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout completed AI digest
-        if: steps.schedule.outputs.run == 'true'
         uses: actions/checkout@v6
         with:
           repository: SithOperation/ai-cyber-daily-digest
           path: external/ai
 
       - name: Validate and publish AI digest
-        if: steps.schedule.outputs.run == 'true'
         run: python3 scripts/sync-monitor-data.py --ai-only
 
       - name: Commit AI digest update
-        if: steps.schedule.outputs.run == 'true'
         shell: bash
         run: |
           git config user.name "github-actions"

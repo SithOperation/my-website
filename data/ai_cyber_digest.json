@@ -1,80 +1,85 @@
 {
-  "generated_at": "2026-08-26T13:43:14.495077+00:00",
+  "generated_at": "2026-11-12T16:46:21.169104+00:00",
   "source_count": 8,
-  "sources_succeeded": 7,
-  "articles_collected": 45,
-  "articles_after_deduplication": 43,
+  "sources_succeeded": 8,
+  "articles_collected": 84,
+  "articles_after_deduplication": 77,
   "stories_published": 20,
   "critical_count": 1,
   "high_count": 0,
-  "medium_count": 10,
-  "low_count": 9,
+  "medium_count": 9,
+  "low_count": 10,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 12
+      "articles": 25
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 10
+      "articles": 15
     },
     {
       "source": "Krebs on Security",
       "url": "https://krebsonsecurity.com/feed/",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 2
     },
     {
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 8
+      "articles": 10
     },
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "success",
-      "articles": 9
+      "articles": 7
     },
     {
       "source": "MIT News AI",
       "url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
       "status": "success",
-      "articles": 1
+      "articles": 4
     },
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
       "status": "success",
-      "articles": 1
+      "articles": 6
     },
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 4
+      "articles": 15
     }
   ],
   "stories": [
     {
-      "id": "bdf3c3b943da6a2d",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "id": "f4b34728a6f8e326",
+      "title": "CISA Adds Six Known Exploited Vulnerabilities to Catalog",
       "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/08/25/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.303497+00:00",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog",
+      "published_at": "2026-11-10T12:00:00+00:00",
+      "collected_at": "2026-11-12T16:46:19.800473+00:00",
       "category": "Active Exploitation",
       "severity": "Critical",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "summary": "CISA has added six new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
       "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-60004"
+        "CVE-2026-111560",
+        "CVE-2026-111793",
+        "CVE-2026-116606",
+        "CVE-2026-124194",
+        "CVE-2026-125350",
+        "CVE-2026-20320"
       ],
       "cvss_score": null,
       "known_exploited": true,
@@ -110,83 +115,104 @@
       ],
       "related_sources": [
         {
-          "source": "The Hacker News",
-          "source_url": "https://thehackernews.com/2026/08/critical-gitea-rce-actively-exploited.html"
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/09/cisa-adds-four-known-exploited-vulnerabilities-catalog"
         },
         {
-          "source": "SecurityWeek",
-          "source_url": "https://www.securityweek.com/cisa-warns-of-exploited-gitea-vulnerability/"
+          "source": "The Hacker News",
+          "source_url": "https://thehackernews.com/2026/11/cisco-broadworks-and-openwave-flaws.html"
         }
       ]
     },
     {
-      "id": "5fe735c75f0cbaf4",
-      "title": "U.S. Sanctions Iran-Linked Hackers Behind Critical Infrastructure Breaches",
+      "id": "f45d3069b40c902e",
+      "title": "Siemens Desigo, Gridscale",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-02",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "collected_at": "2026-11-12T16:46:19.798782+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497).",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-111497"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 28,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-04"
+        },
+        {
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-03"
+        }
+      ]
+    },
+    {
+      "id": "96d21dc534c051cb",
+      "title": "Citrix Patches 12 NetScaler and Secure Access Client Flaws, Including Authentication Bypass",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/us-sanctions-iran-linked-hackers-behind.html",
-      "published_at": "2026-08-25T18:17:17+00:00",
-      "collected_at": "2026-08-26T13:43:12.521174+00:00",
-      "category": "Nation-State Activity",
+      "source_url": "https://thehackernews.com/2026/11/citrix-patches-12-netscaler-and-secure.html",
+      "published_at": "2026-11-12T15:38:49+00:00",
+      "collected_at": "2026-11-12T16:46:16.469917+00:00",
+      "category": "Cloud Security",
       "severity": "Medium",
-      "summary": "The U.S.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Nation-state activity",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "cd40aa1600f62ae4",
-      "title": "Ebyte NE2-D11",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-06",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.300313+00:00",
-      "category": "Government Advisories",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain unauthorized administrative access, disclose sensitive information, modify device configuration, hijack authenticated sessions, and disrupt device operation.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "summary": "Citrix has released patches for multiple critical security flaws impacting NetScaler ADC, Citrix NetScaler Gateway, and NetScaler Console that could lead to denial-of-service (DoS) or an authentication bypass.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-73125"
+        "CVE-2026-120868"
       ],
-      "cvss_score": 3.1,
+      "cvss_score": 9.3,
       "known_exploited": false,
       "active_exploitation": false,
-      "patch_available": false,
+      "patch_available": true,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
         "CVE"
       ],
-      "importance_score": 24,
+      "importance_score": 26,
       "score_breakdown": [
         {
-          "signal": "Critical infrastructure",
-          "points": 12
+          "signal": "Critical CVSS",
+          "points": 18
         },
         {
-          "signal": "Government advisory",
-          "points": 8
+          "signal": "Patch available",
+          "points": 4
         },
         {
           "signal": "CVE cited",
@@ -196,189 +222,21 @@
       "related_sources": []
     },
     {
-      "id": "1cc65a359cf90782",
-      "title": "Rently Smart Home",
+      "id": "057c02b04cc39ce1",
+      "title": "Siemens RUGGEDCOM APE1808",
       "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-01",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.303270+00:00",
-      "category": "Privacy",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to access sensitive information and override user permissions.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-75960"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "131f46a89b408b74",
-      "title": "PayRange API",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-04",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.303807+00:00",
-      "category": "Privacy",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow a remote, authenticated or unauthenticated attacker to disclose sensitive information, arbitrarily modify the device to cause a denial of service, or alter a devices displayed image.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-18965"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "4be6e7b5f38a0bbf",
-      "title": "Zoneminder",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-02",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.304163+00:00",
-      "category": "Government Advisories",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could result in full Remote Code Execution (RCE) as the web server user.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-76060"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "93d0549b2e7ec508",
-      "title": "Siemens SIMATIC IoT2050 Advanced",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-03",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.304523+00:00",
-      "category": "Government Advisories",
-      "severity": "Medium",
-      "summary": "View CSAF Summary SIMATIC IoT2050 Advanced devices running Industrial OS with Node-RED installed contain a missing authentication vulnerability in the Node-RED HTTP interface that could allow an unauthenticated remote attacker to create malicious flows and execute arbitrary code on the underlying server with maximum privileges.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-58115"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "63e36d843533dec6",
-      "title": "FURUNO FA-50 Class B AIS Transponder",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-07",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.304865+00:00",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-05",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "collected_at": "2026-11-12T16:46:19.799119+00:00",
       "category": "Critical Vulnerabilities",
       "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to alter device settings.",
+      "summary": "View CSAF Summary Palo Alto Networks has published information on vulnerabilities in PAN-OS related to PHP2Shell vulnerabilities.",
       "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-59769",
-        "CVE-2026-67578"
+        "CVE-2026-109618",
+        "CVE-2026-109619"
       ],
       "cvss_score": 3.1,
       "known_exploited": false,
@@ -404,260 +262,477 @@
           "points": 4
         }
       ],
-      "related_sources": []
+      "related_sources": [
+        {
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-01"
+        }
+      ]
     },
     {
-      "id": "13529dec89f48bf2",
-      "title": "Bendix EC80 Brake ECU",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-237-05",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.305463+00:00",
-      "category": "Critical Vulnerabilities",
+      "id": "0c7b196fe26ffd91",
+      "title": "SCKit Malware Turns ScreenConnect Support Sessions Into Potential MSP Attack Paths",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/sckit-malware-targets-screenconnect.html",
+      "published_at": "2026-11-12T13:08:28+00:00",
+      "collected_at": "2026-11-12T16:46:16.470137+00:00",
+      "category": "Malware",
       "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to cause the loss of ABS functions, steering assist, speedometer, shifting capabilities, or disable automatic traction control.",
+      "summary": "The ongoing campaign targeting ConnectWise ScreenConnect deployments involves the exploitation of a now-patched critical security flaw in the remote access software, and not a new vulnerability, it has emerged.",
       "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-67560"
+        "CVE-2026-84869"
       ],
-      "cvss_score": null,
+      "cvss_score": 9.9,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "6390d9c4dbeda298",
-      "title": "Hospital operator Nutex Health says data stolen in cyberattack",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hospital-operator-nutex-health-says-data-stolen-in-cyberattack/",
-      "published_at": "2026-08-25T14:44:16+00:00",
-      "collected_at": "2026-08-26T13:43:12.608340+00:00",
-      "category": "Data Breaches",
-      "severity": "Medium",
-      "summary": "Healthcare and services provider Nutex is investigating a data breach incident where an unauthorized third party exfiltrated information from company servers.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
+        "CVE",
+        "Malware"
       ],
       "importance_score": 22,
       "score_breakdown": [
         {
-          "signal": "Critical infrastructure",
-          "points": 12
+          "signal": "Critical CVSS",
+          "points": 18
         },
         {
-          "signal": "Major data exposure",
-          "points": 10
+          "signal": "CVE cited",
+          "points": 4
         }
       ],
       "related_sources": []
     },
     {
-      "id": "f728a38d182fe151",
-      "title": "A Tale of Two SOCs: Insights From Two Red Team Assessments",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-237a",
-      "published_at": "2026-08-25T12:00:00+00:00",
-      "collected_at": "2026-08-26T13:43:13.302940+00:00",
-      "category": "Government Advisories",
-      "severity": "Medium",
-      "summary": "Advisory at a Glance Title A Tale of Two SOCs: Insights From Two Red Team Assessments Original Publication August 25, 2026 Executive Summary The Cybersecurity and Infrastructure Security Agency (CISA) conducted simultaneous red team assessments at two organizations and observed different defensive outcomes.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 20,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "af99c459418ac83a",
-      "title": "CISA: Over 100 Internet-Exposed Water Systems Targeted in July Cyberattacks",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/cisa-over-100-internet-exposed-water-systems-targeted-in-july-cyberattacks/",
-      "published_at": "2026-08-26T11:29:50+00:00",
-      "collected_at": "2026-08-26T13:43:12.949232+00:00",
-      "category": "Nation-State Activity",
-      "severity": "Low",
-      "summary": "The agency has released guidance on reducing internet exposure in the wake of the recent Iran-linked hacker attacks.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Nation-state activity",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "0ce3a336bce600ef",
-      "title": "Sensitive Information Exposed in Nutex Health Data Breach",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/sensitive-information-exposed-in-nutex-health-data-breach/",
-      "published_at": "2026-08-26T07:41:50+00:00",
-      "collected_at": "2026-08-26T13:43:12.949675+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "Nutex Health has informed the SEC that it recently detected unauthorized access and data exfiltration.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "2e7f77b49688cca8",
-      "title": "LACMA data breach last year exposed social security and medical data",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/lacma-data-breach-last-year-exposed-social-security-and-medical-data/",
-      "published_at": "2026-08-25T21:58:14+00:00",
-      "collected_at": "2026-08-26T13:43:12.607728+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "The Los Angeles County Museum of Art (LACMA) has announced that a breach last year exposed customer and employee information.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "ea2647337858e2f5",
-      "title": "Hackers now exploit critical Gitea flaw in code injection attacks",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-gitea-flaw-in-code-injection-attacks/",
-      "published_at": "2026-08-26T11:07:48+00:00",
-      "collected_at": "2026-08-26T13:43:12.607580+00:00",
-      "category": "Government Advisories",
-      "severity": "Low",
-      "summary": "Attackers are now exploiting a critical-severity vulnerability in the Gitea self-hosted Git service, according to the U.S.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 8,
-      "score_breakdown": [
-        {
-          "signal": "Government advisory",
-          "points": 8
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "f601fe4cfa27db52",
-      "title": "Unpatched Kaltura mwEmbed Flaws Could Let Remote Attackers Read Files and Run Code",
+      "id": "95bc7c63c87673bf",
+      "title": "Critical Zoom Workplace Flaw Could Allow Unauthenticated Remote Privilege Escalation",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/unpatched-kaltura-mwembed-flaws-could.html",
-      "published_at": "2026-08-26T11:55:00+00:00",
-      "collected_at": "2026-08-26T13:43:12.519785+00:00",
+      "source_url": "https://thehackernews.com/2026/11/critical-zoom-workplace-flaw-could.html",
+      "published_at": "2026-11-11T16:12:46+00:00",
+      "collected_at": "2026-11-12T16:46:16.471195+00:00",
       "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "The CERT Coordination Center (CERT/CC) has disclosed two unpatched vulnerabilities in Kaltura's HTML5 video player library that allow a remote, unauthenticated attacker to read arbitrary files from a server and execute code on it.",
+      "severity": "Medium",
+      "summary": "Zoom has released software updates to address two security flaws impacting Zoom Workplace for Windows, including a critical bug that could result in privilege escalation on affected systems.",
       "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-19912",
-        "CVE-2026-19913"
+        "CVE-2026-108186"
+      ],
+      "cvss_score": 9.6,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 22,
+      "score_breakdown": [
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "6e299ce357456abc",
+      "title": "Microsoft Fixes Nearly 1,100 Security Vulnerabilities",
+      "source": "Krebs on Security",
+      "source_url": "https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/",
+      "published_at": "2026-11-10T21:55:03+00:00",
+      "collected_at": "2026-11-12T16:46:16.839127+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "Microsoft did another four-digit patch drop today, releasing updates to fix almost 1,100 security vulnerabilities in its Windows operating systems and supported software.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 22,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "1dc09f8d2480496e",
+      "title": "New Windows SignDrop zero-day gives hackers SYSTEM privileges",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/new-windows-signdrop-zero-day-gives-hackers-system-privileges/",
+      "published_at": "2026-11-12T16:04:00+00:00",
+      "collected_at": "2026-11-12T16:46:16.669577+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "Security researcher Abdelhamid Naceri (also known as Nightmare Eclipse) has released a new Windows zero-day exploit that can let attackers gain SYSTEM privileges.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 18,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "a25f79678053d5ae",
+      "title": "Hackers Target N-central Zero-Days as N-able Rushes Patches",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/hackers-target-n-central-zero-days-as-n-able-rushes-patches/",
+      "published_at": "2026-11-12T09:39:55+00:00",
+      "collected_at": "2026-11-12T16:46:17.024878+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "The malicious activity started shortly after a researcher dropped over 30 zero-days.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 18,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "fdb07bf27f816d37",
+      "title": "N-able releases security hotfixes for zero-day vulnerabilities",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/n-able-releases-security-hotfixes-for-zero-day-vulnerabilities/",
+      "published_at": "2026-11-11T12:32:27+00:00",
+      "collected_at": "2026-11-12T16:46:16.670933+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "N-able released hotfixes to address zero-day bugs affecting its N-central remote monitoring and management (RMM) platform, which were publicly disclosed over the weekend and forced it to take vulnerable hosted environments offline.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 18,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "c94635a9e4e1201d",
+      "title": "Maersk Confirms Data Theft Amid $5 Million Extortion Attempt",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/maersk-confirms-data-theft-amid-5-million-extortion-attempt/",
+      "published_at": "2026-11-12T08:38:47+00:00",
+      "collected_at": "2026-11-12T16:46:17.025053+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "The WhiteArmor ransomware group claims it stole 100GB of data from the shipping giant’s systems.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Ransomware"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "5aca5acf75fbc18a",
+      "title": "Who Runs the Ransomware Group Qilin?",
+      "source": "Krebs on Security",
+      "source_url": "https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/",
+      "published_at": "2026-11-11T18:06:01+00:00",
+      "collected_at": "2026-11-12T16:46:16.839000+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "The cybercrime group Qilin has emerged as the world's most active ransomware affiliate program, claiming at least 365 victim organizations in the past three months alone.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Ransomware"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "9d0e65808ab58d16",
+      "title": "Maersk confirms data breach as WhiteArmor ransomware demands $5 million",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/maersk-confirms-data-breach-as-whitearmor-ransomware-demands-5-million/",
+      "published_at": "2026-11-11T16:24:18+00:00",
+      "collected_at": "2026-11-12T16:46:16.670624+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "Maersk announced that a threat actor gained unauthorized access to a local legacy system inherited through an earlier acquisition and extracted data from it.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach",
+        "Ransomware"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "2fa347656b166d57",
+      "title": "Baker Tilly notifies clients of data breach at third-party provider",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/baker-tilly-notifies-clients-of-data-breach-at-third-party-provider/",
+      "published_at": "2026-11-11T23:01:31+00:00",
+      "collected_at": "2026-11-12T16:46:16.670281+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "The Baker Tilly Advisory Group is notifying clients that a data breach has compromised certain personal information about them and their dependents.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "2d6f349525d67746",
+      "title": "PTC Patches Critical Windchill and FlexPLM Flaw That Could Enable Remote Code Execution",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/ptc-patches-critical-windchill-and.html",
+      "published_at": "2026-11-12T11:33:15+00:00",
+      "collected_at": "2026-11-12T16:46:16.470623+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "PTC has released patches for a new critical vulnerability impacting Windchill and FlexPLM software that, if successfully exploited, could result in remote code execution.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-126325"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 8,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "b92486adb822eb8a",
+      "title": "Critical Apache HTTP/2 Flaw Could Let Unauthenticated Attackers Execute Code Remotely",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/critical-apache-http2-flaw-could-let.html",
+      "published_at": "2026-11-12T05:12:26+00:00",
+      "collected_at": "2026-11-12T16:46:16.471019+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "A critical flaw in Apache HTTP Server's HTTP/2 module, mod_http2, can let a remote attacker run code on the server.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-119618"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 8,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "SecurityWeek",
+          "source_url": "https://www.securityweek.com/apache-patches-critical-http-server-rce-found-by-anthropic-google/"
+        }
+      ]
+    },
+    {
+      "id": "56bf5f6cdef50405",
+      "title": "Microsoft confirms Windows security updates installation issues",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-kb5132061-installation-issues-0x80070306-0x800f0989-0x800f0993-errors/",
+      "published_at": "2026-11-12T10:24:07+00:00",
+      "collected_at": "2026-11-12T16:46:16.670107+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Microsoft has confirmed reports that the November 2026 security updates are failing to install on Windows 11 systems with the October preview update.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "c776eb51cbacc6fa",
+      "title": "Critical Pre-Auth MongoDB Flaw (CVE-2026-118383) Can Crash Lagging Servers on Failover",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/critical-pre-auth-mongodb-flaw-cve-2026.html",
+      "published_at": "2026-11-12T09:25:00+00:00",
+      "collected_at": "2026-11-12T16:46:16.470725+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "A critical flaw in MongoDB Server allows an unauthenticated attacker to send two requests that trigger a crash on the database server.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-118383"
       ],
       "cvss_score": null,
       "known_exploited": false,
@@ -678,90 +753,15 @@
       "related_sources": []
     },
     {
-      "id": "1a063d0cbf2700ee",
-      "title": "Ubiquiti patches three max severity security vulnerabilities",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ubiquiti-patches-three-max-severity-security-vulnerabilities/",
-      "published_at": "2026-08-26T13:17:54+00:00",
-      "collected_at": "2026-08-26T13:43:12.607252+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Ubiquiti has released security patches for three new maximum-severity vulnerabilities that threat actors can exploit remotely without privileges.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "4232e7171ba5e931",
-      "title": "Adobe and Nvidia Patch Dozens of Vulnerabilities",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/adobe-and-nvidia-patch-dozens-of-vulnerabilities/",
-      "published_at": "2026-08-26T12:39:38+00:00",
-      "collected_at": "2026-08-26T13:43:12.949068+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Adobe and Nvidia each published several advisories, including ones that address critical vulnerabilities in their products.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "3b13dddb2c0ce406",
-      "title": "Microsoft tests new privacy controls for Windows 11 desktop apps",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-tests-new-privacy-controls-for-windows-11-desktop-apps/",
-      "published_at": "2026-08-26T12:06:28+00:00",
-      "collected_at": "2026-08-26T13:43:12.607425+00:00",
-      "category": "Privacy",
-      "severity": "Low",
-      "summary": "Microsoft has begun testing new privacy controls that will let Windows 11 users choose which desktop applications can access their camera, microphone, and precise location.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "ca41f16130462278",
-      "title": "Imagine the SOC Without a Queue: From Alert Backlog to AI Hypothesis Engine",
+      "id": "6ee015b627a80bcd",
+      "title": "Node.js Fixes 16 Flaws, Including HTTP/2 Bugs That Crash Servers and Leak Other Connections' Data",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/08/imagine-soc-without-queue-from-alert.html",
-      "published_at": "2026-08-26T11:36:49+00:00",
-      "collected_at": "2026-08-26T13:43:12.520018+00:00",
+      "source_url": "https://thehackernews.com/2026/11/nodejs-fixes-16-flaws-including-http2.html",
+      "published_at": "2026-11-12T08:20:37+00:00",
+      "collected_at": "2026-11-12T16:46:16.470821+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "The SOC we've always known was built around a model that guarantees most of the alert queue will never receive analyst review.",
+      "summary": "A flaw fixed in Node.js this week lets unauthenticated clients crash servers that use the runtime's built-in HTTP/2 support on the 24.x and 26.x release lines.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -769,12 +769,47 @@
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
-      "patch_available": false,
+      "patch_available": true,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "b4b549aacbc41c78",
+      "title": "Microsoft Patches 1,259 Flaws, Including Exploited Outlook Bug That May Expose NTLMv2 Hashes",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/microsoft-patches-1259-flaws-including.html",
+      "published_at": "2026-11-11T08:17:53+00:00",
+      "collected_at": "2026-11-12T16:46:16.471729+00:00",
+      "category": "Cloud Security",
+      "severity": "Low",
+      "summary": "Microsoft on Tuesday released patches for a total of 1,259 vulnerabilities spanning its software portfolio, the second consecutive month where the patch volume has exceeded 1,000 flaws.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
+      ],
       "related_sources": []
     }
   ]
