@@ -8,6 +8,7 @@
     const LIVE_HEALTH_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/collector-health";
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
+    const SEVERITY_ORDER = Object.freeze({ UNKNOWN: 0, LOW: 1, MEDIUM: 2, HIGH: 3, CRITICAL: 4 });
     // Keep publication classifications available to diagnostics and future
     // non-dashboard consumers without bringing legacy filter controls back.
     const EUROPE_SECURITY_LAYERS = Object.freeze([
@@ -234,6 +235,15 @@
         return `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
     }
 
+    function normalizeSeverity(event) {
+        const value = String(event?.threat_level || event?.severity || event?.priority || "UNKNOWN").toUpperCase();
+        return Object.prototype.hasOwnProperty.call(SEVERITY_ORDER, value) ? value : "UNKNOWN";
+    }
+
+    function severityColorExpression(property = "severity") {
+        return ["match", ["get", property], "CRITICAL", "#ff1744", "HIGH", "#ff7a00", "MEDIUM", "#ffd166", "LOW", "#38d996", "#8b9bb4"];
+    }
+
     function featureCollection(events) {
         eventIndex.clear();
         return {
@@ -255,6 +265,7 @@
                         plot_class: plotClass(event),
                         symbol_type: symbolType(getEventCategory(event)),
                         threat_level: event.threat_level,
+                        severity: normalizeSeverity(event),
                         confidence: event.confidence ?? 0,
                         timestamp: event.timestamp || "",
                         historical: isHistoricalEvent(event),
@@ -276,11 +287,15 @@
                     const lonDistance = (Number(event.longitude) - longitude) * Math.cos(latitude * Math.PI / 180);
                     return Math.hypot(latDistance, lonDistance) <= 3.2;
                 });
+                const severity = nearbyEvents.reduce((highest, event) => {
+                    const candidate = normalizeSeverity(event);
+                    return SEVERITY_ORDER[candidate] > SEVERITY_ORDER[highest] ? candidate : highest;
+                }, "UNKNOWN");
                 return {
                     type: "Feature",
                     id: `city-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
                     geometry: { type: "Point", coordinates: [longitude, latitude] },
-                    properties: { name, event_count: nearbyEvents.length }
+                    properties: { name, event_count: nearbyEvents.length, severity }
                 };
             })
         };
@@ -458,7 +473,7 @@
             source: "sentinel-cities",
             paint: {
                 "circle-radius": 13,
-                "circle-color": ["case", [">", ["get", "event_count"], 0], "#ff294d", "#168cff"],
+                "circle-color": ["case", [">", ["get", "event_count"], 0], severityColorExpression("severity"), "#168cff"],
                 "circle-opacity": 0.22,
                 "circle-blur": 0.85
             }
@@ -469,7 +484,7 @@
             source: "sentinel-cities",
             paint: {
                 "circle-radius": 3.2,
-                "circle-color": ["case", [">", ["get", "event_count"], 0], "#ff294d", "#37a7ff"],
+                "circle-color": ["case", [">", ["get", "event_count"], 0], severityColorExpression("severity"), "#37a7ff"],
                 "circle-stroke-color": "#071321",
                 "circle-stroke-width": 1
             }
@@ -506,7 +521,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 4, 8, 9],
-                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", ["==", ["get", "plot_class"], "earthquake"], "#b56cff", "#31d48a"],
+                "circle-color": severityColorExpression(),
                 "circle-opacity": 0.09,
                 "circle-blur": 0.7
             }
@@ -550,7 +565,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1, 4, 3.1, 8, 5.5],
-                "circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", ["==", ["get", "plot_class"], "earthquake"], "#b56cff", "#31d48a"],
+                "circle-color": severityColorExpression(),
                 "circle-opacity": 0.96,
                 "circle-stroke-color": "#061012",
                 "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 1.5, 0.75, 8, 2],
@@ -580,7 +595,7 @@
             filter: ["all", ["!", ["has", "point_count"]], ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 5, 8, 10],
-                "circle-color": "#ff294d",
+                "circle-color": severityColorExpression(),
                 "circle-opacity": 0.1,
                 "circle-blur": 0.7
             }

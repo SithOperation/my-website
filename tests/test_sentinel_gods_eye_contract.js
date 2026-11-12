@@ -24,7 +24,7 @@ assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-repo
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");
 assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event symbols must not be hidden by collision placement");
 assert.ok(mapScript.includes('map.addSource("sentinel-cities"'), "Sentinel must render the major-city light layer");
-assert.ok(mapScript.includes('"#37a7ff"') && mapScript.includes('"#ff294d"'), "City lights must switch from blue to red when events are nearby");
+assert.ok(mapScript.includes('severityColorExpression("severity")') && mapScript.includes('"#168cff"'), "City lights must switch from blue to severity when events are nearby");
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenControl'), "The map must use fullscreen controls instead of visual-mode tabs");
 assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
@@ -46,13 +46,13 @@ assert.ok(mapScript.includes("loadEnvironmentalLayers({ refreshOnly: true })"), 
 assert.ok(!page.includes('id="layer-europe-nato"') && !page.includes('id="layer-europe-reddit"'), "Legacy layer controls must not return to the public map");
 assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");
 assert.ok(adapterScript.includes('rawType || "").toLowerCase() === "europe_security"'), "Europe security classifications must survive adaptation");
-assert.ok(mapScript.includes('"circle-color": ["case", ["==", ["get", "plot_class"], "war"], "#ff294d", ["==", ["get", "plot_class"], "earthquake"], "#b56cff", "#31d48a"]'), "Published event dots must use war-red, earthquake-purple, and news-green colors");
-assert.ok(mapScript.includes("function plotClass(event)") && mapScript.includes("plot_class: plotClass(event)"), "Published event plots must use normalized war/news classification");
+assert.ok(mapScript.includes("function severityColorExpression") && mapScript.includes('"CRITICAL", "#ff1744"') && mapScript.includes('"HIGH", "#ff7a00"'), "Published event dots must use severity colors");
+assert.ok(mapScript.includes("function plotClass(event)") && mapScript.includes("plot_class: plotClass(event)"), "Published event plots must retain category metadata");
 assert.ok(mapScript.includes("hostilities|offensive|occupation|ceasefire"), "Conflict wording must not fall through to the news color");
-assert.ok(mapScript.includes('category === "earthquake"') && mapScript.includes('"#b56cff"'), "Earthquake plots must use purple");
+assert.ok(mapScript.includes('category === "earthquake"'), "Earthquake category metadata must remain available");
 assert.ok(mapScript.includes('"circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1'), "Published event dots must be smaller at global zoom");
 assert.ok(mapScript.includes('id: "event-glyphs"'), "Threat dots must retain category glyph overlays");
-assert.ok(page.includes('class="city-light"') && page.includes('class="news-light"') && page.includes('class="war-light"') && page.includes('class="earthquake-light"'), "The public legend must describe city, news, war, and earthquake lights");
+assert.ok(page.includes('class="city-light"') && page.includes('class="critical-light"') && page.includes('class="high-light"') && page.includes('class="medium-light"'), "The public legend must describe city and severity lights");
 assert.ok(!page.includes("ðŸ") && !page.includes("âŒ"), "Legend must not contain mojibake glyphs");
 assert.ok(mapStyles.includes("height: 100dvh") && mapStyles.includes("width: 100%"), "Sentinel must fill the browser viewport");
 assert.ok(mapStyles.includes(".ops-shell.sentinel-app") && mapStyles.includes(".map-frame"), "Sentinel must use the full-screen map shell");
