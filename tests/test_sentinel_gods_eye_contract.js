@@ -28,6 +28,8 @@ assert.ok(mapScript.includes('"#37a7ff"') && mapScript.includes('"#ff294d"'), "C
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenControl'), "The map must use fullscreen controls instead of visual-mode tabs");
 assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
+assert.ok(page.includes('id="coverage-status-toggle"') && page.includes('id="coverage-details"'), "Degraded coverage must expose a human-readable fold-out");
+assert.ok(mapScript.includes("renderCoverageDetails") && mapScript.includes("failedSources"), "Coverage notification must list degraded sources instead of raw JSON");
 assert.ok(!page.includes('id="mobile-panel-toggle"') && !page.includes('id="layers-toggle"') && !page.includes('id="source-viewer"'), "Legacy filter, layer, and source tabs must be removed from the public map");
 assert.ok(page.includes('class="sentinel-back"'), "The return link must be positioned within the map overlay");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");

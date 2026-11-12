@@ -152,6 +152,47 @@
         status.className = `sentinel-status is-${state}`;
     }
 
+    function readableSourceName(source) {
+        const raw = source?.publisher || source?.name || source?.source_id || source?.source || "Unknown source";
+        return String(raw).replace(/[_-]+/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
+    }
+
+    function renderCoverageDetails(healthState, publicationId) {
+        const panel = element("coverage-details");
+        const toggle = element("coverage-status-toggle");
+        if (!panel || !toggle) return;
+        const failedSources = Array.isArray(healthState?.failedSources) ? healthState.failedSources : [];
+        panel.replaceChildren();
+        const heading = document.createElement("strong");
+        heading.textContent = failedSources.length
+            ? `${failedSources.length} source${failedSources.length === 1 ? "" : "s"} need attention`
+            : "All configured sources are reporting";
+        panel.appendChild(heading);
+        if (publicationId) {
+            const revision = document.createElement("small");
+            revision.textContent = `Publication ${publicationId}`;
+            panel.appendChild(revision);
+        }
+        if (failedSources.length) {
+            const list = document.createElement("ul");
+            failedSources.forEach(source => {
+                const item = document.createElement("li");
+                const name = document.createElement("b");
+                const status = document.createElement("span");
+                const reason = document.createElement("small");
+                name.textContent = readableSourceName(source);
+                status.textContent = String(source.status || "limited").replace(/[_-]+/g, " ");
+                reason.textContent = String(source.error || source.reason || source.last_error || "No failure detail was published.");
+                item.append(name, status, reason);
+                list.appendChild(item);
+            });
+            panel.appendChild(list);
+        }
+        toggle.hidden = false;
+        toggle.disabled = !failedSources.length;
+        toggle.setAttribute("aria-label", failedSources.length ? "Show degraded source details" : "Coverage source details");
+    }
+
     function setLoading(visible, message = "Building operational picture...") {
         const loading = element("map-loading");
         loading.lastChild.textContent = message;
@@ -1479,6 +1520,7 @@
                 ? `Coverage detail: ${healthReasons}`
                 : "Coverage detail unavailable.";
         }
+        renderCoverageDetails(snapshot.healthState, snapshot.manifest.publication_id);
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
             `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
@@ -1523,6 +1565,14 @@
         element("event-panel-close")?.addEventListener("click", () => setEventDrawer(false));
         element("event-panel")?.addEventListener("click", event => {
             if (event.target === element("event-panel")) setEventDrawer(false);
+        });
+        element("coverage-status-toggle")?.addEventListener("click", event => {
+            event.stopPropagation();
+            const toggle = element("coverage-status-toggle");
+            const panel = element("coverage-details");
+            const open = toggle?.getAttribute("aria-expanded") !== "true";
+            toggle?.setAttribute("aria-expanded", String(open));
+            if (panel) panel.hidden = !open;
         });
         ["news-filter-country", "news-filter-category", "news-filter-severity"].forEach(id =>
             element(id)?.addEventListener("change", renderNewsFeed)

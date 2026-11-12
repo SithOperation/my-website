@@ -46,6 +46,17 @@ async function main() {
             () => Number(document.querySelector("#sentinel-map")?.dataset.loadedEvents) > 0,
             { timeout: 30000 }
         );
+        const coverageToggle = page.locator("#coverage-status-toggle");
+        if (await coverageToggle.isVisible()) {
+            await coverageToggle.click();
+            const coverageDetails = page.locator("#coverage-details");
+            await coverageDetails.waitFor({ state: "visible", timeout: 3000 });
+            const coverageText = await coverageDetails.textContent();
+            if (!coverageText?.includes("source") || coverageText.includes("{\"")) {
+                throw new Error("Coverage fold-out did not expose readable source details");
+            }
+            await coverageToggle.click();
+        }
         if (await page.locator("#sentinel-map").getAttribute("data-feed-state") !== "available") {
             throw new Error("Loaded Sentinel publication did not report an available feed state");
         }

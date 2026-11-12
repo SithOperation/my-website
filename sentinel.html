@@ -21,7 +21,12 @@
         <header class="sentinel-topbar" aria-label="Sentinel Grid controls">
             <a class="sentinel-back" href="index.html#sentinel-dashboard" aria-label="Back to Joseph Technologies">← Joseph Technologies</a>
             <div class="sentinel-wordmark" aria-label="Sentinel Grid">SENTINEL <span>GRID</span></div>
-            <div id="ops-status" class="sentinel-status is-loading" role="status" aria-live="polite"><span class="status-light" aria-hidden="true"></span><span id="ops-status-text">Connecting</span></div>
+            <div id="ops-status" class="sentinel-status is-loading" role="status" aria-live="polite">
+                <span class="status-light" aria-hidden="true"></span>
+                <span id="ops-status-text">Connecting</span>
+                <button id="coverage-status-toggle" class="coverage-status-toggle" type="button" aria-expanded="false" aria-controls="coverage-details" hidden>Details</button>
+                <div id="coverage-details" class="coverage-details" role="dialog" aria-label="Sentinel coverage details" hidden></div>
+            </div>
             <button id="event-list-toggle" class="sentinel-tool" type="button" aria-expanded="false" aria-controls="event-panel">Events <span id="event-feed-count">—</span></button>
         </header>
         <section class="sentinel-map-stage" aria-label="Global intelligence map">
