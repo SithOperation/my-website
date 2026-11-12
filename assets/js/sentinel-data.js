@@ -88,7 +88,7 @@
             : { latitude: null, longitude: null };
         return {
             ...item,
-            id: String(item.id || `${item.source_id || "source"}-${url}`),
+            id: String(item.id || item.article_id || `${item.source_id || "source"}-${url}`),
             title,
             summary: cleanText(item.summary || "No summary is available.", 500),
             url,
@@ -178,10 +178,21 @@
         return Array.from(byId.values());
     }
 
+    function mergeNewsItems(staticItems, liveItems) {
+        const byId = new Map();
+        for (const item of [...staticItems, ...liveItems]) {
+            const id = String(item?.id || item?.article_id || item?.url || "").trim();
+            if (id) byId.set(id, item);
+        }
+        return Array.from(byId.values());
+    }
+
     class Client {
         constructor(options = {}) {
             this.root = options.root || "data";
             this.liveRoot = options.liveRoot || null;
+            this.liveNewsRoot = options.liveNewsRoot || null;
+            this.liveHealthRoot = options.liveHealthRoot || null;
             this.activePublicationId = null;
             this.snapshot = null;
         }
@@ -244,6 +255,58 @@
             }
         }
 
+        async fetchLiveNews() {
+            if (!this.liveNewsRoot) return { items: null, error: null, generatedAt: null };
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(`${this.liveNewsRoot}?limit=200`, {
+                    cache: "no-store",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`live news feed unavailable (${response.status})`);
+                const document = await response.json();
+                const sourceItems = Array.isArray(document?.items) ? document.items : [];
+                return {
+                    items: sourceItems.map(normalizeNewsItem).filter(Boolean),
+                    generatedAt: document.generated_at || null,
+                    error: null
+                };
+            }
+            catch (error) {
+                return { items: null, error: error?.name === "AbortError" ? "live news request timed out" : String(error.message || error), generatedAt: null };
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
+        async fetchLiveHealth() {
+            if (!this.liveHealthRoot) return { collectors: [], error: null };
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(this.liveHealthRoot, {
+                    cache: "no-store",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`collector health unavailable (${response.status})`);
+                const document = await response.json();
+                return {
+                    collectors: Array.isArray(document?.collectors) ? document.collectors : [],
+                    error: null
+                };
+            }
+            catch (error) {
+                return { collectors: [], error: error?.name === "AbortError" ? "collector health request timed out" : String(error.message || error) };
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
         mergeLiveSnapshot(staticEvents, liveResult) {
             if (!this.liveRoot) {
                 return {
@@ -276,6 +339,29 @@
                 liveGeneratedAt: liveResult.generatedAt || this.snapshot?.liveGeneratedAt || null,
                 liveInvalidEventCount: liveResult.invalidEventCount || 0,
                 liveRevision
+            };
+        }
+
+        mergeLiveNewsSnapshot(staticItems, liveResult) {
+            const previousItems = this.snapshot?.liveNewsItems || [];
+            const liveItems = liveResult.items || previousItems;
+            const latestUpdate = liveItems.reduce((latest, item) => {
+                const timestamp = Date.parse(String(item?.updated_at || item?.published_at || ""));
+                return Number.isFinite(timestamp) && timestamp > latest ? timestamp : latest;
+            }, 0);
+            const liveNewsState = liveResult.error
+                ? (previousItems.length ? "degraded" : "unavailable")
+                : "available";
+            const liveNewsRevision = liveResult.error
+                ? (this.snapshot?.liveNewsRevision || `error:${liveNewsState}`)
+                : `${latestUpdate || liveResult.generatedAt || "live-news"}:${liveItems.length}`;
+            return {
+                items: mergeNewsItems(staticItems, liveItems),
+                liveNewsItems: liveItems,
+                liveNewsState,
+                liveNewsError: liveResult.error,
+                liveNewsGeneratedAt: liveResult.generatedAt || this.snapshot?.liveNewsGeneratedAt || null,
+                liveNewsRevision
             };
         }
 
@@ -319,15 +405,25 @@
             const newsResult = await this.fetchJSON("sentinel_news.json", null, true)
                 .then(normalizeNewsPublication)
                 .catch(() => normalizeNewsPublication(null));
-            const liveResult = await this.fetchLiveEvents();
+            const [liveResult, liveNewsResult, liveHealthResult] = await Promise.all([
+                this.fetchLiveEvents(),
+                this.fetchLiveNews(),
+                this.fetchLiveHealth()
+            ]);
 
             if (!legacy && !force && manifest.publication_id === this.activePublicationId && this.snapshot) {
                 const live = this.mergeLiveSnapshot(this.snapshot.staticEvents || this.snapshot.events, liveResult);
+                const liveNews = this.mergeLiveNewsSnapshot(this.snapshot.staticNewsItems || this.snapshot.items, liveNewsResult);
                 return {
                     ...this.snapshot,
                     ...newsResult,
                     ...live,
-                    unchanged: live.liveRevision === this.snapshot.liveRevision
+                    ...liveNews,
+                    newsHealth: newsResult.health,
+                    newsGeneratedAt: newsResult.generated_at,
+                    liveCollectors: liveHealthResult.collectors,
+                    unchanged: live.liveRevision === this.snapshot.liveRevision &&
+                        liveNews.liveNewsRevision === this.snapshot.liveNewsRevision
                 };
             }
 
@@ -344,6 +440,8 @@
             const normalizedEvents = mapEvents.map(normalizeEvent);
             const staticEvents = normalizedEvents.filter(Boolean);
             const live = this.mergeLiveSnapshot(staticEvents, liveResult);
+            const staticNewsItems = newsResult.items;
+            const liveNews = this.mergeLiveNewsSnapshot(staticNewsItems, liveNewsResult);
             const generated = manifest?.generated || dashboard.generated || null;
             const effectiveManifest = manifest || {
                 publication_id: `legacy-${generated || "current"}`,
@@ -359,10 +457,14 @@
                 events: live.events,
                 staticEvents,
                 invalidEventCount: normalizedEvents.length - staticEvents.length + live.liveInvalidEventCount,
-                health,
                 healthState: healthState(health, generated),
                 ...live,
-                ...newsResult,
+                ...liveNews,
+                staticNewsItems,
+                health,
+                newsHealth: newsResult.health,
+                liveCollectors: liveHealthResult.collectors,
+                newsGeneratedAt: newsResult.generated_at,
                 legacy,
                 unchanged: false
             };

@@ -4,6 +4,8 @@
     const DATA_REFRESH_MS = 5 * 60 * 1000;
     const LIVE_REFRESH_MS = 60 * 1000;
     const LIVE_EVENTS_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/live-events";
+    const LIVE_NEWS_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/news";
+    const LIVE_HEALTH_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/collector-health";
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
     // Keep publication classifications available to diagnostics and future
@@ -30,7 +32,12 @@
         ["Lima", -77.0428, -12.0464], ["Bogotá", -74.0721, 4.711], ["Santiago", -70.6693, -33.4489]
     ];
     const adapter = window.SentinelGodsEyeAdapter || null;
-    const client = new window.SentinelData.Client({ root: "data", liveRoot: LIVE_EVENTS_ENDPOINT });
+    const client = new window.SentinelData.Client({
+        root: "data",
+        liveRoot: LIVE_EVENTS_ENDPOINT,
+        liveNewsRoot: LIVE_NEWS_ENDPOINT,
+        liveHealthRoot: LIVE_HEALTH_ENDPOINT
+    });
     const earlyReportFeed = new window.SentinelData.GenerationFeed(client, {
         metadataFile: "output/x_report_events.json",
         dataFile: "output/x_report_pinpoints.geojson"
@@ -161,15 +168,17 @@
         return String(raw).replace(/[_-]+/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
     }
 
-    function renderCoverageDetails(healthState, publicationId) {
+    function renderCoverageDetails(healthState, publicationId, liveCollectors = []) {
         const panel = element("coverage-details");
         const toggle = element("coverage-status-toggle");
         if (!panel || !toggle) return;
         const failedSources = Array.isArray(healthState?.failedSources) ? healthState.failedSources : [];
+        const collectors = Array.isArray(liveCollectors) ? liveCollectors : [];
+        const unhealthyCollectors = collectors.filter(collector => String(collector.status || "").toLowerCase() !== "healthy");
         panel.replaceChildren();
         const heading = document.createElement("strong");
-        heading.textContent = failedSources.length
-            ? `${failedSources.length} source${failedSources.length === 1 ? "" : "s"} need attention`
+        heading.textContent = failedSources.length || unhealthyCollectors.length
+            ? `${failedSources.length + unhealthyCollectors.length} source${failedSources.length + unhealthyCollectors.length === 1 ? "" : "s"} need attention`
             : "All configured sources are reporting";
         panel.appendChild(heading);
         if (publicationId) {
@@ -192,9 +201,27 @@
             });
             panel.appendChild(list);
         }
+        if (collectors.length) {
+            const collectorHeading = document.createElement("small");
+            collectorHeading.textContent = "Live collector status";
+            panel.appendChild(collectorHeading);
+            const list = document.createElement("ul");
+            collectors.forEach(collector => {
+                const item = document.createElement("li");
+                const name = document.createElement("b");
+                const status = document.createElement("span");
+                const detail = document.createElement("small");
+                name.textContent = readableSourceName(collector);
+                status.textContent = String(collector.status || "unknown").replace(/[_-]+/g, " ");
+                detail.textContent = `${collector.records_received ?? 0} records · last success ${collector.last_success || "not recorded"}`;
+                item.append(name, status, detail);
+                list.appendChild(item);
+            });
+            panel.appendChild(list);
+        }
         toggle.hidden = false;
-        toggle.disabled = !failedSources.length;
-        toggle.setAttribute("aria-label", failedSources.length ? "Show degraded source details" : "Coverage source details");
+        toggle.disabled = !failedSources.length && !collectors.length;
+        toggle.setAttribute("aria-label", failedSources.length || unhealthyCollectors.length ? "Show degraded source details" : "Coverage source details");
     }
 
     function setLoading(visible, message = "Building operational picture...") {
@@ -1329,7 +1356,10 @@
 
     function applyNewsSnapshot(snapshot) {
         newsItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
-        newsHealth = snapshot?.health || { status: "unavailable", sources: [] };
+        newsHealth = snapshot?.newsHealth || snapshot?.health || { status: "unavailable", sources: [] };
+        element("sentinel-map").dataset.liveNewsState = snapshot?.liveNewsState || "unavailable";
+        element("sentinel-map").dataset.liveNewsCount = String(snapshot?.liveNewsItems?.length || 0);
+        element("sentinel-map").dataset.liveNewsGeneratedAt = snapshot?.liveNewsGeneratedAt || "";
         updateSignalFilters();
         renderNewsFeed();
     }
@@ -1608,7 +1638,7 @@
                 ? `Coverage detail: ${healthReasons}`
                 : "Coverage detail unavailable.";
         }
-        renderCoverageDetails(snapshot.healthState, snapshot.manifest.publication_id);
+        renderCoverageDetails(snapshot.healthState, snapshot.manifest.publication_id, snapshot.liveCollectors);
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
             `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
@@ -1617,7 +1647,15 @@
             : snapshot.liveFeedState === "degraded"
                 ? " Live D1 feed delayed; last valid records retained."
                 : " Live D1 feed unavailable; static publication retained.";
-        setStatus(`${message}${liveMessage}`, snapshot.liveFeedState === "available" ? state : "degraded");
+        const liveNewsMessage = snapshot.liveNewsState === "available"
+            ? ` Live news: ${snapshot.liveNewsItems.length.toLocaleString()} articles.`
+            : snapshot.liveNewsState === "degraded"
+                ? " Live news delayed; last valid articles retained."
+                : " Live news unavailable; static news retained.";
+        const statusState = snapshot.liveFeedState === "available" && snapshot.liveNewsState !== "degraded"
+            ? state
+            : "degraded";
+        setStatus(`${message}${liveMessage}${liveNewsMessage}`, statusState);
     }
 
     function refresh(options = {}) {
