@@ -1412,11 +1412,13 @@ body:has(.sentinel-app) {
 }
 .sentinel-map-label { left: max(16px, env(safe-area-inset-left)); display: grid; gap: 3px; padding: 9px 11px; }
 .sentinel-map-label strong { color: #e6f5ff; letter-spacing: .12em; }
-.sentinel-legend { right: max(16px, env(safe-area-inset-right)); display: flex; gap: 12px; padding: 9px 11px; }
+.sentinel-legend { right: max(16px, env(safe-area-inset-right)); display: flex; flex-wrap: wrap; gap: 8px 12px; max-width: min(520px, calc(100vw - 32px)); padding: 9px 11px; }
 .sentinel-legend i { display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%; background: #37a7ff; box-shadow: 0 0 8px #37a7ff; }
-.sentinel-legend .news-light { background: #31d48a; box-shadow: 0 0 8px #31d48a; }
-.sentinel-legend .war-light { background: #ff294d; box-shadow: 0 0 8px #ff294d; }
-.sentinel-legend .earthquake-light { background: #b56cff; box-shadow: 0 0 8px #b56cff; }
+.sentinel-legend .critical-light { background: #ff1744; box-shadow: 0 0 8px #ff1744; }
+.sentinel-legend .high-light { background: #ff7a00; box-shadow: 0 0 8px #ff7a00; }
+.sentinel-legend .medium-light { background: #ffd166; box-shadow: 0 0 8px #ffd166; }
+.sentinel-legend .low-light { background: #38d996; box-shadow: 0 0 8px #38d996; }
+.sentinel-legend .unknown-light { background: #8b9bb4; box-shadow: 0 0 8px #8b9bb4; }
 
 .event-drawer {
     position: absolute;
