@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const assert = require("node:assert/strict");
 
 const worker = fs.readFileSync("cloudflare/sentinel-api.js", "utf8");
+const migration = fs.readFileSync("cloudflare/migrations/0002_intelligence_evidence.sql", "utf8");
 
 for (const cron of [
   "*/5 * * * *",
@@ -27,4 +28,7 @@ assert.match(worker, /path === "\/api\/live-events"/);
 assert.match(worker, /path === "\/api\/news"/);
 assert.match(worker, /path === "\/api\/import"/);
 assert.match(worker, /env\.IMPORT_SECRET/);
+for (const table of ["sources", "incidents", "incident_sources", "claims", "evidence", "article_intelligence", "classification_history"]) {
+  assert.match(migration, new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
+}
 console.log("Sentinel Worker contract passed");
