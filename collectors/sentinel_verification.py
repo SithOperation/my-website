@@ -216,6 +216,55 @@ def _status_for_group(group: Sequence[Mapping[str, Any]], now: str) -> dict[str,
     }
 
 
+def _subject_category(item: Mapping[str, Any]) -> str:
+    """Return one stable subject category without changing source attribution."""
+
+    categories = [str(value).casefold() for value in item.get("categories", []) if value]
+    mapping = (
+        ("military_activity", ("conflict", "military", "missile_activity", "armed_conflict")),
+        ("cybersecurity_incident", ("cybersecurity", "cyber_incident", "cyber_advisory")),
+        ("natural_disaster", ("natural_hazard", "earthquake", "severe_weather", "flood", "wildfire", "volcanic")),
+        ("political_development", ("politics", "government", "government_action")),
+        ("infrastructure_disruption", ("power_outage", "communications_outage", "transportation_incident", "industrial_accident")),
+        ("economic_development", ("economic", "economic_disruption")),
+        ("space_weather", ("space_weather", "emp_space")),
+    )
+    for subject, aliases in mapping:
+        if any(category in aliases for category in categories):
+            return subject
+    return categories[0] if categories else "general_news"
+
+
+def _information_type(item: Mapping[str, Any], verification: Mapping[str, Any]) -> str:
+    """Classify the information state; keywords alone never confirm an incident."""
+
+    text = f"{item.get('title', '')} {item.get('summary', '')}"
+    if _HISTORICAL_RE.search(text):
+        return "historical_incident"
+    if bool(item.get("official_source")) or bool(verification.get("official_confirmation")):
+        return "official_advisory"
+    if _HYPOTHETICAL_RE.search(text) or _NEGATION_RE.search(text):
+        return "unverified_report"
+    if verification.get("status") == "corroborated":
+        return "confirmed_incident" if item.get("latitude") is not None else "developing_situation"
+    if verification.get("status") in {"disputed", "debunked", "retracted"}:
+        return "unverified_report"
+    if any(term in text.casefold() for term in ("analysis", "opinion", "editorial")):
+        return "analysis_opinion"
+    return "breaking_news"
+
+
+def _lifecycle(item: Mapping[str, Any], information_type: str) -> str:
+    text = f"{item.get('title', '')} {item.get('summary', '')}"
+    if information_type == "historical_incident":
+        return "historical"
+    if _RETRACTION_RE.search(text) or _DEBUNKED_RE.search(text):
+        return "resolved"
+    if information_type in {"developing_situation", "breaking_news"}:
+        return "developing"
+    return "active" if information_type in {"official_advisory", "confirmed_incident"} else "published"
+
+
 def verify_items(items: Iterable[Mapping[str, Any]], *, checked_at: str) -> list[dict[str, Any]]:
     """Attach conservative verification metadata without deleting source items."""
 
@@ -236,5 +285,23 @@ def verify_items(items: Iterable[Mapping[str, Any]], *, checked_at: str) -> list
             classification = cast(Mapping[str, Any], classification_value) if isinstance(classification_value, Mapping) else {}
             item["verification"] = {**verification, **{key: classification[key] for key in ("detected_keywords", "classification_explanation") if key in classification}}
             item["claim_status"] = item["verification"]["status"]
+            item["verification_status"] = item["verification"]["status"]
+            item["subject_category"] = _subject_category(item)
+            item["information_type"] = _information_type(item, item["verification"])
+            item["lifecycle"] = _lifecycle(item, item["information_type"])
+            item["occurrence_at"] = item.get("published_at")
+            item["geographic_relevance"] = {
+                "incident": [],
+                "responsible": [],
+                "affected": [],
+                "mentioned": list(item.get("countries", [])),
+                "confidence": "mentioned_only" if item.get("countries") else "none",
+            }
+            item["corroboration"] = {
+                "independent_source_count": item["verification"]["independent_source_count"],
+                "source_groups": sorted({_source_group(candidate) for candidate in group}),
+                "evidence": item["verification"]["evidence"],
+                "contradictions": item["verification"]["contradictions"],
+            }
             result.append(item)
     return result

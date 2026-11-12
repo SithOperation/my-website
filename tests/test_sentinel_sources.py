@@ -253,3 +253,20 @@ def test_verification_separates_severity_from_confidence_and_marks_retraction() 
     assert result["verification"]["status"] == "retracted"
     assert result["severity"] == "CRITICAL"
     assert result["verification"]["confidence_score"] < 100
+    assert result["information_type"] == "unverified_report"
+    assert result["lifecycle"] == "resolved"
+    assert result["geographic_relevance"]["confidence"] == "none"
+
+
+def test_verification_exposes_separate_information_and_geography_fields() -> None:
+    item = {
+        "id": "quake", "title": "Earthquake strikes Japan", "summary": "A magnitude 5 event was observed.",
+        "url": "https://example.test/quake", "publisher": "USGS", "source_id": "usgs",
+        "official_source": True, "categories": ["earthquake"], "countries": ["Japan"],
+        "published_at": "2026-11-11T12:00:00Z", "latitude": 35.6, "longitude": 139.7,
+    }
+    result = verify_items([item], checked_at="2026-11-11T13:00:00Z")[0]
+    assert result["information_type"] == "official_advisory"
+    assert result["subject_category"] == "natural_disaster"
+    assert result["geographic_relevance"]["mentioned"] == ["Japan"]
+    assert result["geographic_relevance"]["incident"] == []

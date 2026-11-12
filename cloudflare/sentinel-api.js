@@ -203,7 +203,60 @@ async function upsertNews(db, items) {
       count += statements.length;
     }
   }
+  await upsertArticleIntelligence(db, items);
   return count;
+}
+
+function intelligenceForArticle(item) {
+  const textValue = `${item.title || ""} ${item.summary || ""}`.toLowerCase();
+  const official = ["cisa-advisories-rss", "cisa-kev", "noaa-alerts", "noaa-space-weather-json", "usgs-earthquakes"].includes(item.sourceId);
+  const historical = /historical|years ago|last year|on this date/.test(textValue);
+  const disputed = /denied|disputed|unconfirmed|no evidence|retracted|debunked/.test(textValue);
+  let informationType = official ? "official_advisory" : historical ? "historical_incident" : disputed ? "unverified_report" : "breaking_news";
+  if (!official && !historical && !disputed && /analysis|opinion|editorial/.test(textValue)) informationType = "analysis_opinion";
+  const category = String(item.category || "news").toLowerCase();
+  const subjectCategory = category.includes("cyber") ? "cybersecurity_incident"
+    : category.includes("natural") || category.includes("earthquake") || category.includes("weather") ? "natural_disaster"
+      : category.includes("military") || category.includes("conflict") || category.includes("missile") ? "military_activity"
+        : category.includes("polit") || category.includes("government") ? "political_development"
+          : category.includes("economic") ? "economic_development" : category;
+  return {
+    informationType,
+    subjectCategory,
+    verificationStatus: official ? "officially confirmed" : disputed ? "disputed" : "single-source report",
+    lifecycle: historical ? "historical" : disputed ? "resolved" : official ? "active" : "developing"
+  };
+}
+
+async function upsertArticleIntelligence(db, items) {
+  try {
+    const statements = items.filter(item => item.id && item.title).map(item => {
+      const classification = intelligenceForArticle(item);
+      return db.prepare(`
+        INSERT INTO article_intelligence(article_id,information_type,subject_category,verification_status,lifecycle,occurrence_at,geographic_relevance_json,corroboration_json,classified_at)
+        VALUES(?,?,?,?,?,?,?,?,?)
+        ON CONFLICT(article_id) DO UPDATE SET
+          information_type=excluded.information_type, subject_category=excluded.subject_category,
+          verification_status=excluded.verification_status, lifecycle=excluded.lifecycle,
+          occurrence_at=excluded.occurrence_at, classified_at=excluded.classified_at
+      `).bind(
+        item.id,
+        classification.informationType,
+        classification.subjectCategory,
+        classification.verificationStatus,
+        classification.lifecycle,
+        item.published || null,
+        JSON.stringify({ incident: [], responsible: [], affected: [], mentioned: [], confidence: "none" }),
+        JSON.stringify({ independent_source_count: 1, source_groups: [item.sourceId], evidence: [], contradictions: [] }),
+        new Date().toISOString()
+      );
+    });
+    for (let offset = 0; offset < statements.length; offset += 15) await db.batch(statements.slice(offset, offset + 15));
+  } catch (error) {
+    // The migration is additive and may be applied after the Worker deploy.
+    // Existing news ingestion must continue if the optional table is absent.
+    console.warn("Article intelligence table unavailable", error);
+  }
 }
 
 async function collectUSGS(db) {
@@ -346,9 +399,14 @@ async function collectConfiguredRSS(env, key, sourceId, category) {
     await recordHealth(env.DB, sourceId, "disabled", 0, "No verified RSS feeds configured");
     return;
   }
-  const feeds = configuredFeeds(env, key);
-  for (const feed of feeds) {
-    await collectNewsGroup(env.DB, [[feed.id, feed.publisher || feed.id, feed.url, [category, ...(feed.countries || [])]]]);
+  try {
+    const feeds = configuredFeeds(env, key);
+    for (const feed of feeds) {
+      await collectNewsGroup(env.DB, [[feed.id, feed.publisher || feed.id, feed.url, [category, ...(feed.countries || [])]]]);
+    }
+  } catch (error) {
+    await recordHealth(env.DB, sourceId, "failed", 0, error.message || error);
+    console.error(key, error);
   }
 }
 
@@ -420,7 +478,23 @@ export default {
     }
     if (path === "/api/news") {
       if (request.method !== "GET") return json({ error: "Method not allowed" }, 405);
-      try { const category = url.searchParams.get("category"); const limit = Math.min(200, Math.max(1, Number(url.searchParams.get("limit")) || 100)); const result = category ? await env.DB.prepare("SELECT * FROM news_articles WHERE category=? ORDER BY published_at DESC LIMIT ?").bind(category, limit).all() : await env.DB.prepare("SELECT * FROM news_articles ORDER BY published_at DESC LIMIT ?").bind(limit).all(); return json({ status: "online", count: result.results.length, items: result.results.map(item => ({ ...item, countries: JSON.parse(item.countries || "[]") })) }); } catch { return json({ error: "News unavailable" }, 503); }
+      try {
+        const category = url.searchParams.get("category");
+        const limit = Math.min(200, Math.max(1, Number(url.searchParams.get("limit")) || 100));
+        const query = category
+          ? env.DB.prepare("SELECT n.*, i.information_type, i.subject_category, i.verification_status, i.lifecycle, i.occurrence_at, i.geographic_relevance_json, i.corroboration_json FROM news_articles n LEFT JOIN article_intelligence i ON i.article_id=n.article_id WHERE n.category=? ORDER BY n.published_at DESC LIMIT ?").bind(category, limit)
+          : env.DB.prepare("SELECT n.*, i.information_type, i.subject_category, i.verification_status, i.lifecycle, i.occurrence_at, i.geographic_relevance_json, i.corroboration_json FROM news_articles n LEFT JOIN article_intelligence i ON i.article_id=n.article_id ORDER BY n.published_at DESC LIMIT ?").bind(limit);
+        let result;
+        try { result = await query.all(); } catch {
+          result = category ? await env.DB.prepare("SELECT * FROM news_articles WHERE category=? ORDER BY published_at DESC LIMIT ?").bind(category, limit).all() : await env.DB.prepare("SELECT * FROM news_articles ORDER BY published_at DESC LIMIT ?").bind(limit).all();
+        }
+        return json({ status: "online", count: result.results.length, items: result.results.map(item => ({
+          ...item,
+          countries: JSON.parse(item.countries || "[]"),
+          geographic_relevance: item.geographic_relevance_json ? JSON.parse(item.geographic_relevance_json) : null,
+          corroboration: item.corroboration_json ? JSON.parse(item.corroboration_json) : null
+        })) });
+      } catch { return json({ error: "News unavailable" }, 503); }
     }
     if (path === "/api/import") {
       if (request.method !== "POST") return json({ error: "Method not allowed" }, 405);
