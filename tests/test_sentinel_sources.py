@@ -270,3 +270,16 @@ def test_verification_exposes_separate_information_and_geography_fields() -> Non
     assert result["subject_category"] == "natural_disaster"
     assert result["geographic_relevance"]["mentioned"] == ["Japan"]
     assert result["geographic_relevance"]["incident"] == []
+
+
+def test_war_reports_have_a_medium_floor_and_active_attacks_are_high() -> None:
+    low_war = {
+        "id": "war-news", "title": "War negotiations continue", "summary": "Officials discussed the conflict.",
+        "url": "https://example.test/war", "publisher": "Fixture", "source_id": "fixture",
+        "categories": ["conflict"], "countries": ["Ukraine"], "published_at": "2026-11-11T12:00:00Z",
+        "severity": "LOW",
+    }
+    high_war = {**low_war, "id": "war-attack", "title": "Missile strike kills civilians", "severity": "LOW"}
+    results = verify_items([low_war, high_war], checked_at="2026-11-11T13:00:00Z")
+    assert results[0]["severity"] == "MEDIUM"
+    assert results[1]["severity"] == "HIGH"

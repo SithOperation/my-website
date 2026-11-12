@@ -47,6 +47,7 @@ assert.ok(!page.includes('id="layer-europe-nato"') && !page.includes('id="layer-
 assert.ok(mapScript.includes('"missile_drone"') && mapScript.includes('"eastern_flank"'), "European events must support multi-layer filtering");
 assert.ok(adapterScript.includes('rawType || "").toLowerCase() === "europe_security"'), "Europe security classifications must survive adaptation");
 assert.ok(mapScript.includes("function severityColorExpression") && mapScript.includes('"CRITICAL", "#ff1744"') && mapScript.includes('"HIGH", "#ff7a00"'), "Published event dots must use severity colors");
+assert.ok(mapScript.includes("War reports must not remain low severity") || mapScript.includes("SEVERITY_ORDER.MEDIUM"), "War reports must have a minimum medium severity");
 assert.ok(mapScript.includes("function plotClass(event)") && mapScript.includes("plot_class: plotClass(event)"), "Published event plots must retain category metadata");
 assert.ok(mapScript.includes("hostilities|offensive|occupation|ceasefire"), "Conflict wording must not fall through to the news color");
 assert.ok(mapScript.includes('category === "earthquake"'), "Earthquake category metadata must remain available");

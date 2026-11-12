@@ -31,6 +31,9 @@ _DEBUNKED_RE = re.compile(r"\b(?:debunked|hoax|fabricated|false claim|fake repor
 _CONTRADICTION_RE = re.compile(r"\b(?:denied|denies|denial|disputed|contradicts?|no evidence|unconfirmed)\b", re.I)
 _STOPWORDS = frozenset("the a an and or of to in on for from by with at is are was were be been this that report reports says said news after before latest".split())
 _OFFICIAL_PUBLISHERS = frozenset({"USGS", "NOAA SWPC", "CISA", "National Weather Service", "FEMA", "IAEA", "WHO"})
+_SEVERITY_ORDER = {"UNKNOWN": 0, "LOW": 1, "MEDIUM": 2, "HIGH": 3, "CRITICAL": 4}
+_MILITARY_RE = re.compile(r"\b(?:war|conflict|armed conflict|military|missile|airstrike|air strike|shelling|hostilities|offensive|occupation|ceasefire)\b", re.I)
+_HIGH_IMPACT_MILITARY_RE = re.compile(r"\b(?:nuclear|radiological|mass casualties?|invasion|major attack|killed|dead|fatalities|civilian casualties|active combat|missile strike|airstrike|shelling)\b", re.I)
 
 
 @dataclass(frozen=True)
@@ -265,6 +268,20 @@ def _lifecycle(item: Mapping[str, Any], information_type: str) -> str:
     return "active" if information_type in {"official_advisory", "confirmed_incident"} else "published"
 
 
+def _normalize_severity(item: Mapping[str, Any]) -> str:
+    """Apply a conservative severity floor so war reports are never low."""
+
+    raw = str(item.get("severity") or item.get("threat_level") or item.get("priority") or "UNKNOWN").upper()
+    supplied = raw if raw in _SEVERITY_ORDER else "UNKNOWN"
+    text = f"{item.get('title', '')} {item.get('summary', '')} {item.get('description', '')}"
+    categories = " ".join(str(value) for value in item.get("categories", []) if value)
+    if not _MILITARY_RE.search(f"{categories} {text}"):
+        return supplied
+    if _HIGH_IMPACT_MILITARY_RE.search(text):
+        return "HIGH" if supplied != "CRITICAL" else supplied
+    return "MEDIUM" if _SEVERITY_ORDER[supplied] < _SEVERITY_ORDER["MEDIUM"] else supplied
+
+
 def verify_items(items: Iterable[Mapping[str, Any]], *, checked_at: str) -> list[dict[str, Any]]:
     """Attach conservative verification metadata without deleting source items."""
 
@@ -285,6 +302,7 @@ def verify_items(items: Iterable[Mapping[str, Any]], *, checked_at: str) -> list
             classification = cast(Mapping[str, Any], classification_value) if isinstance(classification_value, Mapping) else {}
             item["verification"] = {**verification, **{key: classification[key] for key in ("detected_keywords", "classification_explanation") if key in classification}}
             item["claim_status"] = item["verification"]["status"]
+            item["severity"] = _normalize_severity(item)
             item["verification_status"] = item["verification"]["status"]
             item["subject_category"] = _subject_category(item)
             item["information_type"] = _information_type(item, item["verification"])

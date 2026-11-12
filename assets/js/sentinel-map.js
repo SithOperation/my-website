@@ -237,7 +237,13 @@
 
     function normalizeSeverity(event) {
         const value = String(event?.threat_level || event?.severity || event?.priority || "UNKNOWN").toUpperCase();
-        return Object.prototype.hasOwnProperty.call(SEVERITY_ORDER, value) ? value : "UNKNOWN";
+        const supplied = Object.prototype.hasOwnProperty.call(SEVERITY_ORDER, value) ? value : "UNKNOWN";
+        const signals = [event?.type, event?.category, event?.classification].filter(Boolean).join(" ").toLowerCase();
+        const text = `${event?.title || ""} ${event?.description || ""} ${event?.summary || ""}`.toLowerCase();
+        const military = /(conflict|war|armed[_ -]?conflict|military|missile|air[_ -]?strike|shelling|hostilities|offensive|occupation|ceasefire)/.test(`${signals} ${text}`);
+        if (!military) return supplied;
+        if (/(nuclear|radiological|mass casualty|mass casualties|invasion|major attack|killed|dead|fatalities|civilian casualties|active combat|missile strike|airstrike|shelling)/.test(text)) return "HIGH";
+        return SEVERITY_ORDER[supplied] < SEVERITY_ORDER.MEDIUM ? "MEDIUM" : supplied;
     }
 
     function severityColorExpression(property = "severity") {
