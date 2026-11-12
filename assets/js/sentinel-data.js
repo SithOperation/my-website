@@ -170,9 +170,18 @@
         };
     }
 
+    function mergeEvents(staticEvents, liveEvents) {
+        const byId = new Map();
+        for (const event of [...staticEvents, ...liveEvents]) {
+            if (event?.event_id) byId.set(String(event.event_id), event);
+        }
+        return Array.from(byId.values());
+    }
+
     class Client {
         constructor(options = {}) {
             this.root = options.root || "data";
+            this.liveRoot = options.liveRoot || null;
             this.activePublicationId = null;
             this.snapshot = null;
         }
@@ -201,6 +210,71 @@
             }
         }
 
+        async fetchLiveEvents() {
+            if (!this.liveRoot) return { events: null, generatedAt: null, error: null };
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(this.liveRoot, {
+                    cache: "no-store",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`live event feed unavailable (${response.status})`);
+                const document = await response.json();
+                const sourceEvents = Array.isArray(document?.events) ? document.events : [];
+                const normalized = sourceEvents.map(normalizeEvent).filter(Boolean);
+                return {
+                    events: normalized,
+                    generatedAt: document.generated_at || null,
+                    invalidEventCount: sourceEvents.length - normalized.length,
+                    error: null
+                };
+            }
+            catch (error) {
+                return {
+                    events: null,
+                    generatedAt: null,
+                    invalidEventCount: 0,
+                    error: error?.name === "AbortError" ? "live event feed request timed out" : String(error.message || error)
+                };
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
+        mergeLiveSnapshot(staticEvents, liveResult) {
+            if (!this.liveRoot) {
+                return {
+                    events: staticEvents,
+                    liveEvents: [],
+                    liveFeedState: "disabled",
+                    liveFeedError: null,
+                    liveGeneratedAt: null,
+                    liveInvalidEventCount: 0,
+                    liveRevision: "disabled"
+                };
+            }
+            const previousLive = this.snapshot?.liveEvents || [];
+            const liveEvents = liveResult.events || previousLive;
+            const liveFeedState = liveResult.error
+                ? (previousLive.length ? "degraded" : "unavailable")
+                : "available";
+            const liveRevision = liveResult.error
+                ? (this.snapshot?.liveRevision || `error:${liveFeedState}`)
+                : `${liveResult.generatedAt || "live"}:${liveEvents.length}`;
+            return {
+                events: mergeEvents(staticEvents, liveEvents),
+                liveEvents,
+                liveFeedState,
+                liveFeedError: liveResult.error,
+                liveGeneratedAt: liveResult.generatedAt || this.snapshot?.liveGeneratedAt || null,
+                liveInvalidEventCount: liveResult.invalidEventCount || 0,
+                liveRevision
+            };
+        }
+
         validateManifest(manifest) {
             if (!manifest || typeof manifest !== "object" || !manifest.publication_id) {
                 const error = new Error("The Sentinel manifest is incomplete.");
@@ -225,16 +299,32 @@
             }
             catch (error) {
                 if (["INVALID_MANIFEST", "UNSUPPORTED_SCHEMA"].includes(error.code)) throw error;
-                if (this.snapshot && !force) return { ...this.snapshot, unchanged: true, manifestUnavailable: true };
+                if (this.snapshot && !force) {
+                    const liveResult = await this.fetchLiveEvents();
+                    const live = this.mergeLiveSnapshot(this.snapshot.staticEvents || this.snapshot.events, liveResult);
+                    return {
+                        ...this.snapshot,
+                        ...live,
+                        unchanged: live.liveRevision === this.snapshot.liveRevision,
+                        manifestUnavailable: true
+                    };
+                }
                 legacy = true;
             }
 
             const newsResult = await this.fetchJSON("sentinel_news.json", null, true)
                 .then(normalizeNewsPublication)
                 .catch(() => normalizeNewsPublication(null));
+            const liveResult = await this.fetchLiveEvents();
 
             if (!legacy && !force && manifest.publication_id === this.activePublicationId && this.snapshot) {
-                return { ...this.snapshot, ...newsResult, unchanged: true };
+                const live = this.mergeLiveSnapshot(this.snapshot.staticEvents || this.snapshot.events, liveResult);
+                return {
+                    ...this.snapshot,
+                    ...newsResult,
+                    ...live,
+                    unchanged: live.liveRevision === this.snapshot.liveRevision
+                };
             }
 
             const publicationId = legacy ? null : manifest.publication_id;
@@ -248,7 +338,8 @@
             if (!Array.isArray(mapEvents)) throw new Error("Invalid map event data.");
 
             const normalizedEvents = mapEvents.map(normalizeEvent);
-            const events = normalizedEvents.filter(Boolean);
+            const staticEvents = normalizedEvents.filter(Boolean);
+            const live = this.mergeLiveSnapshot(staticEvents, liveResult);
             const generated = manifest?.generated || dashboard.generated || null;
             const effectiveManifest = manifest || {
                 publication_id: `legacy-${generated || "current"}`,
@@ -261,10 +352,12 @@
             this.snapshot = {
                 manifest: effectiveManifest,
                 dashboard,
-                events,
-                invalidEventCount: normalizedEvents.length - events.length,
+                events: live.events,
+                staticEvents,
+                invalidEventCount: normalizedEvents.length - staticEvents.length + live.liveInvalidEventCount,
                 health,
                 healthState: healthState(health, generated),
+                ...live,
                 ...newsResult,
                 legacy,
                 unchanged: false

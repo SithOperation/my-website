@@ -2,6 +2,8 @@
     "use strict";
 
     const DATA_REFRESH_MS = 5 * 60 * 1000;
+    const LIVE_REFRESH_MS = 60 * 1000;
+    const LIVE_EVENTS_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/live-events";
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
     // Keep publication classifications available to diagnostics and future
@@ -28,7 +30,7 @@
         ["Lima", -77.0428, -12.0464], ["Bogotá", -74.0721, 4.711], ["Santiago", -70.6693, -33.4489]
     ];
     const adapter = window.SentinelGodsEyeAdapter || null;
-    const client = new window.SentinelData.Client({ root: "data" });
+    const client = new window.SentinelData.Client({ root: "data", liveRoot: LIVE_EVENTS_ENDPOINT });
     const earlyReportFeed = new window.SentinelData.GenerationFeed(client, {
         metadataFile: "output/x_report_events.json",
         dataFile: "output/x_report_pinpoints.geojson"
@@ -51,6 +53,7 @@
     let newsItems = [];
     let newsHealth = { status: "unavailable", sources: [] };
     let visibleMetricsTimer = null;
+    let refreshInFlight = null;
 
     const element = id => document.getElementById(id);
     const setText = (id, value) => {
@@ -1582,6 +1585,9 @@
         element("event-feed-count").textContent = snapshot.events.length.toLocaleString();
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
         element("sentinel-map").dataset.rejectedEvents = String(snapshot.invalidEventCount || 0);
+        element("sentinel-map").dataset.liveFeedState = snapshot.liveFeedState || "unavailable";
+        element("sentinel-map").dataset.liveEventCount = String(snapshot.liveEvents?.length || 0);
+        element("sentinel-map").dataset.liveGeneratedAt = snapshot.liveGeneratedAt || "";
         element("sentinel-map").dataset.feedState = snapshot.invalidEventCount
             ? "degraded"
             : snapshot.events.length ? "available" : "empty";
@@ -1606,27 +1612,39 @@
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
             `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
-        setStatus(message, state);
+        const liveMessage = snapshot.liveFeedState === "available"
+            ? ` Live D1 feed: ${snapshot.liveEvents.length.toLocaleString()} records.`
+            : snapshot.liveFeedState === "degraded"
+                ? " Live D1 feed delayed; last valid records retained."
+                : " Live D1 feed unavailable; static publication retained.";
+        setStatus(`${message}${liveMessage}`, snapshot.liveFeedState === "available" ? state : "degraded");
     }
 
-    async function refresh(options = {}) {
-        try {
-            const snapshot = await client.load(options);
-            if (!snapshot.unchanged || !allEvents.length) applySnapshot(snapshot);
-            else {
-                applyNewsSnapshot(snapshot);
-                if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
+    function refresh(options = {}) {
+        if (refreshInFlight) return refreshInFlight;
+        refreshInFlight = (async () => {
+            try {
+                const snapshot = await client.load(options);
+                if (!snapshot.unchanged || !allEvents.length) applySnapshot(snapshot);
+                else {
+                    applyNewsSnapshot(snapshot);
+                    if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
+                }
             }
-        }
-        catch (error) {
-            console.error("Sentinel publication failed", error);
-            setStatus(error.message || "Sentinel publication unavailable", "error");
-            element("sentinel-map").dataset.feedState = "error";
-            if (!allEvents.length) {
-                setLoading(false);
-                element("map-count").textContent = "Intelligence data unavailable";
+            catch (error) {
+                console.error("Sentinel publication failed", error);
+                setStatus(error.message || "Sentinel publication unavailable", "error");
+                element("sentinel-map").dataset.feedState = "error";
+                if (!allEvents.length) {
+                    setLoading(false);
+                    element("map-count").textContent = "Intelligence data unavailable";
+                }
             }
-        }
+            finally {
+                refreshInFlight = null;
+            }
+        })();
+        return refreshInFlight;
     }
 
     function bindControls() {
@@ -1770,7 +1788,6 @@
         refresh();
         window.setInterval(() => {
             if (document.visibilityState === "visible") {
-                refresh();
                 updateMapData();
                 loadEnvironmentalLayers({ refreshOnly: true }).catch(error =>
                     console.warn("Environmental refresh failed; prior data retained", error)
@@ -1780,6 +1797,9 @@
                 );
             }
         }, DATA_REFRESH_MS);
+        window.setInterval(() => {
+            if (document.visibilityState === "visible") refresh();
+        }, LIVE_REFRESH_MS);
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
                 map?.resize();
