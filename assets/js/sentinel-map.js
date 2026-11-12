@@ -50,6 +50,7 @@
     let highlightedEventId = null;
     let newsItems = [];
     let newsHealth = { status: "unavailable", sources: [] };
+    let visibleMetricsTimer = null;
 
     const element = id => document.getElementById(id);
     const setText = (id, value) => {
@@ -1122,26 +1123,40 @@
             map.getSource("sentinel-cities")?.setData(cityFeatureCollection(filteredEvents));
             map.triggerRepaint();
             syncEventHitOverlay();
-            window.setTimeout(() => {
-                element("sentinel-map").dataset.renderedFeatures = String(
-                    map.querySourceFeatures("sentinel-events").length
-                );
-                const visibleIds = new Set();
-                let clusteredVisible = 0;
-                map.queryRenderedFeatures({ layers: ["event-hit", "events", "event-glyphs", "military-aircraft"] })
-                    .forEach(feature => {
-                        const count = Number(feature.properties?.point_count);
-                        if (Number.isFinite(count) && count > 0) clusteredVisible += count;
-                        else if (feature.properties?.map_id) visibleIds.add(String(feature.properties.map_id));
-                    });
-                element("sentinel-map").dataset.visibleEvents = String(visibleIds.size + clusteredVisible);
-                setLoading(false);
-                syncEventHitOverlay();
-            }, 350);
+            scheduleVisibleEventMetrics();
         }
 
         setText("ops-mapped", filteredEvents.length.toLocaleString());
         updateMapCount();
+    }
+
+    function scheduleVisibleEventMetrics(attempt = 0) {
+        if (!mapReady || !map) return;
+        if (visibleMetricsTimer) window.clearTimeout(visibleMetricsTimer);
+
+        const renderedFeatures = map.querySourceFeatures("sentinel-events").length;
+        const visibleIds = new Set();
+        let clusteredVisible = 0;
+        map.queryRenderedFeatures({ layers: ["event-hit", "events", "event-glyphs", "military-aircraft"] })
+            .forEach(feature => {
+                const count = Number(feature.properties?.point_count);
+                if (Number.isFinite(count) && count > 0) clusteredVisible += count;
+                else if (feature.properties?.map_id) visibleIds.add(String(feature.properties.map_id));
+            });
+        const visibleEvents = visibleIds.size + clusteredVisible;
+        element("sentinel-map").dataset.renderedFeatures = String(renderedFeatures);
+        element("sentinel-map").dataset.visibleEvents = String(visibleEvents);
+        syncEventHitOverlay();
+
+        // setData() completes before MapLibre finishes loading and painting
+        // source tiles. Retry briefly so production verification measures the
+        // rendered map instead of a transient zero-frame.
+        const maxAttempts = 20;
+        if (!visibleEvents && filteredEvents.length && attempt < maxAttempts) {
+            visibleMetricsTimer = window.setTimeout(() => scheduleVisibleEventMetrics(attempt + 1), 250);
+            return;
+        }
+        setLoading(false);
     }
 
     function isEnvironmentalSignal(event) {
