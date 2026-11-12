@@ -3,6 +3,11 @@
 `sentinel-api.js` is the Cloudflare module Worker that writes verified public
 source records into the Sentinel D1 database and serves the website API.
 
+The additive migration in `migrations/0002_intelligence_evidence.sql` adds
+source, article-classification, claim, evidence, incident, relationship, and
+classification-history tables. It does not delete or rewrite existing event or
+news rows. Apply it to D1 before enabling writes to the new tables.
+
 Required configuration:
 
 - D1 binding: `DB`

@@ -26,6 +26,13 @@
           "detected_keywords": {"type": "array", "items": {"type": "string"}},
           "severity": {"type": "string"},
           "claim_status": {"enum": ["unverified", "single-source report", "corroborated", "officially confirmed", "disputed", "debunked", "retracted", "published_source_report"]},
+          "verification_status": {"type": "string"},
+          "information_type": {"enum": ["breaking_news", "official_advisory", "confirmed_incident", "unverified_report", "developing_situation", "analysis_opinion", "historical_incident"]},
+          "subject_category": {"type": "string"},
+          "lifecycle": {"enum": ["developing", "active", "published", "resolved", "historical"]},
+          "occurrence_at": {"type": ["string", "null"]},
+          "geographic_relevance": {"type": "object"},
+          "corroboration": {"type": "object"},
           "verification": {
             "type": "object",
             "required": ["status", "confidence_score", "independent_source_count", "official_confirmation", "evidence", "contradictions", "last_checked"],
