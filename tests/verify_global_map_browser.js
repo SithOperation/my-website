@@ -144,6 +144,13 @@ async function main() {
         await page.setViewportSize({ width: 390, height: 844 });
         await page.locator("#event-list-toggle").click();
         await page.locator("#event-panel.is-open").waitFor({ state: "visible" });
+        await page.locator("#news-feed button").first().waitFor({ state: "visible", timeout: 5000 });
+        if (await page.locator("#news-filter-category option").count() < 2 ||
+            await page.locator("#news-filter-severity option").count() < 2) {
+            throw new Error("Unified signal filters did not receive map event categories and severities");
+        }
+        await page.locator("#news-filter-category").selectOption({ index: 1 });
+        await page.locator("#news-filter-severity").selectOption({ index: 1 });
         await page.locator("#event-panel-close").click();
         await page.locator("#event-panel.is-open").waitFor({ state: "hidden" });
 

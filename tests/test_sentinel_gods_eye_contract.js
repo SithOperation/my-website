@@ -30,6 +30,8 @@ assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenCont
 assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
 assert.ok(page.includes('id="coverage-status-toggle"') && page.includes('id="coverage-details"'), "Degraded coverage must expose a human-readable fold-out");
 assert.ok(mapScript.includes("renderCoverageDetails") && mapScript.includes("failedSources"), "Coverage notification must list degraded sources instead of raw JSON");
+assert.ok(mapScript.includes("unifiedSignalItems") && mapScript.includes("signalKind"), "Events drawer must combine intelligence, environmental, and X-report signals");
+assert.ok(mapScript.includes("isEnvironmentalSignal") && mapScript.includes("updateSignalFilters"), "Map counts and filters must classify non-intelligence signals");
 assert.ok(!page.includes('id="mobile-panel-toggle"') && !page.includes('id="layers-toggle"') && !page.includes('id="source-viewer"'), "Legacy filter, layer, and source tabs must be removed from the public map");
 assert.ok(page.includes('class="sentinel-back"'), "The return link must be positioned within the map overlay");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");

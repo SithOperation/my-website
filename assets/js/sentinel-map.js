@@ -819,6 +819,7 @@
             earlyReportIndex.set(String(properties.id), properties);
         });
         earlyReportCount = earlyReportIndex.size;
+        updateSignalFilters();
         if (earlyReportPopupId && !earlyReportIndex.has(earlyReportPopupId)) {
             earlyReportPopup?.remove();
             earlyReportPopup = null;
@@ -914,6 +915,7 @@
         }).filter(Boolean);
         environmentalCount = recentEarthquakes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length +
             recentVolcanoes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length + weatherFeatures.length;
+        updateSignalFilters();
         map.addSource("weather-source", { type: "geojson", data: { type: "FeatureCollection", features: weatherFeatures } });
         map.addLayer({ id: "weather-fill", type: "fill", source: "weather-source", paint: { "fill-color": weatherColorExpression(), "fill-opacity": ["match", ["get", "severity"], "CRITICAL", 0.28, "HIGH", 0.22, "MEDIUM", 0.17, 0.12] } });
         map.addLayer({ id: "weather-line", type: "line", source: "weather-source", paint: { "line-color": weatherColorExpression(), "line-width": ["match", ["get", "severity"], "CRITICAL", 3, "HIGH", 2.5, 2], "line-dasharray": [2, 2] } });
@@ -977,6 +979,7 @@
                 Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
             ).length +
             weatherFeatures.length;
+        updateSignalFilters();
         updateMapCount();
     }
 
@@ -1141,10 +1144,72 @@
         updateMapCount();
     }
 
+    function isEnvironmentalSignal(event) {
+        const type = String(event?.type || event?.category || "").toLowerCase();
+        const classification = String(event?.classification || "").toLowerCase();
+        const text = `${event?.title || ""} ${event?.description || ""}`.toLowerCase();
+        return ["earthquake", "seismic_event", "volcano", "weather", "weather_alert", "tropical_cyclone", "wildfire", "prescribed_fire", "flood", "flooding", "severe_weather", "natural_hazard"].includes(type) ||
+            /disaster_alert|earthquake|seismic|volcano|wildfire|forest fire|flood|hurricane|typhoon|tornado|tsunami|storm surge/.test(`${type} ${classification} ${text}`);
+    }
+
+    function signalKind(event) {
+        if (event?.signal_kind) return String(event.signal_kind);
+        if (event?.kind === "x_report" || event?.source_class === "social_media_osint") return "x_report";
+        return isEnvironmentalSignal(event) ? "environmental" : "intelligence";
+    }
+
+    function signalCategories(event) {
+        const categories = Array.isArray(event?.categories) ? event.categories.map(String) : [];
+        const category = event?.category || event?.type;
+        return Array.from(new Set([signalKind(event), category, ...categories].filter(Boolean).map(String)));
+    }
+
+    function unifiedSignalItems() {
+        const items = [];
+        const seen = new Set();
+        const add = (item, kind) => {
+            const id = String(item.event_id || item.id || item.url || `${kind}-${item.title || "signal"}`);
+            const key = `${kind}:${id}`;
+            if (seen.has(key)) return;
+            seen.add(key);
+            items.push({
+                ...item,
+                id,
+                event_id: item.event_id || id,
+                signal_kind: kind,
+                categories: signalCategories({ ...item, signal_kind: kind }),
+                countries: Array.isArray(item.countries) ? item.countries.map(String) : item.country ? [String(item.country)] : [],
+                severity: String(item.severity || item.threat_level || item.priority || "UNKNOWN").toUpperCase(),
+                timestamp: item.timestamp || item.published_at || item.created_at || null,
+                description: item.description || item.summary || "No summary is available."
+            });
+        };
+        allEvents.forEach(event => add(event, signalKind(event)));
+        Object.values(environmentalEvents).flat().forEach(event => add(event, "environmental"));
+        earlyReportIndex.forEach(properties => add({
+            ...properties,
+            title: properties.title || "X report",
+            description: properties.summary || "Early report from X; verify independently.",
+            source: properties.account ? `X ${properties.account}` : "X report",
+            source_url: properties.source_url,
+            type: "x_report",
+            published_at: properties.published_at
+        }, "x_report"));
+        newsItems.forEach(item => add(item, "intelligence"));
+        return items;
+    }
+
+    function updateSignalFilters() {
+        const items = unifiedSignalItems();
+        populateNewsFilter("news-filter-country", Array.from(new Set(items.flatMap(item => item.countries))).sort());
+        populateNewsFilter("news-filter-category", Array.from(new Set(items.flatMap(item => signalCategories(item)))).sort());
+        populateNewsFilter("news-filter-severity", Array.from(new Set(items.map(item => item.severity || "UNKNOWN"))).sort());
+    }
+
     function updateMapCount() {
         const counts = [
-            `${filteredEvents.length.toLocaleString()} intelligence`,
-            `${environmentalCount.toLocaleString()} environmental`,
+            `${(filteredEvents.length - filteredEvents.filter(isEnvironmentalSignal).length).toLocaleString()} intelligence`,
+            `${Math.max(environmentalCount, filteredEvents.filter(isEnvironmentalSignal).length).toLocaleString()} environmental`,
             `${earlyReportCount.toLocaleString()} X reports`
         ];
         element("map-count").textContent =
@@ -1203,20 +1268,21 @@
         const country = element("news-filter-country")?.value || "all";
         const category = element("news-filter-category")?.value || "all";
         const severity = element("news-filter-severity")?.value || "all";
-        const filtered = newsItems.filter(item =>
+        const allSignals = unifiedSignalItems();
+        const filtered = allSignals.filter(item =>
             (country === "all" || item.countries.includes(country)) &&
-            (category === "all" || item.categories.includes(category)) &&
-            (severity === "all" || (item.severity || "UNKNOWN") === severity)
+            (category === "all" || signalCategories(item).includes(category)) &&
+            (severity === "all" || item.severity === severity)
         );
         feed.replaceChildren();
         feed.hidden = false;
         element("event-detail")?.setAttribute("hidden", "");
-        if (!newsItems.length) {
+        if (!allSignals.length) {
             const empty = document.createElement("p");
             empty.className = "news-feed-empty";
             empty.textContent = newsHealth.status === "unavailable"
-                ? "News publication unavailable; map publication remains available."
-                : "No news records are currently published.";
+                ? "Signal publication unavailable; no records can be displayed."
+                : "No signals are currently published.";
             feed.appendChild(empty);
             return;
         }
@@ -1227,7 +1293,7 @@
             feed.appendChild(empty);
             return;
         }
-        filtered.slice(0, 60).forEach(item => {
+        filtered.slice(0, 100).forEach(item => {
             const button = document.createElement("button");
             const title = document.createElement("strong");
             const metadata = document.createElement("small");
@@ -1235,7 +1301,10 @@
             title.textContent = item.title;
             metadata.textContent = `${item.publisher} · ${formatDate(item.published_at)} · ${item.severity || "UNKNOWN"}`;
             button.append(title, metadata);
-            button.addEventListener("click", () => renderNewsDetail(item));
+            metadata.textContent = `${displayType(item.signal_kind)} · ${item.publisher || sourceText(item)} · ${formatDate(item.timestamp)} · ${item.severity}`;
+            button.addEventListener("click", () => item.signal_kind === "intelligence" && item.url && item.publisher
+                ? renderNewsDetail(item)
+                : renderEventDetail(item));
             feed.appendChild(button);
         });
     }
@@ -1243,9 +1312,7 @@
     function applyNewsSnapshot(snapshot) {
         newsItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
         newsHealth = snapshot?.health || { status: "unavailable", sources: [] };
-        populateNewsFilter("news-filter-country", Array.from(new Set(newsItems.flatMap(item => item.countries))).sort());
-        populateNewsFilter("news-filter-category", Array.from(new Set(newsItems.flatMap(item => item.categories))).sort());
-        populateNewsFilter("news-filter-severity", Array.from(new Set(newsItems.map(item => item.severity || "UNKNOWN"))).sort());
+        updateSignalFilters();
         renderNewsFeed();
     }
 
