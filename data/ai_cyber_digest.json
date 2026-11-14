@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-11-13T20:44:08.384812+00:00",
+  "generated_at": "2026-11-14T18:55:53.106158+00:00",
   "source_count": 8,
-  "sources_succeeded": 7,
-  "articles_collected": 42,
-  "articles_after_deduplication": 41,
-  "stories_published": 20,
+  "sources_succeeded": 4,
+  "articles_collected": 8,
+  "articles_after_deduplication": 8,
+  "stories_published": 8,
   "critical_count": 1,
   "high_count": 0,
-  "medium_count": 5,
-  "low_count": 14,
+  "medium_count": 0,
+  "low_count": 7,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 11
+      "articles": 1
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 13
+      "articles": 2
     },
     {
       "source": "Krebs on Security",
@@ -32,61 +32,60 @@
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 10
+      "articles": 4
     },
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
-      "status": "success",
-      "articles": 1
+      "status": "no_new_articles",
+      "articles": 0
     },
     {
       "source": "MIT News AI",
       "url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
-      "status": "success",
-      "articles": 3
+      "status": "no_new_articles",
+      "articles": 0
     },
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
-      "status": "success",
-      "articles": 1
+      "status": "no_new_articles",
+      "articles": 0
     },
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 3
+      "articles": 1
     }
   ],
   "stories": [
     {
-      "id": "7b5dacba886b8db5",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "published_at": "2026-11-13T12:00:00+00:00",
-      "collected_at": "2026-11-13T20:44:07.497059+00:00",
+      "id": "e577b898eca3316f",
+      "title": "Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html",
+      "published_at": "2026-11-14T12:38:35+00:00",
+      "collected_at": "2026-11-14T18:55:47.743972+00:00",
       "category": "Active Exploitation",
       "severity": "Critical",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "summary": "The U.S.",
       "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-114713",
-        "CVE-2026-123039"
+        "CVE-2026-114713"
       ],
-      "cvss_score": null,
+      "cvss_score": 8.6,
       "known_exploited": true,
       "active_exploitation": true,
-      "patch_available": true,
+      "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
         "CVE"
       ],
-      "importance_score": 61,
+      "importance_score": 59,
       "score_breakdown": [
         {
           "signal": "Active exploitation",
@@ -97,197 +96,23 @@
           "points": 20
         },
         {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "Patch available",
-          "points": 4
+          "signal": "High CVSS",
+          "points": 10
         },
         {
           "signal": "CVE cited",
           "points": 4
         }
       ],
-      "related_sources": [
-        {
-          "source": "SecurityWeek",
-          "source_url": "https://www.securityweek.com/php2shell-exploited-in-destructive-check-point-gateway-attacks/"
-        }
-      ]
+      "related_sources": []
     },
     {
-      "id": "7f23aad252df2a55",
-      "title": "New N-able \"4EverAble2Shell\" zero-day exploited hours after PoC released",
+      "id": "0eb645ca70f53d6a",
+      "title": "US disrupts North Korean campaign behind $400 million crypto theft",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/new-n-able-4everable2shell-zero-day-exploited-hours-after-poc-released/",
-      "published_at": "2026-11-12T19:51:16+00:00",
-      "collected_at": "2026-11-13T20:44:04.403068+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "Hackers are actively exploiting a newly disclosed N-able N-central zero-day vulnerability dubbed \"4EverAble2Shell\" to compromise servers and deploy cryptocurrency miners, with researchers reporting at least 21 affected systems, including 19 running the company's latest security update.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Zero-Day"
-      ],
-      "importance_score": 22,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        },
-        {
-          "signal": "Patch available",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "02c1dcd61c66dc6c",
-      "title": "Check Point warns of zero-day flaw exploited for root access",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/",
-      "published_at": "2026-11-13T10:44:22+00:00",
-      "collected_at": "2026-11-13T20:44:04.402568+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "Check Point Software has released emergency hotfixes to address a high-severity flaw that hackers have been exploiting to gain root privileges and establish persistence on vulnerable devices since late October.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Zero-Day"
-      ],
-      "importance_score": 18,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "d89589bec211ea26",
-      "title": "Nightmare Eclipse Drops Windows Zero-Day Exploit ‘SignDrop’",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/nightmare-eclipse-drops-windows-zero-day-exploit-signdrop/",
-      "published_at": "2026-11-13T08:50:36+00:00",
-      "collected_at": "2026-11-13T20:44:04.819560+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "It abuses CLFS and Windows Defender to trigger arbitrary file creation in the context of the antimalware process.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Malware",
-        "Zero-Day"
-      ],
-      "importance_score": 18,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "0a366d3631879fe7",
-      "title": "Hackers Exploit New N-central Zero-Day Hours After PoC Publication",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/hackers-exploit-new-n-central-zero-day-hours-after-poc-publication/",
-      "published_at": "2026-11-13T07:20:50+00:00",
-      "collected_at": "2026-11-13T20:44:04.819744+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "Dubbed 4EverAble2Shell, the flaw could allow remote, unauthenticated attackers to execute code with root privileges.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Zero-Day"
-      ],
-      "importance_score": 18,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "c892fb218fc51be1",
-      "title": "New SignDrop Zero-Day Exploit Turns Windows CLFS Security Feature Into SYSTEM Access",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html",
-      "published_at": "2026-11-12T17:50:27+00:00",
-      "collected_at": "2026-11-13T20:44:04.296371+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "Public exploit code released earlier this week claims that a local Windows user can gain SYSTEM privileges through the Common Log File System driver.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Zero-Day"
-      ],
-      "importance_score": 18,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "d32b5f97fc676bf8",
-      "title": "FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html",
-      "published_at": "2026-11-13T14:28:58+00:00",
-      "collected_at": "2026-11-13T20:44:04.295531+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/",
+      "published_at": "2026-11-14T15:15:49+00:00",
+      "collected_at": "2026-11-14T18:55:47.937167+00:00",
       "category": "Nation-State Activity",
       "severity": "Low",
       "summary": "The U.S.",
@@ -312,15 +137,15 @@
       "related_sources": []
     },
     {
-      "id": "d25f99854f909af5",
-      "title": "Operation Endgame Takes Down Gootloader, CastleRAT and StealC Servers, Seizes 6.4M Stolen Logins",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/operation-endgame-takes-down-gootloader.html",
-      "published_at": "2026-11-13T10:55:03+00:00",
-      "collected_at": "2026-11-13T20:44:04.295943+00:00",
-      "category": "Ransomware",
+      "id": "2396f465be9396c9",
+      "title": "Cursor confirms security breach led to malicious Claude Code extension",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cursor-confirms-security-breach-led-to-malicious-claude-code-extension/",
+      "published_at": "2026-11-14T17:27:25+00:00",
+      "collected_at": "2026-11-14T18:55:47.936995+00:00",
+      "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "An international police operation took down servers behind Gootloader, CastleRAT and StealC this week.",
+      "summary": "Cursor confirmed it suffered a security breach that let hackers distribute a malicious Claude Code extension through its marketplace after stealing credentials from AI infrastructure provider Fireworks AI.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -331,156 +156,21 @@
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [
-        "Malware",
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
       "related_sources": []
     },
     {
-      "id": "0963885b5efedda3",
-      "title": "In Other News: New CISA Director Nominee, Connected Car Hacking, Baker Tilly Data Breach",
+      "id": "f8b55e53d88a8142",
+      "title": "Is AI Making Us Worse at Cybersecurity?",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/in-other-news-new-cisa-director-nominee-connected-car-hacking-baker-tilly-data-breach/",
-      "published_at": "2026-11-13T15:20:00+00:00",
-      "collected_at": "2026-11-13T20:44:04.818867+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "Noteworthy stories that might have slipped under the radar: Siemens details security advisory policy, OpenAI Codex backdoor risk, Microsoft warns of model weight backdoors.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach",
-        "Malware"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "d8cc2172e29e81d0",
-      "title": "PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html",
-      "published_at": "2026-11-13T16:53:08+00:00",
-      "collected_at": "2026-11-13T20:44:04.295266+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "A type confusion flaw in PostgreSQL lets a database user who can create objects run code on the server.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-6460"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "53b1d1645f89232b",
-      "title": "Microsoft says November security updates cause printing issues",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-november-security-updates-cause-printing-issues/",
-      "published_at": "2026-11-13T12:27:40+00:00",
-      "collected_at": "2026-11-13T20:44:04.402477+00:00",
+      "source_url": "https://www.securityweek.com/is-ai-making-us-worse-at-cybersecurity/",
+      "published_at": "2026-11-14T14:00:00+00:00",
+      "collected_at": "2026-11-14T18:55:48.259792+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Microsoft warned customers earlier this week that the November 2026 security updates may break printing for documents with complex formatting.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "Patch available",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "9c5c30b78fe1e9b2",
-      "title": "Microsoft confirms Windows activation failures after November updates",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-windows-activation-failures-after-november-updates/",
-      "published_at": "2026-11-13T09:36:18+00:00",
-      "collected_at": "2026-11-13T20:44:04.402656+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Microsoft has confirmed that this month's Patch Tuesday security updates are causing Windows activation and licensing failures with 0x80041008 error codes.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "Patch available",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "d2962957f52f8763",
-      "title": "Trezor confirms crypto-stealing implants in three wallets, releases fix",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
-      "published_at": "2026-11-13T19:38:36+00:00",
-      "collected_at": "2026-11-13T20:44:04.402040+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Cryptocurrency hardware wallet maker Trezor has confirmed that three Safe 5 devices sold by Southeast Asian reseller CryptoBilis contained malicious hardware implants designed to steal wallet recovery phrases and send them to attackers over cellular networks.",
+      "summary": "Overreliance on AI could erode the creativity, clear communication, and critical thinking security teams need when there’s no playbook.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -497,15 +187,15 @@
       "related_sources": []
     },
     {
-      "id": "6ce23a8d3c69416c",
-      "title": "German military drone operations disrupted by cyberattack",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/german-military-drone-operations-disrupted-by-cyberattack/",
-      "published_at": "2026-11-13T17:31:56+00:00",
-      "collected_at": "2026-11-13T20:44:04.402181+00:00",
+      "id": "f6a32c5f6448063c",
+      "title": "Apple Reveals How Secure Exclaves Shield Camera and Microphone Data",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/apple-reveals-how-secure-exclaves-shield-camera-and-microphone-data/",
+      "published_at": "2026-11-14T11:00:00+00:00",
+      "collected_at": "2026-11-14T18:55:48.259967+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "German defense technology company Quantum Systems confirmed that it detected an incident in late October that was part of an active cyberattack by \"hostile actors.\" [...]",
+      "summary": "The tech giant has detailed the architecture designed to isolate ambient sensor data from the main OS on HomeView and new iPhones.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -522,42 +212,15 @@
       "related_sources": []
     },
     {
-      "id": "97c01e9fc4639398",
-      "title": "Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/",
-      "published_at": "2026-11-13T16:21:43+00:00",
-      "collected_at": "2026-11-13T20:44:04.402285+00:00",
-      "category": "Malware",
-      "severity": "Low",
-      "summary": "Vulnerable Check Point Security Gateway instances have been targeted in PHP2Shell attacks that deployed data-wiping malware on VMware ESXi hosts.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Malware"
-      ],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "d93f5e12f3c1794f",
-      "title": "New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html",
-      "published_at": "2026-11-13T15:27:05+00:00",
-      "collected_at": "2026-11-13T20:44:04.295414+00:00",
+      "id": "3b2e4affe53ca50b",
+      "title": "No Signs of Hacking in FAA Ground Stop as FBI Reportedly Probes Software Update",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/no-signs-of-hacking-in-faa-ground-stop-as-fbi-reportedly-probes-software-update/",
+      "published_at": "2026-11-14T08:40:22+00:00",
+      "collected_at": "2026-11-14T18:55:48.260120+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Two attacks made public this week allow a malicious host to read data inside AMD SEV-SNP-protected virtual machines (VMs), which are built to keep the server's operator out.",
+      "summary": "Officials say there is no evidence of a cyberattack behind the nationwide FAA outage, which may have been caused by a software update.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -574,16 +237,16 @@
       "related_sources": []
     },
     {
-      "id": "b32ccd39bcb9fea1",
-      "title": "How one AI agent exposed five critical enterprise security gaps",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/how-one-ai-agent-exposed-five-critical-enterprise-security-gaps/",
-      "published_at": "2026-11-13T15:01:11+00:00",
-      "collected_at": "2026-11-13T20:44:04.402381+00:00",
-      "category": "Artificial Intelligence",
+      "id": "068aacdc5a8cf491",
+      "title": "FAA Ground Stop Issued Due to ‘Extraordinary Circumstances’",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/faa-ground-stop-issued-due-to-extraordinary-circumstances/",
+      "published_at": "2026-11-13T21:33:27+00:00",
+      "collected_at": "2026-11-14T18:55:48.260301+00:00",
+      "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "An AI agent built to automate invoice processing could be manipulated into changing vendor bank details through a malicious email, without triggering traditional security alerts.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "summary": "Federal officials have yet to say what caused the communications disruption or whether they are investigating a possible cyberattack.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
@@ -599,66 +262,16 @@
       "related_sources": []
     },
     {
-      "id": "7d4d71d056da0286",
-      "title": "Introducing ChatGPT Wallet",
+      "id": "a99dfdd20d85acbb",
+      "title": "Shield helps technicians hand off legacy portal work with OpenAI",
       "source": "OpenAI News",
-      "source_url": "https://openai.com/index/introducing-chatgpt-wallet",
-      "published_at": "2026-11-13T15:00:00+00:00",
-      "collected_at": "2026-11-13T20:44:08.270988+00:00",
+      "source_url": "https://openai.com/business/customer-stories/shield",
+      "published_at": "2026-11-13T08:00:00+00:00",
+      "collected_at": "2026-11-14T18:55:53.096681+00:00",
       "category": "Artificial Intelligence",
       "severity": "Low",
-      "summary": "Introducing ChatGPT Wallet, a secure way for agents in ChatGPT Work, Codex, and dots to complete purchases with user approval and existing card protections.",
+      "summary": "Shield uses OpenAI to help IT technicians hand off work in legacy portals.",
       "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "ea8f2c6821428bc1",
-      "title": "Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html",
-      "published_at": "2026-11-13T13:54:20+00:00",
-      "collected_at": "2026-11-13T20:44:04.295637+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Three Trezor Safe 5 wallets bought from the reseller CryptoBilis contain an implant, an extra circuit board that can copy their recovery phrases, hardware wallet maker Trezor said yesterday.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "d96956c28be62934",
-      "title": "Microsoft Struggles to Restore Email and Other Services in a Global Outage",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/microsoft-struggles-to-restore-email-and-other-services-in-a-global-outage/",
-      "published_at": "2026-11-13T13:47:42+00:00",
-      "collected_at": "2026-11-13T20:44:04.818984+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Microsoft is trying different ways to identify the cause of the problem and get its servers back online, using “a measured approach to identify and repair affected infrastructure.” The post Microsoft Struggles to Restore Email and Other Services in a Global Outage appeared first on SecurityWeek .",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
