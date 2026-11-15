@@ -234,7 +234,7 @@ describe("request boundary", () => {
 
 describe("Google provider boundary", () => {
   it("times out provider requests at the configured boundary", async () => {
-    let signal: AbortSignal | undefined;
+    let signal: AbortSignal | null | undefined;
     const hangingFetch = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
       signal = init?.signal;
       return new Promise<Response>(() => undefined);
