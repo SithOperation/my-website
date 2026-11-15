@@ -8,7 +8,7 @@ const fixture = {
     status: "ok",
     category: "all",
     retention_hours: 72,
-    timestamp: "2026-11-14T23:00:00Z",
+    timestamp: new Date().toISOString(),
     outages: [
         { id: "fixture-unknown", provider: "Example Cloud", description: "Regional service disruption", eventType: "OUTAGE", startDate: "2026-11-14T20:00:00Z", endDate: null, locations: ["Region A"], dataSource: "Fixture" },
         { id: "fixture-resolved", provider: "Example ISP", description: "Resolved network interruption", eventType: "NETWORK", startDate: "2026-11-14T18:00:00Z", endDate: "2026-11-14T19:00:00Z", locations: ["Region B"], dataSource: "Fixture" }
