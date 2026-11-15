@@ -5,7 +5,7 @@
     const REFRESH_MS = 60 * 1000;
     const RADWARE_REFRESH_MS = 5 * 60 * 1000;
     const STALE_MS = 10 * 60 * 1000;
-    const state = { records: [], filtered: [], responseAt: null, backendTimestamp: null, error: null, controller: null, refreshInFlight: false };
+    const state = { records: [], filtered: [], responseAt: null, backendTimestamp: null, error: null, controller: null, refreshInFlight: false, signalHistory: [] };
     const radwareState = { payload: null, error: null, inFlight: false };
     const downradarState = { disruptions: null, incidents: null, errors: [], inFlight: false };
     const RADWARE_CATEGORIES = [
@@ -179,6 +179,14 @@
             status.textContent = downradarState.errors.length ? `Partial feed · collected ${collected}` : stale ? `Stale data · collected ${collected}` : `Updated ${collected}`;
             const count = Number(disruptionPayload?.count ?? 0), services = Number(disruptionPayload?.monitored_services ?? incidentPayload?.monitored_services ?? 0);
             meta.textContent = `${count} active disruptions across ${services} monitored services. ${stale ? "Source data is stale." : "Status is provider-reported, not independently verified."}`;
+            $("downradar-active-count").textContent = count || "0";
+            $("downradar-service-count").textContent = services || "0";
+            $("downradar-meta-live").textContent = meta.textContent;
+            $("live-metric-active").textContent = count || "0";
+            $("live-metric-services").textContent = services || "0";
+            $("live-metric-transitions").textContent = dedupeDownradarIncidents(incidentPayload?.recent_incidents).length;
+            $("live-signal-status").textContent = stale ? "stale source" : `updated ${formatDate(payload?.collected_at)}`;
+            recordSignal(count, dedupeDownradarIncidents(incidentPayload?.recent_incidents).length);
         }
         const active = downradarActiveRecords(disruptionPayload); disruptionsNode.replaceChildren();
         if (!active.length) { const empty = document.createElement("p"); empty.className = "monitor-empty"; empty.textContent = downradarState.errors.length ? "Active disruptions are unavailable." : "No active service disruptions reported by DownRadar."; disruptionsNode.append(empty); }
@@ -196,6 +204,22 @@
         const incidents = dedupeDownradarIncidents(incidentPayload?.recent_incidents).sort((a, b) => (validDate(b.changed_at) || 0) - (validDate(a.changed_at) || 0)); incidentsNode.replaceChildren();
         if (!incidents.length) { const empty = document.createElement("p"); empty.className = "monitor-empty"; empty.textContent = downradarState.errors.length ? "Recent transitions are unavailable." : "No recent DownRadar transitions reported."; incidentsNode.append(empty); }
         else incidents.forEach(item => { const article = document.createElement("article"); article.className = "monitor-downradar-incident"; const heading = document.createElement("h3"); heading.textContent = item.name || item.slug; const transition = document.createElement("div"); transition.className = "monitor-downradar-transition"; const from = document.createElement("span"); from.className = `monitor-downradar-transition__status monitor-downradar-status--${downradarTone(item.from_raw || item.from)}`; from.textContent = item.from || "Unknown"; const arrow = document.createElement("span"); arrow.className = "monitor-downradar-transition__arrow"; arrow.textContent = "→"; const to = document.createElement("span"); to.className = `monitor-downradar-transition__status monitor-downradar-status--${downradarTone(item.to_raw || item.to)}`; to.textContent = item.to || "Unknown"; transition.append(from, arrow, to); if (item.recovered) { const recovered = document.createElement("small"); recovered.className = "monitor-downradar-recovered"; recovered.textContent = "Recovered"; transition.append(recovered); } const when = document.createElement("time"); when.dateTime = item.changed_at; when.textContent = `Observed ${formatDate(item.changed_at)}`; article.append(heading, transition, when); appendLink(article, item.source_url, "Open official status page ↗"); incidentsNode.append(article); });
+    }
+
+    function recordSignal(active, transitions) {
+        const value = Math.max(0, Number(active) || 0) + Math.max(0, Number(transitions) || 0) * .35 + Math.min(state.records.length, 12) * .15;
+        state.signalHistory = [...state.signalHistory, { value, at: Date.now() }].slice(-18);
+        renderLiveSignal();
+    }
+
+    function renderLiveSignal() {
+        const node = $("live-signal-chart");
+        if (!node) return;
+        const values = state.signalHistory.map(item => item.value);
+        if (!values.length) { node.textContent = "Waiting for live samples"; return; }
+        const max = Math.max(...values, 1), min = Math.min(...values, 0), span = Math.max(max - min, 1);
+        const points = values.map((value, index) => `${(index / Math.max(values.length - 1, 1)) * 100},${88 - ((value - min) / span) * 66}`).join(" ");
+        node.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="signal-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b3131b" stop-opacity=".22"/><stop offset="1" stop-color="#b3131b" stop-opacity="0"/></linearGradient></defs><path class="monitor-signal-chart__area" d="M ${points} L 100 100 L 0 100 Z"></path><polyline class="monitor-signal-chart__line" points="${points}"></polyline>${values.map((value, index) => `<circle cx="${(index / Math.max(values.length - 1, 1)) * 100}" cy="${88 - ((value - min) / span) * 66}" r="1.35"></circle>`).join("")}</svg>`;
     }
     async function requestDownRadar() {
         if (downradarState.inFlight) return; downradarState.inFlight = true; downradarState.errors = [];
@@ -263,7 +287,7 @@
         state.filtered.sort((a, b) => sort === "provider" ? a.provider.localeCompare(b.provider) : ((a.startMs || 0) - (b.startMs || 0)) * (sort === "oldest" ? 1 : -1));
     }
 
-    function renderMetrics() { const unresolved = state.records.filter(item => item.status === "unknown").length, resolved = state.records.filter(item => item.status === "resolved").length; $("metric-unresolved").textContent = unresolved; $("metric-resolved").textContent = resolved; $("metric-recent").textContent = state.records.filter(item => withinHours(item, 24)).length; $("metric-total").textContent = state.records.length; }
+    function renderMetrics() { $("live-metric-reports").textContent = state.records.length; if (!downradarState.disruptions && !downradarState.incidents) { $("live-metric-active").textContent = "—"; $("live-metric-services").textContent = "—"; $("live-metric-transitions").textContent = "—"; } }
     function renderFeed() {
         const feed = $("monitor-feed"); $("feed-count").textContent = `${state.filtered.length} shown`;
         if (!state.filtered.length) { feed.innerHTML = `<div class="monitor-empty"><div><strong>No outage reports match this view.</strong><p>${state.records.length ? "Adjust the search or filters to inspect the current monitoring window." : "No outage reports available in the current monitoring window."}</p></div></div>`; return; }

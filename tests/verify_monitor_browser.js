@@ -61,9 +61,12 @@ async function main() {
             const response = await page.goto(`${baseUrl}/monitor.html?viewport=${viewport.width}`, { waitUntil: "domcontentloaded", timeout: 30000 });
             assert.ok(response?.ok(), `${viewport.width}: monitor page failed to load`);
             await page.waitForFunction(() => document.querySelector("#monitor-status-text")?.textContent === "Worker online", { timeout: 10000 });
-            assert.equal(await page.locator("#metric-total").textContent(), "2");
-            assert.equal(await page.locator("#metric-unresolved").textContent(), "1");
-            assert.equal(await page.locator("#metric-resolved").textContent(), "1");
+            assert.equal(await page.locator("#live-metric-reports").textContent(), "2");
+            assert.equal(await page.locator("#live-metric-active").textContent(), "2");
+            assert.equal(await page.locator("#live-metric-services").textContent(), "285");
+            assert.equal(await page.locator("#live-metric-transitions").textContent(), "2");
+            assert.equal(await page.locator("#downradar-active-count").textContent(), "2");
+            assert.equal(await page.locator("#downradar-service-count").textContent(), "285");
             await page.waitForFunction(() => document.querySelector("#radware-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
             await page.waitForFunction(() => document.querySelector("#downradar-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
             assert.equal(await page.locator("#downradar-disruptions .monitor-downradar-card").count(), 1);
