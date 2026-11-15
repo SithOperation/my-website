@@ -20,6 +20,7 @@ PUBLIC_FILES = (
     "CNAME",
     "favicon.ico",
     "index.html",
+    "profile.html",
     "monitor.html",
     "robots.txt",
     "sentinel.html",
