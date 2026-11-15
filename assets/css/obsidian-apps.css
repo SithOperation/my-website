@@ -285,6 +285,54 @@
     color: var(--muted) !important;
 }
 
+/* Final cascade guard: obsidian-apps.css is loaded after the editorial
+   inspector stylesheet, so keep every inspector content surface readable. */
+.inspector-page .scope-notice,
+.inspector-page .assessment-grid article,
+.inspector-page .provider-card,
+.inspector-page .interpretation-card,
+.inspector-page .details-stack details,
+.inspector-page .future-grid article,
+.inspector-page .session-history li {
+    background: #fffaf0 !important;
+    color: #526267 !important;
+}
+.inspector-page .scope-notice h3,
+.inspector-page .scope-notice li,
+.inspector-page .assessment-grid span,
+.inspector-page .assessment-grid strong,
+.inspector-page .provider-card h3,
+.inspector-page .provider-card dt,
+.inspector-page .provider-card dd,
+.inspector-page .interpretation-card h3,
+.inspector-page .interpretation-card p,
+.inspector-page .details-stack summary,
+.inspector-page .details-content,
+.inspector-page .findings-list,
+.inspector-page .technical-list,
+.inspector-page .future-grid h3,
+.inspector-page .future-grid span,
+.inspector-page .session-history li,
+.inspector-page .session-history li strong,
+.inspector-page .session-history li span {
+    color: #526267 !important;
+}
+.inspector-page .scope-notice h3,
+.inspector-page .assessment-grid strong,
+.inspector-page .provider-card h3,
+.inspector-page .provider-card dt,
+.inspector-page .interpretation-card h3,
+.inspector-page .details-stack summary,
+.inspector-page .future-grid h3,
+.inspector-page .session-history li strong {
+    color: var(--navy) !important;
+}
+.inspector-page .assessment-grid span,
+.inspector-page .future-grid span,
+.inspector-page .session-history li span {
+    color: var(--muted) !important;
+}
+
 /* Governance resources: preserve content and data behavior while adopting the portfolio finish. */
 .governance-page .gov-shell { max-width: 1240px; }
 .governance-page .gov-hero { border-top-color: var(--obsidian-violet); }
