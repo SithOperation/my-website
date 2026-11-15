@@ -67,8 +67,11 @@ async function main() {
             await page.waitForFunction(() => document.querySelector("#radware-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
             await page.waitForFunction(() => document.querySelector("#downradar-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
             assert.equal(await page.locator("#downradar-disruptions .monitor-downradar-card").count(), 1);
+            assert.equal(await page.locator("#downradar-disruptions .monitor-downradar-status--degraded").count(), 1);
             assert.equal(await page.locator("#downradar-incidents .monitor-downradar-incident").count(), 2);
-            assert.equal(await page.locator("#radware-top-attackers strong").first().textContent(), "12");
+            assert.equal(await page.locator("#downradar-incidents .monitor-downradar-status--operational").count(), 2);
+            assert.equal(await page.locator("#downradar-incidents .monitor-downradar-status--degraded").count(), 2);
+            assert.equal(await page.locator("#radware-top-attackers strong").first().textContent(), "12 (60.0%)");
             assert.equal(await page.locator("#radware-scanned-udp-ports .monitor-radware-tile").count(), 2);
             assert.equal(await page.locator("#radware-scanned-udp-ports .monitor-radware-tile").first().locator("small").textContent(), "5");
             assert.equal(await page.locator(".monitor-badge--unknown").count(), 1);
