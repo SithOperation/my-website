@@ -27,14 +27,14 @@
 .monitor-feature__content {
     position: relative;
     z-index: 2;
-    width: min(620px, 100%);
+    width: min(760px, 100%);
     box-sizing: border-box;
     min-width: 0;
     max-width: 620px;
-    padding: clamp(2.5rem, 7vw, 6rem) max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem));
+    padding: clamp(2rem, 5vw, 4rem) max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem));
 }
-.monitor-feature__eyebrow { margin: 2.6rem 0 1rem; color: #f17676; font: 700 10px/1.2 var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; }
-.monitor-feature h2 { margin: 0; color: #f6f3ed; font: 800 clamp(3rem, 7vw, 6.6rem)/.86 var(--font-display, Arial Narrow, sans-serif); letter-spacing: -.045em; text-transform: uppercase; }
+.monitor-feature__eyebrow { margin: 1.3rem 0 .75rem; color: #f17676; font: 700 10px/1.2 var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; }
+.monitor-feature h2 { max-width: 760px; margin: 0; color: #f6f3ed; font: 800 clamp(2.7rem, 5vw, 5rem)/.86 var(--font-display, Arial Narrow, sans-serif); letter-spacing: -.045em; text-transform: uppercase; }
 .monitor-feature h2 em { color: #f17676; font-style: normal; }
 .monitor-feature__content > p:not(.monitor-feature__eyebrow) { width: min(520px, 100%); max-width: 100%; margin: 1.5rem 0 0; color: #c7d5da; font-size: 16px; line-height: 1.65; }
 .monitor-feature__meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 1.6rem 0 1.8rem; }
@@ -44,5 +44,5 @@
 @media (max-width: 700px) {
     .monitor-feature { width: 100vw; height: auto; min-height: 570px; background-position: center, 68% center; background-size: cover, auto 100%; }
     .monitor-feature::after { background: linear-gradient(90deg, rgba(7,13,18,.82), rgba(7,13,18,.56)), linear-gradient(0deg, rgba(7,13,18,.3), transparent 48%); }
-    .monitor-feature__content { padding: 2.5rem 1.4rem; }
+    .monitor-feature__content { width: 100%; padding: 2.5rem 1.4rem; }
 }
