@@ -44,6 +44,44 @@
             <article class="monitor-metric"><span>72H RETENTION</span><strong id="metric-total">—</strong><small>Records returned by Worker</small></article>
         </section>
 
+        <section class="monitor-radware" aria-labelledby="radware-title">
+            <div class="monitor-section-heading"><div><p class="monitor-kicker">RADWARE / LIVE THREAT MAP</p><h2 id="radware-title">Threat statistics</h2></div><a class="monitor-count monitor-section-link" href="https://livethreatmap.radware.com/" target="_blank" rel="noopener noreferrer">OPEN LIVE MAP</a></div>
+            <div class="monitor-radware-grid">
+                <article><span>TOP ATTACKERS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+                <article><span>TOP ATTACKED</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+                <article><span>NETWORK VECTORS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+                <article><span>APPLICATION VIOLATIONS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+                <article><span>SCANNED UDP PORTS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+                <article><span>SCANNED TCP PORTS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+            </div>
+            <p class="monitor-radware-note">Radware values are aggregate threat statistics, not individual attack incidents. No values are displayed until the Worker verifies and exposes an authorized collection.</p>
+        </section>
+
+        <section class="monitor-providers" aria-labelledby="provider-signals-title">
+            <div class="monitor-section-heading"><div><p class="monitor-kicker">SOURCE SIGNALS</p><h2 id="provider-signals-title">Provider intelligence</h2></div><span class="monitor-count">VERIFIED STATES ONLY</span></div>
+            <div class="monitor-provider-grid">
+                <article class="monitor-provider-card monitor-provider-card--active">
+                    <div class="monitor-provider-card__top"><span class="monitor-provider-mark">01</span><span class="monitor-provider-state">Ingestion active</span></div>
+                    <h3>Cloudflare Radar</h3>
+                    <p>Outage annotations currently exposed by the monitoring Worker. Records retain source timestamps and resolution uncertainty.</p>
+                    <a href="https://radar.cloudflare.com/" target="_blank" rel="noopener noreferrer">Open Radar ↗</a>
+                </article>
+                <article class="monitor-provider-card">
+                    <div class="monitor-provider-card__top"><span class="monitor-provider-mark">02</span><span class="monitor-provider-state">Stats pending ingestion</span></div>
+                    <h3>Radware Live Threat Map</h3>
+                    <p>Aggregate threat statistics will appear here only after the Worker verifies and is authorized to collect them.</p>
+                    <div class="monitor-provider-tags" aria-label="Radware statistic categories"><span>Attackers</span><span>Attacked</span><span>Vectors</span><span>Violations</span><span>TCP / UDP ports</span></div>
+                    <a href="https://livethreatmap.radware.com/" target="_blank" rel="noopener noreferrer">View live Radware map ↗</a>
+                </article>
+                <article class="monitor-provider-card">
+                    <div class="monitor-provider-card__top"><span class="monitor-provider-mark">03</span><span class="monitor-provider-state">Reports pending ingestion</span></div>
+                    <h3>Downdetector</h3>
+                    <p>User-reported disruption signals will be labeled as reports, not confirmation, and added only through a permitted collection path.</p>
+                    <a href="https://downdetector.com/" target="_blank" rel="noopener noreferrer">Open Downdetector ↗</a>
+                </article>
+            </div>
+        </section>
+
         <section id="monitor-notice" class="monitor-notice" hidden aria-live="polite"></section>
 
         <section class="monitor-controls" aria-label="Outage report controls">
