@@ -6,7 +6,7 @@ const source = fs.readFileSync("assets/js/monitor.js", "utf8");
 const listeners = {};
 const elements = new Map();
 function element(id) {
-    if (!elements.has(id)) elements.set(id, { id, value: "all", textContent: "", className: "", hidden: false, replaceChildren() {}, addEventListener() {}, setAttribute() {}, append() {} });
+    if (!elements.has(id)) elements.set(id, { id, value: "all", textContent: "", className: "", hidden: false, classList: { add() {}, toggle() {} }, replaceChildren() {}, addEventListener() {}, setAttribute() {}, append() {} });
     return elements.get(id);
 }
 function createElement() {

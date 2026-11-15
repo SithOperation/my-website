@@ -14,6 +14,21 @@ const fixture = {
         { id: "fixture-resolved", provider: "Example ISP", description: "Resolved network interruption", eventType: "NETWORK", startDate: "2026-11-14T18:00:00Z", endDate: "2026-11-14T19:00:00Z", locations: ["Region B"], dataSource: "Fixture" }
     ]
 };
+const radwareFixture = {
+    status: "ok",
+    provider: "Radware Live Threat Map",
+    source_url: "https://livethreatmap.radware.com/",
+    collected_at: new Date().toISOString(),
+    stale: false,
+    categories: {
+        top_attackers: [{ name: "Example source", value: 12 }],
+        top_attacked: [{ name: "Example target", value: 9 }],
+        network_vectors: [{ name: "TCP Flood", value: 8 }],
+        application_violations: [{ name: "Access violations", value: 7 }],
+        scanned_tcp_ports: [{ name: "443", value: 6 }],
+        scanned_udp_ports: [{ name: "53", value: 5 }]
+    }
+};
 
 async function main() {
     const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || undefined });
@@ -21,6 +36,7 @@ async function main() {
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
     await page.route("**/api/outages/all", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(fixture) }));
+    await page.route("**/api/radware/stats", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(radwareFixture) }));
 
     try {
         for (const viewport of [{ width: 390, height: 844 }, { width: 1366, height: 900 }]) {
@@ -31,6 +47,9 @@ async function main() {
             assert.equal(await page.locator("#metric-total").textContent(), "2");
             assert.equal(await page.locator("#metric-unresolved").textContent(), "1");
             assert.equal(await page.locator("#metric-resolved").textContent(), "1");
+            await page.waitForFunction(() => document.querySelector("#radware-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
+            assert.equal(await page.locator("#radware-top-attackers span").nth(1).textContent(), "12");
+            assert.equal(await page.locator("#radware-scanned-udp-ports span").nth(1).textContent(), "5");
             assert.equal(await page.locator(".monitor-badge--unknown").count(), 1);
             assert.equal(await page.locator(".monitor-badge--resolved").count(), 1);
             await page.locator("#monitor-provider").selectOption({ label: "Example ISP" });
