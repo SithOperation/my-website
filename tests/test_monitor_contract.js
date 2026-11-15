@@ -13,6 +13,10 @@ const context = {
     console,
     document: { getElementById: element, addEventListener(name, fn) { listeners[name] = fn; } },
     window: { setInterval() {}, MonitorData: {} },
+    AbortController: class AbortController {
+        constructor() { this.signal = {}; }
+        abort() {}
+    },
     Intl,
     Date,
     Option: function Option(label, value) { this.text = label; this.value = value; },
