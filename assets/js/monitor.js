@@ -3,8 +3,18 @@
 
     const API_ROOT = "https://ddos-detector.newhorse62.workers.dev";
     const REFRESH_MS = 60 * 1000;
+    const RADWARE_REFRESH_MS = 5 * 60 * 1000;
     const STALE_MS = 10 * 60 * 1000;
     const state = { records: [], filtered: [], responseAt: null, backendTimestamp: null, error: null, controller: null, refreshInFlight: false };
+    const radwareState = { payload: null, error: null, inFlight: false };
+    const RADWARE_CATEGORIES = [
+        ["top_attackers", "radware-top-attackers"],
+        ["top_attacked", "radware-top-attacked"],
+        ["network_vectors", "radware-network-vectors"],
+        ["application_violations", "radware-application-violations"],
+        ["scanned_udp_ports", "radware-scanned-udp-ports"],
+        ["scanned_tcp_ports", "radware-scanned-tcp-ports"]
+    ];
     const $ = id => document.getElementById(id);
     const text = value => String(value ?? "").replace(/\s+/g, " ").trim();
     const array = value => Array.isArray(value) ? value.filter(Boolean).map(text) : [];
@@ -53,6 +63,62 @@
         const payload = await response.json();
         if (!payload || !Array.isArray(payload.outages)) throw new Error(`Monitoring Worker returned an invalid ${path} publication`);
         return payload;
+    }
+
+    function radwareEntries(value) {
+        return (Array.isArray(value) ? value : [])
+            .filter(item => item && typeof item.name === "string" && Number.isFinite(Number(item.value)))
+            .slice(0, 3);
+    }
+
+    function renderRadware() {
+        const status = $("radware-status");
+        const updated = $("radware-updated");
+        const payload = radwareState.payload;
+        status.className = "monitor-radware-status";
+        if (radwareState.error && !payload) {
+            status.classList.add("monitor-radware-status--error");
+            status.textContent = "Radware feed unavailable";
+            updated.textContent = "Radware statistics could not be loaded. No values are being inferred.";
+        } else if (payload) {
+            const collected = formatDate(payload.collected_at);
+            status.classList.toggle("monitor-radware-status--stale", Boolean(payload.stale));
+            status.textContent = payload.stale ? `Stale data · collected ${collected}` : `Updated ${collected}`;
+            updated.textContent = payload.stale
+                ? `Collection timestamp: ${collected}. Values are shown for transparency but should be treated as stale.`
+                : `Collection timestamp: ${collected}. Values are aggregate Radware statistics, not individual incidents.`;
+        }
+        RADWARE_CATEGORIES.forEach(([category, id]) => {
+            const node = $(id);
+            const entries = radwareEntries(payload?.categories?.[category]);
+            node.replaceChildren(...(entries.length ? entries.map(item => {
+                const row = document.createElement("div");
+                const name = document.createElement("span");
+                const value = document.createElement("span");
+                name.textContent = item.name;
+                value.textContent = String(item.value);
+                row.append(name, value);
+                return row;
+            }) : [Object.assign(document.createElement("em"), { textContent: "No published values" })]));
+        });
+    }
+
+    async function requestRadware() {
+        if (radwareState.inFlight) return;
+        radwareState.inFlight = true;
+        try {
+            const response = await fetch(`${API_ROOT}/api/radware/stats`, { cache: "no-store", headers: { Accept: "application/json" } });
+            if (!response.ok) throw new Error(`Radware Worker returned HTTP ${response.status}`);
+            const payload = await response.json();
+            if (!payload || payload.status !== "ok" || !payload.categories || typeof payload.categories !== "object") throw new Error("Radware Worker returned an invalid statistics publication");
+            radwareState.payload = payload;
+            radwareState.error = null;
+        } catch (error) {
+            radwareState.error = error;
+        } finally {
+            radwareState.inFlight = false;
+        }
+        renderRadware();
     }
 
     async function fetchOutagePublication(signal) {
@@ -107,7 +173,9 @@
     function renderTimeline() { const node = $("monitor-timeline"); node.replaceChildren(); if (!state.filtered.length) { const empty = document.createElement("p"); empty.className = "monitor-empty"; empty.textContent = "No incidents in the selected time range."; node.append(empty); return; } state.filtered.forEach(record => { const item = document.createElement("article"); item.className = "monitor-timeline__item"; const time = document.createElement("time"); time.textContent = formatDate(record.start); const body = document.createElement("div"); const title = document.createElement("strong"); title.textContent = `${record.provider} · ${statusLabel(record.status)}`; const summary = document.createElement("p"); summary.textContent = record.description; body.append(title, summary); item.append(time, body); node.append(item); }); }
     function render() { if (!state.responseAt) { renderMetrics(); renderFeed(); renderCharts(); renderTimeline(); return; } populateSelect("monitor-provider", state.records.map(item => item.provider), "All providers"); populateSelect("monitor-classification", state.records.map(item => item.eventType), "All classifications"); applyFilters(); renderMetrics(); renderFeed(); renderCharts(); renderTimeline(); $("monitor-updated").textContent = `Last successful response: ${formatDate(state.responseAt)}`; $("timeline-window").textContent = `Previous ${$("monitor-range").value} HOURS`; }
     ["monitor-search", "monitor-provider", "monitor-classification", "monitor-resolution", "monitor-range", "monitor-sort"].forEach(id => $(id).addEventListener("input", render));
-    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") requestData(); });
-    requestData(); window.setInterval(() => { if (document.visibilityState === "visible") requestData(); }, REFRESH_MS);
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") { requestData(); requestRadware(); } });
+    requestData(); requestRadware();
+    window.setInterval(() => { if (document.visibilityState === "visible") requestData(); }, REFRESH_MS);
+    window.setInterval(() => { if (document.visibilityState === "visible") requestRadware(); }, RADWARE_REFRESH_MS);
     window.MonitorData = { normalizeRecord, normalizeRecords, statusLabel };
 }());

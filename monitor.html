@@ -45,16 +45,16 @@
         </section>
 
         <section class="monitor-radware" aria-labelledby="radware-title">
-            <div class="monitor-section-heading"><div><p class="monitor-kicker">RADWARE / LIVE THREAT MAP</p><h2 id="radware-title">Threat statistics</h2></div><a class="monitor-count monitor-section-link" href="https://livethreatmap.radware.com/" target="_blank" rel="noopener noreferrer">OPEN LIVE MAP</a></div>
+            <div class="monitor-section-heading"><div><p class="monitor-kicker">RADWARE / LIVE THREAT MAP</p><h2 id="radware-title">Threat statistics</h2><small id="radware-status" class="monitor-radware-status">Checking Radware feed</small></div><a class="monitor-count monitor-section-link" href="https://livethreatmap.radware.com/" target="_blank" rel="noopener noreferrer">OPEN LIVE MAP</a></div>
             <div class="monitor-radware-grid">
-                <article><span>TOP ATTACKERS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
-                <article><span>TOP ATTACKED</span><strong>—</strong><small>Verified Worker feed pending</small></article>
-                <article><span>NETWORK VECTORS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
-                <article><span>APPLICATION VIOLATIONS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
-                <article><span>SCANNED UDP PORTS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
-                <article><span>SCANNED TCP PORTS</span><strong>—</strong><small>Verified Worker feed pending</small></article>
+                <article><span>TOP ATTACKERS</span><div id="radware-top-attackers" class="monitor-radware-values"><em>Awaiting data</em></div></article>
+                <article><span>TOP ATTACKED</span><div id="radware-top-attacked" class="monitor-radware-values"><em>Awaiting data</em></div></article>
+                <article><span>NETWORK VECTORS</span><div id="radware-network-vectors" class="monitor-radware-values"><em>Awaiting data</em></div></article>
+                <article><span>APPLICATION VIOLATIONS</span><div id="radware-application-violations" class="monitor-radware-values"><em>Awaiting data</em></div></article>
+                <article><span>SCANNED UDP PORTS</span><div id="radware-scanned-udp-ports" class="monitor-radware-values"><em>Awaiting data</em></div></article>
+                <article><span>SCANNED TCP PORTS</span><div id="radware-scanned-tcp-ports" class="monitor-radware-values"><em>Awaiting data</em></div></article>
             </div>
-            <p class="monitor-radware-note">Radware values are aggregate threat statistics, not individual attack incidents. No values are displayed until the Worker verifies and exposes an authorized collection.</p>
+            <p id="radware-updated" class="monitor-radware-note">Radware values are aggregate threat statistics, not individual attack incidents. Waiting for the first successful collection.</p>
         </section>
 
         <section class="monitor-providers" aria-labelledby="provider-signals-title">
