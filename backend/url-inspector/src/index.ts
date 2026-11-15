@@ -7,14 +7,29 @@ import { parseSubmittedUrl, UrlPolicyError } from "./url-policy";
 const MAX_BODY_BYTES = 4 * 1024;
 const ENDPOINT = "/api/url-check";
 
-type ReputationChecker = (url: string, apiKey: string) => Promise<ReputationResult>;
-type EnrichmentChecker = (hostname: string) => Promise<EnrichmentResult>;
+type ReputationChecker = (url: string, apiKey: string, signal?: AbortSignal) => Promise<ReputationResult>;
+type EnrichmentChecker = (hostname: string, signal?: AbortSignal) => Promise<EnrichmentResult>;
+
+const defaultReputationChecker: ReputationChecker = (url, apiKey, signal) =>
+  checkGoogleSafeBrowsing(url, apiKey, undefined, 4_000, signal);
+const defaultEnrichmentChecker: EnrichmentChecker = (hostname, signal) =>
+  enrichHostname(hostname, undefined, new Date(), signal);
+
+function isJsonContentType(value: string | null): boolean {
+  if (!value) return false;
+  return value.split(";", 1)[0]?.trim().toLowerCase() === "application/json";
+}
 
 function corsHeaders(origin: string | null, requestId?: string): Headers {
   const headers = new Headers({
     "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store",
     "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "no-referrer",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
     Vary: "Origin",
   });
   if (origin && ALLOWED_ORIGINS.has(origin)) {
@@ -85,11 +100,14 @@ function extractUrl(payload: unknown): unknown {
 }
 
 export function createHandler(
-  checker: ReputationChecker = checkGoogleSafeBrowsing,
-  enricher: EnrichmentChecker = checker === checkGoogleSafeBrowsing
-    ? enrichHostname
-    : async () => unavailableEnrichment(),
+  checker: ReputationChecker = defaultReputationChecker,
+  enricher?: EnrichmentChecker,
 ) {
+  const selectedEnricher: EnrichmentChecker = enricher ?? (
+    checker === defaultReputationChecker
+      ? defaultEnrichmentChecker
+      : async (_hostname, _signal) => unavailableEnrichment()
+  );
   return async function handle(request: Request, env: Env): Promise<Response> {
     const requestUrl = new URL(request.url);
     const origin = request.headers.get("Origin");
@@ -122,7 +140,7 @@ export function createHandler(
         { Allow: "POST, OPTIONS" },
       );
     }
-    if (!request.headers.get("Content-Type")?.toLowerCase().startsWith("application/json")) {
+    if (!isJsonContentType(request.headers.get("Content-Type"))) {
       return errorResponse(415, "invalid_request", "unsupported_media_type", "Content-Type must be application/json", origin, requestId);
     }
 
@@ -145,10 +163,23 @@ export function createHandler(
       const payload = await readJsonBody(request);
       const parsed = parseSubmittedUrl(extractUrl(payload));
       const urlHash = await keyedHash(env.APP_HASH_SECRET, `url:${parsed.href}`);
+      const inspectionController = new AbortController();
+      const abortFromRequest = () => inspectionController.abort();
+      request.signal.addEventListener("abort", abortFromRequest, { once: true });
+      const inspectionTimeout = setTimeout(() => inspectionController.abort(), 8_000);
       const [reputationSettled, enrichmentSettled] = await Promise.allSettled([
-        checker(parsed.href, env.GOOGLE_SAFE_BROWSING_API_KEY),
-        enricher(parsed.hostname.replace(/^\[|\]$/gu, "")),
+        Promise.resolve().then(() => checker(
+          parsed.href,
+          env.GOOGLE_SAFE_BROWSING_API_KEY,
+          inspectionController.signal,
+        )),
+        Promise.resolve().then(() => selectedEnricher(
+          parsed.hostname.replace(/^\[|\]$/gu, ""),
+          inspectionController.signal,
+        )),
       ]);
+      clearTimeout(inspectionTimeout);
+      request.signal.removeEventListener("abort", abortFromRequest);
       const enrichment = enrichmentSettled.status === "fulfilled"
         ? enrichmentSettled.value
         : unavailableEnrichment();

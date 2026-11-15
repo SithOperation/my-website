@@ -56,6 +56,27 @@ describe("passive DNS metadata", () => {
     expect(calls.every((value) => new URL(value).origin === "https://cloudflare-dns.com")).toBe(true);
     expect(calls.every((value) => new URL(value).hostname !== "submitted.example")).toBe(true);
   });
+
+  it("propagates parent cancellation to independent DNS requests", async () => {
+    const controller = new AbortController();
+    const signals: AbortSignal[] = [];
+    const providerFetch = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      const signal = init?.signal as AbortSignal;
+      signals.push(signal);
+      return new Promise<Response>((_resolve, reject) => {
+        if (signal.aborted) {
+          reject(new DOMException("Aborted", "AbortError"));
+          return;
+        }
+        signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+      });
+    }) as typeof fetch;
+    const pending = queryDns("submitted.example", providerFetch, controller.signal);
+    controller.abort();
+    await expect(pending).rejects.toBeInstanceOf(EnrichmentProviderError);
+    expect(signals).toHaveLength(5);
+    expect(signals.every((signal) => signal.aborted)).toBe(true);
+  });
 });
 
 describe("RDAP registration metadata", () => {

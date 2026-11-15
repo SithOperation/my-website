@@ -250,6 +250,41 @@
 }
 .inspector-page .ops-footer { border-color: var(--obsidian-border); color: var(--obsidian-secondary); }
 
+/* Keep the inspector's light editorial palette readable. The shared obsidian
+   treatment supplies the page chrome, but its dark card surfaces conflict with
+   the inspector's navy/gold text rules. */
+.inspector-page #url-input,
+.inspector-page .secondary-action {
+    background: #fbfcfa;
+    color: var(--navy) !important;
+}
+.inspector-page .scope-notice,
+.inspector-page .assessment-grid article,
+.inspector-page .provider-card,
+.inspector-page .interpretation-card,
+.inspector-page .details-stack details,
+.inspector-page .future-grid article {
+    background: #fffaf0;
+}
+.inspector-page .assessment-grid article,
+.inspector-page .provider-card,
+.inspector-page .interpretation-card,
+.inspector-page .details-stack details,
+.inspector-page .future-grid article {
+    color: #526267;
+}
+.inspector-page .future-grid h3,
+.inspector-page .future-grid span,
+.inspector-page .session-history li,
+.inspector-page .session-history li strong,
+.inspector-page .session-history li span {
+    color: var(--navy) !important;
+}
+.inspector-page .future-grid span,
+.inspector-page .session-history li span {
+    color: var(--muted) !important;
+}
+
 /* Governance resources: preserve content and data behavior while adopting the portfolio finish. */
 .governance-page .gov-shell { max-width: 1240px; }
 .governance-page .gov-hero { border-top-color: var(--obsidian-violet); }
