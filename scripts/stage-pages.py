@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
+import stat
 from pathlib import Path
 
 PUBLIC_DIRECTORIES = (
@@ -121,6 +123,23 @@ def _copy_public_path(source: Path, destination: Path) -> None:
     raise DeploymentValidationError(f"Required public path is missing: {source}")
 
 
+def _remove_readonly_tree(path: Path) -> None:
+    """Remove a verified staging tree, including read-only Windows paths."""
+
+    def make_writable_and_retry(
+        function: object,
+        target: str,
+        _error: tuple[type[BaseException], BaseException, object],
+    ) -> None:
+        os.chmod(target, stat.S_IWRITE)
+        callable_function = function
+        if not callable(callable_function):
+            raise TypeError("shutil supplied a non-callable removal function")
+        callable_function(target)
+
+    shutil.rmtree(path, onerror=make_writable_and_retry)
+
+
 def find_forbidden_paths(stage_directory: Path) -> list[Path]:
     """Return sorted forbidden paths found in a staged Pages artifact."""
 
@@ -170,7 +189,7 @@ def stage_pages(repository: Path, stage_directory: Path) -> None:
         )
 
     if stage_directory.exists():
-        shutil.rmtree(stage_directory)
+        _remove_readonly_tree(stage_directory)
     stage_directory.mkdir(parents=True)
 
     try:
@@ -181,7 +200,11 @@ def stage_pages(repository: Path, stage_directory: Path) -> None:
             )
         verify_stage(stage_directory)
     except Exception:
-        shutil.rmtree(stage_directory, ignore_errors=True)
+        if stage_directory.exists():
+            try:
+                _remove_readonly_tree(stage_directory)
+            except OSError:
+                pass
         raise
 
 

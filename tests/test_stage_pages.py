@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import importlib.util
+import os
+import stat
 import tempfile
 import unittest
 from pathlib import Path
@@ -102,6 +104,21 @@ class StagePagesTests(unittest.TestCase):
                 STAGE_PAGES.stage_pages(repository, stage)
 
             self.assertFalse(stage.exists())
+
+    def test_rebuild_removes_readonly_staging_content(self) -> None:
+        """Repeated Windows-style builds can replace read-only copied paths."""
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            repository = Path(temporary_directory)
+            self.create_public_repository(repository)
+            stage = repository / "_site"
+            STAGE_PAGES.stage_pages(repository, stage)
+            staged_file = stage / ".well-known" / "public.txt"
+            os.chmod(staged_file, stat.S_IREAD)
+
+            STAGE_PAGES.stage_pages(repository, stage)
+
+            self.assertEqual(staged_file.read_text(encoding="utf-8"), "public")
 
 
 if __name__ == "__main__":

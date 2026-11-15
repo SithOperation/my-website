@@ -2,11 +2,43 @@
     "use strict";
 
     const DATA_REFRESH_MS = 5 * 60 * 1000;
+    const LIVE_REFRESH_MS = 60 * 1000;
+    const LIVE_EVENTS_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/live-events";
+    const LIVE_NEWS_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/news";
+    const LIVE_HEALTH_ENDPOINT = "https://sentinel-api.newhorse62.workers.dev/api/collector-health";
     const INITIAL_CENTER = [0, 20];
     const INITIAL_ZOOM = 2;
-    const THREAT_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"];
+    const SEVERITY_ORDER = Object.freeze({ UNKNOWN: 0, LOW: 1, MEDIUM: 2, HIGH: 3, CRITICAL: 4 });
+    // Keep publication classifications available to diagnostics and future
+    // non-dashboard consumers without bringing legacy filter controls back.
+    const EUROPE_SECURITY_LAYERS = Object.freeze([
+        "nato_activity", "russian_activity", "eastern_flank", "ukraine_war",
+        "air_activity", "naval_activity", "missile_drone", "military_exercise",
+        "security_warning", "reddit_osint"
+    ]);
+    const MAJOR_CITIES = [
+        ["New York", -74.006, 40.7128], ["Los Angeles", -118.2437, 34.0522], ["Mexico City", -99.1332, 19.4326],
+        ["São Paulo", -46.6333, -23.5505], ["Buenos Aires", -58.3816, -34.6037], ["London", -0.1276, 51.5072],
+        ["Paris", 2.3522, 48.8566], ["Berlin", 13.405, 52.52], ["Moscow", 37.6173, 55.7558],
+        ["Istanbul", 28.9784, 41.0082], ["Cairo", 31.2357, 30.0444], ["Lagos", 3.3792, 6.5244],
+        ["Nairobi", 36.8219, -1.2921], ["Johannesburg", 28.0473, -26.2041], ["Dubai", 55.2708, 25.2048],
+        ["Mumbai", 72.8777, 19.076], ["Delhi", 77.1025, 28.7041], ["Beijing", 116.4074, 39.9042],
+        ["Shanghai", 121.4737, 31.2304], ["Tokyo", 139.6917, 35.6895], ["Seoul", 126.978, 37.5665],
+        ["Singapore", 103.8198, 1.3521], ["Jakarta", 106.8456, -6.2088], ["Sydney", 151.2093, -33.8688],
+        ["Melbourne", 144.9631, -37.8136], ["Perth", 115.8575, -31.9505], ["Toronto", -79.3832, 43.6532],
+        ["Chicago", -87.6298, 41.8781], ["Washington", -77.0369, 38.9072], ["San Francisco", -122.4194, 37.7749],
+        ["Madrid", -3.7038, 40.4168], ["Rome", 12.4964, 41.9028], ["Kyiv", 30.5234, 50.4501],
+        ["Tehran", 51.389, 35.6892], ["Baghdad", 44.3661, 33.3152], ["Riyadh", 46.6753, 24.7136],
+        ["Karachi", 67.0011, 24.8607], ["Bangkok", 100.5018, 13.7563], ["Manila", 120.9842, 14.5995],
+        ["Lima", -77.0428, -12.0464], ["Bogotá", -74.0721, 4.711], ["Santiago", -70.6693, -33.4489]
+    ];
     const adapter = window.SentinelGodsEyeAdapter || null;
-    const client = new window.SentinelData.Client({ root: "data" });
+    const client = new window.SentinelData.Client({
+        root: "data",
+        liveRoot: LIVE_EVENTS_ENDPOINT,
+        liveNewsRoot: LIVE_NEWS_ENDPOINT,
+        liveHealthRoot: LIVE_HEALTH_ENDPOINT
+    });
     const earlyReportFeed = new window.SentinelData.GenerationFeed(client, {
         metadataFile: "output/x_report_events.json",
         dataFile: "output/x_report_pinpoints.geojson"
@@ -26,8 +58,16 @@
     let environmentalCount = 0;
     let environmentalEvents = { earthquakes: [], volcanoes: [], weather: [] };
     let highlightedEventId = null;
+    let newsItems = [];
+    let newsHealth = { status: "unavailable", sources: [] };
+    let visibleMetricsTimer = null;
+    let refreshInFlight = null;
 
     const element = id => document.getElementById(id);
+    const setText = (id, value) => {
+        const node = element(id);
+        if (node) node.textContent = value;
+    };
 
     function formatDate(value) {
         if (!value) return "Unknown";
@@ -91,15 +131,98 @@
         return aliases[type] || "news";
     }
 
+    function plotClass(event) {
+        const category = getEventCategory(event);
+        if (category === "earthquake") return "earthquake";
+        const rawSignals = [event?.type, event?.category, event?.classification, category]
+            .filter(Boolean).join(" ").toLowerCase();
+        const text = `${event?.title || ""} ${event?.description || ""}`.toLowerCase();
+        const warCategory = /(conflict|war|armed[_ -]?conflict|insurgent|battle|military|europe[_ -]?security|border[_ -]?incident|drone[_ -]?activity|missile[_ -]?activity|military[_ -]?deployment|mobilization|nato[_ -]?activity|russian[_ -]?activity|ground[_ -]?activity|hostilities|offensive|occupation|ceasefire|air[_ -]?strike)/i.test(rawSignals);
+        const warText = /(armed conflict|war zone|military operation|military strike|airstrike|air strike|shelling|drone strike|missile strike|rocket attack|troops|invasion|frontline|combat|battlefield|hostilities|offensive|occupation|ceasefire|fighting|fighters|air raid|ground offensive|missile launch)/i.test(text);
+        return warCategory || warText ? "war" : "news";
+    }
+
     function isSourceReportedEvent(event) {
         return String(event?.location_status || "").toLowerCase() === "source_reported" ||
             ["source_reported", "unverified"].includes(String(event?.claim_status || "").toLowerCase());
     }
 
+    function isHistoricalEvent(event) {
+        return Boolean(event?.timestamp) && !window.SentinelData.isWithinRetentionWindow(event.timestamp);
+    }
+
+    function europeSecurityLayers(event) {
+        const raw = adapter?.normalizeEvent(event)?.metadata?.raw || event || {};
+        return Array.isArray(raw.europe_layers)
+            ? raw.europe_layers.filter(layer => EUROPE_SECURITY_LAYERS.includes(String(layer)))
+            : [];
+    }
+
     function setStatus(message, state) {
         const status = element("ops-status");
         element("ops-status-text").textContent = message;
-        status.className = `ops-status is-${state}`;
+        status.className = `sentinel-status is-${state}`;
+    }
+
+    function readableSourceName(source) {
+        const raw = source?.publisher || source?.name || source?.source_id || source?.source || "Unknown source";
+        return String(raw).replace(/[_-]+/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
+    }
+
+    function renderCoverageDetails(healthState, publicationId, liveCollectors = []) {
+        const panel = element("coverage-details");
+        const toggle = element("coverage-status-toggle");
+        if (!panel || !toggle) return;
+        const failedSources = Array.isArray(healthState?.failedSources) ? healthState.failedSources : [];
+        const collectors = Array.isArray(liveCollectors) ? liveCollectors : [];
+        const unhealthyCollectors = collectors.filter(collector => String(collector.status || "").toLowerCase() !== "healthy");
+        panel.replaceChildren();
+        const heading = document.createElement("strong");
+        heading.textContent = failedSources.length || unhealthyCollectors.length
+            ? `${failedSources.length + unhealthyCollectors.length} source${failedSources.length + unhealthyCollectors.length === 1 ? "" : "s"} need attention`
+            : "All configured sources are reporting";
+        panel.appendChild(heading);
+        if (publicationId) {
+            const revision = document.createElement("small");
+            revision.textContent = `Publication ${publicationId}`;
+            panel.appendChild(revision);
+        }
+        if (failedSources.length) {
+            const list = document.createElement("ul");
+            failedSources.forEach(source => {
+                const item = document.createElement("li");
+                const name = document.createElement("b");
+                const status = document.createElement("span");
+                const reason = document.createElement("small");
+                name.textContent = readableSourceName(source);
+                status.textContent = String(source.status || "limited").replace(/[_-]+/g, " ");
+                reason.textContent = String(source.error || source.reason || source.last_error || "No failure detail was published.");
+                item.append(name, status, reason);
+                list.appendChild(item);
+            });
+            panel.appendChild(list);
+        }
+        if (collectors.length) {
+            const collectorHeading = document.createElement("small");
+            collectorHeading.textContent = "Live collector status";
+            panel.appendChild(collectorHeading);
+            const list = document.createElement("ul");
+            collectors.forEach(collector => {
+                const item = document.createElement("li");
+                const name = document.createElement("b");
+                const status = document.createElement("span");
+                const detail = document.createElement("small");
+                name.textContent = readableSourceName(collector);
+                status.textContent = String(collector.status || "unknown").replace(/[_-]+/g, " ");
+                detail.textContent = `${collector.records_received ?? 0} records · last success ${collector.last_success || "not recorded"}`;
+                item.append(name, status, detail);
+                list.appendChild(item);
+            });
+            panel.appendChild(list);
+        }
+        toggle.hidden = false;
+        toggle.disabled = !failedSources.length && !collectors.length;
+        toggle.setAttribute("aria-label", failedSources.length || unhealthyCollectors.length ? "Show degraded source details" : "Coverage source details");
     }
 
     function setLoading(visible, message = "Building operational picture...") {
@@ -108,69 +231,77 @@
         loading.classList.toggle("is-hidden", !visible);
     }
 
+    function eventCoordinateKey(event) {
+        return `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
+    }
+
+    function normalizeSeverity(event) {
+        const value = String(event?.threat_level || event?.severity || event?.priority || "UNKNOWN").toUpperCase();
+        const supplied = Object.prototype.hasOwnProperty.call(SEVERITY_ORDER, value) ? value : "UNKNOWN";
+        const signals = [event?.type, event?.category, event?.classification].filter(Boolean).join(" ").toLowerCase();
+        const text = `${event?.title || ""} ${event?.description || ""} ${event?.summary || ""}`.toLowerCase();
+        const military = /(conflict|war|armed[_ -]?conflict|military|missile|air[_ -]?strike|shelling|hostilities|offensive|occupation|ceasefire)/.test(`${signals} ${text}`);
+        if (!military) return supplied;
+        if (/(nuclear|radiological|mass casualty|mass casualties|invasion|major attack|killed|dead|fatalities|civilian casualties|active combat|missile strike|airstrike|shelling)/.test(text)) return "HIGH";
+        return SEVERITY_ORDER[supplied] < SEVERITY_ORDER.MEDIUM ? "MEDIUM" : supplied;
+    }
+
+    function severityColorExpression(property = "severity") {
+        return ["match", ["get", property], "CRITICAL", "#ff1744", "HIGH", "#ff7a00", "MEDIUM", "#ffd166", "LOW", "#38d996", "#8b9bb4"];
+    }
+
     function featureCollection(events) {
         eventIndex.clear();
-        const positions = new Map();
         return {
             type: "FeatureCollection",
             features: events.map((event, index) => {
                 const mapId = event.event_id || `sentinel-${index}-${event.latitude}-${event.longitude}`;
-                const positionKey = `${Number(event.latitude).toFixed(4)},${Number(event.longitude).toFixed(4)}`;
-                const positionIndex = positions.get(positionKey) || 0;
-                positions.set(positionKey, positionIndex + 1);
-                const ring = Math.floor(positionIndex / 8) + 1;
-                const angle = (positionIndex % 8) * (Math.PI / 4);
-                const spread = positionIndex ? Math.min(1.2, 0.18 * ring) : 0;
-                const latitude = Math.max(-85, Math.min(85, Number(event.latitude) + Math.sin(angle) * spread));
-                const longitude = Number(event.longitude) + Math.cos(angle) * spread;
                 eventIndex.set(mapId, event);
                 return {
                     type: "Feature",
                     id: mapId,
                     geometry: {
                         type: "Point",
-                        coordinates: [longitude, latitude]
+                        coordinates: [Number(event.longitude), Number(event.latitude)]
                     },
                     properties: {
                         map_id: mapId,
                         title: event.title,
                         type: getEventCategory(event),
+                        plot_class: plotClass(event),
                         symbol_type: symbolType(getEventCategory(event)),
                         threat_level: event.threat_level,
+                        severity: normalizeSeverity(event),
                         confidence: event.confidence ?? 0,
                         timestamp: event.timestamp || "",
+                        historical: isHistoricalEvent(event),
                         heading: Number(aircraftValue(event, "heading", "track")) || 0,
-                        source_reported: isSourceReportedEvent(event)
+                        source_reported: isSourceReportedEvent(event),
+                        europe_layers: europeSecurityLayers(event)
                     }
                 };
             })
         };
     }
 
-    function spreadCoincidentPoints(geojson, spacing = 0.18) {
-        const positions = new Map();
+    function cityFeatureCollection(events) {
         return {
-            ...geojson,
-            features: (geojson.features || []).map(feature => {
-                if (feature.geometry?.type !== "Point" || !Array.isArray(feature.geometry.coordinates)) return feature;
-                const [longitude, latitude] = feature.geometry.coordinates.map(Number);
-                if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return feature;
-                const key = `${latitude.toFixed(4)},${longitude.toFixed(4)}`;
-                const index = positions.get(key) || 0;
-                positions.set(key, index + 1);
-                if (!index) return feature;
-                const ring = Math.floor(index / 8) + 1;
-                const angle = (index % 8) * (Math.PI / 4);
-                const spread = Math.min(1.2, spacing * ring);
+            type: "FeatureCollection",
+            features: MAJOR_CITIES.map(([name, longitude, latitude]) => {
+                const nearbyEvents = events.filter(event => {
+                    const latDistance = Number(event.latitude) - latitude;
+                    const lonDistance = (Number(event.longitude) - longitude) * Math.cos(latitude * Math.PI / 180);
+                    return Math.hypot(latDistance, lonDistance) <= 3.2;
+                });
+                const severity = nearbyEvents.reduce((highest, event) => {
+                    const candidate = normalizeSeverity(event);
+                    return SEVERITY_ORDER[candidate] > SEVERITY_ORDER[highest] ? candidate : highest;
+                }, "UNKNOWN");
                 return {
-                    ...feature,
-                    geometry: {
-                        ...feature.geometry,
-                        coordinates: [
-                            longitude + Math.cos(angle) * spread,
-                            Math.max(-85, Math.min(85, latitude + Math.sin(angle) * spread))
-                        ]
-                    }
+                    type: "Feature",
+                    id: `city-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+                    geometry: { type: "Point", coordinates: [longitude, latitude] },
+                    properties: { name, event_count: nearbyEvents.length, severity }
                 };
             })
         };
@@ -179,7 +310,7 @@
     function mapStyle() {
         return {
             version: 8,
-            projection: { type: "globe" },
+            projection: { type: "mercator" },
             glyphs: "assets/map-fonts/{fontstack}/{range}.pbf",
             sources: {
                 osm: {
@@ -203,17 +334,6 @@
                 }
             }]
         };
-    }
-
-    function threatColorExpression() {
-        return [
-            "match", ["get", "threat_level"],
-            "CRITICAL", "#ff174f",
-            "HIGH", "#ff8200",
-            "MEDIUM", "#ffd400",
-            "LOW", "#00f0ff",
-            "#8ca6ad"
-        ];
     }
 
     function createAircraftIcon() {
@@ -348,14 +468,43 @@
         return context.getImageData(0, 0, 48, 48);
     }
 
-    function isMilitaryAircraft(event) {
-        if (event.type !== "aircraft") return true;
-        const classification = String(event.classification || event.aircraft?.classification || "").toLowerCase();
-        return event.is_military === true || event.military === true || event.aircraft?.is_military === true ||
-            ["military", "military_aircraft", "military-aviation"].includes(classification);
-    }
-
     function addIntelligenceLayers() {
+        map.addSource("sentinel-cities", {
+            type: "geojson",
+            data: cityFeatureCollection([])
+        });
+        map.addLayer({
+            id: "major-city-glow",
+            type: "circle",
+            source: "sentinel-cities",
+            paint: {
+                "circle-radius": 13,
+                "circle-color": ["case", [">", ["get", "event_count"], 0], severityColorExpression("severity"), "#168cff"],
+                "circle-opacity": 0.22,
+                "circle-blur": 0.85
+            }
+        });
+        map.addLayer({
+            id: "major-city-lights",
+            type: "circle",
+            source: "sentinel-cities",
+            paint: {
+                "circle-radius": 3.2,
+                "circle-color": ["case", [">", ["get", "event_count"], 0], severityColorExpression("severity"), "#37a7ff"],
+                "circle-stroke-color": "#071321",
+                "circle-stroke-width": 1
+            }
+        });
+        map.addLayer({
+            id: "major-city-hit",
+            type: "circle",
+            source: "sentinel-cities",
+            paint: {
+                "circle-radius": 14,
+                "circle-color": "rgba(0,0,0,0)",
+                "circle-opacity": 0
+            }
+        });
         if (!map.hasImage("military-aircraft")) {
             map.addImage("military-aircraft", createAircraftIcon(), { pixelRatio: 2 });
         }
@@ -366,6 +515,8 @@
         map.addSource("sentinel-events", {
             type: "geojson",
             data: featureCollection([]),
+            // Every published event stays an individual normal-sized point.
+            // Coincident records are grouped in the drawer after selection.
             cluster: false
         });
 
@@ -373,11 +524,11 @@
             id: "event-glow",
             type: "circle",
             source: "sentinel-events",
-            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
-                "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 10, 8, 17],
-                "circle-color": threatColorExpression(),
-                "circle-opacity": 0.2,
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 4, 8, 9],
+                "circle-color": severityColorExpression(),
+                "circle-opacity": 0.09,
                 "circle-blur": 0.7
             }
         });
@@ -386,7 +537,7 @@
             id: "source-reported-halo",
             type: "circle",
             source: "sentinel-events",
-            filter: ["==", ["get", "source_reported"], true],
+            filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "source_reported"], true]],
             paint: {
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 12, 8, 20],
                 "circle-color": "rgba(0,0,0,0)",
@@ -417,13 +568,13 @@
             id: "events",
             type: "circle",
             source: "sentinel-events",
-            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             paint: {
-                "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 5.5, 8, 9],
-                "circle-color": threatColorExpression(),
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 2.1, 4, 3.1, 8, 5.5],
+                "circle-color": severityColorExpression(),
                 "circle-opacity": 0.96,
                 "circle-stroke-color": "#061012",
-                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 2, 1.25, 8, 2],
+                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 1.5, 0.75, 8, 2],
                 "circle-stroke-opacity": 0.95
             }
         });
@@ -432,13 +583,14 @@
             id: "event-glyphs",
             type: "symbol",
             source: "sentinel-events",
-            filter: ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["!", ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]]],
             layout: {
                 "icon-image": ["concat", "marker-", ["get", "symbol_type"]],
                 "icon-size": ["interpolate", ["linear"], ["zoom"], 2, 0.28, 8, 0.46],
                 "icon-allow-overlap": true,
                 "icon-ignore-placement": true,
-                "icon-padding": 0
+                "icon-padding": 0,
+                "icon-opacity": 0
             }
         });
 
@@ -446,11 +598,11 @@
             id: "military-aircraft-glow",
             type: "circle",
             source: "sentinel-events",
-            filter: ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]],
+            filter: ["all", ["!", ["has", "point_count"]], ["in", ["get", "type"], ["literal", ["aircraft", "military_aircraft"]]]],
             paint: {
-                "circle-radius": 16,
-                "circle-color": "#00f0ff",
-                "circle-opacity": 0.16,
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 5, 8, 10],
+                "circle-color": severityColorExpression(),
+                "circle-opacity": 0.1,
                 "circle-blur": 0.7
             }
         });
@@ -466,33 +618,58 @@
                 "icon-rotate": ["coalesce", ["to-number", ["get", "heading"]], 0],
                 "icon-rotation-alignment": "map",
                 "icon-allow-overlap": true,
-                "icon-ignore-placement": true
+                "icon-ignore-placement": true,
+                "icon-opacity": 0
+            }
+        });
+
+        // Keep the visual signal compact, but give mouse and touch users a
+        // dependable target. This layer is intentionally transparent and sits
+        // above the rendered event layers; it does not change event geometry.
+        map.addLayer({
+            id: "event-hit",
+            type: "circle",
+            source: "sentinel-events",
+            filter: ["!", ["has", "point_count"]],
+            paint: {
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 12, 8, 16],
+                "circle-color": "rgba(0,0,0,0)",
+                "circle-opacity": 0
             }
         });
 
         const selectRenderedEvent = event => {
             const feature = event.features?.[0];
             if (!feature) return;
-            const point = event.point;
-            const nearbyFeatures = map.queryRenderedFeatures([
-                [point.x - 7, point.y - 7],
-                [point.x + 7, point.y + 7]
-            ], { layers: ["events", "event-glyphs", "military-aircraft"] });
-            const events = Array.from(new Set(nearbyFeatures.map(item => String(item.properties.map_id))))
-                .map(id => eventIndex.get(id))
-                .filter(Boolean);
-
-            if (events[0]) renderEventDetail(events[0]);
+            selectEventById(feature.properties?.map_id);
         };
 
         map.on("click", "events", selectRenderedEvent);
         map.on("click", "event-glyphs", selectRenderedEvent);
         map.on("click", "military-aircraft", selectRenderedEvent);
+        map.on("click", "event-hit", selectRenderedEvent);
 
-        ["events", "event-glyphs", "military-aircraft"].forEach(layer => {
+        ["event-hit", "events", "event-glyphs", "military-aircraft"].forEach(layer => {
             map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
             map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
         });
+        ["major-city-hit", "major-city-lights", "major-city-glow"].forEach(layer => {
+            map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
+            map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
+        });
+        map.on("click", "major-city-hit", event => {
+            const city = event.features?.[0];
+            if (!city) return;
+            const [longitude, latitude] = city.geometry.coordinates;
+            const events = filteredEvents.filter(item => {
+                const latDistance = Number(item.latitude) - latitude;
+                const lonDistance = (Number(item.longitude) - longitude) * Math.cos(latitude * Math.PI / 180);
+                return Math.hypot(latDistance, lonDistance) <= 3.2;
+            });
+            renderEventGroup(events, events.length, city.properties?.name || "Selected city");
+        });
+
+        syncEventHitOverlay();
     }
 
     function normalizeDisasterEvent(event) {
@@ -517,7 +694,7 @@
     }
 
     function pointFeatures(events) {
-        return spreadCoincidentPoints({
+        return {
             type: "FeatureCollection",
             features: events.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).map(event => {
                 disasterIndex.set(event.event_id, event);
@@ -527,7 +704,7 @@
                     properties: { map_id: event.event_id, type: event.type, title: event.title }
                 };
             })
-        });
+        };
     }
 
     function validPolygonGeometry(event) {
@@ -589,7 +766,10 @@
         map.addLayer(pointLayer);
         map.on("click", layerId, click => {
             const selected = disasterIndex.get(String(click.features?.[0]?.properties?.map_id));
-            if (selected) renderEventDetail(selected);
+            if (selected) {
+                showEventPopup(selected, click.lngLat);
+                renderEventDetail(selected);
+            }
         });
         map.on("mouseenter", layerId, () => { map.getCanvas().style.cursor = "pointer"; });
         map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
@@ -691,6 +871,7 @@
             earlyReportIndex.set(String(properties.id), properties);
         });
         earlyReportCount = earlyReportIndex.size;
+        updateSignalFilters();
         if (earlyReportPopupId && !earlyReportIndex.has(earlyReportPopupId)) {
             earlyReportPopup?.remove();
             earlyReportPopup = null;
@@ -708,7 +889,7 @@
         const snapshot = await earlyReportFeed.load();
         const retained = retainedEarlyReportGeojson(snapshot.data);
         indexEarlyReports(retained);
-        map.getSource("x-early-reports-source").setData(spreadCoincidentPoints(retained, 0.14));
+        map.getSource("x-early-reports-source").setData(retained);
         map.triggerRepaint();
         updateMapCount();
     }
@@ -723,7 +904,7 @@
         indexEarlyReports(geojson);
         map.addSource("x-early-reports-source", {
             type: "geojson",
-            data: spreadCoincidentPoints(geojson, 0.14),
+            data: geojson,
             cluster: false
         });
         map.addLayer({
@@ -786,6 +967,7 @@
         }).filter(Boolean);
         environmentalCount = recentEarthquakes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length +
             recentVolcanoes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length + weatherFeatures.length;
+        updateSignalFilters();
         map.addSource("weather-source", { type: "geojson", data: { type: "FeatureCollection", features: weatherFeatures } });
         map.addLayer({ id: "weather-fill", type: "fill", source: "weather-source", paint: { "fill-color": weatherColorExpression(), "fill-opacity": ["match", ["get", "severity"], "CRITICAL", 0.28, "HIGH", 0.22, "MEDIUM", 0.17, 0.12] } });
         map.addLayer({ id: "weather-line", type: "line", source: "weather-source", paint: { "line-color": weatherColorExpression(), "line-width": ["match", ["get", "severity"], "CRITICAL", 3, "HIGH", 2.5, 2], "line-dasharray": [2, 2] } });
@@ -849,6 +1031,7 @@
                 Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
             ).length +
             weatherFeatures.length;
+        updateSignalFilters();
         updateMapCount();
     }
 
@@ -856,44 +1039,46 @@
         ids.forEach(id => { if (map?.getLayer(id)) map.setLayoutProperty(id, "visibility", visible ? "visible" : "none"); });
     }
 
-    function updateCameraTelemetry() {
-        if (!map) return;
-        const center = map.getCenter();
-        const zoom = map.getZoom();
-        const heading = ((map.getBearing() % 360) + 360) % 360;
-        element("camera-lat").textContent = center.lat.toFixed(4);
-        element("camera-lon").textContent = center.lng.toFixed(4);
-        element("camera-alt").textContent = zoom < 2.4 ? "GLOBAL" : `Z${zoom.toFixed(1)}`;
-        element("camera-heading").textContent = String(Math.round(heading)).padStart(3, "0");
-    }
-
-    function bindVisualModes() {
-        const frame = document.querySelector(".map-frame");
-        document.querySelectorAll("[data-map-mode]").forEach(button => {
-            button.addEventListener("click", () => {
-                const mode = button.dataset.mapMode || "normal";
-                frame.dataset.visualMode = mode;
-                document.querySelectorAll("[data-map-mode]").forEach(item => {
-                    const active = item === button;
-                    item.classList.toggle("is-active", active);
-                    item.setAttribute("aria-pressed", String(active));
-                });
-            });
-        });
+    function showEventPopup(event, lngLat) {
+        if (!window.maplibregl?.Popup || !map || !event || !lngLat) return;
+        const content = document.createElement("article");
+        content.className = "sentinel-popup";
+        const title = document.createElement("h3");
+        title.textContent = event.title || "Intelligence event";
+        const meta = document.createElement("p");
+        meta.className = "sentinel-popup-meta";
+        meta.textContent = [displayType(getEventCategory(event)), event.threat_level || "UNKNOWN", formatDate(event.timestamp)]
+            .filter(Boolean).join(" · ");
+        const location = document.createElement("p");
+        location.textContent = event.location || (Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
+            ? `${event.latitude.toFixed(4)}, ${event.longitude.toFixed(4)}` : "Location not reported");
+        const source = document.createElement("p");
+        source.textContent = `Source: ${sourceText(event)}`;
+        content.append(title, meta, location, source);
+        const link = event.source_url || event.url || event.link;
+        if (link) {
+            const anchor = document.createElement("a");
+            anchor.href = link;
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+            anchor.textContent = "Open original report";
+            content.append(anchor);
+        }
+        map.popup?.remove();
+        map.popup = new window.maplibregl.Popup({ closeButton: true, closeOnClick: true, offset: 12, maxWidth: "390px" })
+            .setLngLat(lngLat)
+            .setDOMContent(content)
+            .addTo(map);
     }
 
     function applyLayerVisibility() {
-        setLayersVisible(["event-glow", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
-        setLayersVisible(["earthquakes"], element("layer-earthquakes").checked);
-        setLayersVisible(["volcanoes"], element("layer-volcanoes").checked);
-        setLayersVisible(["weather-fill", "weather-line"], element("layer-weather").checked);
-        setLayersVisible([
-            "x-early-reports"
-        ], element("layer-x-reports").checked);
+        setLayersVisible(["event-glow", "event-hit", "events", "event-glyphs", "source-reported-halo", "association-highlight", "military-aircraft-glow", "military-aircraft"], true);
+        setLayersVisible(["earthquakes", "volcanoes", "weather-fill", "weather-line", "x-early-reports"], true);
         updateMapData();
     }
 
     function initializeMap() {
+        if (map) return;
         if (!window.maplibregl?.Map) {
             throw new Error("The MapLibre renderer could not be loaded.");
         }
@@ -904,22 +1089,28 @@
             style: mapStyle(),
             center: INITIAL_CENTER,
             zoom: INITIAL_ZOOM,
-            pitch: 18,
+            pitch: 0,
             bearing: 0,
             minZoom: 1.5,
             maxZoom: 16,
             renderWorldCopies: true,
             attributionControl: true,
-            cooperativeGestures: true,
             fadeDuration: 0
         });
 
-        map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
-        map.addControl(new window.maplibregl.FullscreenControl(), "top-right");
+        map.addControl(new window.maplibregl.NavigationControl({ visualizePitch: false }), "top-left");
+        map.addControl(new window.maplibregl.FullscreenControl(), "top-left");
         map.addControl(new window.maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
-        bindVisualModes();
-        map.on("move", updateCameraTelemetry);
-        updateCameraTelemetry();
+        // Keep direct wheel zoom and touch gestures available. MapLibre's
+        // cooperative gesture mode is intentionally not enabled: users must
+        // never need Ctrl/Cmd to zoom the intelligence map.
+        map.scrollZoom.enable();
+        map.dragPan.enable();
+        map.touchZoomRotate.enable();
+        map.on("move", syncEventHitOverlay);
+        map.on("zoom", syncEventHitOverlay);
+        map.on("rotate", syncEventHitOverlay);
+        map.on("resize", syncEventHitOverlay);
 
         const resizeMap = () => {
             if (!map) return;
@@ -940,30 +1131,12 @@
             const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
             const fullscreen = fullscreenElement === element("sentinel-map");
             element("sentinel-map").classList.toggle("is-map-fullscreen", fullscreen);
-            if (fullscreen) map.disableCooperativeGestures?.();
-            else map.enableCooperativeGestures?.();
             window.setTimeout(() => map.resize(), 80);
         };
         document.addEventListener("fullscreenchange", handleFullscreenChange);
         document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
 
-        element("fullscreen-detail-toggle")?.addEventListener("click", event => {
-            const panel = event.currentTarget.closest(".fullscreen-event-panel");
-            const collapsed = panel.classList.toggle("is-collapsed");
-            event.currentTarget.textContent = collapsed ? "Expand" : "Minimize";
-            event.currentTarget.setAttribute("aria-expanded", String(!collapsed));
-        });
-
         map.on("load", () => {
-            map.setProjection?.({ type: "globe" });
-            map.setSky?.({
-                "sky-color": "#030708",
-                "horizon-color": "#08191c",
-                "fog-color": "#061012",
-                "sky-horizon-blend": 0.35,
-                "horizon-fog-blend": 0.45,
-                "fog-ground-blend": 0.7
-            });
             addIntelligenceLayers();
             mapReady = true;
             element("sentinel-map").dataset.mapReady = "true";
@@ -978,72 +1151,12 @@
         });
     }
 
-    function getVisibleCategorySet() {
-        const categorySet = new Set();
-        const layerChecks = [
-            ["layer-intelligence", ["intelligence", "news", "reddit_report", "x_report"]],
-            ["layer-conflict", ["conflict", "military_exercise"]],
-            ["layer-cyber", ["cyber"]],
-            ["layer-aircraft", ["aircraft"]],
-            ["layer-military-aircraft", ["military_aircraft", "military_exercise"]],
-            ["layer-maritime", ["maritime"]],
-            ["layer-satellites", ["satellite"]],
-            ["layer-earthquakes", ["earthquake"]],
-            ["layer-volcanoes", ["volcano"]],
-            ["layer-weather", ["weather", "weather_alert", "wildfire", "prescribed_fire"]],
-            ["layer-solar", ["solar"]],
-            ["layer-humanitarian", ["humanitarian"]],
-            ["layer-gps-jamming", ["gps_jamming"]],
-            ["layer-internet-outages", ["internet_outage"]]
-        ];
-
-        layerChecks.forEach(([id, categories]) => {
-            if (element(id)?.checked) {
-                categories.forEach(category => categorySet.add(category));
-            }
-        });
-
-        return categorySet;
-    }
-
     function filterEvents() {
-        const type = element("filter-type").value;
-        const threat = element("filter-threat").value;
-        const minimumConfidence = Number(element("filter-confidence").value);
-        const hours = element("filter-time").value;
-        const selectedHours = hours === "all"
-            ? window.SentinelData.mapRetentionHours
-            : Math.min(Number(hours), window.SentinelData.mapRetentionHours);
-        const threshold = Date.now() - selectedHours * 60 * 60 * 1000;
-        const visibleCategories = getVisibleCategorySet();
-        const europeLayerChecks = [
-            ["layer-europe-nato", "nato_activity"],
-            ["layer-europe-russia", "russian_activity"],
-            ["layer-europe-flank", "eastern_flank"],
-            ["layer-europe-ukraine", "ukraine_war"],
-            ["layer-europe-air", "air_activity"],
-            ["layer-europe-naval", "naval_activity"],
-            ["layer-europe-missile", "missile_drone"],
-            ["layer-europe-exercises", "military_exercise"],
-            ["layer-europe-warnings", "security_warning"],
-            ["layer-europe-reddit", "reddit_osint"]
-        ];
-        const enabledEuropeLayers = new Set(europeLayerChecks.filter(([id]) => element(id)?.checked).map(([, layer]) => layer));
-
-        filteredEvents = allEvents.filter(event => {
-            const category = getEventCategory(event);
-            const raw = adapter?.normalizeEvent(event)?.metadata?.raw || event;
-            const europeLayers = Array.isArray(raw.europe_layers) ? raw.europe_layers : [];
-            if (europeLayers.length) {
-                if (!europeLayers.some(layer => enabledEuropeLayers.has(layer))) return false;
-            } else if (!visibleCategories.has(category)) return false;
-            if (type !== "all" && category !== type) return false;
-            if (threat !== "all" && (event.threat_level || "UNKNOWN") !== threat) return false;
-            if (minimumConfidence && (event.confidence === null || event.confidence < minimumConfidence)) return false;
-            const timestamp = Date.parse(event.timestamp || "");
-            if (!Number.isFinite(timestamp) || timestamp < threshold) return false;
-            return true;
-        });
+        // The public map has no hidden dashboard filters. The publication
+        // pipeline is the source of truth, so historical records remain
+        // visible instead of disappearing behind an absent time selector.
+        filteredEvents = allEvents.slice();
+        element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);
     }
 
     function updateMapData() {
@@ -1051,29 +1164,118 @@
         eventIndex = new Map();
         coordinateCounts = new Map();
         filteredEvents.forEach(event => {
-            const key = `${event.latitude.toFixed(4)},${event.longitude.toFixed(4)}`;
+            const key = eventCoordinateKey(event);
             coordinateCounts.set(key, (coordinateCounts.get(key) || 0) + 1);
         });
+        element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);
 
         if (mapReady) {
             map.getSource("sentinel-events").setData(featureCollection(filteredEvents));
+            map.getSource("sentinel-cities")?.setData(cityFeatureCollection(filteredEvents));
             map.triggerRepaint();
-            window.setTimeout(() => {
-                element("sentinel-map").dataset.renderedFeatures = String(
-                    map.querySourceFeatures("sentinel-events").length
-                );
-                setLoading(false);
-            }, 350);
+            syncEventHitOverlay();
+            scheduleVisibleEventMetrics();
         }
 
-        element("ops-mapped").textContent = filteredEvents.length.toLocaleString();
+        setText("ops-mapped", filteredEvents.length.toLocaleString());
         updateMapCount();
+    }
+
+    function scheduleVisibleEventMetrics(attempt = 0) {
+        if (!mapReady || !map) return;
+        if (visibleMetricsTimer) window.clearTimeout(visibleMetricsTimer);
+
+        const renderedFeatures = map.querySourceFeatures("sentinel-events").length;
+        const visibleIds = new Set();
+        let clusteredVisible = 0;
+        map.queryRenderedFeatures({ layers: ["event-hit", "events", "event-glyphs", "military-aircraft"] })
+            .forEach(feature => {
+                const count = Number(feature.properties?.point_count);
+                if (Number.isFinite(count) && count > 0) clusteredVisible += count;
+                else if (feature.properties?.map_id) visibleIds.add(String(feature.properties.map_id));
+            });
+        const visibleEvents = visibleIds.size + clusteredVisible;
+        element("sentinel-map").dataset.renderedFeatures = String(renderedFeatures);
+        element("sentinel-map").dataset.visibleEvents = String(visibleEvents);
+        syncEventHitOverlay();
+
+        // setData() completes before MapLibre finishes loading and painting
+        // source tiles. Retry briefly so production verification measures the
+        // rendered map instead of a transient zero-frame.
+        const maxAttempts = 20;
+        if (!visibleEvents && filteredEvents.length && attempt < maxAttempts) {
+            visibleMetricsTimer = window.setTimeout(() => scheduleVisibleEventMetrics(attempt + 1), 250);
+            return;
+        }
+        setLoading(false);
+    }
+
+    function isEnvironmentalSignal(event) {
+        const type = String(event?.type || event?.category || "").toLowerCase();
+        const classification = String(event?.classification || "").toLowerCase();
+        const text = `${event?.title || ""} ${event?.description || ""}`.toLowerCase();
+        return ["earthquake", "seismic_event", "volcano", "weather", "weather_alert", "tropical_cyclone", "wildfire", "prescribed_fire", "flood", "flooding", "severe_weather", "natural_hazard"].includes(type) ||
+            /disaster_alert|earthquake|seismic|volcano|wildfire|forest fire|flood|hurricane|typhoon|tornado|tsunami|storm surge/.test(`${type} ${classification} ${text}`);
+    }
+
+    function signalKind(event) {
+        if (event?.signal_kind) return String(event.signal_kind);
+        if (event?.kind === "x_report" || event?.source_class === "social_media_osint") return "x_report";
+        return isEnvironmentalSignal(event) ? "environmental" : "intelligence";
+    }
+
+    function signalCategories(event) {
+        const categories = Array.isArray(event?.categories) ? event.categories.map(String) : [];
+        const category = event?.category || event?.type;
+        return Array.from(new Set([signalKind(event), category, ...categories].filter(Boolean).map(String)));
+    }
+
+    function unifiedSignalItems() {
+        const items = [];
+        const seen = new Set();
+        const add = (item, kind) => {
+            const id = String(item.event_id || item.id || item.url || `${kind}-${item.title || "signal"}`);
+            const key = `${kind}:${id}`;
+            if (seen.has(key)) return;
+            seen.add(key);
+            items.push({
+                ...item,
+                id,
+                event_id: item.event_id || id,
+                signal_kind: kind,
+                categories: signalCategories({ ...item, signal_kind: kind }),
+                countries: Array.isArray(item.countries) ? item.countries.map(String) : item.country ? [String(item.country)] : [],
+                severity: String(item.severity || item.threat_level || item.priority || "UNKNOWN").toUpperCase(),
+                timestamp: item.timestamp || item.published_at || item.created_at || null,
+                description: item.description || item.summary || "No summary is available."
+            });
+        };
+        allEvents.forEach(event => add(event, signalKind(event)));
+        Object.values(environmentalEvents).flat().forEach(event => add(event, "environmental"));
+        earlyReportIndex.forEach(properties => add({
+            ...properties,
+            title: properties.title || "X report",
+            description: properties.summary || "Early report from X; verify independently.",
+            source: properties.account ? `X ${properties.account}` : "X report",
+            source_url: properties.source_url,
+            type: "x_report",
+            published_at: properties.published_at
+        }, "x_report"));
+        newsItems.forEach(item => add(item, "intelligence"));
+        return items;
+    }
+
+    function updateSignalFilters() {
+        const items = unifiedSignalItems();
+        populateNewsFilter("news-filter-country", Array.from(new Set(items.flatMap(item => item.countries))).sort());
+        populateNewsFilter("news-filter-category", Array.from(new Set(items.flatMap(item => signalCategories(item)))).sort());
+        populateNewsFilter("news-filter-severity", Array.from(new Set(items.map(item => item.severity || "UNKNOWN"))).sort());
     }
 
     function updateMapCount() {
         const counts = [
-            `${filteredEvents.length.toLocaleString()} intelligence`,
-            `${environmentalCount.toLocaleString()} environmental`,
+            `${(filteredEvents.length - filteredEvents.filter(isEnvironmentalSignal).length).toLocaleString()} intelligence`,
+            `${Math.max(environmentalCount, filteredEvents.filter(isEnvironmentalSignal).length).toLocaleString()} environmental`,
             `${earlyReportCount.toLocaleString()} X reports`
         ];
         element("map-count").textContent =
@@ -1082,19 +1284,105 @@
                 : "No signals match the active filters";
     }
 
-    function populateSelect(select, values, firstLabel, formatter = value => value) {
+    function populateNewsFilter(id, values) {
+        const select = element(id);
+        if (!select) return;
         const previous = select.value;
-        select.replaceChildren(new Option(firstLabel, "all"));
-        values.forEach(value => select.add(new Option(formatter(value), value)));
+        select.replaceChildren(new Option("All", "all"));
+        values.forEach(value => select.add(new Option(value, value)));
         select.value = values.includes(previous) ? previous : "all";
     }
 
-    function populateFilters() {
-        const types = Array.from(new Set(allEvents.map(event => getEventCategory(event)))).sort();
-        const threats = Array.from(new Set(allEvents.map(event => String(event.threat_level || "UNKNOWN").toUpperCase())))
-            .sort((a, b) => THREAT_ORDER.indexOf(a) - THREAT_ORDER.indexOf(b));
-        populateSelect(element("filter-type"), types, "All event types", displayType);
-        populateSelect(element("filter-threat"), threats, "All threat levels");
+    function renderNewsDetail(item) {
+        const panel = element("event-detail");
+        if (!panel) return;
+        const heading = document.createElement("h3");
+        const summary = document.createElement("p");
+        const details = document.createElement("dl");
+        heading.textContent = item.title;
+        summary.textContent = item.summary || "No summary is available.";
+        appendDefinition(details, "Publisher", item.publisher);
+        appendDefinition(details, "Category", displayType(item.category || item.categories?.[0] || "news"));
+        if (item.subcategory) appendDefinition(details, "Subcategory", displayType(item.subcategory));
+        appendDefinition(details, "Severity", item.severity || "UNKNOWN");
+        appendDefinition(details, "Published", formatDate(item.published_at));
+        appendDefinition(details, "Countries", item.countries?.join(", ") || "Not classified");
+        const verification = item.verification || {};
+        appendDefinition(details, "Verification", displayType(verification.status || item.claim_status || "unverified"));
+        appendDefinition(details, "Confidence score", verification.confidence_score === null || verification.confidence_score === undefined ? "Not available" : `${verification.confidence_score}/100`);
+        appendDefinition(details, "Independent sources", String(verification.independent_source_count ?? 0));
+        appendDefinition(details, "Official confirmation", verification.official_confirmation ? "Yes" : "No");
+        if (item.detected_keywords?.length) appendDefinition(details, "Detected keywords", item.detected_keywords.join(", "));
+        if (verification.explanation) appendDefinition(details, "Evidence explanation", verification.explanation);
+        if (verification.contradictions?.length) appendDefinition(details, "Contradictions", `${verification.contradictions.length} source reference(s)`);
+        if (verification.last_checked) appendDefinition(details, "Last checked", formatDate(verification.last_checked));
+        const link = document.createElement("a");
+        link.href = item.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Open original report";
+        panel.replaceChildren(heading, summary, details, link);
+        panel.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
+        setText("event-drawer-title", "News report");
+        openEventDrawer();
+    }
+
+    function renderNewsFeed() {
+        const feed = element("news-feed");
+        if (!feed) return;
+        const country = element("news-filter-country")?.value || "all";
+        const category = element("news-filter-category")?.value || "all";
+        const severity = element("news-filter-severity")?.value || "all";
+        const allSignals = unifiedSignalItems();
+        const filtered = allSignals.filter(item =>
+            (country === "all" || item.countries.includes(country)) &&
+            (category === "all" || signalCategories(item).includes(category)) &&
+            (severity === "all" || item.severity === severity)
+        );
+        feed.replaceChildren();
+        feed.hidden = false;
+        element("event-detail")?.setAttribute("hidden", "");
+        if (!allSignals.length) {
+            const empty = document.createElement("p");
+            empty.className = "news-feed-empty";
+            empty.textContent = newsHealth.status === "unavailable"
+                ? "Signal publication unavailable; no records can be displayed."
+                : "No signals are currently published.";
+            feed.appendChild(empty);
+            return;
+        }
+        if (!filtered.length) {
+            const empty = document.createElement("p");
+            empty.className = "news-feed-empty";
+            empty.textContent = "No reports match the selected filters.";
+            feed.appendChild(empty);
+            return;
+        }
+        filtered.slice(0, 100).forEach(item => {
+            const button = document.createElement("button");
+            const title = document.createElement("strong");
+            const metadata = document.createElement("small");
+            button.type = "button";
+            title.textContent = item.title;
+            metadata.textContent = `${item.publisher} · ${formatDate(item.published_at)} · ${item.severity || "UNKNOWN"}`;
+            button.append(title, metadata);
+            metadata.textContent = `${displayType(item.signal_kind)} · ${item.publisher || sourceText(item)} · ${formatDate(item.timestamp)} · ${item.severity}`;
+            button.addEventListener("click", () => item.signal_kind === "intelligence" && item.url && item.publisher
+                ? renderNewsDetail(item)
+                : renderEventDetail(item));
+            feed.appendChild(button);
+        });
+    }
+
+    function applyNewsSnapshot(snapshot) {
+        newsItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
+        newsHealth = snapshot?.newsHealth || snapshot?.health || { status: "unavailable", sources: [] };
+        element("sentinel-map").dataset.liveNewsState = snapshot?.liveNewsState || "unavailable";
+        element("sentinel-map").dataset.liveNewsCount = String(snapshot?.liveNewsItems?.length || 0);
+        element("sentinel-map").dataset.liveNewsGeneratedAt = snapshot?.liveNewsGeneratedAt || "";
+        updateSignalFilters();
+        renderNewsFeed();
     }
 
     function appendDefinition(list, label, value, className = "") {
@@ -1136,6 +1424,13 @@
         return interpretations[event.type] || "This marker represents the geographic context supplied with the source record; exact location precision was not provided.";
     }
 
+    function openEventDrawer() {
+        const panel = element("event-panel");
+        panel?.classList.add("is-open");
+        panel?.setAttribute("aria-hidden", "false");
+        element("event-list-toggle")?.setAttribute("aria-expanded", "true");
+    }
+
     function coordinateContext(event) {
         const key = `${event.latitude.toFixed(4)},${event.longitude.toFixed(4)}`;
         const count = coordinateCounts.get(key) || 1;
@@ -1160,9 +1455,19 @@
         interpretationBody.textContent = interpretationText(event);
         interpretation.append(interpretationHeading, interpretationBody);
         appendDefinition(details, "Threat level", event.threat_level, `threat-${event.threat_level.toLowerCase()}`);
-        appendDefinition(details, "Category", displayType(event.type));
+        appendDefinition(details, "Category", displayType(event.category || event.type));
+        if (event.subcategory) appendDefinition(details, "Subcategory", displayType(event.subcategory));
         appendDefinition(details, "Confidence", event.confidence === null ? "Not reported" : `${event.confidence}%`);
+        const verification = event.verification && typeof event.verification === "object" ? event.verification : null;
+        if (verification) {
+            appendDefinition(details, "Verification status", displayType(verification.status || "unverified"));
+            appendDefinition(details, "Confidence score", verification.confidence_score === null || verification.confidence_score === undefined ? "Not available" : `${verification.confidence_score}/100`);
+            appendDefinition(details, "Independent sources", String(verification.independent_source_count ?? 0));
+            if (verification.explanation) appendDefinition(details, "Evidence explanation", verification.explanation);
+            if (verification.contradictions?.length) appendDefinition(details, "Contradictions", `${verification.contradictions.length} source reference(s)`);
+        }
         appendDefinition(details, "Observed", formatDate(event.timestamp));
+        appendDefinition(details, "Temporal status", isHistoricalEvent(event) ? "Historical publication record" : "Recent publication record");
         appendDefinition(details, "Source", sourceText(event));
         if (Number.isFinite(event.latitude) && Number.isFinite(event.longitude)) {
             appendDefinition(details, "Coordinates", `${event.latitude.toFixed(4)}, ${event.longitude.toFixed(4)}`);
@@ -1205,29 +1510,103 @@
         );
 
         panel.replaceChildren(heading, summary, interpretation, details, sourceAction);
-        syncFullscreenDetail(panel);
+        panel.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
+        setText("event-drawer-title", "Selected event");
+        openEventDrawer();
     }
 
-    function syncFullscreenDetail(source) {
-        const fullscreenDetail = element("fullscreen-event-detail");
-        if (!fullscreenDetail) return;
-        fullscreenDetail.replaceChildren(...[...source.children].map(child => child.cloneNode(true)));
-        fullscreenDetail.querySelectorAll(".event-source-action").forEach(button => {
-            button.addEventListener("click", () =>
-                window.SentinelSourceViewerController?.openForEvent(button.dataset.eventId)
-            );
+    function selectEventById(eventId) {
+        const selectedId = String(eventId || "");
+        const selectedEvent = eventIndex.get(selectedId);
+        if (!selectedEvent) return false;
+
+        // Group from the verified publication index rather than rendered
+        // pixels, so overlapping records can never be lost to draw order.
+        const selectedCoordinate = eventCoordinateKey(selectedEvent);
+        const events = Array.from(eventIndex.values())
+            .filter(item => eventCoordinateKey(item) === selectedCoordinate);
+
+        if (events.length > 1) {
+            renderEventGroup(events, events.length);
+            const first = events[0];
+            map.easeTo({
+                center: [first.longitude, first.latitude],
+                zoom: Math.min(8, Math.max(map.getZoom() + 2, 6)),
+                duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420
+            });
+        }
+        else {
+            locateSourceEvent(selectedId);
+        }
+        return true;
+    }
+
+    function syncEventHitOverlay() {
+        const overlay = element("sentinel-event-hit-overlay");
+        if (!overlay || !map || !mapReady) return;
+
+        const width = map.getContainer().clientWidth;
+        const height = map.getContainer().clientHeight;
+        const visibleUnclusteredIds = new Set();
+        try {
+            map.querySourceFeatures("sentinel-events")
+                .filter(feature => !feature.properties?.point_count)
+                .forEach(feature => {
+                    const id = feature.properties?.map_id;
+                    if (id) visibleUnclusteredIds.add(String(id));
+                });
+        }
+        catch {
+            // Source tiles can be unavailable briefly during a publication refresh.
+        }
+        const sourceReadyForIndividualEvents = visibleUnclusteredIds.size > 0;
+        const activeIds = new Set();
+
+        eventIndex.forEach((event, eventId) => {
+            let button = overlay.querySelector(`[data-event-id="${CSS.escape(String(eventId))}"]`);
+            if (!button) {
+                button = document.createElement("button");
+                button.type = "button";
+                button.className = "sentinel-event-hit";
+                button.dataset.eventId = String(eventId);
+                button.addEventListener("click", click => {
+                    click.preventDefault();
+                    click.stopPropagation();
+                    selectEventById(eventId);
+                });
+                overlay.appendChild(button);
+            }
+
+            button.setAttribute("aria-label", `Open event: ${event.title || "Published intelligence event"}`);
+            button.title = event.title || "Published intelligence event";
+            const point = map.project([event.longitude, event.latitude]);
+            const visible = (sourceReadyForIndividualEvents
+                ? visibleUnclusteredIds.has(String(eventId))
+                : map.getZoom() > 4.05) &&
+                point.x >= -20 && point.x <= width + 20 &&
+                point.y >= -20 && point.y <= height + 20;
+            button.hidden = !visible;
+            if (visible) {
+                button.style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`;
+                activeIds.add(String(eventId));
+            }
         });
-        fullscreenDetail.closest(".fullscreen-event-panel")?.classList.add("has-selection");
+
+        overlay.querySelectorAll(".sentinel-event-hit").forEach(button => {
+            if (!activeIds.has(button.dataset.eventId || "")) button.hidden = true;
+        });
     }
 
-    function renderEventGroup(events, totalCount) {
+    function renderEventGroup(events, totalCount, locationLabel = "Events at this map point") {
         const panel = element("event-detail");
         const heading = document.createElement("h3");
         const explanation = document.createElement("p");
         const list = document.createElement("div");
 
         heading.textContent = `${totalCount} signals in this group`;
-        explanation.textContent = totalCount > events.length ?
+        explanation.textContent = !events.length ?
+            `${locationLabel} has no published event records in the current publication.` : totalCount > events.length ?
             `Showing the first ${events.length} signals. Select one to inspect it.` :
             "Select a signal to inspect its source record and location context.";
         list.className = "cluster-list";
@@ -1245,154 +1624,118 @@
         });
 
         panel.replaceChildren(heading, explanation, list);
-        syncFullscreenDetail(panel);
-        element("fullscreen-event-detail")?.querySelectorAll(".cluster-list button").forEach((button, index) => {
-            button.addEventListener("click", () => renderEventDetail(events[index]));
-        });
-    }
-
-    function renderHealth(snapshot) {
-        const coverage = element("coverage-message");
-        const sources = element("coverage-sources");
-        const healthState = snapshot.healthState;
-        coverage.textContent = healthState.message;
-        sources.replaceChildren();
-
-        healthState.failedSources.slice(0, 6).forEach(source => {
-            const item = document.createElement("li");
-            item.textContent = `${source.name || source.source || "Source"}: ${source.status || "degraded"}`;
-            sources.appendChild(item);
-        });
-
-        if (snapshot.legacy) {
-            const item = document.createElement("li");
-            item.textContent = "Manifest metadata unavailable; displaying validated legacy files.";
-            sources.appendChild(item);
-        }
+        panel.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
+        setText("event-drawer-title", locationLabel);
+        openEventDrawer();
     }
 
     function applySnapshot(snapshot) {
-        const summary = snapshot.dashboard.summary || {};
-        const criticalEvents = Array.isArray(snapshot.dashboard.critical_events) ? snapshot.dashboard.critical_events : [];
-        const generated = snapshot.manifest.generated || snapshot.dashboard.generated;
-
-        element("ops-threat").textContent = String(summary.global_threat_level || summary.threat_level || "UNKNOWN");
-        element("ops-total").textContent = Number(summary.total_events || snapshot.events.length).toLocaleString();
-        element("ops-critical").textContent = criticalEvents.length.toLocaleString();
-        element("ops-generated").textContent = formatDate(generated);
-
         allEvents = snapshot.events;
+        applyNewsSnapshot(snapshot);
+        element("event-feed-count").textContent = snapshot.events.length.toLocaleString();
         element("sentinel-map").dataset.loadedEvents = String(snapshot.events.length);
-        populateFilters();
-        renderHealth(snapshot);
+        element("sentinel-map").dataset.rejectedEvents = String(snapshot.invalidEventCount || 0);
+        element("sentinel-map").dataset.liveFeedState = snapshot.liveFeedState || "unavailable";
+        element("sentinel-map").dataset.liveEventCount = String(snapshot.liveEvents?.length || 0);
+        element("sentinel-map").dataset.liveGeneratedAt = snapshot.liveGeneratedAt || "";
+        element("sentinel-map").dataset.feedState = snapshot.invalidEventCount
+            ? "degraded"
+            : snapshot.events.length ? "available" : "empty";
+        element("sentinel-map").dataset.visibleEvents = "0";
         updateMapData();
 
-        const state = snapshot.legacy ? "degraded" : snapshot.healthState.state;
+        const rejectedMessage = snapshot.invalidEventCount
+            ? ` ${snapshot.invalidEventCount} records were rejected because they lacked valid map coordinates or IDs.`
+            : "";
+        const state = snapshot.legacy || snapshot.invalidEventCount ? "degraded" : snapshot.healthState.state;
+        const healthReasons = snapshot.healthState.failedSources
+            .slice(0, 4)
+            .map(source => `${source.name || source.source || "source"}: ${source.status || "limited"}`)
+            .join("; ");
+        const statusNode = element("ops-status");
+        if (statusNode) {
+            statusNode.title = healthReasons
+                ? `Coverage detail: ${healthReasons}`
+                : "Coverage detail unavailable.";
+        }
+        renderCoverageDetails(snapshot.healthState, snapshot.manifest.publication_id, snapshot.liveCollectors);
         const message = snapshot.legacy ?
             "Operational with legacy publication metadata" :
-            `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}`;
-        setStatus(message, state);
+            `${snapshot.healthState.message} Publication ${snapshot.manifest.publication_id}.${rejectedMessage}`;
+        const liveMessage = snapshot.liveFeedState === "available"
+            ? ` Live D1 feed: ${snapshot.liveEvents.length.toLocaleString()} records.`
+            : snapshot.liveFeedState === "degraded"
+                ? " Live D1 feed delayed; last valid records retained."
+                : " Live D1 feed unavailable; static publication retained.";
+        const liveNewsMessage = snapshot.liveNewsState === "available"
+            ? ` Live news: ${snapshot.liveNewsItems.length.toLocaleString()} articles.`
+            : snapshot.liveNewsState === "degraded"
+                ? " Live news delayed; last valid articles retained."
+                : " Live news unavailable; static news retained.";
+        const statusState = snapshot.liveFeedState === "available" && snapshot.liveNewsState !== "degraded"
+            ? state
+            : "degraded";
+        setStatus(`${message}${liveMessage}${liveNewsMessage}`, statusState);
     }
 
-    function ewsBaselineLabel(zScore) {
-        if (zScore >= 2) return "Significantly above baseline";
-        if (zScore >= 1) return "Above activity baseline";
-        if (zScore <= -2) return "Significantly below baseline";
-        if (zScore <= -1) return "Below activity baseline";
-        return "Near activity baseline";
-    }
-
-    async function refreshEws() {
-        const widget = element("ews-widget");
-        try {
-            const state = await client.fetchJSON("ews_state.json");
-            const level = Number(state.level);
-            const count = Number(state.concurrent_count);
-            const zScore = Number(state.z_score);
-            if (!Number.isInteger(level) || level < 0 || level > 4 || !Number.isFinite(count) || !Number.isFinite(zScore)) {
-                throw new Error("Invalid EWS state");
+    function refresh(options = {}) {
+        if (refreshInFlight) return refreshInFlight;
+        refreshInFlight = (async () => {
+            try {
+                const snapshot = await client.load(options);
+                if (!snapshot.unchanged || !allEvents.length) applySnapshot(snapshot);
+                else {
+                    applyNewsSnapshot(snapshot);
+                    if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
+                }
             }
-
-            widget.className = `metric-ews ews-level-${level}`;
-            element("ews-level").textContent = `LEVEL ${level}`;
-            element("ews-context").textContent = `${count.toLocaleString()} concurrent · ${ewsBaselineLabel(zScore)}`;
-            widget.title = `Early Warning System: level ${level}; z-score ${zScore.toFixed(2)}; updated ${formatDate(state.as_of || state.last_checked)}. Supporting anomaly indicator only.`;
-        }
-        catch (error) {
-            console.warn("EWS state unavailable", error);
-            widget.className = "metric-ews is-error";
-            element("ews-level").textContent = "UNAVAILABLE";
-            element("ews-context").textContent = "Sentinel map remains operational";
-        }
-    }
-
-    async function refresh(options = {}) {
-        try {
-            const snapshot = await client.load(options);
-            if (!snapshot.unchanged || !allEvents.length) applySnapshot(snapshot);
-            else if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
-        }
-        catch (error) {
-            console.error("Sentinel publication failed", error);
-            setStatus(error.message || "Sentinel publication unavailable", "error");
-            if (!allEvents.length) {
-                setLoading(false);
-                element("map-count").textContent = "Intelligence data unavailable";
+            catch (error) {
+                console.error("Sentinel publication failed", error);
+                setStatus(error.message || "Sentinel publication unavailable", "error");
+                element("sentinel-map").dataset.feedState = "error";
+                if (!allEvents.length) {
+                    setLoading(false);
+                    element("map-count").textContent = "Intelligence data unavailable";
+                }
             }
-        }
+            finally {
+                refreshInFlight = null;
+            }
+        })();
+        return refreshInFlight;
     }
 
     function bindControls() {
-        ["filter-type", "filter-threat", "filter-confidence", "filter-time"].forEach(id => {
-            element(id).addEventListener("change", updateMapData);
+        const setEventDrawer = open => {
+            const panel = element("event-panel");
+            panel?.classList.toggle("is-open", open);
+            panel?.setAttribute("aria-hidden", String(!open));
+            element("event-list-toggle")?.setAttribute("aria-expanded", String(open));
+        };
+        element("event-list-toggle")?.addEventListener("click", () => {
+            const open = !element("event-panel")?.classList.contains("is-open");
+            if (open) {
+                renderNewsFeed();
+                setText("event-drawer-title", "Latest news");
+            }
+            setEventDrawer(open);
         });
-
-        [
-            "layer-intelligence",
-            "layer-conflict",
-            "layer-cyber",
-            "layer-aircraft",
-            "layer-military-aircraft",
-            "layer-maritime",
-            "layer-satellites",
-            "layer-earthquakes",
-            "layer-volcanoes",
-            "layer-weather",
-            "layer-solar",
-            "layer-humanitarian",
-            "layer-gps-jamming",
-            "layer-internet-outages",
-            "layer-x-reports",
-            "layer-europe-nato",
-            "layer-europe-russia",
-            "layer-europe-flank",
-            "layer-europe-ukraine",
-            "layer-europe-air",
-            "layer-europe-naval",
-            "layer-europe-missile",
-            "layer-europe-exercises",
-            "layer-europe-warnings",
-            "layer-europe-reddit"
-        ].forEach(id => {
-            element(id).addEventListener("change", applyLayerVisibility);
+        element("event-panel-close")?.addEventListener("click", () => setEventDrawer(false));
+        element("event-panel")?.addEventListener("click", event => {
+            if (event.target === element("event-panel")) setEventDrawer(false);
         });
-
-        element("reset-filters").addEventListener("click", () => {
-            element("filter-type").value = "all";
-            element("filter-threat").value = "all";
-            element("filter-confidence").value = "0";
-            element("filter-time").value = "all";
-            updateMapData();
+        element("coverage-status-toggle")?.addEventListener("click", event => {
+            event.stopPropagation();
+            const toggle = element("coverage-status-toggle");
+            const panel = element("coverage-details");
+            const open = toggle?.getAttribute("aria-expanded") !== "true";
+            toggle?.setAttribute("aria-expanded", String(open));
+            if (panel) panel.hidden = !open;
         });
-
-        element("reset-view").addEventListener("click", () => {
-            map?.easeTo({ center: INITIAL_CENTER, zoom: INITIAL_ZOOM, pitch: 0, bearing: 0, duration: 500 });
-        });
-
-        element("mobile-panel-toggle").addEventListener("click", event => {
-            const open = element("filter-content").classList.toggle("is-open");
-            event.currentTarget.setAttribute("aria-expanded", String(open));
-        });
+        ["news-filter-country", "news-filter-category", "news-filter-severity"].forEach(id =>
+            element(id)?.addEventListener("change", renderNewsFeed)
+        );
     }
 
     function clearSourceHighlight(mapInstance = map, ready = mapReady) {
@@ -1431,7 +1774,10 @@
             zoom: Math.max(mapInstance.getZoom(), 8),
             duration: reducedMotion ? 0 : 450
         });
-        if (render) renderEventDetail(event);
+        if (render) {
+            showEventPopup(event, [event.longitude, event.latitude]);
+            renderEventDetail(event);
+        }
         return true;
     }
 
@@ -1442,7 +1788,43 @@
         locateEvent: locateSourceEvent,
         clearHighlight: clearSourceHighlight,
         diagnostics() {
-            return { mapReady, eventCount: eventIndex.size, highlightedEventId };
+            return {
+                mapReady,
+                eventCount: eventIndex.size,
+                highlightedEventId,
+                zoom: map?.getZoom() ?? null,
+                eventCoordinates: Array.from(eventIndex, ([eventId, event]) => ({
+                    eventId,
+                    latitude: event.latitude,
+                    longitude: event.longitude
+                }))
+            };
+        },
+        firstEventPoint() {
+            if (!map || !mapReady) return null;
+            for (const [eventId, event] of eventIndex) {
+                const point = map.project([event.longitude, event.latitude]);
+                if (point.x >= 0 && point.x <= map.getContainer().clientWidth &&
+                    point.y >= 0 && point.y <= map.getContainer().clientHeight) {
+                    return { x: point.x, y: point.y, eventId };
+                }
+            }
+            return null;
+        },
+        firstCityPoint() {
+            if (!map || !mapReady) return null;
+            const feature = map.queryRenderedFeatures({ layers: ["major-city-hit"] })
+                .find(item => Number(item.properties?.event_count || 0) === 0) ||
+                map.queryRenderedFeatures({ layers: ["major-city-hit"] })[0];
+            if (!feature?.geometry?.coordinates) return null;
+            const point = map.project(feature.geometry.coordinates);
+            return { x: point.x, y: point.y, name: feature.properties?.name || "City" };
+        },
+        projectEvent(eventId) {
+            const event = eventIndex.get(String(eventId || ""));
+            if (!map || !event) return null;
+            const point = map.project([event.longitude, event.latitude]);
+            return { x: point.x, y: point.y };
         }
     });
     window.SentinelMapAssociation = Object.freeze({
@@ -1463,11 +1845,8 @@
         }
 
         refresh();
-        refreshEws();
         window.setInterval(() => {
             if (document.visibilityState === "visible") {
-                refresh();
-                refreshEws();
                 updateMapData();
                 loadEnvironmentalLayers({ refreshOnly: true }).catch(error =>
                     console.warn("Environmental refresh failed; prior data retained", error)
@@ -1477,6 +1856,9 @@
                 );
             }
         }, DATA_REFRESH_MS);
+        window.setInterval(() => {
+            if (document.visibilityState === "visible") refresh();
+        }, LIVE_REFRESH_MS);
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
                 map?.resize();

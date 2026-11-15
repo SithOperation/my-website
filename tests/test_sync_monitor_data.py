@@ -23,13 +23,66 @@ type JsonValue = (
 
 
 class SyncMonitorDataTests(unittest.TestCase):
+    def test_ai_only_rejects_stale_source_and_preserves_last_known_good(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "external" / "ai" / "data" / "ai_cyber_digest.json"
+            destination = root / "data" / "ai_cyber_digest.json"
+            source.parent.mkdir(parents=True)
+            destination.parent.mkdir(parents=True)
+            source.write_text(
+                json.dumps(
+                    {
+                        "generated_at": "2000-01-01T00:00:00Z",
+                        "stories": [
+                            {
+                                "title": "Old",
+                                "source": "Publisher",
+                                "source_url": "https://example.test",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            destination.write_text('{"known_good": true}', encoding="utf-8")
+
+            result = sync_monitor_data.sync_ai(root)
+
+            self.assertEqual(result.status, "failed")
+            self.assertIn("stale source", result.detail)
+            self.assertEqual(
+                destination.read_text(encoding="utf-8"), '{"known_good": true}'
+            )
+
+    def test_default_sync_returns_failure_when_any_required_source_fails(self) -> None:
+        """The aggregate command cannot report success for a partial publication."""
+
+        results = [
+            sync_monitor_data.SyncResult("healthy.json", "unchanged", 2),
+            sync_monitor_data.SyncResult("missing.json", "skipped"),
+        ]
+        with (
+            mock.patch.object(sys, "argv", [str(MODULE_PATH)]),
+            mock.patch.object(sync_monitor_data, "sync_all", return_value=results),
+        ):
+            self.assertEqual(sync_monitor_data.main(), 1)
+
     def write_sentinel_publication(self, root: Path) -> Path:
         output = root / "source"
         output.mkdir()
         values: dict[str, JsonValue] = {
             "dashboard.json": {"generated": "2026-07-23T13:49:32Z"},
             "intelligence_brief.json": {"title": "Brief"},
-            "map_events.json": [{"event_id": "one"}],
+            "map_events.json": [
+                {
+                    "event_id": "one",
+                    "type": "earthquake",
+                    "latitude": 34.5,
+                    "longitude": -117.2,
+                    "timestamp": "2026-07-23T13:00:00Z",
+                }
+            ],
             "timeline.json": [{"event_id": "one"}],
             "trends.json": {"total_events": 1},
             "world_events.json": {"events": [{"event_id": "one"}]},
@@ -258,6 +311,34 @@ class SyncMonitorDataTests(unittest.TestCase):
             self.assertTrue((destination / "source_feed.json").is_file())
             self.assertTrue(
                 (destination / "output" / "x_report_pinpoints.geojson").is_file()
+            )
+
+    def test_sentinel_map_contract_rejects_placeholder_coordinates(self) -> None:
+        with self.assertRaisesRegex(ValueError, "placeholder coordinates"):
+            sync_monitor_data.validate_sentinel_map_events(
+                [
+                    {
+                        "event_id": "one",
+                        "type": "earthquake",
+                        "latitude": 0,
+                        "longitude": 0,
+                        "timestamp": "2026-07-23T13:00:00Z",
+                    }
+                ],
+                "map_events.json",
+            )
+
+    def test_sentinel_map_contract_rejects_duplicate_ids(self) -> None:
+        record = {
+            "event_id": "one",
+            "type": "earthquake",
+            "latitude": 34.5,
+            "longitude": -117.2,
+            "timestamp": "2026-07-23T13:00:00Z",
+        }
+        with self.assertRaisesRegex(ValueError, "duplicates event ID"):
+            sync_monitor_data.validate_sentinel_map_events(
+                [record, dict(record)], "map_events.json"
             )
 
     def test_bad_sentinel_checksum_preserves_last_known_good(self) -> None:
@@ -499,7 +580,20 @@ class SyncMonitorDataTests(unittest.TestCase):
         self.assertIn("verify_global_map_browser.js", verification)
         self.assertIn("dataset.renderedFeatures", browser_test)
         self.assertIn("EXPECTED_PUBLICATION_ID", browser_test)
-        self.assertIn("#ops-generated", browser_test)
+        self.assertIn("#event-feed-count", browser_test)
+
+    def test_playwright_validation_uses_pinned_ubuntu_and_chromium_only(self) -> None:
+        workflows = Path(__file__).parents[1] / ".github" / "workflows"
+        pages = yaml.safe_load((workflows / "pages.yml").read_text(encoding="utf-8"))
+        sync = yaml.safe_load((workflows / "sync-states.yml").read_text(encoding="utf-8"))
+
+        self.assertEqual(pages["jobs"]["validate"]["runs-on"], "ubuntu-24.04")
+        self.assertEqual(sync["jobs"]["verify-production"]["runs-on"], "ubuntu-24.04")
+        for workflow in (pages, sync):
+            text = json.dumps(workflow)
+            self.assertIn("playwright@1.62.0", text)
+            self.assertIn("playwright install chromium", text)
+            self.assertNotIn("playwright install --with-deps", text)
 
     def test_workflow_reports_end_to_end_publication_telemetry(self) -> None:
         workflow_path = (

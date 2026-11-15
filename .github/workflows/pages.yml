@@ -2,6 +2,8 @@ name: Deploy Website
 
 on:
   push:
+    branches: [main, 'feature/**']
+  pull_request:
     branches: [main]
   workflow_dispatch:
   workflow_call:
@@ -28,7 +30,9 @@ concurrency:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
         with:
@@ -67,8 +71,22 @@ jobs:
           python -m pytest
       - name: JavaScript syntax and behavior
         run: |
+          npm install --no-save --no-package-lock playwright@1.62.0
+          # ubuntu-24.04 hosted runners already provide Chromium's native OS dependencies.
+          # Install only the pinned browser binary; do not invoke apt repeatedly.
+          npx playwright install chromium
           find assets/js -name '*.js' -print0 | xargs -0 -n1 node --check
+          node --check cloudflare/sentinel-api.js
           node --check tests/verify_global_map_browser.js
+          node --check tests/verify_sentinel_desktop_layout.js
+          node tests/test_sentinel_gods_eye_contract.js
+          node tests/test_sentinel_cesium_contract.js
+          node tests/test_sentinel_worker_contract.js
+          python -m http.server 8765 --directory . > /tmp/sentinel-map-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          sleep 1
+          LOCAL_BASE_URL=http://127.0.0.1:8765 node tests/verify_sentinel_desktop_layout.js
           node tests/test_x_generation_refresh.js
           node --test tests/test_x_report_popup.js
           node --test tests/test_source_viewer.js
@@ -100,7 +118,13 @@ jobs:
           path: _site
 
   deploy:
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
     needs: validate
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

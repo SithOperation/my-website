@@ -1,0 +1,56 @@
+:root {
+    color-scheme: dark;
+    --cesium-bg: #07111d;
+    --cesium-panel: rgba(7, 17, 29, .94);
+    --cesium-line: rgba(145, 205, 255, .24);
+    --cesium-text: #e7f4ff;
+    --cesium-muted: #9bb5c9;
+    --cesium-accent: #58c7ff;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--cesium-bg); }
+body { min-height: 100dvh; font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--cesium-text); }
+
+.cesium-app { position: relative; width: 100%; height: 100%; min-height: 100dvh; isolation: isolate; }
+#cesium-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cesium-widget-credits { font-size: 10px !important; }
+
+.cesium-branding, .cesium-status, .cesium-events, .cesium-drawer {
+    position: absolute;
+    z-index: 5;
+    border: 1px solid var(--cesium-line);
+    background: var(--cesium-panel);
+    box-shadow: 0 8px 28px rgba(0,0,0,.24);
+    backdrop-filter: blur(8px);
+}
+.cesium-branding { top: max(10px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left)); padding: 8px 11px; border-radius: 7px; letter-spacing: .13em; font-size: 11px; }
+.cesium-branding span { color: var(--cesium-accent); }
+.cesium-status { top: max(10px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); max-width: min(520px, calc(100vw - 180px)); padding: 7px 12px; border-radius: 999px; color: var(--cesium-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cesium-status.is-error { color: #ff9eaa; border-color: rgba(255, 70, 97, .5); }
+.cesium-events { top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); padding: 8px 12px; border-radius: 7px; color: var(--cesium-text); cursor: pointer; }
+.cesium-events:hover, .cesium-events:focus-visible { border-color: var(--cesium-accent); }
+
+.cesium-drawer { top: max(62px, calc(env(safe-area-inset-top) + 52px)); right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); width: min(390px, calc(100vw - 20px)); display: none; overflow: auto; border-radius: 10px; }
+.cesium-drawer.is-open { display: block; }
+.cesium-drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 14px; border-bottom: 1px solid var(--cesium-line); }
+.cesium-drawer-head h1 { margin: 0; font-size: 14px; }
+.cesium-close { border: 1px solid var(--cesium-line); border-radius: 50%; background: transparent; color: var(--cesium-text); width: 30px; height: 30px; cursor: pointer; }
+.cesium-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--cesium-line); }
+.cesium-filters label { display: grid; gap: 4px; color: var(--cesium-muted); font-size: 10px; }
+.cesium-filters select { min-width: 0; border: 1px solid var(--cesium-line); border-radius: 5px; background: #0b1b2b; color: var(--cesium-text); padding: 7px; }
+.cesium-feed { display: grid; gap: 7px; padding: 10px 14px 14px; }
+.cesium-feed button { border: 1px solid var(--cesium-line); border-radius: 6px; background: rgba(15, 35, 53, .72); color: var(--cesium-text); padding: 9px; text-align: left; cursor: pointer; }
+.cesium-feed button:hover, .cesium-feed button:focus-visible { border-color: var(--cesium-accent); }
+.cesium-feed small { display: block; margin-top: 3px; color: var(--cesium-muted); }
+.cesium-empty { padding: 14px; color: var(--cesium-muted); }
+.cesium-popup { position: absolute; z-index: 6; display: none; width: min(360px, calc(100vw - 24px)); max-height: min(55dvh, 360px); overflow: auto; padding: 13px; border: 1px solid var(--cesium-accent); border-radius: 8px; background: var(--cesium-panel); box-shadow: 0 12px 34px rgba(0,0,0,.4); }
+.cesium-popup.is-open { display: block; }
+.cesium-popup h2 { margin: 0 0 7px; font-size: 14px; }
+.cesium-popup p { margin: 4px 0; color: var(--cesium-muted); }
+.cesium-popup a { color: var(--cesium-accent); }
+
+@media (max-width: 600px) {
+    .cesium-status { top: max(58px, calc(env(safe-area-inset-top) + 48px)); left: max(10px, env(safe-area-inset-left)); right: max(10px, env(safe-area-inset-right)); transform: none; max-width: none; text-align: center; }
+    .cesium-drawer { top: auto; left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); width: auto; max-height: 70dvh; }
+}

@@ -3,6 +3,7 @@
 
     const SUPPORTED_SCHEMA_MAJOR = 1;
     const MAP_RETENTION_MS = 48 * 60 * 60 * 1000;
+    const REQUEST_TIMEOUT_MS = 12_000;
 
     function schemaMajor(value) {
         const match = String(value || "").match(/^(\d+)/);
@@ -47,6 +48,7 @@
         const latitude = event.latitude ?? event.location?.latitude ?? event.coordinates?.lat;
         const longitude = event.longitude ?? event.location?.longitude ?? event.coordinates?.lon;
         if (!validCoordinate(latitude, 90) || !validCoordinate(longitude, 180)) return null;
+        if (Number(latitude) === 0 && Number(longitude) === 0) return null;
 
         const title = cleanText(event.title || "Untitled intelligence event", 180);
         const description = cleanText(event.description || "No summary is available.", 700);
@@ -57,9 +59,12 @@
         else if (/\b(wildfire|wild fire|bushfire)\b/.test(classificationText)) type = "wildfire";
         else if (/\b(military|training|live[- ]fire)\s+exercise\b/.test(classificationText)) type = "military_exercise";
 
+        const eventId = String(event.event_id || event.id || "").trim();
+        if (!eventId) return null;
+
         return {
             ...event,
-            event_id: String(event.event_id || event.id || ""),
+            event_id: eventId,
             title,
             description,
             latitude: Number(latitude),
@@ -69,6 +74,62 @@
             threat_level: String(event.threat_level || event.priority || "unknown").toUpperCase(),
             confidence: Number.isFinite(Number(event.confidence)) ? Number(event.confidence) : null,
             timestamp: event.timestamp ? String(event.timestamp) : null
+        };
+    }
+
+    function normalizeNewsItem(item) {
+        if (!item || typeof item !== "object") return null;
+        const title = cleanText(item.title || "", 220);
+        const url = String(item.url || "").trim();
+        if (!title || !/^https:\/\//i.test(url)) return null;
+        const coordinates = validCoordinate(item.latitude, 90) && validCoordinate(item.longitude, 180) &&
+            !(Number(item.latitude) === 0 && Number(item.longitude) === 0)
+            ? { latitude: Number(item.latitude), longitude: Number(item.longitude) }
+            : { latitude: null, longitude: null };
+        return {
+            ...item,
+            id: String(item.id || item.article_id || `${item.source_id || "source"}-${url}`),
+            title,
+            summary: cleanText(item.summary || "No summary is available.", 500),
+            url,
+            publisher: cleanText(item.publisher || item.source_id || "Published source", 120),
+            source_id: String(item.source_id || "unknown"),
+            source_type: String(item.source_type || "unknown"),
+            published_at: item.published_at ? String(item.published_at) : null,
+            collected_at: item.collected_at ? String(item.collected_at) : null,
+            countries: Array.isArray(item.countries) ? item.countries.map(String) : [],
+            categories: Array.isArray(item.categories) ? item.categories.map(String) : [],
+            category: String(item.category || item.categories?.[0] || "news"),
+            subcategory: item.subcategory ? String(item.subcategory) : null,
+            detected_keywords: Array.isArray(item.detected_keywords) ? item.detected_keywords.map(String) : [],
+            classification: item.classification && typeof item.classification === "object" ? item.classification : {},
+            verification: item.verification && typeof item.verification === "object" ? item.verification : {
+                status: String(item.claim_status || "single-source report"),
+                confidence_score: null,
+                independent_source_count: 1,
+                official_confirmation: false,
+                evidence: [],
+                contradictions: [],
+                last_checked: null
+            },
+            severity: String(item.severity || item.threat_level || "UNKNOWN").toUpperCase(),
+            latitude: coordinates.latitude,
+            longitude: coordinates.longitude,
+            geolocation_confidence: coordinates.latitude === null ? null : String(item.geolocation_confidence || "source_supplied"),
+            claim_status: String(item.claim_status || "published_source_report")
+        };
+    }
+
+    function normalizeNewsPublication(value) {
+        if (!value || typeof value !== "object" || value.schema_version !== "1.0" || !Array.isArray(value.items)) {
+            return { items: [], health: { status: "unavailable", sources: [] }, generated_at: null, error: true };
+        }
+        const normalized = value.items.map(normalizeNewsItem).filter(Boolean);
+        return {
+            items: normalized,
+            health: value.health && typeof value.health === "object" ? value.health : { status: "unavailable", sources: [] },
+            generated_at: value.generated_at || null,
+            error: false
         };
     }
 
@@ -109,21 +170,199 @@
         };
     }
 
+    function mergeEvents(staticEvents, liveEvents) {
+        const byId = new Map();
+        for (const event of [...staticEvents, ...liveEvents]) {
+            if (event?.event_id) byId.set(String(event.event_id), event);
+        }
+        return Array.from(byId.values());
+    }
+
+    function mergeNewsItems(staticItems, liveItems) {
+        const byId = new Map();
+        for (const item of [...staticItems, ...liveItems]) {
+            const id = String(item?.id || item?.article_id || item?.url || "").trim();
+            if (id) byId.set(id, item);
+        }
+        return Array.from(byId.values());
+    }
+
     class Client {
         constructor(options = {}) {
             this.root = options.root || "data";
+            this.liveRoot = options.liveRoot || null;
+            this.liveNewsRoot = options.liveNewsRoot || null;
+            this.liveHealthRoot = options.liveHealthRoot || null;
             this.activePublicationId = null;
             this.snapshot = null;
         }
 
         async fetchJSON(filename, publicationId = null, noStore = false) {
             const version = publicationId ? `?publication=${encodeURIComponent(publicationId)}` : "";
-            const response = await fetch(`${this.root}/${filename}${version}`, {
-                cache: noStore ? "no-store" : "default",
-                headers: { Accept: "application/json" }
-            });
-            if (!response.ok) throw new Error(`${filename} unavailable (${response.status})`);
-            return response.json();
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(`${this.root}/${filename}${version}`, {
+                    cache: noStore ? "no-store" : "default",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`${filename} unavailable (${response.status})`);
+                return await response.json();
+            }
+            catch (error) {
+                if (error?.name === "AbortError") {
+                    throw new Error(`${filename} request timed out`);
+                }
+                throw error;
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
+        async fetchLiveEvents() {
+            if (!this.liveRoot) return { events: null, generatedAt: null, error: null };
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(this.liveRoot, {
+                    cache: "no-store",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`live event feed unavailable (${response.status})`);
+                const document = await response.json();
+                const sourceEvents = Array.isArray(document?.events) ? document.events : [];
+                const normalized = sourceEvents.map(normalizeEvent).filter(Boolean);
+                return {
+                    events: normalized,
+                    generatedAt: document.generated_at || null,
+                    invalidEventCount: sourceEvents.length - normalized.length,
+                    error: null
+                };
+            }
+            catch (error) {
+                return {
+                    events: null,
+                    generatedAt: null,
+                    invalidEventCount: 0,
+                    error: error?.name === "AbortError" ? "live event feed request timed out" : String(error.message || error)
+                };
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
+        async fetchLiveNews() {
+            if (!this.liveNewsRoot) return { items: null, error: null, generatedAt: null };
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(`${this.liveNewsRoot}?limit=200`, {
+                    cache: "no-store",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`live news feed unavailable (${response.status})`);
+                const document = await response.json();
+                const sourceItems = Array.isArray(document?.items) ? document.items : [];
+                return {
+                    items: sourceItems.map(normalizeNewsItem).filter(Boolean),
+                    generatedAt: document.generated_at || null,
+                    error: null
+                };
+            }
+            catch (error) {
+                return { items: null, error: error?.name === "AbortError" ? "live news request timed out" : String(error.message || error), generatedAt: null };
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
+        async fetchLiveHealth() {
+            if (!this.liveHealthRoot) return { collectors: [], error: null };
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(this.liveHealthRoot, {
+                    cache: "no-store",
+                    headers: { Accept: "application/json" },
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`collector health unavailable (${response.status})`);
+                const document = await response.json();
+                return {
+                    collectors: Array.isArray(document?.collectors) ? document.collectors : [],
+                    error: null
+                };
+            }
+            catch (error) {
+                return { collectors: [], error: error?.name === "AbortError" ? "collector health request timed out" : String(error.message || error) };
+            }
+            finally {
+                window.clearTimeout(timeout);
+            }
+        }
+
+        mergeLiveSnapshot(staticEvents, liveResult) {
+            if (!this.liveRoot) {
+                return {
+                    events: staticEvents,
+                    liveEvents: [],
+                    liveFeedState: "disabled",
+                    liveFeedError: null,
+                    liveGeneratedAt: null,
+                    liveInvalidEventCount: 0,
+                    liveRevision: "disabled"
+                };
+            }
+            const previousLive = this.snapshot?.liveEvents || [];
+            const liveEvents = liveResult.events || previousLive;
+            const liveFeedState = liveResult.error
+                ? (previousLive.length ? "degraded" : "unavailable")
+                : "available";
+            const latestUpdate = liveEvents.reduce((latest, event) => {
+                const timestamp = Date.parse(String(event?.updated_at || ""));
+                return Number.isFinite(timestamp) && timestamp > latest ? timestamp : latest;
+            }, 0);
+            const liveRevision = liveResult.error
+                ? (this.snapshot?.liveRevision || `error:${liveFeedState}`)
+                : `${latestUpdate || liveResult.generatedAt || "live"}:${liveEvents.length}`;
+            return {
+                events: mergeEvents(staticEvents, liveEvents),
+                liveEvents,
+                liveFeedState,
+                liveFeedError: liveResult.error,
+                liveGeneratedAt: liveResult.generatedAt || this.snapshot?.liveGeneratedAt || null,
+                liveInvalidEventCount: liveResult.invalidEventCount || 0,
+                liveRevision
+            };
+        }
+
+        mergeLiveNewsSnapshot(staticItems, liveResult) {
+            const previousItems = this.snapshot?.liveNewsItems || [];
+            const liveItems = liveResult.items || previousItems;
+            const latestUpdate = liveItems.reduce((latest, item) => {
+                const timestamp = Date.parse(String(item?.updated_at || item?.published_at || ""));
+                return Number.isFinite(timestamp) && timestamp > latest ? timestamp : latest;
+            }, 0);
+            const liveNewsState = liveResult.error
+                ? (previousItems.length ? "degraded" : "unavailable")
+                : "available";
+            const liveNewsRevision = liveResult.error
+                ? (this.snapshot?.liveNewsRevision || `error:${liveNewsState}`)
+                : `${latestUpdate || liveResult.generatedAt || "live-news"}:${liveItems.length}`;
+            return {
+                items: mergeNewsItems(staticItems, liveItems),
+                liveNewsItems: liveItems,
+                liveNewsState,
+                liveNewsError: liveResult.error,
+                liveNewsGeneratedAt: liveResult.generatedAt || this.snapshot?.liveNewsGeneratedAt || null,
+                liveNewsRevision
+            };
         }
 
         validateManifest(manifest) {
@@ -150,12 +389,42 @@
             }
             catch (error) {
                 if (["INVALID_MANIFEST", "UNSUPPORTED_SCHEMA"].includes(error.code)) throw error;
-                if (this.snapshot && !force) return { ...this.snapshot, unchanged: true, manifestUnavailable: true };
+                if (this.snapshot && !force) {
+                    const liveResult = await this.fetchLiveEvents();
+                    const live = this.mergeLiveSnapshot(this.snapshot.staticEvents || this.snapshot.events, liveResult);
+                    return {
+                        ...this.snapshot,
+                        ...live,
+                        unchanged: live.liveRevision === this.snapshot.liveRevision,
+                        manifestUnavailable: true
+                    };
+                }
                 legacy = true;
             }
 
+            const newsResult = await this.fetchJSON("sentinel_news.json", null, true)
+                .then(normalizeNewsPublication)
+                .catch(() => normalizeNewsPublication(null));
+            const [liveResult, liveNewsResult, liveHealthResult] = await Promise.all([
+                this.fetchLiveEvents(),
+                this.fetchLiveNews(),
+                this.fetchLiveHealth()
+            ]);
+
             if (!legacy && !force && manifest.publication_id === this.activePublicationId && this.snapshot) {
-                return { ...this.snapshot, unchanged: true };
+                const live = this.mergeLiveSnapshot(this.snapshot.staticEvents || this.snapshot.events, liveResult);
+                const liveNews = this.mergeLiveNewsSnapshot(this.snapshot.staticNewsItems || this.snapshot.items, liveNewsResult);
+                return {
+                    ...this.snapshot,
+                    ...newsResult,
+                    ...live,
+                    ...liveNews,
+                    newsHealth: newsResult.health,
+                    newsGeneratedAt: newsResult.generated_at,
+                    liveCollectors: liveHealthResult.collectors,
+                    unchanged: live.liveRevision === this.snapshot.liveRevision &&
+                        liveNews.liveNewsRevision === this.snapshot.liveNewsRevision
+                };
             }
 
             const publicationId = legacy ? null : manifest.publication_id;
@@ -168,7 +437,11 @@
             if (!dashboard || typeof dashboard !== "object") throw new Error("Invalid dashboard data.");
             if (!Array.isArray(mapEvents)) throw new Error("Invalid map event data.");
 
-            const events = mapEvents.map(normalizeEvent).filter(Boolean);
+            const normalizedEvents = mapEvents.map(normalizeEvent);
+            const staticEvents = normalizedEvents.filter(Boolean);
+            const live = this.mergeLiveSnapshot(staticEvents, liveResult);
+            const staticNewsItems = newsResult.items;
+            const liveNews = this.mergeLiveNewsSnapshot(staticNewsItems, liveNewsResult);
             const generated = manifest?.generated || dashboard.generated || null;
             const effectiveManifest = manifest || {
                 publication_id: `legacy-${generated || "current"}`,
@@ -181,9 +454,17 @@
             this.snapshot = {
                 manifest: effectiveManifest,
                 dashboard,
-                events,
-                health,
+                events: live.events,
+                staticEvents,
+                invalidEventCount: normalizedEvents.length - staticEvents.length + live.liveInvalidEventCount,
                 healthState: healthState(health, generated),
+                ...live,
+                ...liveNews,
+                staticNewsItems,
+                health,
+                newsHealth: newsResult.health,
+                liveCollectors: liveHealthResult.collectors,
+                newsGeneratedAt: newsResult.generated_at,
                 legacy,
                 unchanged: false
             };
@@ -232,6 +513,8 @@
         Client,
         GenerationFeed,
         normalizeEvent,
+        normalizeNewsItem,
+        normalizeNewsPublication,
         cleanText,
         validCoordinate,
         isWithinRetentionWindow,

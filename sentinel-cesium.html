@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Sentinel Grid Cesium renderer prototype.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cesium.com https://*.cesium.com; style-src 'self' https://cesium.com https://*.cesium.com 'unsafe-inline'; img-src 'self' data: blob: https://*.openstreetmap.org https://tile.openstreetmap.org https://*.cesium.com; connect-src 'self' https://*.openstreetmap.org https://tile.openstreetmap.org https://*.cesium.com; worker-src 'self' blob:; font-src 'self' data:;">
+    <title>Sentinel Grid | Cesium Prototype</title>
+    <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.134/Build/Cesium/Widgets/widgets.css">
+    <link rel="stylesheet" href="assets/css/sentinel-cesium.css?v=20261112-cesium-prototype">
+</head>
+<body>
+    <main class="cesium-app" aria-label="Sentinel Grid Cesium prototype">
+        <div id="cesium-map" role="application" aria-label="Interactive Sentinel intelligence map"></div>
+        <div class="cesium-branding">SENTINEL <span>GRID</span> · CESIUM TEST</div>
+        <div id="cesium-status" class="cesium-status" role="status" aria-live="polite">Loading Sentinel publication…</div>
+        <button id="cesium-events" class="cesium-events" type="button" aria-expanded="false" aria-controls="cesium-drawer">EVENTS <span>—</span></button>
+        <aside id="cesium-drawer" class="cesium-drawer" aria-hidden="true">
+            <div class="cesium-drawer-head"><h1>Published signals</h1><button id="cesium-close" class="cesium-close" type="button" aria-label="Close events">×</button></div>
+            <div class="cesium-filters"><label>Category<select id="cesium-category"><option value="all">All</option></select></label><label>Severity<select id="cesium-severity"><option value="all">All</option></select></label></div>
+            <div id="cesium-feed" class="cesium-feed"></div>
+        </aside>
+        <section id="cesium-popup" class="cesium-popup" aria-live="polite"></section>
+    </main>
+    <script src="assets/js/sentinel-data.js?v=20261112-cesium-prototype"></script>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.134/Build/Cesium/Cesium.js"></script>
+    <script src="assets/js/sentinel-cesium.js?v=20261112-cesium-prototype"></script>
+</body>
+</html>

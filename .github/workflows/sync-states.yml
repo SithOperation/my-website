@@ -25,6 +25,7 @@ concurrency:
 
 jobs:
   gate:
+    permissions: {}
     runs-on: ubuntu-latest
     outputs:
       run: ${{ steps.schedule.outputs.run }}
@@ -53,6 +54,8 @@ jobs:
   sync-sentinel:
     needs: gate
     if: needs.gate.outputs.run == 'true'
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       publication_id: ${{ steps.metadata.outputs.publication_id }}
@@ -132,6 +135,8 @@ jobs:
       always() &&
       needs.gate.outputs.run == 'true' &&
       needs.sync-sentinel.result == 'success'
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout website tooling
@@ -166,6 +171,8 @@ jobs:
       needs.gate.outputs.run == 'true' &&
       needs.sync-sentinel.result == 'success' &&
       needs.prepare-publication.result == 'success'
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
@@ -252,6 +259,7 @@ jobs:
       always() &&
       needs.gate.outputs.run == 'true' &&
       needs.sync-sentinel.result == 'success'
+    permissions: {}
     runs-on: ubuntu-latest
     outputs:
       publication_id: ${{ steps.production.outputs.publication_id }}
@@ -282,6 +290,7 @@ jobs:
       needs.gate.outputs.run == 'true' &&
       needs.sync-sentinel.result == 'success' &&
       needs.commit-data.result == 'success'
+    permissions: {}
     runs-on: ubuntu-latest
     outputs:
       deploy: ${{ steps.resolve.outputs.deploy }}
@@ -332,7 +341,9 @@ jobs:
       needs.sync-sentinel.result == 'success' &&
       needs.resolve-deployment.result == 'success' &&
       (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
-    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout website verification tooling
         uses: actions/checkout@v6
@@ -349,7 +360,9 @@ jobs:
       - name: Install pinned browser verifier
         run: |
           npm install --no-save --no-package-lock playwright@1.62.0
-          npx playwright install --with-deps chromium
+          # ubuntu-24.04 hosted runners already provide Chromium's native OS dependencies.
+          # Install only the pinned browser binary; do not invoke apt repeatedly.
+          npx playwright install chromium
       - name: Verify production global-map rendering
         env:
           PRODUCTION_BASE_URL: https://sithbusiness.com
@@ -367,6 +380,7 @@ jobs:
       - deploy
       - verify-production
     if: always() && needs.gate.outputs.run == 'true'
+    permissions: {}
     runs-on: ubuntu-latest
     steps:
       - name: Write end-to-end publication summary
