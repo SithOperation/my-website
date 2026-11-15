@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Global Network Monitor for reported internet outages and service disruptions.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ddos-detector.newhorse62.workers.dev; font-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self';">
+    <title>Global Network Monitor | Joseph Technologies</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="stylesheet" href="assets/css/editorial-system.css?v=20261114-monitor">
+    <link rel="stylesheet" href="assets/css/monitor.css?v=20261114-monitor">
+</head>
+<body class="monitor-page">
+    <a class="site-skip" href="#monitor-main">Skip to monitor</a>
+    <header class="monitor-header">
+        <div class="monitor-header__inner">
+            <a class="monitor-back" href="index.html">← Joseph Technologies</a>
+            <div class="monitor-brand" aria-label="Global Network Monitor">GLOBAL <span>NETWORK MONITOR</span></div>
+            <div id="monitor-status" class="monitor-status monitor-status--loading" role="status" aria-live="polite">
+                <span class="monitor-status__dot" aria-hidden="true"></span><span id="monitor-status-text">Connecting</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="monitor-main" class="monitor-shell">
+        <section class="monitor-intro" aria-labelledby="monitor-title">
+            <div>
+                <p class="monitor-kicker">OPERATIONS / PUBLIC SIGNALS / 72 HOUR WINDOW</p>
+                <h1 id="monitor-title">Internet outages,<br><em>without the noise.</em></h1>
+                <p class="monitor-lede">Reported service disruptions and infrastructure intelligence delivered through the Joseph Technologies monitoring layer.</p>
+            </div>
+            <div class="monitor-attribution">
+                <span>DATA SOURCE</span>
+                <strong>Cloudflare Radar via ddos-detector Worker</strong>
+                <small id="monitor-updated">Waiting for first successful response</small>
+            </div>
+        </section>
+
+        <section class="monitor-metrics" aria-label="Live outage summary">
+            <article class="monitor-metric"><span>UNRESOLVED REPORTS</span><strong id="metric-unresolved">—</strong><small>No confirmed end time</small></article>
+            <article class="monitor-metric"><span>RESOLVED REPORTS</span><strong id="metric-resolved">—</strong><small>Source supplied an end time</small></article>
+            <article class="monitor-metric"><span>OBSERVED / 24H</span><strong id="metric-recent">—</strong><small>Based on source timestamps</small></article>
+            <article class="monitor-metric"><span>72H RETENTION</span><strong id="metric-total">—</strong><small>Records returned by Worker</small></article>
+        </section>
+
+        <section id="monitor-notice" class="monitor-notice" hidden aria-live="polite"></section>
+
+        <section class="monitor-controls" aria-label="Outage report controls">
+            <div class="monitor-controls__heading"><p class="monitor-kicker">REPORT INDEX</p><h2>Reported incidents</h2></div>
+            <div class="monitor-controls__fields">
+                <label>Search<input id="monitor-search" type="search" placeholder="Provider, description, source…"></label>
+                <label>Provider<select id="monitor-provider"><option value="all">All providers</option></select></label>
+                <label>Classification<select id="monitor-classification"><option value="all">All classifications</option></select></label>
+                <label>Resolution<select id="monitor-resolution"><option value="all">All statuses</option><option value="unknown">Resolution unknown</option><option value="resolved">Resolved</option><option value="unavailable">Status unavailable</option></select></label>
+                <label>Time range<select id="monitor-range"><option value="72">Previous 72 hours</option><option value="24">Previous 24 hours</option><option value="12">Previous 12 hours</option></select></label>
+                <label>Sort<select id="monitor-sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="provider">Provider A–Z</option></select></label>
+            </div>
+        </section>
+
+        <section class="monitor-content" aria-label="Outage reports and activity">
+            <div class="monitor-feed-panel">
+                <div class="monitor-section-heading"><div><p class="monitor-kicker">LIVE FEED</p><h2 id="feed-heading">Monitoring window</h2></div><span id="feed-count" class="monitor-count">—</span></div>
+                <div id="monitor-feed" class="monitor-feed" aria-live="polite"></div>
+            </div>
+            <aside class="monitor-side-panel">
+                <div class="monitor-section-heading"><div><p class="monitor-kicker">ACTIVITY</p><h2>Signal shape</h2></div></div>
+                <div class="monitor-chart-block"><h3>Reports by provider</h3><div id="provider-chart" class="monitor-bars"></div></div>
+                <div class="monitor-chart-block"><h3>Reports over time</h3><div id="activity-chart" class="monitor-bars monitor-bars--activity"></div></div>
+                <div class="monitor-integrity"><span class="monitor-kicker">DATA INTEGRITY</span><p>Outage annotations are reports of service disruption. They are not automatically DDoS findings, attack attribution, or confirmed root-cause analysis.</p></div>
+            </aside>
+        </section>
+
+        <section class="monitor-history" aria-labelledby="history-title">
+            <div class="monitor-section-heading"><div><p class="monitor-kicker">HISTORICAL VIEW</p><h2 id="history-title">Incident timeline</h2></div><span id="timeline-window" class="monitor-count">72 HOURS</span></div>
+            <div id="monitor-timeline" class="monitor-timeline"></div>
+        </section>
+    </main>
+
+    <footer class="monitor-footer"><span>JOSEPH TECHNOLOGIES / GLOBAL NETWORK MONITOR</span><a href="index.html">Return to portfolio ↗</a><small>Live status is limited to records returned by the monitoring Worker.</small></footer>
+    <script src="assets/js/monitor.js?v=20261114-monitor"></script>
+</body>
+</html>
