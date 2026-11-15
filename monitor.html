@@ -8,7 +8,7 @@
     <title>Global Network Monitor | Joseph Technologies</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20261114-monitor">
-    <link rel="stylesheet" href="assets/css/monitor.css?v=20261114-monitor-light-2">
+    <link rel="stylesheet" href="assets/css/monitor.css?v=20261115-downradar">
 </head>
 <body class="monitor-page">
     <a class="site-skip" href="#monitor-main">Skip to monitor</a>
@@ -54,7 +54,16 @@
                 <article><span>SCANNED UDP PORTS</span><div id="radware-scanned-udp-ports" class="monitor-radware-values"><em>Awaiting data</em></div></article>
                 <article><span>SCANNED TCP PORTS</span><div id="radware-scanned-tcp-ports" class="monitor-radware-values"><em>Awaiting data</em></div></article>
             </div>
-            <p id="radware-updated" class="monitor-radware-note">Radware values are aggregate threat statistics, not individual attack incidents. Percentages show each displayed item’s share of the full returned category sample.</p>
+            <p id="radware-updated" class="monitor-radware-note">Radware values are aggregate threat statistics, not individual attack incidents. Values are displayed exactly as returned by the Worker; bars show relative magnitude within each category.</p>
+        </section>
+
+        <section class="monitor-downradar" aria-labelledby="downradar-title">
+            <div class="monitor-section-heading"><div><p class="monitor-kicker">DOWNRADAR / PROVIDER STATUS</p><h2 id="downradar-title">Active service disruptions</h2><small id="downradar-status" class="monitor-radware-status">Checking DownRadar feed</small></div><a class="monitor-count monitor-section-link" href="https://downradar.info" target="_blank" rel="noopener noreferrer">OPEN DOWNRADAR</a></div>
+            <p id="downradar-meta" class="monitor-radware-note">Waiting for DownRadar data.</p>
+            <div id="downradar-disruptions" class="monitor-downradar-grid" aria-live="polite"></div>
+            <div class="monitor-downradar-subheading"><p class="monitor-kicker">RECENT TRANSITIONS</p><h3>Service incidents and recoveries</h3></div>
+            <div id="downradar-incidents" class="monitor-downradar-incidents" aria-live="polite"></div>
+            <p class="monitor-radware-note">Source: <a href="https://downradar.info" target="_blank" rel="noopener noreferrer">DownRadar</a>. Aggregated provider-reported status; not independently verified outages.</p>
         </section>
 
         <section class="monitor-providers" aria-labelledby="provider-signals-title">
@@ -74,10 +83,10 @@
                     <a href="https://livethreatmap.radware.com/" target="_blank" rel="noopener noreferrer">View live Radware map ↗</a>
                 </article>
                 <article class="monitor-provider-card">
-                    <div class="monitor-provider-card__top"><span class="monitor-provider-mark">03</span><span class="monitor-provider-state">Reports pending ingestion</span></div>
-                    <h3>Downdetector</h3>
-                    <p>User-reported disruption signals will be labeled as reports, not confirmation, and added only through a permitted collection path.</p>
-                    <a href="https://downdetector.com/" target="_blank" rel="noopener noreferrer">Open Downdetector ↗</a>
+                    <div class="monitor-provider-card__top"><span class="monitor-provider-mark">03</span><span class="monitor-provider-state">Ingestion active</span></div>
+                    <h3>DownRadar</h3>
+                    <p>Aggregated provider-reported disruptions and recent status transitions, labeled as reports rather than independent confirmation.</p>
+                    <a href="https://downradar.info" target="_blank" rel="noopener noreferrer">Open DownRadar ↗</a>
                 </article>
             </div>
         </section>
@@ -116,6 +125,6 @@
     </main>
 
     <footer class="monitor-footer"><span>JOSEPH TECHNOLOGIES / GLOBAL NETWORK MONITOR</span><a href="index.html">Return to portfolio ↗</a><small>Live status is limited to records returned by the monitoring Worker.</small></footer>
-    <script src="assets/js/monitor.js?v=20261114-monitor"></script>
+    <script src="assets/js/monitor.js?v=20261115-downradar"></script>
 </body>
 </html>

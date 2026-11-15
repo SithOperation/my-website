@@ -29,6 +29,21 @@ const radwareFixture = {
         scanned_udp_ports: [{ name: "53", value: 5 }, { name: "123", value: 5 }]
     }
 };
+const downradarDisruptionsFixture = {
+    status: "ok", provider: "DownRadar", collected_at: new Date().toISOString(), stale: false, monitored_services: 285, count: 2,
+    active_disruptions: [
+        { slug: "example-cloud", name: "Example Cloud", status: "degraded", status_raw: "degraded", monitoring_paused: false, freshness: "current", changed_at: "2026-11-15T03:00:00Z", last_polled_at: new Date().toISOString(), components: 4, degraded_components: 1, source_url: "https://status.example.com", incidents: [] },
+        { slug: "paused-cloud", name: "Paused Cloud", status: "major outage", status_raw: "major", monitoring_paused: true, freshness: "current", changed_at: "2026-11-15T03:00:00Z", last_polled_at: new Date().toISOString(), components: 2, degraded_components: 2, source_url: "https://paused.example.com", incidents: [] }
+    ]
+};
+const downradarIncidentsFixture = {
+    status: "ok", provider: "DownRadar", collected_at: new Date().toISOString(), stale: false, monitored_services: 285, count: 3,
+    recent_incidents: [
+        { id: "1", slug: "example-cloud", name: "Example Cloud", from: "operational", to: "degraded", from_raw: "ok", to_raw: "degraded", changed_at: "2026-11-15T03:00:00Z", recovered: false, source_url: "https://status.example.com" },
+        { id: "2", slug: "example-cloud", name: "Example Cloud", from: "operational", to: "degraded", from_raw: "ok", to_raw: "degraded", changed_at: "2026-11-15T03:00:00Z", recovered: false, source_url: "https://status.example.com" },
+        { id: "3", slug: "other-cloud", name: "Other Cloud", from: "degraded", to: "operational", from_raw: "degraded", to_raw: "ok", changed_at: "2026-11-15T02:00:00Z", recovered: true, source_url: "https://other.example.com" }
+    ]
+};
 
 async function main() {
     const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || undefined });
@@ -37,6 +52,8 @@ async function main() {
     page.on("pageerror", error => errors.push(error.message));
     await page.route("**/api/outages/all", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(fixture) }));
     await page.route("**/api/radware/stats", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(radwareFixture) }));
+    await page.route("**/api/downradar/disruptions", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(downradarDisruptionsFixture) }));
+    await page.route("**/api/downradar/incidents", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(downradarIncidentsFixture) }));
 
     try {
         for (const viewport of [{ width: 390, height: 844 }, { width: 1366, height: 900 }]) {
@@ -48,8 +65,12 @@ async function main() {
             assert.equal(await page.locator("#metric-unresolved").textContent(), "1");
             assert.equal(await page.locator("#metric-resolved").textContent(), "1");
             await page.waitForFunction(() => document.querySelector("#radware-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
-            assert.equal(await page.locator("#radware-top-attackers span").nth(1).textContent(), "60.0%");
-            assert.equal(await page.locator("#radware-scanned-udp-ports span").nth(1).textContent(), "50.0%");
+            await page.waitForFunction(() => document.querySelector("#downradar-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
+            assert.equal(await page.locator("#downradar-disruptions .monitor-downradar-card").count(), 1);
+            assert.equal(await page.locator("#downradar-incidents .monitor-downradar-incident").count(), 2);
+            assert.equal(await page.locator("#radware-top-attackers strong").first().textContent(), "12");
+            assert.equal(await page.locator("#radware-scanned-udp-ports .monitor-radware-tile").count(), 2);
+            assert.equal(await page.locator("#radware-scanned-udp-ports .monitor-radware-tile").first().locator("small").textContent(), "5");
             assert.equal(await page.locator(".monitor-badge--unknown").count(), 1);
             assert.equal(await page.locator(".monitor-badge--resolved").count(), 1);
             await page.locator("#monitor-provider").selectOption({ label: "Example ISP" });
