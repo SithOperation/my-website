@@ -21,12 +21,12 @@ const radwareFixture = {
     collected_at: new Date().toISOString(),
     stale: false,
     categories: {
-        top_attackers: [{ name: "Example source", value: 12 }],
+        top_attackers: [{ name: "Example source", value: 12 }, { name: "Example source 2", value: 8 }],
         top_attacked: [{ name: "Example target", value: 9 }],
         network_vectors: [{ name: "TCP Flood", value: 8 }],
         application_violations: [{ name: "Access violations", value: 7 }],
         scanned_tcp_ports: [{ name: "443", value: 6 }],
-        scanned_udp_ports: [{ name: "53", value: 5 }]
+        scanned_udp_ports: [{ name: "53", value: 5 }, { name: "123", value: 5 }]
     }
 };
 
@@ -48,8 +48,8 @@ async function main() {
             assert.equal(await page.locator("#metric-unresolved").textContent(), "1");
             assert.equal(await page.locator("#metric-resolved").textContent(), "1");
             await page.waitForFunction(() => document.querySelector("#radware-status")?.textContent?.startsWith("Updated"), { timeout: 10000 });
-            assert.equal(await page.locator("#radware-top-attackers span").nth(1).textContent(), "12");
-            assert.equal(await page.locator("#radware-scanned-udp-ports span").nth(1).textContent(), "5");
+            assert.equal(await page.locator("#radware-top-attackers span").nth(1).textContent(), "60.0%");
+            assert.equal(await page.locator("#radware-scanned-udp-ports span").nth(1).textContent(), "50.0%");
             assert.equal(await page.locator(".monitor-badge--unknown").count(), 1);
             assert.equal(await page.locator(".monitor-badge--resolved").count(), 1);
             await page.locator("#monitor-provider").selectOption({ label: "Example ISP" });

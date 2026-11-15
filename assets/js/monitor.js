@@ -66,9 +66,11 @@
     }
 
     function radwareEntries(value) {
-        return (Array.isArray(value) ? value : [])
+        const entries = (Array.isArray(value) ? value : [])
             .filter(item => item && typeof item.name === "string" && Number.isFinite(Number(item.value)))
-            .slice(0, 3);
+            .map(item => ({ ...item, numericValue: Number(item.value) }));
+        const total = entries.reduce((sum, item) => sum + item.numericValue, 0);
+        return entries.slice(0, 3).map(item => ({ ...item, percentage: total > 0 ? (item.numericValue / total) * 100 : 0 }));
     }
 
     function renderRadware() {
@@ -85,8 +87,8 @@
             status.classList.toggle("monitor-radware-status--stale", Boolean(payload.stale));
             status.textContent = payload.stale ? `Stale data · collected ${collected}` : `Updated ${collected}`;
             updated.textContent = payload.stale
-                ? `Collection timestamp: ${collected}. Values are shown for transparency but should be treated as stale.`
-                : `Collection timestamp: ${collected}. Values are aggregate Radware statistics, not individual incidents.`;
+                ? `Collection timestamp: ${collected}. Values are shown for transparency but should be treated as stale. Percentages are calculated from the full returned category sample.`
+                : `Collection timestamp: ${collected}. Values are aggregate Radware statistics; percentages are calculated from the full returned category sample.`;
         }
         RADWARE_CATEGORIES.forEach(([category, id]) => {
             const node = $(id);
@@ -96,7 +98,8 @@
                 const name = document.createElement("span");
                 const value = document.createElement("span");
                 name.textContent = item.name;
-                value.textContent = String(item.value);
+                value.textContent = `${item.percentage.toFixed(1)}%`;
+                value.title = `${item.numericValue} returned value; percentage is calculated from the full returned category sample`;
                 row.append(name, value);
                 return row;
             }) : [Object.assign(document.createElement("em"), { textContent: "No published values" })]));
