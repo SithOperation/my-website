@@ -81,11 +81,12 @@
         return { readable, flag };
     }
 
-    function renderRadwareBars(node, entries, countries = false) {
+    function renderRadwareBars(node, entries, countries = false, showPercent = false) {
         node.classList?.remove?.("monitor-radware-values--treemap");
         node.replaceChildren();
         if (!entries.length) { node.append(Object.assign(document.createElement("em"), { textContent: "No published values" })); return; }
         const max = Math.max(...entries.map(item => item.numericValue), 1);
+        const total = entries.reduce((sum, item) => sum + item.numericValue, 0);
         entries.forEach(item => {
             const row = document.createElement("div"); row.className = "monitor-radware-stat";
             const label = document.createElement("span");
@@ -93,7 +94,10 @@
             else label.textContent = item.name;
             const track = document.createElement("span"); track.className = "monitor-radware-stat__track";
             const fill = document.createElement("span"); fill.className = "monitor-radware-stat__fill"; fill.style.width = `${Math.max(2, item.numericValue / max * 100)}%`; track.append(fill);
-            const value = document.createElement("strong"); value.textContent = String(item.numericValue); value.title = "Raw value returned by Radware";
+            const value = document.createElement("strong");
+            const percentage = total > 0 ? (item.numericValue / total) * 100 : 0;
+            value.textContent = showPercent ? `${item.numericValue} (${percentage.toFixed(1)}%)` : String(item.numericValue);
+            value.title = showPercent ? "Raw value and share of the full returned category sample" : "Raw value returned by Radware";
             row.append(label, track, value); node.append(row);
         });
     }
@@ -127,18 +131,26 @@
             updated.textContent = retained
                 ? `The latest refresh failed. Showing the last successful collection from ${collected}; no new values are inferred.`
                 : payload.stale
-                ? `Collection timestamp: ${collected}. Values are shown for transparency but should be treated as stale. Bars show relative magnitude; numbers are raw returned values.`
-                : `Collection timestamp: ${collected}. Values are aggregate Radware statistics; numbers are shown exactly as returned.`;
+                ? `Collection timestamp: ${collected}. Values are shown for transparency but should be treated as stale. Ranked categories include raw values and category-share percentages; ports remain raw.`
+                : `Collection timestamp: ${collected}. Values are aggregate Radware statistics; ranked categories include raw values and category-share percentages, while ports remain raw.`;
         }
         RADWARE_CATEGORIES.forEach(([category, id]) => {
             const node = $(id);
             const entries = radwareEntries(payload?.categories?.[category]);
             if (category === "scanned_udp_ports" || category === "scanned_tcp_ports") renderRadwareTreemap(node, entries);
-            else renderRadwareBars(node, entries, category === "top_attackers" || category === "top_attacked");
+            else renderRadwareBars(node, entries, category === "top_attackers" || category === "top_attacked", true);
         });
     }
 
     function downradarStatusLabel(status) { return text(status).replace(/\b\w/g, letter => letter.toUpperCase()); }
+    function downradarTone(status) {
+        const value = text(status).toLowerCase();
+        if (value === "ok" || value === "operational") return "operational";
+        if (value === "degraded") return "degraded";
+        if (value === "partial" || value === "partial outage") return "partial";
+        if (value === "major" || value === "major outage") return "major";
+        return "unknown";
+    }
     function downradarActiveRecords(payload) {
         const allowed = new Set(["degraded", "partial", "major"]);
         return (Array.isArray(payload?.active_disruptions) ? payload.active_disruptions : []).filter(item => item && allowed.has(text(item.status_raw).toLowerCase()) && item.monitoring_paused !== true);
@@ -173,7 +185,7 @@
         else active.forEach(item => {
             const article = document.createElement("article"); article.className = "monitor-downradar-card";
             const top = document.createElement("div"); top.className = "monitor-incident__top"; const heading = document.createElement("h3"); heading.textContent = item.name || item.slug;
-            const badge = document.createElement("span"); badge.className = "monitor-badge monitor-badge--downradar"; badge.textContent = downradarStatusLabel(item.status || item.status_raw); top.append(heading, badge);
+            const badge = document.createElement("span"); badge.className = `monitor-badge monitor-downradar-status--${downradarTone(item.status_raw || item.status)}`; badge.textContent = downradarStatusLabel(item.status || item.status_raw); top.append(heading, badge);
             const metaRow = document.createElement("div"); metaRow.className = "monitor-incident__meta";
             [item.degraded_components != null ? `${item.degraded_components}/${item.components || "?"} components affected` : "Affected components unavailable", `Changed ${formatDate(item.changed_at)}`, `Checked ${formatDate(item.last_polled_at)}`].forEach(value => { const span = document.createElement("span"); span.textContent = value; metaRow.append(span); });
             const note = document.createElement("p"); note.textContent = item.monitoring_paused === null ? "Monitoring state unverified; this record is not treated as independently confirmed." : (item.freshness === "stale" || disruptionPayload?.stale ? "DownRadar reports this disruption, but the source data is stale." : "DownRadar aggregated provider-reported status; not independently verified."); article.append(top, metaRow, note);
@@ -183,7 +195,7 @@
         });
         const incidents = dedupeDownradarIncidents(incidentPayload?.recent_incidents).sort((a, b) => (validDate(b.changed_at) || 0) - (validDate(a.changed_at) || 0)); incidentsNode.replaceChildren();
         if (!incidents.length) { const empty = document.createElement("p"); empty.className = "monitor-empty"; empty.textContent = downradarState.errors.length ? "Recent transitions are unavailable." : "No recent DownRadar transitions reported."; incidentsNode.append(empty); }
-        else incidents.forEach(item => { const article = document.createElement("article"); article.className = "monitor-downradar-incident"; const heading = document.createElement("h3"); heading.textContent = item.name || item.slug; const transition = document.createElement("p"); transition.textContent = `${item.from || "Unknown"} → ${item.to || "Unknown"}${item.recovered ? " · Recovered" : ""}`; const when = document.createElement("time"); when.dateTime = item.changed_at; when.textContent = `Observed ${formatDate(item.changed_at)}`; article.append(heading, transition, when); appendLink(article, item.source_url, "Open official status page ↗"); incidentsNode.append(article); });
+        else incidents.forEach(item => { const article = document.createElement("article"); article.className = "monitor-downradar-incident"; const heading = document.createElement("h3"); heading.textContent = item.name || item.slug; const transition = document.createElement("div"); transition.className = "monitor-downradar-transition"; const from = document.createElement("span"); from.className = `monitor-downradar-transition__status monitor-downradar-status--${downradarTone(item.from_raw || item.from)}`; from.textContent = item.from || "Unknown"; const arrow = document.createElement("span"); arrow.className = "monitor-downradar-transition__arrow"; arrow.textContent = "→"; const to = document.createElement("span"); to.className = `monitor-downradar-transition__status monitor-downradar-status--${downradarTone(item.to_raw || item.to)}`; to.textContent = item.to || "Unknown"; transition.append(from, arrow, to); if (item.recovered) { const recovered = document.createElement("small"); recovered.className = "monitor-downradar-recovered"; recovered.textContent = "Recovered"; transition.append(recovered); } const when = document.createElement("time"); when.dateTime = item.changed_at; when.textContent = `Observed ${formatDate(item.changed_at)}`; article.append(heading, transition, when); appendLink(article, item.source_url, "Open official status page ↗"); incidentsNode.append(article); });
     }
     async function requestDownRadar() {
         if (downradarState.inFlight) return; downradarState.inFlight = true; downradarState.errors = [];
@@ -267,5 +279,5 @@
     window.setInterval(() => { if (document.visibilityState === "visible") requestData(); }, REFRESH_MS);
     window.setInterval(() => { if (document.visibilityState === "visible") requestRadware(); }, RADWARE_REFRESH_MS);
     window.setInterval(() => { if (document.visibilityState === "visible") requestDownRadar(); }, RADWARE_REFRESH_MS);
-    window.MonitorData = { normalizeRecord, normalizeRecords, statusLabel, dedupeDownradarIncidents, downradarActiveRecords };
+    window.MonitorData = { normalizeRecord, normalizeRecords, statusLabel, dedupeDownradarIncidents, downradarActiveRecords, downradarTone };
 }());
