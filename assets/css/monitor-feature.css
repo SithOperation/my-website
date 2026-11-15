@@ -1,7 +1,8 @@
 .monitor-feature {
     position: relative;
     display: grid;
-    min-height: 510px;
+    height: clamp(500px, 34vw, 640px);
+    min-height: 0;
     width: 100vw;
     max-width: none;
     margin: clamp(5rem, 10vw, 9rem) 0 0 50%;
@@ -26,19 +27,22 @@
 .monitor-feature__content {
     position: relative;
     z-index: 2;
+    width: min(620px, 100%);
+    box-sizing: border-box;
+    min-width: 0;
     max-width: 620px;
     padding: clamp(2.5rem, 7vw, 6rem) max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem));
 }
 .monitor-feature__eyebrow { margin: 2.6rem 0 1rem; color: #f17676; font: 700 10px/1.2 var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; }
 .monitor-feature h2 { margin: 0; color: #f6f3ed; font: 800 clamp(3rem, 7vw, 6.6rem)/.86 var(--font-display, Arial Narrow, sans-serif); letter-spacing: -.045em; text-transform: uppercase; }
 .monitor-feature h2 em { color: #f17676; font-style: normal; }
-.monitor-feature__content > p:not(.monitor-feature__eyebrow) { max-width: 520px; margin: 1.5rem 0 0; color: #c7d5da; font-size: 16px; line-height: 1.65; }
+.monitor-feature__content > p:not(.monitor-feature__eyebrow) { width: min(520px, 100%); max-width: 100%; margin: 1.5rem 0 0; color: #c7d5da; font-size: 16px; line-height: 1.65; }
 .monitor-feature__meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 1.6rem 0 1.8rem; }
 .monitor-feature__meta span { padding: 6px 8px; border: 1px solid rgba(148,190,203,.32); color: #b8cbd0; font: 9px/1.2 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
 .monitor-feature .button-light { border-color: #f17676; background: #b3131b; color: #fff; }
 .monitor-feature .button-light:hover, .monitor-feature .button-light:focus-visible { border-color: #ff9b9b; background: #df202a; color: #fff; }
 @media (max-width: 700px) {
-    .monitor-feature { width: 100vw; min-height: 570px; background-position: center, 68% center; background-size: cover, auto 100%; }
+    .monitor-feature { width: 100vw; height: auto; min-height: 570px; background-position: center, 68% center; background-size: cover, auto 100%; }
     .monitor-feature::after { background: linear-gradient(90deg, rgba(7,13,18,.82), rgba(7,13,18,.56)), linear-gradient(0deg, rgba(7,13,18,.3), transparent 48%); }
     .monitor-feature__content { padding: 2.5rem 1.4rem; }
 }
