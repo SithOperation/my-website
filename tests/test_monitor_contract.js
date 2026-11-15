@@ -6,12 +6,15 @@ const source = fs.readFileSync("assets/js/monitor.js", "utf8");
 const listeners = {};
 const elements = new Map();
 function element(id) {
-    if (!elements.has(id)) elements.set(id, { id, value: "all", textContent: "", className: "", hidden: false, replaceChildren() {}, addEventListener() {}, setAttribute() {} });
+    if (!elements.has(id)) elements.set(id, { id, value: "all", textContent: "", className: "", hidden: false, replaceChildren() {}, addEventListener() {}, setAttribute() {}, append() {} });
     return elements.get(id);
+}
+function createElement() {
+    return { className: "", textContent: "", style: {}, append() {} };
 }
 const context = {
     console,
-    document: { getElementById: element, addEventListener(name, fn) { listeners[name] = fn; } },
+    document: { getElementById: element, createElement, addEventListener(name, fn) { listeners[name] = fn; } },
     window: { setInterval() {}, MonitorData: {} },
     AbortController: class AbortController {
         constructor() { this.signal = {}; }
