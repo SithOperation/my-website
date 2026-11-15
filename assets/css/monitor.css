@@ -47,3 +47,45 @@ body.monitor-page { min-width: 320px; margin: 0; background: var(--monitor-bg); 
 .monitor-footer { display: flex; flex-wrap: wrap; gap: 16px 28px; padding: 22px 0 30px; border-top: 1px solid var(--monitor-line); color: var(--monitor-muted); font: 10px var(--font-mono, monospace); letter-spacing: .06em; }.monitor-footer a { color: var(--monitor-cyan); text-decoration: none; }.monitor-footer small { flex-basis: 100%; color: #6f858c; letter-spacing: 0; }
 @media (max-width: 900px) { .monitor-intro, .monitor-controls, .monitor-content { grid-template-columns: 1fr; gap: 28px; }.monitor-controls__fields { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .monitor-header__inner { grid-template-columns: 1fr auto; min-height: 65px; }.monitor-brand { grid-column: 1/-1; grid-row: 1; }.monitor-back { grid-column: 1; grid-row: 2; }.monitor-status { grid-column: 2; grid-row: 2; }.monitor-shell { width: min(100% - 24px, 1240px); padding-top: 45px; }.monitor-intro h1 { font-size: clamp(43px, 15vw, 70px); }.monitor-lede { font-size: 16px; }.monitor-metrics { grid-template-columns: repeat(2, 1fr); }.monitor-metric { min-height: 115px; padding: 16px; }.monitor-metric strong { margin-top: 16px; font-size: 35px; }.monitor-controls__fields { grid-template-columns: 1fr; }.monitor-section-heading { align-items: start; padding: 18px; }.monitor-incident { padding: 18px; }.monitor-incident__top { display: grid; }.monitor-timeline { padding: 22px 18px 25px; }.monitor-timeline__item { grid-template-columns: 1fr; gap: 5px; padding-left: 18px; }.monitor-footer { width: min(100% - 24px, 1240px); } }
+
+/* Joseph Technologies editorial theme alignment. The monitor keeps its
+   information architecture while inheriting the site's black, red, steel,
+   and warm-paper visual language. */
+:root {
+    --monitor-bg: #f3f1ec;
+    --monitor-panel: rgba(255,255,255,.92);
+    --monitor-panel-alt: #eeece7;
+    --monitor-line: rgba(27,31,35,.16);
+    --monitor-line-strong: rgba(27,31,35,.34);
+    --monitor-text: #1b1f23;
+    --monitor-muted: #667078;
+    --monitor-cyan: #1f6975;
+    --monitor-green: #28734f;
+    --monitor-amber: #9b671d;
+    --monitor-red: #b3131b;
+}
+
+html, .monitor-page { background: var(--monitor-bg); }
+.monitor-page { color: var(--monitor-text); }
+.monitor-header { background: rgba(243,241,236,.96); }
+.monitor-brand { color: var(--monitor-text); font-family: var(--font-display); letter-spacing: .11em; }
+.monitor-brand span { color: var(--monitor-red); }
+.monitor-intro h1 { color: var(--monitor-text); font-family: var(--font-display); font-weight: 800; letter-spacing: -.035em; text-transform: uppercase; }
+.monitor-intro h1 em { color: var(--monitor-red); }
+.monitor-lede { color: #465159; }
+.monitor-attribution { background: rgba(255,255,255,.7); }
+.monitor-metric strong { color: var(--monitor-text); font-family: var(--font-display); font-weight: 800; }
+.monitor-controls h2, .monitor-section-heading h2 { color: var(--monitor-text); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; }
+.monitor-controls input, .monitor-controls select { background: #fff; color: var(--monitor-text); }
+.monitor-feed-panel, .monitor-side-panel, .monitor-history { background: rgba(255,255,255,.72); }
+.monitor-incident h3, .monitor-empty strong, .monitor-chart-block h3, .monitor-timeline__item strong { color: var(--monitor-text); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; }
+.monitor-incident p, .monitor-timeline__item p { color: #465159; }
+.monitor-notice { color: #465159; }
+.monitor-footer { border-top-color: var(--monitor-line); }
+.monitor-signal-art { position: relative; height: 92px; margin: -21px -21px 18px; overflow: hidden; border-bottom: 1px solid var(--monitor-line); background: linear-gradient(135deg, #e8eef0, #fff 58%, #f0e5df); }
+.monitor-signal-art::before, .monitor-signal-art::after { position: absolute; content: ""; border: 1px solid rgba(31,105,117,.28); border-radius: 50%; }
+.monitor-signal-art::before { width: 210px; height: 210px; top: -142px; right: -42px; }
+.monitor-signal-art::after { width: 135px; height: 135px; top: -102px; right: 2px; }
+.monitor-signal-art span { position: absolute; z-index: 1; width: 6px; height: 6px; border-radius: 50%; background: var(--monitor-red); box-shadow: 0 0 0 4px rgba(179,19,27,.1); }
+.monitor-signal-art span:nth-child(1) { top: 25px; left: 22%; }.monitor-signal-art span:nth-child(2) { top: 58px; left: 47%; }.monitor-signal-art span:nth-child(3) { top: 29px; left: 73%; }
+.monitor-signal-art i { position: absolute; top: 41px; left: 22%; width: 51%; height: 1px; background: linear-gradient(90deg, var(--monitor-red), var(--monitor-cyan)); transform: rotate(13deg); transform-origin: left; }
