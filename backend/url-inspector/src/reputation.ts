@@ -257,10 +257,15 @@ export async function checkGoogleSafeBrowsing(
   apiKey: string,
   fetcher?: typeof fetch,
   timeoutMs = 4_000,
+  parentSignal?: AbortSignal,
 ): Promise<ReputationResult> {
   if (!apiKey) throw new ProviderUnavailableError();
   let timeout: ReturnType<typeof setTimeout> | undefined;
+  const controller = new AbortController();
+  const abortFromParent = () => controller.abort();
+  parentSignal?.addEventListener("abort", abortFromParent, { once: true });
   try {
+    if (parentSignal?.aborted) controller.abort();
     const requestUrl = new URL(SAFE_BROWSING_ENDPOINT);
     requestUrl.searchParams.append("urls", url);
     requestUrl.searchParams.set("key", apiKey);
@@ -268,13 +273,17 @@ export async function checkGoogleSafeBrowsing(
       method: "GET",
       headers: { Accept: "application/x-protobuf" },
       redirect: "manual",
+      signal: controller.signal,
     };
     const providerRequest = fetcher
       ? fetcher(requestUrl.href, requestInit)
       : globalThis.fetch(requestUrl.href, requestInit);
     const timeoutPromise = new Promise<never>((_resolve, reject) => {
       timeout = setTimeout(
-        () => reject(new ProviderUnavailableError("provider request failed")),
+        () => {
+          controller.abort();
+          reject(new ProviderUnavailableError("provider request failed"));
+        },
         timeoutMs,
       );
     });
@@ -291,7 +300,7 @@ export async function checkGoogleSafeBrowsing(
       ?.trim()
       .toLowerCase();
     if (contentType === "application/x-protobuf" || contentType === "application/octet-stream") {
-      return parseGoogleSafeBrowsingProtobuf(new Uint8Array(await response.arrayBuffer()));
+      return parseGoogleSafeBrowsingProtobuf(await readResponseBytes(response, 256 * 1024));
     }
     if (contentType !== "application/json") {
       console.warn("safe_browsing_unexpected_content_type", { contentType: contentType ?? "missing" });
@@ -299,7 +308,9 @@ export async function checkGoogleSafeBrowsing(
     }
     let payload: unknown;
     try {
-      payload = JSON.parse(await response.text()) as unknown;
+      payload = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(
+        await readResponseBytes(response, 256 * 1024),
+      )) as unknown;
     } catch {
       console.warn("safe_browsing_invalid_json");
       throw new ProviderUnavailableError("invalid provider response");
@@ -323,7 +334,40 @@ export async function checkGoogleSafeBrowsing(
     throw new ProviderUnavailableError("provider request failed");
   } finally {
     if (timeout !== undefined) clearTimeout(timeout);
+    parentSignal?.removeEventListener("abort", abortFromParent);
   }
+}
+
+async function readResponseBytes(response: Response, maximumBytes: number): Promise<Uint8Array> {
+  const declared = Number(response.headers.get("Content-Length") ?? 0);
+  if (declared > maximumBytes || !response.body) {
+    throw new ProviderUnavailableError("invalid provider response");
+  }
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maximumBytes) {
+        await reader.cancel();
+        throw new ProviderUnavailableError("invalid provider response");
+      }
+      chunks.push(value);
+    }
+  } catch (error) {
+    await reader.cancel().catch(() => undefined);
+    throw error;
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return bytes;
 }
 
 export function scoreThreats(threats: ThreatType[]): number {

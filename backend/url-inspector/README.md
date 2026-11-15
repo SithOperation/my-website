@@ -21,13 +21,16 @@ results.
 - Fragments are removed before hashing and provider lookup.
 - Only Google Safe Browsing is contacted. Provider timeouts and failures return
   `unavailable`, never a clean result.
-- The current timeout uses promise racing and does not abort the underlying
-  provider subrequest. Migrating it to an `AbortController` signal is a
-  documented reliability improvement; Cloudflare Workers supports abortable
-  fetch requests.
+- Provider timeouts use `AbortController` signals and propagate cancellation
+  through independent enrichment requests. An overall inspection deadline also
+  aborts outstanding provider work.
 - URL and rate-limit identifiers use HMAC-SHA-256 with `APP_HASH_SECRET`.
 - CORS permits only `https://sithbusiness.com` and
   `https://www.sithbusiness.com`.
+- Worker JSON responses include no-store caching, frame denial, restrictive
+  CSP, no-referrer, permissions, HSTS, and MIME-sniffing protections. The
+  static GitHub Pages document retains its meta CSP; GitHub Pages does not
+  provide repository-controlled custom response headers.
 - The native Cloudflare rate limiter permits 10 checks per 60 seconds per
   privacy-hashed client address. Cloudflare rate limiting is intentionally
   permissive and eventually consistent.

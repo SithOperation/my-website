@@ -322,6 +322,11 @@ export function mapAssessment(result) {
     return mappings[result.status] || mappings.unavailable;
 }
 
+export function formatRiskScore(result) {
+    if (result.status === "no_known_threat_detected") return "Not scored";
+    return result.riskScore === null ? "Unavailable" : `${result.riskScore} / 100`;
+}
+
 export function buildAnalystInterpretation(result, structure) {
     const elevated = structure.findings.filter(item => item.level === "Elevated");
     const cautions = structure.findings.filter(item => item.level === "Caution");
@@ -558,7 +563,7 @@ function initializeInspector() {
         resultPanel.className = `inspector-panel result-panel ${assessment.panelClass}`;
         document.getElementById("result-status-badge").textContent = assessment.label;
         document.getElementById("assessment-label").textContent = assessment.label;
-        document.getElementById("risk-score").textContent = result.riskScore === null ? "Unavailable" : `${result.riskScore} / 100`;
+        document.getElementById("risk-score").textContent = formatRiskScore(result);
         document.getElementById("risk-classification").textContent = assessment.classification;
         document.getElementById("provider-status").textContent = assessment.providerStatus;
         document.getElementById("result-explanation").textContent = assessment.explanation;

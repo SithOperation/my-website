@@ -44,7 +44,15 @@ describe("URL policy", () => {
     (value) => expect(() => parseSubmittedUrl(value)).toThrow(/localhost/u),
   );
 
-  it.each(["http://10.0.0.1", "http://172.16.5.4", "http://192.168.1.1", "http://127.0.0.1"])(
+  it.each([
+    "http://10.0.0.1",
+    "http://172.16.5.4",
+    "http://192.168.1.1",
+    "http://127.0.0.1",
+    "http://192.0.2.1",
+    "http://[::ffff:127.0.0.1]",
+    "http://[fe80::1]",
+  ])(
     "blocks private or loopback IPv4 %s",
     (value) => expect(() => parseSubmittedUrl(value)).toThrow(/non-public/u),
   );
@@ -78,6 +86,29 @@ describe("URL policy", () => {
 });
 
 describe("request boundary", () => {
+  it.each(["application/json-malicious", "text/json"])(
+    "rejects non-JSON media type %s",
+    async (contentType) => {
+      const checker = vi.fn(async () => ({ threats: [], cacheDurationSeconds: null }));
+      const response = await createHandler(checker)(
+        request('{"url":"https://example.com"}', { "Content-Type": contentType }),
+        env,
+      );
+      expect(response.status).toBe(415);
+      expect(checker).not.toHaveBeenCalled();
+    },
+  );
+
+  it("accepts JSON media type parameters", async () => {
+    const checker = vi.fn(async () => ({ threats: [], cacheDurationSeconds: null }));
+    const response = await createHandler(checker)(
+      request('{"url":"https://example.com"}', { "Content-Type": "application/json; charset=utf-8" }),
+      env,
+    );
+    expect(response.status).toBe(200);
+    expect(checker).toHaveBeenCalledOnce();
+  });
+
   it("rejects malformed JSON", async () => {
     const response = await createHandler()(request("{"), env);
     expect(response.status).toBe(400);
@@ -97,6 +128,17 @@ describe("request boundary", () => {
     const blocked = await handler(request('{"url":"https://example.com"}', { Origin: "https://evil.example" }), env);
     expect(blocked.status).toBe(403);
     expect(blocked.headers.has("Access-Control-Allow-Origin")).toBe(false);
+  });
+
+  it("returns defensive API security headers", async () => {
+    const response = await createHandler(async () => ({ threats: [], cacheDurationSeconds: null }))(
+      request('{"url":"https://example.com"}'),
+      env,
+    );
+    expect(response.headers.get("Content-Security-Policy")).toContain("frame-ancestors 'none'");
+    expect(response.headers.get("X-Frame-Options")).toBe("DENY");
+    expect(response.headers.get("Referrer-Policy")).toBe("no-referrer");
+    expect(response.headers.get("Strict-Transport-Security")).toContain("max-age=31536000");
   });
 
   it("handles preflight and advertises only POST and OPTIONS", async () => {
@@ -192,9 +234,23 @@ describe("request boundary", () => {
 
 describe("Google provider boundary", () => {
   it("times out provider requests at the configured boundary", async () => {
-    const hangingFetch = (() => new Promise<Response>(() => undefined)) as typeof fetch;
+    let signal: AbortSignal | undefined;
+    const hangingFetch = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      signal = init?.signal;
+      return new Promise<Response>(() => undefined);
+    }) as typeof fetch;
     await expect(checkGoogleSafeBrowsing("https://example.com/", "key", hangingFetch, 5))
       .rejects.toBeInstanceOf(ProviderUnavailableError);
+    expect(signal?.aborted).toBe(true);
+  });
+
+  it("rejects an oversized streamed response", async () => {
+    const oversizedFetch = vi.fn(async () => new Response(
+      "{".repeat(256 * 1024 + 1),
+      { headers: { "Content-Type": "application/json" } },
+    )) as typeof fetch;
+    await expect(checkGoogleSafeBrowsing("https://example.com/", "key", oversizedFetch))
+      .rejects.toThrow("invalid provider response");
   });
 
   it("treats provider HTTP errors as unavailable", async () => {

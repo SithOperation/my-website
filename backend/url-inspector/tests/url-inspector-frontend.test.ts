@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import {
   analyzeUrlStructure,
   classifyBackendResponse,
+  formatRiskScore,
   isIpHostname,
   mapAssessment,
   parseBackendJson,
@@ -101,6 +102,12 @@ describe("frontend URL validation and structural analysis", () => {
 });
 
 describe("backend response handling", () => {
+  it("does not present an unknown clean lookup as zero risk", () => {
+    expect(formatRiskScore({ status: "no_known_threat_detected", riskScore: 0 })).toBe("Not scored");
+    expect(formatRiskScore({ status: "known_threat_detected", riskScore: 100 })).toBe("100 / 100");
+    expect(formatRiskScore({ status: "unavailable", riskScore: null })).toBe("Unavailable");
+  });
+
   it.each([
     ["known_threat_detected", "Known Threat Detected"],
     ["no_known_threat_detected", "No Known Threat Detected"],

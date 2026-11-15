@@ -79,6 +79,10 @@ public response contains no provider request URLs or raw upstream responses.
   no dynamic `innerHTML` is used.
 - Superseded browser requests are aborted.
 - The page loads no third-party scripts or analytics.
+- The page requests `no-referrer` behavior through a meta policy. Effective
+  response-header CSP, HSTS, and frame denial require a header-capable edge;
+  the current GitHub Pages hosting does not expose repository-level custom
+  response-header configuration.
 
 ## Scope and limitations
 
