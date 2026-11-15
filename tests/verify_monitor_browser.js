@@ -1,0 +1,49 @@
+"use strict";
+
+const assert = require("node:assert/strict");
+const { chromium } = require("playwright");
+
+const baseUrl = String(process.env.LOCAL_BASE_URL || "http://127.0.0.1:8765").replace(/\/+$/, "");
+const fixture = {
+    status: "ok",
+    category: "all",
+    retention_hours: 72,
+    timestamp: "2026-11-14T23:00:00Z",
+    outages: [
+        { id: "fixture-unknown", provider: "Example Cloud", description: "Regional service disruption", eventType: "OUTAGE", startDate: "2026-11-14T20:00:00Z", endDate: null, locations: ["Region A"], dataSource: "Fixture" },
+        { id: "fixture-resolved", provider: "Example ISP", description: "Resolved network interruption", eventType: "NETWORK", startDate: "2026-11-14T18:00:00Z", endDate: "2026-11-14T19:00:00Z", locations: ["Region B"], dataSource: "Fixture" }
+    ]
+};
+
+async function main() {
+    const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || undefined });
+    const page = await browser.newPage();
+    const errors = [];
+    page.on("pageerror", error => errors.push(error.message));
+    await page.route("**/api/outages/all", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(fixture) }));
+
+    try {
+        for (const viewport of [{ width: 390, height: 844 }, { width: 1366, height: 900 }]) {
+            await page.setViewportSize(viewport);
+            const response = await page.goto(`${baseUrl}/monitor.html?viewport=${viewport.width}`, { waitUntil: "domcontentloaded", timeout: 30000 });
+            assert.ok(response?.ok(), `${viewport.width}: monitor page failed to load`);
+            await page.waitForFunction(() => document.querySelector("#monitor-status-text")?.textContent === "Worker online", { timeout: 10000 });
+            assert.equal(await page.locator("#metric-total").textContent(), "2");
+            assert.equal(await page.locator("#metric-unresolved").textContent(), "1");
+            assert.equal(await page.locator("#metric-resolved").textContent(), "1");
+            assert.equal(await page.locator(".monitor-badge--unknown").count(), 1);
+            assert.equal(await page.locator(".monitor-badge--resolved").count(), 1);
+            await page.locator("#monitor-provider").selectOption({ label: "Example ISP" });
+            assert.equal(await page.locator(".monitor-incident").count(), 1);
+            await page.locator("#monitor-provider").selectOption("all");
+            const geometry = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth }));
+            assert.ok(geometry.width <= geometry.viewport + 1, `${viewport.width}: horizontal overflow`);
+        }
+        assert.equal(errors.length, 0, errors.join("; "));
+        console.log("Monitor browser verification passed");
+    } finally {
+        await browser.close();
+    }
+}
+
+main().catch(error => { console.error(error); process.exitCode = 1; });
