@@ -2319,3 +2319,57 @@ nav a.is-current::before {
     }
 
 }
+.monitor-feature {
+    position: relative;
+    display: grid;
+    min-height: 510px;
+    margin-top: clamp(5rem, 10vw, 9rem);
+    overflow: hidden;
+    isolation: isolate;
+    border-top: 1px solid var(--site-line);
+    border-bottom: 1px solid var(--site-line);
+    background-color: #070d12;
+    background-image: linear-gradient(90deg, rgba(7,13,18,.82) 0%, rgba(7,13,18,.7) 32%, rgba(7,13,18,.22) 68%, rgba(7,13,18,.12) 100%), url("assets/images/monitor/network-alarm-signal.png");
+    background-position: center, center right;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+}
+.monitor-feature::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(7,13,18,.3), transparent 48%);
+    content: "";
+}
+.monitor-feature__content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    padding: clamp(2.5rem, 7vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+}
+.monitor-feature__eyebrow {
+    margin: 2.6rem 0 1rem;
+    color: #f17676;
+    font: 700 10px var(--font-mono);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.monitor-feature h2 {
+    margin: 0;
+    color: var(--site-text-strong);
+    font: 800 clamp(3rem, 7vw, 6.6rem)/.86 var(--font-display);
+    letter-spacing: -.045em;
+    text-transform: uppercase;
+}
+.monitor-feature h2 em { color: #f17676; font-style: normal; }
+.monitor-feature__content > p:not(.monitor-feature__eyebrow) { max-width: 520px; margin: 1.5rem 0 0; color: #c7d5da; font-size: 16px; line-height: 1.65; }
+.monitor-feature__meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 1.6rem 0 1.8rem; }
+.monitor-feature__meta span { padding: 6px 8px; border: 1px solid rgba(148,190,203,.32); color: #b8cbd0; font: 9px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.monitor-feature .button-light { border-color: #f17676; background: #b3131b; }
+.monitor-feature .button-light:hover, .monitor-feature .button-light:focus-visible { border-color: #ff9b9b; background: #df202a; }
+@media (max-width: 700px) {
+    .monitor-feature { min-height: 570px; }
+    .monitor-feature { background-position: center, 68% center; background-size: cover, auto 100%; }
+    .monitor-feature::after { background: linear-gradient(90deg, rgba(7,13,18,.97), rgba(7,13,18,.7)), linear-gradient(0deg, rgba(7,13,18,.45), transparent); }
+    .monitor-feature__content { padding: 2.5rem 1.4rem; }
+}
