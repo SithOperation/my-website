@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-11-16T23:10:54.122970+00:00",
+  "generated_at": "2026-11-17T21:59:32.105086+00:00",
   "source_count": 8,
-  "sources_succeeded": 5,
-  "articles_collected": 42,
-  "articles_after_deduplication": 41,
+  "sources_succeeded": 7,
+  "articles_collected": 53,
+  "articles_after_deduplication": 50,
   "stories_published": 20,
-  "critical_count": 0,
-  "high_count": 0,
-  "medium_count": 2,
-  "low_count": 18,
+  "critical_count": 1,
+  "high_count": 1,
+  "medium_count": 10,
+  "low_count": 8,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 7
+      "articles": 10
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 13
+      "articles": 12
     },
     {
       "source": "Krebs on Security",
@@ -37,14 +37,14 @@
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 12
     },
     {
       "source": "MIT News AI",
       "url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 3
     },
     {
       "source": "Google AI",
@@ -56,35 +56,89 @@
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 11
+      "articles": 5
     }
   ],
   "stories": [
     {
-      "id": "e3697267fc69aacd",
-      "title": "Google Project Zero Sets Course for 30-Day Disclosure Deadline",
+      "id": "37902359fb183e15",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.065876+00:00",
+      "category": "Active Exploitation",
+      "severity": "Critical",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-115731"
+      ],
+      "cvss_score": null,
+      "known_exploited": true,
+      "active_exploitation": true,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 61,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "CISA KEV",
+          "points": 20
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "f0afc1d9f6bac9d9",
+      "title": "N-able Kills Legacy APIs, Patches 17 N-central Zero-Days",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/google-project-zero-sets-course-for-30-day-disclosure-deadline/",
-      "published_at": "2026-11-16T15:31:25+00:00",
-      "collected_at": "2026-11-16T23:10:50.902514+00:00",
+      "source_url": "https://www.securityweek.com/n-able-kills-legacy-apis-patches-17-n-central-zero-days/",
+      "published_at": "2026-11-17T12:28:45+00:00",
+      "collected_at": "2026-11-17T21:59:30.741181+00:00",
       "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "It will move to a 60-day vulnerability disclosure window in February 2027 and to a 30-day window in January 2028.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "severity": "High",
+      "summary": "The patches target recently disclosed zero-days, as well as vulnerabilities already exploited in the wild.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
       "cvss_score": null,
       "known_exploited": false,
-      "active_exploitation": false,
+      "active_exploitation": true,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
         "Zero-Day"
       ],
-      "importance_score": 18,
+      "importance_score": 43,
       "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
         {
           "signal": "Zero-day",
           "points": 18
@@ -93,19 +147,72 @@
       "related_sources": []
     },
     {
-      "id": "e021b9febf9ed0b7",
-      "title": "⚡ Weekly Recap: N-able 0-Days, Windows 0-Days, Chrome 0-Days, Fridge 0-Days, and More Bad Days",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/weekly-recap-n-able-0-days-windows-0.html",
-      "published_at": "2026-11-16T13:27:20+00:00",
-      "collected_at": "2026-11-16T23:10:50.318413+00:00",
-      "category": "Active Exploitation",
+      "id": "3b573666de1648f8",
+      "title": "Siemens Industrial Automation Software Products",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.067375+00:00",
+      "category": "Critical Vulnerabilities",
       "severity": "Medium",
-      "summary": "A default password opened doors it never should have.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "summary": "View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497).",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
+      "cves": [
+        "CVE-2026-111497"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 28,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-04"
+        }
+      ]
+    },
+    {
+      "id": "986d782997068f3c",
+      "title": "Dorsett Controls InfoScan",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-01",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.064085+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to retrieve sensitive system information, access application data without authorization, recover stored credentials, or intercept and manipulate network communications.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-117659"
+      ],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
@@ -113,28 +220,371 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "Malware",
-        "Zero-Day"
+        "CVE"
       ],
-      "importance_score": 18,
+      "importance_score": 24,
       "score_breakdown": [
         {
-          "signal": "Zero-day",
-          "points": 18
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
         }
       ],
       "related_sources": []
     },
     {
-      "id": "0d946a07bc289f65",
-      "title": "Fandango says hackers stole payment card details from checkout pages",
+      "id": "f61efca8f592b87c",
+      "title": "Siemens Mendix Studio Pro",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-05",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.065423+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Mendix Studio Pro contains multiple vulnerabilities in the MCP Server, that could allow an attacker with network access to interact with the server remotely or trick a user's browser into sending unauthorized requests, potentially leading to unauthorized data access, tool execution, or system compromise.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-112136"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "fae4ec42780a6b53",
+      "title": "Siemens meta-iot2050",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-11",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.066080+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary meta-iot2050 (https://github.com/siemens/meta-iot2050) from V01.03.01 contains a Command Injection vulnerability in the firmware update tool that could allow an attacker which is able to manipulate a configuration file to have arbitrary commands run as root.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-109830"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "1e3a8a0a7e3cd062",
+      "title": "Siemens SIMATIC WinCC",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-09",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.066410+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Graphics Designer of SIMATIC WinCC before V8.2 contains an implicit active content execution vulnerability upon opening files, which could allow an attacker to cause arbitrary code execution on the device.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-59082"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "CISA Cybersecurity Advisories",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-08"
+        }
+      ]
+    },
+    {
+      "id": "b408794a3196e1df",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.066754+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-106175"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "639fac0f8727e01a",
+      "title": "Siemens .NET Client Library for SIMATIC S7 Webserver API",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-02",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.067028+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary .NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files outside the intended download directory.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-85114",
+        "CVE-2026-85115"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "4a756643b0596f8c",
+      "title": "Siemens ROS#",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-06",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.068949+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary ROS# before version 2.3.1 contains a code injection vulnerability that could allow an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code into the generated program.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-109097"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "3989b95c68b62c6d",
+      "title": "Siemens Simcenter Femap",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-10",
+      "published_at": "2026-11-17T12:00:00+00:00",
+      "collected_at": "2026-11-17T21:59:31.069246+00:00",
+      "category": "Government Advisories",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Simcenter Femap is affected by an out of bounds read vulnerability that could be triggered when the application reads files in X_T format.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-64629"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "94ee1f09f8572dee",
+      "title": "Ransomware affiliate suspect extradited to US, faces 27 years in prison",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/fandango-says-hackers-stole-payment-card-details-from-checkout-pages/",
-      "published_at": "2026-11-16T15:44:21+00:00",
-      "collected_at": "2026-11-16T23:10:50.423341+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/alleged-inc-lynx-ransomware-affiliate-extradited-to-us-faces-27-years-in-prison/",
+      "published_at": "2026-11-17T07:25:44+00:00",
+      "collected_at": "2026-11-17T21:59:30.369992+00:00",
+      "category": "Ransomware",
+      "severity": "Medium",
+      "summary": "A Kazakh national has been extradited from Italy to face charges alleging he targeted US schools, hospitals, and healthcare entities in ransomware attacks.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Ransomware"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "d45bea60a94e3c88",
+      "title": "Access Dental Management Data Breach Impacts Over 340,000",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/access-dental-management-data-breach-impacts-over-340000/",
+      "published_at": "2026-11-17T12:59:04+00:00",
+      "collected_at": "2026-11-17T21:59:30.740951+00:00",
       "category": "Data Breaches",
       "severity": "Low",
-      "summary": "Ticket seller Fandango Media is notifying customers about a data breach that exposed payment card details entered on its checkout pages.",
+      "summary": "Hackers breached Access Dental’s network and stole personal, health, and insurance information.",
       "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
       "affected_products": [],
       "affected_vendors": [],
@@ -158,15 +608,15 @@
       "related_sources": []
     },
     {
-      "id": "c2a82aaca9d9479f",
-      "title": "Uber Data Breach Impacts 150,000 People",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/uber-data-breach-impacts-150000-people/",
-      "published_at": "2026-11-16T11:02:48+00:00",
-      "collected_at": "2026-11-16T23:10:50.902915+00:00",
+      "id": "6279c3ce26f4a586",
+      "title": "Uber notifies drivers of data breach affecting nearly 150,000 people",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/uber-notifies-drivers-of-data-breach-affecting-nearly-150-000-people/",
+      "published_at": "2026-11-17T08:35:42+00:00",
+      "collected_at": "2026-11-17T21:59:30.369883+00:00",
       "category": "Data Breaches",
       "severity": "Low",
-      "summary": "Hackers compromised a third-party services provider and stole names, addresses, and driver’s license numbers.",
+      "summary": "Ride-hailing company Uber is notifying nearly 150,000 drivers that attackers stole their data after breaching AI infrastructure provider Fireworks in early October.",
       "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
       "affected_products": [],
       "affected_vendors": [],
@@ -190,15 +640,15 @@
       "related_sources": []
     },
     {
-      "id": "71db9eda9bdedcdd",
-      "title": "Microsoft: Windows Server 2016 reaches end of support in 60 days",
+      "id": "6ab6f9140451038c",
+      "title": "Tor releases emergency update amid ongoing DDoS attack",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-server-2016-reaches-end-of-support-in-60-days/",
-      "published_at": "2026-11-16T12:53:18+00:00",
-      "collected_at": "2026-11-16T23:10:50.423576+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/tor-releases-emergency-update-amid-ongoing-ddos-attack/",
+      "published_at": "2026-11-17T18:04:15+00:00",
+      "collected_at": "2026-11-17T21:59:30.369320+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Microsoft has reminded customers again that Windows Server 2016 will stop receiving security updates after it reaches the end of support in two months.",
+      "summary": "The Tor Project has released a security update for its network relay software to increase defenses against an ongoing distributed denial-of-service attack that it says has overwhelmed relays and affected most operators.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -220,20 +670,54 @@
       "related_sources": []
     },
     {
-      "id": "40d5792137694b01",
-      "title": "Recent UnrealIRCd Vulnerability Exploited in Attacks",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/recent-unrealircd-vulnerability-exploited-in-attacks/",
-      "published_at": "2026-11-16T11:15:48+00:00",
-      "collected_at": "2026-11-16T23:10:50.902749+00:00",
-      "category": "Critical Vulnerabilities",
+      "id": "e5492f9867506c17",
+      "title": "Oracle to Patch 11 Java Flaws Today as Critical OpenJDK RCE (CVE-2026-114938) Report Emerges",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html",
+      "published_at": "2026-11-17T15:17:36+00:00",
+      "collected_at": "2026-11-17T21:59:30.283657+00:00",
+      "category": "Cloud Security",
       "severity": "Low",
-      "summary": "Tracked as CVE-2026-114713, the high-severity flaw allows attackers to execute commands with server/IRCOp privileges.",
+      "summary": "Oracle is preparing to release security patches for 11 vulnerabilities in Java SE on Tuesday, November 17, 2026, all of which may be exploited remotely without authentication, as separate reports warn of a potentially critical remote code execution (RCE) flaw affecting OpenJDK.",
       "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-114713"
+        "CVE-2026-114938"
+      ],
+      "cvss_score": 3.1,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "86d3e558bb3433cf",
+      "title": "MSP ScreenConnect Servers Targeted in Month-Long Campaign",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/msp-screenconnect-servers-targeted-in-month-long-campaign/",
+      "published_at": "2026-11-17T13:24:43+00:00",
+      "collected_at": "2026-11-17T21:59:30.740841+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "More than 40 servers received over 688,000 requests exploiting CVE-2026-84869 to execute guest-pushed files.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-84869"
       ],
       "cvss_score": null,
       "known_exploited": false,
@@ -254,15 +738,15 @@
       "related_sources": []
     },
     {
-      "id": "dfdbf97fc7fea38d",
-      "title": "Microsoft pushes Windows emergency updates to fix activation failures",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-new-windows-emergency-updates-fix-activation-licensing-failures/",
-      "published_at": "2026-11-16T08:26:52+00:00",
-      "collected_at": "2026-11-16T23:10:50.423891+00:00",
+      "id": "1d648e0700680ba4",
+      "title": "Researchers Detail iPhone Flaw That Let Apps Record Audio Despite Denied Microphone Permission",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/researchers-detail-iphone-flaw-that-let.html",
+      "published_at": "2026-11-17T12:14:36+00:00",
+      "collected_at": "2026-11-17T21:59:30.284125+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Microsoft has released emergency out-of-band updates to fix Windows activation and licensing failures caused by this month's security updates.",
+      "summary": "A now-patched flaw in Apple's audio service let apps on iPhones and iPads record audio even after the user tapped \"Don't Allow\" on the microphone prompt.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -284,321 +768,45 @@
       "related_sources": []
     },
     {
-      "id": "94c4d7b387b59e70",
-      "title": "Gemini AI agents repeatedly bypassed safeguards to attack real website",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/gemini-ai-agents-repeatedly-bypassed-safeguards-to-attack-real-website/",
-      "published_at": "2026-11-16T22:54:00+00:00",
-      "collected_at": "2026-11-16T23:10:50.422863+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "Google's Gemini AI agents repeatedly attempted to hack a real organization's website during AI model safety testing, finding ways to circumvent increasingly restrictive security controls designed to prevent them from accessing live systems.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "AI"
-      ],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "90f34400313cb143",
-      "title": "Google Project Zero cuts bug disclosures to 30 days amid AI threats",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/google-project-zero-cuts-bug-disclosure-deadline-to-30-days-amid-ai-threats/",
-      "published_at": "2026-11-16T21:31:44+00:00",
-      "collected_at": "2026-11-16T23:10:50.422989+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Google Project Zero will replace its \"90+30\" disclosure policy with shorter, fixed deadlines in response to AI-accelerated vulnerability discovery and exploitation.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "fecd5cf0f1ca7f35",
-      "title": "California sues OpenAI over AI agents escaping sandboxes, hacking firms",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/california-sues-openai-over-ai-agents-escaping-sandboxes-hacking-firms/",
-      "published_at": "2026-11-16T20:59:44+00:00",
-      "collected_at": "2026-11-16T23:10:50.423081+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "California Attorney General Rob Bonta sued OpenAI on Monday, alleging the company knowingly continued testing advanced artificial intelligence models despite repeated security failures that allowed autonomous AI agents to escape isolated environments and launch cyberattacks against real-world organizations.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "AI"
-      ],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "5fa961fe239b5399",
-      "title": "Trump Administration Moves to Block China From Indirect Access to American AI Technology",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/trump-administration-moves-to-block-china-from-indirect-access-to-american-ai-technology/",
-      "published_at": "2026-11-16T20:00:00+00:00",
-      "collected_at": "2026-11-16T23:10:50.902325+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Under the new rule, overseas data centers that serve companies in countries including China, Russia, Iran and Cuba are required to identify their end users.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "ac17c0218f3e057f",
-      "title": "Barracuda links cloud breach to ARTEX AI-powered cyberattack",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/barracuda-links-cloud-breach-to-artex-ai-powered-cyberattack/",
-      "published_at": "2026-11-16T19:57:13+00:00",
-      "collected_at": "2026-11-16T23:10:50.423171+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Hackers who breached the cloud environment of network and email security company Barracuda earlier this month used a stolen cloud access key and the ARTEX AI penetration testing framework.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "2d7a5d6b20fff3cd",
-      "title": "Broadening access to AI for scientists",
-      "source": "OpenAI News",
-      "source_url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
-      "published_at": "2026-11-16T17:00:00+00:00",
-      "collected_at": "2026-11-16T23:10:54.036895+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "We’re expanding our ChatGPT for Academic Researchers program to offer 200,000 researchers worldwide free access to our frontier models.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "dd659f011024f04f",
-      "title": "Strengthening the fight against online child sexual abuse with new tools and support",
-      "source": "OpenAI News",
-      "source_url": "https://openai.com/index/strengthening-online-child-safety",
-      "published_at": "2026-11-16T17:00:00+00:00",
-      "collected_at": "2026-11-16T23:10:54.037007+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "New tools, practical guidance, and partnerships will help prevent, detect and respond to online child sexual exploitation and abuse.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "91e784d7cca7318c",
-      "title": "Microsoft says months-old bug caused global Microsoft 365 outage",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-months-old-bug-caused-global-microsoft-365-outage/",
-      "published_at": "2026-11-16T16:43:24+00:00",
-      "collected_at": "2026-11-16T23:10:50.423259+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Microsoft says a software bug introduced in July caused last week's worldwide Microsoft 365 outage, triggering a cascading failure that left more than 80% of its networking gateway servers unresponsive.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "7380375f241d1326",
-      "title": "Cursor Supply Chain Attack Started at Fireworks AI",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/cursor-supply-chain-attack-started-at-fireworks/",
-      "published_at": "2026-11-16T15:45:43+00:00",
-      "collected_at": "2026-11-16T23:10:50.902427+00:00",
-      "category": "Supply Chain",
-      "severity": "Low",
-      "summary": "The attacker stole an access key from Fireworks and used it to exfiltrate credentials that enabled them to push malicious Claude Code extension copies.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "aad54cccc6440ed6",
-      "title": "Barracuda Hacked Amid Surge in Artex-Powered Cyberattacks",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/barracuda-hacked-amid-surge-in-artex-powered-cyberattacks/",
-      "published_at": "2026-11-16T15:07:32+00:00",
-      "collected_at": "2026-11-16T23:10:50.902594+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "Chinese threat actors are broadly adopting the agentic AI penetration testing framework to accelerate their attacks.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "b138a94eb9b25779",
-      "title": "7 Tips For Complying with CJIS Password and MFA Requirements",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/7-tips-for-complying-with-cjis-password-and-mfa-requirements/",
-      "published_at": "2026-11-16T15:01:11+00:00",
-      "collected_at": "2026-11-16T23:10:50.423419+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "The FBI's latest CJIS Security Policy requires law enforcement agencies to strengthen password protections and enforce MFA across privileged and non-privileged accounts.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "a863217f46213f94",
-      "title": "Google Finds Hackers Using AI Agents to Build and Run Exploits From Software Patches",
+      "id": "7d8a94de5f64d8dd",
+      "title": "N-able Patches 17 N-central Flaws as Attackers Exploit Earlier Bugs to Deploy Crypto Miners",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/google-finds-hackers-using-ai-agents-to.html",
-      "published_at": "2026-11-16T14:00:00+00:00",
-      "collected_at": "2026-11-16T23:10:50.318288+00:00",
-      "category": "Artificial Intelligence",
+      "source_url": "https://thehackernews.com/2026/11/n-able-patches-17-n-central-flaws-as.html",
+      "published_at": "2026-11-17T05:00:34+00:00",
+      "collected_at": "2026-11-17T21:59:30.284814+00:00",
+      "category": "Cloud Security",
       "severity": "Low",
-      "summary": "Google on Monday revealed that adversarial use of artificial intelligence (AI) by threat actors has gone beyond manual prompting to deploying autonomous multi-agent offensive frameworks like ARTEX, CAIRN, CyberStrikeAI, and PentAGI to execute multi-stage intrusions at greater operational velocity.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "summary": "N-able has released a new security update to address additional critical security flaws impacting N-central.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
-      "patch_available": false,
+      "patch_available": true,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [
-        "AI"
+      "tags": [],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
       ],
-      "importance_score": 0,
-      "score_breakdown": [],
       "related_sources": []
     },
     {
-      "id": "9b1f22329875fb27",
-      "title": "Google warns that fully-automated AI attacks are coming soon",
+      "id": "2cac7202a964b936",
+      "title": "Cloud keys leaked in Docker Hub images are stolen within seconds",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/google-warns-that-fully-automated-ai-attacks-are-coming-soon/",
-      "published_at": "2026-11-16T14:00:00+00:00",
-      "collected_at": "2026-11-16T23:10:50.423500+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cloud-keys-leaked-in-docker-hub-images-are-stolen-within-seconds/",
+      "published_at": "2026-11-17T21:27:17+00:00",
+      "collected_at": "2026-11-17T21:59:30.368765+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Threat actors are now relying on agentic workflows powered by AI-based offensive frameworks to automate vulnerability discovery and exploitation, accelerating attacks to machine speed.",
+      "summary": "Credentials and access secrets exposed in public Docker Hub images are being extracted and exploited by attackers within as little as eight seconds of publication.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
