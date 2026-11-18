@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    const API_ROOT = "https://ddos-detector.newhorse62.workers.dev";
+    const API_ROOT = window.__MONITOR_API_ROOT__ || "https://ddos-detector.newhorse62.workers.dev";
     const REFRESH_MS = 60 * 1000;
     const RADWARE_REFRESH_MS = 5 * 60 * 1000;
     const STALE_MS = 10 * 60 * 1000;

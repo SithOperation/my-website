@@ -4,14 +4,18 @@ const assert = require("node:assert/strict");
 const { chromium } = require("playwright");
 
 const baseUrl = String(process.env.LOCAL_BASE_URL || "http://127.0.0.1:8765").replace(/\/+$/, "");
+const fixtureNow = Date.now();
+const fixtureStart = new Date(fixtureNow - 60 * 60 * 1000).toISOString();
+const fixtureResolvedStart = new Date(fixtureNow - 2 * 60 * 60 * 1000).toISOString();
+const fixtureResolvedEnd = new Date(fixtureNow - 60 * 60 * 1000).toISOString();
 const fixture = {
     status: "ok",
     category: "all",
     retention_hours: 72,
     timestamp: new Date().toISOString(),
     outages: [
-        { id: "fixture-unknown", provider: "Example Cloud", description: "Regional service disruption", eventType: "OUTAGE", startDate: "2026-11-14T20:00:00Z", endDate: null, locations: ["Region A"], dataSource: "Fixture" },
-        { id: "fixture-resolved", provider: "Example ISP", description: "Resolved network interruption", eventType: "NETWORK", startDate: "2026-11-14T18:00:00Z", endDate: "2026-11-14T19:00:00Z", locations: ["Region B"], dataSource: "Fixture" }
+        { id: "fixture-unknown", provider: "Example Cloud", description: "Regional service disruption", eventType: "OUTAGE", startDate: fixtureStart, endDate: null, locations: ["Region A"], dataSource: "Fixture" },
+        { id: "fixture-resolved", provider: "Example ISP", description: "Resolved network interruption", eventType: "NETWORK", startDate: fixtureResolvedStart, endDate: fixtureResolvedEnd, locations: ["Region B"], dataSource: "Fixture" }
     ]
 };
 const radwareFixture = {
@@ -48,6 +52,7 @@ const downradarIncidentsFixture = {
 async function main() {
     const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || undefined });
     const page = await browser.newPage();
+    await page.addInitScript(() => { window.__MONITOR_API_ROOT__ = window.location.origin; });
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
     await page.route("**/api/outages/all", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(fixture) }));
