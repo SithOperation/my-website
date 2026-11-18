@@ -351,16 +351,6 @@
         }
     }
 
-    function initializeReturnToTop() {
-        const button = document.getElementById("ufo-top");
-        if (!button) return;
-        button.addEventListener("click", () => {
-            button.classList.add("launch");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            window.setTimeout(() => button.classList.remove("launch"), 1000);
-        });
-    }
-
     function initializeNavigationSelection() {
         const links = [...document.querySelectorAll('nav a[href^="#"]')];
         const sections = links.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
@@ -385,10 +375,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        startTypewriter();
-        initializeBackgrounds();
         initializeProjects();
-        initializeReturnToTop();
         initializeNavigationSelection();
         loadCyberNews();
     });
