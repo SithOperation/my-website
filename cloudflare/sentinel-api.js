@@ -84,9 +84,9 @@ function rssItems(xml) {
     .slice(0, 70);
 }
 
-async function fetchSource(url, accept = "application/json") {
+async function fetchSource(url, accept = "application/json", timeoutMs = 10000) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetch(url, {
       headers: {
@@ -335,8 +335,32 @@ async function collectSpaceWeather(db) {
 
 async function collectGDACS(db) {
   const xml = await (await fetchSource(GDACS, "application/rss+xml, application/xml, text/xml")).text();
-  const items = rssItems(xml);
-  if (!items.length) throw new Error("No GDACS RSS items parsed");
+  // GDACS may publish HTTP item links. Normalize those links to HTTPS
+  // instead of discarding every otherwise-valid RSS item.
+  const items = [...xml.matchAll(/<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/gi)]
+    .map(match => {
+      const body = match[1];
+      const title = text(xmlTag(body, "title"), 220);
+      const description = text(xmlTag(body, "description"), 800);
+      const rawUrl = text(xmlTag(body, "link") || xmlTag(body, "guid"), 1500).trim();
+      let url = "";
+      try {
+        const parsed = new URL(rawUrl);
+        if ((parsed.protocol === "http:" || parsed.protocol === "https:") &&
+            (parsed.hostname === "gdacs.org" || parsed.hostname.endsWith(".gdacs.org"))) {
+          parsed.protocol = "https:";
+          url = parsed.href;
+        } else if (parsed.protocol === "https:") {
+          url = parsed.href;
+        }
+      } catch (_) { /* Skip malformed feed links. */ }
+      return { title, description, url, date: iso(xmlTag(body, "pubDate")) };
+    })
+    .filter(item => item.title && item.url)
+    .slice(0, 70);
+  if (!items.length) {
+    throw new Error(`No GDACS RSS items parsed (item tags: ${(xml.match(/<item(?:\s|>)/gi) || []).length}; response chars: ${xml.length})`);
+  }
   return upsertNews(db, items.map(item => ({
     id: stableId("GDACS", item.url), title: item.title, summary: item.description,
     category: "natural_disaster", sourceId: "gdacs", publisher: "GDACS", url: item.url, published: item.date
@@ -359,7 +383,7 @@ async function collectCISA(db) {
 async function collectGDELT(db) {
   const query = '(Iran OR Lithuania OR Poland OR Germany OR Estonia OR Russia OR China OR Taiwan OR Japan OR "South Korea" OR "North Korea")';
   const params = new URLSearchParams({ query, mode: "ArtList", format: "json", maxrecords: "75", timespan: "1d", sort: "DateDesc" });
-  const data = await (await fetchSource(`${GDELT}?${params}`)).json();
+  const data = await (await fetchSource(`${GDELT}?${params}`, "application/json", 25000)).json();
   if (!Array.isArray(data.articles)) throw new Error("GDELT response has no articles");
   return upsertNews(db, data.articles.map(article => ({
     id: stableId("GDELT", article.url), title: article.title, summary: "",
@@ -410,6 +434,54 @@ async function collectConfiguredRSS(env, key, sourceId, category) {
   }
 }
 
+// Optional X account RSS bridge. Set X_ENFORCER_RSS_URL only after verifying
+// a permitted feed that returns the account's public posts as RSS XML.
+// This does not create an additional polling schedule or require a new table.
+const X_ENFORCER_SOURCE_ID = "x-its-the-enforcer";
+const X_ENFORCER_ACCOUNT = "https://x.com/ItsTheEnforcer";
+
+async function collectEnforcerRSS(env) {
+  const feedUrl = String(env.X_ENFORCER_RSS_URL || "").trim();
+  if (!feedUrl) {
+    await recordHealth(env.DB, X_ENFORCER_SOURCE_ID, "disabled", 0,
+      "Set X_ENFORCER_RSS_URL to a verified, permitted RSS feed");
+    return;
+  }
+
+  try {
+    const parsed = new URL(feedUrl);
+    if (parsed.protocol !== "https:") throw new Error("Feed must use HTTPS");
+    const response = await fetchSource(parsed.href, "application/rss+xml, application/xml, text/xml");
+    const items = rssItems(await response.text());
+    if (!items.length) throw new Error("No RSS items parsed");
+
+    const posts = items.map(item => {
+      // Only store original post links, never fabricated map coordinates.
+      const match = item.url.match(/^https:\/\/(?:www\.)?(?:x\.com|twitter\.com)\/ItsTheEnforcer\/status\/(\d+)(?:[\/?#]|$)/i);
+      if (!match) return null;
+      const canonicalUrl = `https://x.com/ItsTheEnforcer/status/${match[1]}`;
+      return {
+        id: stableId("X-ENFORCER", match[1]),
+        title: item.title || "The Enforcer post",
+        summary: item.description,
+        category: "international_news",
+        sourceId: X_ENFORCER_SOURCE_ID,
+        publisher: "The Enforcer (@ItsTheEnforcer)",
+        url: canonicalUrl,
+        published: item.date,
+        countries: []
+      };
+    }).filter(Boolean);
+
+    if (!posts.length) throw new Error("Feed has no posts linking to @ItsTheEnforcer");
+    const count = await upsertNews(env.DB, posts);
+    await recordHealth(env.DB, X_ENFORCER_SOURCE_ID, "healthy", count);
+  } catch (error) {
+    console.error(X_ENFORCER_SOURCE_ID, error);
+    await recordHealth(env.DB, X_ENFORCER_SOURCE_ID, "failed", 0, error.message || error);
+  }
+}
+
 async function cleanupOldRecords(env) {
   const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
   const retentionStart = "2026-11-12T09:00:00.000Z";
@@ -441,6 +513,8 @@ async function scheduledJob(controller, env) {
       const minute = new Date(controller.scheduledTime || Date.now()).getUTCMinutes();
       const group = [5, 25, 45].includes(minute) ? NEWS_RSS_A : NEWS_RSS_B;
       await collectNewsGroup(env.DB, group);
+      // Reuse NEWS_RSS_B runs; no additional cron trigger.
+      if (group === NEWS_RSS_B) await collectEnforcerRSS(env);
       await collectConfiguredRSS(env, "GOV_RSS_FEEDS", "government-rss", "government_advisory");
       await collectConfiguredRSS(env, "MARITIME_AVIATION_RSS_FEEDS", "maritime-aviation-rss", "transport_advisory");
       break;
