@@ -5,6 +5,7 @@
     const REFRESH_MS = 60 * 1000;
     const RADWARE_REFRESH_MS = 5 * 60 * 1000;
     const STALE_MS = 10 * 60 * 1000;
+    const SIGNAL_RETENTION_MS = 72 * 60 * 60 * 1000;
     const state = { records: [], filtered: [], responseAt: null, backendTimestamp: null, error: null, controller: null, refreshInFlight: false, signalHistory: [], lastSignalKey: null };
     const radwareState = { payload: null, error: null, inFlight: false };
     const downradarState = { disruptions: null, incidents: null, errors: [], inFlight: false };
@@ -220,7 +221,8 @@
         const key = [sample?.collectedAt || "", components.active, components.reports, components.changed, components.recovered, components.stale].join("|");
         if (key === state.lastSignalKey) return;
         state.lastSignalKey = key;
-        state.signalHistory = [...state.signalHistory, { ...components, at: Date.now() }].slice(-18);
+        const now = Date.now();
+        state.signalHistory = [...state.signalHistory, { ...components, at: now }].filter(item => now - item.at <= SIGNAL_RETENTION_MS);
         renderLiveSignal();
     }
 
@@ -230,11 +232,13 @@
         const samples = state.signalHistory;
         const values = samples.map(item => item.value);
         if (!values.length) { node.textContent = "Waiting for live samples"; return; }
-        const max = Math.max(...values, 1), min = Math.min(...values, 0), span = Math.max(max - min, 1);
+        const max = Math.max(...values, 1), scaleMax = Math.max(1, Math.ceil(max / 5) * 5), min = 0, span = scaleMax;
         const denominator = Math.max(values.length - 1, 1);
         const points = values.map((value, index) => `${(index / denominator) * 100},${88 - ((value - min) / span) * 66}`).join(" ");
         const visiblePoints = values.length === 1 ? `0,${88 - ((values[0] - min) / span) * 66} 100,${88 - ((values[0] - min) / span) * 66}` : points;
         const latest = samples[samples.length - 1];
+        const axis = $("live-signal-y-axis");
+        if (axis) axis.replaceChildren(...[scaleMax, Math.round(scaleMax * .75), Math.round(scaleMax * .5), Math.round(scaleMax * .25), 0].map(value => Object.assign(document.createElement("span"), { textContent: String(value) })));
         node.setAttribute("aria-label", `Live signal level ${latest.value.toFixed(2)}: ${latest.active} active disruptions, ${latest.reports} outage reports, ${latest.changed} active transitions, ${latest.recovered} recoveries${latest.stale ? ", source stale" : ""}.`);
         node.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="signal-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b3131b" stop-opacity=".22"/><stop offset="1" stop-color="#b3131b" stop-opacity="0"/></linearGradient></defs><path class="monitor-signal-chart__area" d="M ${visiblePoints} L 100 100 L 0 100 Z"></path><polyline class="monitor-signal-chart__line" points="${visiblePoints}"></polyline>${values.map((value, index) => `<circle cx="${values.length === 1 ? 50 : (index / denominator) * 100}" cy="${88 - ((value - min) / span) * 66}" r="1.35"></circle>`).join("")}</svg>`;
     }
