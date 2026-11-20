@@ -28,6 +28,7 @@ const context = {
 vm.runInNewContext(source, context);
 const normalize = context.window.MonitorData.normalizeRecord;
 const normalizeRecords = context.window.MonitorData.normalizeRecords;
+const signalValue = context.window.MonitorData.signalValue;
 
 const unknown = normalize({ id: "1", dataSource: "HTTP_ORIGINS", description: "Provider disruption", startDate: "2026-11-14T00:00:00Z", endDate: null, eventType: "OUTAGE", outage: { outageCause: "TECHNICAL_PROBLEM", outageType: "PLATFORM" } });
 assert.equal(unknown.status, "unknown");
@@ -43,4 +44,10 @@ assert.equal(unavailable.status, "unavailable");
 assert.equal(context.window.MonitorData.statusLabel("unknown"), "Resolution unknown");
 assert.equal(normalizeRecords([]).length, 0);
 assert.equal(normalizeRecords([null, { id: "dup", provider: "One" }, { id: "dup", provider: "Two" }]).length, 1);
+const signal = signalValue({ active: 38, reports: 4, incidents: [
+    { slug: "provider-a", changed_at: "2026-11-20T10:00:00Z", from_raw: "ok", to_raw: "degraded" },
+    { slug: "provider-b", changed_at: "2026-11-20T09:00:00Z", from_raw: "degraded", to_raw: "ok", recovered: true }
+]});
+assert.equal(JSON.stringify(signal), JSON.stringify({ value: 39, active: 38, reports: 4, changed: 1, recovered: 1, stale: false }));
+assert.equal(signalValue({ active: 0, reports: 0, incidents: [] }).value, 0);
 console.log("Monitor contract tests passed");

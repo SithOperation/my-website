@@ -5,7 +5,7 @@
     const REFRESH_MS = 60 * 1000;
     const RADWARE_REFRESH_MS = 5 * 60 * 1000;
     const STALE_MS = 10 * 60 * 1000;
-    const state = { records: [], filtered: [], responseAt: null, backendTimestamp: null, error: null, controller: null, refreshInFlight: false, signalHistory: [] };
+    const state = { records: [], filtered: [], responseAt: null, backendTimestamp: null, error: null, controller: null, refreshInFlight: false, signalHistory: [], lastSignalKey: null };
     const radwareState = { payload: null, error: null, inFlight: false };
     const downradarState = { disruptions: null, incidents: null, errors: [], inFlight: false };
     const RADWARE_CATEGORIES = [
@@ -184,9 +184,10 @@
             $("downradar-meta-live").textContent = meta.textContent;
             $("live-metric-active").textContent = count || "0";
             $("live-metric-services").textContent = services || "0";
-            $("live-metric-transitions").textContent = dedupeDownradarIncidents(incidentPayload?.recent_incidents).length;
+            const incidents = dedupeDownradarIncidents(incidentPayload?.recent_incidents);
+            $("live-metric-transitions").textContent = incidents.length;
             $("live-signal-status").textContent = stale ? "stale source" : `updated ${formatDate(payload?.collected_at)}`;
-            recordSignal(count, dedupeDownradarIncidents(incidentPayload?.recent_incidents).length);
+            recordSignal({ active: count, reports: state.records.length, incidents, collectedAt: payload?.collected_at || incidentPayload?.collected_at, stale });
         }
         const active = downradarActiveRecords(disruptionPayload); disruptionsNode.replaceChildren();
         if (!active.length) { const empty = document.createElement("p"); empty.className = "monitor-empty"; empty.textContent = downradarState.errors.length ? "Active disruptions are unavailable." : "No active service disruptions reported by DownRadar."; disruptionsNode.append(empty); }
@@ -206,20 +207,36 @@
         else incidents.forEach(item => { const article = document.createElement("article"); article.className = "monitor-downradar-incident"; const heading = document.createElement("h3"); heading.textContent = item.name || item.slug; const transition = document.createElement("div"); transition.className = "monitor-downradar-transition"; const from = document.createElement("span"); from.className = `monitor-downradar-transition__status monitor-downradar-status--${downradarTone(item.from_raw || item.from)}`; from.textContent = item.from || "Unknown"; const arrow = document.createElement("span"); arrow.className = "monitor-downradar-transition__arrow"; arrow.textContent = "→"; const to = document.createElement("span"); to.className = `monitor-downradar-transition__status monitor-downradar-status--${downradarTone(item.to_raw || item.to)}`; to.textContent = item.to || "Unknown"; transition.append(from, arrow, to); if (item.recovered) { const recovered = document.createElement("small"); recovered.className = "monitor-downradar-recovered"; recovered.textContent = "Recovered"; transition.append(recovered); } const when = document.createElement("time"); when.dateTime = item.changed_at; when.textContent = `Observed ${formatDate(item.changed_at)}`; article.append(heading, transition, when); appendLink(article, item.source_url, "Open official status page ↗"); incidentsNode.append(article); });
     }
 
-    function recordSignal(active, transitions) {
-        const value = Math.max(0, Number(active) || 0) + Math.max(0, Number(transitions) || 0) * .35 + Math.min(state.records.length, 12) * .15;
-        state.signalHistory = [...state.signalHistory, { value, at: Date.now() }].slice(-18);
+    function signalValue({ active = 0, reports = 0, incidents = [], stale = false } = {}) {
+        const validIncidents = dedupeDownradarIncidents(incidents);
+        const recovered = validIncidents.filter(item => item.recovered || downradarTone(item.to_raw || item.to) === "operational").length;
+        const changed = Math.max(0, validIncidents.length - recovered);
+        const value = Math.max(0, Number(active) || 0) + Math.max(0, Number(reports) || 0) * .25 + changed * .35 - recovered * .35;
+        return { value, active: Math.max(0, Number(active) || 0), reports: Math.max(0, Number(reports) || 0), changed, recovered, stale };
+    }
+
+    function recordSignal(sample) {
+        const components = signalValue(sample);
+        const key = [sample?.collectedAt || "", components.active, components.reports, components.changed, components.recovered, components.stale].join("|");
+        if (key === state.lastSignalKey) return;
+        state.lastSignalKey = key;
+        state.signalHistory = [...state.signalHistory, { ...components, at: Date.now() }].slice(-18);
         renderLiveSignal();
     }
 
     function renderLiveSignal() {
         const node = $("live-signal-chart");
         if (!node) return;
-        const values = state.signalHistory.map(item => item.value);
+        const samples = state.signalHistory;
+        const values = samples.map(item => item.value);
         if (!values.length) { node.textContent = "Waiting for live samples"; return; }
         const max = Math.max(...values, 1), min = Math.min(...values, 0), span = Math.max(max - min, 1);
-        const points = values.map((value, index) => `${(index / Math.max(values.length - 1, 1)) * 100},${88 - ((value - min) / span) * 66}`).join(" ");
-        node.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="signal-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b3131b" stop-opacity=".22"/><stop offset="1" stop-color="#b3131b" stop-opacity="0"/></linearGradient></defs><path class="monitor-signal-chart__area" d="M ${points} L 100 100 L 0 100 Z"></path><polyline class="monitor-signal-chart__line" points="${points}"></polyline>${values.map((value, index) => `<circle cx="${(index / Math.max(values.length - 1, 1)) * 100}" cy="${88 - ((value - min) / span) * 66}" r="1.35"></circle>`).join("")}</svg>`;
+        const denominator = Math.max(values.length - 1, 1);
+        const points = values.map((value, index) => `${(index / denominator) * 100},${88 - ((value - min) / span) * 66}`).join(" ");
+        const visiblePoints = values.length === 1 ? `0,${88 - ((values[0] - min) / span) * 66} 100,${88 - ((values[0] - min) / span) * 66}` : points;
+        const latest = samples[samples.length - 1];
+        node.setAttribute("aria-label", `Live signal level ${latest.value.toFixed(2)}: ${latest.active} active disruptions, ${latest.reports} outage reports, ${latest.changed} active transitions, ${latest.recovered} recoveries${latest.stale ? ", source stale" : ""}.`);
+        node.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="signal-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b3131b" stop-opacity=".22"/><stop offset="1" stop-color="#b3131b" stop-opacity="0"/></linearGradient></defs><path class="monitor-signal-chart__area" d="M ${visiblePoints} L 100 100 L 0 100 Z"></path><polyline class="monitor-signal-chart__line" points="${visiblePoints}"></polyline>${values.map((value, index) => `<circle cx="${values.length === 1 ? 50 : (index / denominator) * 100}" cy="${88 - ((value - min) / span) * 66}" r="1.35"></circle>`).join("")}</svg>`;
     }
     async function requestDownRadar() {
         if (downradarState.inFlight) return; downradarState.inFlight = true; downradarState.errors = [];
@@ -276,7 +293,7 @@
             else showNotice(records.length ? "" : "No outage reports available in the current monitoring window.");
         } catch (error) {
             if (error?.name !== "AbortError") { state.error = error; setStatus("error", "Worker unavailable"); showNotice(`The outage Worker could not be reached. ${state.records.length ? "The last successful dataset is still displayed." : "No outage dataset is available yet."}`, true); }
-        } finally { state.refreshInFlight = false; state.controller = null; render(); }
+        } finally { state.refreshInFlight = false; state.controller = null; render(); if (downradarState.disruptions || downradarState.incidents) recordSignal({ active: Number(downradarState.disruptions?.count ?? 0), reports: state.records.length, incidents: dedupeDownradarIncidents(downradarState.incidents?.recent_incidents), collectedAt: downradarState.disruptions?.collected_at || downradarState.incidents?.collected_at, stale: Boolean(downradarState.disruptions?.stale || downradarState.incidents?.stale) }); }
     }
 
     function populateSelect(id, values, label) { const select = $(id); const previous = select.value; select.replaceChildren(new Option(label, "all")); [...new Set(values)].filter(Boolean).sort((a, b) => a.localeCompare(b)).forEach(value => select.add(new Option(value, value))); select.value = values.includes(previous) ? previous : "all"; }
@@ -303,5 +320,5 @@
     window.setInterval(() => { if (document.visibilityState === "visible") requestData(); }, REFRESH_MS);
     window.setInterval(() => { if (document.visibilityState === "visible") requestRadware(); }, RADWARE_REFRESH_MS);
     window.setInterval(() => { if (document.visibilityState === "visible") requestDownRadar(); }, RADWARE_REFRESH_MS);
-    window.MonitorData = { normalizeRecord, normalizeRecords, statusLabel, dedupeDownradarIncidents, downradarActiveRecords, downradarTone };
+    window.MonitorData = { normalizeRecord, normalizeRecords, statusLabel, dedupeDownradarIncidents, downradarActiveRecords, downradarTone, signalValue };
 }());
