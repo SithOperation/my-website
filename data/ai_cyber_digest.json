@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-19T21:57:34.008064+00:00",
+  "generated_at": "2026-11-20T21:39:35.231581+00:00",
   "source_count": 8,
-  "sources_succeeded": 7,
-  "articles_collected": 40,
-  "articles_after_deduplication": 40,
+  "sources_succeeded": 6,
+  "articles_collected": 39,
+  "articles_after_deduplication": 36,
   "stories_published": 20,
-  "critical_count": 0,
-  "high_count": 1,
-  "medium_count": 5,
-  "low_count": 14,
+  "critical_count": 1,
+  "high_count": 0,
+  "medium_count": 3,
+  "low_count": 16,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 11
+      "articles": 9
     },
     {
       "source": "BleepingComputer",
@@ -32,59 +32,63 @@
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 10
+      "articles": 8
     },
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "success",
-      "articles": 3
+      "articles": 1
     },
     {
       "source": "MIT News AI",
       "url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
       "status": "success",
-      "articles": 1
+      "articles": 4
     },
     {
       "source": "Google AI",
       "url": "https://blog.google/technology/ai/rss/",
-      "status": "success",
-      "articles": 2
+      "status": "no_new_articles",
+      "articles": 0
     },
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 3
+      "articles": 7
     }
   ],
   "stories": [
     {
-      "id": "dd71654a2f478334",
-      "title": "CISA Warns of 4 Exploited Flaws Linked to Ransomware, Cryptomining, and LLMjacking Attacks",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/cisa-warns-of-4-exploited-flaws-linked.html",
-      "published_at": "2026-11-19T08:00:00+00:00",
-      "collected_at": "2026-11-19T21:57:32.831101+00:00",
+      "id": "b22eec5809ce5c9c",
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "published_at": "2026-11-20T12:00:00+00:00",
+      "collected_at": "2026-11-20T21:39:34.422329+00:00",
       "category": "Active Exploitation",
-      "severity": "High",
-      "summary": "The U.S.",
+      "severity": "Critical",
+      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
       "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
+      "cves": [
+        "CVE-2025-42884",
+        "CVE-2026-123890",
+        "CVE-2026-129448",
+        "CVE-2026-76466"
+      ],
       "cvss_score": null,
       "known_exploited": true,
       "active_exploitation": true,
-      "patch_available": false,
+      "patch_available": true,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "AI",
-        "Ransomware"
+        "CVE"
       ],
-      "importance_score": 45,
+      "importance_score": 61,
       "score_breakdown": [
         {
           "signal": "Active exploitation",
@@ -93,148 +97,77 @@
         {
           "signal": "CISA KEV",
           "points": 20
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "31c4bb63cffd59f4",
-      "title": "Elecbrakes EB2, VM1, ELBC2000",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-02",
-      "published_at": "2026-11-19T12:00:00+00:00",
-      "collected_at": "2026-11-19T21:57:33.188935+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain control of the brakes of a trailer, modify the firmware, disable the brake lights, modify the brake conditions or disable other critical safety features.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-124281",
-        "CVE-2026-125273",
-        "CVE-2026-96805"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
         },
         {
           "signal": "Government advisory",
           "points": 8
         },
         {
-          "signal": "CVE cited",
+          "signal": "Patch available",
           "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "bf2611689a6fa7cb",
-      "title": "libumqtt",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-03",
-      "published_at": "2026-11-19T12:00:00+00:00",
-      "collected_at": "2026-11-19T21:57:33.189279+00:00",
-      "category": "Government Advisories",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow a remote attacker to cause a denial of service, memory corruption, or information disclosure.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-125132"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
-        {
-          "signal": "Critical infrastructure",
-          "points": 12
-        },
-        {
-          "signal": "Government advisory",
-          "points": 8
         },
         {
           "signal": "CVE cited",
           "points": 4
         }
       ],
-      "related_sources": []
-    },
-    {
-      "id": "ad267eaa2b115482",
-      "title": "Autonomy Logic OpenPLC Runtime",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-01",
-      "published_at": "2026-11-19T12:00:00+00:00",
-      "collected_at": "2026-11-19T21:57:33.189502+00:00",
-      "category": "Government Advisories",
-      "severity": "Medium",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow several unauthenticated admin accounts to be created.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-126088"
-      ],
-      "cvss_score": 3.1,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 24,
-      "score_breakdown": [
+      "related_sources": [
         {
-          "signal": "Critical infrastructure",
-          "points": 12
+          "source": "The Hacker News",
+          "source_url": "https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html"
         },
         {
-          "signal": "Government advisory",
-          "points": 8
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
+          "source": "The Hacker News",
+          "source_url": "https://thehackernews.com/2026/11/hackers-exploit-critical-cisco.html"
         }
-      ],
-      "related_sources": []
+      ]
     },
     {
-      "id": "34247d07e11d53d2",
-      "title": "Newly Patched VMware vCenter Flaw Exploited as Zero-Day by Chinese APT",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/",
-      "published_at": "2026-11-19T19:21:06+00:00",
-      "collected_at": "2026-11-19T21:57:33.040894+00:00",
+      "id": "15f220796a18084d",
+      "title": "VMware patches vCenter zero-day exploited in attacks since September",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/vmware-patches-vcenter-zero-day-exploited-in-attacks-since-september/",
+      "published_at": "2026-11-20T00:26:25+00:00",
+      "collected_at": "2026-11-20T21:39:33.935643+00:00",
       "category": "Active Exploitation",
       "severity": "Medium",
-      "summary": "Google says a China-linked espionage group exploited a critical VMware vCenter authentication bypass before Broadcom released a patch.",
+      "summary": "Broadcom has released security updates to fix a critical VMware vCenter Server authentication bypass vulnerability that Chinese-linked hackers have exploited in zero-day attacks since September 2026.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": true,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Zero-Day"
+      ],
+      "importance_score": 22,
+      "score_breakdown": [
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "Patch available",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "209648e572bdea41",
+      "title": "Hackers use autonomous AI tool Cairn to find zero-day, take over server",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/",
+      "published_at": "2026-11-20T17:30:00+00:00",
+      "collected_at": "2026-11-20T21:39:33.934368+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -258,77 +191,47 @@
       "related_sources": []
     },
     {
-      "id": "63edce0941e0edb0",
-      "title": "Critical VMware vCenter Flaw (CVSS 9.8) Lets Network Attackers Bypass Authentication",
+      "id": "4b0033536e5760bb",
+      "title": "New Unpatched Windows 0-Day FastUnlock Lets Someone Holding a Locked PC Run Programs on It",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/critical-vmware-vcenter-flaw-cvss-98.html",
-      "published_at": "2026-11-19T15:11:06+00:00",
-      "collected_at": "2026-11-19T21:57:32.830565+00:00",
-      "category": "Critical Vulnerabilities",
+      "source_url": "https://thehackernews.com/2026/11/new-unpatched-windows-0-day-fastunlock.html",
+      "published_at": "2026-11-20T05:30:01+00:00",
+      "collected_at": "2026-11-20T21:39:33.840779+00:00",
+      "category": "Active Exploitation",
       "severity": "Medium",
-      "summary": "A critical flaw in VMware vCenter lets an attacker with network access bypass authentication and gain unauthorized access to the system, Broadcom, which owns VMware, said in an advisory published today.",
+      "summary": "A newly disclosed unpatched zero-day technique called FastUnlock lets someone with physical access to a locked Windows computer start programs without signing in.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
-      "cvss_score": 9.8,
+      "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [],
+      "tags": [
+        "Zero-Day"
+      ],
       "importance_score": 18,
       "score_breakdown": [
         {
-          "signal": "Critical CVSS",
+          "signal": "Zero-day",
           "points": 18
         }
       ],
       "related_sources": []
     },
     {
-      "id": "eb38241a0eaffa22",
-      "title": "Five warning signs of ransomware breach before encryption or data theft",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/five-warning-signs-of-ransomware-breach-before-encryption-or-data-theft/",
-      "published_at": "2026-11-19T15:00:10+00:00",
-      "collected_at": "2026-11-19T21:57:32.867206+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "Ransomware attacks often involve credential theft, lateral movement, and attempts to disable security controls long before encryption begins.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "99484983430e63d2",
-      "title": "Nvidia Responds to Gentlemen Ransomware Claim",
+      "id": "846075ea51eaafd4",
+      "title": "JPMorgan, Visa, Mastercard Cite Third-Party Incidents Amid Data Leak",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/nvidia-responds-to-gentlemen-ransomware-claim/",
-      "published_at": "2026-11-19T14:17:32+00:00",
-      "collected_at": "2026-11-19T21:57:33.041087+00:00",
+      "source_url": "https://www.securityweek.com/jpmorgan-visa-mastercard-cite-third-party-incidents-amid-data-leak/",
+      "published_at": "2026-11-20T07:35:46+00:00",
+      "collected_at": "2026-11-20T21:39:34.233090+00:00",
       "category": "Ransomware",
       "severity": "Low",
-      "summary": "Nvidia says it has found no indication that its systems were compromised after the Gentlemen ransomware group listed the company as a victim.",
+      "summary": "The companies point to third-party providers after the N0n extortion group leaked data allegedly tied to their customers.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -340,7 +243,7 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
-        "Ransomware"
+        "Data Breach"
       ],
       "importance_score": 12,
       "score_breakdown": [
@@ -352,80 +255,15 @@
       "related_sources": []
     },
     {
-      "id": "dc1081452c88c713",
-      "title": "NVIDIA investigating Gentlemen ransomware breach claims",
+      "id": "c3a9fb72b6dce4b4",
+      "title": "Vendor data breach exposes Chase, Visa, Mastercard customer info",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/nvidia-investigating-gentlemen-ransomware-breach-claims/",
-      "published_at": "2026-11-19T09:23:21+00:00",
-      "collected_at": "2026-11-19T21:57:32.867637+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "NVIDIA is investigating claims of a security breach after the Gentlemen ransomware group has added the company to its dark web data leak site.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach",
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "98624c3d23ee283f",
-      "title": "Ukraine, FBI arrest ransomware gang members tied to $40M in ransoms",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ukraine-fbi-arrest-ransomware-gang-members-tied-to-40m-in-ransoms/",
-      "published_at": "2026-11-18T23:08:33+00:00",
-      "collected_at": "2026-11-19T21:57:32.867715+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "Ukrainian authorities, working with the FBI, have arrested four suspected members of an international ransomware organization linked to more than $40.5 million in ransom payments from at least 28 companies worldwide.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "37781c126ada2617",
-      "title": "Transport for London breach exposes 265,000 Oyster card users' data",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/transport-for-london-breach-exposes-265-000-oyster-card-users-data/",
-      "published_at": "2026-11-19T18:20:01+00:00",
-      "collected_at": "2026-11-19T21:57:32.867022+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/vendor-data-breach-exposes-chase-visa-mastercard-customer-info/",
+      "published_at": "2026-11-20T15:58:06+00:00",
+      "collected_at": "2026-11-20T21:39:33.934549+00:00",
       "category": "Data Breaches",
       "severity": "Low",
-      "summary": "Transport for London (TfL) has announced that around 265,000 Oyster photocard customers may have had their account details exposed in a data breach.",
+      "summary": "J.P.",
       "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
       "affected_products": [],
       "affected_vendors": [],
@@ -449,16 +287,342 @@
       "related_sources": []
     },
     {
-      "id": "cc7a5715391457a2",
-      "title": "ThreatsDay: GPT-6.2 Jailbreak Flaws, BubbleLoader PNG Malware, $500M Ransom Demands + 17 More Stories",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/threatsday-gpt-62-jailbreak-flaws.html",
-      "published_at": "2026-11-19T18:47:58+00:00",
-      "collected_at": "2026-11-19T21:57:32.830189+00:00",
-      "category": "AI Security",
+      "id": "e49868cae32f5171",
+      "title": "SBC Medical Group Data Breach Impacts Over 2 Million",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/sbc-medical-group-data-breach-impacts-over-2-million/",
+      "published_at": "2026-11-20T11:36:51+00:00",
+      "collected_at": "2026-11-20T21:39:34.232732+00:00",
+      "category": "Data Breaches",
       "severity": "Low",
-      "summary": "The easiest way to fool someone is to give them something they already expect.",
+      "summary": "Threat actors accessed databases containing customer information associated with clinics in Japan.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "db2cfea084044430",
+      "title": "European Commission Confirms AI-Assisted Cyberattack Disrupted Services",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/european-commission-confirms-ai-assisted-cyberattack-disrupted-services/",
+      "published_at": "2026-11-20T10:51:42+00:00",
+      "collected_at": "2026-11-20T21:39:34.232817+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "The Commission took certain services offline to contain the incident, but it has no evidence of a data breach.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "b44c0a854e15b185",
+      "title": "WhatsApp Patches 3 Security Flaws, Including Android Bug Suspected of Use in Scams",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html",
+      "published_at": "2026-11-20T17:57:20+00:00",
+      "collected_at": "2026-11-20T21:39:33.839898+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "Meta-owned WhatsApp has addressed security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-23871"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": [
+        {
+          "source": "SecurityWeek",
+          "source_url": "https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/"
+        }
+      ]
+    },
+    {
+      "id": "c7b209f2aed89407",
+      "title": "Linux KVM Flaw CVE-2026-99312 Lets Guest VMs Access Host Memory on AMD Hosts",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html",
+      "published_at": "2026-11-20T12:20:00+00:00",
+      "collected_at": "2026-11-20T21:39:33.840189+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "A flaw in KVM, the hypervisor built into the Linux kernel, let researchers read about 127 GB of a cloud server's memory from inside a virtual machine of their own on DigitalOcean.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-99312"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "d274b5196e0b0c43",
+      "title": "Ruby Patches Ruby2Shell Vulnerability That Could Lead to RCE",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/ruby-patches-ruby2shell-vulnerability-that-could-lead-to-rce/",
+      "published_at": "2026-11-20T10:34:10+00:00",
+      "collected_at": "2026-11-20T21:39:34.232903+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "Tracked as CVE-2026-132825, the bug is a heap-based buffer overflow that could lead to remote code execution (RCE).",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-132825"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "35c2239500f319c9",
+      "title": "Q&A: Enabling more human-like interactions and understanding in multimodal foundation models",
+      "source": "MIT News AI",
+      "source_url": "https://news.mit.edu/2026/qa-enabling-more-human-interactions-understanding-multimodal-foundation-models-1120",
+      "published_at": "2026-11-20T21:00:00+00:00",
+      "collected_at": "2026-11-20T21:39:34.624806+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "Senior Research Scientist Jim Glass discusses how his MIT-IBM Computing Research Lab collaboration connects perception and language, and addresses the shortcoming of current models.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "b2926e8e7f4e634a",
+      "title": "New approach enables physically consistent AI models of chaotic systems",
+      "source": "MIT News AI",
+      "source_url": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
+      "published_at": "2026-11-20T20:00:00+00:00",
+      "collected_at": "2026-11-20T21:39:34.624923+00:00",
+      "category": "Artificial Intelligence",
+      "severity": "Low",
+      "summary": "Enforcing physics-based constraints prevents AI models from generating unreliable predictions for complex nonlinear systems in weather, climate, and turbulent flows.",
       "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "AI"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "a1277bddeebe52e0",
+      "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+      "published_at": "2026-11-20T18:51:43+00:00",
+      "collected_at": "2026-11-20T21:39:33.934164+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "0b4042589720c604",
+      "title": "Bazuka Android Malware Uses Fake Screen Overlays to Hide Credential Theft and Device Control",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html",
+      "published_at": "2026-11-20T16:58:16+00:00",
+      "collected_at": "2026-11-20T21:39:33.840052+00:00",
+      "category": "Malware",
+      "severity": "Low",
+      "summary": "Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called Bazuka that offers large language model (LLM) integration for victim management and control at scale.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "AI",
+        "Malware"
+      ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "29c6398dc2aba28f",
+      "title": "Following the “mathocalypse,” mathematicians consider the future",
+      "source": "MIT News AI",
+      "source_url": "https://news.mit.edu/2026/following-mathocalypse-mathematicians-consider-future-1120",
+      "published_at": "2026-11-20T15:20:00+00:00",
+      "collected_at": "2026-11-20T21:39:34.625026+00:00",
+      "category": "Artificial Intelligence",
+      "severity": "Low",
+      "summary": "A panel discussion at MIT explored AI’s implications for mathematical discovery and the people who make it their profession.",
+      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "8991c2c279cde04d",
+      "title": "Still tracking company passwords in spreadsheets? You’re flying blind.",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/still-tracking-company-passwords-in-spreadsheets-youre-flying-blind/",
+      "published_at": "2026-11-20T15:00:10+00:00",
+      "collected_at": "2026-11-20T21:39:33.934735+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Tracking company passwords in spreadsheets can leave IT administrators unaware of weak, reused, or compromised credentials stored and shared outside approved systems.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "48c95c8f0331419e",
+      "title": "In Other News: Norwegian Energy Firm Cyberattacks, Supercomputer Hack, New Nightmare Eclipse Exploit",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/in-other-news-norwegian-energy-firm-cyberattacks-supercomputer-hack-new-nightmare-eclipse-exploit/",
+      "published_at": "2026-11-20T14:56:23+00:00",
+      "collected_at": "2026-11-20T21:39:34.232530+00:00",
+      "category": "Malware",
+      "severity": "Low",
+      "summary": "Noteworthy stories that might have slipped under the radar: EU adds NoName057(16) to cyber sanctions list, malware targets CACs left in personal computers, Gemini agents targeted Epoch AI.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
@@ -471,192 +635,20 @@
       "tags": [
         "Malware"
       ],
-      "importance_score": 8,
-      "score_breakdown": [
-        {
-          "signal": "AI security relevance",
-          "points": 8
-        }
-      ],
+      "importance_score": 0,
+      "score_breakdown": [],
       "related_sources": []
     },
     {
-      "id": "dcfa8134ceac9ad3",
-      "title": "PHP Fixes 7 Critical Flaws, Including Bugs That Could Allow Remote Code Execution",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/php-fixes-7-critical-flaws-including.html",
-      "published_at": "2026-11-19T15:18:07+00:00",
-      "collected_at": "2026-11-19T21:57:32.830470+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "The PHP Foundation has released security updates to address multiple critical security flaws that could be exploited to achieve remote code execution on affected deployments, including CVE-2026-115560.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory and prioritize the available security update, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-115560"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 8,
-      "score_breakdown": [
-        {
-          "signal": "Patch available",
-          "points": 4
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "ea8cebf5d32bea67",
-      "title": "phpAfterShell Explained: How Hackers Could Turn a PHP Session Flaw Into Code Execution",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/phpaftershell-explained-how-hackers.html",
-      "published_at": "2026-11-19T16:59:56+00:00",
-      "collected_at": "2026-11-19T21:57:32.830348+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "PHP's default file-based session storage can be made to return objects an attacker chose, by cutting off a session write at the right moment.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-126714"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "8e443c2964ac6257",
-      "title": "PHP security updates fix 18 flaws, including critical RCE bugs",
+      "id": "63176744cc4b38aa",
+      "title": "N-able says recent security breach led to major service outage",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/php-security-updates-fix-18-flaws-including-critical-rce-bugs/",
-      "published_at": "2026-11-19T16:28:23+00:00",
-      "collected_at": "2026-11-19T21:57:32.867118+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "The PHP development team released security updates addressing 18 vulnerabilities, including critical flaws that could allow unauthenticated attackers to remotely execute code on vulnerable servers.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "Patch available",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "79fb717d814dd0bd",
-      "title": "Everything Is a Web Application, Including Your Firewall",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/everything-is-web-application-including.html",
-      "published_at": "2026-11-19T11:52:23+00:00",
-      "collected_at": "2026-11-19T21:57:32.830750+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "One of the early targets of PHP2Shell exploitation was the firewall.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-109618",
-        "CVE-2026-109619"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "1f146f7fbc8c6333",
-      "title": "Splunk Patches Nearly 140 Flaws Across Three Core Products",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/splunk-patches-nearly-140-flaws-across-three-core-products/",
-      "published_at": "2026-11-19T10:41:05+00:00",
-      "collected_at": "2026-11-19T21:57:33.041510+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "The security updates resolve critical and high-severity issues leading to authentication bypass, remote code execution, and privilege escalation.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": true,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "Patch available",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "8ea9e80818a4bc39",
-      "title": "ASUS warns of critical hard-coded key flaw in Control Center Express",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/asus-warns-of-critical-hard-coded-key-flaw-in-control-center-express/",
-      "published_at": "2026-11-19T21:15:59+00:00",
-      "collected_at": "2026-11-19T21:57:32.866915+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/microsoft/n-able-says-recent-security-breach-led-to-major-service-outage/",
+      "published_at": "2026-11-20T13:18:36+00:00",
+      "collected_at": "2026-11-20T21:39:33.934925+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "ASUS released Control Center Express v1.7.29 to fix three critical vulnerabilities that could let remote attackers gain administrative control of the management console and the devices it manages.",
+      "summary": "N-able says attackers who breached one of its servers have caused a major outage affecting Mail Assure and SpamExperts Hosted Cloud services worldwide.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -673,41 +665,16 @@
       "related_sources": []
     },
     {
-      "id": "1b3aafed7dd5d45c",
-      "title": "Introducing Tool Retrieval in the Gemini API",
-      "source": "Google AI",
-      "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
-      "published_at": "2026-11-19T18:00:00+00:00",
-      "collected_at": "2026-11-19T21:57:33.587781+00:00",
-      "category": "Artificial Intelligence",
+      "id": "798e42357df27b3b",
+      "title": "Industry Reactions to Major Outages and AI Patching Debate: Feedback Friday",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/industry-reactions-to-major-outages-and-ai-patching-questions-feedback-friday/",
+      "published_at": "2026-11-20T12:38:55+00:00",
+      "collected_at": "2026-11-20T21:39:34.232633+00:00",
+      "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Gemini spark on a space background",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "d47c74f9a7ce43a8",
-      "title": "Walter Isaacson on curiosity and creativity in the AI age.",
-      "source": "Google AI",
-      "source_url": "https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/",
-      "published_at": "2026-11-19T17:00:00+00:00",
-      "collected_at": "2026-11-19T21:57:33.587881+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "Walter Isaacson joins Google to discuss how history’s greatest innovators inspire creativity and human judgment in the AI age.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
+      "summary": "Experts commented on whether AI-accelerated patching played a role, the need for tested rollback plans, and the fragility of interconnected systems.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
