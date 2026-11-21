@@ -148,7 +148,9 @@
     }
 
     function isHistoricalEvent(event) {
-        return Boolean(event?.timestamp) && !window.SentinelData.isWithinRetentionWindow(event.timestamp);
+        if (!event?.timestamp || !window.SentinelData.isWithinRetentionWindow(event.timestamp)) return true;
+        const expiration = Date.parse(event.expires || event.ends || event.details?.expires || event.details?.ends || "");
+        return Number.isFinite(expiration) && expiration <= Date.now();
     }
 
     function europeSecurityLayers(event) {
@@ -938,103 +940,6 @@
         updateMapCount();
     }
 
-    async function loadEnvironmentalLayers(options = {}) {
-        const files = ["earthquakes.json", "volcanoes.json", "weather.json"];
-        const results = await Promise.allSettled(files.map(file => client.fetchJSON(file, null, Boolean(options.refreshOnly))));
-        const [earthquakes, volcanoes, weather] = results.map(result => result.status === "fulfilled" && Array.isArray(result.value) ? result.value.map(normalizeDisasterEvent) : []);
-        if (options.refreshOnly) {
-            if (results[0].status === "fulfilled") environmentalEvents.earthquakes = earthquakes;
-            if (results[1].status === "fulfilled") environmentalEvents.volcanoes = volcanoes;
-            if (results[2].status === "fulfilled") environmentalEvents.weather = weather;
-            refreshEnvironmentalRetention();
-            element("sentinel-map").dataset.weatherRefreshedAt = new Date().toISOString();
-            return;
-        }
-        environmentalEvents = { earthquakes, volcanoes, weather };
-        element("sentinel-map").dataset.weatherRefreshedAt = new Date().toISOString();
-        const recentEarthquakes = retainRecentEvents(earthquakes);
-        const recentVolcanoes = retainRecentEvents(volcanoes);
-        const recentWeather = retainRecentEvents(weather);
-
-        addEnvironmentalPointLayer("earthquake-source", "earthquakes", recentEarthquakes, "marker-earthquake");
-        addEnvironmentalPointLayer("volcano-source", "volcanoes", recentVolcanoes, "marker-volcano");
-
-        const weatherFeatures = recentWeather.map(event => {
-            const geometry = validPolygonGeometry(event);
-            if (!geometry) return null;
-            disasterIndex.set(event.event_id, event);
-            return { type: "Feature", geometry, properties: { map_id: event.event_id, title: event.title, severity: event.threat_level, expires: event.details?.ends || event.details?.expires || "" } };
-        }).filter(Boolean);
-        environmentalCount = recentEarthquakes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length +
-            recentVolcanoes.filter(event => Number.isFinite(event.latitude) && Number.isFinite(event.longitude)).length + weatherFeatures.length;
-        updateSignalFilters();
-        map.addSource("weather-source", { type: "geojson", data: { type: "FeatureCollection", features: weatherFeatures } });
-        map.addLayer({ id: "weather-fill", type: "fill", source: "weather-source", paint: { "fill-color": weatherColorExpression(), "fill-opacity": ["match", ["get", "severity"], "CRITICAL", 0.28, "HIGH", 0.22, "MEDIUM", 0.17, 0.12] } });
-        map.addLayer({ id: "weather-line", type: "line", source: "weather-source", paint: { "line-color": weatherColorExpression(), "line-width": ["match", ["get", "severity"], "CRITICAL", 3, "HIGH", 2.5, 2], "line-dasharray": [2, 2] } });
-        map.on("click", "weather-fill", click => {
-            const selected = disasterIndex.get(String(click.features?.[0]?.properties?.map_id));
-            if (selected) renderEventDetail(selected);
-        });
-        const weatherPopup = new window.maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: "330px" });
-        map.on("mousemove", "weather-fill", move => {
-            const selected = disasterIndex.get(String(move.features?.[0]?.properties?.map_id));
-            if (!selected) return;
-            const content = document.createElement("div");
-            const heading = document.createElement("strong");
-            const location = document.createElement("span");
-            const summary = document.createElement("p");
-            heading.textContent = selected.title;
-            const expires = Date.parse(selected.details?.ends || selected.details?.expires || "");
-            const remaining = Number.isFinite(expires) ? Math.max(0, Math.ceil((expires - Date.now()) / 60000)) : null;
-            location.textContent = `${selected.threat_level} · ${selected.location || "Weather alert area"}${remaining === null ? "" : ` · ${remaining} min remaining`}`;
-            summary.textContent = selected.description.length > 220 ? `${selected.description.slice(0, 219)}…` : selected.description;
-            content.className = "weather-hover-card";
-            content.append(heading, location, summary);
-            weatherPopup.setLngLat(move.lngLat).setDOMContent(content).addTo(map);
-            map.getCanvas().style.cursor = "help";
-        });
-        map.on("mouseleave", "weather-fill", () => {
-            weatherPopup.remove();
-            map.getCanvas().style.cursor = "";
-        });
-        applyLayerVisibility();
-        updateMapData();
-    }
-
-    function refreshEnvironmentalRetention() {
-        if (!mapReady) return;
-        disasterIndex = new Map();
-        const earthquakes = retainRecentEvents(environmentalEvents.earthquakes);
-        const volcanoes = retainRecentEvents(environmentalEvents.volcanoes);
-        const weather = retainRecentEvents(environmentalEvents.weather);
-        const weatherFeatures = weather.map(event => {
-            const geometry = validPolygonGeometry(event);
-            if (!geometry) return null;
-            disasterIndex.set(event.event_id, event);
-            return {
-                type: "Feature",
-                geometry,
-                properties: { map_id: event.event_id, title: event.title, severity: event.threat_level, expires: event.details?.ends || event.details?.expires || "" }
-            };
-        }).filter(Boolean);
-        map.getSource("earthquake-source")?.setData(pointFeatures(earthquakes));
-        map.getSource("volcano-source")?.setData(pointFeatures(volcanoes));
-        map.getSource("weather-source")?.setData({
-            type: "FeatureCollection",
-            features: weatherFeatures
-        });
-        environmentalCount =
-            earthquakes.filter(event =>
-                Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
-            ).length +
-            volcanoes.filter(event =>
-                Number.isFinite(event.latitude) && Number.isFinite(event.longitude)
-            ).length +
-            weatherFeatures.length;
-        updateSignalFilters();
-        updateMapCount();
-    }
-
     function setLayersVisible(ids, visible) {
         ids.forEach(id => { if (map?.getLayer(id)) map.setLayoutProperty(id, "visibility", visible ? "visible" : "none"); });
     }
@@ -1142,7 +1047,6 @@
             element("sentinel-map").dataset.mapReady = "true";
             resizeMap();
             updateMapData();
-            loadEnvironmentalLayers().catch(error => console.warn("Environmental map layers unavailable", error));
             loadEarlyReportLayer().catch(error => console.warn("Social Media Early Reports layer unavailable", error));
         });
 
@@ -1152,10 +1056,12 @@
     }
 
     function filterEvents() {
-        // The public map has no hidden dashboard filters. The publication
-        // pipeline is the source of truth, so historical records remain
-        // visible instead of disappearing behind an absent time selector.
-        filteredEvents = allEvents.slice();
+        // Keep historical intelligence records available, but do not let
+        // environmental plot points accumulate indefinitely. Environmental
+        // records from the live Worker use the same 48-hour retention window.
+        filteredEvents = allEvents.filter(event =>
+            !isEnvironmentalSignal(event) || !isHistoricalEvent(event)
+        );
         element("sentinel-map").dataset.filteredEvents = String(filteredEvents.length);
     }
 
@@ -1683,11 +1589,10 @@
         if (refreshInFlight) return refreshInFlight;
         refreshInFlight = (async () => {
             try {
-                const snapshot = await client.load(options);
-                if (!snapshot.unchanged || !allEvents.length) applySnapshot(snapshot);
+                const snapshot = await client.loadLive();
+                if (!snapshot.unchanged || snapshot.liveFeedState === "degraded" || !allEvents.length) applySnapshot(snapshot);
                 else {
                     applyNewsSnapshot(snapshot);
-                    if (snapshot.manifestUnavailable) setStatus("Manifest check failed; last valid publication retained", "degraded");
                 }
             }
             catch (error) {
@@ -1848,9 +1753,6 @@
         window.setInterval(() => {
             if (document.visibilityState === "visible") {
                 updateMapData();
-                loadEnvironmentalLayers({ refreshOnly: true }).catch(error =>
-                    console.warn("Environmental refresh failed; prior data retained", error)
-                );
                 refreshEarlyReportLayer().catch(error =>
                     console.warn("X report refresh failed; prior generation retained", error)
                 );

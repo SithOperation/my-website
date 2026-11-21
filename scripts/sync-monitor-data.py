@@ -447,7 +447,6 @@ def sync_all(repository: Path) -> list[SyncResult]:
         "earthquakes.json",
         "volcanoes.json",
         "weather.json",
-        "solar.json",
     ):
         results.append(
             publish_file(
@@ -496,7 +495,6 @@ def sync_disaster(source_root: Path, destination_root: Path) -> list[SyncResult]
         "earthquakes.json",
         "volcanoes.json",
         "weather.json",
-        "solar.json",
     ):
         results.append(
             publish_file(

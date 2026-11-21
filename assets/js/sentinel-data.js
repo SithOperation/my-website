@@ -234,7 +234,11 @@
                 if (!response.ok) throw new Error(`live event feed unavailable (${response.status})`);
                 const document = await response.json();
                 const sourceEvents = Array.isArray(document?.events) ? document.events : [];
-                const normalized = sourceEvents.map(normalizeEvent).filter(Boolean);
+                const byId = new Map();
+                sourceEvents.map(normalizeEvent).filter(Boolean).forEach(event => {
+                    byId.set(event.event_id, event);
+                });
+                const normalized = Array.from(byId.values());
                 return {
                     events: normalized,
                     generatedAt: document.generated_at || null,
@@ -376,6 +380,56 @@
                 error.code = "UNSUPPORTED_SCHEMA";
                 throw error;
             }
+        }
+
+        async loadLive() {
+            const [liveResult, liveNewsResult, liveHealthResult] = await Promise.all([
+                this.fetchLiveEvents(),
+                this.fetchLiveNews(),
+                this.fetchLiveHealth()
+            ]);
+            const previous = this.snapshot;
+            const liveEvents = liveResult.events || previous?.liveEvents || [];
+            if (!liveEvents.length && liveResult.error) throw new Error(liveResult.error);
+
+            const liveFeedState = liveResult.error ? "degraded" : "available";
+            const latestUpdate = liveEvents.reduce((latest, event) => {
+                const timestamp = Date.parse(String(event?.updated_at || event?.timestamp || ""));
+                return Number.isFinite(timestamp) && timestamp > latest ? timestamp : latest;
+            }, 0);
+            const liveRevision = liveResult.error
+                ? (previous?.liveRevision || `error:${liveFeedState}`)
+                : `${latestUpdate || liveResult.generatedAt || "live"}:${liveEvents.length}`;
+            const liveNews = this.mergeLiveNewsSnapshot([], liveNewsResult);
+            const generated = liveResult.generatedAt || previous?.manifest?.generated || null;
+            const snapshot = {
+                manifest: { publication_id: "worker-live", schema_version: "1.0", generated },
+                dashboard: {},
+                events: liveEvents,
+                staticEvents: [],
+                invalidEventCount: liveResult.invalidEventCount || 0,
+                healthState: {
+                    state: liveFeedState === "available" ? "fresh" : "degraded",
+                    generated,
+                    failedSources: [],
+                    message: liveFeedState === "available" ? "Sentinel Worker coverage is operational." : "Sentinel Worker coverage is degraded."
+                },
+                liveEvents,
+                liveFeedState,
+                liveFeedError: liveResult.error,
+                liveGeneratedAt: liveResult.generatedAt || previous?.liveGeneratedAt || null,
+                liveInvalidEventCount: liveResult.invalidEventCount || 0,
+                liveRevision,
+                ...liveNews,
+                health: null,
+                newsHealth: { status: "unavailable", sources: [] },
+                liveCollectors: liveHealthResult.collectors,
+                newsGeneratedAt: liveNews.liveNewsGeneratedAt,
+                legacy: false,
+                unchanged: Boolean(previous) && liveRevision === previous.liveRevision && liveNews.liveNewsRevision === previous.liveNewsRevision
+            };
+            this.snapshot = snapshot;
+            return snapshot;
         }
 
         async load(options = {}) {
