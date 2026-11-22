@@ -1,38 +1,38 @@
 {
-  "generated_at": "2026-11-21T20:21:11.224003+00:00",
+  "generated_at": "2026-11-22T20:33:54.745530+00:00",
   "source_count": 8,
   "sources_succeeded": 4,
-  "articles_collected": 10,
-  "articles_after_deduplication": 10,
-  "stories_published": 10,
-  "critical_count": 1,
+  "articles_collected": 9,
+  "articles_after_deduplication": 9,
+  "stories_published": 9,
+  "critical_count": 0,
   "high_count": 0,
-  "medium_count": 2,
-  "low_count": 7,
+  "medium_count": 0,
+  "low_count": 9,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 5
+      "articles": 2
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 3
+      "articles": 4
     },
     {
       "source": "Krebs on Security",
       "url": "https://krebsonsecurity.com/feed/",
-      "status": "success",
-      "articles": 1
+      "status": "no_new_articles",
+      "articles": 0
     },
     {
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 1
+      "articles": 2
     },
     {
       "source": "CISA Cybersecurity Advisories",
@@ -55,163 +55,21 @@
     {
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
-      "status": "no_new_articles",
-      "articles": 0
+      "status": "success",
+      "articles": 1
     }
   ],
   "stories": [
     {
-      "id": "552b60cb29a0722a",
-      "title": "Hackers Exploit Critical VMware, Cisco, and Apache Flaws as Espionage Attacks Emerge",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/hackers-exploit-critical-vmware-cisco.html",
-      "published_at": "2026-11-21T08:49:13+00:00",
-      "collected_at": "2026-11-21T20:21:10.144254+00:00",
-      "category": "Active Exploitation",
-      "severity": "Critical",
-      "summary": "The U.S.",
-      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-129448"
-      ],
-      "cvss_score": 9.8,
-      "known_exploited": true,
-      "active_exploitation": true,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 67,
-      "score_breakdown": [
-        {
-          "signal": "Active exploitation",
-          "points": 25
-        },
-        {
-          "signal": "CISA KEV",
-          "points": 20
-        },
-        {
-          "signal": "Critical CVSS",
-          "points": 18
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "abda2463cf2255c6",
-      "title": "Amazon: China-Linked Hackers’ AI Agents Exploited Medical Software Zero-Day",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/",
-      "published_at": "2026-11-21T12:08:50+00:00",
-      "collected_at": "2026-11-21T20:21:10.307492+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "A threat actor used autonomous Cairn AI agents to discover and exploit a critical MONAI Label vulnerability.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Zero-Day"
-      ],
-      "importance_score": 18,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "31de93106fde76af",
-      "title": "Attackers' AI Agents Found a Zero-Day in Medical-Imaging Software and Gained Root Access",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html",
-      "published_at": "2026-11-21T11:03:17+00:00",
-      "collected_at": "2026-11-21T20:21:10.144060+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "Suspected China-linked hackers used autonomous AI agents to find a previously unknown flaw in MONAI Label, an open-source medical imaging server, and gain root access to a university server, Amazon Threat Intelligence said this week.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Zero-Day"
-      ],
-      "importance_score": 18,
-      "score_breakdown": [
-        {
-          "signal": "Zero-day",
-          "points": 18
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "5896797fd3159e6e",
-      "title": "CTO of ‘RansomwareHelp’ Indicted for Wire Fraud",
-      "source": "Krebs on Security",
-      "source_url": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
-      "published_at": "2026-11-21T00:36:39+00:00",
-      "collected_at": "2026-11-21T20:21:10.255863+00:00",
-      "category": "Ransomware",
-      "severity": "Low",
-      "summary": "The chief technology officer and co-founder of ransomwarehelp.com, a six year old Florida business that claimed to use \"advanced cryptographic tools\" to restore data locked by ransomware, has been charged with wire fraud after an FBI sting operation found the company was simply paying the attackers for a decryption key and charging victims a markup for work that was never performed.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Ransomware"
-      ],
-      "importance_score": 12,
-      "score_breakdown": [
-        {
-          "signal": "Ransomware",
-          "points": 12
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "cd00c38abb0c60dd",
-      "title": "Microsoft Entra Connect Health flaw exploited to steal tenant data",
+      "id": "c75a4d0a4b580d8c",
+      "title": "Cleverbridge warns hackers stole credit card numbers, CVVs in data breach",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/",
-      "published_at": "2026-11-21T18:01:58+00:00",
-      "collected_at": "2026-11-21T20:21:10.185351+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cleverbridge-warns-hackers-stole-credit-card-numbers-cvvs-in-data-breach/",
+      "published_at": "2026-11-22T15:43:04+00:00",
+      "collected_at": "2026-11-22T20:33:52.921659+00:00",
       "category": "Data Breaches",
       "severity": "Low",
-      "summary": "Microsoft is warning organizations that it suffered a data breach after attackers exploited a vulnerability in its Entra Connect Health service to gain unauthorized access to administrator email addresses and tenant configuration information.",
+      "summary": "E-commerce platform Cleverbridge is warning that hackers breached its systems and stole customers' payment card information, including credit card numbers and CVV security codes.",
       "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
       "affected_products": [],
       "affected_vendors": [],
@@ -235,49 +93,15 @@
       "related_sources": []
     },
     {
-      "id": "3b426a1ae4872b68",
-      "title": "GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html",
-      "published_at": "2026-11-21T11:05:53+00:00",
-      "collected_at": "2026-11-21T20:21:10.143954+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "A malicious OpenPGP key with an unusually long user ID can trigger a critical memory bug in GPGME, the standard library that programs use to work with GnuPG.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-129975"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 4,
-      "score_breakdown": [
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "9c3f2473640f00b5",
-      "title": "BADBOX botnet returns with record-breaking 40 billion daily ad requests",
+      "id": "f7511684402b8adf",
+      "title": "Hackers exploit GL.iNet cloud flaw to infect routers, KVM devices",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/badbox-30-botnet-returns-with-record-breaking-40-billion-daily-ad-requests/",
-      "published_at": "2026-11-21T15:17:27+00:00",
-      "collected_at": "2026-11-21T20:21:10.185454+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-glinet-cloud-flaw-to-infect-routers-kvm-devices/",
+      "published_at": "2026-11-22T18:45:37+00:00",
+      "collected_at": "2026-11-22T20:33:52.921536+00:00",
       "category": "Malware",
       "severity": "Low",
-      "summary": "The BADBOX malware found in a broad range of generic Android TV boxes has returned to large-scale ad-fraud operations following last year's disruptions.",
+      "summary": "GL.iNet has confirmed that hackers exploited a vulnerability in its cloud remote management services to install custom malware on customers' routers and KVM devices, with some affected users reporting backdoors and reverse shells giving remote access to infected devices.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -296,40 +120,15 @@
       "related_sources": []
     },
     {
-      "id": "6eaabec128466878",
-      "title": "FBI reportedly hacked again, this time targeting nationwide police database",
+      "id": "daee16a474d46701",
+      "title": "Signal to block Siri, Gemini AI from capturing chats on iOS, Android",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/fbi-reportedly-hacked-again-this-time-targeting-nationwide-police-database/",
-      "published_at": "2026-11-21T14:26:04+00:00",
-      "collected_at": "2026-11-21T20:21:10.185544+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "FBI systems have reportedly been breached for the second time in two months, this time targeting the agency's National Crime Information Center (NCIC), which is used to share information between local, state, and federal law enforcement agencies.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "059e30cfca7341a0",
-      "title": "A Single Malicious Webpage Let Researchers Hijack Meta Muse and Access Private Chats",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html",
-      "published_at": "2026-11-21T11:53:07+00:00",
-      "collected_at": "2026-11-21T20:21:10.143791+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/signal-to-block-siri-gemini-ai-from-capturing-chats-on-ios-android/",
+      "published_at": "2026-11-22T15:15:25+00:00",
+      "collected_at": "2026-11-22T20:33:52.921761+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "A malicious webpage could extract a Meta Muse user's private conversations and stored memories from the assistant without triggering any approval prompt, researchers have shown.",
+      "summary": "Signal has announced new protections that block screenshots on iOS 27 and prevent AI assistants from capturing conversations on supported Android devices.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -346,15 +145,90 @@
       "related_sources": []
     },
     {
-      "id": "c5410e0ea07b3ca7",
-      "title": "Signal Blocks AI Agents From Reading Private Chats via Screenshots on Android and iOS",
+      "id": "6d087c898942cc0c",
+      "title": "OpenRouter Drops 3 Providers After Researchers Catch Months of Prompt Theft at AI Hosting Firms",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/signal-blocks-ai-agents-from-reading.html",
-      "published_at": "2026-11-21T08:49:20+00:00",
-      "collected_at": "2026-11-21T20:21:10.144159+00:00",
+      "source_url": "https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+      "published_at": "2026-11-22T05:06:55+00:00",
+      "collected_at": "2026-11-22T20:33:52.823714+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "Attackers stole data from inside three AI inference providers for months, and none of the three knew until researchers told them, the industrial cybersecurity company Dragos said this week.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "a3c63e958cb92eef",
+      "title": "Researchers Demonstrate Ghostscript Sandbox-Escape RCE via Crafted File Uploads in Popular Apps",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html",
+      "published_at": "2026-11-22T05:03:41+00:00",
+      "collected_at": "2026-11-22T20:33:52.823864+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "A now-patched flaw in Ghostscript allows a crafted file to escape the program's security sandbox and run commands on the server that processes it.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "eb89847b683b3c00",
+      "title": "FBI Investigating Apparent Hack of Its Key National Criminal Justice Database, AP Source Says",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/fbi-investigating-apparent-hack-of-its-key-national-criminal-justice-database-ap-source-says/",
+      "published_at": "2026-11-22T00:53:02+00:00",
+      "collected_at": "2026-11-22T20:33:53.212009+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "The FBI is investigating an apparent hack of a national law enforcement database that it maintains.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "1a10f1676d46fc01",
+      "title": "Perplexity and Intelligence",
+      "source": "OpenAI News",
+      "source_url": "https://openai.com/index/perplexity-and-intelligence",
+      "published_at": "2026-11-22T00:00:00+00:00",
+      "collected_at": "2026-11-22T20:33:54.735564+00:00",
       "category": "Artificial Intelligence",
       "severity": "Low",
-      "summary": "Signal has announced that it will restrict screenshots by default to stop artificial intelligence (AI) agents from reading private chats on Android and iOS devices, but conceded that the protection is \"incomplete.\" The feature applies to agentic systems built into iOS 27 and on Android versions where the encrypted messaging platform can detect an AI assistant attempting to read the Signal",
+      "summary": "How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities.",
       "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
       "affected_products": [],
       "affected_vendors": [],
@@ -368,6 +242,56 @@
       "tags": [
         "AI"
       ],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "1fa3870c33e20a33",
+      "title": "Rackspace Spot breach let hackers access customer Kubernetes secrets",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/rackspace-spot-breach-let-hackers-access-customer-kubernetes-secrets/",
+      "published_at": "2026-11-21T22:59:58+00:00",
+      "collected_at": "2026-11-22T20:33:52.921855+00:00",
+      "category": "Cloud Security",
+      "severity": "Low",
+      "summary": "Rackspace warned customers that hackers breached its Rackspace Spot cloud platform using compromised credentials, allowing them to deploy unauthorized workloads and access Kubernetes secrets in customer clusters.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "bdc29f2a4077a395",
+      "title": "President Trump Taps Kirsten Davies as National Cyber Director",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/president-trump-taps-kirsten-davies-as-national-cyber-director/",
+      "published_at": "2026-11-21T13:00:00+00:00",
+      "collected_at": "2026-11-22T20:33:53.212158+00:00",
+      "category": "General Cybersecurity",
+      "severity": "Low",
+      "summary": "White House says the battle-tested cyber leader will drive an America First cyber strategy.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
       "importance_score": 0,
       "score_breakdown": [],
       "related_sources": []
