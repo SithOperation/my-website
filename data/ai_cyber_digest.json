@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-11-24T01:27:48.415772+00:00",
+  "generated_at": "2026-11-24T23:24:06.448168+00:00",
   "source_count": 8,
   "sources_succeeded": 7,
-  "articles_collected": 33,
-  "articles_after_deduplication": 31,
+  "articles_collected": 40,
+  "articles_after_deduplication": 39,
   "stories_published": 20,
-  "critical_count": 1,
+  "critical_count": 2,
   "high_count": 0,
-  "medium_count": 5,
+  "medium_count": 4,
   "low_count": 14,
   "source_status": [
     {
       "source": "The Hacker News",
       "url": "https://feeds.feedburner.com/TheHackersNews",
       "status": "success",
-      "articles": 8
+      "articles": 9
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "status": "success",
-      "articles": 10
+      "articles": 11
     },
     {
       "source": "Krebs on Security",
@@ -32,19 +32,19 @@
       "source": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "status": "success",
-      "articles": 8
+      "articles": 9
     },
     {
       "source": "CISA Cybersecurity Advisories",
       "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "success",
-      "articles": 1
+      "articles": 4
     },
     {
       "source": "MIT News AI",
       "url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
       "status": "success",
-      "articles": 2
+      "articles": 1
     },
     {
       "source": "Google AI",
@@ -56,26 +56,78 @@
       "source": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "status": "success",
-      "articles": 3
+      "articles": 5
     }
   ],
   "stories": [
     {
-      "id": "75ea09ea3e752e02",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "source": "CISA Cybersecurity Advisories",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/23/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "published_at": "2026-11-23T12:00:00+00:00",
-      "collected_at": "2026-11-24T01:27:47.332305+00:00",
+      "id": "d70285cdacc0c3a7",
+      "title": "Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html",
+      "published_at": "2026-11-24T06:02:45+00:00",
+      "collected_at": "2026-11-24T23:24:04.746119+00:00",
       "category": "Active Exploitation",
       "severity": "Critical",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "summary": "The U.S.",
       "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-133968",
         "CVE-2026-134624"
+      ],
+      "cvss_score": 9.3,
+      "known_exploited": true,
+      "active_exploitation": true,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE",
+        "Zero-Day"
+      ],
+      "importance_score": 85,
+      "score_breakdown": [
+        {
+          "signal": "Active exploitation",
+          "points": 25
+        },
+        {
+          "signal": "CISA KEV",
+          "points": 20
+        },
+        {
+          "signal": "Zero-day",
+          "points": 18
+        },
+        {
+          "signal": "Critical CVSS",
+          "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "165729c3cbfbb2e3",
+      "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/24/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+      "published_at": "2026-11-24T12:00:00+00:00",
+      "collected_at": "2026-11-24T23:24:05.472424+00:00",
+      "category": "Active Exploitation",
+      "severity": "Critical",
+      "summary": "CISA has added three new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.",
+      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-131914",
+        "CVE-2026-132165",
+        "CVE-2026-132224"
       ],
       "cvss_score": null,
       "known_exploited": true,
@@ -109,171 +161,24 @@
           "points": 4
         }
       ],
-      "related_sources": [
-        {
-          "source": "The Hacker News",
-          "source_url": "https://thehackernews.com/2026/11/n-able-discloses-critical-mail-assure.html"
-        }
-      ]
-    },
-    {
-      "id": "659149ed49d822a8",
-      "title": "Hackers Exploit Critical ASP.NET Anti-CSRF Library Flaw Allowing Unauthenticated RCE",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/hackers-exploit-critical-aspnet-anti.html",
-      "published_at": "2026-11-23T09:11:56+00:00",
-      "collected_at": "2026-11-24T01:27:46.710288+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "Cybersecurity researchers have urged users to discontinue using a legacy ASP.NET anti-CSRF library named Idunno.AntiCsrf (\"Idunno.AntiCsrf.dll\") following the discovery of a critical vulnerability that has been exploited in the wild.",
-      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-131914"
-      ],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": true,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 29,
-      "score_breakdown": [
-        {
-          "signal": "Active exploitation",
-          "points": 25
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
       "related_sources": []
     },
     {
-      "id": "a3400f3457d4e983",
-      "title": "CISA flags critical Cisco RCE flaw as actively exploited in attacks",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-flags-critical-cisco-expressway-rce-flaw-as-actively-exploited/",
-      "published_at": "2026-11-23T07:44:19+00:00",
-      "collected_at": "2026-11-24T01:27:46.806883+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "The US Cybersecurity and Infrastructure Security Agency (CISA) warned federal agencies that attackers are now exploiting a recently patched critical Cisco Expressway vulnerability in the wild.",
-      "why_it_matters": "Defenders should treat this as an immediate exposure-management priority, confirm whether affected systems are internet-facing, review available indicators, and apply verified vendor mitigations or updates.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": true,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 25,
-      "score_breakdown": [
-        {
-          "signal": "Active exploitation",
-          "points": 25
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "fa4289a3f22edc8c",
-      "title": "Critical binary-parser Flaw Enables JavaScript Injection via Malicious Parser Definitions",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html",
-      "published_at": "2026-11-23T13:22:20+00:00",
-      "collected_at": "2026-11-24T01:27:46.709773+00:00",
+      "id": "3a8ad132bbb8c2a0",
+      "title": "Danfoss AK-SM 8xxA Series",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-03",
+      "published_at": "2026-11-24T12:00:00+00:00",
+      "collected_at": "2026-11-24T23:24:05.472580+00:00",
       "category": "Critical Vulnerabilities",
       "severity": "Medium",
-      "summary": "A critical security flaw has been disclosed in the popular binary-parser library that could allow an attacker who controls parser definitions to execute arbitrary code.",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to execute arbitrary code with webserver privileges.",
       "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [
-        "CVE-2026-134814"
+        "CVE-2026-129713"
       ],
-      "cvss_score": 9.2,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 22,
-      "score_breakdown": [
-        {
-          "signal": "Critical CVSS",
-          "points": 18
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "2da724996ccb9ddb",
-      "title": "Hackers Exploit Critical ScreenConnect Flaw to Hijack MSP Technician PCs Without Warning",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/hackers-exploit-critical-screenconnect.html",
-      "published_at": "2026-11-23T12:41:04+00:00",
-      "collected_at": "2026-11-24T01:27:46.709970+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Medium",
-      "summary": "Threat actors are exploiting a now-patched security flaw in ConnectWise ScreenConnect to target managed service provider (MSP) servers.",
-      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [
-        "CVE-2026-84869"
-      ],
-      "cvss_score": 9.9,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "CVE"
-      ],
-      "importance_score": 22,
-      "score_breakdown": [
-        {
-          "signal": "Critical CVSS",
-          "points": 18
-        },
-        {
-          "signal": "CVE cited",
-          "points": 4
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "a75fd36abba00688",
-      "title": "⚡ Weekly Recap: VMware 0-Day, Java4Shell, NGINX2Root, Ruby2Shell, and a Whole Lot of Shell Trouble",
-      "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/weekly-recap-vmware-0-day-java4shell.html",
-      "published_at": "2026-11-23T15:10:48+00:00",
-      "collected_at": "2026-11-24T01:27:46.709599+00:00",
-      "category": "Active Exploitation",
-      "severity": "Medium",
-      "summary": "A stolen key.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
@@ -281,28 +186,159 @@
       "vendor_advisory_url": null,
       "mitre_techniques": [],
       "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "7b6115f8e21f6eec",
+      "title": "Schneider Electric EcoStruxure Power Build Rapsody software",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-02",
+      "published_at": "2026-11-24T12:00:00+00:00",
+      "collected_at": "2026-11-24T23:24:05.472759+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Schneider Electric is aware of a vulnerability in its EcoStruxure™ Power Build Rapsody product.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-119055"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "3ed1970e74313c87",
+      "title": "AutomationDirect C-More EA9 Programming Software",
+      "source": "CISA Cybersecurity Advisories",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-01",
+      "published_at": "2026-11-24T12:00:00+00:00",
+      "collected_at": "2026-11-24T23:24:05.473035+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Medium",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow attackers to corrupt application memory and cause instability or a crash, potentially leading to arbitrary code execution, if a user is convinced to open a malicious file.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-127280"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 24,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        },
+        {
+          "signal": "Government advisory",
+          "points": 8
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "aa014f4b55f462a9",
+      "title": "VMware vCenter Hit by Another Critical 9.8-Rated Auth Bypass Flaw After Zero-Day Exploitation",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html",
+      "published_at": "2026-11-24T13:28:26+00:00",
+      "collected_at": "2026-11-24T23:24:04.745551+00:00",
+      "category": "Active Exploitation",
+      "severity": "Medium",
+      "summary": "Broadcom has shipped patches to address 23 vulnerabilities impacting VMware ESX, vCenter, Workstation, Fusion, and Avi Load Balancer, including one critical bug that could be abused to bypass authentication.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [
+        "CVE-2026-123903"
+      ],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "CVE",
         "Zero-Day"
       ],
-      "importance_score": 18,
+      "importance_score": 22,
       "score_breakdown": [
         {
           "signal": "Zero-day",
           "points": 18
+        },
+        {
+          "signal": "CVE cited",
+          "points": 4
         }
       ],
       "related_sources": []
     },
     {
-      "id": "957088ac58c071d1",
-      "title": "South Korea’s power giant KEPCO confirms data breach impacting 1.5 million",
+      "id": "347042e7abf2992c",
+      "title": "New Inception extortion gang launches large-scale vishing campaign",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/",
-      "published_at": "2026-11-23T20:54:51+00:00",
-      "collected_at": "2026-11-24T01:27:46.805530+00:00",
-      "category": "Data Breaches",
+      "source_url": "https://www.bleepingcomputer.com/news/security/new-inception-extortion-gang-launches-large-scale-vishing-campaign/",
+      "published_at": "2026-11-24T20:21:20+00:00",
+      "collected_at": "2026-11-24T23:24:04.852724+00:00",
+      "category": "Ransomware",
       "severity": "Low",
-      "summary": "A threat actor breached the internal network of Korea Electric Power Corporation (KEPCO) and accessed two systems containing customer, employee, and contractor data.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "summary": "A newly formed data extortion group named 'Inception' has been linked to a large-scale campaign that targets single sign-on (SSO) credentials of multiple global brands and firms.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
       "cves": [],
@@ -312,235 +348,277 @@
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
+      "tags": [],
+      "importance_score": 12,
       "score_breakdown": [
         {
-          "signal": "Major data exposure",
-          "points": 10
+          "signal": "Ransomware",
+          "points": 12
         }
       ],
       "related_sources": []
     },
     {
-      "id": "6a4ef98e17a46e46",
-      "title": "Spanish LaLiga confirms hackers stole soccer fans’ personal data",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/spanish-laliga-confirms-hackers-stole-soccer-fans-personal-data/",
-      "published_at": "2026-11-23T18:38:40+00:00",
-      "collected_at": "2026-11-24T01:27:46.806040+00:00",
-      "category": "Data Breaches",
-      "severity": "Low",
-      "summary": "LaLiga, Spain's top men's football league, disclosed a data breach that exposed personal information belonging to users of its services and those of some affiliated clubs.",
-      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [
-        "Data Breach"
-      ],
-      "importance_score": 10,
-      "score_breakdown": [
-        {
-          "signal": "Major data exposure",
-          "points": 10
-        }
-      ],
-      "related_sources": []
-    },
-    {
-      "id": "b0689cf87ab570a4",
-      "title": "OpenAI and Cisco introduce Shirudo",
-      "source": "OpenAI News",
-      "source_url": "https://openai.com/index/introducing-shirudo",
-      "published_at": "2026-11-23T21:20:00+00:00",
-      "collected_at": "2026-11-24T01:27:48.328465+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "dfa0b937d567023b",
-      "title": "Many languages, one common neural code",
-      "source": "MIT News AI",
-      "source_url": "https://news.mit.edu/2026/many-languages-one-common-neural-code-1123",
-      "published_at": "2026-11-23T21:15:00+00:00",
-      "collected_at": "2026-11-24T01:27:47.581514+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "Analyzing speakers of 21 languages, an MIT study using multilingual AI finds the human brain may represent meaning in much the same way.",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "7b86d265d0e5ec07",
-      "title": "OpenRouter drops AI providers over leaked prompts and secrets",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/openrouter-drops-ai-providers-over-leaked-prompts-and-secrets/",
-      "published_at": "2026-11-23T20:00:20+00:00",
-      "collected_at": "2026-11-24T01:27:46.805705+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "OpenRouter removed three AI providers from its platform after discovering that they had violated their stated data-handling policies and exposed sensitive data.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "351ef75337d427e1",
-      "title": "Microsoft Azure flaw exploited to steal customers' API credentials",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/microsoft-azure-flaw-exploited-to-steal-customers-api-credentials/",
-      "published_at": "2026-11-23T19:42:20+00:00",
-      "collected_at": "2026-11-24T01:27:46.805859+00:00",
-      "category": "Cloud Security",
-      "severity": "Low",
-      "summary": "Microsoft is warning customers that a security vulnerability in Azure API Management (APIM) Classic tiers was exploited to steal stored API credentials, with Norwegian authorities linking the flaw to cyberattacks against energy companies.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "5495a06dee26529f",
-      "title": "Webworm Suspected of Modifying SoftEther VPN to Evade Detection and Hide Remote Access",
+      "id": "9582e29a3fdc5bee",
+      "title": "Iran-Aligned Volant Manticore Uses IPFS-Based KuboShell Backdoor in Espionage Campaigns",
       "source": "The Hacker News",
-      "source_url": "https://thehackernews.com/2026/11/webworm-suspected-of-modifying.html",
-      "published_at": "2026-11-23T17:45:15+00:00",
-      "collected_at": "2026-11-24T01:27:46.709386+00:00",
+      "source_url": "https://thehackernews.com/2026/11/iran-aligned-volant-manticore-uses-ipfs.html",
+      "published_at": "2026-11-24T16:54:07+00:00",
+      "collected_at": "2026-11-24T23:24:04.745431+00:00",
+      "category": "Malware",
+      "severity": "Low",
+      "summary": "A previously undocumented Iran-aligned cyber espionage group called Volant Manticore has targeted telecommunications companies, airlines, and critical infrastructure in Cyprus.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Malware"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Critical infrastructure",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "9078000bd51be751",
+      "title": "ShinyHunters claims to return after FBI arrests, uses old PGP keys as proof",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-resurfaces-after-fbi-arrests-uses-old-pgp-keys-as-proof/",
+      "published_at": "2026-11-24T16:30:19+00:00",
+      "collected_at": "2026-11-24T23:24:04.852934+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "The ShinyHunters extortion gang claims to have returned in posts on a new data leak site after a series of arrests over the past two months targeting alleged members.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "c4ed564253ff3bb5",
+      "title": "Okta Links ShinyHunters-Associated Vishing Group to New INCEPTION Data Leak Site",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html",
+      "published_at": "2026-11-24T13:28:21+00:00",
+      "collected_at": "2026-11-24T23:24:04.745654+00:00",
+      "category": "Ransomware",
+      "severity": "Low",
+      "summary": "A threat cluster previously assessed to be affiliated with the ShinyHunters extortion crew may have rebranded and continued operations under a new name called INCEPTION, according to Okta's Threat Intelligence team.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 12,
+      "score_breakdown": [
+        {
+          "signal": "Ransomware",
+          "points": 12
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "313fcd81073c8f90",
+      "title": "European Commission Uncovers Data Breach in Cyberattack Investigation",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/european-commission-uncovers-data-breach-in-cyberattack-investigation/",
+      "published_at": "2026-11-24T14:49:59+00:00",
+      "collected_at": "2026-11-24T23:24:05.173954+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Names and email addresses of EU Academy users were exposed in the AI-assisted cyberattack the European Commission detected in October.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "f249978bf6d5abc3",
+      "title": "McDonald's Japan data breach exposes customer location information",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/mcdonalds-japan-data-breach-exposes-customer-location-information/",
+      "published_at": "2026-11-24T14:09:37+00:00",
+      "collected_at": "2026-11-24T23:24:04.853266+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "McDonald's Japan, the fast-food giant's Japanese subsidiary, has disclosed a data breach after attackers accessed a database containing sensitive information for users of the company's official smartphone app.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "db7975af80ee66d0",
+      "title": "1.5 Million Impacted by Data Breach at South Korean Electric Company KEPCO",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/",
+      "published_at": "2026-11-24T11:50:21+00:00",
+      "collected_at": "2026-11-24T23:24:05.174219+00:00",
+      "category": "Data Breaches",
+      "severity": "Low",
+      "summary": "Hackers stole personal information from the company’s customer portal and supplier relationship management platform.",
+      "why_it_matters": "Potentially affected organizations and individuals should follow confirmed notifications, review exposed-data risk, and strengthen monitoring for follow-on fraud or credential abuse.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [
+        "Data Breach"
+      ],
+      "importance_score": 10,
+      "score_breakdown": [
+        {
+          "signal": "Major data exposure",
+          "points": 10
+        }
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "372382395c6e6dd9",
+      "title": "Google Researcher Shows How a Single Bit Change in .NET Files Bypassed Windows Code Integrity",
+      "source": "The Hacker News",
+      "source_url": "https://thehackernews.com/2026/11/google-researcher-shows-how-single-bit.html",
+      "published_at": "2026-11-24T12:02:00+00:00",
+      "collected_at": "2026-11-24T23:24:04.745744+00:00",
       "category": "Critical Vulnerabilities",
       "severity": "Low",
-      "summary": "The China-aligned threat actor known as Webworm is suspected to be using a custom version of the open-source SoftEther VPN Bridge tool in an attempt to remove recognizable detection fingerprints, while disguising it as network-monitoring software to establish covert remote access to compromised networks.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "summary": "A quirk in how the .NET Framework loads a program file let a local attacker run untrusted code past two separate protections on Windows built to block it, Google Project Zero researcher James Forshaw showed in a write-up published yesterday.",
+      "why_it_matters": "Organizations should inventory potentially affected products, review the original advisory, and monitor for credible exploitation evidence.",
       "affected_products": [],
       "affected_vendors": [],
-      "cves": [],
+      "cves": [
+        "CVE-2026-87268"
+      ],
       "cvss_score": null,
       "known_exploited": false,
       "active_exploitation": false,
       "patch_available": false,
       "vendor_advisory_url": null,
       "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
+      "tags": [
+        "CVE"
+      ],
+      "importance_score": 4,
+      "score_breakdown": [
+        {
+          "signal": "CVE cited",
+          "points": 4
+        }
+      ],
       "related_sources": []
     },
     {
-      "id": "d6fdac3c20f42b84",
-      "title": "A more tailored Google Search that’s uniquely yours",
-      "source": "Google AI",
-      "source_url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
-      "published_at": "2026-11-23T17:00:00+00:00",
-      "collected_at": "2026-11-24T01:27:47.815501+00:00",
-      "category": "Artificial Intelligence",
-      "severity": "Low",
-      "summary": "Google Search bar with the text \"Personal Intelligence\" surrounded by the Google Wallet, Google Drive, GMail, Google Photos, Google Calendar, and Google G logo icons",
-      "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "355e3ccfadfc5a32",
-      "title": "GlobeTopper loses $2.5 million after hackers steal $70k in gift cards",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/globetopper-loses-25-million-after-hackers-steal-70k-in-gift-cards/",
-      "published_at": "2026-11-23T16:50:01+00:00",
-      "collected_at": "2026-11-24T01:27:46.806187+00:00",
-      "category": "General Cybersecurity",
-      "severity": "Low",
-      "summary": "A cyberattack disrupted operations at B2B top-up solutions provider GlobeTopper, causing an estimated $2.5 million in lost revenue, while the attacker redeemed digital gift cards worth $70,000.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "2486c32c8ff2033b",
-      "title": "Azure Flaw Exploited to Target Secrets at Norwegian Energy Firms",
+      "id": "c11f64b8d05e747d",
+      "title": "An Unclassified CIA System Was Breached in a Cyberattack, AP Source Says",
       "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/azure-flaw-exploited-to-target-secrets-at-norwegian-energy-firms/",
-      "published_at": "2026-11-23T15:47:40+00:00",
-      "collected_at": "2026-11-24T01:27:46.998809+00:00",
+      "source_url": "https://www.securityweek.com/an-unclassified-cia-system-was-breached-in-a-cyberattack-ap-source-says/",
+      "published_at": "2026-11-24T22:41:58+00:00",
+      "collected_at": "2026-11-24T23:24:05.173793+00:00",
+      "category": "Critical Vulnerabilities",
+      "severity": "Low",
+      "summary": "It was not clear what specific information was compromised or who was responsible.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "2b855346dd50d4dc",
+      "title": "Rackspace shuts down Spot cloud platform after security breach",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/rackspace-shuts-down-spot-cloud-platform-after-security-breach/",
+      "published_at": "2026-11-24T21:37:30+00:00",
+      "collected_at": "2026-11-24T23:24:04.852632+00:00",
       "category": "Cloud Security",
       "severity": "Low",
-      "summary": "Microsoft closed an Azure API Management flaw exploited to target secrets at Norwegian energy companies, with other sectors also affected.",
+      "summary": "Rackspace is shutting down its Rackspace Spot cloud platform after a security breach allowed hackers to access customer Kubernetes clusters and secrets, giving customers until December 8 to migrate their services and download their data.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -557,40 +635,15 @@
       "related_sources": []
     },
     {
-      "id": "d7008ca0e04c7d2b",
-      "title": "N-able Patches Critical Flaw Disclosed After Mail Assure Cyberattack",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/n-able-patches-critical-flaw-disclosed-after-mail-assure-cyberattack/",
-      "published_at": "2026-11-23T15:06:49+00:00",
-      "collected_at": "2026-11-24T01:27:46.999040+00:00",
-      "category": "Critical Vulnerabilities",
-      "severity": "Low",
-      "summary": "The company has restored access to the affected services and continues to monitor the affected environments.",
-      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
-      "affected_products": [],
-      "affected_vendors": [],
-      "cves": [],
-      "cvss_score": null,
-      "known_exploited": false,
-      "active_exploitation": false,
-      "patch_available": false,
-      "vendor_advisory_url": null,
-      "mitre_techniques": [],
-      "tags": [],
-      "importance_score": 0,
-      "score_breakdown": [],
-      "related_sources": []
-    },
-    {
-      "id": "52eb9c59258a6af3",
-      "title": "AI Agents Are Creating a Shared Responsibility Gap",
-      "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ai-agents-are-creating-a-shared-responsibility-gap/",
-      "published_at": "2026-11-23T15:00:10+00:00",
-      "collected_at": "2026-11-24T01:27:46.806328+00:00",
+      "id": "15de07f0ce6e6083",
+      "title": "Agentic system personalizes physical controls to help users “DJ their art”",
+      "source": "MIT News AI",
+      "source_url": "https://news.mit.edu/2026/tangimap-agentic-system-personalizes-physical-controls-help-users-dj-their-art-1124",
+      "published_at": "2026-11-24T19:30:00+00:00",
+      "collected_at": "2026-11-24T23:24:05.691065+00:00",
       "category": "Artificial Intelligence",
       "severity": "Low",
-      "summary": "AI agents operate across multiple platforms, creating security gaps when no single vendor can see or control their actions.",
+      "summary": "“TangiMap” uses an AI agent to reprogram how buttons, knobs, and sliders are used, helping users do things like edit photos and perform music in a more dynamic, tactile way.",
       "why_it_matters": "Security and technology teams should assess the development for changes to model risk, data handling, access controls, and their existing AI governance.",
       "affected_products": [],
       "affected_vendors": [],
@@ -607,15 +660,15 @@
       "related_sources": []
     },
     {
-      "id": "63f758028b049e79",
-      "title": "phpAfterShell Vulnerability Revives PHP2Shell’s Attack Path",
-      "source": "SecurityWeek",
-      "source_url": "https://www.securityweek.com/phpaftershell-vulnerability-revives-php2shells-attack-path/",
-      "published_at": "2026-11-23T13:58:07+00:00",
-      "collected_at": "2026-11-24T01:27:46.999200+00:00",
-      "category": "Critical Vulnerabilities",
+      "id": "6c5bc98dced3225c",
+      "title": "Turnitin discloses cyberattack affecting customer-facing systems",
+      "source": "BleepingComputer",
+      "source_url": "https://www.bleepingcomputer.com/news/security/turnitin-discloses-cyberattack-affecting-customer-facing-systems/",
+      "published_at": "2026-11-24T18:59:52+00:00",
+      "collected_at": "2026-11-24T23:24:04.852800+00:00",
+      "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "If a session overwrite operation is interrupted, an attacker who controls the fresh data could trigger data deserialization and RCE.",
+      "summary": "Turnitin disclosed via a statement from its CEO, Chris Caren, that it recently detected unauthorized activity involving certain customer-facing systems.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
@@ -632,15 +685,40 @@
       "related_sources": []
     },
     {
-      "id": "fb4c07fac3caceca",
-      "title": "Microsoft testing fix for Windows 11 Bluetooth audio quality drops",
+      "id": "a251bdbac4c3ddf9",
+      "title": "Radware discloses breach exposing customer cloud access keys",
       "source": "BleepingComputer",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-testing-fix-for-windows-11-bluetooth-audio-quality-drops/",
-      "published_at": "2026-11-23T13:28:45+00:00",
-      "collected_at": "2026-11-24T01:27:46.806472+00:00",
+      "source_url": "https://www.bleepingcomputer.com/news/security/radware-discloses-breach-exposing-customer-cloud-access-keys/",
+      "published_at": "2026-11-24T17:49:05+00:00",
+      "collected_at": "2026-11-24T23:24:04.852867+00:00",
       "category": "General Cybersecurity",
       "severity": "Low",
-      "summary": "Microsoft is working to fix a long-standing Windows issue that has been causing significant audio quality drops for Bluetooth headphone users.",
+      "summary": "Cybersecurity company Radware says attackers gained access to some of its customers' account details and cloud access keys through an unsecured internal Cloud WAF (Web Application Firewall) management API that was left exposed online.",
+      "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
+      "affected_products": [],
+      "affected_vendors": [],
+      "cves": [],
+      "cvss_score": null,
+      "known_exploited": false,
+      "active_exploitation": false,
+      "patch_available": false,
+      "vendor_advisory_url": null,
+      "mitre_techniques": [],
+      "tags": [],
+      "importance_score": 0,
+      "score_breakdown": [],
+      "related_sources": []
+    },
+    {
+      "id": "cbd825ca533eb80e",
+      "title": "VMware Updates Patch Critical ESX, vCenter Vulnerabilities",
+      "source": "SecurityWeek",
+      "source_url": "https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/",
+      "published_at": "2026-11-24T16:32:56+00:00",
+      "collected_at": "2026-11-24T23:24:05.173881+00:00",
+      "category": "Cloud Security",
+      "severity": "Low",
+      "summary": "The critical bugs include an authentication bypass in vCenter and flaws that could allow code execution on ESX hosts.",
       "why_it_matters": "Security teams should review the original reporting, determine whether the development affects their environment, and adjust monitoring or controls when supported by verified details.",
       "affected_products": [],
       "affected_vendors": [],
