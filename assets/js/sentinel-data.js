@@ -174,7 +174,9 @@
         const byId = new Map();
         const currentStaticEvents = staticEvents.filter(event => {
             const type = String(event?.type || event?.category || "").toLowerCase();
-            const environmental = /^(earthquake|volcano|weather|weather_alert|tropical_cyclone|wildfire|prescribed_fire|natural_hazard)$/.test(type);
+            const context = `${type} ${event?.title || ""} ${event?.description || ""} ${(event?.source || []).toString()}`.toLowerCase();
+            const environmental = /\b(earthquake|volcano|weather|weather_alert|tropical_cyclone|tropical storm|hurricane|tornado|flood|wildfire|prescribed_fire|natural_hazard)\b/.test(context) ||
+                /\b(noaa|national weather service|nws)\b/.test(context);
             return !environmental || isWithinRetentionWindow(event?.timestamp);
         });
         for (const event of [...currentStaticEvents, ...liveEvents]) {
