@@ -14,7 +14,7 @@ vm.runInNewContext(
     { window: windowMock, console, DOMParser: class {} }
 );
 
-const { GenerationFeed, isWithinRetentionWindow, mapRetentionHours } =
+const { GenerationFeed, isWithinRetentionWindow, isCurrentEnvironmentalEvent, mapRetentionHours } =
     windowMock.SentinelData;
 
 function geojson(generationId, ids) {
@@ -38,6 +38,8 @@ async function run() {
             false
         );
         assert.equal(isWithinRetentionWindow("invalid", now), false);
+        assert.equal(isCurrentEnvironmentalEvent({ type: "weather_alert", timestamp: "2026-07-20T12:00:00Z", expires_at: "2026-07-28T12:00:00Z" }, now), true);
+        assert.equal(isCurrentEnvironmentalEvent({ type: "weather_alert", timestamp: "2026-07-20T12:00:00Z", expires_at: "2026-07-27T11:59:59Z" }, now), false);
     }
 
     {

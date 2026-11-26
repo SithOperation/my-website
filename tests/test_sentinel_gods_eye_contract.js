@@ -37,6 +37,9 @@ assert.ok(page.includes('id="coverage-status-toggle"') && page.includes('id="cov
 assert.ok(mapScript.includes("renderCoverageDetails") && mapScript.includes("failedSources"), "Coverage notification must list degraded sources instead of raw JSON");
 assert.ok(mapScript.includes("unifiedSignalItems") && mapScript.includes("signalKind"), "Events drawer must combine intelligence, environmental, and X-report signals");
 assert.ok(mapScript.includes("isEnvironmentalSignal") && mapScript.includes("updateSignalFilters"), "Map counts and filters must classify non-intelligence signals");
+assert.ok(mapScript.includes("effective_at") && mapScript.includes("expires_at") && mapScript.includes("ends_at"), "Environmental details must expose Worker temporal fields");
+assert.ok(mapScript.includes("coordinate_type === \"derived\""), "Derived environmental coordinates must be identified as approximate");
+assert.ok(dataScript.includes("isCurrentEnvironmentalEvent") && dataScript.includes("currentLiveEvents"), "Live environmental events must use expiration-aware retention and deduplication");
 assert.ok(!page.includes('id="mobile-panel-toggle"') && !page.includes('id="layers-toggle"') && !page.includes('id="source-viewer"'), "Legacy filter, layer, and source tabs must be removed from the public map");
 assert.ok(page.includes('class="sentinel-back"'), "The return link must be positioned within the map overlay");
 assert.ok(mapScript.includes("showEventPopup") && mapScript.includes("Open original report"), "Selected map events must expose a dismissible source popup");

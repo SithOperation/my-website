@@ -132,6 +132,10 @@
             satellite: "satellite",
             tropical_cyclone: "weather",
             volcano: "volcano",
+            flood: "weather",
+            drought: "weather",
+            tsunami: "weather",
+            natural_hazard: "weather",
             weather: "weather",
             weather_alert: "weather",
             wildfire: "wildfire",
@@ -157,7 +161,9 @@
     }
 
     function isHistoricalEvent(event) {
-        return Boolean(event?.timestamp) && !window.SentinelData.isWithinRetentionWindow(event.timestamp);
+        return window.SentinelData.isEnvironmentalEvent(event)
+            ? !window.SentinelData.isCurrentEnvironmentalEvent(event)
+            : Boolean(event?.timestamp) && !window.SentinelData.isWithinRetentionWindow(event.timestamp);
     }
 
     function europeSecurityLayers(event) {
@@ -808,20 +814,20 @@
 
     function retainRecentEvents(events) {
         return events.filter(event =>
-            window.SentinelData.isWithinRetentionWindow(event.timestamp) &&
+            window.SentinelData.isCurrentEnvironmentalEvent(event) &&
             !isExpiredWeatherEvent(event) &&
             !isWeatherTestMessage(event)
         );
     }
 
     function isExpiredWeatherEvent(event, now = Date.now()) {
-        if (event.type !== "weather") return false;
-        const expiration = Date.parse(event.details?.ends || event.details?.expires || "");
+        if (!window.SentinelData.isEnvironmentalEvent(event)) return false;
+        const expiration = Date.parse(event.expires_at || event.ends_at || event.details?.ends || event.details?.expires || "");
         return Number.isFinite(expiration) && expiration <= now;
     }
 
     function isWeatherTestMessage(event) {
-        if (event.type !== "weather") return false;
+        if (!window.SentinelData.isEnvironmentalEvent(event)) return false;
         const title = String(event.title || "").trim().toLowerCase();
         return ["test message", "required weekly test", "required monthly test"].includes(title);
     }
@@ -1040,13 +1046,13 @@
             throw new Error(liveResult.error || "Cloudflare environmental feed unavailable");
         }
         const environmental = liveResult.events
-            .filter(event => /^(earthquake|volcano|weather|tropical_cyclone|wildfire)$/i.test(String(event.type || event.category || "")))
+            .filter(event => isEnvironmentalSignal(event))
             .map(event => ({
                 ...event,
                 event_id: String(event.event_id),
                 type: String(event.type || event.category || "environmental").toLowerCase(),
                 coordinates: { lat: event.latitude, lon: event.longitude },
-                details: { description: event.description, ends: event.expires || event.ends || "" },
+                details: { description: event.description, ends: event.ends_at || event.expires_at || event.expires || event.ends || "" },
                 severity: String(event.threat_level || "").toLowerCase()
             }));
         const earthquakes = environmental.filter(event => event.type === "earthquake");
@@ -1332,7 +1338,7 @@
         const type = String(event?.type || event?.category || "").toLowerCase();
         const classification = String(event?.classification || "").toLowerCase();
         const text = `${event?.title || ""} ${event?.description || ""}`.toLowerCase();
-        return ["earthquake", "seismic_event", "volcano", "weather", "weather_alert", "tropical_cyclone", "wildfire", "prescribed_fire", "flood", "flooding", "severe_weather", "natural_hazard"].includes(type) ||
+        return ["earthquake", "seismic_event", "volcano", "weather", "weather_alert", "tropical_cyclone", "wildfire", "prescribed_fire", "flood", "flooding", "severe_weather", "drought", "tsunami", "natural_hazard"].includes(type) ||
             /disaster_alert|earthquake|seismic|volcano|wildfire|forest fire|flood|hurricane|typhoon|tornado|tsunami|storm surge/.test(`${type} ${classification} ${text}`);
     }
 
@@ -1563,7 +1569,8 @@
             satellite: "This is an Earth-observation or natural-hazard signal plotted from coordinates supplied by the source.",
             earthquake: "This marker is a USGS seismic observation. Magnitude describes measured ground motion; the marker is the reported epicenter.",
             volcano: "This marker represents a volcano report at the known volcano location. It does not imply that the entire surrounding area is erupting.",
-            weather: "This shaded boundary is a NOAA alert area. Conditions and impacts can vary inside the polygon; follow local official guidance.",
+            weather: "This is a NOAA or public weather alert area. Conditions and impacts can vary inside the polygon or around the representative point; follow local official guidance.",
+            weather_alert: "This is a NOAA or public weather alert. The point may be a representative coordinate derived from alert geometry; follow local official guidance.",
             wildfire: "This is a reported wildfire incident. The marker identifies the supplied incident point, not the complete fire perimeter.",
             prescribed_fire: "This is a prescribed or controlled burn identified by the source. It is intentionally managed and is not classified as a wildfire emergency.",
             military_exercise: "This record explicitly describes a military or training exercise. It indicates reported activity, not hostile action.",
@@ -1616,10 +1623,15 @@
         }
         appendDefinition(details, "Observed", formatDate(event.timestamp));
         appendDefinition(details, "Temporal status", isHistoricalEvent(event) ? "Historical publication record" : "Recent publication record");
+        if (event.effective_at) appendDefinition(details, "Effective", formatDate(event.effective_at));
+        if (event.expires_at) appendDefinition(details, "Expires", formatDate(event.expires_at));
+        if (event.ends_at) appendDefinition(details, "Ends", formatDate(event.ends_at));
         appendDefinition(details, "Source", sourceText(event));
         if (Number.isFinite(event.latitude) && Number.isFinite(event.longitude)) {
             appendDefinition(details, "Coordinates", `${event.latitude.toFixed(4)}, ${event.longitude.toFixed(4)}`);
-            appendDefinition(details, "Location precision", coordinateContext(event));
+            appendDefinition(details, "Location precision", event.coordinate_type === "derived"
+                ? "Approximate representative coordinate derived from source alert geometry."
+                : coordinateContext(event));
         }
         else if (event.location) {
             appendDefinition(details, "Alert area", window.SentinelData.cleanText(event.location, 260));
@@ -1635,10 +1647,10 @@
             appendDefinition(details, "Speed", velocity === null ? "Not reported" : `${velocity} m/s`);
             appendDefinition(details, "Heading", heading === null ? "Not reported" : `${heading}°`);
         }
-        if (event.type === "weather") {
+        if (window.SentinelData.isEnvironmentalEvent(event)) {
             const weather = event.details || {};
-            appendDefinition(details, "Alert area", event.location || "Not reported");
-            appendDefinition(details, "Expires", formatDate(weather.ends || weather.expires));
+            if (event.type === "weather" || event.type === "weather_alert") appendDefinition(details, "Alert area", event.location || "Not reported");
+            if (!event.expires_at && !event.ends_at) appendDefinition(details, "Expires", formatDate(weather.ends || weather.expires));
             if (weather.instruction) appendDefinition(details, "Protective action", window.SentinelData.cleanText(weather.instruction, 700));
         }
         if (event.event_id) appendDefinition(details, "Event ID", event.event_id);

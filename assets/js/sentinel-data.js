@@ -20,6 +20,20 @@
         return Number.isFinite(timestamp) && timestamp >= now - MAP_RETENTION_MS;
     }
 
+    function isEnvironmentalEvent(event) {
+        const type = String(event?.type || event?.category || "").toLowerCase();
+        const context = `${type} ${event?.title || ""} ${event?.description || ""} ${(event?.source || []).toString()}`.toLowerCase();
+        return /\b(earthquake|seismic|volcano|weather|weather_alert|tropical_cyclone|tropical storm|hurricane|tornado|flood|wildfire|prescribed_fire|drought|tsunami|natural_hazard)\b/.test(context) ||
+            /\b(noaa|national weather service|nws|gdacs|usgs)\b/.test(context);
+    }
+
+    function isCurrentEnvironmentalEvent(event, now = Date.now()) {
+        if (!isEnvironmentalEvent(event)) return true;
+        const expiration = Date.parse(String(event?.expires_at || event?.ends_at || event?.details?.expires || event?.details?.ends || ""));
+        if (Number.isFinite(expiration)) return expiration > now;
+        return isWithinRetentionWindow(event?.timestamp || event?.effective_at, now);
+    }
+
     function cleanText(value, maximumLength = 700) {
         const raw = String(value || "");
         if (!raw) return "";
@@ -172,13 +186,6 @@
 
     function mergeEvents(staticEvents, liveEvents) {
         const byId = new Map();
-        const isCurrentEnvironmentalEvent = event => {
-            const type = String(event?.type || event?.category || "").toLowerCase();
-            const context = `${type} ${event?.title || ""} ${event?.description || ""} ${(event?.source || []).toString()}`.toLowerCase();
-            const environmental = /\b(earthquake|volcano|weather|weather_alert|tropical_cyclone|tropical storm|hurricane|tornado|flood|wildfire|prescribed_fire|natural_hazard)\b/.test(context) ||
-                /\b(noaa|national weather service|nws)\b/.test(context);
-            return !environmental || isWithinRetentionWindow(event?.timestamp);
-        };
         const currentStaticEvents = staticEvents.filter(isCurrentEnvironmentalEvent);
         const currentLiveEvents = liveEvents.filter(isCurrentEnvironmentalEvent);
         for (const event of [...currentStaticEvents, ...currentLiveEvents]) {
@@ -581,6 +588,8 @@
         cleanText,
         validCoordinate,
         isWithinRetentionWindow,
+        isEnvironmentalEvent,
+        isCurrentEnvironmentalEvent,
         mapRetentionHours: 48,
         supportedSchemaMajor: SUPPORTED_SCHEMA_MAJOR
     });
