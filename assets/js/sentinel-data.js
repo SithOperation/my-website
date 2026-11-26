@@ -172,7 +172,12 @@
 
     function mergeEvents(staticEvents, liveEvents) {
         const byId = new Map();
-        for (const event of [...staticEvents, ...liveEvents]) {
+        const currentStaticEvents = staticEvents.filter(event => {
+            const type = String(event?.type || event?.category || "").toLowerCase();
+            const environmental = /^(earthquake|volcano|weather|weather_alert|tropical_cyclone|wildfire|prescribed_fire|natural_hazard)$/.test(type);
+            return !environmental || isWithinRetentionWindow(event?.timestamp);
+        });
+        for (const event of [...currentStaticEvents, ...liveEvents]) {
             if (event?.event_id) byId.set(String(event.event_id), event);
         }
         return Array.from(byId.values());

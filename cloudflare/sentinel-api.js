@@ -483,10 +483,8 @@ async function collectEnforcerRSS(env) {
 }
 
 async function cleanupOldRecords(env) {
-  const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-  const retentionStart = "2026-11-12T09:00:00.000Z";
-  await env.DB.prepare(`DELETE FROM events WHERE event_id IN (SELECT event_id FROM events WHERE collected_at >= ? AND collected_at < ? AND (event_id LIKE 'USGS-%' OR event_id LIKE 'NOAA-%') LIMIT 100)`).bind(retentionStart, cutoff).run();
-  await env.DB.prepare(`DELETE FROM news_articles WHERE article_id IN (SELECT article_id FROM news_articles WHERE collected_at >= ? AND collected_at < ? LIMIT 100)`).bind(retentionStart, cutoff).run();
+  await env.DB.prepare(`DELETE FROM events WHERE event_id IN (SELECT event_id FROM events WHERE event_timestamp IS NOT NULL AND event_timestamp < datetime('now','-3 days') AND category IN ('earthquake','volcano','weather','weather_alert','tropical_cyclone','wildfire','prescribed_fire','natural_hazard') LIMIT 500)`).run();
+  await env.DB.prepare(`DELETE FROM news_articles WHERE article_id IN (SELECT article_id FROM news_articles WHERE collected_at < datetime('now','-7 days') LIMIT 500)`).run();
 }
 
 async function scheduledJob(controller, env) {
