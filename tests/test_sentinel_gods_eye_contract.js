@@ -8,6 +8,7 @@ const root = path.join(__dirname, "..");
 const mapScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-map.js"), "utf8");
 const dataScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-data.js"), "utf8");
 const publishedMapEvents = JSON.parse(fs.readFileSync(path.join(root, "data", "map_events.json"), "utf8"));
+const countryNodes = JSON.parse(fs.readFileSync(path.join(root, "data", "country_nodes.json"), "utf8"));
 const adapterScript = fs.readFileSync(path.join(root, "assets", "js", "sentinel-gods-eye-adapter.js"), "utf8");
 const page = fs.readFileSync(path.join(root, "sentinel.html"), "utf8");
 const mapStyles = fs.readFileSync(path.join(root, "assets", "css", "sentinel-map.css"), "utf8");
@@ -24,6 +25,10 @@ assert.ok(!mapScript.includes('id: "x-early-report-cluster-count"'), "Early-repo
 assert.ok(mapScript.includes('"icon-allow-overlap": true'), "Individual event symbols must remain visible at global zoom");
 assert.ok(mapScript.includes('"icon-ignore-placement": true'), "Individual event symbols must not be hidden by collision placement");
 assert.ok(mapScript.includes('map.addSource("sentinel-cities"'), "Sentinel must render the major-city light layer");
+assert.ok(mapScript.includes('map.addSource("sentinel-countries"'), "Sentinel must render country nodes");
+assert.ok(mapScript.includes("renderCountryReports"), "Country nodes must open associated unplotted reports");
+assert.ok(countryNodes.length >= 190, "Country node catalog must cover countries and territories");
+assert.equal(new Set(countryNodes.map(country => country.alpha2)).size, countryNodes.length, "Country node codes must be unique");
 assert.ok(mapScript.includes('severityColorExpression("severity")') && mapScript.includes('"#168cff"'), "City lights must switch from blue to severity when events are nearby");
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenControl'), "The map must use fullscreen controls instead of visual-mode tabs");

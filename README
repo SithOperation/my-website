@@ -104,6 +104,8 @@ The compatibility adapter is loaded before `assets/js/sentinel-map.js`. To add a
 
 Environmental signals, including official NWS alerts, are served through the Cloudflare Sentinel Worker. The page refreshes that Worker feed while open; it does not read the retired static disaster JSON files. Expired alerts and administrative test messages are hidden, and alert details include expiration and protective instructions when supplied.
 
+Every country also has a blue centroid node from `data/country_nodes.json`. Reports without exact coordinates are associated conservatively with a country node when their source metadata or text supports that association; the node opens the related unplotted reports without fabricating an incident location. The centroid catalog is derived from the public `komsitr/country-centroid` dataset.
+
 If the globe is blank, serve the repository over HTTP, confirm `assets/vendor/maplibre/maplibre-gl.js` loads, and check that `data/manifest.json` references the current `data/map_events.json` publication. The OpenStreetMap base layer requires network access; Sentinel event overlays still load from local JSON.
 
 Layer categories supported by the compatibility adapter include:

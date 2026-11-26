@@ -32,6 +32,13 @@
         ["Karachi", 67.0011, 24.8607], ["Bangkok", 100.5018, 13.7563], ["Manila", 120.9842, 14.5995],
         ["Lima", -77.0428, -12.0464], ["Bogotá", -74.0721, 4.711], ["Santiago", -70.6693, -33.4489]
     ];
+    const COUNTRY_ALIASES = Object.freeze({
+        "us": "US", "usa": "US", "united states": "US", "uk": "GB", "u.k.": "GB", "united kingdom": "GB",
+        "russia": "RU", "russian federation": "RU", "south korea": "KR", "republic of korea": "KR",
+        "north korea": "KP", "iran": "IR", "israel": "IL", "syria": "SY", "vietnam": "VN",
+        "venezuela": "VE", "bolivia": "BO", "tanzania": "TZ", "laos": "LA", "moldova": "MD",
+        "brunei": "BN", "czechia": "CZ", "palestine": "PS"
+    });
     const adapter = window.SentinelGodsEyeAdapter || null;
     const client = new window.SentinelData.Client({
         root: "data",
@@ -53,6 +60,8 @@
     let disasterIndex = new Map();
     let earlyReportIndex = new Map();
     let earlyReportCount = 0;
+    let countryNodes = [];
+    let countryReportAssociations = new Map();
     let earlyReportPopup = null;
     let earlyReportPopupId = null;
     let environmentalCount = 0;
@@ -307,6 +316,66 @@
         };
     }
 
+    function countryKey(value) {
+        return String(value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
+    }
+
+    function countryFeatureCollection() {
+        return {
+            type: "FeatureCollection",
+            features: countryNodes.map(country => {
+                const reports = countryReportAssociations.get(country.alpha2) || [];
+                const count = reports.length;
+                return {
+                    type: "Feature",
+                    id: "country-" + country.alpha2,
+                    geometry: { type: "Point", coordinates: [Number(country.longitude), Number(country.latitude)] },
+                    properties: { code: country.alpha2, name: country.name, report_count: count, has_reports: count > 0 }
+                };
+            })
+        };
+    }
+
+    function countryCodeForValue(value) {
+        const key = countryKey(value);
+        if (COUNTRY_ALIASES[key]) return COUNTRY_ALIASES[key];
+        const country = countryNodes.find(item => countryKey(item.name) === key || item.alpha2.toLowerCase() === key || item.alpha3.toLowerCase() === key);
+        return country?.alpha2 || null;
+    }
+
+    function inferCountryCodes(item) {
+        if (Number.isFinite(item?.latitude) && Number.isFinite(item?.longitude)) return [];
+        const explicit = Array.isArray(item?.countries) ? item.countries : item?.country ? [item.country] : [];
+        const codes = new Set(explicit.map(countryCodeForValue).filter(Boolean));
+        if (codes.size) return Array.from(codes);
+        const text = countryKey((item?.title || "") + " " + (item?.summary || item?.description || ""));
+        countryNodes.forEach(country => {
+            const name = countryKey(country.name);
+            if (name.length >= 5 && text.includes(name)) codes.add(country.alpha2);
+        });
+        return Array.from(codes);
+    }
+
+    function updateCountryAssociations() {
+        countryReportAssociations = new Map(countryNodes.map(country => [country.alpha2, []]));
+        newsItems.forEach(item => {
+            inferCountryCodes(item).forEach(code => countryReportAssociations.get(code)?.push(item));
+        });
+        earlyReportIndex.forEach(item => {
+            inferCountryCodes(item).forEach(code => countryReportAssociations.get(code)?.push({
+                ...item,
+                id: item.id || item.event_id,
+                title: item.title || "X report",
+                publisher: item.account ? "X " + item.account : "X report",
+                summary: item.summary || item.description || "Early report from X; verify independently.",
+                url: item.source_url,
+                published_at: item.published_at,
+                severity: item.severity || "UNKNOWN"
+            }));
+        });
+        map?.getSource("sentinel-countries")?.setData(countryFeatureCollection());
+    }
+
     function mapStyle() {
         return {
             version: 8,
@@ -469,6 +538,18 @@
     }
 
     function addIntelligenceLayers() {
+        map.addSource("sentinel-countries", { type: "geojson", data: countryFeatureCollection() });
+        map.addLayer({ id: "country-node-glow", type: "circle", source: "sentinel-countries", paint: {
+            "circle-radius": ["case", [">", ["get", "report_count"], 0], 13, 8],
+            "circle-color": ["case", [">", ["get", "report_count"], 0], "#58b7ff", "#168cff"],
+            "circle-opacity": ["case", [">", ["get", "report_count"], 0], 0.35, 0.16], "circle-blur": 0.8
+        } });
+        map.addLayer({ id: "country-nodes", type: "circle", source: "sentinel-countries", paint: {
+            "circle-radius": ["case", [">", ["get", "report_count"], 0], 5, 3],
+            "circle-color": ["case", [">", ["get", "report_count"], 0], "#b9e5ff", "#168cff"],
+            "circle-stroke-color": "#061522", "circle-stroke-width": 1
+        } });
+        map.addLayer({ id: "country-node-hit", type: "circle", source: "sentinel-countries", paint: { "circle-radius": 16, "circle-color": "rgba(0,0,0,0)", "circle-opacity": 0 } });
         map.addSource("sentinel-cities", {
             type: "geojson",
             data: cityFeatureCollection([])
@@ -667,6 +748,14 @@
                 return Math.hypot(latDistance, lonDistance) <= 3.2;
             });
             renderEventGroup(events, events.length, city.properties?.name || "Selected city");
+        });
+        map.on("click", "country-node-hit", event => {
+            const country = event.features?.[0]?.properties;
+            if (country) renderCountryReports(String(country.code), String(country.name));
+        });
+        ["country-node-hit", "country-nodes"].forEach(layerId => {
+            map.on("mouseenter", layerId, () => { map.getCanvas().style.cursor = "pointer"; });
+            map.on("mouseleave", layerId, () => { map.getCanvas().style.cursor = ""; });
         });
 
         syncEventHitOverlay();
@@ -871,6 +960,7 @@
             earlyReportIndex.set(String(properties.id), properties);
         });
         earlyReportCount = earlyReportIndex.size;
+        updateCountryAssociations();
         updateSignalFilters();
         if (earlyReportPopupId && !earlyReportIndex.has(earlyReportPopupId)) {
             earlyReportPopup?.remove();
@@ -1018,6 +1108,13 @@
         updateMapData();
     }
 
+    async function loadCountryNodes() {
+        const records = await client.fetchJSON("country_nodes.json", null, true);
+        if (!Array.isArray(records)) throw new Error("Country node catalog is invalid");
+        countryNodes = records.filter(country => country?.alpha2 && country?.alpha3 && Number.isFinite(Number(country.latitude)) && Number.isFinite(Number(country.longitude)));
+        updateCountryAssociations();
+    }
+
     function refreshEnvironmentalRetention() {
         if (!mapReady) return;
         disasterIndex = new Map();
@@ -1159,6 +1256,7 @@
             element("sentinel-map").dataset.mapReady = "true";
             resizeMap();
             updateMapData();
+            loadCountryNodes().catch(error => console.warn("Country node catalog unavailable", error));
             loadEnvironmentalLayers().catch(error => console.warn("Environmental map layers unavailable", error));
             loadEarlyReportLayer().catch(error => console.warn("Social Media Early Reports layer unavailable", error));
         });
@@ -1392,12 +1490,42 @@
         });
     }
 
+    function renderCountryReports(code, name) {
+        const feed = element("news-feed");
+        if (!feed) return;
+        const reports = countryReportAssociations.get(code) || [];
+        feed.replaceChildren();
+        feed.hidden = false;
+        element("event-detail")?.setAttribute("hidden", "");
+        setText("event-drawer-title", name + " · " + reports.length + " unplotted report" + (reports.length === 1 ? "" : "s"));
+        if (!reports.length) {
+            const empty = document.createElement("p");
+            empty.className = "news-feed-empty";
+            empty.textContent = "No unplotted articles are currently associated with this country.";
+            feed.appendChild(empty);
+        } else {
+            reports.slice(0, 100).forEach(item => {
+                const button = document.createElement("button");
+                const title = document.createElement("strong");
+                const metadata = document.createElement("small");
+                button.type = "button";
+                title.textContent = item.title;
+                metadata.textContent = (item.publisher || "Published source") + " · " + formatDate(item.published_at || item.timestamp) + " · " + (item.severity || "UNKNOWN");
+                button.append(title, metadata);
+                button.addEventListener("click", () => item.url ? renderNewsDetail(item) : renderEventDetail(item));
+                feed.appendChild(button);
+            });
+        }
+        openEventDrawer();
+    }
+
     function applyNewsSnapshot(snapshot) {
         newsItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
         newsHealth = snapshot?.newsHealth || snapshot?.health || { status: "unavailable", sources: [] };
         element("sentinel-map").dataset.liveNewsState = snapshot?.liveNewsState || "unavailable";
         element("sentinel-map").dataset.liveNewsCount = String(snapshot?.liveNewsItems?.length || 0);
         element("sentinel-map").dataset.liveNewsGeneratedAt = snapshot?.liveNewsGeneratedAt || "";
+        updateCountryAssociations();
         updateSignalFilters();
         renderNewsFeed();
     }
