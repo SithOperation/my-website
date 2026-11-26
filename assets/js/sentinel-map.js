@@ -1597,9 +1597,6 @@
         const items = spaceNewsItems().filter(item => !parseSpaceTelemetry(item));
         feed.replaceChildren();
         feed.hidden = false;
-        element("news-feed")?.setAttribute("hidden", "");
-        element("event-detail")?.setAttribute("hidden", "");
-        setText("event-drawer-title", "Space weather");
         renderSpaceTelemetry(feed, telemetry);
         if (!items.length && !telemetry.length) {
             const empty = document.createElement("p");
@@ -1625,19 +1622,6 @@
             article.append(title, metadata, summary, link);
             feed.appendChild(article);
         });
-    }
-
-    function setSignalTab(tab) {
-        const space = tab === "space";
-        const signalsTab = element("signals-tab");
-        const spaceTab = element("space-tab");
-        signalsTab?.classList.toggle("is-active", !space);
-        spaceTab?.classList.toggle("is-active", space);
-        signalsTab?.setAttribute("aria-selected", String(!space));
-        spaceTab?.setAttribute("aria-selected", String(space));
-        element("news-filter-bar")?.toggleAttribute("hidden", space);
-        if (space) renderSpaceFeed();
-        else renderNewsFeed();
     }
 
     function renderCountryReports(code, name) {
@@ -2018,7 +2002,6 @@
         element("event-list-toggle")?.addEventListener("click", () => {
             const open = !element("event-panel")?.classList.contains("is-open");
             if (open) {
-                setSignalTab("signals");
                 renderNewsFeed();
                 setText("event-drawer-title", "Latest news");
             }
@@ -2039,8 +2022,17 @@
         ["news-filter-country", "news-filter-category", "news-filter-severity"].forEach(id =>
             element(id)?.addEventListener("change", renderNewsFeed)
         );
-        element("signals-tab")?.addEventListener("click", () => setSignalTab("signals"));
-        element("space-tab")?.addEventListener("click", () => setSignalTab("space"));
+        const setSpacePanel = open => {
+            const panel = element("space-panel");
+            panel?.classList.toggle("is-open", open);
+            panel?.setAttribute("aria-hidden", String(!open));
+            element("space-weather-toggle")?.setAttribute("aria-expanded", String(open));
+            if (open) renderSpaceFeed();
+        };
+        element("space-weather-toggle")?.addEventListener("click", () => {
+            setSpacePanel(!element("space-panel")?.classList.contains("is-open"));
+        });
+        element("space-panel-close")?.addEventListener("click", () => setSpacePanel(false));
     }
 
     function clearSourceHighlight(mapInstance = map, ready = mapReady) {

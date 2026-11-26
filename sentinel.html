@@ -13,7 +13,7 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css?v=20260725-mobile-map">
     <link rel="stylesheet" href="assets/css/editorial-system.css?v=20260725-mobile-map">
-    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261126-space-gauge">
+    <link rel="stylesheet" href="assets/css/sentinel-map.css?v=20261126-space-tab-panel">
     <link rel="stylesheet" href="assets/css/branch-pages.css">
 </head>
 <body>
@@ -29,6 +29,7 @@
                 <div id="coverage-details" class="coverage-details" role="dialog" aria-label="Sentinel coverage details" hidden></div>
             </div>
             <button id="event-list-toggle" class="sentinel-tool" type="button" aria-expanded="false" aria-controls="event-panel">Events <span id="event-feed-count">—</span></button>
+            <button id="space-weather-toggle" class="sentinel-tool" type="button" aria-expanded="false" aria-controls="space-panel">Space</button>
         </header>
         <section class="sentinel-map-stage" aria-label="Global intelligence map">
             <div id="sentinel-map" role="region" aria-label="Interactive global Sentinel intelligence map"></div>
@@ -39,23 +40,22 @@
         </section>
         <aside id="event-panel" class="event-drawer" aria-label="Published events" aria-hidden="true">
             <div class="event-drawer-heading"><div><span class="eyebrow">PUBLISHED SIGNALS</span><h2 id="event-drawer-title">Events at this map point</h2></div><button id="event-panel-close" class="drawer-close" type="button" aria-label="Close events">×</button></div>
-            <div class="news-tabs" role="tablist" aria-label="Signal feeds">
-                <button id="signals-tab" class="news-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="news-feed">Signals</button>
-                <button id="space-tab" class="news-tab" type="button" role="tab" aria-selected="false" aria-controls="space-feed">Space</button>
-            </div>
             <div id="news-filter-bar" class="news-filter-bar" aria-label="Signal filters">
                 <label>Country <select id="news-filter-country"><option value="all">All</option></select></label>
                 <label>Category <select id="news-filter-category"><option value="all">All</option></select></label>
                 <label>Severity <select id="news-filter-severity"><option value="all">All</option></select></label>
             </div>
             <div id="news-feed" class="news-feed" aria-live="polite"></div>
-            <div id="space-feed" class="space-feed" role="tabpanel" aria-labelledby="space-tab" hidden aria-live="polite"></div>
             <div id="event-detail" class="event-detail" hidden><p class="empty-kicker">SELECT A RED LIGHT</p><p>Click a plotted event or city light to inspect published records.</p></div>
+        </aside>
+        <aside id="space-panel" class="space-panel" aria-label="Space weather" aria-hidden="true">
+            <div class="space-panel-heading"><div><span class="eyebrow">SPACE WEATHER</span><h2>Solar wind</h2></div><button id="space-panel-close" class="drawer-close" type="button" aria-label="Close space weather">×</button></div>
+            <div id="space-feed" class="space-feed" role="region" aria-label="Space weather readings and articles" aria-live="polite"></div>
         </aside>
     </main>
     <script src="assets/vendor/maplibre/maplibre-gl.js?v=20260725-mobile-map"></script>
-    <script src="assets/js/sentinel-data.js?v=20261126-space-gauge"></script>
+    <script src="assets/js/sentinel-data.js?v=20261126-space-tab-panel"></script>
     <script src="assets/js/sentinel-gods-eye-adapter.js?v=20260830-gods-eye-globe"></script>
-    <script src="assets/js/sentinel-map.js?v=20261126-space-gauge"></script>
+    <script src="assets/js/sentinel-map.js?v=20261126-space-tab-panel"></script>
 </body>
 </html>

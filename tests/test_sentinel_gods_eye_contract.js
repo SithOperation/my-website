@@ -33,10 +33,12 @@ assert.ok(mapScript.includes('severityColorExpression("severity")') && mapScript
 assert.ok(adapterScript.includes('return "military_aircraft"'), "Military and civilian aircraft must have independent categories");
 assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenControl'), "The map must use fullscreen controls instead of visual-mode tabs");
 assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
-assert.ok(page.includes('id="space-tab"') && page.includes('id="space-feed"'), "Sentinel must expose a dedicated space feed tab");
+assert.ok(page.includes('id="space-weather-toggle"') && page.includes('id="space-panel"') && page.includes('id="space-feed"'), "Sentinel must expose a dedicated map space-weather tab");
+assert.ok(!page.includes('id="space-tab"'), "Space weather must not be nested inside the Events tabs");
 assert.ok(mapScript.includes("isSpaceNewsItem") && mapScript.includes("renderSpaceFeed"), "Space weather news must be separated from plotted signals");
 assert.ok(mapScript.includes("parseSpaceTelemetry") && mapScript.includes("spaceSpeedBand") && mapScript.includes("renderSpaceTelemetry"), "Space weather must expose a speed gauge and trend graph");
 assert.ok(mapStyles.includes(".space-overview") && mapStyles.includes(".space-gauge-scale") && mapStyles.includes(".space-graph"), "Space weather gauge and graph must retain the dark compact design");
+assert.ok(mapStyles.includes(".space-panel.is-open") && mapStyles.includes("#space-weather-toggle"), "Space weather must open as a compact map-level panel");
 assert.ok(page.includes('id="coverage-status-toggle"') && page.includes('id="coverage-details"'), "Degraded coverage must expose a human-readable fold-out");
 assert.ok(mapScript.includes("renderCoverageDetails") && mapScript.includes("failedSources"), "Coverage notification must list degraded sources instead of raw JSON");
 assert.ok(mapScript.includes("unifiedSignalItems") && mapScript.includes("signalKind"), "Events drawer must combine intelligence, environmental, and X-report signals");
