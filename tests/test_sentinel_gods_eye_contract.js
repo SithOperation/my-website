@@ -35,6 +35,8 @@ assert.ok(!page.includes("data-map-mode=") && mapScript.includes('FullscreenCont
 assert.ok(page.includes('id="event-list-toggle"') && page.includes('id="event-panel"'), "Sentinel must expose one coherent event drawer");
 assert.ok(page.includes('id="space-tab"') && page.includes('id="space-feed"'), "Sentinel must expose a dedicated space feed tab");
 assert.ok(mapScript.includes("isSpaceNewsItem") && mapScript.includes("renderSpaceFeed"), "Space weather news must be separated from plotted signals");
+assert.ok(mapScript.includes("parseSpaceTelemetry") && mapScript.includes("spaceSpeedBand") && mapScript.includes("renderSpaceTelemetry"), "Space weather must expose a speed gauge and trend graph");
+assert.ok(mapStyles.includes(".space-overview") && mapStyles.includes(".space-gauge-scale") && mapStyles.includes(".space-graph"), "Space weather gauge and graph must retain the dark compact design");
 assert.ok(page.includes('id="coverage-status-toggle"') && page.includes('id="coverage-details"'), "Degraded coverage must expose a human-readable fold-out");
 assert.ok(mapScript.includes("renderCoverageDetails") && mapScript.includes("failedSources"), "Coverage notification must list degraded sources instead of raw JSON");
 assert.ok(mapScript.includes("unifiedSignalItems") && mapScript.includes("signalKind"), "Events drawer must combine intelligence, environmental, and X-report signals");

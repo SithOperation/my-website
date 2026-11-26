@@ -1510,19 +1510,101 @@
             .sort((a, b) => Date.parse(String(b.published_at || "")) - Date.parse(String(a.published_at || "")));
     }
 
+    function parseSpaceTelemetry(item) {
+        if (!String(item.source_id || "").toLowerCase().includes("noaa-space-weather")) return null;
+        let payload = {};
+        try {
+            payload = typeof item.summary === "string" ? JSON.parse(item.summary) : (item.summary || {});
+        } catch (_) {
+            return null;
+        }
+        const speed = Number(payload.proton_speed);
+        const timestamp = payload.time_tag || item.published_at;
+        if (!Number.isFinite(speed) || !timestamp || !Number.isFinite(Date.parse(timestamp))) return null;
+        return { speed, timestamp, item };
+    }
+
+    function spaceTelemetryItems() {
+        const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+        const seen = new Set();
+        return spaceNewsItems()
+            .map(parseSpaceTelemetry)
+            .filter(record => record && Date.parse(record.timestamp) >= cutoff)
+            .filter(record => {
+                const key = record.timestamp;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+    }
+
+    function spaceSpeedBand(speed) {
+        if (speed < 400) return { label: "QUIET", color: "#55c7ff" };
+        if (speed < 600) return { label: "ELEVATED", color: "#ffd34d" };
+        if (speed < 800) return { label: "STRONG", color: "#ff8a3d" };
+        return { label: "EXTREME-SPEED BAND", color: "#ff4d67" };
+    }
+
+    function renderSpaceTelemetry(feed, records) {
+        if (!records.length) return;
+        const latest = records[records.length - 1];
+        const band = spaceSpeedBand(latest.speed);
+        const overview = document.createElement("section");
+        const title = document.createElement("h3");
+        const gauge = document.createElement("div");
+        const value = document.createElement("strong");
+        const label = document.createElement("span");
+        const scale = document.createElement("div");
+        const marker = document.createElement("i");
+        const graph = document.createElement("svg");
+        const graphLabel = document.createElement("p");
+        const coverage = document.createElement("small");
+        const max = Math.max(1000, ...records.map(record => record.speed));
+        const points = records.map((record, index) => {
+            const x = records.length === 1 ? 50 : (index / (records.length - 1)) * 100;
+            const y = 34 - (Math.min(record.speed, max) / max) * 28;
+            return `${x.toFixed(2)},${y.toFixed(2)}`;
+        }).join(" ");
+        overview.className = "space-overview";
+        title.textContent = "Solar-wind speed";
+        value.textContent = `${Math.round(latest.speed)} km/s`;
+        label.textContent = `${band.label} · latest reading ${formatDate(latest.timestamp)}`;
+        gauge.className = "space-gauge";
+        gauge.style.setProperty("--space-gauge-color", band.color);
+        scale.className = "space-gauge-scale";
+        marker.className = "space-gauge-marker";
+        marker.style.left = `${Math.min(100, latest.speed / 1000 * 100)}%`;
+        scale.append(marker);
+        gauge.append(value, label, scale);
+        graph.className = "space-graph";
+        graph.setAttribute("viewBox", "0 0 100 40");
+        graph.setAttribute("role", "img");
+        graph.setAttribute("aria-label", "Seven-day solar-wind speed trend");
+        graph.innerHTML = `<polyline points="${points}" fill="none" stroke="${band.color}" stroke-width="1.5" vector-effect="non-scaling-stroke" />`;
+        graphLabel.className = "space-graph-label";
+        graphLabel.textContent = "Seven-day window · speed only, not an official NOAA impact scale";
+        coverage.className = "space-coverage";
+        coverage.textContent = `${records.length} reading${records.length === 1 ? "" : "s"} covering ${Math.max(1, Math.ceil((Date.parse(latest.timestamp) - Date.parse(records[0].timestamp)) / 86400000))} day${records.length === 1 ? "" : "s"}`;
+        overview.append(title, gauge, graph, graphLabel, coverage);
+        feed.appendChild(overview);
+    }
+
     function renderSpaceFeed() {
         const feed = element("space-feed");
         if (!feed) return;
-        const items = spaceNewsItems();
+        const telemetry = spaceTelemetryItems();
+        const items = spaceNewsItems().filter(item => !parseSpaceTelemetry(item));
         feed.replaceChildren();
         feed.hidden = false;
         element("news-feed")?.setAttribute("hidden", "");
         element("event-detail")?.setAttribute("hidden", "");
         setText("event-drawer-title", "Space weather");
-        if (!items.length) {
+        renderSpaceTelemetry(feed, telemetry);
+        if (!items.length && !telemetry.length) {
             const empty = document.createElement("p");
             empty.className = "space-feed-empty";
-            empty.textContent = "No NOAA space-weather readings are currently available.";
+            empty.textContent = "No NOAA space-weather readings or articles are currently available.";
             feed.appendChild(empty);
             return;
         }

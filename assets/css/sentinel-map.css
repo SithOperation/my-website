@@ -1463,6 +1463,15 @@ body:has(.sentinel-app) {
 .news-tab { border: 1px solid rgba(102, 164, 206, .28); border-radius: 999px; padding: 6px 12px; background: #0b1117; color: #91abc0; font: inherit; font-size: 11px; cursor: pointer; }
 .news-tab:hover, .news-tab:focus-visible, .news-tab.is-active { border-color: #37a7ff; color: #e6f5ff; background: #10283b; }
 .space-feed { min-height: 0; overflow: auto; padding: 12px 16px 18px; background: #000; color: #f2f2f2; }
+.space-overview { margin: 0 0 14px; padding: 12px; border: 1px solid #242424; border-left: 3px solid #55c7ff; border-radius: 6px; background: #080808; }
+.space-overview h3 { margin: 0 0 10px; color: #fff; font-size: 13px; }
+.space-gauge { --space-gauge-color: #55c7ff; display: grid; gap: 4px; }
+.space-gauge strong { color: var(--space-gauge-color); font-size: 25px; line-height: 1; }
+.space-gauge > span { color: #b7c3ce; font-size: 10px; }
+.space-gauge-scale { position: relative; height: 7px; margin-top: 8px; border-radius: 999px; background: linear-gradient(90deg, #55c7ff 0 40%, #ffd34d 40% 60%, #ff8a3d 60% 80%, #ff4d67 80%); }
+.space-gauge-marker { position: absolute; top: -4px; width: 3px; height: 15px; border: 1px solid #fff; border-radius: 2px; background: var(--space-gauge-color); transform: translateX(-50%); }
+.space-graph { display: block; width: 100%; height: 72px; margin-top: 12px; overflow: visible; background: linear-gradient(180deg, rgba(85, 199, 255, .08), transparent); }
+.space-graph-label, .space-coverage { display: block; margin: 6px 0 0; color: #8d8d8d; font-size: 10px; line-height: 1.35; }
 .space-card { margin: 0 0 10px; padding: 12px; border: 1px solid #242424; border-left: 3px solid #37a7ff; border-radius: 6px; background: #080808; }
 .space-card h3 { margin: 0 0 7px; color: #fff; font-size: 13px; line-height: 1.35; }
 .space-card p { margin: 0 0 8px; color: #b7c3ce; font-size: 11px; line-height: 1.45; }
