@@ -1459,7 +1459,18 @@ body:has(.sentinel-app) {
 .news-feed button:hover, .news-feed button:focus-visible { border-color: #37a7ff; background: rgba(20, 47, 72, .9); }
 .news-feed button strong { font-size: 12px; line-height: 1.35; }
 .news-feed button small, .news-feed-empty { color: #91abc0; font-size: 10px; line-height: 1.35; }
+.news-tabs { display: flex; gap: 6px; padding: 10px 16px 0; background: #050505; }
+.news-tab { border: 1px solid rgba(102, 164, 206, .28); border-radius: 999px; padding: 6px 12px; background: #0b1117; color: #91abc0; font: inherit; font-size: 11px; cursor: pointer; }
+.news-tab:hover, .news-tab:focus-visible, .news-tab.is-active { border-color: #37a7ff; color: #e6f5ff; background: #10283b; }
+.space-feed { min-height: 0; overflow: auto; padding: 12px 16px 18px; background: #000; color: #f2f2f2; }
+.space-card { margin: 0 0 10px; padding: 12px; border: 1px solid #242424; border-left: 3px solid #37a7ff; border-radius: 6px; background: #080808; }
+.space-card h3 { margin: 0 0 7px; color: #fff; font-size: 13px; line-height: 1.35; }
+.space-card p { margin: 0 0 8px; color: #b7c3ce; font-size: 11px; line-height: 1.45; }
+.space-card p:first-of-type { color: #69c0ff; font-size: 10px; }
+.space-card a { color: #69c0ff; font-size: 11px; }
+.space-feed-empty { color: #8d8d8d; font-size: 11px; }
 .event-detail[hidden], .news-feed[hidden] { display: none; }
+.space-feed[hidden] { display: none; }
 .maplibregl-ctrl-top-right { top: 62px; right: max(12px, env(safe-area-inset-right)); }
 .maplibregl-ctrl button { min-width: 32px; min-height: 32px; }
 

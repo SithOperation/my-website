@@ -1385,7 +1385,7 @@
             type: "x_report",
             published_at: properties.published_at
         }, "x_report"));
-        newsItems.forEach(item => add(item, "intelligence"));
+        newsItems.filter(item => !isSpaceNewsItem(item)).forEach(item => add(item, "intelligence"));
         return items;
     }
 
@@ -1499,6 +1499,65 @@
         });
     }
 
+    function isSpaceNewsItem(item) {
+        return String(item.category || item.source_id || "").toLowerCase().includes("space") ||
+            String(item.source_id || "").toLowerCase().includes("noaa-space-weather");
+    }
+
+    function spaceNewsItems() {
+        return newsItems
+            .filter(isSpaceNewsItem)
+            .sort((a, b) => Date.parse(String(b.published_at || "")) - Date.parse(String(a.published_at || "")));
+    }
+
+    function renderSpaceFeed() {
+        const feed = element("space-feed");
+        if (!feed) return;
+        const items = spaceNewsItems();
+        feed.replaceChildren();
+        feed.hidden = false;
+        element("news-feed")?.setAttribute("hidden", "");
+        element("event-detail")?.setAttribute("hidden", "");
+        setText("event-drawer-title", "Space weather");
+        if (!items.length) {
+            const empty = document.createElement("p");
+            empty.className = "space-feed-empty";
+            empty.textContent = "No NOAA space-weather readings are currently available.";
+            feed.appendChild(empty);
+            return;
+        }
+        items.slice(0, 100).forEach(item => {
+            const article = document.createElement("article");
+            const title = document.createElement("h3");
+            const metadata = document.createElement("p");
+            const summary = document.createElement("p");
+            const link = document.createElement("a");
+            article.className = "space-card";
+            title.textContent = item.title;
+            metadata.textContent = `${item.publisher || "NOAA SWPC"} · ${formatDate(item.published_at)} · Telemetry`;
+            summary.textContent = item.summary || "Solar-wind telemetry from NOAA Space Weather Prediction Center.";
+            link.href = item.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "Open NOAA source";
+            article.append(title, metadata, summary, link);
+            feed.appendChild(article);
+        });
+    }
+
+    function setSignalTab(tab) {
+        const space = tab === "space";
+        const signalsTab = element("signals-tab");
+        const spaceTab = element("space-tab");
+        signalsTab?.classList.toggle("is-active", !space);
+        spaceTab?.classList.toggle("is-active", space);
+        signalsTab?.setAttribute("aria-selected", String(!space));
+        spaceTab?.setAttribute("aria-selected", String(space));
+        element("news-filter-bar")?.toggleAttribute("hidden", space);
+        if (space) renderSpaceFeed();
+        else renderNewsFeed();
+    }
+
     function renderCountryReports(code, name) {
         const feed = element("news-feed");
         if (!feed) return;
@@ -1537,6 +1596,7 @@
         updateCountryAssociations();
         updateSignalFilters();
         renderNewsFeed();
+        renderSpaceFeed();
     }
 
     function appendDefinition(list, label, value, className = "") {
@@ -1876,6 +1936,7 @@
         element("event-list-toggle")?.addEventListener("click", () => {
             const open = !element("event-panel")?.classList.contains("is-open");
             if (open) {
+                setSignalTab("signals");
                 renderNewsFeed();
                 setText("event-drawer-title", "Latest news");
             }
@@ -1896,6 +1957,8 @@
         ["news-filter-country", "news-filter-category", "news-filter-severity"].forEach(id =>
             element(id)?.addEventListener("change", renderNewsFeed)
         );
+        element("signals-tab")?.addEventListener("click", () => setSignalTab("signals"));
+        element("space-tab")?.addEventListener("click", () => setSignalTab("space"));
     }
 
     function clearSourceHighlight(mapInstance = map, ready = mapReady) {
