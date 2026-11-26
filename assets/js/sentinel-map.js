@@ -37,7 +37,7 @@
         "russia": "RU", "russian federation": "RU", "south korea": "KR", "republic of korea": "KR",
         "north korea": "KP", "iran": "IR", "israel": "IL", "syria": "SY", "vietnam": "VN",
         "venezuela": "VE", "bolivia": "BO", "tanzania": "TZ", "laos": "LA", "moldova": "MD",
-        "brunei": "BN", "czechia": "CZ", "palestine": "PS"
+        "brunei": "BN", "czechia": "CZ", "palestine": "PS", "turkey": "TR", "turkiye": "TR", "türkiye": "TR"
     });
     const adapter = window.SentinelGodsEyeAdapter || null;
     const client = new window.SentinelData.Client({
@@ -351,6 +351,9 @@
         const text = countryKey((item?.title || "") + " " + (item?.summary || item?.description || ""));
         countryNodes.forEach(country => {
             const name = countryKey(country.name);
+            // Do not infer Türkiye from the bare English word "turkey";
+            // articles about the animal must not land on the country node.
+            if (country.alpha2 === "TR" && !/(turkiye|turkish|ankara|istanbul|republic of turkey)/i.test(text)) return;
             if (name.length >= 5 && text.includes(name)) codes.add(country.alpha2);
         });
         return Array.from(codes);
